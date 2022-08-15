@@ -1,0 +1,128 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "BC1101",
+    "section": "",
+    "text": "To learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Slides",
+    "section": "",
+    "text": "Course Info slides"
+  },
+  {
+    "objectID": "slides/slides-index.html",
+    "href": "slides/slides-index.html",
+    "title": "Slides",
+    "section": "",
+    "text": "Course Info slides"
+  },
+  {
+    "objectID": "slides/01-course-info.html#course-overview",
+    "href": "slides/01-course-info.html#course-overview",
+    "title": "BC1101",
+    "section": "Course Overview",
+    "text": "Course Overview\n\n1"
+  },
+  {
+    "objectID": "slides/01-course-info.html#overview",
+    "href": "slides/01-course-info.html#overview",
+    "title": "BC1101",
+    "section": "Overview",
+    "text": "Overview\n\nTextbook\nLectures\nExams & grading\nRecitation & homework\nOther stuff"
+  },
+  {
+    "objectID": "slides/01-course-info.html#about-me",
+    "href": "slides/01-course-info.html#about-me",
+    "title": "BC1101",
+    "section": "About me",
+    "text": "About me\n\n\n\nDr. Rob Brotherton\nNorthern Irish\nResearch: Political psychology / conspiracy beliefs"
+  },
+  {
+    "objectID": "slides/01-course-info.html#textbook",
+    "href": "slides/01-course-info.html#textbook",
+    "title": "BC1101",
+    "section": "Textbook",
+    "text": "Textbook\n\n\n\nLearning Statistics with R\n\nBy Danielle Navarro\nDownload as a .pdf for free\nlearningstatisticswithr.com\nHelpful for seeing how things are done in R\nAs well as explaining statistical concepts"
+  },
+  {
+    "objectID": "slides/01-course-info.html#lectures",
+    "href": "slides/01-course-info.html#lectures",
+    "title": "BC1101",
+    "section": "Lectures",
+    "text": "Lectures\n\nPanopto\n\nIn-lecture quizzes\nNavigation\nSubtitles\nDiscussion\nAlso: Discussion forums on Canvas"
+  },
+  {
+    "objectID": "slides/01-course-info.html#lectures-1",
+    "href": "slides/01-course-info.html#lectures-1",
+    "title": "BC1101",
+    "section": "Lectures",
+    "text": "Lectures\n\nTopics covered:\nBasic issues:\n\nTerminology, variables & measurement\n\nDescriptive statistics:\n\nFrequency, central tendency, variability, z-scores\n\nInferential statistics:\n\nProbability, sampling; hypothesis testing\n\\(t\\)-tests; ANOVA; Correlation & regression\n\nLogical progression"
+  },
+  {
+    "objectID": "slides/01-course-info.html#recitation",
+    "href": "slides/01-course-info.html#recitation",
+    "title": "BC1101",
+    "section": "Recitation",
+    "text": "Recitation\n\nPractical application of stats to data\n\nProblem Sets\nUsing R markdown\nShow code—how you worked out answers\nWork on .Rmd in RStudio Cloud\nUpload “knitted” .pdf to Canvas"
+  },
+  {
+    "objectID": "slides/01-course-info.html#recitation-1",
+    "href": "slides/01-course-info.html#recitation-1",
+    "title": "BC1101",
+    "section": "Recitation",
+    "text": "Recitation\n\nGrading problem sets\n\n0, 1, or 2 points\n0 = No submission, 1 = Incomplete, 2 = Valid attempt\nWrong answers ≠ lower grade\nDeadline: 5pm Eastern day of recitation\n\n\n\n# comment your R code to show thought process\n\n# e.g. here I'm adding 2 and 2\n2 + 2 \n\n[1] 4"
+  },
+  {
+    "objectID": "slides/01-course-info.html#exams",
+    "href": "slides/01-course-info.html#exams",
+    "title": "BC1101",
+    "section": "Exams",
+    "text": "Exams\n\n3 multiple choice exams\n\nEach covers around 1/3 of the material\n60 multiple choice questions\n60 minutes\nOnly lecture material, not R\nNon-cumulative\nExcept inasmuch as later concepts rely on ones introduced earlier\n\nSome questions will involve sums, but only simple ones you can do on paper"
+  },
+  {
+    "objectID": "slides/01-course-info.html#final-grades",
+    "href": "slides/01-course-info.html#final-grades",
+    "title": "BC1101",
+    "section": "Final grades",
+    "text": "Final grades\n\nFinal grade\n\n20% Lecture / discussion forum engagement\n20% Problem Sets\n60% 3 multiple choice exams (20% each)"
+  },
+  {
+    "objectID": "slides/01-course-info.html#math",
+    "href": "slides/01-course-info.html#math",
+    "title": "BC1101",
+    "section": "Math",
+    "text": "Math\n\nStatistics requires basic math skills\nE.g. order of operations\n\nParentheses\nExponents (like squaring/square root)\nMultiplication & division\nSummation\nAddition & subtraction"
+  },
+  {
+    "objectID": "slides/01-course-info.html#math-1",
+    "href": "slides/01-course-info.html#math-1",
+    "title": "BC1101",
+    "section": "Math",
+    "text": "Math\n\nSummation\n\nSymbol \\(\\Sigma\\) (Greek letter Sigma) means add up a set of scores\nSummation is done after operations in parentheses, squaring, and multiplication or division, but before other addition or subtraction\nE.g… Scores: 2, 4, 7\n\n\n\\[\\Sigma X = ? \\\\\n\\Sigma X + 1 = ? \\\\\n\\Sigma(X + 1) = ?\\]"
+  },
+  {
+    "objectID": "slides/01-course-info.html#math-2",
+    "href": "slides/01-course-info.html#math-2",
+    "title": "BC1101",
+    "section": "Math",
+    "text": "Math\n\nAlgebra\n\nRearranging equations\nE.g.\n\n\n\\[\\begin{align}12 &= 7 + X \\\\ X &= ? \\end{align}\\]"
+  },
+  {
+    "objectID": "slides/01-course-info.html#r",
+    "href": "slides/01-course-info.html#r",
+    "title": "BC1101",
+    "section": "R",
+    "text": "R\n\n\n\nDisadvantages\n\nA little tricky to begin with\n\nAdvantages\n\nFree\nCan do stuff other stats software can only dream of\nKeeps a record of what you do\nPretty graphs\nFeel like a super cool hacker\nPirate jokes\nGood for your career"
+  },
+  {
+    "objectID": "slides/01-course-info.html#section",
+    "href": "slides/01-course-info.html#section",
+    "title": "BC1101",
+    "section": "",
+    "text": "Check Canvas & email regularly\nLet me know about problems\n\n\n\n\nBack to all slides"
+  }
+]

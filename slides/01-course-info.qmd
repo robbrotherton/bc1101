@@ -1,0 +1,197 @@
+---
+format: 
+  revealjs:
+    chalkboard: true
+    footer: "[Back to all slides](slides-index.html)"
+---
+
+## Course Overview {.title-slide background-image="media/statistics-cover.png" background-size="700px"}
+
+::: {.title-number}
+1
+:::
+
+
+## Overview
+
+- Textbook
+- Lectures
+- Exams & grading
+- Recitation & homework
+- Other stuff
+
+
+## About me
+
+:::: {.columns}
+
+::: {.column width="40%"}
+- Dr. Rob Brotherton
+
+- Northern Irish
+
+- Research: Political psychology / conspiracy beliefs
+:::
+
+::: {.column width="60%"}
+
+<!-- placeholder -->
+
+:::
+
+::::
+
+
+## Textbook
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Learning Statistics with R
+  - By Danielle Navarro
+  - Download as a .pdf for free
+  - [learningstatisticswithr.com](https://learningstatisticswithr.com)
+  - Helpful for seeing how things are done in R
+  - As well as explaining statistical concepts
+:::
+
+::: {.column width="50%"}
+
+<!-- placeholder -->
+
+:::
+
+::::
+
+
+## Lectures
+
+- Panopto
+  - In-lecture quizzes
+  - Navigation
+  - Subtitles
+  - Discussion
+  - Also: Discussion forums on Canvas
+
+## Lectures
+
+
+- Topics covered:
+- Basic issues:
+  - Terminology, variables & measurement
+- Descriptive statistics: 
+  - Frequency, central tendency, variability, z-scores
+- Inferential statistics:
+  - Probability, sampling; hypothesis testing
+  - $t$-tests; ANOVA; Correlation & regression
+- Logical progression
+
+## Recitation
+
+- Practical application of stats to data
+  - Problem Sets
+  - Using R markdown
+  - Show code—how you worked out answers
+  - Work on .Rmd in RStudio Cloud
+  - Upload "knitted" .pdf to Canvas
+
+## Recitation
+
+- Grading problem sets
+  - 0, 1, or 2 points
+  - 0 = No submission, 1 = Incomplete, 2 = Valid attempt
+  - Wrong answers ≠ lower grade
+  - Deadline: 5pm Eastern day of recitation
+
+```{r echo=T}
+# comment your R code to show thought process
+
+# e.g. here I'm adding 2 and 2
+2 + 2 
+```
+
+## Exams
+
+- 3 multiple choice exams
+  - Each covers around 1/3 of the material
+  - 60 multiple choice questions
+  - 60 minutes
+  - Only lecture material, not R
+  - Non-cumulative
+  - Except inasmuch as later concepts rely on ones introduced earlier
+- Some questions will involve sums, but only simple ones you can do on paper
+
+## Final grades
+
+- Final grade
+  - 20% Lecture / discussion forum engagement
+  - 20% Problem Sets
+  - 60% 3 multiple choice exams (20% each)
+
+## Math
+
+- Statistics requires basic math skills
+
+- E.g. order of operations
+  1. Parentheses
+  2. Exponents (like squaring/square root)
+  3. Multiplication & division
+  4. Summation
+  5. Addition & subtraction
+
+## Math
+
+- Summation
+  - Symbol $\Sigma$ (Greek letter Sigma) means add up a set of scores
+  - Summation is done after operations in parentheses, squaring, and multiplication or division, but before other addition or subtraction
+  - E.g… Scores: 2, 4, 7
+
+
+$$\Sigma X = ? \\
+\Sigma X + 1 = ? \\
+\Sigma(X + 1) = ?$$
+
+## Math
+
+- Algebra
+  - Rearranging equations
+  - E.g.
+
+
+$$\begin{align}12 &= 7 + X \\ X &= ? \end{align}$$
+
+
+## R {.smaller}
+
+:::: {.columns}
+
+::: {.column width="60%"}
+- Disadvantages
+  - A little tricky to begin with
+- Advantages
+  - Free
+  - Can do stuff other stats software can only dream of
+  - Keeps a record of what you do
+  - Pretty graphs
+  - Feel like a super cool hacker
+  - Pirate jokes
+  - Good for your career
+:::
+
+::: {.column width="40%"}
+
+![](media/r-logo.png)
+
+:::
+
+::::
+
+
+
+## 
+
+::: {.middle}
+- Check Canvas & email regularly
+- Let me know about problems
+:::
