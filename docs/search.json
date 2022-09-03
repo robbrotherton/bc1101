@@ -1,0 +1,219 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PSYC BC1101 STATISTICS",
+    "section": "",
+    "text": "Professor: Dr. Rob Brotherton\nEmail: rbrother@barnard.edu\nOffice Hours: Wednesday 4–5pm, 415M Milbank\nLecture hours: Tuesday & Thursday, 10:10am–11:25am\nLecture venue: 207 Milbank Hall"
+  },
+  {
+    "objectID": "index.html#course-overview",
+    "href": "index.html#course-overview",
+    "title": "PSYC BC1101 STATISTICS",
+    "section": "Course Overview",
+    "text": "Course Overview\nThis course, required for the psychology major, provides an introduction to statistical methods commonly used in psychological research. Topics include measures of central tendency and variability, probability and sampling, confidence intervals and hypothesis testing, t-test and analysis of variance, correlation and regression. In addition to learning the conceptual and mathematical underpinnings of these techniques, you will learn to calculate and interpret statistics with reference to real-world contexts and research questions typical in psychological research. The course includes recitation meetings that provide instruction in the analysis of psychological data using the R statistical software package commonly used by behavioral science researchers.\nThe course is designed to fulfill these goals:\n\nUnderstand what statistics are, and why and when they are needed\nTranslate observations about the world into statistical statements and questions\nLearn how statistical methods are used to test psychological hypotheses\nUse statistical software (R) to describe, visualize, analyze, and report data"
+  },
+  {
+    "objectID": "index.html#class-schedule",
+    "href": "index.html#class-schedule",
+    "title": "PSYC BC1101 STATISTICS",
+    "section": "Class Schedule",
+    "text": "Class Schedule\nHere’s when classes are."
+  },
+  {
+    "objectID": "index.html#recommended-not-required-open-access-textbook",
+    "href": "index.html#recommended-not-required-open-access-textbook",
+    "title": "PSYC BC1101 STATISTICS",
+    "section": "Recommended (not required) open-access textbook",
+    "text": "Recommended (not required) open-access textbook\nNavarro, D. (2017). Learning Statistics with R. https://learningstatisticswithr.com/"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Slides",
+    "section": "",
+    "text": "Course Info slides"
+  },
+  {
+    "objectID": "slides/02_variables.html#variables",
+    "href": "slides/02_variables.html#variables",
+    "title": "BC1101",
+    "section": "2|VARIABLES",
+    "text": "2|VARIABLES"
+  },
+  {
+    "objectID": "slides/02_variables.html#overview",
+    "href": "slides/02_variables.html#overview",
+    "title": "BC1101",
+    "section": "Overview",
+    "text": "Overview\n\nStatistics: Why? How? What?\nTerminology\n\nScales of measurement\nPopulations vs samples\nParameters vs statistics\nInferential vs descriptive statistics"
+  },
+  {
+    "objectID": "slides/02_variables.html#making-statistics",
+    "href": "slides/02_variables.html#making-statistics",
+    "title": "BC1101",
+    "section": "Making statistics",
+    "text": "Making statistics\nWHERE DO STATISTICSCOME FROM?"
+  },
+  {
+    "objectID": "slides/02_variables.html#producing-a-statistic",
+    "href": "slides/02_variables.html#producing-a-statistic",
+    "title": "BC1101",
+    "section": "Producing a statistic",
+    "text": "Producing a statistic"
+  },
+  {
+    "objectID": "slides/02_variables.html#how-many-books-are-red",
+    "href": "slides/02_variables.html#how-many-books-are-red",
+    "title": "BC1101",
+    "section": "How many books are red?",
+    "text": "How many books are red?\n\nGather data to determine what proportion of books are red\nEnter your best estimate and explain your process\nSuggested time limit: 5 minutes"
+  },
+  {
+    "objectID": "slides/02_variables.html#making-statistics-1",
+    "href": "slides/02_variables.html#making-statistics-1",
+    "title": "BC1101",
+    "section": "Making statistics",
+    "text": "Making statistics\n\n“In the United States today half of all children (35.6 million) live in a household where a parent or other adult uses tobacco, drinks heavily or uses illicit drugs”"
+  },
+  {
+    "objectID": "slides/02_variables.html#measuring-things",
+    "href": "slides/02_variables.html#measuring-things",
+    "title": "BC1101",
+    "section": "Measuring things",
+    "text": "Measuring things\nConstructs & operational definitions\n\nConstruct: Extroversion\nOperational definition: Big 5 questions\nConstruct: Intelligence\nOperational definition: IQ test\nConstruct: Height\nOperational definition: How far the top of your head is from the floor according to a tape measure"
+  },
+  {
+    "objectID": "slides/02_variables.html#measuring-things-1",
+    "href": "slides/02_variables.html#measuring-things-1",
+    "title": "BC1101",
+    "section": "Measuring things",
+    "text": "Measuring things\n\nOperationalizing variables\n\nUsually more than one way we could go about measuring & recording data\nResult in different types of data, and potentially different applicable analyses\nHow to decide on operational definition?\n\nAspects to consider:\n\nType of variable (discrete / continuous)\nScale of measurement (nominal / ordinal / interval / ratio)"
+  },
+  {
+    "objectID": "slides/slides-index.html#course-overview",
+    "href": "slides/slides-index.html#course-overview",
+    "title": "Slides",
+    "section": "1. Course Overview",
+    "text": "1. Course Overview\n\n\n01/01/2022\n\n\n\n\n\n\n\n\n\nTextbook\nLectures\nExams & grading\nRecitation & homework\nOther stuff\n\n\n\n\nSlidesPanopto"
+  },
+  {
+    "objectID": "slides/slides-index.html#variables",
+    "href": "slides/slides-index.html#variables",
+    "title": "Slides",
+    "section": "2. Variables",
+    "text": "2. Variables\n\n\n01/01/2022\n\n\n\n\n\n\n\n\n\nStatistics: Why? How? What?\nTerminology\n\nScales of measurement\nPopulations vs samples\nParameters vs statistics\nInferential vs descriptive statistics\n\n\n\n\n\n\nSlidesPanopto"
+  },
+  {
+    "objectID": "slides/slides-index.html#frequency",
+    "href": "slides/slides-index.html#frequency",
+    "title": "Slides",
+    "section": "3. Frequency",
+    "text": "3. Frequency\n\n\n01/01/2022\n\n\n\n\n\n\n\n\n\n\n\n\nSlidesPanopto"
+  },
+  {
+    "objectID": "slides/slides-index.html#central-tendency",
+    "href": "slides/slides-index.html#central-tendency",
+    "title": "Slides",
+    "section": "4. Central Tendency",
+    "text": "4. Central Tendency\n\n\n01/01/2022\n\n\n\n\n\n\n\n\n\n\n\n\nSlidesPanopto"
+  },
+  {
+    "objectID": "slides/01_course-info.html#overview",
+    "href": "slides/01_course-info.html#overview",
+    "title": "BC1101",
+    "section": "Overview",
+    "text": "Overview\n\nTextbook\nLectures\nExams & grading\nRecitation & homework\nOther stuff"
+  },
+  {
+    "objectID": "slides/01_course-info.html#about-me",
+    "href": "slides/01_course-info.html#about-me",
+    "title": "BC1101",
+    "section": "About me",
+    "text": "About me\n\n\n\nDr. Rob Brotherton\nNorthern Irish\nResearch: Political psychology / conspiracy beliefs"
+  },
+  {
+    "objectID": "slides/01_course-info.html#textbook",
+    "href": "slides/01_course-info.html#textbook",
+    "title": "BC1101",
+    "section": "Textbook",
+    "text": "Textbook\n\n\n\nLearning Statistics with R\n\nBy Danielle Navarro\nDownload as a .pdf for free\nlearningstatisticswithr.com\nHelpful for seeing how things are done in R\nAs well as explaining statistical concepts"
+  },
+  {
+    "objectID": "slides/01_course-info.html#lectures",
+    "href": "slides/01_course-info.html#lectures",
+    "title": "BC1101",
+    "section": "Lectures",
+    "text": "Lectures\n\nPanopto\n\nIn-lecture quizzes\nNavigation\nSubtitles\nDiscussion\nAlso: Discussion forums on Canvas"
+  },
+  {
+    "objectID": "slides/01_course-info.html#lectures-1",
+    "href": "slides/01_course-info.html#lectures-1",
+    "title": "BC1101",
+    "section": "Lectures",
+    "text": "Lectures\n\nTopics covered:\nBasic issues:\n\nTerminology, variables & measurement\n\nDescriptive statistics:\n\nFrequency, central tendency, variability, z-scores\n\nInferential statistics:\n\nProbability, sampling; hypothesis testing\n\\(t\\)-tests; ANOVA; Correlation & regression\n\nLogical progression"
+  },
+  {
+    "objectID": "slides/01_course-info.html#recitation",
+    "href": "slides/01_course-info.html#recitation",
+    "title": "BC1101",
+    "section": "Recitation",
+    "text": "Recitation\n\nPractical application of stats to data\n\nProblem Sets\nUsing R markdown\nShow code—how you worked out answers\nWork on .Rmd in RStudio Cloud\nUpload “knitted” .pdf to Canvas"
+  },
+  {
+    "objectID": "slides/01_course-info.html#recitation-1",
+    "href": "slides/01_course-info.html#recitation-1",
+    "title": "BC1101",
+    "section": "Recitation",
+    "text": "Recitation\n\nGrading problem sets\n\n0, 1, or 2 points\n0 = No submission, 1 = Incomplete, 2 = Valid attempt\nWrong answers ≠ lower grade\nDeadline: 5pm Eastern day of recitation\n\n\n\n# comment your R code to show thought process\n\n# e.g. here I'm adding 2 and 2\n2 + 2 \n\n[1] 4"
+  },
+  {
+    "objectID": "slides/01_course-info.html#exams",
+    "href": "slides/01_course-info.html#exams",
+    "title": "BC1101",
+    "section": "Exams",
+    "text": "Exams\n\n3 multiple choice exams\n\nEach covers around 1/3 of the material\n60 multiple choice questions\n60 minutes\nOnly lecture material, not R\nNon-cumulative\nExcept inasmuch as later concepts rely on ones introduced earlier\n\nSome questions will involve sums, but only simple ones you can do on paper"
+  },
+  {
+    "objectID": "slides/01_course-info.html#final-grades",
+    "href": "slides/01_course-info.html#final-grades",
+    "title": "BC1101",
+    "section": "Final grades",
+    "text": "Final grades\n\nFinal grade\n\n20% Lecture / discussion forum engagement\n20% Problem Sets\n60% 3 multiple choice exams (20% each)"
+  },
+  {
+    "objectID": "slides/01_course-info.html#math",
+    "href": "slides/01_course-info.html#math",
+    "title": "BC1101",
+    "section": "Math",
+    "text": "Math\n\nStatistics requires basic math skills\nE.g. order of operations\n\nParentheses\nExponents (like squaring/square root)\nMultiplication & division\nSummation\nAddition & subtraction"
+  },
+  {
+    "objectID": "slides/01_course-info.html#math-1",
+    "href": "slides/01_course-info.html#math-1",
+    "title": "BC1101",
+    "section": "Math",
+    "text": "Math\n\nSummation\n\nSymbol \\(\\Sigma\\) (Greek letter Sigma) means add up a set of scores\nSummation is done after operations in parentheses, squaring, and multiplication or division, but before other addition or subtraction\nE.g… Scores: 2, 4, 7\n\n\n\\[\\Sigma X = ? \\\\\n\\Sigma X + 1 = ? \\\\\n\\Sigma(X + 1) = ?\\]"
+  },
+  {
+    "objectID": "slides/01_course-info.html#math-2",
+    "href": "slides/01_course-info.html#math-2",
+    "title": "BC1101",
+    "section": "Math",
+    "text": "Math\n\nAlgebra\n\nRearranging equations\nE.g.\n\n\n\\[\\begin{align}12 &= 7 + X \\\\ X &= ? \\end{align}\\]"
+  },
+  {
+    "objectID": "slides/01_course-info.html#r",
+    "href": "slides/01_course-info.html#r",
+    "title": "BC1101",
+    "section": "R",
+    "text": "R\n\n\n\nDisadvantages\n\nA little tricky to begin with\n\nAdvantages\n\nFree\nCan do stuff other stats software can only dream of\nKeeps a record of what you do\nPretty graphs\nFeel like a super cool hacker\nPirate jokes\nGood for your career"
+  },
+  {
+    "objectID": "slides/01_course-info.html#lastly",
+    "href": "slides/01_course-info.html#lastly",
+    "title": "BC1101",
+    "section": "Lastly",
+    "text": "Lastly\n\n\nCheck Canvas & email regularly\nLet me know about problems"
+  }
+]
