@@ -2,14 +2,21 @@
 format: 
   revealjs:
     chalkboard: true
-    footer: "[Back to all slides](slides-index.html)"
+    theme: default
+    css: slides.css
+include-after-body: fitty.script
 ---
 
-## Course Overview {.title-slide background-image="media/statistics-cover.png" background-size="700px"}
+:::: {.cover-page}
 
-::: {.title-number}
-1
+::: {.fit .lecture-title}
+1|COURSE OVERVIEW
 :::
+ 
+::: {.bg-img}
+![](media/statistics-cover.png)
+:::
+::::
 
 
 ## Overview
@@ -189,7 +196,7 @@ $$\begin{align}12 &= 7 + X \\ X &= ? \end{align}$$
 
 
 
-## 
+## Lastly
 
 ::: {.middle}
 - Check Canvas & email regularly

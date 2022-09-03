@@ -1,0 +1,4 @@
+<script src="fitty.min.js"></script>
+<script>
+    fitty(".fit");
+</script>

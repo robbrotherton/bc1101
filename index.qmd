@@ -1,12 +1,39 @@
 ---
-title: "BC1101"
+title: "PSYC BC1101 STATISTICS"
 ---
 
-This is a Quarto website.
+Professor: Dr. Rob Brotherton  
+Email: rbrother@barnard.edu  
+Office Hours: Wednesday 4–5pm, 415M Milbank 
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Lecture hours: Tuesday & Thursday, 10:10am–11:25am  
+Lecture venue: 207 Milbank Hall
 
-```{r}
-1 + 1
-```
+
+## Course Overview
+
+This course, required for the psychology major, provides an introduction to statistical methods commonly used in psychological research. Topics include measures of central tendency and variability, probability and sampling, confidence intervals and hypothesis testing, t-test and analysis of variance, correlation and regression. In addition to learning the conceptual and mathematical underpinnings of these techniques, you will learn to calculate and interpret statistics with reference to real-world contexts and research questions typical in psychological research. The course includes recitation meetings that provide instruction in the analysis of psychological data using the R statistical software package commonly used by behavioral science researchers.
+
+The course is designed to fulfill these goals:
+
+-   Understand what statistics are, and why and when they are needed
+
+-   Translate observations about the world into statistical statements and questions
+
+-   Learn how statistical methods are used to test psychological hypotheses
+
+-   Use statistical software (R) to describe, visualize, analyze, and report data
+
+
+
+
+## Class Schedule
+
+Here's when classes are.
+
+
+
+## Recommended (not required) open-access textbook
+
+Navarro, D. (2017). Learning Statistics with R. <https://learningstatisticswithr.com/>
 

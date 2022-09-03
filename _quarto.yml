@@ -12,6 +12,8 @@ website:
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
     toc: true
+    css: styles.css
+
+execute:
+  freeze: auto

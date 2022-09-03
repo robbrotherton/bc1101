@@ -1,0 +1,77 @@
+---
+format: 
+  revealjs:
+    chalkboard: true
+    css: slides.css
+---
+
+## 2|VARIABLES {.title}
+
+ <!-- background-image="media/statistics-cover.png" background-size="80%" -->
+
+![](media/variables.png){.bg-img}
+
+
+
+## Overview
+
+- Statistics: Why? How? What?
+- Terminology
+    - Scales of measurement
+    - Populations vs samples
+    - Parameters vs statistics
+    - Inferential vs descriptive statistics
+
+
+
+## Making statistics
+
+
+### WHERE DO STATISTICS<br>COME FROM?
+
+
+## Producing a statistic
+
+![](media/book.jpg)
+
+
+## How many books are red?
+
+- Gather data to determine what proportion of books are red
+- Enter your best estimate and explain your process
+- Suggested time limit: 5 minutes
+
+![](media/book.jpg)
+
+
+
+## Making statistics
+
+> "In the United States today half of all children (35.6 million) live in a household where a parent or other adult uses tobacco, drinks heavily or uses illicit drugs"  
+
+
+
+## Measuring things
+
+Constructs & operational definitions
+
+- Construct: Extroversion<br>
+- Operational definition: Big 5 questions<br><br>
+
+- Construct: Intelligence<br>
+- Operational definition: IQ test<br><br>
+
+- Construct: Height<br>
+- Operational definition: How far the top of your head is from the floor according to a tape measure
+
+
+## Measuring things
+
+- Operationalizing variables
+  - Usually more than one way we could go about measuring & recording data
+  - Result in different types of data, and potentially different applicable analyses
+  - How to decide on operational definition?
+- Aspects to consider:
+  - Type of variable (discrete / continuous)
+  - Scale of measurement (nominal / ordinal / interval / ratio)
+
