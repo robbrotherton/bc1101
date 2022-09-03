@@ -16,6 +16,7 @@
 
 
 .box h2 {
+  font-size: min(max(1em, 5vw), 2em);
   margin-top: 0.2em;
   padding-top: 0;
   margin-left: 0.2em;
@@ -32,9 +33,10 @@
   color: grey;
   position: absolute;
   top: 0.6em;
-  right: 0.2em;
+  right: 0.4rem;
   margin: 0;
   padding: 0;
+  font-size: min(max(0.5em, 3vw), 1em);
 }
 
 .lecture-card {
@@ -48,6 +50,7 @@
 .lecture-overview {
   position: relative;
   float: right;
+  font-size: min(max(0.8em, 2vw), 1em);
   width: 50%;
 }
 
