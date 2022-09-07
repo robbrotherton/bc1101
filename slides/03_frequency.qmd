@@ -1,0 +1,56 @@
+---
+format: 
+  revealjs:
+    chalkboard: true
+---
+
+::: {.cover}
+## 3|FREQUENCY
+
+::: {.cover-image}
+![](covers/03_frequency.png)
+:::
+:::
+
+
+## Overview
+- Frequency tables
+- Data visualization
+  - Histograms
+  - Frequency polygons
+  - Bar graphs
+  - Population curves
+
+
+## Statistics {.smaller}
+
+> A bunch of numbers looking for an argument. ^[[Jones, 2011](https://onlinelibrary.wiley.com/doi/10.1002/9781118116371.ch3)]
+
+- Mathematical procedures used to collect, organize, summarize & interpret information
+  - Provide standardized evaluation procedures
+  - Tell us about patterns of interest in data
+- Etymology
+  - *Statistics* comes from *status*, meaning *state*
+  - The state of the state
+  - Census, birth rate, death rate, incomes, unemployment etc
+
+
+## Frequency
+
+- How often does something occur?
+    - E.g. opinion polling ([FiveThirtyEight](https://projects.fivethirtyeight.com/-approval-ratings/))
+
+
+
+## Frequency
+
+- A frequency distribution...
+    - Organizes and displays data
+    - Conveys how scores are distributed
+    - Can be either a table or a graph
+- Shows:
+    - Categories that make up the scale
+    - Frequency, or number of observations, in each category
+    - And/or proportion/percentage/cumulative percent of scores in each category
+
+

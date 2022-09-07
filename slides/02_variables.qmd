@@ -2,14 +2,11 @@
 format: 
   revealjs:
     chalkboard: true
-    css: slides.css
 ---
 
-## 2|VARIABLES {.title}
+# 2|VARIABLES
 
- <!-- background-image="media/statistics-cover.png" background-size="80%" -->
-
-![](media/variables.png){.bg-img}
+![](covers/02_variables.png)
 
 
 
@@ -27,7 +24,7 @@ format:
 ## Making statistics
 
 
-### WHERE DO STATISTICS<br>COME FROM?
+- Where do statistics come from?
 
 
 ## Producing a statistic
@@ -47,23 +44,29 @@ format:
 
 ## Making statistics
 
-> "In the United States today half of all children (35.6 million) live in a household where a parent or other adult uses tobacco, drinks heavily or uses illicit drugs"  
+> "In the United States today half of all children (35.6 million) live in a household where a parent or other adult uses tobacco, drinks heavily or uses illicit drugs"^[[The National Center on  Addiction and Substance Abuse at Columbia University, 2005](https://web.archive.org/web/20191017204229/https://www.centeronaddiction.org/addiction-research/reports/family-matters-substance-abuse-and-american-family)
+]]
+
+- Other questions...
+  - How many students are smokers?
+  - Young people, narcissism, anxiety, depression ^[See [Singal, 2016](https://www.thecut.com/2016/03/for-80-years-young-americans-have-been-getting-more-anxious-and-depressed.html)]
 
 
 
-## Measuring things
+## Constructs & operational definitions
 
-Constructs & operational definitions
+- Construct: Extroversion
+- Operational definition: Big 5 questions
 
-- Construct: Extroversion<br>
-- Operational definition: Big 5 questions<br><br>
+::: {.fragment}
+- Construct: Intelligence
+- Operational definition: IQ test
+:::
 
-- Construct: Intelligence<br>
-- Operational definition: IQ test<br><br>
-
-- Construct: Height<br>
+:::{.fragment}
+- Construct: Height
 - Operational definition: How far the top of your head is from the floor according to a tape measure
-
+:::
 
 ## Measuring things
 
@@ -75,3 +78,117 @@ Constructs & operational definitions
   - Type of variable (discrete / continuous)
   - Scale of measurement (nominal / ordinal / interval / ratio)
 
+
+## Types of variable {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Discrete
+  - Something we count as whole numbers
+  - Made up of separate, indivisible categories
+  - No values exist between neighboring categories
+- Examples:
+  - Number of children/cats/TVs
+  - Positive cases
+  - Hospital admissions
+:::
+
+::: {.column width="50%"} 
+- Continuous
+  - Something we can measure with decimals
+  - Has infinite number of possible values
+  - Every interval is divisible into infinite number of parts
+- Examples
+  - Height
+  - Time
+  - Temperature
+:::
+
+::::
+
+## Scales of measurement {.smaller}
+
+```{r echo=FALSE}
+tab <- data.frame(Scale = c("Nominal","Ordinal","Interval","Ratio"),
+                  
+                  Characteristics = c("Named categories<br>
+                                      No quantitative distinctions",
+                                      "Ordered categories<br>
+                                      Indicates direction, but not size of difference",
+                                      "Ordered categories<br>
+                                      Equal intervals between categories<br>
+                                      Arbitrary or absent zero point",
+                                      "Ordered categories<br>
+                                      Equal interval between categories<br>
+                                      Absolute zero point"),
+                  
+                  Examples = c("Gender<br>Eye color<br>Experimental condition",
+                               "Rank<br>Clothing sizes<br>Olympic medals",
+                               "Temperature (Celcius/Fahrenheit)<br>Golf scores",
+                               "Temperature (Kelvin)<br>
+                               Number of correct answers<br>
+                               Response time")
+)
+
+knitr::kable(tab, 'html', escape = F)
+
+```
+
+
+## Measuring things
+
+Likert scales
+
+- E.g. "What is your current level of happiness?"
+
+::: {.center}
+1. A lot less than usual
+2. A little less than usual
+3. About average
+4. A little more than usual
+5. A lot more than usual
+:::
+
+## Populations & samples
+
+![](media/pop-sample.gif)
+
+
+## Populations & samples
+
+![](media/pop-sample-ani.gif)
+
+## Populations & samples
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- __Populations__
+  - Population *parameters*
+  - Usually Greek symbols
+  - e.g. $\mu$; $N$
+  - Inferential statistics
+:::
+
+::: {.column width="50%"}
+- __Samples__
+  - Sample *statistics*
+  - Usually letters
+  - e.g. $M$; $n$
+  - Descriptive statistics
+:::
+
+::::
+
+
+## Learning checks
+
+- A tax form asks people to identify their
+  - Age
+  - Annual income
+  - Number of dependents
+  - Social security number
+- For each variable...
+  1. Identify the scale of measurement that probably is used
+  2. Explain whether the variable is continuous or discrete

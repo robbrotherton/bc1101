@@ -1,0 +1,89 @@
+/*-- scss:defaults --*/
+
+/*--
+$body-bg: #b7b09c;
+$body-color: #4e3629;
+$link-color: #ffc72c;
+$presentation-heading-color: #cc0000;
+$code-color: #cc0000;
+$code-block-bg: #ded9ca;
+$code-block-border-color: #000000;
+--*/
+
+
+
+/*-- scss:rules --*/
+
+.box {
+  border: 1px solid #c3c3c3;
+  border-radius: 5px;
+  float: left;
+  margin-bottom: 1em;
+  margin-top: 0em;
+  position: relative;
+  width: 100%;
+}
+
+
+.box h2 {
+  border-bottom: none;
+  font-size: min(max(1em, 5vw), 2em);
+  margin-top: 0.2em;
+  margin-left: 0.2em;
+  margin-bottom: 0;
+  padding-top: 0;
+  width: 90%;
+}
+
+.box:hover {
+  border: 1px solid black;
+}
+
+.date {
+  color: grey;
+  font-size: min(max(0.5em, 3vw), 1em);
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 0.4rem;
+  top: 0.6em;
+}
+
+.lecture-image {
+  float: left;
+  width: 50%;
+}
+
+.lecture-overview {
+  float: right;
+  font-size: min(max(0.8em, 2vw), 1em);
+  position: relative;
+  width: 50%;
+}
+
+.footer {
+  float: left;
+  margin-top: -1em;
+  padding: 0;
+  width: 100%;
+}
+
+/* for lecture slides */
+
+.cover h2 {
+  font-size: 2em;
+}
+
+.cover-image {
+  margin: 0;
+  text-align: center;
+}
+
+.title-slide .img {
+  text-align: center;
+}
+
+.reveal img {
+  margin-left: 50%;
+  transform: translate(-50%);
+}

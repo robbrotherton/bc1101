@@ -2,22 +2,14 @@
 format: 
   revealjs:
     chalkboard: true
-    theme: default
-    css: slides.css
-include-after-body: fitty.script
 ---
 
-:::: {.cover-page}
 
-::: {.fit .lecture-title}
-1|COURSE OVERVIEW
-:::
- 
-::: {.bg-img}
-![](media/statistics-cover.png)
-:::
-::::
+# 1|COURSE OVERVIEW
 
+:::{.cover-image}
+![](covers/01_course-info.png)
+:::
 
 ## Overview
 
@@ -121,8 +113,7 @@ include-after-body: fitty.script
 ## Exams
 
 - 3 multiple choice exams
-  - Each covers around 1/3 of the material
-  - 60 multiple choice questions
+  - Multiple choice
   - 60 minutes
   - Only lecture material, not R
   - Non-cumulative
@@ -150,9 +141,9 @@ include-after-body: fitty.script
 ## Math
 
 - Summation
-  - Symbol $\Sigma$ (Greek letter Sigma) means add up a set of scores
+  - Symbol $\Sigma$ (Greek letter Sigma) means add up
   - Summation is done after operations in parentheses, squaring, and multiplication or division, but before other addition or subtraction
-  - E.g… Scores: 2, 4, 7
+  - E.g… $X = [2, 4, 7]$
 
 
 $$\Sigma X = ? \\
@@ -178,7 +169,7 @@ $$\begin{align}12 &= 7 + X \\ X &= ? \end{align}$$
   - A little tricky to begin with
 - Advantages
   - Free
-  - Can do stuff other stats software can only dream of
+  - Can do stuff other stats software can't
   - Keeps a record of what you do
   - Pretty graphs
   - Feel like a super cool hacker
@@ -198,7 +189,5 @@ $$\begin{align}12 &= 7 + X \\ X &= ? \end{align}$$
 
 ## Lastly
 
-::: {.middle}
 - Check Canvas & email regularly
 - Let me know about problems
-:::

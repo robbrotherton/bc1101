@@ -8,13 +8,14 @@ website:
     left:
       - href: index.qmd
         text: Syllabus
-      - href: slides/slides-index.qmd
+      - href: slides-index.qmd
         text: Slides
 
 format:
   html:
     toc: true
-    css: styles.css
+
+theme: custom.scss
 
 execute:
   freeze: auto

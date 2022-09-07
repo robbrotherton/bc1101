@@ -24,7 +24,6 @@
     ul.task-list{list-style: none;}
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
-  <link rel="stylesheet" href="slides.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -321,11 +320,11 @@
     <div class="slides">
 
 
-<section id="variables" class="slide level2 title">
-<h2>2|VARIABLES</h2>
-<p><!-- background-image="media/statistics-cover.png" background-size="80%" --></p>
+<section>
+<section id="variables" class="title-slide slide level1 center">
+<h1>2|VARIABLES</h1>
 
-<img data-src="media/variables.png" class="bg-img r-stretch"></section>
+<img data-src="covers/02_variables.png" class="r-stretch"></section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
 <ul>
@@ -341,7 +340,9 @@
 </section>
 <section id="making-statistics" class="slide level2">
 <h2>Making statistics</h2>
-<h3 id="where-do-statistics-come-from">WHERE DO STATISTICS<br>COME FROM?</h3>
+<ul>
+<li>Where do statistics come from?</li>
+</ul>
 </section>
 <section id="producing-a-statistic" class="slide level2">
 <h2>Producing a statistic</h2>
@@ -359,22 +360,36 @@
 <section id="making-statistics-1" class="slide level2">
 <h2>Making statistics</h2>
 <blockquote>
-<p>“In the United States today half of all children (35.6 million) live in a household where a parent or other adult uses tobacco, drinks heavily or uses illicit drugs”</p>
+<p>“In the United States today half of all children (35.6 million) live in a household where a parent or other adult uses tobacco, drinks heavily or uses illicit drugs”<sup>1</sup>]</p>
 </blockquote>
+<ul>
+<li>Other questions…
+<ul>
+<li>How many students are smokers?</li>
+<li>Young people, narcissism, anxiety, depression <sup>2</sup></li>
+</ul></li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn1" role="doc-endnote"><p><a href="https://web.archive.org/web/20191017204229/https://www.centeronaddiction.org/addiction-research/reports/family-matters-substance-abuse-and-american-family">The National Center on Addiction and Substance Abuse at Columbia University, 2005</a></p></li><li id="fn2" role="doc-endnote"><p>See <a href="https://www.thecut.com/2016/03/for-80-years-young-americans-have-been-getting-more-anxious-and-depressed.html">Singal, 2016</a></p></li></ol></aside></section>
+<section id="constructs-operational-definitions" class="slide level2">
+<h2>Constructs &amp; operational definitions</h2>
+<ul>
+<li>Construct: Extroversion</li>
+<li>Operational definition: Big 5 questions</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Construct: Intelligence</li>
+<li>Operational definition: IQ test</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Construct: Height</li>
+<li>Operational definition: How far the top of your head is from the floor according to a tape measure</li>
+</ul>
+</div>
 </section>
 <section id="measuring-things" class="slide level2">
-<h2>Measuring things</h2>
-<p>Constructs &amp; operational definitions</p>
-<ul>
-<li><p>Construct: Extroversion<br></p></li>
-<li><p>Operational definition: Big 5 questions<br><br></p></li>
-<li><p>Construct: Intelligence<br></p></li>
-<li><p>Operational definition: IQ test<br><br></p></li>
-<li><p>Construct: Height<br></p></li>
-<li><p>Operational definition: How far the top of your head is from the floor according to a tape measure</p></li>
-</ul>
-</section>
-<section id="measuring-things-1" class="slide level2">
 <h2>Measuring things</h2>
 <ul>
 <li>Operationalizing variables
@@ -389,11 +404,163 @@
 <li>Scale of measurement (nominal / ordinal / interval / ratio)</li>
 </ul></li>
 </ul>
+</section>
+<section id="types-of-variable" class="slide level2 smaller">
+<h2>Types of variable</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Discrete
+<ul>
+<li>Something we count as whole numbers</li>
+<li>Made up of separate, indivisible categories</li>
+<li>No values exist between neighboring categories</li>
+</ul></li>
+<li>Examples:
+<ul>
+<li>Number of children/cats/TVs</li>
+<li>Positive cases</li>
+<li>Hospital admissions</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Continuous
+<ul>
+<li>Something we can measure with decimals</li>
+<li>Has infinite number of possible values</li>
+<li>Every interval is divisible into infinite number of parts</li>
+</ul></li>
+<li>Examples
+<ul>
+<li>Height</li>
+<li>Time</li>
+<li>Temperature</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="scales-of-measurement" class="slide level2 smaller">
+<h2>Scales of measurement</h2>
+<div class="cell">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Scale </th>
+   <th style="text-align:left;"> Characteristics </th>
+   <th style="text-align:left;"> Examples </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Nominal </td>
+   <td style="text-align:left;"> Named categories<br>
+                                      No quantitative distinctions </td>
+   <td style="text-align:left;"> Gender<br>Eye color<br>Experimental condition </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ordinal </td>
+   <td style="text-align:left;"> Ordered categories<br>
+                                      Indicates direction, but not size of difference </td>
+   <td style="text-align:left;"> Rank<br>Clothing sizes<br>Olympic medals </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Interval </td>
+   <td style="text-align:left;"> Ordered categories<br>
+                                      Equal intervals between categories<br>
+                                      Arbitrary or absent zero point </td>
+   <td style="text-align:left;"> Temperature (Celcius/Fahrenheit)<br>Golf scores </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ratio </td>
+   <td style="text-align:left;"> Ordered categories<br>
+                                      Equal interval between categories<br>
+                                      Absolute zero point </td>
+   <td style="text-align:left;"> Temperature (Kelvin)<br>
+                               Number of correct answers<br>
+                               Response time </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</section>
+<section id="measuring-things-1" class="slide level2">
+<h2>Measuring things</h2>
+<p>Likert scales</p>
+<ul>
+<li>E.g. “What is your current level of happiness?”</li>
+</ul>
+<div class="center">
+<ol type="1">
+<li>A lot less than usual</li>
+<li>A little less than usual</li>
+<li>About average</li>
+<li>A little more than usual</li>
+<li>A lot more than usual</li>
+</ol>
+</div>
+</section>
+<section id="populations-samples" class="slide level2">
+<h2>Populations &amp; samples</h2>
+
+<img data-src="media/pop-sample.gif" class="r-stretch"></section>
+<section id="populations-samples-1" class="slide level2">
+<h2>Populations &amp; samples</h2>
+
+<img data-src="media/pop-sample-ani.gif" class="r-stretch"></section>
+<section id="populations-samples-2" class="slide level2">
+<h2>Populations &amp; samples</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><strong>Populations</strong>
+<ul>
+<li>Population <em>parameters</em></li>
+<li>Usually Greek symbols</li>
+<li>e.g.&nbsp;<span class="math inline">\(\mu\)</span>; <span class="math inline">\(N\)</span></li>
+<li>Inferential statistics</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><strong>Samples</strong>
+<ul>
+<li>Sample <em>statistics</em></li>
+<li>Usually letters</li>
+<li>e.g.&nbsp;<span class="math inline">\(M\)</span>; <span class="math inline">\(n\)</span></li>
+<li>Descriptive statistics</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="learning-checks" class="slide level2">
+<h2>Learning checks</h2>
+<ul>
+<li>A tax form asks people to identify their
+<ul>
+<li>Age</li>
+<li>Annual income</li>
+<li>Number of dependents</li>
+<li>Social security number</li>
+</ul></li>
+<li>For each variable…
+<ol type="1">
+<li>Identify the scale of measurement that probably is used</li>
+<li>Explain whether the variable is continuous or discrete</li>
+</ol></li>
+</ul>
 
 <div class="footer footer-default">
 
 </div>
-</section>
+</section></section>
+
     </div>
   </div>
 
@@ -607,6 +774,48 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
