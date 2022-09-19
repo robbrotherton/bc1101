@@ -1,0 +1,14 @@
+{
+  "hash": "8850e996060b4e98e7af2e81a7fc840c",
+  "result": {
+    "markdown": "---\ntitle: \"PSYC BC1101 STATISTICS\"\n---\n\n\nProfessor: Dr. Rob Brotherton  \nEmail: rbrother@barnard.edu\n\nOffice Hours: TBD\n\nLecture hours: TBD \nLecture venue: TBD\n\n\n## Course Overview\n\nThis course, required for the psychology major, provides an introduction to statistical methods commonly used in psychological research. Topics include measures of central tendency and variability, probability and sampling, confidence intervals and hypothesis testing, t-test and analysis of variance, correlation and regression. In addition to learning the conceptual and mathematical underpinnings of these techniques, you will learn to calculate and interpret statistics with reference to real-world contexts and research questions typical in psychological research. The course includes recitation meetings that provide instruction in the analysis of psychological data using the R statistical software package commonly used by behavioral science researchers.\n\nThe course is designed to fulfill these goals:\n\n-   Understand what statistics are, and why and when they are needed\n-   Translate observations about the world into statistical statements and questions\n-   Learn how statistical methods are used to test psychological hypotheses\n-   Use statistical software (R) to describe, visualize, analyze, and report data\n\n\n\n\n## Class Schedule\n\nTBD\n\n\n::: {.cell}\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

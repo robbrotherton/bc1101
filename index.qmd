@@ -3,11 +3,12 @@ title: "PSYC BC1101 STATISTICS"
 ---
 
 Professor: Dr. Rob Brotherton  
-Email: rbrother@barnard.edu  
-Office Hours: Wednesday 4–5pm, 415M Milbank 
+Email: rbrother@barnard.edu
 
-Lecture hours: Tuesday & Thursday, 10:10am–11:25am  
-Lecture venue: 207 Milbank Hall
+Office Hours: TBD
+
+Lecture hours: TBD 
+Lecture venue: TBD
 
 
 ## Course Overview
@@ -17,11 +18,8 @@ This course, required for the psychology major, provides an introduction to stat
 The course is designed to fulfill these goals:
 
 -   Understand what statistics are, and why and when they are needed
-
 -   Translate observations about the world into statistical statements and questions
-
 -   Learn how statistical methods are used to test psychological hypotheses
-
 -   Use statistical software (R) to describe, visualize, analyze, and report data
 
 
@@ -29,11 +27,21 @@ The course is designed to fulfill these goals:
 
 ## Class Schedule
 
-Here's when classes are.
+TBD
+
+```{r eval=FALSE, echo=FALSE}
+
+paste(seq.Date(from = as.Date("2022-01-01"), to = as.Date("2022-05-01"), by = "week"),
+      seq.Date(from = as.Date("2022-01-03"), to = as.Date("2022-05-03"), by = "week"), sep = "!") |> 
+  stringr::str_split(pattern = "!") |> 
+  unlist()
 
 
+tibble::tribble(
+  ~Topic, ~Date,
+  "One", "01/01/2022"
+)
+```
 
-## Recommended (not required) open-access textbook
 
-Navarro, D. (2017). Learning Statistics with R. <https://learningstatisticswithr.com/>
 

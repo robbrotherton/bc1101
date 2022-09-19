@@ -1,0 +1,14 @@
+{
+  "hash": "421113af750272c18ceee2b9fa4b1dca",
+  "result": {
+    "markdown": "---\ntitle: \"PSYC BC1101 STATISTICS\"\n---\n\n\nProfessor: Dr. Rob Brotherton  \nEmail: rbrother@barnard.edu  \nOffice Hours: Wednesday 4–5pm, 415M Milbank \n\nLecture hours: Tuesday & Thursday, 10:10am–11:25am  \nLecture venue: 207 Milbank Hall\n\n\n## Course Overview\n\nThis course, required for the psychology major, provides an introduction to statistical methods commonly used in psychological research. Topics include measures of central tendency and variability, probability and sampling, confidence intervals and hypothesis testing, t-test and analysis of variance, correlation and regression. In addition to learning the conceptual and mathematical underpinnings of these techniques, you will learn to calculate and interpret statistics with reference to real-world contexts and research questions typical in psychological research. The course includes recitation meetings that provide instruction in the analysis of psychological data using the R statistical software package commonly used by behavioral science researchers.\n\nThe course is designed to fulfill these goals:\n\n-   Understand what statistics are, and why and when they are needed\n-   Translate observations about the world into statistical statements and questions\n-   Learn how statistical methods are used to test psychological hypotheses\n-   Use statistical software (R) to describe, visualize, analyze, and report data\n\n\n\n\n## Class Schedule\n\n\n::: {.cell}\n::: {.cell-output .cell-output-stdout}\n```\n [1] \"2022-01-01\" \"2022-01-03\" \"2022-01-08\" \"2022-01-10\" \"2022-01-15\"\n [6] \"2022-01-17\" \"2022-01-22\" \"2022-01-24\" \"2022-01-29\" \"2022-01-31\"\n[11] \"2022-02-05\" \"2022-02-07\" \"2022-02-12\" \"2022-02-14\" \"2022-02-19\"\n[16] \"2022-02-21\" \"2022-02-26\" \"2022-02-28\" \"2022-03-05\" \"2022-03-07\"\n[21] \"2022-03-12\" \"2022-03-14\" \"2022-03-19\" \"2022-03-21\" \"2022-03-26\"\n[26] \"2022-03-28\" \"2022-04-02\" \"2022-04-04\" \"2022-04-09\" \"2022-04-11\"\n[31] \"2022-04-16\" \"2022-04-18\" \"2022-04-23\" \"2022-04-25\" \"2022-04-30\"\n[36] \"2022-05-02\"\n```\n:::\n\n::: {.cell-output .cell-output-stdout}\n```\n# A tibble: 1 x 2\n  Topic Date      \n  <chr> <chr>     \n1 One   01/01/2022\n```\n:::\n:::\n\n\n\n\n## Recommended (not required) open-access textbook\n\nNavarro, D. (2017). Learning Statistics with R. <https://learningstatisticswithr.com/>\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}

@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "PSYC BC1101 STATISTICS",
     "section": "",
-    "text": "Professor: Dr. Rob Brotherton\nEmail: rbrother@barnard.edu\nOffice Hours: Wednesday 4–5pm, 415M Milbank\nLecture hours: Tuesday & Thursday, 10:10am–11:25am\nLecture venue: 207 Milbank Hall"
+    "text": "Professor: Dr. Rob Brotherton\nEmail: rbrother@barnard.edu\nOffice Hours: TBD\nLecture hours: TBD Lecture venue: TBD"
   },
   {
     "objectID": "index.html#course-overview",
@@ -18,7 +18,7 @@
     "href": "index.html#class-schedule",
     "title": "PSYC BC1101 STATISTICS",
     "section": "Class Schedule",
-    "text": "Class Schedule\nHere’s when classes are."
+    "text": "Class Schedule\nTBD"
   },
   {
     "objectID": "index.html#recommended-not-required-open-access-textbook",
@@ -161,18 +161,18 @@
     "text": "Making statistics\n\n“In the United States today half of all children (35.6 million) live in a household where a parent or other adult uses tobacco, drinks heavily or uses illicit drugs”1]\n\n\nOther questions…\n\nHow many students are smokers?\nYoung people, narcissism, anxiety, depression 2\n\n\nThe National Center on Addiction and Substance Abuse at Columbia University, 2005See Singal, 2016"
   },
   {
+    "objectID": "slides/02_variables.html#constructs-operational-definitions",
+    "href": "slides/02_variables.html#constructs-operational-definitions",
+    "title": "BC1101",
+    "section": "Constructs & operational definitions",
+    "text": "Constructs & operational definitions\n\nConstruct: Extroversion\nOperational definition: Big 5 questions\n\n\n\nConstruct: Intelligence\nOperational definition: IQ test\n\n\n\n\nConstruct: Height\nOperational definition: How far the top of your head is from the floor according to a tape measure"
+  },
+  {
     "objectID": "slides/02_variables.html#measuring-things",
     "href": "slides/02_variables.html#measuring-things",
     "title": "BC1101",
     "section": "Measuring things",
     "text": "Measuring things\n\nOperationalizing variables\n\nUsually more than one way we could go about measuring & recording data\nResult in different types of data, and potentially different applicable analyses\nHow to decide on operational definition?\n\nAspects to consider:\n\nType of variable (discrete / continuous)\nScale of measurement (nominal / ordinal / interval / ratio)"
-  },
-  {
-    "objectID": "slides/02_variables.html#measuring-things-1",
-    "href": "slides/02_variables.html#measuring-things-1",
-    "title": "BC1101",
-    "section": "Measuring things",
-    "text": "Measuring things\nLikert scales\n\nE.g. “What is your current level of happiness?”\n\n\n\nA lot less than usual\nA little less than usual\nAbout average\nA little more than usual\nA lot more than usual"
   },
   {
     "objectID": "slides/02_variables.html#types-of-variable",
@@ -189,8 +189,8 @@
     "text": "Scales of measurement\n\n\n\n\n \n  \n    Scale \n    Characteristics \n    Examples \n  \n \n\n  \n    Nominal \n    Named categories\n                                      No quantitative distinctions \n    GenderEye colorExperimental condition \n  \n  \n    Ordinal \n    Ordered categories\n                                      Indicates direction, but not size of difference \n    RankClothing sizesOlympic medals \n  \n  \n    Interval \n    Ordered categories\n                                      Equal intervals between categories\n                                      Arbitrary or absent zero point \n    Temperature (Celcius/Fahrenheit)Golf scores \n  \n  \n    Ratio \n    Ordered categories\n                                      Equal interval between categories\n                                      Absolute zero point \n    Temperature (Kelvin)\n                               Number of correct answers\n                               Response time"
   },
   {
-    "objectID": "slides/02_variables.html#measuring-things-2",
-    "href": "slides/02_variables.html#measuring-things-2",
+    "objectID": "slides/02_variables.html#measuring-things-1",
+    "href": "slides/02_variables.html#measuring-things-1",
     "title": "BC1101",
     "section": "Measuring things",
     "text": "Measuring things\nLikert scales\n\nE.g. “What is your current level of happiness?”\n\n\n\nA lot less than usual\nA little less than usual\nAbout average\nA little more than usual\nA lot more than usual"
@@ -259,6 +259,48 @@
     "text": "Frequency\n\nA frequency distribution…\n\nOrganizes and displays data\nConveys how scores are distributed\nCan be either a table or a graph\n\nShows:\n\nCategories that make up the scale\nFrequency, or number of observations, in each category\nAnd/or proportion/percentage/cumulative percent of scores in each category"
   },
   {
+    "objectID": "slides/03_frequency.html#frequency-3",
+    "href": "slides/03_frequency.html#frequency-3",
+    "title": "BC1101",
+    "section": "Frequency",
+    "text": "Frequency\n\nFrom raw scores\n\n\n\n2 1 2 3 4 3 3 2 2 1 5 3 4 1 2\n\n\n\nTo this\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    1 \n    3 \n  \n  \n    2 \n    5 \n  \n  \n    3 \n    4 \n  \n  \n    4 \n    2 \n  \n  \n    5 \n    1"
+  },
+  {
+    "objectID": "slides/03_frequency.html#frequency-4",
+    "href": "slides/03_frequency.html#frequency-4",
+    "title": "BC1101",
+    "section": "Frequency",
+    "text": "Frequency\n\nFrom raw scores\n\n\n\n2 1 2 3 4 3 3 2 2 1 5 3 4 1 2\n\n\n\nOr this…"
+  },
+  {
+    "objectID": "slides/03_frequency.html#frequency-tables",
+    "href": "slides/03_frequency.html#frequency-tables",
+    "title": "BC1101",
+    "section": "Frequency tables",
+    "text": "Frequency tables\n\nCategories in a column labeled \\(X\\)\n\nCan be low to high, or high to low\nFrequency count in column labeled \\(f\\)\n\nCan have columns for…\n\nProportion \\((f / N)\\)\nPercentage (proportion * 100)\nCumulative percentage\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n    Proportion \n    Percent \n    Cumulative Percent \n  \n \n\n  \n    1 \n    3 \n    0.20000000 \n    20.000000 \n    20.00000 \n  \n  \n    2 \n    5 \n    0.33333333 \n    33.333333 \n    53.33333 \n  \n  \n    3 \n    4 \n    0.26666667 \n    26.666667 \n    80.00000 \n  \n  \n    4 \n    2 \n    0.13333333 \n    13.333333 \n    93.33333 \n  \n  \n    5 \n    1 \n    0.06666667 \n    6.666667 \n    100.00000"
+  },
+  {
+    "objectID": "slides/03_frequency.html#frequency-tables-1",
+    "href": "slides/03_frequency.html#frequency-tables-1",
+    "title": "BC1101",
+    "section": "Frequency tables",
+    "text": "Frequency tables\n\nRegular frequency table not always appropriate\n\nLarge number of scores, low frequencies\n\nGrouped frequency tables\n\nEasier to understand\nBut lose information\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    41 \n    1 \n  \n  \n    42 \n    0 \n  \n  \n    43 \n    1 \n  \n  \n    44 \n    1 \n  \n  \n    45 \n    1 \n  \n  \n    46 \n    0 \n  \n  \n    47 \n    0 \n  \n  \n    48 \n    1 \n  \n  \n    49 \n    0 \n  \n  \n    50 \n    1 \n  \n  \n    51 \n    2 \n  \n  \n    52 \n    3 \n  \n  \n    53 \n    3 \n  \n  \n    54 \n    2 \n  \n  \n    55 \n    5 \n  \n  \n    56 \n    5 \n  \n  \n    57 \n    4 \n  \n  \n    58 \n    3 \n  \n  \n    59 \n    7"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#central-tendency",
+    "href": "slides/04_central-tendency.html#central-tendency",
+    "title": "BC1101",
+    "section": "4|CENTRAL TENDENCY",
+    "text": "4|CENTRAL TENDENCY"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#overview",
+    "href": "slides/04_central-tendency.html#overview",
+    "title": "BC1101",
+    "section": "Overview",
+    "text": "Overview\n\nTK"
+  },
+  {
     "objectID": "slides-index.html#course-overview",
     "href": "slides-index.html#course-overview",
     "title": "Slides",
@@ -285,12 +327,5 @@
     "title": "Slides",
     "section": "4. Central Tendency",
     "text": "4. Central Tendency\n\n\n01/01/2022\n\n\n\n\n\n\n\n\n\n\n\n\nSlidesPanopto"
-  },
-  {
-    "objectID": "slides/02_variables.html#constructs-operational-definitions",
-    "href": "slides/02_variables.html#constructs-operational-definitions",
-    "title": "BC1101",
-    "section": "Constructs & operational definitions",
-    "text": "Constructs & operational definitions\n\nConstruct: Extroversion\nOperational definition: Big 5 questions\n\n\n\nConstruct: Intelligence\nOperational definition: IQ test\n\n\n\n\nConstruct: Height\nOperational definition: How far the top of your head is from the floor according to a tape measure"
   }
 ]

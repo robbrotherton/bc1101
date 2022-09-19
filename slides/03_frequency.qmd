@@ -53,4 +53,88 @@ format:
     - Frequency, or number of observations, in each category
     - And/or proportion/percentage/cumulative percent of scores in each category
 
+## Frequency
+
+- From raw scores
+```{r}
+scores <- c(2, 1, 2, 3, 4, 3, 3, 2, 2, 1, 5, 3, 4, 1, 2)
+cat(scores)
+```
+
+- To this
+```{r freqTable1, out.width="50%"}
+bc1101tools::frequency_table(scores)
+```
+
+## Frequency
+
+- From raw scores
+```{r}
+cat(scores)
+```
+
+- Or this...
+
+```{r freqGraphs, out.width="100%", fig.asp=.4}
+library(ggplot2)
+# library(gridExtra)
+# 
+p <- ggplot(NULL, aes(x = scores)) +
+  labs(x = "Scores", y = "Frequency") +
+  scale_x_continuous(limits = c(0,6), breaks = 0:6) +
+  scale_y_continuous(expand = c(0,0)) +
+  papaja::theme_apa()
+
+pHist <- p + geom_histogram(binwidth = 1, color = "black", fill = "grey")
+pFreq <- p + geom_point(stat = "count") + geom_freqpoly(binwidth = 1)
+pBar <- p + geom_bar(stat = "count", color = 'black', fill = 'grey')
+pDens <- p + geom_density() + ylab("Proportion")
+
+pHist_Freq <- p + geom_histogram(binwidth = 1, color = "black", fill = "grey") +
+  geom_point(stat = "count") +
+  geom_freqpoly(binwidth = 1)
+
+
+pHist
+
+# pic <- gridExtra::arrangeGrob(pHist, pFreq, nrow = 1)
+# pic
+
+```
+
+
+## Frequency tables
+
+- Categories in a column labeled $X$
+  - Can be low to high, or high to low
+  - Frequency count in column labeled $f$
+- Can have columns for...
+  - Proportion $(f / N)$
+  - Percentage (proportion * 100)
+  - Cumulative percentage
+
+```{r}
+bc1101tools::frequency_table(scores, additional_cols = TRUE) |> 
+  kableExtra::column_spec(column = 1:2, width = "7em")
+```
+
+## Frequency tables
+
+- Regular frequency table not always appropriate
+  - Large number of scores, low frequencies
+- Grouped frequency tables
+  -  Easier to understand
+  -  But lose information
+  
+```{r midterms}
+
+midterms <- c(41,43,44,45,48,50,51,51,
+              52,52,52,53,53,53,54,54,
+              55,55,55,55,55,56,56,56,
+              56,56,57,57,57,57,58,58,
+              58,59,59,59,59,59,59,59)
+
+bc1101tools::frequency_table(midterms)
+```
+
 
