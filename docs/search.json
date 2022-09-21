@@ -2,21 +2,21 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "PSYC BC1101 STATISTICS",
+    "title": "PSYC BC1101 STATISTICS  \n\nDownload PDF version of syllabus\n\n",
     "section": "",
     "text": "Professor: Dr. Rob Brotherton\nEmail: rbrother@barnard.edu\nOffice Hours: TBD\nLecture hours: TBD Lecture venue: TBD"
   },
   {
     "objectID": "index.html#course-overview",
     "href": "index.html#course-overview",
-    "title": "PSYC BC1101 STATISTICS",
+    "title": "PSYC BC1101 STATISTICS  \n\nDownload PDF version of syllabus\n\n",
     "section": "Course Overview",
     "text": "Course Overview\nThis course, required for the psychology major, provides an introduction to statistical methods commonly used in psychological research. Topics include measures of central tendency and variability, probability and sampling, confidence intervals and hypothesis testing, t-test and analysis of variance, correlation and regression. In addition to learning the conceptual and mathematical underpinnings of these techniques, you will learn to calculate and interpret statistics with reference to real-world contexts and research questions typical in psychological research. The course includes recitation meetings that provide instruction in the analysis of psychological data using the R statistical software package commonly used by behavioral science researchers.\nThe course is designed to fulfill these goals:\n\nUnderstand what statistics are, and why and when they are needed\nTranslate observations about the world into statistical statements and questions\nLearn how statistical methods are used to test psychological hypotheses\nUse statistical software (R) to describe, visualize, analyze, and report data"
   },
   {
     "objectID": "index.html#class-schedule",
     "href": "index.html#class-schedule",
-    "title": "PSYC BC1101 STATISTICS",
+    "title": "PSYC BC1101 STATISTICS  \n\nDownload PDF version of syllabus\n\n",
     "section": "Class Schedule",
     "text": "Class Schedule\nTBD"
   },
@@ -32,7 +32,7 @@
     "href": "slides/01_course-info.html#overview",
     "title": "BC1101",
     "section": "Overview",
-    "text": "Overview\n\nTextbook\nLectures\nExams & grading\nRecitation & homework\nOther stuff"
+    "text": "Overview\n\nTextbook\nLectures\nExams\nRecitation\nOther stuff"
   },
   {
     "objectID": "slides/01_course-info.html#about-me",
@@ -130,7 +130,7 @@
     "href": "slides/02_variables.html#overview",
     "title": "BC1101",
     "section": "Overview",
-    "text": "Overview\n\nStatistics: Why? How? What?\nTerminology\n\nScales of measurement\nPopulations vs samples\nParameters vs statistics\nInferential vs descriptive statistics"
+    "text": "Overview\n\nStatistics: Why? How? What?\nTerminology\n\nOperational definitions\nScales of measurement\nPopulations & samples\nParameters & statistics\nInferential & descriptive statistics"
   },
   {
     "objectID": "slides/02_variables.html#making-statistics",
@@ -144,7 +144,7 @@
     "href": "slides/02_variables.html#producing-a-statistic",
     "title": "BC1101",
     "section": "Producing a statistic",
-    "text": "Producing a statistic"
+    "text": "Producing a statistic\n\nGather data to determine what proportion of books are red\nEnter your best estimate and explain your process\nSuggested time limit: 5 minutes"
   },
   {
     "objectID": "slides/02_variables.html#how-many-books-are-red",
@@ -263,7 +263,7 @@
     "href": "slides/03_frequency.html#frequency-3",
     "title": "BC1101",
     "section": "Frequency",
-    "text": "Frequency\n\nFrom raw scores\n\n\n\n2 1 2 3 4 3 3 2 2 1 5 3 4 1 2\n\n\n\nTo this\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    1 \n    3 \n  \n  \n    2 \n    5 \n  \n  \n    3 \n    4 \n  \n  \n    4 \n    2 \n  \n  \n    5 \n    1"
+    "text": "Frequency\n\nFrom raw scores\n\n\n\n2 1 2 3 4 3 3 2 2 1 5 3 4 1 2\n\n\n\n\n\nTo this\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    1 \n    3 \n  \n  \n    2 \n    5 \n  \n  \n    3 \n    4 \n  \n  \n    4 \n    2 \n  \n  \n    5 \n    1 \n  \n\n\n\n\n\n\n\n\nOr this"
   },
   {
     "objectID": "slides/03_frequency.html#frequency-4",
@@ -305,14 +305,14 @@
     "href": "slides-index.html#course-overview",
     "title": "Slides",
     "section": "1. Course Overview",
-    "text": "1. Course Overview\n\n\n01/01/2022\n\n\n\n\n\n\n\n\n\nTextbook\nLectures\nExams & grading\nRecitation & homework\nOther stuff\n\n\n\n\nSlidesPanopto"
+    "text": "1. Course Overview\n\n\n01/01/2022\n\n\n\n\n\n\n\n\n\nTextbook\nLectures\nExams\nRecitation\nOther stuff\n\n\n\n\nSlidesPanopto"
   },
   {
     "objectID": "slides-index.html#variables",
     "href": "slides-index.html#variables",
     "title": "Slides",
     "section": "2. Variables",
-    "text": "2. Variables\n\n\n01/01/2022\n\n\n\n\n\n\n\n\n\nStatistics: Why? How? What?\nTerminology\n\nScales of measurement\nPopulations vs samples\nParameters vs statistics\nInferential vs descriptive statistics\n\n\n\n\n\n\nSlidesPanopto"
+    "text": "2. Variables\n\n\n01/01/2022\n\n\n\n\n\n\n\n\n\nStatistics: Why? How? What?\nTerminology\n\nOperational definitions\nScales of measurement\nPopulations & samples\nParameters & statistics\nInferential & descriptive statistics\n\n\n\n\n\n\nSlidesPanopto"
   },
   {
     "objectID": "slides-index.html#frequency",
@@ -326,6 +326,83 @@
     "href": "slides-index.html#central-tendency",
     "title": "Slides",
     "section": "4. Central Tendency",
-    "text": "4. Central Tendency\n\n\n01/01/2022\n\n\n\n\n\n\n\n\n\n\n\n\nSlidesPanopto"
+    "text": "4. Central Tendency\n\n\n01/01/2022\n\n\n\n\n\n\n\n\n\nTK\n\n\n\n\n\nSlidesPanopto"
+  },
+  {
+    "objectID": "slides/01_course-info.html#sec-textbook",
+    "href": "slides/01_course-info.html#sec-textbook",
+    "title": "BC1101",
+    "section": "Textbook",
+    "text": "Textbook\n\n\n\nLearning Statistics with R\n\nBy Danielle Navarro\nDownload as a .pdf for free\nlearningstatisticswithr.com\nHelpful for seeing how things are done in R\nAs well as explaining statistical concepts"
+  },
+  {
+    "objectID": "slides/03_frequency.html#grouped-frequency-table",
+    "href": "slides/03_frequency.html#grouped-frequency-table",
+    "title": "BC1101",
+    "section": "Grouped frequency table",
+    "text": "Grouped frequency table\n\nWhat’s the range of scores?\nHow can you turn that into about 10 groups? (using a simple number, e.g. 2, 5, 10…)\nWhat should we make the bottom score of each interval? (so that the bottom is a multiple of width, i.e, start at 10, not 11)\nList intervals in \\(X\\) column, frequencies in \\(f\\) column\n(optional) Create columns for proportion, percent, cumulative percent"
+  },
+  {
+    "objectID": "slides/03_frequency.html#grouped-frequency-table-1",
+    "href": "slides/03_frequency.html#grouped-frequency-table-1",
+    "title": "BC1101",
+    "section": "Grouped frequency table",
+    "text": "Grouped frequency table\n\nGrouped frequency table\n\nBins all same width\nWidth is a simple number (2)\nBottom score is multiple of width (i.e, divisible by 2)\nProduces good number of bins"
+  },
+  {
+    "objectID": "slides/03_frequency.html#frequency-graphs",
+    "href": "slides/03_frequency.html#frequency-graphs",
+    "title": "BC1101",
+    "section": "Frequency graphs",
+    "text": "Frequency graphs\n\n\n\nHistogram, frequency polygon, bar chart, curve\n\nAppropriate type depends on:\n\nLevel of measurement (nominal; ordinal; interval; ratio)\nDescribing sample or population?\nWant to show more than one group?"
+  },
+  {
+    "objectID": "slides/03_frequency.html#bar-graph",
+    "href": "slides/03_frequency.html#bar-graph",
+    "title": "BC1101",
+    "section": "Bar graph",
+    "text": "Bar graph\n\n\n\nFor nominal or ordinal data\nCategories on \\(x\\)-axis, frequency on \\(y\\)-axis\nSpaces between adjacent bars indicates separate categories"
+  },
+  {
+    "objectID": "slides/03_frequency.html#histogram",
+    "href": "slides/03_frequency.html#histogram",
+    "title": "BC1101",
+    "section": "Histogram",
+    "text": "Histogram\n\n\n\nFor interval or ratio data\nScores/bins on \\(x\\)-axis, frequency on \\(y\\)-axis\nHeight corresponds to frequency\nBars centered on category"
+  },
+  {
+    "objectID": "slides/03_frequency.html#histogram-1",
+    "href": "slides/03_frequency.html#histogram-1",
+    "title": "BC1101",
+    "section": "Histogram",
+    "text": "Histogram\n\n\n\nFor interval or ratio data\nScores/bins on \\(x\\)-axis, frequency on \\(y\\)-axis\nHeight corresponds to frequency\nBars centered on category"
+  },
+  {
+    "objectID": "slides/03_frequency.html#grouped-histogram",
+    "href": "slides/03_frequency.html#grouped-histogram",
+    "title": "BC1101",
+    "section": "Grouped histogram",
+    "text": "Grouped histogram\n\n\n\nFor interval or ratio data\nScores/bins on \\(x\\)-axis, frequency on \\(y\\)-axis\nHeight corresponds to frequency\nBars centered on category"
+  },
+  {
+    "objectID": "slides/03_frequency.html#frequency-polygon",
+    "href": "slides/03_frequency.html#frequency-polygon",
+    "title": "BC1101",
+    "section": "Frequency polygon",
+    "text": "Frequency polygon\n\n\n\nFor interval or ratio data\nScores/bins on \\(x\\)-axis, frequency on \\(y\\)-axis\nHeight corresponds to frequency\nBars centered on category"
+  },
+  {
+    "objectID": "slides/03_frequency.html#smooth-curves",
+    "href": "slides/03_frequency.html#smooth-curves",
+    "title": "BC1101",
+    "section": "Smooth curves",
+    "text": "Smooth curves\n\n\n\nUsed for population distributions\n\nWhen population is large, scores for each individual are usually not known\nSmooth curve indicates exact scores were not used\nConvey relative frequency"
+  },
+  {
+    "objectID": "slides/03_frequency.html#learning-checks",
+    "href": "slides/03_frequency.html#learning-checks",
+    "title": "BC1101",
+    "section": "Learning checks",
+    "text": "Learning checks\n\n\n\nUse the frequency table to the right to determine how many participants were in the study.\nWhich graph (histogram / frequency polygon / bar chart / curve) is appropriate for showing:\n\nMarital status (single/married/divorced)\nLetter grades (A+, A, A-, B+, etc)\nTime spent watching Netflix\n\nA grouped frequency distribution table has categories 0-9, 10-19, 20-29, and 30-39. What is the width of the interval 20-29?\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    5 \n    2 \n  \n  \n    4 \n    4 \n  \n  \n    3 \n    1 \n  \n  \n    2 \n    0 \n  \n  \n    1 \n    3"
   }
 ]

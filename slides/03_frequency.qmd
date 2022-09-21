@@ -61,28 +61,35 @@ scores <- c(2, 1, 2, 3, 4, 3, 3, 2, 2, 1, 5, 3, 4, 1, 2)
 cat(scores)
 ```
 
+:::: {.columns}
+
+::: {.column width="30%"}
 - To this
+
+::: {.smaller}
 ```{r freqTable1, out.width="50%"}
 bc1101tools::frequency_table(scores)
 ```
+:::
+:::
 
-## Frequency
 
-- From raw scores
-```{r}
-cat(scores)
-```
+::: {.column width="70%"}
 
-- Or this...
+- Or this
 
-```{r freqGraphs, out.width="100%", fig.asp=.4}
+![](media/freq-graphs-demo.jpg)
+
+```{r freqGraphs, eval=FALSE}
+#| layout-ncol: 2
+
 library(ggplot2)
 # library(gridExtra)
 # 
 p <- ggplot(NULL, aes(x = scores)) +
   labs(x = "Scores", y = "Frequency") +
   scale_x_continuous(limits = c(0,6), breaks = 0:6) +
-  scale_y_continuous(expand = c(0,0)) +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 5.5)) +
   papaja::theme_apa()
 
 pHist <- p + geom_histogram(binwidth = 1, color = "black", fill = "grey")
@@ -95,13 +102,17 @@ pHist_Freq <- p + geom_histogram(binwidth = 1, color = "black", fill = "grey") +
   geom_freqpoly(binwidth = 1)
 
 
-pHist
+# pHist
+# pFreq
 
-# pic <- gridExtra::arrangeGrob(pHist, pFreq, nrow = 1)
-# pic
+g <- gridExtra::arrangeGrob(pHist, pFreq, nrow = 1)
+
+ggplot2::ggsave(here::here("slides/media/freq-graphs-demo.jpg"), g, width = 5, height = 2)
 
 ```
+:::
 
+::::
 
 ## Frequency tables
 
@@ -136,5 +147,195 @@ midterms <- c(41,43,44,45,48,50,51,51,
 
 bc1101tools::frequency_table(midterms)
 ```
+
+
+## Grouped frequency table
+
+1. What's the range of scores?
+2. How can you turn that into about 10 groups? (using a *simple* number, e.g. 2, 5, 10...)
+3. What should we make the bottom score of each interval? (so that the bottom is a multiple of width, i.e, start at 10, not 11)
+4. List intervals in $X$ column, frequencies in $f$ column
+5. (optional) Create columns for proportion, percent, cumulative percent
+
+## Grouped frequency table
+
+- Grouped frequency table
+  - Bins all same width
+  - Width is a simple number (2)
+  - Bottom score is multiple of width (i.e, divisible by 2)
+  - Produces good number of bins
+
+
+# Data vizualization {background-image="media/snow_map.jpg"}
+
+
+## Frequency graphs
+
+:::: {.columns}
+
+::: {.column width="60%"}
+- Histogram, frequency polygon, bar chart, curve  
+- Appropriate type depends on:
+  - Level of measurement (nominal; ordinal; interval; ratio)
+  - Describing sample or population?
+  - Want to show more than one group?
+:::
+
+::: {.column width="30%"}
+
+![](media/freq-graphs-1.png)
+![](media/freq-graphs-2.png)
+![](media/freq-graphs-3.png)
+![](media/freq-graphs-4.png)
+
+:::
+
+::::
+
+
+## Bar graph
+
+:::: {.columns}
+
+::: {.column width="40%"}
+- For nominal or ordinal data
+- Categories on $x$-axis, frequency on $y$-axis
+- Spaces between adjacent bars indicates separate categories
+:::
+
+::: {.column width="60%"}
+
+![](media/freq-bar.png)
+
+:::
+
+::::
+
+
+## Histogram
+
+:::: {.columns}
+
+::: {.column width="40%"}
+- For interval or ratio data 
+- Scores/bins on $x$-axis, frequency on $y$-axis
+- Height corresponds to frequency
+- Bars centered on category  
+:::
+
+::: {.column width="60%"}
+
+![](media/freq-bar.png)
+
+:::
+
+::::
+
+
+
+## Histogram
+
+:::: {.columns}
+
+::: {.column width="40%"}
+- For interval or ratio data 
+- Scores/bins on $x$-axis, frequency on $y$-axis
+- Height corresponds to frequency
+- Bars centered on category  
+:::
+
+::: {.column width="60%"}
+
+![](media/freq-bar.png)
+
+:::
+
+::::
+
+
+## Grouped histogram
+
+:::: {.columns}
+
+::: {.column width="40%"}
+- For interval or ratio data 
+- Scores/bins on $x$-axis, frequency on $y$-axis
+- Height corresponds to frequency
+- Bars centered on category  
+:::
+
+::: {.column width="60%"}
+
+![](media/freq-bar.png)
+
+:::
+
+::::
+
+
+## Frequency polygon
+
+:::: {.columns}
+
+::: {.column width="40%"}
+- For interval or ratio data 
+- Scores/bins on $x$-axis, frequency on $y$-axis
+- Height corresponds to frequency
+- Bars centered on category  
+:::
+
+::: {.column width="60%"}
+
+![](media/freq-bar.png)
+
+:::
+
+::::
+
+
+
+## Smooth curves
+
+:::: {.columns}
+
+::: {.column width="40%"}
+- Used for population distributions
+  - When population is large, scores for each individual are usually not known
+  - Smooth curve indicates exact scores were not used
+  - Convey relative frequency
+:::
+
+::: {.column width="60%"}
+
+![](media/freq-bar.png)
+
+:::
+
+::::
+
+
+
+
+## Learning checks
+
+:::: {.columns}
+
+::: {.column width="80%"}
+1. Use the frequency table to the right to determine how many participants were in the study.
+2. Which graph (histogram / frequency polygon / bar chart / curve) is appropriate for showing:
+    - Marital status (single/married/divorced)
+    - Letter grades (A+, A, A-, B+, etc)
+    - Time spent watching Netflix
+3. A grouped frequency distribution table has categories 0-9, 10-19, 20-29, and 30-39. What is the width of the interval 20-29?
+:::
+
+::: {.column width="20%"}
+```{r}
+bc1101tools::frequency_table(x = 5:1, f = c(2, 4, 1, 0, 3))
+```
+
+:::
+
+::::
 
 

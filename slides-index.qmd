@@ -14,6 +14,10 @@ card <- function(file, date) {
   
   if(class(overview)=="try-error") overview <- ""
   
+  # replace links, which are just of the format #link, with full href
+  overview <- gsub('a href="#', glue::glue('a target="_blank" href="slides/{file}.html#'), overview)
+   
+  
   htmltools::HTML(glue::glue(
     '
 <div class="date">01/01/2022</div>

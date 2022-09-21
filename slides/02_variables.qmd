@@ -12,12 +12,13 @@ format:
 
 ## Overview
 
-- Statistics: Why? How? What?
+- [Statistics: Why? How? What?](#making-statistics)
 - Terminology
-    - Scales of measurement
-    - Populations vs samples
-    - Parameters vs statistics
-    - Inferential vs descriptive statistics
+    - [Operational definitions](#constructs-operational-definitions)
+    - [Scales of measurement]
+    - [Populations & samples](#populations-samples)
+    - [Parameters & statistics](#populations-samples-2)
+    - [Inferential & descriptive statistics](#populations-samples-2)
 
 
 
@@ -28,11 +29,6 @@ format:
 
 
 ## Producing a statistic
-
-![](media/book.jpg)
-
-
-## How many books are red?
 
 - Gather data to determine what proportion of books are red
 - Enter your best estimate and explain your process

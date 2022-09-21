@@ -7,17 +7,15 @@ format:
 
 # 1|COURSE OVERVIEW
 
-:::{.cover-image}
-![](covers/01_course-info.png)
-:::
+![](covers/01_course-info.png) {.cover-image}
 
 ## Overview
 
-- Textbook
-- Lectures
-- Exams & grading
-- Recitation & homework
-- Other stuff
+- [Textbook]
+- [Lectures]
+- [Exams]
+- [Recitation]
+- [Other stuff](#lastly)
 
 
 ## About me
