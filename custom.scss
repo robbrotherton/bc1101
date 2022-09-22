@@ -83,7 +83,60 @@ $code-block-border-color: #000000;
   text-align: center;
 }
 
+.lecture-title img {
+  margin-top: 0;
+}
+
 .reveal img {
   margin-left: 50%;
   transform: translate(-50%);
+}
+
+.small {
+  font-size: 0.85em;
+}
+
+
+/* look of tables */
+table {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-collapse: collapse; }
+
+table thead {
+  border-bottom: 2px solid black;
+}
+
+tr:hover {
+  background-color: #ffa;
+}
+
+
+.reveal h1 {
+  font-size: 4rem !important;
+}
+
+.reveal .lecture-title h1 {
+  font-size: 6rem !important;
+}
+
+.reveal h2 {
+  font-size: 4rem !important;
+}
+
+.lecture-title {
+  font-size: 6rem !important;
+}
+
+.heading-background {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.top {
+  position: absolute;
+  top: 0;
+}
+
+.table-small {
+  font-size: 0.75em;
 }

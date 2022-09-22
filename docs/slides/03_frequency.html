@@ -314,23 +314,26 @@
       margin-right: 0; 
     }
   </style>
-  
-  <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
-  <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 </head>
 <body>
   <div class="reveal">
     <div class="slides">
 
 
-<section id="frequency" class="slide level2 cover">
-<h2>3|FREQUENCY</h2>
-<div class="cover-image">
-<p><img data-src="covers/03_frequency.png"></p>
+<section id="frequency" class="title-slide slide level1 lecture-title center">
+<h1>3|FREQUENCY</h1>
+
+<img data-src="covers/03_frequency.png" class="r-stretch"><div class="cell">
+
+</div>
+<div class="cell">
+
 </div>
 </section>
-<section id="overview" class="slide level2">
-<h2>Overview</h2>
+
+<section>
+<section id="overview" class="title-slide slide level1 center">
+<h1>Overview</h1>
 <ul>
 <li>Frequency tables</li>
 <li>Data visualization
@@ -342,7 +345,7 @@
 </ul></li>
 </ul>
 </section>
-<section id="statistics" class="slide level2 smaller">
+<section id="statistics" class="slide level2 small">
 <h2>Statistics</h2>
 <blockquote>
 <p>A bunch of numbers looking for an argument. <sup>1</sup></p>
@@ -357,12 +360,13 @@
 <ul>
 <li><em>Statistics</em> comes from <em>status</em>, meaning <em>state</em></li>
 <li>The state of the state</li>
-<li>Census, birth rate, death rate, incomes, unemployment etc</li>
+<li>Census, birth/death rate, incomes, unemployment etc</li>
 </ul></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn1" role="doc-endnote"><p><a href="https://onlinelibrary.wiley.com/doi/10.1002/9781118116371.ch3">Jones, 2011</a></p></li></ol></aside></section>
-<section id="frequency-1" class="slide level2">
-<h2>Frequency</h2>
+<aside><ol class="aside-footnotes"><li id="fn1" role="doc-endnote"><p><a href="https://onlinelibrary.wiley.com/doi/10.1002/9781118116371.ch3">Jones, 2011</a></p></li></ol></aside></section></section>
+<section>
+<section id="frequency-1" class="title-slide slide level1 center">
+<h1>Frequency</h1>
 <ul>
 <li>How often does something occur?
 <ul>
@@ -445,20 +449,16 @@
 <li>Or this</li>
 </ul>
 <p><img data-src="media/freq-graphs-demo.jpg"></p>
-<div class="cell quarto-layout-panel">
-
-</div>
 </div>
 </div>
 </section>
-<section id="frequency-tables" class="slide level2">
+<section id="frequency-tables" class="slide level2 smaller">
 <h2>Frequency tables</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
 <ul>
-<li>Categories in a column labeled <span class="math inline">\(X\)</span>
-<ul>
-<li>Can be low to high, or high to low</li>
+<li>Categories in a column labeled <span class="math inline">\(X\)</span></li>
 <li>Frequency count in column labeled <span class="math inline">\(f\)</span></li>
-</ul></li>
 <li>Can have columns for…
 <ul>
 <li>Proportion <span class="math inline">\((f / N)\)</span></li>
@@ -466,6 +466,7 @@
 <li>Cumulative percentage</li>
 </ul></li>
 </ul>
+</div><div class="column" style="width:60%;">
 <div class="cell">
 <div class="cell-output-display">
 
@@ -481,48 +482,52 @@
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:center;width: 7em; "> 1 </td>
-   <td style="text-align:center;width: 7em; "> 3 </td>
-   <td style="text-align:center;"> 0.20000000 </td>
-   <td style="text-align:center;"> 20.000000 </td>
-   <td style="text-align:center;"> 20.00000 </td>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> 3 </td>
+   <td style="text-align:center;"> 0.20 </td>
+   <td style="text-align:center;"> 20.00 </td>
+   <td style="text-align:center;"> 20.00 </td>
   </tr>
   <tr>
-   <td style="text-align:center;width: 7em; "> 2 </td>
-   <td style="text-align:center;width: 7em; "> 5 </td>
-   <td style="text-align:center;"> 0.33333333 </td>
-   <td style="text-align:center;"> 33.333333 </td>
-   <td style="text-align:center;"> 53.33333 </td>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> 5 </td>
+   <td style="text-align:center;"> 0.33 </td>
+   <td style="text-align:center;"> 33.33 </td>
+   <td style="text-align:center;"> 53.33 </td>
   </tr>
   <tr>
-   <td style="text-align:center;width: 7em; "> 3 </td>
-   <td style="text-align:center;width: 7em; "> 4 </td>
-   <td style="text-align:center;"> 0.26666667 </td>
-   <td style="text-align:center;"> 26.666667 </td>
-   <td style="text-align:center;"> 80.00000 </td>
+   <td style="text-align:center;"> 3 </td>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:center;"> 0.27 </td>
+   <td style="text-align:center;"> 26.67 </td>
+   <td style="text-align:center;"> 80.00 </td>
   </tr>
   <tr>
-   <td style="text-align:center;width: 7em; "> 4 </td>
-   <td style="text-align:center;width: 7em; "> 2 </td>
-   <td style="text-align:center;"> 0.13333333 </td>
-   <td style="text-align:center;"> 13.333333 </td>
-   <td style="text-align:center;"> 93.33333 </td>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> 0.13 </td>
+   <td style="text-align:center;"> 13.33 </td>
+   <td style="text-align:center;"> 93.33 </td>
   </tr>
   <tr>
-   <td style="text-align:center;width: 7em; "> 5 </td>
-   <td style="text-align:center;width: 7em; "> 1 </td>
-   <td style="text-align:center;"> 0.06666667 </td>
-   <td style="text-align:center;"> 6.666667 </td>
-   <td style="text-align:center;"> 100.00000 </td>
+   <td style="text-align:center;"> 5 </td>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> 0.07 </td>
+   <td style="text-align:center;"> 6.67 </td>
+   <td style="text-align:center;"> 100.00 </td>
   </tr>
 </tbody>
 </table>
 
 </div>
 </div>
+</div>
+</div>
 </section>
 <section id="frequency-tables-1" class="slide level2">
 <h2>Frequency tables</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
 <ul>
 <li>Regular frequency table not always appropriate
 <ul>
@@ -534,6 +539,7 @@
 <li>But lose information</li>
 </ul></li>
 </ul>
+</div><div class="column table-small top" style="width:30%;">
 <div class="cell">
 <div class="cell-output-display">
 
@@ -626,6 +632,8 @@
 
 </div>
 </div>
+</div>
+</div>
 </section>
 <section id="grouped-frequency-table" class="slide level2">
 <h2>Grouped frequency table</h2>
@@ -639,6 +647,8 @@
 </section>
 <section id="grouped-frequency-table-1" class="slide level2">
 <h2>Grouped frequency table</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
 <li>Grouped frequency table
 <ul>
@@ -648,11 +658,70 @@
 <li>Produces good number of bins</li>
 </ul></li>
 </ul>
-</section>
-<section>
-<section id="data-vizualization" class="title-slide slide level1 center" data-background-image="media/snow_map.jpg">
-<h1>Data vizualization</h1>
+</div><div class="column table-small" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
 
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> \(X\) </th>
+   <th style="text-align:center;"> \(f\) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> 40-41 </td>
+   <td style="text-align:center;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 42-43 </td>
+   <td style="text-align:center;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 44-45 </td>
+   <td style="text-align:center;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 46-47 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 48-49 </td>
+   <td style="text-align:center;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 50-51 </td>
+   <td style="text-align:center;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 52-53 </td>
+   <td style="text-align:center;"> 6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 54-55 </td>
+   <td style="text-align:center;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 56-57 </td>
+   <td style="text-align:center;"> 9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 58-59 </td>
+   <td style="text-align:center;"> 10 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="data-vizualization" class="title-slide slide level1 heading-background center" data-background-image="media/snow_map.jpg">
+<h1>Data vizualization</h1>
+<p><a href="https://ralucanicola.github.io/cholera-map-3D/">[Interactive map]</a></p>
 </section>
 <section id="frequency-graphs" class="slide level2">
 <h2>Frequency graphs</h2>
@@ -668,8 +737,8 @@
 <li>Want to show more than one group?</li>
 </ul></li>
 </ul>
-</div><div class="column" style="width:30%;">
-<p><img data-src="media/freq-graphs-1.png"> <img data-src="media/freq-graphs-2.png"> <img data-src="media/freq-graphs-3.png"> <img data-src="media/freq-graphs-4.png"></p>
+</div><div class="column top" style="width:30%;">
+<p><img data-src="media/freq-graphs-demo-long.png"></p>
 </div>
 </div>
 </section>
@@ -699,39 +768,72 @@
 </li>
 </ul>
 </div><div class="column" style="width:60%;">
-<p><img data-src="media/freq-bar.png"></p>
-</div>
-</div>
-</section>
-<section id="histogram-1" class="slide level2">
-<h2>Histogram</h2>
-<div class="columns">
-<div class="column" style="width:40%;">
-<ul>
-<li>For interval or ratio data</li>
-<li>Scores/bins on <span class="math inline">\(x\)</span>-axis, frequency on <span class="math inline">\(y\)</span>-axis</li>
-<li>Height corresponds to frequency</li>
-<li>Bars centered on category<br>
-</li>
-</ul>
-</div><div class="column" style="width:60%;">
-<p><img data-src="media/freq-bar.png"></p>
+<p><img data-src="media/freq-histogram.png"></p>
 </div>
 </div>
 </section>
 <section id="grouped-histogram" class="slide level2">
 <h2>Grouped histogram</h2>
 <div class="columns">
-<div class="column" style="width:40%;">
-<ul>
-<li>For interval or ratio data</li>
-<li>Scores/bins on <span class="math inline">\(x\)</span>-axis, frequency on <span class="math inline">\(y\)</span>-axis</li>
-<li>Height corresponds to frequency</li>
-<li>Bars centered on category<br>
-</li>
-</ul>
-</div><div class="column" style="width:60%;">
-<p><img data-src="media/freq-bar.png"></p>
+<div class="column" style="width:80%;">
+<p><img data-src="media/freq-grouped-histogram.png"></p>
+</div><div class="column table-small" style="width:20%;">
+<div class="cell">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> \(X\) </th>
+   <th style="text-align:center;"> \(f\) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> 40-41 </td>
+   <td style="text-align:center;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 42-43 </td>
+   <td style="text-align:center;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 44-45 </td>
+   <td style="text-align:center;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 46-47 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 48-49 </td>
+   <td style="text-align:center;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 50-51 </td>
+   <td style="text-align:center;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 52-53 </td>
+   <td style="text-align:center;"> 6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 54-55 </td>
+   <td style="text-align:center;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 56-57 </td>
+   <td style="text-align:center;"> 9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 58-59 </td>
+   <td style="text-align:center;"> 10 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -747,11 +849,11 @@
 </li>
 </ul>
 </div><div class="column" style="width:60%;">
-<p><img data-src="media/freq-bar.png"></p>
+<p><img data-src="media/freq-freq-poly.png"></p>
 </div>
 </div>
 </section>
-<section id="smooth-curves" class="slide level2">
+<section id="smooth-curves" class="slide level2 small">
 <h2>Smooth curves</h2>
 <div class="columns">
 <div class="column" style="width:40%;">
@@ -764,12 +866,12 @@
 </ul></li>
 </ul>
 </div><div class="column" style="width:60%;">
-<p><img data-src="media/freq-bar.png"></p>
+<p><img data-src="media/freq-curve.png"></p>
 </div>
 </div>
-</section>
-<section id="learning-checks" class="slide level2">
-<h2>Learning checks</h2>
+</section></section>
+<section id="learning-checks" class="title-slide slide level1 small center">
+<h1>Learning checks</h1>
 <div class="columns">
 <div class="column" style="width:80%;">
 <ol type="1">
@@ -825,7 +927,8 @@
 <div class="footer footer-default">
 
 </div>
-</section></section>
+</section>
+
 
     </div>
   </div>

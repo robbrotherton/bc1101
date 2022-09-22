@@ -4,16 +4,74 @@ format:
     chalkboard: true
 ---
 
-::: {.cover}
-## 3|FREQUENCY
+# 3|FREQUENCY {.lecture-title}
 
-::: {.cover-image}
 ![](covers/03_frequency.png)
-:::
-:::
+
+```{r data}
+
+# generic 'scores' used for generic frequency graph examples
+scores <- c(2, 1, 2, 3, 4, 3, 3, 2, 2, 1, 5, 3, 4, 1, 2)
+
+# some actual midterm scores
+midterms <- c(41,43,44,45,48,50,51,51,
+              52,52,52,53,53,53,54,54,
+              55,55,55,55,55,56,56,56,
+              56,56,57,57,57,57,58,58,
+              58,59,59,59,59,59,59,59)
+
+```
+
+```{r frequency-graphs, eval=FALSE}
+library(ggplot2)
+# library(gridExtra)
+# 
+p <- ggplot(NULL, aes(x = scores)) +
+  labs(x = "Scores", y = "Frequency") +
+  scale_x_continuous(limits = c(0,6), breaks = 0:6) +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 5.5)) +
+  papaja::theme_apa(base_size = 18) +
+  # theme(axis.title.x = element_text(margin = margin(t = 1))) +
+  NULL
+
+pHist <- p + geom_histogram(binwidth = 1, color = "black", fill = "grey")
+pFreq <- p + geom_point(stat = "count") + geom_freqpoly(binwidth = 1)
+pBar <- p + geom_bar(stat = "count", color = 'black', fill = 'grey')
+pDens <- p + geom_density() + ylab("Proportion") +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 0.4))
+
+pHist_Freq <- p + geom_histogram(binwidth = 1, color = "black", fill = "grey") +
+  geom_point(stat = "count") +
+  geom_freqpoly(binwidth = 1)
+
+ggplot2::ggsave(here::here("slides/media/freq-histogram.png"), pHist, width = 10, height = 8)
+ggplot2::ggsave(here::here("slides/media/freq-bar.png"), pBar, width = 10, height = 8)
+ggplot2::ggsave(here::here("slides/media/freq-freq-poly.png"), pFreq, width = 10, height = 8)
+ggplot2::ggsave(here::here("slides/media/freq-curve.png"), pDens, width = 10, height = 8)
 
 
-## Overview
+# vertical strip showing 4 example graphs
+g <- gridExtra::arrangeGrob(pHist, pFreq, pBar, pDens, ncol = 1)
+ggplot2::ggsave(here::here("slides/media/freq-graphs-demo-long.png"), g, width = 5, height = 12)
+
+# horizontal 
+g <- gridExtra::arrangeGrob(pHist, pFreq, nrow = 1)
+ggplot2::ggsave(here::here("slides/media/freq-graphs-demo.png"), g, width = 5, height = 2)
+
+
+# grouped frequency using midterm scores
+grouped_hist <- ggplot(NULL, aes(x = midterms)) +
+  geom_histogram(binwidth = 2, center = 40.5, closed = 'left', color = 'black', fill = 'grey') +
+  scale_x_continuous(breaks = 40:60) +
+  scale_y_continuous(breaks = 0:10, expand = c(0,0)) +
+  labs(x= "Grouped Midterm Scores", y = "Frequency") +
+  papaja::theme_apa()
+
+ggsave(here::here("slides/media/freq-grouped-histogram.png"), grouped_hist, width = 8, height = 6)
+
+```
+
+# Overview
 - Frequency tables
 - Data visualization
   - Histograms
@@ -22,7 +80,7 @@ format:
   - Population curves
 
 
-## Statistics {.smaller}
+## Statistics {.small}
 
 > A bunch of numbers looking for an argument. ^[[Jones, 2011](https://onlinelibrary.wiley.com/doi/10.1002/9781118116371.ch3)]
 
@@ -32,10 +90,10 @@ format:
 - Etymology
   - *Statistics* comes from *status*, meaning *state*
   - The state of the state
-  - Census, birth rate, death rate, incomes, unemployment etc
+  - Census, birth/death rate, incomes, unemployment etc
 
 
-## Frequency
+# Frequency
 
 - How often does something occur?
     - E.g. opinion polling ([FiveThirtyEight](https://projects.fivethirtyeight.com/-approval-ratings/))
@@ -57,7 +115,6 @@ format:
 
 - From raw scores
 ```{r}
-scores <- c(2, 1, 2, 3, 4, 3, 3, 2, 2, 1, 5, 3, 4, 1, 2)
 cat(scores)
 ```
 
@@ -79,36 +136,27 @@ bc1101tools::frequency_table(scores)
 - Or this
 
 ![](media/freq-graphs-demo.jpg)
+:::
 
-```{r freqGraphs, eval=FALSE}
-#| layout-ncol: 2
+::::
 
-library(ggplot2)
-# library(gridExtra)
-# 
-p <- ggplot(NULL, aes(x = scores)) +
-  labs(x = "Scores", y = "Frequency") +
-  scale_x_continuous(limits = c(0,6), breaks = 0:6) +
-  scale_y_continuous(expand = c(0,0), limits = c(0, 5.5)) +
-  papaja::theme_apa()
+## Frequency tables {.smaller}
 
-pHist <- p + geom_histogram(binwidth = 1, color = "black", fill = "grey")
-pFreq <- p + geom_point(stat = "count") + geom_freqpoly(binwidth = 1)
-pBar <- p + geom_bar(stat = "count", color = 'black', fill = 'grey')
-pDens <- p + geom_density() + ylab("Proportion")
+:::: {.columns}
 
-pHist_Freq <- p + geom_histogram(binwidth = 1, color = "black", fill = "grey") +
-  geom_point(stat = "count") +
-  geom_freqpoly(binwidth = 1)
+::: {.column width="40%"}
+- Categories in a column labeled $X$
+- Frequency count in column labeled $f$
+- Can have columns for...
+  - Proportion $(f / N)$
+  - Percentage (proportion * 100)
+  - Cumulative percentage
+:::
 
-
-# pHist
-# pFreq
-
-g <- gridExtra::arrangeGrob(pHist, pFreq, nrow = 1)
-
-ggplot2::ggsave(here::here("slides/media/freq-graphs-demo.jpg"), g, width = 5, height = 2)
-
+::: {.column width="60%"}
+```{r}
+bc1101tools::frequency_table(scores, additional_cols = TRUE)  
+  # kableExtra::column_spec(column = 1:2, width = "7em")
 ```
 :::
 
@@ -116,38 +164,23 @@ ggplot2::ggsave(here::here("slides/media/freq-graphs-demo.jpg"), g, width = 5, h
 
 ## Frequency tables
 
-- Categories in a column labeled $X$
-  - Can be low to high, or high to low
-  - Frequency count in column labeled $f$
-- Can have columns for...
-  - Proportion $(f / N)$
-  - Percentage (proportion * 100)
-  - Cumulative percentage
+:::: {.columns}
 
-```{r}
-bc1101tools::frequency_table(scores, additional_cols = TRUE) |> 
-  kableExtra::column_spec(column = 1:2, width = "7em")
-```
-
-## Frequency tables
-
+::: {.column width="70%"}
 - Regular frequency table not always appropriate
   - Large number of scores, low frequencies
 - Grouped frequency tables
   -  Easier to understand
   -  But lose information
-  
-```{r midterms}
+:::
 
-midterms <- c(41,43,44,45,48,50,51,51,
-              52,52,52,53,53,53,54,54,
-              55,55,55,55,55,56,56,56,
-              56,56,57,57,57,57,58,58,
-              58,59,59,59,59,59,59,59)
-
+::: {.column width="30%" .table-small .top}
+```{r midterms-grouped-histogram}
 bc1101tools::frequency_table(midterms)
 ```
+:::
 
+::::
 
 ## Grouped frequency table
 
@@ -159,14 +192,27 @@ bc1101tools::frequency_table(midterms)
 
 ## Grouped frequency table
 
+:::: {.columns}
+
+::: {.column width="50%"}
 - Grouped frequency table
   - Bins all same width
   - Width is a simple number (2)
   - Bottom score is multiple of width (i.e, divisible by 2)
   - Produces good number of bins
+:::
 
+::: {.column width="50%" .table-small}
+```{r}
+bc1101tools::frequency_table(midterms, binwidth = 2)
+```
+:::
 
-# Data vizualization {background-image="media/snow_map.jpg"}
+::::
+
+# Data vizualization {.heading-background background-image="media/snow_map.jpg"}
+
+[[Interactive map]](https://ralucanicola.github.io/cholera-map-3D/)
 
 
 ## Frequency graphs
@@ -181,13 +227,9 @@ bc1101tools::frequency_table(midterms)
   - Want to show more than one group?
 :::
 
-::: {.column width="30%"}
+::: {.column width="30%" .top}
 
-![](media/freq-graphs-1.png)
-![](media/freq-graphs-2.png)
-![](media/freq-graphs-3.png)
-![](media/freq-graphs-4.png)
-
+![](media/freq-graphs-demo-long.png)
 :::
 
 ::::
@@ -225,28 +267,7 @@ bc1101tools::frequency_table(midterms)
 
 ::: {.column width="60%"}
 
-![](media/freq-bar.png)
-
-:::
-
-::::
-
-
-
-## Histogram
-
-:::: {.columns}
-
-::: {.column width="40%"}
-- For interval or ratio data 
-- Scores/bins on $x$-axis, frequency on $y$-axis
-- Height corresponds to frequency
-- Bars centered on category  
-:::
-
-::: {.column width="60%"}
-
-![](media/freq-bar.png)
+![](media/freq-histogram.png)
 
 :::
 
@@ -257,17 +278,14 @@ bc1101tools::frequency_table(midterms)
 
 :::: {.columns}
 
-::: {.column width="40%"}
-- For interval or ratio data 
-- Scores/bins on $x$-axis, frequency on $y$-axis
-- Height corresponds to frequency
-- Bars centered on category  
+::: {.column width="80%"}
+![](media/freq-grouped-histogram.png)
 :::
 
-::: {.column width="60%"}
-
-![](media/freq-bar.png)
-
+::: {.column width="20%" .table-small}
+```{r}
+bc1101tools::frequency_table(midterms, binwidth = 2)
+```
 :::
 
 ::::
@@ -286,7 +304,7 @@ bc1101tools::frequency_table(midterms)
 
 ::: {.column width="60%"}
 
-![](media/freq-bar.png)
+![](media/freq-freq-poly.png)
 
 :::
 
@@ -294,7 +312,7 @@ bc1101tools::frequency_table(midterms)
 
 
 
-## Smooth curves
+## Smooth curves {.small}
 
 :::: {.columns}
 
@@ -307,7 +325,7 @@ bc1101tools::frequency_table(midterms)
 
 ::: {.column width="60%"}
 
-![](media/freq-bar.png)
+![](media/freq-curve.png)
 
 :::
 
@@ -316,7 +334,7 @@ bc1101tools::frequency_table(midterms)
 
 
 
-## Learning checks
+# Learning checks {.small}
 
 :::: {.columns}
 

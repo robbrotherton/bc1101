@@ -242,7 +242,7 @@
     "href": "slides/03_frequency.html#statistics",
     "title": "BC1101",
     "section": "Statistics",
-    "text": "Statistics\n\nA bunch of numbers looking for an argument. 1\n\n\nMathematical procedures used to collect, organize, summarize & interpret information\n\nProvide standardized evaluation procedures\nTell us about patterns of interest in data\n\nEtymology\n\nStatistics comes from status, meaning state\nThe state of the state\nCensus, birth rate, death rate, incomes, unemployment etc\n\n\nJones, 2011"
+    "text": "Statistics\n\nA bunch of numbers looking for an argument. 1\n\n\nMathematical procedures used to collect, organize, summarize & interpret information\n\nProvide standardized evaluation procedures\nTell us about patterns of interest in data\n\nEtymology\n\nStatistics comes from status, meaning state\nThe state of the state\nCensus, birth/death rate, incomes, unemployment etc\n\n\nJones, 2011"
   },
   {
     "objectID": "slides/03_frequency.html#frequency-1",
@@ -277,14 +277,14 @@
     "href": "slides/03_frequency.html#frequency-tables",
     "title": "BC1101",
     "section": "Frequency tables",
-    "text": "Frequency tables\n\nCategories in a column labeled \\(X\\)\n\nCan be low to high, or high to low\nFrequency count in column labeled \\(f\\)\n\nCan have columns for…\n\nProportion \\((f / N)\\)\nPercentage (proportion * 100)\nCumulative percentage\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n    Proportion \n    Percent \n    Cumulative Percent \n  \n \n\n  \n    1 \n    3 \n    0.20000000 \n    20.000000 \n    20.00000 \n  \n  \n    2 \n    5 \n    0.33333333 \n    33.333333 \n    53.33333 \n  \n  \n    3 \n    4 \n    0.26666667 \n    26.666667 \n    80.00000 \n  \n  \n    4 \n    2 \n    0.13333333 \n    13.333333 \n    93.33333 \n  \n  \n    5 \n    1 \n    0.06666667 \n    6.666667 \n    100.00000"
+    "text": "Frequency tables\n\n\n\nCategories in a column labeled \\(X\\)\nFrequency count in column labeled \\(f\\)\nCan have columns for…\n\nProportion \\((f / N)\\)\nPercentage (proportion * 100)\nCumulative percentage\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n    Proportion \n    Percent \n    Cumulative Percent \n  \n \n\n  \n    1 \n    3 \n    0.20 \n    20.00 \n    20.00 \n  \n  \n    2 \n    5 \n    0.33 \n    33.33 \n    53.33 \n  \n  \n    3 \n    4 \n    0.27 \n    26.67 \n    80.00 \n  \n  \n    4 \n    2 \n    0.13 \n    13.33 \n    93.33 \n  \n  \n    5 \n    1 \n    0.07 \n    6.67 \n    100.00"
   },
   {
     "objectID": "slides/03_frequency.html#frequency-tables-1",
     "href": "slides/03_frequency.html#frequency-tables-1",
     "title": "BC1101",
     "section": "Frequency tables",
-    "text": "Frequency tables\n\nRegular frequency table not always appropriate\n\nLarge number of scores, low frequencies\n\nGrouped frequency tables\n\nEasier to understand\nBut lose information\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    41 \n    1 \n  \n  \n    42 \n    0 \n  \n  \n    43 \n    1 \n  \n  \n    44 \n    1 \n  \n  \n    45 \n    1 \n  \n  \n    46 \n    0 \n  \n  \n    47 \n    0 \n  \n  \n    48 \n    1 \n  \n  \n    49 \n    0 \n  \n  \n    50 \n    1 \n  \n  \n    51 \n    2 \n  \n  \n    52 \n    3 \n  \n  \n    53 \n    3 \n  \n  \n    54 \n    2 \n  \n  \n    55 \n    5 \n  \n  \n    56 \n    5 \n  \n  \n    57 \n    4 \n  \n  \n    58 \n    3 \n  \n  \n    59 \n    7"
+    "text": "Frequency tables\n\n\n\nRegular frequency table not always appropriate\n\nLarge number of scores, low frequencies\n\nGrouped frequency tables\n\nEasier to understand\nBut lose information\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    41 \n    1 \n  \n  \n    42 \n    0 \n  \n  \n    43 \n    1 \n  \n  \n    44 \n    1 \n  \n  \n    45 \n    1 \n  \n  \n    46 \n    0 \n  \n  \n    47 \n    0 \n  \n  \n    48 \n    1 \n  \n  \n    49 \n    0 \n  \n  \n    50 \n    1 \n  \n  \n    51 \n    2 \n  \n  \n    52 \n    3 \n  \n  \n    53 \n    3 \n  \n  \n    54 \n    2 \n  \n  \n    55 \n    5 \n  \n  \n    56 \n    5 \n  \n  \n    57 \n    4 \n  \n  \n    58 \n    3 \n  \n  \n    59 \n    7"
   },
   {
     "objectID": "slides/04_central-tendency.html#central-tendency",
@@ -347,7 +347,7 @@
     "href": "slides/03_frequency.html#grouped-frequency-table-1",
     "title": "BC1101",
     "section": "Grouped frequency table",
-    "text": "Grouped frequency table\n\nGrouped frequency table\n\nBins all same width\nWidth is a simple number (2)\nBottom score is multiple of width (i.e, divisible by 2)\nProduces good number of bins"
+    "text": "Grouped frequency table\n\n\n\nGrouped frequency table\n\nBins all same width\nWidth is a simple number (2)\nBottom score is multiple of width (i.e, divisible by 2)\nProduces good number of bins\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    40-41 \n    1 \n  \n  \n    42-43 \n    1 \n  \n  \n    44-45 \n    2 \n  \n  \n    46-47 \n    0 \n  \n  \n    48-49 \n    1 \n  \n  \n    50-51 \n    3 \n  \n  \n    52-53 \n    6 \n  \n  \n    54-55 \n    7 \n  \n  \n    56-57 \n    9 \n  \n  \n    58-59 \n    10"
   },
   {
     "objectID": "slides/03_frequency.html#frequency-graphs",
@@ -382,7 +382,7 @@
     "href": "slides/03_frequency.html#grouped-histogram",
     "title": "BC1101",
     "section": "Grouped histogram",
-    "text": "Grouped histogram\n\n\n\nFor interval or ratio data\nScores/bins on \\(x\\)-axis, frequency on \\(y\\)-axis\nHeight corresponds to frequency\nBars centered on category"
+    "text": "Grouped histogram\n\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    40-41 \n    1 \n  \n  \n    42-43 \n    1 \n  \n  \n    44-45 \n    2 \n  \n  \n    46-47 \n    0 \n  \n  \n    48-49 \n    1 \n  \n  \n    50-51 \n    3 \n  \n  \n    52-53 \n    6 \n  \n  \n    54-55 \n    7 \n  \n  \n    56-57 \n    9 \n  \n  \n    58-59 \n    10"
   },
   {
     "objectID": "slides/03_frequency.html#frequency-polygon",
