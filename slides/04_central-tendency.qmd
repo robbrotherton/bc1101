@@ -4,14 +4,331 @@ format:
     chalkboard: true
 ---
 
-::: {.cover}
-## 4|CENTRAL TENDENCY
+# 4|CENTRAL TENDENCY {.lecture-title}
 
-::: {.cover-image}
 ![](covers/04_central-tendency.png)
-:::
-:::
+
+```{r eval=FALSE}
+# 339
+# 757
+# 726
+# seed <- as.integer(runif(1, max = 1000))
+set.seed(726)
+data <- as.integer(rnorm(30, mean = 50, sd = 3))
+bc1101tools::balance_beam(data, size = 0)
+
+ggplot2::ggsave(here::here("slides", "covers", "04_central-tendency.png"), width = 12, height = 12 * (304/536))
+
+```
 
 
 ## Overview
-- TK
+
+- [Mode](#mode)
+- [Median]
+- [Mean]
+
+# Central tendency
+
+- A single number to describe the center of a distribution
+
+- Purpose: 
+    - To organize & summarize scores
+    - Find the single score that is most typical or best represents the entire group
+    - Allow comparisons
+
+
+## Finding the center
+
+```{r distributions}
+library(ggplot2)
+
+distPlot <- function(x, y = NULL) {
+  ggplot(NULL, aes(x = x)) + 
+    geom_histogram(binwidth = 1, color = 'black', fill = 'grey') +
+    scale_x_continuous(limits = c(.5,9.5), breaks = 1:9) +
+    scale_y_continuous(expand = c(0,0)) +
+    labs(x = "X", y = "Frequency") +
+    papaja::theme_apa()
+}  
+
+sym <- c(2,3,3,4,4,4,5,5,5,5,6,6,6,7,7,8)
+skew <- c(1,2,3,4,5,6,6,7,7,7,8,8,8,8,9,9)
+bi <- c(1,1,2,2,2,2,3,3,7,7,8,8,8,8,9,9)
+
+symPlot <- distPlot(sym)
+skewPlot <- distPlot(skew)
+biPlot <- distPlot(bi)
+```
+
+Where is the center of the distribution?
+
+```{r out.width="90%", fig.asp=.5}
+symPlot
+```
+
+
+## Finding the center
+
+Where is the center of the distribution?
+
+```{r out.width="90%", fig.asp=.5}
+skewPlot
+```
+
+## Finding the center
+
+Where is the center of the distribution?
+
+```{r out.width="90%", fig.asp=.5}
+biPlot
+```
+
+
+## Measures of central tendency
+
+- Imagine you get the following grades:
+  - 90, 0, 80, 85, 90
+- How do you fairly describe all these scores with a single number?
+
+- Three ways:
+  - Mode = grade you get most often
+  - Median = grade that divides lowest 50% of scores from highest 50% of scores
+  - Mean = sum of grades / # of grades = $\dfrac{\Sigma X} N$
+    
+    
+## Measures of central tendency
+
+- Imagine you get the following grades:
+  - 90, 0, 80, 85, 90
+- Three ways:
+  - Mode = <ins>90</ins>, 0, 80, 85, <ins>90</ins><br><br>
+  - Median = 0, 80, <ins>85</ins>, 90, 90<br><br>
+  - Mean = (<ins>90</ins> + <ins>0</ins> + <ins>80</ins> + <ins>85</ins> + <ins>90</ins>) / <ins>5</ins> = 69
+
+
+# Mode
+
+## Mode
+
+- The score/category with the greatest frequency
+    - What occurs most often?
+   
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+bc1101tools::frequency_table(5:1, c(1, 2, 4, 5, 3))
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+bc1101tools::frequency_table(x =                     c("90-99","80-89","70-79","60-60","50-59","40-49"),
+                f = c(7,4,5,3,0,1))
+
+```
+:::
+
+::::
+
+## Mode
+
+- The score/category with the greatest frequency
+    - What occurs most often?
+
+```{r}
+gridExtra::grid.arrange(symPlot + labs(x = NULL, y = NULL), 
+             skewPlot + labs(x = NULL, y = NULL), 
+             biPlot + labs(x = NULL, y = NULL),
+               widths = c(1, 1, 1, 1),
+  layout_matrix = rbind(c(1, 1, 2, 2),
+                        c(NA, 3, 3, NA)))
+```
+
+
+## Mode
+
+```{r}
+
+realBi <- c(2,5,8,6,3,1,2,2,4,6,7)
+
+distPlot(rep(0:10, realBi)) +
+  scale_x_continuous(limits = c(-.5,10.5), breaks = 0:10) +
+  xlab("Tone Identification Score\n(number correct out of 10)")
+
+```
+
+
+# Median
+
+## Median
+
+- Definition:
+  - The midpoint of the scores in a distribution when they are listed in order from smallest to largest
+  - Divides the scores into two groups of equal size
+  - Equal number of data points either side of the median
+  - 50% below, 50% above
+
+
+## Locating the median
+
+- Put scores in order
+- Find the number that gives and equal number of scores on either side
+
+- Odd number of scores
+  - Median is the center score
+
+- Even number of scores:
+  - Average the 2 numbers either side of center
+
+::: {.center}
+
+1 2	3	4	5	6
+
+(3 + 4) / 2 = 3.5
+
+65	70	70	80	90	90
+
+65	70	80	80	80	90	92	95
+
+:::
+
+
+
+# Mean
+
+## Mean {.smaller}
+
+:::: {.columns}
+
+::: {.column width="70%"}
+- What is the "average"?
+    - Take a set of scores
+    - Add them up
+    - Divide by how many there are
+- Developed in the 16th century
+    - Mainly used by astronomers
+- Adolphe Quetelet (1796-1874)
+    - Applied the concept to people
+    - Size measurements (BMI), divorce, crime, suicide
+    - See [*The Atlantic*: How the Idea of a ‘Normal’ Person Got Invented](https://www.theatlantic.com/business/archive/2016/02/the-invention-of-the-normal-person/463365/)
+:::
+
+::: {.column width="30%"}
+![](media/quetelet.jpg)
+:::
+
+::::
+
+
+## History {.smaller}
+
+:::: {.columns}
+
+::: {.column width="60%"}
+- American Civil War
+    - Mass production of uniforms
+    - Small, Medium, Large
+    - Also food rations, weapon design, etc
+- 1926: Plane cockpits
+    - Based on average measurements
+    - By WW2 worked terribly
+    - Didn’t fit most pilots
+    - Nobody is average on all dimensions
+:::
+
+::: {.column width="40%"}
+![](media/civil-war.png)
+![](media/cockpit.jpg)
+:::
+
+::::
+
+## Calculating the mean
+
+- Calculating the mean
+  - Sum of scores divided by number of scores
+  - Represented by a symbol (unlike mode & median)
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Sample:
+$M = \dfrac{\Sigma X} n$
+
+(sometimes  
+$X$ or $\overline{X}$)
+:::
+
+::: {.column width="50%"}
+Population:
+$\mu = \dfrac{\Sigma X} N$
+:::
+
+::::
+
+## Visualizing the mean
+
+- Another way of thinking about the mean
+  - The balance point for the distribution
+
+```{r balance, out.width='90%', fig.asp=.5}
+# source("fun/plot_balance_beam.R")
+# balance_beam
+```
+
+
+# Distributions
+
+## Distributions
+
+![](media/distributions.png)
+
+## Distributions
+
+![](media/distributions-annotated.png)
+
+## Distributions
+
+- Sensitivity to outliers
+  - Extreme values; observations far from the center
+  - Mean is more influenced by outliers than median
+
+![](media/bar-1.png)
+
+![](media/bar-2.png)
+
+
+# Summary {.smaller}
+
+- Mode
+  - Most useful for nominal/ordinal data
+  - Reflects the single most common score
+  - Or more complicated (bimodal) distributions
+- Median
+  - Most useful for interval/ratio data
+  - Represents the midpoint in terms of number of scores
+  - Less influenced by outliers; helpful for skewed data
+- Mean
+  - Most useful for interval/ratio data
+  - Represents the midpoint in terms of distances of scores
+  - More influenced by outliers; best for normal data
+
+
+# Learning checks
+
+1. __True or False__: It is possible for more than 50% of the scores in a distribution to have values above the:
+    a) mode
+    b) mean
+    c) median
+2. What shape is this distribution?
+```{r out.width='100%', fig.asp=.5}
+ggplot(NULL) + 
+  stat_function(fun = dbeta, args = list(5, 2)) +
+  labs(x = "Negative skew") +
+  theme_void()
+```
+  - What can you predict about its mode, mean, and median?
+  
+

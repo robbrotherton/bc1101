@@ -1,0 +1,201 @@
+---
+format: 
+  revealjs:
+    chalkboard: true
+---
+
+# 5|VARIABILITY {.lecture-title}
+
+![](covers/05_variability.png)
+
+
+# Overview
+
+- [Variability]
+- [Range]
+- [Sum of squares, variance, SD]
+  - [Variance]
+  - [Standard deviation]
+  - [Degrees of freedom]
+
+# Variability
+
+Imagine you and a friend got the following scores
+
+```{r}
+you <- c(0,4,5,5,6,10)
+friend <- c(0,1,5,5,9,10)
+```
+
+- You: `r you`
+- Friend: `r friend`
+
+How would you describe the difference in your performances?
+
+::: {.fragment}
+- Same mode/mean/median
+- But one seems more *variable* than the other
+:::
+
+
+## Variability
+
+- Like the mean
+    - A descriptive statistic
+    - Single number to summarize dataset
+- Unlike the mean
+    - Rather than describing the middle of the data, variability describes the spread of the data
+    - Higher variability means greater differences between scores
+- Purpose of measures of variability
+    - Quantify how well an individual score represents the distribution
+    - Important for inferential stats
+
+
+## Variability
+
+- Measures of variability
+    - Quantitative distance measures based on the differences between scores
+    - Each has different characteristics
+- Range
+    - Describes the spread of scores
+    - Distance of most extreme scores from each other
+- $SS$, Variance, and Standard Deviation
+    - Companion concepts, but different things
+    - Describe distance of scores from the mean
+    - Small values: low variability; scores clustered close to mean
+    - Higher values: greater variability; scores widely scattered
+
+
+
+# Range
+
+## Range
+
+- Difference between lowest & highest scores
+    - Distance covered by the scores in a distribution 
+    - Range = $X_{max} - X_{min}$
+
+```{r}
+print_range <- function(x) {
+  paste(max(x), " - ", min(x), " = ", max(x) - min(x))
+}
+```
+
+- You: `r you`
+- Range = `r print_range(you)`
+
+- Friend: `r friend`
+- Range = `r print_range(friend)`
+
+## Range
+
+- Characteristics
+    - Does not consider all the data
+    - Based only on two scores: most extreme values
+    - Imprecise, unreliable measure of variability
+    - Not often useful for descriptive/inferential stats
+- But checking range & min/max values can be useful for finding mistakes in data input
+    - Impossible range / min & max values
+
+
+# Sum of squares, variance, SD
+
+- Definitions:
+    - Deviation
+        - Distance from the mean: deviation score = $X – \mu$
+    - $SS$: Sum of squares
+        - Sum of squared deviations
+    - Variance
+        - The mean squared deviation
+        - Average squared distance from the mean
+    - Standard deviation
+        - The square root of the variance
+        - Provides a measure of the average (standard) distance of scores from the mean
+
+Calculations differ for population and samples
+
+## Variance
+
+- Determine the deviation of each score
+    - Distance from the mean
+    - Deviation score = $X - \mu$
+
+```{r balance, out.width='70%', fig.asp=.3}
+bc1101tools::balance_beam(c(1, 2, 6, 6, 10))
+```
+
+- To find “average deviation” just sum the deviations and then divide by $n$?
+
+::: {.fragment}
+- Nope! Dead end
+- Always sums to $0$
+:::
+
+
+## Variance
+
+:::: {.columns .fragment}
+::: {.column width="60%"}
+1. Find the deviation for each score
+:::
+::: {.column width="40%"}
+$X - \mu$
+:::
+:::: 
+
+:::: {.columns .fragment}
+::: {.column width="60%"}
+2. Square deviations
+:::
+::: {.column width="40%"}
+$(X - \mu)^2$
+:::
+::::
+
+:::: {.columns .fragment}
+::: {.column width="60%"}
+3. Sum the squared deviations
+:::
+::: {.column width="40%"}
+$SS = \Sigma(X - \mu)^2$
+:::
+::::
+
+:::: {.columns .fragment}
+::: {.column width="60%"}
+4. Find average of squared deviations
+:::
+::: {.column width="40%"}
+$\sigma^2 = \dfrac{SS}N$
+:::
+::::
+
+:::: {.columns .fragment}
+::: {.column width="60%"}
+5. Take square root of variance
+:::
+::: {.column width="40%"}
+$\sigma = \sqrt{\sigma^2} = \sqrt{\dfrac{SS}N}$
+:::
+::::
+
+
+## Variance {.small}
+
+:::: {.columns}
+::: {.column}
+```{r}
+bc1101tools::SD_table(you)
+```
+:::
+
+::: {.column}
+```{r}
+bc1101tools::SD_table(friend)
+```
+:::
+::::
+    
+## Standard deviation
+# Degrees of freedom
+

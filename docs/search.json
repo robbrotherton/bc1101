@@ -298,7 +298,7 @@
     "href": "slides/04_central-tendency.html#overview",
     "title": "BC1101",
     "section": "Overview",
-    "text": "Overview\n\nTK"
+    "text": "Overview\n\nMode\nMedian\nMean"
   },
   {
     "objectID": "slides-index.html#course-overview",
@@ -326,7 +326,7 @@
     "href": "slides-index.html#central-tendency",
     "title": "Slides",
     "section": "4. Central Tendency",
-    "text": "4. Central Tendency\n\n\n01/01/2022\n\n\n\n\n\n\n\n\n\nTK\n\n\n\n\n\nSlidesPanopto"
+    "text": "4. Central Tendency\n\n\n01/01/2022\n\n\n\n\n\n\n\n\n\nMode\nMedian\nMean\n\n\n\n\nSlidesPanopto"
   },
   {
     "objectID": "slides/01_course-info.html#sec-textbook",
@@ -404,5 +404,208 @@
     "title": "BC1101",
     "section": "Learning checks",
     "text": "Learning checks\n\n\n\nUse the frequency table to the right to determine how many participants were in the study.\nWhich graph (histogram / frequency polygon / bar chart / curve) is appropriate for showing:\n\nMarital status (single/married/divorced)\nLetter grades (A+, A, A-, B+, etc)\nTime spent watching Netflix\n\nA grouped frequency distribution table has categories 0-9, 10-19, 20-29, and 30-39. What is the width of the interval 20-29?\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    5 \n    2 \n  \n  \n    4 \n    4 \n  \n  \n    3 \n    1 \n  \n  \n    2 \n    0 \n  \n  \n    1 \n    3"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#measures-of-central-tendency",
+    "href": "slides/04_central-tendency.html#measures-of-central-tendency",
+    "title": "BC1101",
+    "section": "Measures of central tendency",
+    "text": "Measures of central tendency\n\nImagine you get the following grades:\n\n90, 0, 80, 85, 90\n\nHow do you fairly describe all these scores with a single number?\nThree ways:\n\nMode = grade you get most often\nMedian = grade that divides lowest 50% of scores from highest 50% of scores\nMean = sum of grades / # of grades = \\(\\dfrac{\\Sigma X} N\\)"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#measures-of-central-tendency-1",
+    "href": "slides/04_central-tendency.html#measures-of-central-tendency-1",
+    "title": "BC1101",
+    "section": "Measures of central tendency",
+    "text": "Measures of central tendency\n\nImagine you get the following grades:\n\n90, 0, 80, 85, 90\n\nThree ways:\n\nMode = 90, 0, 80, 85, 90\nMedian = 0, 80, 85, 90, 90\nMean = (90 + 0 + 80 + 85 + 90) / 5 = 69"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#mode-1",
+    "href": "slides/04_central-tendency.html#mode-1",
+    "title": "BC1101",
+    "section": "Mode",
+    "text": "Mode\n\nThe score/category with the greatest frequency\n\nWhat occurs most often?\n\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    5 \n    1 \n  \n  \n    4 \n    2 \n  \n  \n    3 \n    4 \n  \n  \n    2 \n    5 \n  \n  \n    1 \n    3 \n  \n\n\n\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    90-99 \n    7 \n  \n  \n    80-89 \n    4 \n  \n  \n    70-79 \n    5 \n  \n  \n    60-60 \n    3 \n  \n  \n    50-59 \n    0 \n  \n  \n    40-49 \n    1"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#mode-2",
+    "href": "slides/04_central-tendency.html#mode-2",
+    "title": "BC1101",
+    "section": "Mode",
+    "text": "Mode\n\nThe score/category with the greatest frequency\n\nWhat occurs most often?"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#mode",
+    "href": "slides/04_central-tendency.html#mode",
+    "title": "BC1101",
+    "section": "Mode",
+    "text": "Mode\n\nThe score/category with the greatest frequency\n\nWhat occurs most often?"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#mode-3",
+    "href": "slides/04_central-tendency.html#mode-3",
+    "title": "BC1101",
+    "section": "Mode",
+    "text": "Mode"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#finding-the-center",
+    "href": "slides/04_central-tendency.html#finding-the-center",
+    "title": "BC1101",
+    "section": "Finding the center",
+    "text": "Finding the center\n\n\n\nWhere is the center of the distribution?"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#finding-the-center-1",
+    "href": "slides/04_central-tendency.html#finding-the-center-1",
+    "title": "BC1101",
+    "section": "Finding the center",
+    "text": "Finding the center\nWhere is the center of the distribution?"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#finding-the-center-2",
+    "href": "slides/04_central-tendency.html#finding-the-center-2",
+    "title": "BC1101",
+    "section": "Finding the center",
+    "text": "Finding the center\nWhere is the center of the distribution?"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#central-tendency-.lecture-title",
+    "href": "slides/04_central-tendency.html#central-tendency-.lecture-title",
+    "title": "BC1101",
+    "section": "4|CENTRAL TENDENCY (.lecture-title)",
+    "text": "4|CENTRAL TENDENCY (.lecture-title)"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#median-1",
+    "href": "slides/04_central-tendency.html#median-1",
+    "title": "BC1101",
+    "section": "Median",
+    "text": "Median\n\nDefinition:\n\nThe midpoint of the scores in a distribution when they are listed in order from smallest to largest\nDivides the scores into two groups of equal size\nEqual number of data points either side of the median\n50% below, 50% above"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#median-2",
+    "href": "slides/04_central-tendency.html#median-2",
+    "title": "BC1101",
+    "section": "Median",
+    "text": "Median\nLocating the median - Odd number of scores - Put scores in order - Identify the “middle” score to find median\n.center[ 1 2 3 4 5]\n“Middle” score is 3\nMedian = 3"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#mean-1",
+    "href": "slides/04_central-tendency.html#mean-1",
+    "title": "BC1101",
+    "section": "Mean",
+    "text": "Mean\n\n\n\nWhat is the “average”?\n\nTake a set of scores\nAdd them up\nDivide by how many there are\n\nDeveloped in the 16th century\n\nMainly used by astronomers\n\nAdolphe Quetelet (1796-1874)\n\nApplied the concept to people\nSize measurements (BMI), divorce, crime, suicide\nSee The Atlantic: How the Idea of a ‘Normal’ Person Got Invented"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#locating-the-median",
+    "href": "slides/04_central-tendency.html#locating-the-median",
+    "title": "BC1101",
+    "section": "Locating the median",
+    "text": "Locating the median\n\nPut scores in order\nFind the number that gives and equal number of scores on either side\nOdd number of scores\n\nMedian is the center score\n\nEven number of scores:\n\nAverage the 2 numbers either side of center\n\n\n\n1 2 3 4 5 6\n(3 + 4) / 2 = 3.5\n65 70 70 80 90 90\n65 70 80 80 80 90 92 95"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#history",
+    "href": "slides/04_central-tendency.html#history",
+    "title": "BC1101",
+    "section": "History",
+    "text": "History\n\n\n\nAmerican Civil War\n\nMass production of uniforms\nSmall, Medium, Large\nAlso food rations, weapon design, etc\n\n1926: Plane cockpits\n\nBased on average measurements\nBy WW2 worked terribly\nDidn’t fit most pilots\nNobody is average on all dimensions"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#calculating-the-mean",
+    "href": "slides/04_central-tendency.html#calculating-the-mean",
+    "title": "BC1101",
+    "section": "Calculating the mean",
+    "text": "Calculating the mean\n\nCalculating the mean\n\nSum of scores divided by number of scores\nRepresented by a symbol (unlike mode & median)\n\n\n\n\nSample: \\(M = \\dfrac{\\Sigma X} n\\)\n(sometimes\n\\(X\\) or \\(\\overline{X}\\))\n\nPopulation: \\(\\mu = \\dfrac{\\Sigma X} N\\)"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#visualizing-the-mean",
+    "href": "slides/04_central-tendency.html#visualizing-the-mean",
+    "title": "BC1101",
+    "section": "Visualizing the mean",
+    "text": "Visualizing the mean\n\nAnother way of thinking about the mean\n\nThe balance point for the distribution"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#distributions-1",
+    "href": "slides/04_central-tendency.html#distributions-1",
+    "title": "BC1101",
+    "section": "Distributions",
+    "text": "Distributions"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#distributions-2",
+    "href": "slides/04_central-tendency.html#distributions-2",
+    "title": "BC1101",
+    "section": "Distributions",
+    "text": "Distributions"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#distributions-3",
+    "href": "slides/04_central-tendency.html#distributions-3",
+    "title": "BC1101",
+    "section": "Distributions",
+    "text": "Distributions\n\nSensitivity to outliers\n\nExtreme values; observations far from the center\nMean is more influenced by outliers than median"
+  },
+  {
+    "objectID": "slides-index.html#variability",
+    "href": "slides-index.html#variability",
+    "title": "Slides",
+    "section": "5. Variability",
+    "text": "5. Variability\n\n\n01/01/2022\n\n\n\n\n\n\n\n\n\nRange\nSum of squares\nVariance\nStandard deviation\nDegrees of freedom\n\n\n\n\nSlidesPanopto"
+  },
+  {
+    "objectID": "slides/05_variability.html#variability-2",
+    "href": "slides/05_variability.html#variability-2",
+    "title": "BC1101",
+    "section": "Variability",
+    "text": "Variability\n\nLike the mean\n\nA descriptive statistic\nSingle number to summarize dataset\n\nUnlike the mean\n\nRather than describing the middle of the data, variability describes the spread of the data\nHigher variability means greater differences between scores\n\nPurpose of measures of variability\n\nQuantify how well an individual score represents the distribution\nImportant for inferential stats"
+  },
+  {
+    "objectID": "slides/05_variability.html#variability-3",
+    "href": "slides/05_variability.html#variability-3",
+    "title": "BC1101",
+    "section": "Variability",
+    "text": "Variability\n\nMeasures of variability\n\nQuantitative distance measures based on the differences between scores\nEach has different characteristics\n\nRange\n\nDescribes the spread of scores\nDistance of most extreme scores from each other\n\n\\(SS\\), Variance, and Standard Deviation\n\nCompanion concepts, but different things\nDescribe distance of scores from the mean\nSmall values: low variability; scores clustered close to mean\nHigher values: greater variability; scores widely scattered"
+  },
+  {
+    "objectID": "slides/05_variability.html#range-1",
+    "href": "slides/05_variability.html#range-1",
+    "title": "BC1101",
+    "section": "Range",
+    "text": "Range\n\nDifference between lowest & highest scores\n\nDistance covered by the scores in a distribution\nRange = \\(X_{max} - X_{min}\\)\n\n\n\n\n\n\nYou: 0, 4, 5, 5, 6, 10\nRange = 10 - 0 = 10\nFriend: 0, 1, 5, 5, 9, 10\nRange = 10 - 0 = 10"
+  },
+  {
+    "objectID": "slides/05_variability.html#range-2",
+    "href": "slides/05_variability.html#range-2",
+    "title": "BC1101",
+    "section": "Range",
+    "text": "Range\n\nCharacteristics\n\nDoes not consider all the data\nBased only on two scores: most extreme values\nImprecise, unreliable measure of variability\nNot often useful for descriptive/inferential stats\n\nBut checking range & min/max values can be useful for finding mistakes in data input\n\nImpossible range / min & max values"
+  },
+  {
+    "objectID": "slides/05_variability.html#variance",
+    "href": "slides/05_variability.html#variance",
+    "title": "BC1101",
+    "section": "Variance",
+    "text": "Variance\n\nDetermine the deviation of each score\n\nDistance from the mean\nDeviation score = \\(X - \\mu\\)\n\n\n\n\nTo find “average deviation” just sum the deviations and then divide by \\(n\\)?\n\n\n\nNope! Dead end\nAlways sums to \\(0\\)"
+  },
+  {
+    "objectID": "slides/05_variability.html#standard-deviation",
+    "href": "slides/05_variability.html#standard-deviation",
+    "title": "BC1101",
+    "section": "Standard deviation",
+    "text": "Standard deviation"
+  },
+  {
+    "objectID": "slides/05_variability.html#variance-1",
+    "href": "slides/05_variability.html#variance-1",
+    "title": "BC1101",
+    "section": "Variance",
+    "text": "Variance\n\n\n\nFind the deviation for each score\n\n\n\\(X - \\mu\\)\n\n\n\n\n\nSquare deviations\n\n\n\\((X - \\mu)^2\\)\n\n\n\n\n\nSum the squared deviations\n\n\n\\(SS = \\Sigma(X - \\mu)^2\\)\n\n\n\n\n\nFind average of squared deviations\n\n\n\\(\\sigma^2 = \\dfrac{SS}N\\)\n\n\n\n\n\nTake square root of variance\n\n\n\\(\\sigma = \\sqrt{\\sigma^2} = \\sqrt{\\dfrac{SS}N}\\)"
+  },
+  {
+    "objectID": "slides/05_variability.html#variance-2",
+    "href": "slides/05_variability.html#variance-2",
+    "title": "BC1101",
+    "section": "Variance",
+    "text": "Variance\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    0 \n    -5 \n    25 \n  \n  \n    4 \n    -1 \n    1 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    6 \n    1 \n    1 \n  \n  \n    10 \n    5 \n    25 \n  \n  \n    \\(M = 5\\) \n     \n    \\(SS = 52\\) \n  \n  \n     \n     \n    \\(s^2 = 10.4\\) \n  \n  \n     \n     \n    \\(s = 3.22\\) \n  \n\n\n\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    0 \n    -5 \n    25 \n  \n  \n    1 \n    -4 \n    16 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    9 \n    4 \n    16 \n  \n  \n    10 \n    5 \n    25 \n  \n  \n    \\(M = 5\\) \n     \n    \\(SS = 82\\) \n  \n  \n     \n     \n    \\(s^2 = 16.4\\) \n  \n  \n     \n     \n    \\(s = 4.05\\)"
   }
 ]
