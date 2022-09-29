@@ -1,0 +1,145 @@
+---
+format: 
+  revealjs:
+    chalkboard: true
+---
+
+# 6|$z$-scores {.lecture-title}
+
+![](covers/06_z-scores.png)
+
+```{r eval=FALSE, fig.asp=.6}
+library(ggplot2)
+labs <- list(lines = lines <- c(-2,-1,-0,1,2),
+             x = c(-2.8, -1.5, -0.5, 0.5, 1.5, 2.8),
+             y = c(0.03, 0.06, 0.16, 0.16, 0.06, 0.03),
+             lab = c("2.28%", "13.59%", "34.13%", "34.13%", "13.59%", "2.28%"))
+
+
+norm <- ggplot() +
+ stat_function(data = data.frame(x = c(-3.5, 3.5)), aes(x), fun = "dnorm") +
+  scale_x_continuous(breaks = -3:3) +
+  scale_y_continuous(expand = c(0,0)) +
+  geom_segment(data = NULL, aes(x = labs$lines, xend = labs$lines, y = 0, yend = dnorm(labs$lines)), linetype = 2) +
+#  annotate("text", x = labs$x, y = labs$y, label = labs$lab) +
+  labs(x = "z-score", y = NULL) +
+  theme(axis.line.x = element_line(color = "black"),
+        axis.text.y = element_blank(),
+        axis.text.x = element_text(size = 15),
+        axis.ticks.y = element_blank(),
+        panel.background = element_blank())
+
+ggsave(here::here("slides", "media", "z-distribution.png"),norm, width = 7, height = 5)
+
+```
+# Overview
+
+- $z$-scores?
+  - What are they for?
+  - How do you calculate them?
+- Standardized distributions
+- $z$-scores & probability / inferences
+
+# $z$-scores
+
+Comparing hand spans
+
+<goo.gl/p8Y61u>
+
+![](media/6-hand.png)
+
+## $z$-scores
+
+- $z$-score formula:
+
+$z = \dfrac{X - \mu}\sigma$
+&nbsp;&nbsp;&nbsp;&nbsp;or...&nbsp;&nbsp;&nbsp;&nbsp;
+$z = \dfrac{X - M}s$
+
+- Numerator: deviation score
+- Denominator: standard deviation
+- $z$ expresses deviation in SD units
+
+## $z$-scores
+
+:::: {.columns}
+::: {.column .small}
+- $z$-score describes exact location of any score in a distribution
+- Two pieces of information:
+  - Sign
+    - Positive or negative
+    - Indicates whether score is located above or below the mean
+  - Magnitude
+    - Indicates distance between score and mean in standard deviation units
+    - $z = 0$ is equal to the mean
+:::
+::: {.column}
+![](media/z-distribution.png)
+:::
+::::
+
+# $z$-score to raw score
+
+- Determining raw score from $z$-score
+
+$z = \dfrac{X - \mu}\sigma$
+&nbsp;&nbsp;&nbsp;&nbsp;so...&nbsp;&nbsp;&nbsp;&nbsp;
+$X = \mu + z\sigma$
+
+  - Algebraically solve for $X$ 
+  - Raw score $X$ equals population mean plus $z$ multiplied by standard deviation 
+
+
+
+# Standardized distributions
+
+## Standardized distributions
+
+- Every $X$ value can be transformed to a $z$-score
+    - $z$-score distribution is called a standardized distribution 
+- Characteristics of $z$-score transformation
+    - Same shape as original distribution
+    - Mean of $z$-score distribution is always $0$
+        - Because the mean is the balance point; $\Sigma (X - \mu)$ always equals $0$
+    - Standard deviation is always $1.00$
+        - Because $SD$ is the denominator
+
+## Other standardized distribtions
+
+Other standardized distributions
+
+- Standardized: Predetermined mean & SD
+    - $z$ distribution has $\mu = 0$ and $\sigma = 1$
+    - SAT has $\mu = 500$ and $\sigma = 100$
+    - IQ has $\mu=100$ and $\sigma=15$ points<br><br>
+
+- Standardizing a distribution has two steps
+  1. Original raw scores transformed to $z$-scores
+  2. The $z$-scores are transformed to new $X$ values so that the specific predetermined $\mu$ and $\sigma$ are attained  
+      2a. Multiply to set SD  
+      2b. Add or subtract a constant to set the mean
+
+# $z$-scores and inferential stats
+
+- What’s the use of $z$-scores?
+  - Research questions are often about looking for differences
+  - Does one individual seem different from others?
+  - Is a sample “noticeably different” from the population?
+  - $z$ is one indication of how typical a score is
+  - $z \approx 0$ is a typical score; $z \le -2.00$ or $\ge 2.00$ are less typical
+
+
+
+
+# Learning checks
+
+::: {style="text-align: center;"}
+$z = \dfrac{X - \mu}{\sigma}$
+
+$X = \mu + z* \sigma$
+:::
+
+1. For a population with $\mu = 50$ and $\sigma = 10$, what is the $X$ value corresponding to $z = 0.4$?
+
+2. In a sample distribution, $X = 56$ corresponds to $z = 1.00$, and $X = 47$ corresponds to $z = -0.50$. Find the mean and standard deviation for the sample.
+

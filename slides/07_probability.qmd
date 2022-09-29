@@ -1,0 +1,251 @@
+---
+format: 
+  revealjs:
+    chalkboard: true
+---
+
+# 7|PROBABILITY {.lecture-title}
+
+![](covers/07_probability.png){style="max-width: 400px; height: auto"}
+
+
+# Overview
+
+- What do statisticians mean by "probability"?
+  - Quantifying probability
+- "Random sampling"
+- Probability and $z$-scores
+- Making inferences
+
+
+# Probability and games
+
+:::: {.columns}
+::: {.column .small}
+- Probability & games
+    - Settlers of Catan
+    - Board of hex tiles, each with a number
+    - Place “settlements” at intersection of tiles
+    - Each turn, roll 2 dice
+    - You get resources if your settlement is touching the rolled total
+    - __Where do you put your first settlement?__
+:::
+::: {.column}
+![](media/catan.png)
+:::
+::::
+
+## Definition and notation
+
+- Definition & notation
+    - Several different outcomes are possible
+    - The probability of any specific outcome is a fraction of all possible outcomes
+    - $p$ is the symbol for “probability”
+    - Probability of some specific outcome is specified by $p(event)$
+    
+$p(A) = \dfrac{number \ of \ outcomes \ classified \ as \ A}{total \ number \ of \ possible \ outcomes}$
+
+## Example: coin flip
+
+- E.g. Flipping a coin
+    - Numerator: number of those outcomes
+    - Denominator: all possible outcomes
+
+![](media/heads.png)
+$p(heads) = 1/2 = .5$ 
+
+![](media/tails.png)
+
+$p(tails) = 1/2 = .5%$
+
+
+## Example: rolling dice
+
+- All possible outcomes:
+- 1, 2, 3, 4, 5, 6
+
+$p(6) = 1/6 = 0.17$
+
+$p(1) = \ ?$
+
+$p(odd) = \ ?$  
+
+
+
+## Example: rolling 2 dice
+
+```{r}
+
+library(kableExtra)
+
+d <- as.data.frame(outer(1:6 ,1:6,FUN="+"))
+d$blue <- 1:6
+d <- d[c(7,1:6)]
+
+colnames(d) <- c("",1:6)
+
+dice_tab <- knitr::kable(d, 'html', escape = F, align ='c') %>%
+  row_spec(1:6, background = "white") %>%
+  column_spec(1:7, width = "20px") %>%
+  row_spec(0, color = 'red') %>%
+  column_spec(1, color = "blue", border_right = "1px solid black", bold = T)
+  # column_spec(c(3,4), width = "20%")
+
+dice_tab
+```
+
+
+## Example: marbles
+
+:::: {.columns}
+
+::: {.column}
+![](media/jar-5050.png)
+:::
+
+::: {.column}
+- Jar of marbles
+    - Jar is population
+    - Contains 25 white & 25 blue marbles
+    - What is the probability of randomly drawing a white marble?
+    - Number of those outcomes (25)
+    - Divided by total number of outcomes (50)
+
+$p(white) = 25/50 = .5$
+:::
+
+::::
+
+
+## Example: marbles
+
+:::: {.columns}
+
+::: {.column}
+![](media/jar-8020.png)
+:::
+
+::: {.column}
+- Different jar
+    - 40 blue & 10 white marbles
+    - What is the probability of randomly drawing a white marble?
+    
+$p(white) = 10/50 = .2$
+:::
+
+::::
+
+
+## Repeated sampling
+
+:::: {.columns}
+
+::: {.column}
+![](media/jar-8020.png)
+:::
+
+::: {.column}
+- Repeated sampling
+    - 40 blue, 10 white
+    - What is the probability of randomly drawing one white marble and then drawing a second white marble?
+
+$p(first \ white) = 10/50 = .2$
+
+$p(second \ white)$ depends on whether we put the first one back or not
+:::
+
+::::
+
+
+
+
+
+## Example: marbles
+
+:::: {.columns}
+
+::: {.column}
+![](media/jar-8020.png)
+:::
+
+::: {.column}
+- Without replacement
+
+$$\begin{align} p(white) & = 10/50 = .2 \\
+p(second \ white) & = 9/49 \approx .18 \\
+p(both \ white) & = .2 * .18  \approx .037 \end{align}$$
+:::
+
+::::
+
+
+## Example: marbles
+
+:::: {.columns}
+
+::: {.column}
+![](media/jar-8020.png)
+:::
+
+::: {.column}
+- With replacement
+
+$\begin{align} p(white) &= 10/50 = .2 \\
+p(second \ white) &= 10/50 = .2 \\
+p(both \ white) &= .2 * .2 = .04\end{align}$
+:::
+
+::::
+
+
+## Random sampling
+
+- “Random sample” definition
+    - A sample produced by a process that assures:
+        1. Each individual in the population has an equal chance of being selected
+        2. Probability of being selected stays constant from one selection to the next when more than one individual is selected
+    - “Independent random sampling”
+- Requires sampling __with replacement__
+
+
+# Probability and distributions
+
+```{r out.width='100%'}
+library(ggplot2)
+set.seed(42)
+x <- sample(1:6, 10, replace = T)
+
+df <- data.frame(score = x, obs = 1:length(x))
+
+p <- ggplot(df, aes(x = score, group = obs)) +
+  scale_y_continuous(expand = c(0,0)) +
+  coord_fixed() +
+  labs(x = "Score", y = "Frequency") +
+  papaja::theme_apa()
+
+prob_plot <- p + geom_histogram(binwidth = 1, color = "black", fill = "darkgrey")
+
+prob_plot
+
+```
+
+
+# Probability and z-scores
+
+- Normal distribution
+    - Symmetrical
+    - Highest frequency in the middle
+    - Tapers off towards the extremes
+    - Very common distribution shape
+    - Defined by an equation
+    - Can be described by the proportions of area contained in each section
+
+
+# Learning checks
+
+Which (if any) of the following meet the definition of a true random sample?
+
+1. Several contestants spinning the wheel on The Price is Right to pick a number
+2. Standing on the street and surveying people who happen to walk by
+3. Getting Intro Psych students to participate in return for course credit
+4. Calling random phone numbers from a database

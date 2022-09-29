@@ -54,6 +54,7 @@ ul.task-list{list-style: none;}
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -97,6 +98,14 @@ ul.task-list{list-style: none;}
   <li><a href="#frequency" id="toc-frequency" class="nav-link" data-scroll-target="#frequency">3. Frequency</a></li>
   <li><a href="#central-tendency" id="toc-central-tendency" class="nav-link" data-scroll-target="#central-tendency">4. Central Tendency</a></li>
   <li><a href="#variability" id="toc-variability" class="nav-link" data-scroll-target="#variability">5. Variability</a></li>
+  <li><a href="#z-scores" id="toc-z-scores" class="nav-link" data-scroll-target="#z-scores">6. <span class="math inline">\(z\)</span>-Scores</a></li>
+  <li><a href="#z-probability" id="toc-z-probability" class="nav-link" data-scroll-target="#z-probability">7. Z Probability</a></li>
+  <li><a href="#probability" id="toc-probability" class="nav-link" data-scroll-target="#probability">7. Probability</a></li>
+  <li><a href="#probability-1" id="toc-probability-1" class="nav-link" data-scroll-target="#probability-1">7. Probability</a></li>
+  <li><a href="#probability-2" id="toc-probability-2" class="nav-link" data-scroll-target="#probability-2">7. Probability</a></li>
+  <li><a href="#probability-3" id="toc-probability-3" class="nav-link" data-scroll-target="#probability-3">7. Probability</a></li>
+  <li><a href="#probability-4" id="toc-probability-4" class="nav-link" data-scroll-target="#probability-4">7. Probability</a></li>
+  <li><a href="#probability-5" id="toc-probability-5" class="nav-link" data-scroll-target="#probability-5">7. Probability</a></li>
   </ul>
 </nav>
     </div>
@@ -120,16 +129,93 @@ ul.task-list{list-style: none;}
 </header>
 
 <div class="cell">
+<style type="text/css">
+
+.box {
+  border: 1px solid #c3c3c3;
+  border-radius: 5px;
+  float: left;
+  margin-bottom: 1em;
+  margin-top: 0em;
+  position: relative;
+  width: 100%;
+}
+
+.box:before {
+  content: none !important;
+  display: none !important;
+  height: 0px !important;
+}
+
+.box:hover {
+  border: 1px solid black;
+}
+
+
+.box h2 {
+  border-bottom: none;
+  font-size: min(max(1em, 5vw), 2em);
+  margin-top: 0.2em !important;
+  margin-left: 0.2em;
+  margin-bottom: 0;
+  padding-top: 0;
+  width: 90%;
+}
+
+
+.box .card-body {
+  margin-top: -1em;
+}
+
+.box .box-image {
+  max-height: 150px;
+  max-width: auto;
+}
+
+
+.lecture-image {
+  float: left;
+  width: 50%;
+}
+
+.lecture-overview {
+  float: right;
+  font-size: min(max(0.8em, 2vw), 1em);
+  position: relative;
+  width: 50%;
+}
+
+.footer {
+  float: left;
+  margin-top: -1em;
+  padding: 0;
+  width: 100%;
+}
+
+.date {
+  color: grey;
+  font-size: min(max(0.5em, 3vw), 1em);
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 0.4rem;
+  top: 0.6em;
+}
+
+</style>
+</div>
+<div class="cell">
 
 </div>
 <section id="course-overview" class="level2 box">
 <h2 class="anchored" data-anchor-id="course-overview">1. Course Overview</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="date">01/01/2022</div>
+<div class="date"></div>
 
 <div class="lecture-card">
 
+<div class="card-body">
 <div class="lecture-image">
 <p><a href="slides/01_course-info.html" target="_blank"><img src="slides/covers/01_course-info.png" class="img-fluid figure-img"></a></p>
 </div>
@@ -142,6 +228,7 @@ ul.task-list{list-style: none;}
 <li><a target="_blank" href="slides/01_course-info.html#/recitation-1">Recitation</a></li>
 <li><a target="_blank" href="slides/01_course-info.html#/lastly">Other stuff</a></li>
 </ul></div>
+</div>
 </div>
 
 <div class="footer">
@@ -156,10 +243,11 @@ ul.task-list{list-style: none;}
 <h2 class="anchored" data-anchor-id="variables">2. Variables</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="date">01/01/2022</div>
+<div class="date"></div>
 
 <div class="lecture-card">
 
+<div class="card-body">
 <div class="lecture-image">
 <p><a href="slides/02_variables.html" target="_blank"><img src="slides/covers/02_variables.png" class="img-fluid figure-img"></a></p>
 </div>
@@ -178,6 +266,7 @@ ul.task-list{list-style: none;}
 </li>
 </ul></div>
 </div>
+</div>
 
 <div class="footer">
 <a class="btn btn-outline-dark" href="slides/02_variables.html" target="_blank" role="button" style="width: 50%">Slides</a><a class="btn btn-outline-dark" href="slides/02_variables.html" target="_blank" role="button" style="width: 50%">Panopto</a>
@@ -192,10 +281,11 @@ ul.task-list{list-style: none;}
 <div class="cell">
 <div class="cell-output-display">
 
-<div class="date">01/01/2022</div>
+<div class="date"></div>
 
 <div class="lecture-card">
 
+<div class="card-body">
 <div class="lecture-image">
 <p><a href="slides/03_frequency.html" target="_blank"><img src="slides/covers/03_frequency.png" class="img-fluid figure-img"></a></p>
 </div>
@@ -213,6 +303,7 @@ ul.task-list{list-style: none;}
 </li>
 </ul></div>
 </div>
+</div>
 
 <div class="footer">
 <a class="btn btn-outline-dark" href="slides/03_frequency.html" target="_blank" role="button" style="width: 50%">Slides</a><a class="btn btn-outline-dark" href="slides/03_frequency.html" target="_blank" role="button" style="width: 50%">Panopto</a>
@@ -226,10 +317,11 @@ ul.task-list{list-style: none;}
 <h2 class="anchored" data-anchor-id="central-tendency">4. Central Tendency</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="date">01/01/2022</div>
+<div class="date"></div>
 
 <div class="lecture-card">
 
+<div class="card-body">
 <div class="lecture-image">
 <p><a href="slides/04_central-tendency.html" target="_blank"><img src="slides/covers/04_central-tendency.png" class="img-fluid figure-img"></a></p>
 </div>
@@ -240,6 +332,7 @@ ul.task-list{list-style: none;}
 <li><a target="_blank" href="slides/04_central-tendency.html#/median-1">Median</a></li>
 <li><a target="_blank" href="slides/04_central-tendency.html#/mean-1">Mean</a></li>
 </ul></div>
+</div>
 </div>
 
 <div class="footer">
@@ -254,26 +347,318 @@ ul.task-list{list-style: none;}
 <h2 class="anchored" data-anchor-id="variability">5. Variability</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="date">01/01/2022</div>
+<div class="date"></div>
 
 <div class="lecture-card">
 
+<div class="card-body">
 <div class="lecture-image">
 <p><a href="slides/05_variability.html" target="_blank"><img src="slides/covers/05_variability.png" class="img-fluid figure-img"></a></p>
 </div>
 
 <div class="lecture-overview">
 <div class="overview-list"><ul>
-<li><a target="_blank" href="slides/05_variability.html#/range">Range</a></li>
-<li><a target="_blank" href="slides/05_variability.html#/sum-of-squares">Sum of squares</a></li>
-<li><a target="_blank" href="slides/05_variability.html#/variance">Variance</a></li>
+<li><a target="_blank" href="slides/05_variability.html#/variability-3">Variability</a></li>
+<li><a target="_blank" href="slides/05_variability.html#/range-2">Range</a></li>
+<li>
+<a target="_blank" href="slides/05_variability.html#/sum-of-squares-variance-sd">Sum of squares, variance, SD</a>
+<ul>
+<li><a target="_blank" href="slides/05_variability.html#/variance-2">Variance</a></li>
 <li><a target="_blank" href="slides/05_variability.html#/standard-deviation">Standard deviation</a></li>
-<li><a target="_blank" href="slides/05_variability.html#/degrees-of-freedom">Degrees of freedom</a></li>
+</ul>
+</li>
+<li><a target="_blank" href="slides/05_variability.html#/degrees-of-freedom-4">Degrees of freedom</a></li>
+<li><a target="_blank" href="slides/05_variability.html#/learning-checks">Learning checks</a></li>
 </ul></div>
+</div>
 </div>
 
 <div class="footer">
 <a class="btn btn-outline-dark" href="slides/05_variability.html" target="_blank" role="button" style="width: 50%">Slides</a><a class="btn btn-outline-dark" href="slides/05_variability.html" target="_blank" role="button" style="width: 50%">Panopto</a>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+<!-- there's a very strange problem where it seems having "$z$ scores as the
+title insets content: "" ::before, messing things up -->
+<section id="z-scores" class="level2 box">
+<h2 class="anchored" data-anchor-id="z-scores">6. <span class="math inline">\(z\)</span>-Scores</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="date"></div>
+
+<div class="lecture-card">
+
+<div class="card-body">
+<div class="lecture-image">
+<p><a href="slides/06_z-scores.html" target="_blank"><img src="slides/covers/06_z-scores.png" class="img-fluid figure-img"></a></p>
+</div>
+
+<div class="lecture-overview">
+<div class="overview-list"><ul>
+<li>
+<span class="math inline">\(z\)</span>-scores?
+<ul>
+<li>What are they for?</li>
+<li>How do you calculate them?</li>
+</ul>
+</li>
+<li>Standardized distributions</li>
+<li>
+<span class="math inline">\(z\)</span>-scores &amp; probability / inferences</li>
+</ul></div>
+</div>
+</div>
+
+<div class="footer">
+<a class="btn btn-outline-dark" href="slides/06_z-scores.html" target="_blank" role="button" style="width: 50%">Slides</a><a class="btn btn-outline-dark" href="slides/06_z-scores.html" target="_blank" role="button" style="width: 50%">Panopto</a>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+<section id="z-probability" class="level2 box">
+<h2 class="anchored" data-anchor-id="z-probability">7. Z Probability</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="date"></div>
+
+<div class="lecture-card">
+
+<div class="card-body">
+<div class="lecture-image">
+<p><a href="slides/07_probability.html" target="_blank"><img src="slides/covers/07_probability.png" class="img-fluid figure-img"></a></p>
+</div>
+
+<div class="lecture-overview">
+<div class="overview-list"><ul>
+<li>What do statisticians mean by “probability”?
+<ul>
+<li>Quantifying probability</li>
+</ul>
+</li>
+<li>“Random sampling”</li>
+<li>Probability and <span class="math inline">\(z\)</span>-scores</li>
+<li>Making inferences</li>
+</ul></div>
+</div>
+</div>
+
+<div class="footer">
+<a class="btn btn-outline-dark" href="slides/07_probability.html" target="_blank" role="button" style="width: 50%">Slides</a><a class="btn btn-outline-dark" href="slides/07_probability.html" target="_blank" role="button" style="width: 50%">Panopto</a>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+<section id="probability" class="level2 box">
+<h2 class="anchored" data-anchor-id="probability">7. Probability</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="date"></div>
+
+<div class="lecture-card">
+
+<div class="card-body">
+<div class="lecture-image">
+<p><a href="slides/07_probability.html" target="_blank"><img src="slides/covers/07_probability.png" class="img-fluid figure-img"></a></p>
+</div>
+
+<div class="lecture-overview">
+<div class="overview-list"><ul>
+<li>What do statisticians mean by “probability”?
+<ul>
+<li>Quantifying probability</li>
+</ul>
+</li>
+<li>“Random sampling”</li>
+<li>Probability and <span class="math inline">\(z\)</span>-scores</li>
+<li>Making inferences</li>
+</ul></div>
+</div>
+</div>
+
+<div class="footer">
+<a class="btn btn-outline-dark" href="slides/07_probability.html" target="_blank" role="button" style="width: 50%">Slides</a><a class="btn btn-outline-dark" href="slides/07_probability.html" target="_blank" role="button" style="width: 50%">Panopto</a>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+<section id="probability-1" class="level2 box">
+<h2 class="anchored" data-anchor-id="probability-1">7. Probability</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="date"></div>
+
+<div class="lecture-card">
+
+<div class="card-body">
+<div class="lecture-image">
+<p><a href="slides/07_probability.html" target="_blank"><img src="slides/covers/07_probability.png" class="img-fluid figure-img"></a></p>
+</div>
+
+<div class="lecture-overview">
+<div class="overview-list"><ul>
+<li>What do statisticians mean by “probability”?
+<ul>
+<li>Quantifying probability</li>
+</ul>
+</li>
+<li>“Random sampling”</li>
+<li>Probability and <span class="math inline">\(z\)</span>-scores</li>
+<li>Making inferences</li>
+</ul></div>
+</div>
+</div>
+
+<div class="footer">
+<a class="btn btn-outline-dark" href="slides/07_probability.html" target="_blank" role="button" style="width: 50%">Slides</a><a class="btn btn-outline-dark" href="slides/07_probability.html" target="_blank" role="button" style="width: 50%">Panopto</a>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+<section id="probability-2" class="level2 box">
+<h2 class="anchored" data-anchor-id="probability-2">7. Probability</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="date"></div>
+
+<div class="lecture-card">
+
+<div class="card-body">
+<div class="lecture-image">
+<p><a href="slides/07_probability.html" target="_blank"><img src="slides/covers/07_probability.png" class="img-fluid figure-img"></a></p>
+</div>
+
+<div class="lecture-overview">
+<div class="overview-list"><ul>
+<li>What do statisticians mean by “probability”?
+<ul>
+<li>Quantifying probability</li>
+</ul>
+</li>
+<li>“Random sampling”</li>
+<li>Probability and <span class="math inline">\(z\)</span>-scores</li>
+<li>Making inferences</li>
+</ul></div>
+</div>
+</div>
+
+<div class="footer">
+<a class="btn btn-outline-dark" href="slides/07_probability.html" target="_blank" role="button" style="width: 50%">Slides</a><a class="btn btn-outline-dark" href="slides/07_probability.html" target="_blank" role="button" style="width: 50%">Panopto</a>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+<section id="probability-3" class="level2 box">
+<h2 class="anchored" data-anchor-id="probability-3">7. Probability</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="date"></div>
+
+<div class="lecture-card">
+
+<div class="card-body">
+<div class="lecture-image">
+<p><a href="slides/07_probability.html" target="_blank"><img src="slides/covers/07_probability.png" class="img-fluid figure-img"></a></p>
+</div>
+
+<div class="lecture-overview">
+<div class="overview-list"><ul>
+<li>What do statisticians mean by “probability”?
+<ul>
+<li>Quantifying probability</li>
+</ul>
+</li>
+<li>“Random sampling”</li>
+<li>Probability and <span class="math inline">\(z\)</span>-scores</li>
+<li>Making inferences</li>
+</ul></div>
+</div>
+</div>
+
+<div class="footer">
+<a class="btn btn-outline-dark" href="slides/07_probability.html" target="_blank" role="button" style="width: 50%">Slides</a><a class="btn btn-outline-dark" href="slides/07_probability.html" target="_blank" role="button" style="width: 50%">Panopto</a>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+<section id="probability-4" class="level2 box">
+<h2 class="anchored" data-anchor-id="probability-4">7. Probability</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="date"></div>
+
+<div class="lecture-card">
+
+<div class="card-body">
+<div class="lecture-image">
+<p><a href="slides/07_probability.html" target="_blank"><img src="slides/covers/07_probability.png" class="img-fluid figure-img"></a></p>
+</div>
+
+<div class="lecture-overview">
+<div class="overview-list"><ul>
+<li>What do statisticians mean by “probability”?
+<ul>
+<li>Quantifying probability</li>
+</ul>
+</li>
+<li>“Random sampling”</li>
+<li>Probability and <span class="math inline">\(z\)</span>-scores</li>
+<li>Making inferences</li>
+</ul></div>
+</div>
+</div>
+
+<div class="footer">
+<a class="btn btn-outline-dark" href="slides/07_probability.html" target="_blank" role="button" style="width: 50%">Slides</a><a class="btn btn-outline-dark" href="slides/07_probability.html" target="_blank" role="button" style="width: 50%">Panopto</a>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+<section id="probability-5" class="level2 box">
+<h2 class="anchored" data-anchor-id="probability-5">7. Probability</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="date"></div>
+
+<div class="lecture-card">
+
+<div class="card-body">
+<div class="lecture-image">
+<p><a href="slides/07_probability.html" target="_blank"><img src="slides/covers/07_probability.png" class="img-fluid figure-img"></a></p>
+</div>
+
+<div class="lecture-overview">
+<div class="overview-list"><ul>
+<li>What do statisticians mean by “probability”?
+<ul>
+<li>Quantifying probability</li>
+</ul>
+</li>
+<li>“Random sampling”</li>
+<li>Probability and <span class="math inline">\(z\)</span>-scores</li>
+<li>Making inferences</li>
+</ul></div>
+</div>
+</div>
+
+<div class="footer">
+<a class="btn btn-outline-dark" href="slides/07_probability.html" target="_blank" role="button" style="width: 50%">Slides</a><a class="btn btn-outline-dark" href="slides/07_probability.html" target="_blank" role="button" style="width: 50%">Panopto</a>
 </div>
 
 </div>

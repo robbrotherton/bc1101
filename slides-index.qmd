@@ -4,6 +4,81 @@ execute:
   echo: false
 ---
 
+```{css}
+
+.box {
+  border: 1px solid #c3c3c3;
+  border-radius: 5px;
+  float: left;
+  margin-bottom: 1em;
+  margin-top: 0em;
+  position: relative;
+  width: 100%;
+}
+
+.box:before {
+  content: none !important;
+  display: none !important;
+  height: 0px !important;
+}
+
+.box:hover {
+  border: 1px solid black;
+}
+
+
+.box h2 {
+  border-bottom: none;
+  font-size: min(max(1em, 5vw), 2em);
+  margin-top: 0.2em !important;
+  margin-left: 0.2em;
+  margin-bottom: 0;
+  padding-top: 0;
+  width: 90%;
+}
+
+
+.box .card-body {
+  margin-top: -1em;
+}
+
+.box .box-image {
+  max-height: 150px;
+  max-width: auto;
+}
+
+
+.lecture-image {
+  float: left;
+  width: 50%;
+}
+
+.lecture-overview {
+  float: right;
+  font-size: min(max(0.8em, 2vw), 1em);
+  position: relative;
+  width: 50%;
+}
+
+.footer {
+  float: left;
+  margin-top: -1em;
+  padding: 0;
+  width: 100%;
+}
+
+.date {
+  color: grey;
+  font-size: min(max(0.5em, 3vw), 1em);
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 0.4rem;
+  top: 0.6em;
+}
+
+```
+
 ```{r}
 
 card <- function(file, date) {
@@ -20,16 +95,18 @@ card <- function(file, date) {
   
   htmltools::HTML(glue::glue(
     '
-<div class="date">01/01/2022</div>
+<div class="date">{date}</div>
 
 <div class="lecture-card">
 
+<div class="card-body">
 <div class="lecture-image">
 <p><a href="slides/{file}.html" target="_blank"><img src="slides/covers/{file}.png" class="img-fluid figure-img"></a></p>
 </div>
 
 <div class="lecture-overview">
 <div class="overview-list">{overview[[1]]}</div>
+</div>
 </div>
 
 <div class="footer">
@@ -46,7 +123,7 @@ card <- function(file, date) {
 :::: {.box}
 ## 1. Course Overview
 ```{r}
-card("01_course-info", "date")
+card("01_course-info", "")
 ```
 ::::
 
@@ -54,7 +131,7 @@ card("01_course-info", "date")
 :::: {.box}
 ## 2. Variables
 ```{r}
-card("02_variables", "date")
+card("02_variables", "")
 ```
 ::::
 
@@ -62,7 +139,7 @@ card("02_variables", "date")
 :::: {.box}
 ## 3. Frequency
 ```{r}
-card("03_frequency", "date")
+card("03_frequency", "")
 ```
 ::::
 
@@ -70,7 +147,7 @@ card("03_frequency", "date")
 :::: {.box}
 ## 4. Central Tendency
 ```{r}
-card("04_central-tendency", "date")
+card("04_central-tendency", "")
 ```
 ::::
 
@@ -78,10 +155,67 @@ card("04_central-tendency", "date")
 :::: {.box}
 ## 5. Variability
 ```{r}
-card("05_variability", "date")
+card("05_variability", "")
 ```
 ::::
 
+<!-- there's a very strange problem where it seems having "$z$ scores as the
+title insets content: "" ::before, messing things up -->
+:::: {.box}
+## 6. $z$-Scores
+```{r}
+card("06_z-scores", "")
+```
+::::
+
+:::: {.box}
+## 7. Z Probability
+```{r}
+card("07_probability", "")
+```
+::::
+
+:::: {.box}
+## 7. Probability
+```{r}
+card("07_probability", "")
+```
+::::
+
+:::: {.box}
+## 7. Probability
+```{r}
+card("07_probability", "")
+```
+::::
+
+:::: {.box}
+## 7. Probability
+```{r}
+card("07_probability", "")
+```
+::::
+
+:::: {.box}
+## 7. Probability
+```{r}
+card("07_probability", "")
+```
+::::
+
+:::: {.box}
+## 7. Probability
+```{r}
+card("07_probability", "")
+```
+::::
+
+:::: {.box}
+## 7. Probability
+```{r}
+card("07_probability", "")
+```
+::::
 
 ```{r eval=FALSE, echo=FALSE}
 
