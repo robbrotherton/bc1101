@@ -4,7 +4,7 @@ execute:
   echo: false
 ---
 
-```{css}
+```{css styling}
 
 .box {
   border: 1px solid #c3c3c3;
@@ -79,7 +79,7 @@ execute:
 
 ```
 
-```{r}
+```{r card-creation}
 
 card <- function(file, date) {
   
@@ -169,16 +169,16 @@ card("06_z-scores", "")
 ::::
 
 :::: {.box}
-## 7. Z Probability
+## 7. Probability
 ```{r}
 card("07_probability", "")
 ```
 ::::
 
 :::: {.box}
-## 7. Probability
+## 8. Sampling
 ```{r}
-card("07_probability", "")
+card("08_sampling", "")
 ```
 ::::
 

@@ -10,7 +10,7 @@ format:
 
 
 
-## Overview
+# Overview
 
 - [Statistics: Why? How? What?](#making-statistics)
 - Terminology
@@ -22,7 +22,7 @@ format:
 
 
 
-## Making statistics
+# Making statistics
 
 
 - Where do statistics come from?
@@ -30,9 +30,10 @@ format:
 
 ## Producing a statistic
 
-- Gather data to determine what proportion of books are red
-- Enter your best estimate and explain your process
-- Suggested time limit: 5 minutes
+- How many books are [__red__]{style="color: red;"}
+  - Gather data to determine what proportion of books are red
+  - Enter your best estimate and explain your process
+  - Suggested time limit: 5 minutes
 
 ![](media/book.jpg)
 
@@ -48,6 +49,7 @@ format:
   - Young people, narcissism, anxiety, depression ^[See [Singal, 2016](https://www.thecut.com/2016/03/for-80-years-young-americans-have-been-getting-more-anxious-and-depressed.html)]
 
 
+# Measuring things
 
 ## Constructs & operational definitions
 
@@ -64,15 +66,15 @@ format:
 - Operational definition: How far the top of your head is from the floor according to a tape measure
 :::
 
-## Measuring things
 
-- Operationalizing variables
-  - Usually more than one way we could go about measuring & recording data
-  - Result in different types of data, and potentially different applicable analyses
-  - How to decide on operational definition?
-- Aspects to consider:
-  - Type of variable (discrete / continuous)
-  - Scale of measurement (nominal / ordinal / interval / ratio)
+## Operationalizing variables
+
+- Usually more than one way we could measure & record data
+- Result in different types of data, and potentially different applicable analyses
+- How to decide on operational definition?
+  - Aspects to consider:
+    - Type of variable (discrete / continuous)
+    - Scale of measurement (nominal / ordinal / interval / ratio)
 
 
 ## Types of variable {.smaller}
@@ -132,19 +134,65 @@ knitr::kable(tab, 'html', escape = F)
 ```
 
 
-## Measuring things
+## Likert scales
 
-Likert scales
+```{css}
 
-- E.g. "What is your current level of happiness?"
+.form-check-input {
+  width: 2em;
+  height: 2em;
+}
 
-::: {.center}
-1. A lot less than usual
-2. A little less than usual
-3. About average
-4. A little more than usual
-5. A lot more than usual
+.likert {
+  border: 1px black solid;
+  margin-top: 1em;
+  padding: 0.5em;
+}
+
+.likert > p {
+  margin-top: 0;
+  font-style: normal;
+}
+
+.likert .likert-options {
+  display: flex; 
+  justify-content: center;
+}
+
+```
+
+::: {.likert}
+What is your current level of happiness?
+
+::: {.likert-options}
+```{r}
+make_html_likert <- function(label, checked = FALSE) {
+  htmltools::HTML(
+    glue::glue('
+      
+        <label class="form-check-label">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" {ifelse(checked, "checked", "")}>
+        {label}
+        </label>
+    ')
+  )
+}
+make_html_likert("1. A lot less than usual")
+make_html_likert("2. A little less than usual")
+make_html_likert("3. About average", TRUE)
+make_html_likert("4. A little more than usual")
+make_html_likert("5. A lot more than usual")
+
+```
 :::
+:::
+<!-- ::: {.center} -->
+<!-- * [] 1. A lot less than usual -->
+<!-- 2. A little less than usual -->
+<!-- 3. About average -->
+<!-- 4. A little more than usual -->
+<!-- 5. A lot more than usual -->
+<!-- ::: -->
 
 ## Populations & samples
 

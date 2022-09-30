@@ -7,14 +7,62 @@ format:
 
 # 1|COURSE OVERVIEW
 
-![](covers/01_course-info.png) {.cover-image}
+![](covers/01_course-info.png)
+
+```{r cover-course-info, eval=FALSE}
+library(ggplot)
+
+word <- "STATISTICS"
+
+df <- data.frame(letter = strsplit(word, "")[[1]]) |> 
+  dplyr::rowwise() |> 
+  dplyr::mutate(value = which(LETTERS==letter)) |> 
+  tibble::rowid_to_column(var = "id")
+
+ggplot(df, aes(x = id, y = value, fill = letter)) +
+  geom_col() +
+  scale_fill_viridis_d(option = "D", end = .6, guide = "none") +
+  theme_void()
+
+# bc1101tools::save_cover()
+
+# variability cover
+
+sd <- seq(1, 5, .1)
+xvals <- seq(-5, 5, .1)
+
+df <- data.frame(id = rep(sd, each = length(xvals)),
+                 x = rep(xvals, length(sd)),
+                 y = purrr::map(.x = sd, ~dnorm(x = xvals, sd = .x)) |> 
+  unlist())
+
+ggplot(df) +
+  geom_path(aes(x, y, group = id, alpha = 1/id)) +
+  scale_alpha_identity(guide = "none") +
+  theme_void()
+
+# frequency cover
+dfs <- 1:100
+xvals <- seq(-3, 3, .1)
+
+df <- data.frame(id = rep(dfs, each = length(xvals)),
+                 x = rep(xvals, length(dfs)),
+                 y = purrr::map(.x = dfs, ~dt(x = xvals, df = .x)) |> 
+  unlist())
+
+ggplot(df) +
+  geom_path(aes(x, y, group = id), alpha = .5) +
+  theme_void()
+
+```
 
 ## Overview
 
 - [Textbook]
 - [Lectures]
-- [Exams]
 - [Recitation]
+- [Exams]
+- [Final grades]
 - [Other stuff](#lastly)
 
 
@@ -39,7 +87,7 @@ format:
 ::::
 
 
-## Textbook
+# Textbook
 
 
 :::: {.columns}
@@ -55,26 +103,25 @@ format:
 
 ::: {.column width="50%"}
 
-<!-- placeholder -->
+[![](media/navarro-flametree.png){style="margin-top: -2em;"}](https://art.djnavarro.net/)
 
 :::
 
 ::::
 
 
-## Lectures
+# Lectures
 
-- Panopto
+## Panopto
+
   - In-lecture quizzes
   - Navigation
   - Subtitles
   - Discussion
   - Also: Discussion forums on Canvas
 
-## Lectures
+## Topics
 
-
-- Topics covered:
 - Basic issues:
   - Terminology, variables & measurement
 - Descriptive statistics: 
@@ -84,22 +131,23 @@ format:
   - $t$-tests; ANOVA; Correlation & regression
 - Logical progression
 
-## Recitation
+
+# Recitation
+
+## R problem sets
 
 - Practical application of stats to data
-  - Problem Sets
-  - Using R markdown
-  - Show code—how you worked out answers
-  - Work on .Rmd in RStudio Cloud
-  - Upload "knitted" .pdf to Canvas
+  - Using RStudio Cloud
+  - Show code; how you worked out answers
+  - Work on .qmd in RStudio Cloud
+  - Upload rendered .pdf to Canvas
 
-## Recitation
+## Grading
 
-- Grading problem sets
+- Wrong answers ≠ lower grade
   - 0, 1, or 2 points
   - 0 = No submission, 1 = Incomplete, 2 = Valid attempt
-  - Wrong answers ≠ lower grade
-  - Deadline: 5pm Eastern day of recitation
+  - Deadline: 5pm day of recitation
 
 ```{r echo=T}
 # comment your R code to show thought process
@@ -108,7 +156,7 @@ format:
 2 + 2 
 ```
 
-## Exams
+# Exams
 
 - 3 multiple choice exams
   - Multiple choice
@@ -118,12 +166,15 @@ format:
   - Except inasmuch as later concepts rely on ones introduced earlier
 - Some questions will involve sums, but only simple ones you can do on paper
 
-## Final grades
+# Final grades
 
 - Final grade
   - 20% Lecture / discussion forum engagement
   - 20% Problem Sets
   - 60% 3 multiple choice exams (20% each)
+
+
+# Other stuff
 
 ## Math
 
@@ -158,26 +209,26 @@ $$\Sigma X = ? \\
 $$\begin{align}12 &= 7 + X \\ X &= ? \end{align}$$
 
 
-## R {.smaller}
+## ![](media/Rlogo.svg){style="height: 1em; margin-left: 0.75em"} {#r .smaller data-menu-title="R"}
 
 :::: {.columns}
 
-::: {.column width="60%"}
+::: {.column width="50%"}
 - Disadvantages
   - A little tricky to begin with
 - Advantages
   - Free
   - Can do stuff other stats software can't
-  - Keeps a record of what you do
+  - Reproducible analyses
   - Pretty graphs
   - Feel like a super cool hacker
   - Pirate jokes
   - Good for your career
 :::
 
-::: {.column width="40%"}
+::: {.column width="50%"}
 
-![](media/r-logo.png)
+![](media/r-jobs-2019.png)
 
 :::
 

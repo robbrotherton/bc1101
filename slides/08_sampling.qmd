@@ -1,0 +1,138 @@
+---
+format: 
+  revealjs:
+    chalkboard: true
+---
+
+# 8|SAMPLING {.lecture-title}
+
+![](covers/08_sampling.gif)
+
+
+# Overview
+
+- Sampling error
+- Central Limit Theorem
+
+## Roadmap
+
+- So far...  
+  - $z$-scores describe the location of a single score in a sample or in a population
+  - Normal distributions: precisely quantify probability of obtaining certain *scores*
+- Moving forward...
+
+
+# Sampling error
+
+- Sampling Error
+  - Discrepancy between a sample statistic and the population parameter
+
+![](media/pop-sample-ani.gif)
+
+## Sampling error
+
+- Sampling Error
+  - Discrepancy between a sample statistic and the population parameter
+  - E.g. Opinion polling 
+  - see [Pew explainer](https://www.pewresearch.org/fact-tank/2016/09/08/understanding-the-margin-of-error-in-election-polls/)
+
+![](media/margin-of-error.png)
+
+## Sampling error
+
+IQ video
+
+# Sampling distribution
+
+- "Distribution of Sample Means" / "Sampling distribution of the mean"
+  - Distribution of sample means obtained by selecting all possible samples of size $n$ from a population
+  - Often huge number of possible samples
+  - But distribution forms a simple & predictable pattern
+
+## Sampling distribution
+
+- Characteristics
+  - Shape
+      - The distribution will be approximately normal
+      - Sample $M$s are representative of population $\mu$
+      - Most means will be close to $\mu$; means far from $\mu$ are rare
+  - Center
+      - The center/average of the distribution will be close to $\mu$
+      - $M$ is a *unbiased* statistic
+      - *On average*, $M = \mu$
+  - Variability
+      - Related to sample size, $n$
+      - The larger the sample, the less the variability 
+      - Larger samples are more representative
+
+
+
+# Central Limit Theorem
+
+- Sampling & the Central Limit Theorem
+  - Distribution of samples means based on all possible samples from a population not feasible in most realistic situations
+- Central Limit Theorem
+  - We can mathematically predict shape, mean, & variability for any sample size & population
+  - For any population with mean $\mu$ and standard deviation $\sigma$, the distribution of sample means for sample size n will have…
+  - An expected mean $\mu_M$ of $\mu$ 
+  - A standard deviation of $\dfrac{\sigma} {\sqrt{n}}$ 
+  - And will approach a normal distribution as $n$ approaches infinity
+
+
+## Shape
+
+- Shape of the sampling distribution
+  - Almost perfectly normal in either of two conditions 
+  - The population from which the samples are selected is a normal distribution
+  - Or…
+  - Sample $n$s are relatively large<br><br>
+
+::: {.fragment}
+- ...what is *relatively large*? 
+  - As $n$ approaches infinity, distribution of sample means approaches a normal distribution 
+  - But by $n = 30$ means pile up symmetrically around $\mu$
+  - Population distribution does not need to be normal; can be skewed, flat, bimodal, whatever
+:::
+
+## Mean
+
+- Mean of the sampling distribution
+  - Mean of the distribution of sample means is called the expected value of $M$ ( $\mu_M$ ) 
+  - On average, $M = \mu_M  = \mu$
+  - $M$ is unbiased
+  - If we only have a single sample $M$, our best guess at the (unknown) population mean should always be the (known) sample mean
+  - But we can acknowledge variability...
+
+## Variability
+
+- Variability of the sampling distribution
+  - Standard deviation of the sample means
+  - "Standard error of the mean";  $\sigma_M$
+  - Measure of how well a sample mean estimates its population mean
+  - How much sampling error we can expect; how much distance is expected on average between $M$ and $\mu$
+
+$\sigma_M = \dfrac{\sigma}{\sqrt{n}}$ or $\dfrac{\sqrt{\sigma^2}}{\sqrt{n}}$ or $\sqrt{\dfrac{\sigma^2}{n}}$
+
+## Variability
+
+![](media/samp-dist-1.png)
+
+## Variability
+
+![](media/samp-dist-2.png)
+
+## Summary
+
+- Summary
+  - Distribution of sample means for samples of size $n$ will have...
+    - a mean of $\mu_M$
+    - standard deviation $\sigma_M = \sigma / \sqrt{n}$
+    - Shape will be normal if population is normally distributed, or $n > 30$
+
+# Learning checks
+
+1. True or False?
+  - The mean of a sample is always equal to the population mean
+  - The shape of a distribution of sample means is always normal
+  - As sample size increases, the value of the standard error always decreases
+2. Describe the distribution of sample means (shape, expected value of the mean, and standard error) for samples of $n = 100$ selected from a population with $\mu = 40$ and $\sigma = 10$.

@@ -32,7 +32,7 @@
     "href": "slides/01_course-info.html#overview",
     "title": "BC1101",
     "section": "Overview",
-    "text": "Overview\n\nTextbook\nLectures\nExams\nRecitation\nOther stuff"
+    "text": "Overview\n\nTextbook\nLectures\nRecitation\nExams\nFinal grades\nOther stuff"
   },
   {
     "objectID": "slides/01_course-info.html#about-me",
@@ -115,8 +115,8 @@
     "objectID": "slides/01_course-info.html#r",
     "href": "slides/01_course-info.html#r",
     "title": "BC1101",
-    "section": "R",
-    "text": "R\n\n\n\nDisadvantages\n\nA little tricky to begin with\n\nAdvantages\n\nFree\nCan do stuff other stats software can’t\nKeeps a record of what you do\nPretty graphs\nFeel like a super cool hacker\nPirate jokes\nGood for your career"
+    "section": "",
+    "text": "Disadvantages\n\nA little tricky to begin with\n\nAdvantages\n\nFree\nCan do stuff other stats software can’t\nReproducible analyses\nPretty graphs\nFeel like a super cool hacker\nPirate jokes\nGood for your career"
   },
   {
     "objectID": "slides/01_course-info.html#lastly",
@@ -144,7 +144,7 @@
     "href": "slides/02_variables.html#producing-a-statistic",
     "title": "BC1101",
     "section": "Producing a statistic",
-    "text": "Producing a statistic\n\nGather data to determine what proportion of books are red\nEnter your best estimate and explain your process\nSuggested time limit: 5 minutes"
+    "text": "Producing a statistic\n\nHow many books are red\n\nGather data to determine what proportion of books are red\nEnter your best estimate and explain your process\nSuggested time limit: 5 minutes"
   },
   {
     "objectID": "slides/02_variables.html#how-many-books-are-red",
@@ -873,5 +873,145 @@
     "title": "Slides",
     "section": "6. Scores",
     "text": "6. Scores\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(z\\)-scores?\n\nWhat are they for?\nHow do you calculate them?\n\n\nStandardized distributions\n\n\\(z\\)-scores & probability / inferences\n\n\n\n\n\nSlidesPanopto"
+  },
+  {
+    "objectID": "slides/08_sampling.html#roadmap",
+    "href": "slides/08_sampling.html#roadmap",
+    "title": "BC1101",
+    "section": "Roadmap",
+    "text": "Roadmap\n\nSo far…\n\n\\(z\\)-scores describe the location of a single score in a sample or in a population\nNormal distributions: precisely quantify probability of obtaining certain scores\n\nMoving forward…"
+  },
+  {
+    "objectID": "slides/08_sampling.html#sampling-error-1",
+    "href": "slides/08_sampling.html#sampling-error-1",
+    "title": "BC1101",
+    "section": "Sampling error",
+    "text": "Sampling error\n\nSampling Error\n\nDiscrepancy between a sample statistic and the population parameter\nE.g. Opinion polling\nsee Pew explainer"
+  },
+  {
+    "objectID": "slides/08_sampling.html#sampling-error-2",
+    "href": "slides/08_sampling.html#sampling-error-2",
+    "title": "BC1101",
+    "section": "Sampling error",
+    "text": "Sampling error\nIQ video"
+  },
+  {
+    "objectID": "slides/08_sampling.html#sampling-distribution-1",
+    "href": "slides/08_sampling.html#sampling-distribution-1",
+    "title": "BC1101",
+    "section": "Sampling distribution",
+    "text": "Sampling distribution\n\nCharacteristics\n\nShape\n\nThe distribution will be approximately normal\nSample \\(M\\)s are representative of population \\(\\mu\\)\nMost means will be close to \\(\\mu\\); means far from \\(\\mu\\) are rare\n\nCenter\n\nThe center/average of the distribution will be close to \\(\\mu\\)\n\\(M\\) is a unbiased statistic\nOn average, \\(M = \\mu\\)\n\nVariability\n\nRelated to sample size, \\(n\\)\nThe larger the sample, the less the variability\nLarger samples are more representative"
+  },
+  {
+    "objectID": "slides/08_sampling.html#shape",
+    "href": "slides/08_sampling.html#shape",
+    "title": "BC1101",
+    "section": "Shape",
+    "text": "Shape\n\nShape of the sampling distribution\n\nAlmost perfectly normal in either of two conditions\nThe population from which the samples are selected is a normal distribution\nOr…\nSample \\(n\\)s are relatively large\n\n\n\n\n…what is relatively large?\n\nAs \\(n\\) approaches infinity, distribution of sample means approaches a normal distribution\nBut by \\(n = 30\\) means pile up symmetrically around \\(\\mu\\)\nPopulation distribution does not need to be normal; can be skewed, flat, bimodal, whatever"
+  },
+  {
+    "objectID": "slides/08_sampling.html#mean",
+    "href": "slides/08_sampling.html#mean",
+    "title": "BC1101",
+    "section": "Mean",
+    "text": "Mean\n\nMean of the sampling distribution\n\nMean of the distribution of sample means is called the expected value of \\(M\\) ( \\(\\mu_M\\) )\nOn average, \\(M = \\mu_M = \\mu\\)\n\\(M\\) is unbiased\nIf we only have a single sample \\(M\\), our best guess at the (unknown) population mean should always be the (known) sample mean\nBut we can acknowledge variability…"
+  },
+  {
+    "objectID": "slides/08_sampling.html#variability",
+    "href": "slides/08_sampling.html#variability",
+    "title": "BC1101",
+    "section": "Variability",
+    "text": "Variability\n\nVariability of the sampling distribution\n\nStandard deviation of the sample means\n“Standard error of the mean”; \\(\\sigma_M\\)\nMeasure of how well a sample mean estimates its population mean\nHow much sampling error we can expect; how much distance is expected on average between \\(M\\) and \\(\\mu\\)\n\n\n\\(\\sigma_M = \\dfrac{\\sigma}{\\sqrt{n}}\\) or \\(\\dfrac{\\sqrt{\\sigma^2}}{\\sqrt{n}}\\) or \\(\\sqrt{\\dfrac{\\sigma^2}{n}}\\)"
+  },
+  {
+    "objectID": "slides/08_sampling.html#summary",
+    "href": "slides/08_sampling.html#summary",
+    "title": "BC1101",
+    "section": "Summary",
+    "text": "Summary\n\nSummary\n\nDistribution of sample means for samples of size \\(n\\) will have…\n\na mean of \\(\\mu_M\\)\nstandard deviation \\(\\sigma_M = \\sigma / \\sqrt{n}\\)\nShape will be normal if population is normally distributed, or \\(n > 30\\)"
+  },
+  {
+    "objectID": "slides-index.html#sampling",
+    "href": "slides-index.html#sampling",
+    "title": "Slides",
+    "section": "8. Sampling",
+    "text": "8. Sampling\n\n\n\n\n\n\n\n\n\n\n\n\n\nSampling error\nCentral Limit Theorem\n\n\n\n\n\nSlidesPanopto"
+  },
+  {
+    "objectID": "slides/test-ojs.html#something",
+    "href": "slides/test-ojs.html#something",
+    "title": "BC1101",
+    "section": "Something",
+    "text": "Something\n\n\n\n\ndata = FileAttachment(\"palmer-penguins.csv\").csv({ typed: true })\n\nviewof bill_length_min = Inputs.range(\n  [32, 50], \n  {value: 35, step: 1, label: \"Bill length (min):\"}\n)\nviewof islands = Inputs.checkbox(\n  [\"Torgersen\", \"Biscoe\", \"Dream\"], \n  { value: [\"Torgersen\", \"Biscoe\"], \n    label: \"Islands:\"\n  }\n)\n\nfiltered = data.filter(function(penguin) {\n  return bill_length_min < penguin.bill_length_mm &&\n         islands.includes(penguin.island);\n})\n\nPlot.rectY(filtered, \n  Plot.binX(\n    {y: \"count\"}, \n    {x: \"body_mass_g\", fill: \"species\", thresholds: 20}\n  ))\n  .plot({\n    facet: {\n      data: filtered,\n      x: \"sex\",\n      y: \"species\",\n      marginRight: 80\n    },\n    marks: [\n      Plot.frame(),\n    ]\n  }\n)"
+  },
+  {
+    "objectID": "slides/08_sampling.html#variability-1",
+    "href": "slides/08_sampling.html#variability-1",
+    "title": "BC1101",
+    "section": "Variability",
+    "text": "Variability"
+  },
+  {
+    "objectID": "slides/08_sampling.html#variability-2",
+    "href": "slides/08_sampling.html#variability-2",
+    "title": "BC1101",
+    "section": "Variability",
+    "text": "Variability"
+  },
+  {
+    "objectID": "slides/01_course-info.html#panopto",
+    "href": "slides/01_course-info.html#panopto",
+    "title": "BC1101",
+    "section": "Panopto",
+    "text": "Panopto\n\nIn-lecture quizzes\nNavigation\nSubtitles\nDiscussion\nAlso: Discussion forums on Canvas"
+  },
+  {
+    "objectID": "slides/01_course-info.html#topics",
+    "href": "slides/01_course-info.html#topics",
+    "title": "BC1101",
+    "section": "Topics",
+    "text": "Topics\n\nBasic issues:\n\nTerminology, variables & measurement\n\nDescriptive statistics:\n\nFrequency, central tendency, variability, z-scores\n\nInferential statistics:\n\nProbability, sampling; hypothesis testing\n\\(t\\)-tests; ANOVA; Correlation & regression\n\nLogical progression"
+  },
+  {
+    "objectID": "slides/01_course-info.html#r-problem-sets",
+    "href": "slides/01_course-info.html#r-problem-sets",
+    "title": "BC1101",
+    "section": "R problem sets",
+    "text": "R problem sets\n\nPractical application of stats to data\n\nUsing RStudio Cloud\nShow code; how you worked out answers\nWork on .qmd in RStudio Cloud\nUpload rendered .pdf to Canvas"
+  },
+  {
+    "objectID": "slides/01_course-info.html#grading",
+    "href": "slides/01_course-info.html#grading",
+    "title": "BC1101",
+    "section": "Grading",
+    "text": "Grading\n\nWrong answers ≠ lower grade\n\n0, 1, or 2 points\n0 = No submission, 1 = Incomplete, 2 = Valid attempt\nDeadline: 5pm day of recitation\n\n\n\n# comment your R code to show thought process\n\n# e.g. here I'm adding 2 and 2\n2 + 2 \n\n[1] 4"
+  },
+  {
+    "objectID": "slides/01_course-info.html#section",
+    "href": "slides/01_course-info.html#section",
+    "title": "BC1101",
+    "section": "",
+    "text": "Disadvantages\n\nA little tricky to begin with\n\nAdvantages\n\nFree\nCan do stuff other stats software can’t\nKeeps a record of what you do\nPretty graphs\nFeel like a super cool hacker\nPirate jokes\nGood for your career"
+  },
+  {
+    "objectID": "slides/02_variables.html#operationalizing-variables",
+    "href": "slides/02_variables.html#operationalizing-variables",
+    "title": "BC1101",
+    "section": "Operationalizing variables",
+    "text": "Operationalizing variables\n\nUsually more than one way we could measure & record data\nResult in different types of data, and potentially different applicable analyses\nHow to decide on operational definition?\n\nAspects to consider:\n\nType of variable (discrete / continuous)\nScale of measurement (nominal / ordinal / interval / ratio)"
+  },
+  {
+    "objectID": "slides/02_variables.html#likert-scales",
+    "href": "slides/02_variables.html#likert-scales",
+    "title": "BC1101",
+    "section": "Likert scales",
+    "text": "Likert scales\n\n\n\n\nWhat is your current level of happiness?\n\n\n\n  \n    \n    \n    1. A lot less than usual\n    \n\n\n  \n    \n    \n    2. A little less than usual\n    \n\n\n  \n    \n    \n    3. About average\n    \n\n\n  \n    \n    \n    4. A little more than usual\n    \n\n\n  \n    \n    \n    5. A lot more than usual"
+  },
+  {
+    "objectID": "slides/test-ojs.html",
+    "href": "slides/test-ojs.html",
+    "title": "BC1101",
+    "section": "",
+    "text": "x = 10\n\nx + 5\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nreadr::write_csv(palmerpenguins::penguins, \"palmer-penguins.csv\")\n\n\ndata = FileAttachment(\"palmer-penguins.csv\").csv({ typed: true })\n\nviewof bill_length_min = Inputs.range(\n  [32, 50], \n  {value: 35, step: 1, label: \"Bill length (min):\"}\n)\nviewof islands = Inputs.checkbox(\n  [\"Torgersen\", \"Biscoe\", \"Dream\"], \n  { value: [\"Torgersen\", \"Biscoe\"], \n    label: \"Islands:\"\n  }\n)\n\nfiltered = data.filter(function(penguin) {\n  return bill_length_min < penguin.bill_length_mm &&\n         islands.includes(penguin.island);\n})\n\nPlot.rectY(filtered, \n  Plot.binX(\n    {y: \"count\"}, \n    {x: \"body_mass_g\", fill: \"species\", thresholds: 20}\n  ))\n  .plot({\n    facet: {\n      data: filtered,\n      x: \"sex\",\n      y: \"species\",\n      marginRight: 80\n    },\n    marks: [\n      Plot.frame(),\n    ]\n  }\n)"
   }
 ]

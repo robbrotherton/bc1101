@@ -15,9 +15,34 @@ $code-block-border-color: #000000;
 /*-- scss:rules --*/
 
 
-
 /* for lecture slides */
 
+/* doesn't work; changes every h1, because each slide is its own section?
+.reveal h1:first-of-type {
+  color: red;
+  font-size: 6rem !important;
+}
+*/
+
+/* style the very first h1, i.e. the lecture title */
+.reveal .slides>section:first-of-type h1 {
+  font-size: 6rem !important;
+}
+
+/* this points to the cover image */
+.reveal .slides>section:first-of-type img {
+
+}
+
+.reveal h1 {
+  font-size: 4rem !important;
+}
+
+.reveal h2 {
+  font-size: 4rem !important;
+}
+
+/*
 .cover h2 {
   font-size: 2em;
 }
@@ -34,6 +59,7 @@ $code-block-border-color: #000000;
 .lecture-title img {
   margin-top: 0;
 }
+*/
 
 .reveal img {
   margin-left: 50%;
@@ -45,11 +71,16 @@ $code-block-border-color: #000000;
 }
 
 
-/* look of tables */
+/* control the look of tables */
 table {
   border-top: 2px solid black;
   border-bottom: 2px solid black;
-  border-collapse: collapse; }
+  border-collapse: collapse;
+}
+
+.table-small {
+  font-size: 0.75em;
+}
 
 table thead {
   border-bottom: 2px solid black;
@@ -60,34 +91,18 @@ tr:hover {
 }
 
 
-.reveal h1 {
-  font-size: 4rem !important;
-}
-
-.reveal .lecture-title h1 {
-  font-size: 6rem !important;
-}
-
-.reveal h2 {
-  font-size: 4rem !important;
-}
-
-.lecture-title {
-  font-size: 6rem !important;
-}
 
 .heading-background {
   background-color: rgba(255, 255, 255, 0.7);
 }
+
 
 .top {
   position: absolute;
   top: 0;
 }
 
-.table-small {
-  font-size: 0.75em;
-}
+
 
 .playing-card {
   text-align: center;

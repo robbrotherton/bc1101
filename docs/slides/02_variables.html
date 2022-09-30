@@ -320,13 +320,13 @@
     <div class="slides">
 
 
-<section>
 <section id="variables" class="title-slide slide level1 center">
 <h1>2|VARIABLES</h1>
 
 <img data-src="covers/02_variables.png" class="r-stretch"></section>
-<section id="overview" class="slide level2">
-<h2>Overview</h2>
+
+<section id="overview" class="title-slide slide level1 center">
+<h1>Overview</h1>
 <ul>
 <li><a href="#/making-statistics">Statistics: Why? How? What?</a></li>
 <li>Terminology
@@ -339,8 +339,10 @@
 </ul></li>
 </ul>
 </section>
-<section id="making-statistics" class="slide level2">
-<h2>Making statistics</h2>
+
+<section>
+<section id="making-statistics" class="title-slide slide level1 center">
+<h1>Making statistics</h1>
 <ul>
 <li>Where do statistics come from?</li>
 </ul>
@@ -348,9 +350,12 @@
 <section id="producing-a-statistic" class="slide level2">
 <h2>Producing a statistic</h2>
 <ul>
+<li>How many books are <span style="color: red;"><strong>red</strong></span>
+<ul>
 <li>Gather data to determine what proportion of books are red</li>
 <li>Enter your best estimate and explain your process</li>
 <li>Suggested time limit: 5 minutes</li>
+</ul></li>
 </ul>
 
 <img data-src="media/book.jpg" class="r-stretch"></section>
@@ -366,7 +371,12 @@
 <li>Young people, narcissism, anxiety, depression <sup>2</sup></li>
 </ul></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn1" role="doc-endnote"><p><a href="https://web.archive.org/web/20191017204229/https://www.centeronaddiction.org/addiction-research/reports/family-matters-substance-abuse-and-american-family">The National Center on Addiction and Substance Abuse at Columbia University, 2005</a></p></li><li id="fn2" role="doc-endnote"><p>See <a href="https://www.thecut.com/2016/03/for-80-years-young-americans-have-been-getting-more-anxious-and-depressed.html">Singal, 2016</a></p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn1" role="doc-endnote"><p><a href="https://web.archive.org/web/20191017204229/https://www.centeronaddiction.org/addiction-research/reports/family-matters-substance-abuse-and-american-family">The National Center on Addiction and Substance Abuse at Columbia University, 2005</a></p></li><li id="fn2" role="doc-endnote"><p>See <a href="https://www.thecut.com/2016/03/for-80-years-young-americans-have-been-getting-more-anxious-and-depressed.html">Singal, 2016</a></p></li></ol></aside></section></section>
+<section>
+<section id="measuring-things" class="title-slide slide level1 center">
+<h1>Measuring things</h1>
+
+</section>
 <section id="constructs-operational-definitions" class="slide level2">
 <h2>Constructs &amp; operational definitions</h2>
 <ul>
@@ -386,19 +396,18 @@
 </ul>
 </div>
 </section>
-<section id="measuring-things" class="slide level2">
-<h2>Measuring things</h2>
+<section id="operationalizing-variables" class="slide level2">
+<h2>Operationalizing variables</h2>
 <ul>
-<li>Operationalizing variables
-<ul>
-<li>Usually more than one way we could go about measuring &amp; recording data</li>
+<li>Usually more than one way we could measure &amp; record data</li>
 <li>Result in different types of data, and potentially different applicable analyses</li>
-<li>How to decide on operational definition?</li>
-</ul></li>
+<li>How to decide on operational definition?
+<ul>
 <li>Aspects to consider:
 <ul>
 <li>Type of variable (discrete / continuous)</li>
 <li>Scale of measurement (nominal / ordinal / interval / ratio)</li>
+</ul></li>
 </ul></li>
 </ul>
 </section>
@@ -486,21 +495,83 @@
 </div>
 </div>
 </section>
-<section id="measuring-things-1" class="slide level2">
-<h2>Measuring things</h2>
-<p>Likert scales</p>
-<ul>
-<li>E.g. “What is your current level of happiness?”</li>
-</ul>
-<div class="center">
-<ol type="1">
-<li>A lot less than usual</li>
-<li>A little less than usual</li>
-<li>About average</li>
-<li>A little more than usual</li>
-<li>A lot more than usual</li>
-</ol>
+<section id="likert-scales" class="slide level2">
+<h2>Likert scales</h2>
+<div class="cell">
+<style type="text/css">
+
+.form-check-input {
+  width: 2em;
+  height: 2em;
+}
+
+.likert {
+  border: 1px black solid;
+  margin-top: 1em;
+  padding: 0.5em;
+}
+
+.likert > p {
+  margin-top: 0;
+  font-style: normal;
+}
+
+.likert .likert-options {
+  display: flex; 
+  justify-content: center;
+}
+
+</style>
 </div>
+<div class="likert">
+<p>What is your current level of happiness?</p>
+<div class="likert-options">
+<div class="cell">
+<div class="cell-output-display">
+  
+    <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="flexRadioDefault">
+    1. A lot less than usual
+    </label>
+</div>
+<div class="cell-output-display">
+  
+    <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="flexRadioDefault">
+    2. A little less than usual
+    </label>
+</div>
+<div class="cell-output-display">
+  
+    <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="flexRadioDefault" checked="">
+    3. About average
+    </label>
+</div>
+<div class="cell-output-display">
+  
+    <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="flexRadioDefault">
+    4. A little more than usual
+    </label>
+</div>
+<div class="cell-output-display">
+  
+    <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="flexRadioDefault">
+    5. A lot more than usual
+    </label>
+</div>
+</div>
+</div>
+</div>
+<!-- ::: {.center} -->
+<!-- * [] 1. A lot less than usual -->
+<!-- 2. A little less than usual -->
+<!-- 3. About average -->
+<!-- 4. A little more than usual -->
+<!-- 5. A lot more than usual -->
+<!-- ::: -->
 </section>
 <section id="populations-samples" class="slide level2">
 <h2>Populations &amp; samples</h2>
