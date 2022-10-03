@@ -91,7 +91,13 @@ card <- function(file, date) {
   
   # replace links, which are just of the format #link, with full href
   overview <- gsub('a href="#', glue::glue('a target="_blank" href="slides/{file}.html#'), overview)
-   
+  
+  # find the right cover image
+  # some .png, some .svg, so need to look up what's available
+  
+  files <- list.files(here::here("slides", "covers"))
+  image <- files[stringr::str_detect(files, file)]
+  image <- ifelse(length(image)==0, "01_course-info.svg", image)
   
   htmltools::HTML(glue::glue(
     '
@@ -101,7 +107,7 @@ card <- function(file, date) {
 
 <div class="card-body">
 <div class="lecture-image">
-<p><a href="slides/{file}.html" target="_blank"><img src="slides/covers/{file}.png" class="img-fluid figure-img"></a></p>
+<p><a href="slides/{file}.html" target="_blank"><img src="slides/covers/{image}" class="img-fluid figure-img"></a></p>
 </div>
 
 <div class="lecture-overview">
@@ -182,40 +188,8 @@ card("08_sampling", "")
 ```
 ::::
 
-:::: {.box}
-## 7. Probability
-```{r}
-card("07_probability", "")
-```
-::::
 
-:::: {.box}
-## 7. Probability
-```{r}
-card("07_probability", "")
-```
-::::
 
-:::: {.box}
-## 7. Probability
-```{r}
-card("07_probability", "")
-```
-::::
-
-:::: {.box}
-## 7. Probability
-```{r}
-card("07_probability", "")
-```
-::::
-
-:::: {.box}
-## 7. Probability
-```{r}
-card("07_probability", "")
-```
-::::
 
 ```{r eval=FALSE, echo=FALSE}
 
