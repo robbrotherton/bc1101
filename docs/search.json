@@ -2,21 +2,21 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "PSYC BC1101 STATISTICS  \n\nDownload PDF version of syllabus\n\n",
+    "title": "PSYC BC1101 STATISTICS   ¶  ¶ Download PDF version of syllabus ¶  ¶ ",
     "section": "",
     "text": "Professor: Dr. Rob Brotherton\nEmail: rbrother@barnard.edu\nOffice Hours: TBD\nLecture hours: TBD Lecture venue: TBD"
   },
   {
     "objectID": "index.html#course-overview",
     "href": "index.html#course-overview",
-    "title": "PSYC BC1101 STATISTICS  \n\nDownload PDF version of syllabus\n\n",
+    "title": "PSYC BC1101 STATISTICS   ¶  ¶ Download PDF version of syllabus ¶  ¶ ",
     "section": "Course Overview",
     "text": "Course Overview\nThis course, required for the psychology major, provides an introduction to statistical methods commonly used in psychological research. Topics include measures of central tendency and variability, probability and sampling, confidence intervals and hypothesis testing, t-test and analysis of variance, correlation and regression. In addition to learning the conceptual and mathematical underpinnings of these techniques, you will learn to calculate and interpret statistics with reference to real-world contexts and research questions typical in psychological research. The course includes recitation meetings that provide instruction in the analysis of psychological data using the R statistical software package commonly used by behavioral science researchers.\nThe course is designed to fulfill these goals:\n\nUnderstand what statistics are, and why and when they are needed\nTranslate observations about the world into statistical statements and questions\nLearn how statistical methods are used to test psychological hypotheses\nUse statistical software (R) to describe, visualize, analyze, and report data"
   },
   {
     "objectID": "index.html#class-schedule",
     "href": "index.html#class-schedule",
-    "title": "PSYC BC1101 STATISTICS  \n\nDownload PDF version of syllabus\n\n",
+    "title": "PSYC BC1101 STATISTICS   ¶  ¶ Download PDF version of syllabus ¶  ¶ ",
     "section": "Class Schedule",
     "text": "Class Schedule\nTBD"
   },
@@ -179,7 +179,7 @@
     "href": "slides/02_variables.html#types-of-variable",
     "title": "BC1101",
     "section": "Types of variable",
-    "text": "Types of variable\n\n\n\nDiscrete\n\nSomething we count as whole numbers\nMade up of separate, indivisible categories\nNo values exist between neighboring categories\n\nExamples:\n\nNumber of children/cats/TVs\nPositive cases\nHospital admissions\n\n\n\n\nContinuous\n\nSomething we can measure with decimals\nHas infinite number of possible values\nEvery interval is divisible into infinite number of parts\n\nExamples\n\nHeight\nTime\nTemperature"
+    "text": "Types of variable\n\n\n\nDiscrete\n\nCount as whole numbers\nSeparate, indivisible categories\nNo values exist between neighboring categories\nE.g. number of children/cats/tvs; positive cases; hospital admissions\n\n\n\n\nContinuous\n\nCan be measured with decimals\nHas infinite number of possible values\nEvery interval is divisible into infinite number of parts\nE.g. height, time, temperature"
   },
   {
     "objectID": "slides/02_variables.html#scales-of-measurement",
@@ -305,14 +305,14 @@
     "href": "slides-index.html#course-overview",
     "title": "Slides",
     "section": "1. Course Overview",
-    "text": "1. Course Overview\n\n\n\n\n\n\n\n\n\n\n\n\n\nTextbook\nLectures\nExams\nRecitation\nOther stuff\n\n\n\n\n\nSlidesPanopto"
+    "text": "1. Course Overview\n\n\n\n\n\n\n\n\n\n\n\n\n\nTextbook\nLectures\nRecitation\nExams\nFinal grades\nOther stuff\n\n\n\n\n\nSlidesPanopto"
   },
   {
     "objectID": "slides-index.html#variables",
     "href": "slides-index.html#variables",
     "title": "Slides",
     "section": "2. Variables",
-    "text": "2. Variables\n\n\n\n\n\n\n\n\n\n\n\n\n\nStatistics: Why? How? What?\nTerminology\n\nOperational definitions\nScales of measurement\nPopulations & samples\nParameters & statistics\nInferential & descriptive statistics\n\n\n\n\n\n\n\nSlidesPanopto"
+    "text": "2. Variables\n\n\n\n\n\n\n\n\n\n\n\n\n\nStatistics: Why? How? What?\nMeasuring things\nPopulations & samples\nLearning checks\n\n\n\n\n\nSlidesPanopto"
   },
   {
     "objectID": "slides-index.html#frequency",
@@ -1013,5 +1013,12 @@
     "title": "BC1101",
     "section": "",
     "text": "x = 10\n\nx + 5\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nreadr::write_csv(palmerpenguins::penguins, \"palmer-penguins.csv\")\n\n\ndata = FileAttachment(\"palmer-penguins.csv\").csv({ typed: true })\n\nviewof bill_length_min = Inputs.range(\n  [32, 50], \n  {value: 35, step: 1, label: \"Bill length (min):\"}\n)\nviewof islands = Inputs.checkbox(\n  [\"Torgersen\", \"Biscoe\", \"Dream\"], \n  { value: [\"Torgersen\", \"Biscoe\"], \n    label: \"Islands:\"\n  }\n)\n\nfiltered = data.filter(function(penguin) {\n  return bill_length_min < penguin.bill_length_mm &&\n         islands.includes(penguin.island);\n})\n\nPlot.rectY(filtered, \n  Plot.binX(\n    {y: \"count\"}, \n    {x: \"body_mass_g\", fill: \"species\", thresholds: 20}\n  ))\n  .plot({\n    facet: {\n      data: filtered,\n      x: \"sex\",\n      y: \"species\",\n      marginRight: 80\n    },\n    marks: [\n      Plot.frame(),\n    ]\n  }\n)"
+  },
+  {
+    "objectID": "slides/02_variables.html#terminology",
+    "href": "slides/02_variables.html#terminology",
+    "title": "BC1101",
+    "section": "Terminology",
+    "text": "Terminology\n\n\n\nPopulations\n\nPopulation parameters\nUsually Greek symbols\ne.g. \\(\\mu\\); \\(N\\)\nInferential statistics\n\n\n\n\nSamples\n\nSample statistics\nUsually letters\ne.g. \\(M\\); \\(n\\)\nDescriptive statistics"
   }
 ]

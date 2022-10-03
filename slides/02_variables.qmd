@@ -13,12 +13,9 @@ format:
 # Overview
 
 - [Statistics: Why? How? What?](#making-statistics)
-- Terminology
-    - [Operational definitions](#constructs-operational-definitions)
-    - [Scales of measurement]
-    - [Populations & samples](#populations-samples)
-    - [Parameters & statistics](#populations-samples-2)
-    - [Inferential & descriptive statistics](#populations-samples-2)
+- [Measuring things]
+- [Populations & samples]
+- [Learning checks]
 
 
 
@@ -80,29 +77,30 @@ format:
 ## Types of variable {.smaller}
 
 :::: {.columns}
-
-::: {.column width="50%"}
+::: {.column width=50%}
 - Discrete
-  - Something we count as whole numbers
-  - Made up of separate, indivisible categories
+  - Count as whole numbers
+  - Separate, indivisible categories
   - No values exist between neighboring categories
-- Examples:
-  - Number of children/cats/TVs
-  - Positive cases
-  - Hospital admissions
+  - E.g. number of children/cats/tvs; positive cases; hospital admissions
 :::
 
-::: {.column width="50%"} 
+::: {.column width=50%}
 - Continuous
-  - Something we can measure with decimals
+  - Can be measured with decimals
   - Has infinite number of possible values
   - Every interval is divisible into infinite number of parts
-- Examples
-  - Height
-  - Time
-  - Temperature
+  - E.g. height, time, temperature
 :::
+::::
 
+:::: {.columns .fragment}
+::: {.column width="50%"} 
+![](media/discrete.png){width=80%}
+:::
+::: {.column width="50%"} 
+![](media/continuous.png){width=80%}
+:::
 ::::
 
 ## Scales of measurement {.smaller}
@@ -194,16 +192,18 @@ make_html_likert("5. A lot more than usual")
 <!-- 5. A lot more than usual -->
 <!-- ::: -->
 
-## Populations & samples
+# Populations & samples
 
-![](media/pop-sample.gif)
+::: {.r-stack style="margin-top: -1em;"}
+
+![](media/pop-sample.gif){style="height: 70vh;"}
+
+![](media/pop-sample-ani.gif){.fragment style="height: 70vh;"}
+
+:::
 
 
-## Populations & samples
-
-![](media/pop-sample-ani.gif)
-
-## Populations & samples
+## Terminology
 
 :::: {.columns}
 
@@ -226,7 +226,7 @@ make_html_likert("5. A lot more than usual")
 ::::
 
 
-## Learning checks
+# Learning checks
 
 - A tax form asks people to identify their
   - Age
