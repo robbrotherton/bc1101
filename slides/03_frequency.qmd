@@ -22,6 +22,21 @@ midterms <- c(41,43,44,45,48,50,51,51,
 
 ```
 
+```{r 538-screenshots, eval=FALSE}
+webshot2::webshot(url = "https://projects.fivethirtyeight.com/biden-approval-rating/",
+                  selector = "#intro",
+                  file = here::here("slides", "media", "538-intro.png"))
+
+webshot2::webshot(url = "https://projects.fivethirtyeight.com/biden-approval-rating/",
+                  selector = ".main",
+                  file = here::here("slides", "media", "538-chart.png"))
+
+webshot2::webshot(url = "https://projects.fivethirtyeight.com/biden-approval-rating/",
+                  selector = ".polls",
+                  file = here::here("slides", "media", "538-table.png"))
+
+```
+
 ```{r frequency-graphs, eval=FALSE}
 library(ggplot2)
 # library(gridExtra)
@@ -95,12 +110,7 @@ ggsave(here::here("slides/media/freq-grouped-histogram.png"), grouped_hist, widt
 
 # Frequency
 
-- How often does something occur?
-    - E.g. opinion polling ([FiveThirtyEight](https://projects.fivethirtyeight.com/-approval-ratings/))
-
-
-
-## Frequency
+## Frequency distributions
 
 - A frequency distribution...
     - Organizes and displays data
@@ -111,7 +121,26 @@ ggsave(here::here("slides/media/freq-grouped-histogram.png"), grouped_hist, widt
     - Frequency, or number of observations, in each category
     - And/or proportion/percentage/cumulative percent of scores in each category
 
-## Frequency
+
+## Opinion polling
+
+:::: {.columns}
+::: {.column width="50%"}
+- How often does something occur?
+    - E.g. [FiveThirtyEight](https://projects.fivethirtyeight.com/biden-approval-rating/) opinion polling
+:::
+
+::: {.column width="50%" style="margin-top: -3em;"}
+![](media/538-intro.png)
+![](media/538-chart.png)
+![](media/538-table.png)
+:::
+::::
+
+
+
+
+## Simple example
 
 - From raw scores
 ```{r}
@@ -123,7 +152,7 @@ cat(scores)
 ::: {.column width="30%"}
 - To this
 
-::: {.smaller}
+::: {style="font-size: 0.75em;"}
 ```{r freqTable1, out.width="50%"}
 bc1101tools::frequency_table(scores)
 ```
@@ -140,38 +169,40 @@ bc1101tools::frequency_table(scores)
 
 ::::
 
-## Frequency tables {.smaller}
 
-:::: {.columns}
 
-::: {.column width="40%"}
-- Categories in a column labeled $X$
+# Frequency tables {.smaller}
+
+- Categories in a column labeled $X$ (or a more meaningful name)
 - Frequency count in column labeled $f$
 - Can have columns for...
   - Proportion $(f / N)$
   - Percentage (proportion * 100)
   - Cumulative percentage
-:::
 
-::: {.column width="60%"}
 ```{r}
 bc1101tools::frequency_table(scores, additional_cols = TRUE)  
   # kableExtra::column_spec(column = 1:2, width = "7em")
 ```
-:::
 
-::::
 
 ## Frequency tables
 
 :::: {.columns}
-
 ::: {.column width="70%"}
+
+```{r}
+cat("Midterm scores:", midterms)
+```
+
 - Regular frequency table not always appropriate
   - Large number of scores, low frequencies
-- Grouped frequency tables
+  
+::: {.fragment}
+- Solution: Grouped frequency tables
   -  Easier to understand
   -  But lose information
+:::
 :::
 
 ::: {.column width="30%" .table-small .top}
@@ -291,25 +322,45 @@ bc1101tools::frequency_table(midterms, binwidth = 2)
 ::::
 
 
-## Frequency polygon
+## Frequency polygon {.smaller}
 
 :::: {.columns}
-
 ::: {.column width="40%"}
-- For interval or ratio data 
-- Scores/bins on $x$-axis, frequency on $y$-axis
-- Height corresponds to frequency
-- Bars centered on category  
+- Basically the same as a histogram
+  - Scores on the $X$-axis
+  - Frequency on $Y$-axis
+  - Dot above the center of each interval
+  - Connect dots with a line
+  - Close the polygon with lines to the $Y = 0$ point
+  - Can also be used with grouped frequency distribution data
 :::
 
 ::: {.column width="60%"}
-
+::: {.r-stack}
 ![](media/freq-freq-poly.png)
 
+::: {.fragment .fade-in}
+::: {.fragment .fade-out}
+![](media/freq-histogram.png){.hide-print style="opacity: 0.5;"}
+
+:::
 :::
 
+:::
+:::
 ::::
 
+## Frequency polygon
+
+- Useful for comparing distributions
+
+![](media/freq-poly-groups.png)
+
+## Frequency polygon
+
+- ...where overlapping histograms are harder to understand
+
+![](media/histogram-groups.png)
 
 
 ## Smooth curves {.small}

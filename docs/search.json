@@ -284,7 +284,7 @@
     "href": "slides/03_frequency.html#frequency-tables-1",
     "title": "BC1101",
     "section": "Frequency tables",
-    "text": "Frequency tables\n\n\n\nRegular frequency table not always appropriate\n\nLarge number of scores, low frequencies\n\nGrouped frequency tables\n\nEasier to understand\nBut lose information\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    41 \n    1 \n  \n  \n    42 \n    0 \n  \n  \n    43 \n    1 \n  \n  \n    44 \n    1 \n  \n  \n    45 \n    1 \n  \n  \n    46 \n    0 \n  \n  \n    47 \n    0 \n  \n  \n    48 \n    1 \n  \n  \n    49 \n    0 \n  \n  \n    50 \n    1 \n  \n  \n    51 \n    2 \n  \n  \n    52 \n    3 \n  \n  \n    53 \n    3 \n  \n  \n    54 \n    2 \n  \n  \n    55 \n    5 \n  \n  \n    56 \n    5 \n  \n  \n    57 \n    4 \n  \n  \n    58 \n    3 \n  \n  \n    59 \n    7"
+    "text": "Frequency tables\n\n\n\n\nMidterm scores: 41 43 44 45 48 50 51 51 52 52 52 53 53 53 54 54 55 55 55 55 55 56 56 56 56 56 57 57 57 57 58 58 58 59 59 59 59 59 59 59\n\n\n\nRegular frequency table not always appropriate\n\nLarge number of scores, low frequencies\n\n\n\n\nSolution: Grouped frequency tables\n\nEasier to understand\nBut lose information\n\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    41 \n    1 \n  \n  \n    42 \n    0 \n  \n  \n    43 \n    1 \n  \n  \n    44 \n    1 \n  \n  \n    45 \n    1 \n  \n  \n    46 \n    0 \n  \n  \n    47 \n    0 \n  \n  \n    48 \n    1 \n  \n  \n    49 \n    0 \n  \n  \n    50 \n    1 \n  \n  \n    51 \n    2 \n  \n  \n    52 \n    3 \n  \n  \n    53 \n    3 \n  \n  \n    54 \n    2 \n  \n  \n    55 \n    5 \n  \n  \n    56 \n    5 \n  \n  \n    57 \n    4 \n  \n  \n    58 \n    3 \n  \n  \n    59 \n    7"
   },
   {
     "objectID": "slides/04_central-tendency.html#central-tendency",
@@ -389,7 +389,7 @@
     "href": "slides/03_frequency.html#frequency-polygon",
     "title": "BC1101",
     "section": "Frequency polygon",
-    "text": "Frequency polygon\n\n\n\nFor interval or ratio data\nScores/bins on \\(x\\)-axis, frequency on \\(y\\)-axis\nHeight corresponds to frequency\nBars centered on category"
+    "text": "Frequency polygon\n\n\n\nBasically the same as a histogram\n\nScores on the \\(X\\)-axis\nFrequency on \\(Y\\)-axis\nDot above the center of each interval\nConnect dots with a line\nClose the polygon with lines to the \\(Y = 0\\) point\nCan also be used with grouped frequency distribution data"
   },
   {
     "objectID": "slides/03_frequency.html#smooth-curves",
@@ -1020,5 +1020,54 @@
     "title": "BC1101",
     "section": "Terminology",
     "text": "Terminology\n\n\n\nPopulations\n\nPopulation parameters\nUsually Greek symbols\ne.g. \\(\\mu\\); \\(N\\)\nInferential statistics\n\n\n\n\nSamples\n\nSample statistics\nUsually letters\ne.g. \\(M\\); \\(n\\)\nDescriptive statistics"
+  },
+  {
+    "objectID": "slides/03_frequency.html#opinion-polling",
+    "href": "slides/03_frequency.html#opinion-polling",
+    "title": "BC1101",
+    "section": "Opinion polling",
+    "text": "Opinion polling\n\n\n\nHow often does something occur?\n\nE.g. FiveThirtyEight opinion polling"
+  },
+  {
+    "objectID": "slides/03_frequency.html#frequency-distributions",
+    "href": "slides/03_frequency.html#frequency-distributions",
+    "title": "BC1101",
+    "section": "Frequency distributions",
+    "text": "Frequency distributions\n\nA frequency distribution…\n\nOrganizes and displays data\nConveys how scores are distributed\nCan be either a table or a graph\n\nShows:\n\nCategories that make up the scale\nFrequency, or number of observations, in each category\nAnd/or proportion/percentage/cumulative percent of scores in each category"
+  },
+  {
+    "objectID": "slides/03_frequency.html#frequency-example",
+    "href": "slides/03_frequency.html#frequency-example",
+    "title": "BC1101",
+    "section": "Frequency example",
+    "text": "Frequency example\n\nFrom raw scores\n\n\n\n2 1 2 3 4 3 3 2 2 1 5 3 4 1 2\n\n\n\n\n\nTo this\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    1 \n    3 \n  \n  \n    2 \n    5 \n  \n  \n    3 \n    4 \n  \n  \n    4 \n    2 \n  \n  \n    5 \n    1 \n  \n\n\n\n\n\n\n\n\nOr this"
+  },
+  {
+    "objectID": "slides/03_frequency.html#example-opinion-polling",
+    "href": "slides/03_frequency.html#example-opinion-polling",
+    "title": "BC1101",
+    "section": "Example: opinion polling",
+    "text": "Example: opinion polling\n\n\n\nHow often does something occur?\n\nE.g. FiveThirtyEight opinion polling"
+  },
+  {
+    "objectID": "slides/03_frequency.html#simple-example",
+    "href": "slides/03_frequency.html#simple-example",
+    "title": "BC1101",
+    "section": "Simple example",
+    "text": "Simple example\n\nFrom raw scores\n\n\n\n2 1 2 3 4 3 3 2 2 1 5 3 4 1 2\n\n\n\n\n\nTo this\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    1 \n    3 \n  \n  \n    2 \n    5 \n  \n  \n    3 \n    4 \n  \n  \n    4 \n    2 \n  \n  \n    5 \n    1 \n  \n\n\n\n\n\n\n\n\nOr this"
+  },
+  {
+    "objectID": "slides/03_frequency.html#frequency-polygon-1",
+    "href": "slides/03_frequency.html#frequency-polygon-1",
+    "title": "BC1101",
+    "section": "Frequency polygon",
+    "text": "Frequency polygon\n\nUseful for comparing distributions"
+  },
+  {
+    "objectID": "slides/03_frequency.html#frequency-polygon-2",
+    "href": "slides/03_frequency.html#frequency-polygon-2",
+    "title": "BC1101",
+    "section": "Frequency polygon",
+    "text": "Frequency polygon\n\n…where overlapping histograms are harder to understand"
   }
 ]

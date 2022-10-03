@@ -11,6 +11,8 @@ website:
       - href: slides-index.qmd
         text: Slides
 
+link-external-newwindow: true
+
 format:
   html:
     toc: true
