@@ -319,7 +319,7 @@
     "href": "slides-index.html#frequency",
     "title": "Slides",
     "section": "3. Frequency",
-    "text": "3. Frequency\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFrequency tables\nData visualization\n\nHistograms\nFrequency polygons\nBar graphs\nPopulation curves\n\n\n\n\n\n\n\nSlidesPanopto"
+    "text": "3. Frequency\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFrequency\nFrequency tables\nFrequency graphs\nLearning checks\n\n\n\n\n\nSlidesPanopto"
   },
   {
     "objectID": "slides-index.html#central-tendency",
@@ -1069,5 +1069,12 @@
     "title": "BC1101",
     "section": "Frequency polygon",
     "text": "Frequency polygon\n\n…where overlapping histograms are harder to understand"
+  },
+  {
+    "objectID": "slides/03_frequency.html#population-curve",
+    "href": "slides/03_frequency.html#population-curve",
+    "title": "BC1101",
+    "section": "Population curve",
+    "text": "Population curve\n\n\n\nUsed for population distributions\n\nWhen population is large, scores for each individual are usually not known\nSmooth curve indicates exact scores were not used\nConvey relative frequency"
   }
 ]

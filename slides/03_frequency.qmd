@@ -87,12 +87,10 @@ ggsave(here::here("slides/media/freq-grouped-histogram.png"), grouped_hist, widt
 ```
 
 # Overview
-- Frequency tables
-- Data visualization
-  - Histograms
-  - Frequency polygons
-  - Bar graphs
-  - Population curves
+- [Frequency]
+- [Frequency tables](#frequency-tables)
+- [Frequency graphs]
+- [Learning checks]
 
 
 ## Statistics {.small}
@@ -241,7 +239,7 @@ bc1101tools::frequency_table(midterms, binwidth = 2)
 
 ::::
 
-# Data vizualization {.heading-background background-image="media/snow_map.jpg"}
+# Data vizualization {#data-viz .heading-background background-image="media/snow_map.jpg"}
 
 [[Interactive map]](https://ralucanicola.github.io/cholera-map-3D/)
 
@@ -363,7 +361,7 @@ bc1101tools::frequency_table(midterms, binwidth = 2)
 ![](media/histogram-groups.png)
 
 
-## Smooth curves {.small}
+## Population curve {.small}
 
 :::: {.columns}
 
