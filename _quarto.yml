@@ -17,7 +17,9 @@ format:
   html:
     toc: true
 
-theme: custom.scss
+theme:
+  light: custom.scss
+  dark: custom-dark.scss
 
 execute:
   freeze: auto

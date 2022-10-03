@@ -26,8 +26,8 @@ ggplot(df, aes(x = id, y = value, fill = letter)) +
 
 ggsave(here::here("slides", "covers", "01_course-info.svg"), width = 10, height = 5)
 
-# bc1101tools::save_cover()
-# width: 960; height: 700
+# Variables cover
+
 
 # variability cover
 

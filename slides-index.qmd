@@ -43,8 +43,8 @@ execute:
 }
 
 .box .box-image {
-  max-height: 150px;
-  max-width: auto;
+  height: 100%;
+  width: 100%;
 }
 
 
@@ -105,19 +105,19 @@ card <- function(file, date) {
 
 <div class="lecture-card">
 
-<div class="card-body">
-<div class="lecture-image">
-<p><a href="slides/{file}.html" target="_blank"><img src="slides/covers/{image}" class="img-fluid figure-img"></a></p>
-</div>
+  <div class="card-body">
+    <div class="lecture-image">
+<p><a href="slides/{file}.html" target="_blank"><img src="slides/covers/{image}" class="box-image"></a></p>
+    </div>
 
-<div class="lecture-overview">
-<div class="overview-list">{overview[[1]]}</div>
-</div>
-</div>
+    <div class="lecture-overview">
+      <div class="overview-list">{overview[[1]]}</div>
+    </div>
+  </div>
 
-<div class="footer">
+  <div class="footer">
 <a class="btn btn-outline-dark" href="slides/{file}.html" target="_blank" role="button" style="width: 50%">Slides</a><a class="btn btn-outline-dark" href="slides/{file}.html" target="_blank" role="button" style="width: 50%">Panopto</a>
-</div>
+  </div>
 
 </div>
     '
@@ -125,6 +125,7 @@ card <- function(file, date) {
 }
 ```
 
+# Part 1.
 
 :::: {.box}
 ## 1. Course Overview
