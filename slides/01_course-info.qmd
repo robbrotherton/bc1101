@@ -7,7 +7,7 @@ format:
 
 # 1|COURSE OVERVIEW
 
-![](covers/01_course-info.png)
+![](covers/01_course-info.svg)
 
 ```{r cover-course-info, eval=FALSE}
 library(ggplot2)
@@ -47,6 +47,8 @@ ggplot(df) +
 
 ggsave(here::here("slides", "covers", "05_variability.svg"), width = 10, height = 5)
 
+ggplot(data = NULL, aes(x = 0, y = 0, image = here::here("slides", "covers", "02_variables.svg"))) +
+  ggimage::geom_image()
 
 # frequency cover
 dfs <- 1:100

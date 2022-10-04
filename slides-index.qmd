@@ -55,7 +55,7 @@ execute:
 
 .lecture-overview {
   float: right;
-  font-size: min(max(0.8em, 2vw), 1em);
+  font-size: min(max(0.6em, 2vw), 1em);
   position: relative;
   width: 50%;
 }

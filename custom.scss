@@ -11,14 +11,53 @@ $code-block-border-color: #000000;
 --*/
 
 
-
 /*-- scss:rules --*/
+
+@media (prefers-color-scheme: dark) {
+  $body-bg: #181818;
+  $body-color: white;
+  $link-color: #75AADB;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: black;
+    color: white;
+  }
+
+  .reveal {
+    background: black;
+    color: white;
+  }
+
+  svg:not(.dark-noinvert) {
+    filter: invert(1);
+  }
+
+  img:not(.dark-noinvert) {
+    filter: invert(1);
+  }
+
+  .reveal h1, .reveal h2, .reveal h3 {
+    color: #eee;
+  }
+
+  .reveal tr:hover {
+  background-color: #aaa;
+  }
+
+  a {
+    color: #7b73f1;
+  }
+
+}
 
 @media print {
                hide-print {
                   visibility: hidden;
                }
             }
+
 
 /* for lecture slides */
 
@@ -81,8 +120,8 @@ $code-block-border-color: #000000;
 
 /* control the look of tables */
 table {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
   border-collapse: collapse;
 }
 
@@ -91,7 +130,7 @@ table {
 }
 
 table thead {
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid;
 }
 
 tr:hover {

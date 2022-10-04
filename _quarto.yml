@@ -4,12 +4,18 @@ project:
 
 website:
   title: "BC1101"
+  repo-url: https://github.com/robbrotherton/quarto-test-website
   navbar:
     left:
       - href: index.qmd
         text: Syllabus
       - href: slides-index.qmd
         text: Slides
+    right:
+      - icon: github
+        href: https://github.com/
+        aria-label: GitHub
+
 
 link-external-newwindow: true
 
@@ -17,9 +23,7 @@ format:
   html:
     toc: true
 
-theme:
-  light: custom.scss
-  dark: custom-dark.scss
+theme: custom.scss
 
 execute:
   freeze: auto

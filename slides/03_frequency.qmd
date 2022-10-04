@@ -4,9 +4,9 @@ format:
     chalkboard: true
 ---
 
-# 3|FREQUENCY {.lecture-title}
+# 3|FREQUENCY
 
-![](covers/03_frequency.png)
+![](covers/03_frequency.svg)
 
 ```{r data}
 
@@ -19,6 +19,20 @@ midterms <- c(41,43,44,45,48,50,51,51,
               55,55,55,55,55,56,56,56,
               56,56,57,57,57,57,58,58,
               58,59,59,59,59,59,59,59)
+
+```
+
+```{r cover, eval=FALSE}
+library(ggplot2)
+
+ggplot(data.frame(x = scores), aes(x)) +
+  geom_density() +
+  scale_x_continuous(limits = c(0, 6)) +
+  theme_void()
+
+ggsave(here::here("slides", "covers", "03_frequency.svg"), 
+       width = 10, height = 5)
+
 
 ```
 
