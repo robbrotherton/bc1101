@@ -30,11 +30,7 @@ $code-block-border-color: #000000;
     color: white;
   }
 
-  svg:not(.dark-noinvert) {
-    filter: invert(1);
-  }
-
-  img:not(.dark-noinvert) {
+  .invertable {
     filter: invert(1);
   }
 
@@ -46,9 +42,9 @@ $code-block-border-color: #000000;
   background-color: #aaa;
   }
 
-  a {
+  /*a {
     color: #7b73f1;
-  }
+  }*/
 
 }
 

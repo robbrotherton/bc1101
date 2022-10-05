@@ -96,10 +96,10 @@ format:
 
 :::: {.columns .fragment}
 ::: {.column width="50%"} 
-![](media/discrete.png){width=80%}
+![](media/discrete.png){.invertable width=80%}
 :::
 ::: {.column width="50%"} 
-![](media/continuous.png){width=80%}
+![](media/continuous.png){.invertable width=80%}
 :::
 ::::
 

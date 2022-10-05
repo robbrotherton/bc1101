@@ -81,7 +81,7 @@ execute:
 
 ```{r card-creation}
 
-card <- function(file, date) {
+card <- function(file, date, invertable_image = FALSE) {
   
   overview <- try(rvest::read_html(here::here("docs", "slides", paste0(file, ".html"))) |>  
   rvest::html_nodes("#overview") |> 
@@ -107,7 +107,7 @@ card <- function(file, date) {
 
   <div class="card-body">
     <div class="lecture-image">
-<p><a href="slides/{file}.html" target="_blank"><img src="slides/covers/{image}" class="box-image"></a></p>
+<p><a href="slides/{file}.html" target="_blank"><img src="slides/covers/{image}" class="box-image {ifelse(invertable_image, "invertable", "")}"></a></p>
     </div>
 
     <div class="lecture-overview">
@@ -146,7 +146,7 @@ card("02_variables", "")
 :::: {.box}
 ## 3. Frequency
 ```{r}
-card("03_frequency", "")
+card("03_frequency", "", TRUE)
 ```
 ::::
 
@@ -162,7 +162,7 @@ card("04_central-tendency", "")
 :::: {.box}
 ## 5. Variability
 ```{r}
-card("05_variability", "")
+card("05_variability", "", TRUE)
 ```
 ::::
 
