@@ -32,14 +32,13 @@ format:
   - Enter your best estimate and explain your process
   - Suggested time limit: 5 minutes
 
-![](media/book.jpg)
+![](media/red-book.svg)
 
 
 
 ## Making statistics
 
-> "In the United States today half of all children (35.6 million) live in a household where a parent or other adult uses tobacco, drinks heavily or uses illicit drugs"^[[The National Center on  Addiction and Substance Abuse at Columbia University, 2005](https://web.archive.org/web/20191017204229/https://www.centeronaddiction.org/addiction-research/reports/family-matters-substance-abuse-and-american-family)
-]]
+> In the United States today half of all children (35.6 million) live in a household where a parent or other adult uses tobacco, drinks heavily or uses illicit drugs^[[The National Center on  Addiction and Substance Abuse at Columbia University, 2005](https://web.archive.org/web/20191017204229/https://www.centeronaddiction.org/addiction-research/reports/family-matters-substance-abuse-and-american-family)]
 
 - Other questions...
   - How many students are smokers?
@@ -194,11 +193,11 @@ make_html_likert("5. A lot more than usual")
 
 # Populations & samples
 
-::: {.r-stack style="margin-top: -1em;"}
+::: {.r-stack style="margin-top: -0.5em;"}
 
-![](media/pop-sample.gif){style="height: 70vh;"}
+![](media/pop-sample.gif){.invertable style="height: 60vh;"}
 
-![](media/pop-sample-ani.gif){.fragment style="height: 70vh;"}
+![](media/pop-sample-ani.gif){.fragment .invertable style="height: 60vh;"}
 
 :::
 

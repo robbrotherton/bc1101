@@ -20,14 +20,18 @@ $code-block-border-color: #000000;
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
-    background: black;
+  body, .reveal {
+    background: #333;
     color: white;
   }
 
-  .reveal {
-    background: black;
+  /*.reveal {
+    background: #555;
     color: white;
+  }*/
+
+  .reveal blockquote {
+    color: #ddd;
   }
 
   .invertable {
@@ -39,12 +43,12 @@ $code-block-border-color: #000000;
   }
 
   .reveal tr:hover {
-  background-color: #aaa;
+  background-color: #444;
   }
 
-  /*a {
-    color: #7b73f1;
-  }*/
+  a, .reveal a {
+    color: #71adff;
+  }
 
 }
 
@@ -129,7 +133,7 @@ table thead {
   border-bottom: 2px solid;
 }
 
-tr:hover {
+.reveal tr:hover {
   background-color: #ffa;
 }
 

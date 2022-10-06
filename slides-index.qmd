@@ -77,6 +77,10 @@ execute:
   top: 0.6em;
 }
 
+@media (prefers-color-scheme: dark) {
+  .box
+}
+
 ```
 
 ```{r card-creation}

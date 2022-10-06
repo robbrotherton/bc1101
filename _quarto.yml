@@ -26,4 +26,5 @@ format:
 theme: custom.scss
 
 execute:
+  echo: false
   freeze: auto
