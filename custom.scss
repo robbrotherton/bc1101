@@ -73,13 +73,13 @@ $code-block-border-color: #000000;
   font-size: 6rem !important;
 }
 
-/* this points to the cover image */
+/* this points to the cover image
 .reveal .slides>section:first-of-type img {
   position: absolute;
   margin-left: 50%;
   margin-top: -1em;
   width: 100vw;
-}
+}*/
 
 .reveal h1 {
   font-size: 4rem !important;
@@ -149,7 +149,9 @@ table thead {
   top: 0;
 }
 
-
+.center-element {
+  text-align: center;
+}
 
 .playing-card {
   text-align: center;

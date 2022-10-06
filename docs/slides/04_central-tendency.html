@@ -325,27 +325,30 @@
     <div class="slides">
 
 
-<section>
-<section id="central-tendency" class="title-slide slide level1 lecture-title center">
+<section id="central-tendency" class="title-slide slide level1 center">
 <h1>4|CENTRAL TENDENCY</h1>
 
-<img data-src="covers/04_central-tendency.png" class="r-stretch"><div class="cell">
+<img data-src="covers/04_central-tendency.svg" class="r-stretch"><div class="cell">
 
 </div>
 </section>
-<section id="overview" class="slide level2">
-<h2>Overview</h2>
+
+<section id="overview" class="title-slide slide level1 center">
+<h1>Overview</h1>
 <ul>
 <li><a href="#/mode">Mode</a></li>
 <li><a href="#/median-1">Median</a></li>
 <li><a href="#/mean-1">Mean</a></li>
+<li><a href="#/distributions-1">Distributions</a></li>
+<li><a href="#/learning-checks">Learning checks</a></li>
 </ul>
-</section></section>
+</section>
+
 <section>
 <section id="central-tendency-1" class="title-slide slide level1 center">
 <h1>Central tendency</h1>
 <ul>
-<li><p>A single number to describe the center of a distribution</p></li>
+<li><p>A number to describe the center of a distribution</p></li>
 <li><p>Purpose:</p>
 <ul>
 <li>To organize &amp; summarize scores</li>
@@ -361,18 +364,18 @@
 </div>
 <p>Where is the center of the distribution?</p>
 
-<img data-src="04_central-tendency_files/figure-revealjs/unnamed-chunk-2-1.png" style="width:90.0%" class="r-stretch"></section>
+<img data-src="media/central-tendency-symmetrical.svg" class="invertable r-stretch"></section>
 <section id="finding-the-center-1" class="slide level2">
 <h2>Finding the center</h2>
 <p>Where is the center of the distribution?</p>
 
-<img data-src="04_central-tendency_files/figure-revealjs/unnamed-chunk-3-1.png" style="width:90.0%" class="r-stretch"></section>
+<img data-src="media/central-tendency-skew.svg" class="invertable r-stretch"></section>
 <section id="finding-the-center-2" class="slide level2">
 <h2>Finding the center</h2>
 <p>Where is the center of the distribution?</p>
 
-<img data-src="04_central-tendency_files/figure-revealjs/unnamed-chunk-4-1.png" style="width:90.0%" class="r-stretch"></section>
-<section id="measures-of-central-tendency" class="slide level2">
+<img data-src="media/central-tendency-bimodal.svg" class="invertable r-stretch"></section>
+<section id="measures-of-central-tendency" class="slide level2 small">
 <h2>Measures of central tendency</h2>
 <ul>
 <li><p>Imagine you get the following grades:</p>
@@ -382,7 +385,7 @@
 <li><p>How do you fairly describe all these scores with a single number?</p></li>
 <li><p>Three ways:</p>
 <ul>
-<li>Mode = grade you get most often</li>
+<li>Mode: grade you get most often</li>
 <li>Median = grade that divides lowest 50% of scores from highest 50% of scores</li>
 <li>Mean = sum of grades / # of grades = <span class="math inline">\(\dfrac{\Sigma X} N\)</span></li>
 </ul></li>
@@ -416,7 +419,7 @@
 <li>What occurs most often?</li>
 </ul></li>
 </ul>
-<div class="columns">
+<div class="columns" style="font-size: 0.75em;">
 <div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
@@ -500,18 +503,25 @@
 </section>
 <section id="mode-2" class="slide level2">
 <h2>Mode</h2>
-<ul>
-<li>The score/category with the greatest frequency
-<ul>
-<li>What occurs most often?</li>
-</ul></li>
-</ul>
+<div class="quarto-layout-panel" style="margin-top: 2em;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="media/central-tendency-symmetrical.svg" class="invertable"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="media/central-tendency-skew.svg" class="invertable"></p>
+</div>
+</div>
+</div>
+<p><img data-src="media/central-tendency-bimodal.svg" class="invertable" style="margin-top: -1em;"></p>
+<div class="cell">
 
-<img data-src="04_central-tendency_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+</div>
+</section>
 <section id="mode-3" class="slide level2">
 <h2>Mode</h2>
 
-<img data-src="04_central-tendency_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section></section>
+<img data-src="media/central-tendency-bimodal-real.svg" class="invertable r-stretch"></section></section>
 <section>
 <section id="median" class="title-slide slide level1 center">
 <h1>Median</h1>
@@ -538,13 +548,23 @@
 <ul>
 <li>Median is the center score</li>
 </ul></li>
+</ul>
+<div class="center-element">
+<p>1 2 <span style="color: red;">3</span> 4 5</p>
+</div>
+</section>
+<section id="locating-the-median-1" class="slide level2">
+<h2>Locating the median</h2>
+<ul>
+<li><p>Put scores in order</p></li>
+<li><p>Find the number that gives and equal number of scores on either side</p></li>
 <li><p>Even number of scores:</p>
 <ul>
 <li>Average the 2 numbers either side of center</li>
 </ul></li>
 </ul>
-<div class="center">
-<p>1 2 3 4 5 6</p>
+<div class="center-element">
+<p>1 2 3 <span style="color: red;">|</span> 4 5 6</p>
 <p>(3 + 4) / 2 = 3.5</p>
 <p>65 70 70 80 90 90</p>
 <p>65 70 80 80 80 90 92 95</p>
@@ -601,7 +621,7 @@
 <li>Nobody is average on all dimensions</li>
 </ul></li>
 </ul>
-</div><div class="column" style="width:40%;">
+</div><div class="column top" style="width:40%;">
 <p><img data-src="media/civil-war.png"> <img data-src="media/cockpit.jpg"></p>
 </div>
 </div>
@@ -633,24 +653,52 @@
 <li>The balance point for the distribution</li>
 </ul></li>
 </ul>
-<div class="cell" data-fig.asp="0.5">
+<div class="r-stack">
+<p><img data-src="media/central-tendency-balance.svg" style="width:20em"></p>
+<p><img data-src="media/central-tendency-balance-2.svg" class="fragment" style="width:20em"></p>
+</div>
+<div class="cell">
 
 </div>
 </section></section>
 <section>
 <section id="distributions" class="title-slide slide level1 center">
 <h1>Distributions</h1>
+<div class="cell">
 
+</div>
+<div class="cell">
+
+</div>
+<div class="center-element">
+<p><span class="invertable" style="color: #D81B60;">mean</span>, <span class="invertable" style="color: #1E88E5;">median</span>, <span class="invertable" style="color: #FFC107;">mode</span></p>
+</div>
+<div class="invertable quarto-layout-panel" style="margin-top: -2em;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="r-stack quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="media/dist-norm.svg"></p>
+<p><img data-src="media/dist-norm-labelled.svg" class="fragment" data-fragment-index="1"></p>
+</div>
+<div class="r-stack quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="media/dist-negative.svg"></p>
+<p><img data-src="media/dist-negative-labelled.svg" class="fragment" data-fragment-index="1"></p>
+</div>
+</div>
+</div>
+<div class="invertable quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="r-stack quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="media/dist-positive.svg"></p>
+<p><img data-src="media/dist-positive-labelled.svg" class="fragment" data-fragment-index="1"></p>
+</div>
+<div class="r-stack quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="media/dist-bimodal.svg"></p>
+<p><img data-src="media/dist-bimodal-labelled.svg" class="fragment" data-fragment-index="1"></p>
+</div>
+</div>
+</div>
 </section>
 <section id="distributions-1" class="slide level2">
-<h2>Distributions</h2>
-
-<img data-src="media/distributions.png" class="r-stretch"></section>
-<section id="distributions-2" class="slide level2">
-<h2>Distributions</h2>
-
-<img data-src="media/distributions-annotated.png" class="r-stretch"></section>
-<section id="distributions-3" class="slide level2">
 <h2>Distributions</h2>
 <ul>
 <li>Sensitivity to outliers
@@ -659,8 +707,10 @@
 <li>Mean is more influenced by outliers than median</li>
 </ul></li>
 </ul>
-<p><img data-src="media/bar-1.png"></p>
-<p><img data-src="media/bar-2.png"></p>
+<div class="r-stack">
+<p><img data-src="media/central-tendency-bar-1.png"></p>
+<p><img data-src="media/central-tendency-bar-2.png" class="fragment"></p>
+</div>
 </section></section>
 <section id="summary" class="title-slide slide level1 smaller center">
 <h1>Summary</h1>
@@ -686,21 +736,31 @@
 </ul>
 </section>
 
-<section id="learning-checks" class="title-slide slide level1 center">
+<section id="learning-checks" class="title-slide slide level1 small center">
 <h1>Learning checks</h1>
-<ol type="1">
+<ul>
 <li><strong>True or False</strong>: It is possible for more than 50% of the scores in a distribution to have values above the:
 <ol type="a">
 <li>mode</li>
 <li>mean</li>
 <li>median</li>
 </ol></li>
-<li>What shape is this distribution?</li>
-</ol>
-
-<img data-src="04_central-tendency_files/figure-revealjs/unnamed-chunk-9-1.png" style="width:100.0%" class="r-stretch"><ul>
-<li>What can you predict about its mode, mean, and median?</li>
 </ul>
+<div class="columns">
+<div class="column">
+<ul>
+<li>What shape is this distribution?
+<ul>
+<li>What can you predict about its mode, mean, and median?</li>
+</ul></li>
+</ul>
+</div><div class="column" style="margin-top: -2em;">
+<p><img data-src="media/central-tendency-learning-check-dist.svg" class="invertable"></p>
+</div>
+</div>
+<div class="cell">
+
+</div>
 
 <div class="footer footer-default">
 
