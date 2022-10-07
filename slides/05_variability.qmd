@@ -6,17 +6,16 @@ format:
 
 # 5|VARIABILITY
 
-![](covers/05_variability.svg)
+![](covers/05_variability.svg){.invertable}
 
 # Overview
 
 - [Variability]
 - [Range]
 - [Sum of squares, variance, SD]
-  - [Variance]
-  - [Standard deviation]
 - [Degrees of freedom]
 - [Learning checks]
+
 
 # Variability
 
@@ -37,22 +36,21 @@ How would you describe the difference in your performances?
 -   But one seems more *variable* than the other
 :::
 
-## Variability
+## Variability {.small}
 
 -   Like the mean
-    -   A descriptive statistic
+    -   A [descriptive]{.emph} statistic
     -   Single number to summarize dataset
 -   Unlike the mean
-    -   Rather than describing the middle of the data, variability describes the spread of the data
+    -   Rather than describing the [middle]{.emph} of the data, variability describes the [spread]{.emph} of the data
     -   Higher variability means greater differences between scores
--   Purpose of measures of variability
+-   Purpose
     -   Quantify how well an individual score represents the distribution
     -   Important for inferential stats
 
-## Variability {#variability-3}
+## Measures of variability {.small}
 
--   Measures of variability
-    -   Quantitative distance measures based on the differences between scores
+-   Quantitative distance measures based on the differences between scores
     -   Each has different characteristics
 -   Range
     -   Describes the spread of scores
@@ -77,15 +75,13 @@ print_range <- function(x) {
 }
 ```
 
--   You: `r you`
+- You: `r you`
+    - $`r max(you)` - `r min(you)` = `r max(you) - min(you)`$
 
--   Range = `r print_range(you)`
+- Friend: `r friend`
+    - $`r max(friend)` - `r min(friend)` = `r max(friend) - min(friend)`$
 
--   Friend: `r friend`
-
--   Range = `r print_range(friend)`
-
-## Range {#range-2}
+## Range
 
 -   Characteristics
     -   Does not consider all the data
@@ -97,36 +93,33 @@ print_range <- function(x) {
 
 # Sum of squares, variance, SD
 
--   Definitions:
-    -   Deviation
-        -   Distance from the mean: deviation score = $X – \mu$
-    -   $SS$: Sum of squares
-        -   Sum of squared deviations
-    -   Variance
-        -   The mean squared deviation
-        -   Average squared distance from the mean
-    -   Standard deviation
-        -   The square root of the variance
-        -   Provides a measure of the average (standard) distance of scores from the mean
+## Definitions {.smaller}
 
-Calculations differ for population and samples
+-   Deviation
+    -   Distance from the mean: deviation score = $X – \mu$
+-   $SS$: Sum of squares
+    -   Sum of squared deviations
+-   Variance
+    -   The mean squared deviation
+    -   Average squared distance from the mean
+    - [Calculation differs for population and samples]{.emph}
+-   Standard deviation
+    -   The square root of the variance
+    -   Provides a measure of the average (standard) distance of scores from the mean
 
-## Variance
+
+
+
+## Variance {.small}
 
 -   Determine the deviation of each score
     -   Distance from the mean
     -   Deviation score = $X - \mu$
 
-```{r balance, out.width='70%', fig.asp=.3}
-bc1101tools::balance_beam(c(1, 2, 6, 6, 10))
-```
+![](media/central-tendency-balance-2.svg){style="height: 7em; margin-top: -0.5em; margin-bottom: -0.5em;"}
 
--   To find "average deviation" just sum the deviations and then divide by $n$?
-
-::: fragment
--   Nope! Dead end
--   Always sums to $0$
-:::
+- To find "average deviation" just sum the deviations and divide by $n$?
+    - Dead end; always sums to $0$
 
 ## Variance
 
@@ -182,23 +175,36 @@ $\sigma = \sqrt{\sigma^2} = \sqrt{\dfrac{SS}N}$
 
 ## Variance {#variance-2 .small}
 
-::: columns
-::: column
+:::: {.columns}
+
+::: {.column}
+::: {.r-stack}
+
+::: {.fragment .fade-out fragment-index=1}
+```{r}
+bc1101tools::SD_table(you, include = "mean")
+```
+:::
+
+::: {.fragment fragment-index=1}
 ```{r}
 bc1101tools::SD_table(you)
 ```
 :::
+:::
+:::
 
-::: column
+::: {.column}
 ```{r}
 bc1101tools::SD_table(friend)
 ```
 :::
-:::
+
+::::
 
 ## Standard deviation
 
-# Degrees of freedom
+# Degrees of freedom {.smaller}
 
 -   Why $n – 1$?\
 -   Degrees of freedom
@@ -252,7 +258,7 @@ bc1101tools::SD_table(friend)
 :::
 :::
 
-## Degrees of freedom
+## Degrees of freedom {.smaller}
 
 - Why $n – 1$?
     - $M = 5$

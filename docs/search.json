@@ -410,7 +410,7 @@
     "href": "slides/05_variability.html#variability-2",
     "title": "BC1101",
     "section": "Variability",
-    "text": "Variability\n\nLike the mean\n\nA descriptive statistic\nSingle number to summarize dataset\n\nUnlike the mean\n\nRather than describing the middle of the data, variability describes the spread of the data\nHigher variability means greater differences between scores\n\nPurpose of measures of variability\n\nQuantify how well an individual score represents the distribution\nImportant for inferential stats"
+    "text": "Variability\n\nLike the mean\n\nA descriptive statistic\nSingle number to summarize dataset\n\nUnlike the mean\n\nRather than describing the middle of the data, variability describes the spread of the data\nHigher variability means greater differences between scores\n\nPurpose\n\nQuantify how well an individual score represents the distribution\nImportant for inferential stats"
   },
   {
     "objectID": "slides/05_variability.html#variability-3",
@@ -424,7 +424,7 @@
     "href": "slides/05_variability.html#range-1",
     "title": "BC1101",
     "section": "Range",
-    "text": "Range\n\nDifference between lowest & highest scores\n\nDistance covered by the scores in a distribution\nRange = \\(X_{max} - X_{min}\\)\n\n\n\n\n\n\nYou: 0, 4, 5, 5, 6, 10\nRange = 10 - 0 = 10\nFriend: 0, 1, 5, 5, 9, 10\nRange = 10 - 0 = 10"
+    "text": "Range\n\nDifference between lowest & highest scores\n\nDistance covered by the scores in a distribution\nRange = \\(X_{max} - X_{min}\\)\n\n\n\n\n\n\nYou: 0, 4, 5, 5, 6, 10\n\n\\(10 - 0 = 10\\)\n\nFriend: 0, 1, 5, 5, 9, 10\n\n\\(10 - 0 = 10\\)"
   },
   {
     "objectID": "slides/05_variability.html#range-2",
@@ -438,7 +438,7 @@
     "href": "slides/05_variability.html#variance",
     "title": "BC1101",
     "section": "Variance",
-    "text": "Variance\n\nDetermine the deviation of each score\n\nDistance from the mean\nDeviation score = \\(X - \\mu\\)\n\n\n\n\nTo find “average deviation” just sum the deviations and then divide by \\(n\\)?\n\n\n\nNope! Dead end\nAlways sums to \\(0\\)"
+    "text": "Variance\n\nDetermine the deviation of each score\n\nDistance from the mean\nDeviation score = \\(X - \\mu\\)\n\n\n\n\nTo find “average deviation” just sum the deviations and divide by \\(n\\)?\n\nDead end; always sums to \\(0\\)"
   },
   {
     "objectID": "slides/05_variability.html#variance-1",
@@ -452,7 +452,7 @@
     "href": "slides/05_variability.html#variance-2",
     "title": "BC1101",
     "section": "Variance",
-    "text": "Variance\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    0 \n    -5 \n    25 \n  \n  \n    4 \n    -1 \n    1 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    6 \n    1 \n    1 \n  \n  \n    10 \n    5 \n    25 \n  \n  \n    \\(M = 5\\) \n     \n    \\(SS = 52\\) \n  \n  \n     \n     \n    \\(s^2 = 10.4\\) \n  \n  \n     \n     \n    \\(s = 3.22\\) \n  \n\n\n\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    0 \n    -5 \n    25 \n  \n  \n    1 \n    -4 \n    16 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    9 \n    4 \n    16 \n  \n  \n    10 \n    5 \n    25 \n  \n  \n    \\(M = 5\\) \n     \n    \\(SS = 82\\) \n  \n  \n     \n     \n    \\(s^2 = 16.4\\) \n  \n  \n     \n     \n    \\(s = 4.05\\)"
+    "text": "Variance\n\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    0 \n     \n     \n  \n  \n    4 \n     \n     \n  \n  \n    5 \n     \n     \n  \n  \n    5 \n     \n     \n  \n  \n    6 \n     \n     \n  \n  \n    10 \n     \n     \n  \n  \n    \\(M = 5.00\\) \n     \n      \n  \n  \n     \n     \n      \n  \n  \n     \n     \n      \n  \n\n\n\n\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    0 \n    -5 \n    25 \n  \n  \n    4 \n    -1 \n    1 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    6 \n    1 \n    1 \n  \n  \n    10 \n    5 \n    25 \n  \n  \n    \\(M = 5.00\\) \n     \n    \\(SS = 52.00\\) \n  \n  \n     \n     \n    \\(s^2 = 10.40\\) \n  \n  \n     \n     \n    \\(s = 3.22\\) \n  \n\n\n\n\n\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    0 \n    -5 \n    25 \n  \n  \n    1 \n    -4 \n    16 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    9 \n    4 \n    16 \n  \n  \n    10 \n    5 \n    25 \n  \n  \n    \\(M = 5.00\\) \n     \n    \\(SS = 82.00\\) \n  \n  \n     \n     \n    \\(s^2 = 16.40\\) \n  \n  \n     \n     \n    \\(s = 4.05\\)"
   },
   {
     "objectID": "slides/05_variability.html#standard-deviation",
@@ -726,5 +726,19 @@
     "title": "BC1101",
     "section": "Locating the median",
     "text": "Locating the median\n\nPut scores in order\nFind the number that gives and equal number of scores on either side\nEven number of scores:\n\nAverage the 2 numbers either side of center\n\n\n\n1 2 3 | 4 5 6\n(3 + 4) / 2 = 3.5\n65 70 70 80 90 90\n65 70 80 80 80 90 92 95"
+  },
+  {
+    "objectID": "slides/05_variability.html#measures-of-variability",
+    "href": "slides/05_variability.html#measures-of-variability",
+    "title": "BC1101",
+    "section": "Measures of variability",
+    "text": "Measures of variability\n\nQuantitative distance measures based on the differences between scores\n\nEach has different characteristics\n\nRange\n\nDescribes the spread of scores\nDistance of most extreme scores from each other\n\n\\(SS\\), Variance, and Standard Deviation\n\nCompanion concepts, but different things\nDescribe distance of scores from the mean\nSmall values: low variability; scores clustered close to mean\nHigher values: greater variability; scores widely scattered"
+  },
+  {
+    "objectID": "slides/05_variability.html#definitions",
+    "href": "slides/05_variability.html#definitions",
+    "title": "BC1101",
+    "section": "Definitions",
+    "text": "Definitions\n\nDeviation\n\nDistance from the mean: deviation score = \\(X – \\mu\\)\n\n\\(SS\\): Sum of squares\n\nSum of squared deviations\n\nVariance\n\nThe mean squared deviation\nAverage squared distance from the mean\nCalculation differs for population and samples\n\nStandard deviation\n\nThe square root of the variance\nProvides a measure of the average (standard) distance of scores from the mean"
   }
 ]

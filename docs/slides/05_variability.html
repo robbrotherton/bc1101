@@ -331,18 +331,14 @@
 <section id="variability" class="title-slide slide level1 center">
 <h1>5|VARIABILITY</h1>
 
-<img data-src="covers/05_variability.svg" class="r-stretch"></section>
+<img data-src="covers/05_variability.svg" class="invertable r-stretch"></section>
 
 <section id="overview" class="title-slide slide level1 center">
 <h1>Overview</h1>
 <ul>
-<li><a href="#/variability-3">Variability</a></li>
+<li><a href="#/variability-2">Variability</a></li>
 <li><a href="#/range-2">Range</a></li>
-<li><a href="#/sum-of-squares-variance-sd">Sum of squares, variance, SD</a>
-<ul>
-<li><a href="#/variance-2">Variance</a></li>
-<li><a href="#/standard-deviation">Standard deviation</a></li>
-</ul></li>
+<li><a href="#/sum-of-squares-variance-sd">Sum of squares, variance, SD</a></li>
 <li><a href="#/degrees-of-freedom-4">Degrees of freedom</a></li>
 <li><a href="#/learning-checks">Learning checks</a></li>
 </ul>
@@ -367,32 +363,31 @@
 </ul>
 </div>
 </section>
-<section id="variability-2" class="slide level2">
+<section id="variability-2" class="slide level2 small">
 <h2>Variability</h2>
 <ul>
 <li>Like the mean
 <ul>
-<li>A descriptive statistic</li>
+<li>A <span class="emph">descriptive</span> statistic</li>
 <li>Single number to summarize dataset</li>
 </ul></li>
 <li>Unlike the mean
 <ul>
-<li>Rather than describing the middle of the data, variability describes the spread of the data</li>
+<li>Rather than describing the <span class="emph">middle</span> of the data, variability describes the <span class="emph">spread</span> of the data</li>
 <li>Higher variability means greater differences between scores</li>
 </ul></li>
-<li>Purpose of measures of variability
+<li>Purpose
 <ul>
 <li>Quantify how well an individual score represents the distribution</li>
 <li>Important for inferential stats</li>
 </ul></li>
 </ul>
 </section>
-<section id="variability-3" class="slide level2">
-<h2>Variability</h2>
+<section id="measures-of-variability" class="slide level2 small">
+<h2>Measures of variability</h2>
 <ul>
-<li>Measures of variability
+<li>Quantitative distance measures based on the differences between scores
 <ul>
-<li>Quantitative distance measures based on the differences between scores</li>
 <li>Each has different characteristics</li>
 </ul></li>
 <li>Range
@@ -427,10 +422,14 @@
 
 </div>
 <ul>
-<li><p>You: 0, 4, 5, 5, 6, 10</p></li>
-<li><p>Range = 10 - 0 = 10</p></li>
-<li><p>Friend: 0, 1, 5, 5, 9, 10</p></li>
-<li><p>Range = 10 - 0 = 10</p></li>
+<li>You: 0, 4, 5, 5, 6, 10
+<ul>
+<li><span class="math inline">\(10 - 0 = 10\)</span></li>
+</ul></li>
+<li>Friend: 0, 1, 5, 5, 9, 10
+<ul>
+<li><span class="math inline">\(10 - 0 = 10\)</span></li>
+</ul></li>
 </ul>
 </section>
 <section id="range-2" class="slide level2">
@@ -452,8 +451,10 @@
 <section>
 <section id="sum-of-squares-variance-sd" class="title-slide slide level1 center">
 <h1>Sum of squares, variance, SD</h1>
-<ul>
-<li>Definitions:
+
+</section>
+<section id="definitions" class="slide level2 smaller">
+<h2>Definitions</h2>
 <ul>
 <li>Deviation
 <ul>
@@ -467,17 +468,16 @@
 <ul>
 <li>The mean squared deviation</li>
 <li>Average squared distance from the mean</li>
+<li><span class="emph">Calculation differs for population and samples</span></li>
 </ul></li>
 <li>Standard deviation
 <ul>
 <li>The square root of the variance</li>
 <li>Provides a measure of the average (standard) distance of scores from the mean</li>
 </ul></li>
-</ul></li>
 </ul>
-<p>Calculations differ for population and samples</p>
 </section>
-<section id="variance" class="slide level2">
+<section id="variance" class="slide level2 small">
 <h2>Variance</h2>
 <ul>
 <li>Determine the deviation of each score
@@ -486,16 +486,13 @@
 <li>Deviation score = <span class="math inline">\(X - \mu\)</span></li>
 </ul></li>
 </ul>
-
-<img data-src="05_variability_files/figure-revealjs/balance-1.png" style="width:70.0%" class="r-stretch"><ul>
-<li>To find “average deviation” just sum the deviations and then divide by <span class="math inline">\(n\)</span>?</li>
-</ul>
-<div class="fragment">
+<p><img data-src="media/central-tendency-balance-2.svg" style="height: 7em; margin-top: -0.5em; margin-bottom: -0.5em;"></p>
 <ul>
-<li>Nope! Dead end</li>
-<li>Always sums to <span class="math inline">\(0\)</span></li>
+<li>To find “average deviation” just sum the deviations and divide by <span class="math inline">\(n\)</span>?
+<ul>
+<li>Dead end; always sums to <span class="math inline">\(0\)</span></li>
+</ul></li>
 </ul>
-</div>
 </section>
 <section id="variance-1" class="slide level2">
 <h2>Variance</h2>
@@ -549,125 +546,193 @@
 <h2>Variance</h2>
 <div class="columns">
 <div class="column">
+<div class="r-stack">
+<div class="fragment fade-out" data-fragment-index="1">
 <div class="cell">
 <div class="cell-output-display">
 
-<table>
+<table style="width:33.3%;">
  <thead>
   <tr>
-   <th style="text-align:center;"> \(X\) </th>
-   <th style="text-align:center;"> \(X-M\) </th>
-   <th style="text-align:center;"> \((X-M)^2\) </th>
+   <th style="text-align:right;"> \(X\) </th>
+   <th style="text-align:right;"> \(X-M\) </th>
+   <th style="text-align:right;"> \((X-M)^2\) </th>
   </tr>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:center;width: 30%; border: none;"> 0 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;"> -5 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;"> 25 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 0 </td>
+   <td style="text-align:right;width: 30%; border: none;">  </td>
+   <td style="text-align:right;width: 30%; border: none;">  </td>
   </tr>
   <tr>
-   <td style="text-align:center;width: 30%; border: none;"> 4 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;"> -1 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;"> 1 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 4 </td>
+   <td style="text-align:right;width: 30%; border: none;">  </td>
+   <td style="text-align:right;width: 30%; border: none;">  </td>
   </tr>
   <tr>
-   <td style="text-align:center;width: 30%; border: none;"> 5 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;"> 0 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;"> 0 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 5 </td>
+   <td style="text-align:right;width: 30%; border: none;">  </td>
+   <td style="text-align:right;width: 30%; border: none;">  </td>
   </tr>
   <tr>
-   <td style="text-align:center;width: 30%; border: none;"> 5 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;"> 0 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;"> 0 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 5 </td>
+   <td style="text-align:right;width: 30%; border: none;">  </td>
+   <td style="text-align:right;width: 30%; border: none;">  </td>
   </tr>
   <tr>
-   <td style="text-align:center;width: 30%; border: none;"> 6 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;"> 1 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;"> 1 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 6 </td>
+   <td style="text-align:right;width: 30%; border: none;">  </td>
+   <td style="text-align:right;width: 30%; border: none;">  </td>
   </tr>
   <tr>
-   <td style="text-align:center;width: 30%; border: none;border-bottom: 2px solid black"> 10 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;border-bottom: 2px solid black"> 5 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;border-bottom: 2px solid black"> 25 </td>
+   <td style="text-align:right;width: 30%; border: none;border-bottom: 2px solid"> 10 </td>
+   <td style="text-align:right;width: 30%; border: none;border-bottom: 2px solid">  </td>
+   <td style="text-align:right;width: 30%; border: none;border-bottom: 2px solid">  </td>
   </tr>
   <tr>
-   <td style="text-align:center;width: 30%; border: none;font-size: 0.8em;"> \(M = 5\) </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;font-size: 0.8em;">  </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;font-size: 0.8em;"> \(SS = 52\) </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;"> \(M = 5.00\) </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;">  </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;"> &nbsp; </td>
   </tr>
   <tr>
-   <td style="text-align:center;width: 30%; border: none;font-size: 0.8em;">  </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;font-size: 0.8em;">  </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;font-size: 0.8em;"> \(s^2 = 10.4\) </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;">  </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;">  </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;"> &nbsp; </td>
   </tr>
   <tr>
-   <td style="text-align:center;width: 30%; border: none;font-size: 0.8em;">  </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;font-size: 0.8em;">  </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;font-size: 0.8em;"> \(s = 3.22\) </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;">  </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;">  </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;"> &nbsp; </td>
   </tr>
 </tbody>
 </table>
 
 </div>
 </div>
-</div><div class="column">
+</div>
+<div class="fragment" data-fragment-index="1">
 <div class="cell">
 <div class="cell-output-display">
 
-<table>
+<table style="width:33.3%;">
  <thead>
   <tr>
-   <th style="text-align:center;"> \(X\) </th>
-   <th style="text-align:center;"> \(X-M\) </th>
-   <th style="text-align:center;"> \((X-M)^2\) </th>
+   <th style="text-align:right;"> \(X\) </th>
+   <th style="text-align:right;"> \(X-M\) </th>
+   <th style="text-align:right;"> \((X-M)^2\) </th>
   </tr>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:center;width: 30%; border: none;"> 0 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;"> -5 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;"> 25 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 0 </td>
+   <td style="text-align:right;width: 30%; border: none;"> -5 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 25 </td>
   </tr>
   <tr>
-   <td style="text-align:center;width: 30%; border: none;"> 1 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;"> -4 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;"> 16 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 4 </td>
+   <td style="text-align:right;width: 30%; border: none;"> -1 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 1 </td>
   </tr>
   <tr>
-   <td style="text-align:center;width: 30%; border: none;"> 5 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;"> 0 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;"> 0 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 5 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 0 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:center;width: 30%; border: none;"> 5 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;"> 0 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;"> 0 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 5 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 0 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:center;width: 30%; border: none;"> 9 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;"> 4 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;"> 16 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 6 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 1 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 1 </td>
   </tr>
   <tr>
-   <td style="text-align:center;width: 30%; border: none;border-bottom: 2px solid black"> 10 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;border-bottom: 2px solid black"> 5 </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;border-bottom: 2px solid black"> 25 </td>
+   <td style="text-align:right;width: 30%; border: none;border-bottom: 2px solid"> 10 </td>
+   <td style="text-align:right;width: 30%; border: none;border-bottom: 2px solid"> 5 </td>
+   <td style="text-align:right;width: 30%; border: none;border-bottom: 2px solid"> 25 </td>
   </tr>
   <tr>
-   <td style="text-align:center;width: 30%; border: none;font-size: 0.8em;"> \(M = 5\) </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;font-size: 0.8em;">  </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;font-size: 0.8em;"> \(SS = 82\) </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;"> \(M = 5.00\) </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;">  </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;"> \(SS = 52.00\) </td>
   </tr>
   <tr>
-   <td style="text-align:center;width: 30%; border: none;font-size: 0.8em;">  </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;font-size: 0.8em;">  </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;font-size: 0.8em;"> \(s^2 = 16.4\) </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;">  </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;">  </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;"> \(s^2 = 10.40\) </td>
   </tr>
   <tr>
-   <td style="text-align:center;width: 30%; border: none;font-size: 0.8em;">  </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;font-size: 0.8em;">  </td>
-   <td style="text-align:center;color: red;width: 30%; border: none;font-size: 0.8em;"> \(s = 4.05\) </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;">  </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;">  </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;"> \(s = 3.22\) </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+
+<table style="width:33.3%;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> \(X\) </th>
+   <th style="text-align:right;"> \(X-M\) </th>
+   <th style="text-align:right;"> \((X-M)^2\) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;width: 30%; border: none;"> 0 </td>
+   <td style="text-align:right;width: 30%; border: none;"> -5 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;width: 30%; border: none;"> 1 </td>
+   <td style="text-align:right;width: 30%; border: none;"> -4 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 16 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;width: 30%; border: none;"> 5 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 0 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;width: 30%; border: none;"> 5 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 0 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;width: 30%; border: none;"> 9 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 4 </td>
+   <td style="text-align:right;width: 30%; border: none;"> 16 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;width: 30%; border: none;border-bottom: 2px solid"> 10 </td>
+   <td style="text-align:right;width: 30%; border: none;border-bottom: 2px solid"> 5 </td>
+   <td style="text-align:right;width: 30%; border: none;border-bottom: 2px solid"> 25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;"> \(M = 5.00\) </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;">  </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;"> \(SS = 82.00\) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;">  </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;">  </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;"> \(s^2 = 16.40\) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;">  </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;">  </td>
+   <td style="text-align:right;width: 30%; border: none;font-size: 0.8em;"> \(s = 4.05\) </td>
   </tr>
 </tbody>
 </table>
@@ -681,7 +746,7 @@
 <h2>Standard deviation</h2>
 </section></section>
 <section>
-<section id="degrees-of-freedom" class="title-slide slide level1 center">
+<section id="degrees-of-freedom" class="title-slide slide level1 smaller center">
 <h1>Degrees of freedom</h1>
 <ul>
 <li>Why <span class="math inline">\(n – 1\)</span>?<br>
@@ -744,7 +809,7 @@
 </div>
 </div>
 </section>
-<section id="degrees-of-freedom-4" class="slide level2">
+<section id="degrees-of-freedom-4" class="slide level2 smaller">
 <h2>Degrees of freedom</h2>
 <ul>
 <li>Why <span class="math inline">\(n – 1\)</span>?

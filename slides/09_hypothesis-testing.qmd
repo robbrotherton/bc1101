@@ -7,3 +7,16 @@ format:
 # 9|HYPOTHESIS TESTING
 
 # Overview
+
+- Recap: $z$-scores, probability, Central Limit Theorem
+- Null Hypothesis Significance Testing
+  - Hypothesis test procedure
+  - The $z$ test
+
+
+# Recap
+
+- $z$-scores, normal distributions, probability
+  - $z = \dfrac{X - \mu}{\sigma}$ 
+  - $z$-scores reflect position in population distribution
+  - Find probabilities using Unit Normal Table / pnorm()
