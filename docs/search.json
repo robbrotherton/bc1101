@@ -459,7 +459,7 @@
     "href": "slides/05_variability.html#standard-deviation",
     "title": "BC1101",
     "section": "Standard deviation",
-    "text": "Standard deviation"
+    "text": "Standard deviation\n\nVery important concept! Especially later\n\n\n\n\nDefinitional formula\n\nFind each deviation score \\((X – \\mu)\\)\nSquare each deviation score \\((X–\\mu)^2\\)\nSum up the squared deviations \\(\\Sigma(X–\\mu)^2\\)\n\n\n\n\\(SS = \\Sigma(X - \\mu)^2\\)\n\n\n\nComputational formula\n\nSquare each score & sum the squared scores\nFind the sum of scores, square it, divide by \\(N\\)\nSubtract the second part from the first\n\n\n\n\\(SS = \\Sigma X^2 - \\dfrac{(\\Sigma X)^2}N\\)"
   },
   {
     "objectID": "slides/05_variability.html#degrees-of-freedom-1",
@@ -740,5 +740,117 @@
     "title": "BC1101",
     "section": "Definitions",
     "text": "Definitions\n\nDeviation\n\nDistance from the mean: deviation score = \\(X – \\mu\\)\n\n\\(SS\\): Sum of squares\n\nSum of squared deviations\n\nVariance\n\nThe mean squared deviation\nAverage squared distance from the mean\nCalculation differs for population and samples\n\nStandard deviation\n\nThe square root of the variance\nProvides a measure of the average (standard) distance of scores from the mean"
+  },
+  {
+    "objectID": "slides/05_variability.html#variability-example-1",
+    "href": "slides/05_variability.html#variability-example-1",
+    "title": "BC1101",
+    "section": "Variability example",
+    "text": "Variability example\n\n\n\n\n\n\n\n\nLeptokurtotic\n\n\n\n\nPlatykurtotic"
+  },
+  {
+    "objectID": "slides/05_variability.html#variability-1",
+    "href": "slides/05_variability.html#variability-1",
+    "title": "BC1101",
+    "section": "Variability",
+    "text": "Variability\n\nLike the mean\n\nA descriptive statistic\nSingle number to summarize dataset\n\nUnlike the mean\n\nRather than describing the middle of the data, variability describes the spread of the data\nHigher variability means greater differences between scores\n\nPurpose\n\nQuantify how well an individual score represents the distribution\nImportant for inferential stats"
+  },
+  {
+    "objectID": "slides/05_variability.html#sd-variance-for-samples",
+    "href": "slides/05_variability.html#sd-variance-for-samples",
+    "title": "BC1101",
+    "section": "SD & variance for samples",
+    "text": "SD & variance for samples\n\nResearch goal:\n\nDraw general conclusions about population based on limited information from a sample\n\nProblem:\n\nSamples have less variability than population they are drawn from\nComputing the Variance and Standard Deviation in the same way as for a population would give a biased estimate of the population parameter\nBiased estimate: Systematically overestimates or underestimates the parameter\nUnbiased estimate: Average value of statistic is equal to population parameter\nVariance & SD for samples underestimate population parameters"
+  },
+  {
+    "objectID": "slides/05_variability.html#sd-variance-for-samples-1",
+    "href": "slides/05_variability.html#sd-variance-for-samples-1",
+    "title": "BC1101",
+    "section": "SD & variance for samples",
+    "text": "SD & variance for samples\n\nWhy samples underestimate variability\n\nSoup"
+  },
+  {
+    "objectID": "slides/05_variability.html#sd-variance-for-samples-2",
+    "href": "slides/05_variability.html#sd-variance-for-samples-2",
+    "title": "BC1101",
+    "section": "SD & variance for samples",
+    "text": "SD & variance for samples\n\nWhy samples underestimate variability\n\nHeight"
+  },
+  {
+    "objectID": "slides/05_variability.html#variability-of-samples",
+    "href": "slides/05_variability.html#variability-of-samples",
+    "title": "BC1101",
+    "section": "Variability of samples",
+    "text": "Variability of samples\n\nSimple solution: divide \\(SS\\) by \\(n – 1\\) instead of \\(n\\)\n\nProduces unbiased estimate of the population variance"
+  },
+  {
+    "objectID": "slides/05_variability.html#sample-variability-equations",
+    "href": "slides/05_variability.html#sample-variability-equations",
+    "title": "BC1101",
+    "section": "Sample variability equations",
+    "text": "Sample variability equations\n\n\n\nFind the deviation for each score\n\n\n\\(X - \\mu\\)\n\n\n\n\n\nSquare deviations\n\n\n\\((X - \\mu)^2\\)\n\n\n\n\n\nSum the squared deviations\n\n\n\\(SS = \\Sigma(X - \\mu)^2\\)\n\n\n\n\n\nFind average of squared deviations\n\n\n\\(\\sigma^2 = \\dfrac{SS} {\\color{red}{n-1}}\\)\n\n\n\n\n\nTake square root of variance\n\n\n\\(\\sigma = \\sqrt{\\sigma^2} = \\sqrt{\\dfrac{SS}{\\color{red}{n-1}}}\\)"
+  },
+  {
+    "objectID": "slides/05_variability.html#approach",
+    "href": "slides/05_variability.html#approach",
+    "title": "BC1101",
+    "section": "Approach",
+    "text": "Approach\n\nDetermine the deviation of each score\n\nDistance from the mean\nDeviation score = \\(X - \\mu\\)\n\n\n\n\nTo find “average deviation” just sum the deviations and divide by \\(n\\)?\n\nDead end; always sums to \\(0\\)"
+  },
+  {
+    "objectID": "slides/05_variability.html#calculations",
+    "href": "slides/05_variability.html#calculations",
+    "title": "BC1101",
+    "section": "Calculations",
+    "text": "Calculations\n\n\n\nFind the deviation for each score\n\n\n\\(X - \\mu\\)\n\n\n\n\n\nSquare deviations\n\n\n\\((X - \\mu)^2\\)\n\n\n\n\n\nSum the squared deviations\n\n\n\\(SS = \\Sigma(X - \\mu)^2\\)\n\n\n\n\n\nFind average of squared deviations\n\n\n\\(\\sigma^2 = \\dfrac{SS}N\\)\n\n\n\n\n\nTake square root of variance\n\n\n\\(\\sigma = \\sqrt{\\sigma^2} = \\sqrt{\\dfrac{SS}N}\\)"
+  },
+  {
+    "objectID": "slides/05_variability.html#calculating-by-hand",
+    "href": "slides/05_variability.html#calculating-by-hand",
+    "title": "BC1101",
+    "section": "Calculating by hand",
+    "text": "Calculating by hand\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    0 \n    -5 \n    25 \n  \n  \n    4 \n    -1 \n    1 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    6 \n    1 \n    1 \n  \n  \n    10 \n    5 \n    25 \n  \n  \n    \\(M = 5.00\\) \n     \n    \\(SS = 52.00\\) \n  \n  \n     \n     \n    \\(s^2 = 10.40\\) \n  \n  \n     \n     \n    \\(s = 3.22\\) \n  \n\n\n\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    0 \n    -5 \n    25 \n  \n  \n    1 \n    -4 \n    16 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    9 \n    4 \n    16 \n  \n  \n    10 \n    5 \n    25 \n  \n  \n    \\(M = 5.00\\) \n     \n    \\(SS = 82.00\\) \n  \n  \n     \n     \n    \\(s^2 = 16.40\\) \n  \n  \n     \n     \n    \\(s = 4.05\\)"
+  },
+  {
+    "objectID": "slides/05_variability.html#sum-of-squared-deviations",
+    "href": "slides/05_variability.html#sum-of-squared-deviations",
+    "title": "BC1101",
+    "section": "Sum of squared deviations",
+    "text": "Sum of squared deviations\n\nVery important concept! Especially later\n\n\n\n\nDefinitional formula\n\nFind each deviation score \\((X – \\mu)\\)\nSquare each deviation score \\((X–\\mu)^2\\)\nSum up the squared deviations \\(\\Sigma(X–\\mu)^2\\)\n\n\n\n\\(SS = \\Sigma(X - \\mu)^2\\)\n\n\n\nComputational formula\n\nSquare each score & sum the squared scores\nFind the sum of scores, square it, divide by \\(N\\)\nSubtract the second part from the first\n\n\n\n\\(SS = \\Sigma X^2 - \\dfrac{(\\Sigma X)^2}N\\)"
+  },
+  {
+    "objectID": "slides/05_variability.html#underestimation",
+    "href": "slides/05_variability.html#underestimation",
+    "title": "BC1101",
+    "section": "Underestimation",
+    "text": "Underestimation\n\nWhy samples underestimate variability\n\nSoup"
+  },
+  {
+    "objectID": "slides/05_variability.html#underestimation-1",
+    "href": "slides/05_variability.html#underestimation-1",
+    "title": "BC1101",
+    "section": "Underestimation",
+    "text": "Underestimation\n\nWhy samples underestimate variability\n\nHeight"
+  },
+  {
+    "objectID": "slides/05_variability.html#calculating-variability-of-samples",
+    "href": "slides/05_variability.html#calculating-variability-of-samples",
+    "title": "BC1101",
+    "section": "Calculating variability of samples",
+    "text": "Calculating variability of samples\n\nSimple solution: divide \\(SS\\) by \\(n – 1\\) instead of \\(n\\)\n\nProduces unbiased estimate of the population variance"
+  },
+  {
+    "objectID": "slides/05_variability.html#variability-equations-for-samples",
+    "href": "slides/05_variability.html#variability-equations-for-samples",
+    "title": "BC1101",
+    "section": "Variability equations for samples",
+    "text": "Variability equations for samples\n\n\n\nFind the deviation for each score\n\n\n\\(X - \\mu\\)\n\n\n\n\n\nSquare deviations\n\n\n\\((X - \\mu)^2\\)\n\n\n\n\n\nSum the squared deviations\n\n\n\\(SS = \\Sigma(X - \\mu)^2\\)\n\n\n\n\n\nFind average of squared deviations\n\n\n\\(\\sigma^2 = \\dfrac{SS} {\\color{red}{n-1}}\\)\n\n\n\n\n\nTake square root of variance\n\n\n\\(\\sigma = \\sqrt{\\sigma^2} = \\sqrt{\\dfrac{SS}{\\color{red}{n-1}}}\\)"
+  },
+  {
+    "objectID": "slides/05_variability.html#star-wars-variability",
+    "href": "slides/05_variability.html#star-wars-variability",
+    "title": "BC1101",
+    "section": "Star Wars variability",
+    "text": "Star Wars variability\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\nMetaCritic.com\nIMDb.com\n\n  \n    Movie \n    N \n    M \n    SD \n    N \n    M \n    SD \n  \n \n\n  \n    Star Wars: Episode IV - A New Hope \n    24 \n    90.1 \n    16.7 \n    1,302,317 \n    85.0 \n    16.4 \n  \n  \n    Star Wars: Episode V - The Empire Strikes Back \n    25 \n    83.5 \n    20.8 \n    1,230,844 \n    85.9 \n    16.3 \n  \n  \n    Star Wars: Episode VI - Return of the Jedi \n    24 \n    63.8 \n    25.2 \n    1,006,122 \n    82.6 \n    15.5 \n  \n  \n    Star Wars: Episode I - The Phantom Menace \n    36 \n    56.4 \n    22.9 \n    769,435 \n    65.3 \n    20.3 \n  \n  \n    Star Wars: Episode II - Attack of the Clones \n    39 \n    60.3 \n    22.0 \n    678,519 \n    66.3 \n    20.2 \n  \n  \n    Star Wars: Episode III - Revenge of the Sith \n    40 \n    71.4 \n    19.7 \n    751,751 \n    76.1 \n    18.8 \n  \n  \n    Star Wars: Episode VII - The Force Awakens \n    55 \n    80.8 \n    14.2 \n    898,767 \n    77.7 \n    19.6 \n  \n  \n    Star Wars: Episode VIII - The Last Jedi \n    56 \n    84.1 \n    13.5 \n    602,045 \n    66.6 \n    24.5 \n  \n  \n    Star Wars: Episode IX - The Rise of Skywalker \n    61 \n    57.2 \n    16.5 \n    418,656 \n    64.7 \n    23.4 \n  \n\n\n\n\n\n\n\n\n\n\n\n \n\n\nMetaCritic.com\nIMDb.com\n\n  \n    Movie \n    N \n    M \n    SD \n    N \n    M \n    SD \n  \n \n\n  \n    Star Wars: Episode IV - A New Hope \n    24 \n    90.1 \n    16.7 \n    1,302,317 \n    85.0 \n    16.4 \n  \n  \n    Star Wars: Episode V - The Empire Strikes Back \n    25 \n    83.5 \n    20.8 \n    1,230,844 \n    85.9 \n    16.3 \n  \n  \n    Star Wars: Episode VI - Return of the Jedi \n    24 \n    63.8 \n    25.2 \n    1,006,122 \n    82.6 \n    15.5 \n  \n  \n    Star Wars: Episode I - The Phantom Menace \n    36 \n    56.4 \n    22.9 \n    769,435 \n    65.3 \n    20.3 \n  \n  \n    Star Wars: Episode II - Attack of the Clones \n    39 \n    60.3 \n    22.0 \n    678,519 \n    66.3 \n    20.2 \n  \n  \n    Star Wars: Episode III - Revenge of the Sith \n    40 \n    71.4 \n    19.7 \n    751,751 \n    76.1 \n    18.8 \n  \n  \n    Star Wars: Episode VII - The Force Awakens \n    55 \n    80.8 \n    14.2 \n    898,767 \n    77.7 \n    19.6 \n  \n  \n    Star Wars: Episode VIII - The Last Jedi \n    56 \n    84.1 \n    13.5 \n    602,045 \n    66.6 \n    24.5 \n  \n  \n    Star Wars: Episode IX - The Rise of Skywalker \n    61 \n    57.2 \n    16.5 \n    418,656 \n    64.7 \n    23.4"
   }
 ]

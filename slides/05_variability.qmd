@@ -17,7 +17,7 @@ format:
 - [Learning checks]
 
 
-# Variability
+# Variability example
 
 Imagine you and a friend got the following scores
 
@@ -36,6 +36,80 @@ How would you describe the difference in your performances?
 -   But one seems more *variable* than the other
 :::
 
+
+## Variability example
+
+```{r example-score-distributions}
+#| eval: false
+
+
+plot_histogram <- function(x, x_lab, y_lab = "Count", binwidth = 1) {
+  require(ggplot2)
+  
+  ggplot() +
+    geom_histogram(data = data.frame(x = x), aes(x), binwidth = binwidth, color = "black", fill = "grey60") +
+    scale_x_continuous(breaks = min(x):max(x)) +
+    scale_y_continuous(expand = c(0,0)) +
+    labs(x = x_lab, y = y_lab) +
+    papaja::theme_apa() +
+    theme(panel.background = element_blank(),
+          plot.background = element_blank())
+}
+
+plot_norm <- function(xlim = c(-3, 3), ylim = c(0, .4), sd = 1) {
+  require(ggplot2)
+  
+  ggplot() +
+    stat_function(fun = dnorm, xlim = xlim, args = list(sd = sd)) +
+    # scale_x_continuous(breaks = min(x):max(x)) +
+    scale_y_continuous(expand = c(0,0), limits = ylim) +
+    # labs(x = x_lab, y = y_lab) +
+    theme_void() +
+    theme(axis.line = element_line(),
+          plot.margin = margin(l = 50, r = 10))
+}
+
+plot_save <- function(filename, width = 5, height = 2) {
+  ggsave(here::here("slides", "media", filename), width = width, height = height, bg = "transparent")
+}
+
+plot_histogram(you, x_lab = "Your scores")
+plot_save("you.dist.svg")
+plot_histogram(friend, x_lab = "Friend")
+plot_save("friend-dist.svg")
+
+plot_norm(sd = 1)
+plot_save("you-curve.svg", height = 1)
+
+plot_norm(sd = 1.8)
+plot_save("friend-curve.svg", height = 1)
+
+```
+
+:::: {.columns .invertable}
+
+::: {.column .center-element}
+![](media/you-dist.svg)
+
+![](media/you-curve.svg){style="margin-top: -0.5em;"}
+
+![](media/leptokurtotic.png){width=70% style="padding-left: 1em; margin-bottom: -0.7em;"}
+
+[Leptokurtotic]{.invertable style="font-size: 0.8em; padding-left: 1em;"}
+:::
+
+::: {.column .center-element}
+![](media/friend-dist.svg)
+
+![](media/friend-curve.svg){style="margin-top: -0.5em;"}
+
+![](media/platykurtotic.png){width=70% style="padding-left: 1em; margin-bottom: -0.7em;"}
+
+[Platykurtotic]{.invertable style="font-size: 0.8em; padding-left: 1em;"}
+:::
+
+::::
+
 ## Variability {.small}
 
 -   Like the mean
@@ -48,7 +122,7 @@ How would you describe the difference in your performances?
     -   Quantify how well an individual score represents the distribution
     -   Important for inferential stats
 
-## Measures of variability {.small}
+## Measures of variability {.smaller}
 
 -   Quantitative distance measures based on the differences between scores
     -   Each has different characteristics
@@ -108,9 +182,7 @@ print_range <- function(x) {
     -   Provides a measure of the average (standard) distance of scores from the mean
 
 
-
-
-## Variance {.small}
+## Approach {.small}
 
 -   Determine the deviation of each score
     -   Distance from the mean
@@ -121,7 +193,7 @@ print_range <- function(x) {
 - To find "average deviation" just sum the deviations and divide by $n$?
     - Dead end; always sums to $0$
 
-## Variance
+## Calculations
 
 ::: {.columns .fragment}
 ::: {.column width="60%"}
@@ -173,25 +245,14 @@ $\sigma = \sqrt{\sigma^2} = \sqrt{\dfrac{SS}N}$
 :::
 :::
 
-## Variance {#variance-2 .small}
+## Calculating by hand {.small}
 
 :::: {.columns}
 
 ::: {.column}
-::: {.r-stack}
-
-::: {.fragment .fade-out fragment-index=1}
-```{r}
-bc1101tools::SD_table(you, include = "mean")
-```
-:::
-
-::: {.fragment fragment-index=1}
 ```{r}
 bc1101tools::SD_table(you)
 ```
-:::
-:::
 :::
 
 ::: {.column}
@@ -202,7 +263,148 @@ bc1101tools::SD_table(friend)
 
 ::::
 
-## Standard deviation
+## Sum of squared deviations {.small}
+
+- Very important concept! Especially later
+
+:::: {.columns}
+
+::: {.column}
+- Definitional formula
+    - Find each deviation score $(X – \mu)$
+    - Square each deviation score $(X–\mu)^2$
+    - Sum up the squared deviations $\Sigma(X–\mu)^2$
+
+::: {.center-element}
+$SS = \Sigma(X - \mu)^2$
+:::
+:::
+
+::: {.column}
+- Computational formula
+    - Square each score & sum the squared scores
+    - Find the sum of scores, square it, divide by $N$
+    - Subtract the second part from the first
+
+::: {.center-element}
+$SS = \Sigma X^2 - \dfrac{(\Sigma X)^2}N$
+:::
+:::
+
+::::
+
+# SD & variance for samples {.smaller}
+
+- Research goal:
+    - Draw general conclusions about population based on limited information from a sample
+- Problem: 
+    - Samples have less variability than population they are drawn from
+    - Computing the Variance and Standard Deviation in the same way as for a population would give a *biased* estimate of the population parameter
+    - Biased estimate: Systematically overestimates or underestimates the parameter
+    - Unbiased estimate: Average value of statistic is equal to population parameter
+    - Variance & SD for samples [underestimate]{.emph} population parameters
+
+## Underestimation
+
+- Why samples underestimate variability
+    - Soup
+
+![](media/soup.jpg)
+
+## Underestimation
+
+- Why samples underestimate variability
+    - Height
+
+```{r}
+#| eval: false
+library(ggplot2)
+set.seed(11)
+arrows <- data.frame(x = rnorm(10),
+                     y = 0, 
+                     yend = -.05)
+
+ggplot() +
+  stat_function(fun = 'dnorm', geom = 'area', fill = NA, color = 'black', xlim = c(-4, 4)) +
+  
+  # label population variability with arrow & text
+  geom_segment(aes(x = -3.5, xend = 3.5, y = .41, yend = .41),
+               linetype = 8, arrow = arrow(length = unit(0.3,"cm"), ends = "both")) +
+  annotate(geom = "text", label = "Population variability",
+           x = 0, y = .43) +
+  
+  # draw arrows for random samples
+  geom_segment(data = arrows, aes(x=x, xend=x,y=y,yend=yend),
+               arrow = arrow(length = unit(0.1,"cm"))) +
+  
+  # label sample variability with arrow & text
+  geom_segment(aes(x = min(arrows$x), xend = max(arrows$x), y = -.07, yend = -.07),
+               linetype = 8, arrow = arrow(length = unit(0.3,"cm"), ends = "both")) +
+  annotate(geom = "text", label = "Sample variability",
+           x = mean(range(arrows$x)), y = -.085) +
+  theme_void()
+
+plot_save("height.svg", height = 3)
+```
+
+![](media/height.svg){.invertable}
+
+## Calculating variability of samples
+
+- Simple solution: divide $SS$ by $n – 1$ instead of $n$
+    - Produces [unbiased]{.emph} estimate of the population variance
+
+## Variability equations for samples
+
+::: {.columns}
+::: {.column width="60%"}
+1.  Find the deviation for each score
+:::
+
+::: {.column width="40%"}
+$X - \mu$
+:::
+:::
+
+::: {.columns}
+::: {.column width="60%"}
+2.  Square deviations
+:::
+
+::: {.column width="40%"}
+$(X - \mu)^2$
+:::
+:::
+
+::: {.columns}
+::: {.column width="60%"}
+3.  Sum the squared deviations
+:::
+
+::: {.column width="40%"}
+$SS = \Sigma(X - \mu)^2$
+:::
+:::
+
+::: {.columns}
+::: {.column width="60%"}
+4.  Find average of squared deviations
+:::
+
+::: {.column width="40%"}
+$\sigma^2 = \dfrac{SS} {\color{red}{n-1}}$
+:::
+:::
+
+::: {.columns}
+::: {.column width="60%"}
+5.  Take square root of variance
+:::
+
+::: {.column width="40%"}
+$\sigma = \sqrt{\sigma^2} = \sqrt{\dfrac{SS}{\color{red}{n-1}}}$
+:::
+:::
 
 # Degrees of freedom {.smaller}
 
@@ -284,6 +486,49 @@ bc1101tools::SD_table(friend)
 
 ![](media/5-star-wars.png)
 
+## Star Wars variability {.smallest}
+
+```{css}
+.hide-columns td:nth-of-type(n+5) {
+   opacity: 0;
+}
+
+.hide-columns th:nth-of-type(n+5) {
+   opacity: 0;
+}
+
+.hide-columns tr:nth-of-type(1) th:nth-of-type(3) {
+   opacity: 0;
+}
+
+```
+
+```{r}
+sw <- readr::read_csv(here::here("slides", "data", "StarWarsTable_2022-01-31.csv"))
+
+sw <- sw[c(6,5,4,9,8,7,3,2,1),]
+rownames(sw) <- NULL
+
+sw_table <- sw |> 
+  knitr::kable(format = 'html', digits = 1, escape = F,
+             format.args = list(big.mark = ",", scientific = FALSE),
+             col.names = c("Movie",rep(c("<i>N</i>","<i>M</i>","<i>SD</i>"), 2))) |> 
+  kableExtra::add_header_above(c("", "MetaCritic.com" = 3, "IMDb.com" = 3))
+```
+
+:::: {.r-stack}
+:::{.hide-columns .fragment .fade-out fragment-index=1}
+```{r}
+sw_table
+```
+:::
+
+:::{.fragment fragment-index=1}
+```{r}
+sw_table
+```
+:::
+::::
 
 # Learning checks
 
