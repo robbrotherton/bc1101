@@ -50,6 +50,16 @@ $code-block-border-color: #000000;
     color: #71adff;
   }
 
+  .btn-outline-dark {
+    color: #eee;
+    background-color: #555;
+  }
+
+    .btn-outline-dark:hover {
+    color: #555;
+    background-color: #eee;
+  }
+
 }
 
 @media print {

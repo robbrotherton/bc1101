@@ -78,7 +78,13 @@ execute:
 }
 
 @media (prefers-color-scheme: dark) {
-  .box
+.box {
+border-color: #555
+}
+
+.box:hover {
+border-color: #ccc
+}
 }
 
 ```
