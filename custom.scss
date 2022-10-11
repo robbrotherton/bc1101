@@ -13,6 +13,10 @@ $code-block-border-color: #000000;
 
 /*-- scss:rules --*/
 
+.btn-outline-dark {
+    background-color: #eee;
+}
+
 @media (prefers-color-scheme: dark) {
   $body-bg: #181818;
   $body-color: white;

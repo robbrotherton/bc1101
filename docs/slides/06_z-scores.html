@@ -325,10 +325,13 @@
     <div class="slides">
 
 
-<section id="z-scores" class="title-slide slide level1 lecture-title center">
+<section id="z-scores" class="title-slide slide level1 center">
 <h1>6|<span class="math inline">\(z\)</span>-scores</h1>
 
-<img data-src="covers/06_z-scores.png" class="r-stretch"><div class="cell" data-fig.asp="0.6">
+<img data-src="covers/06_z-scores.svg" class="r-stretch"><div class="cell">
+
+</div>
+<div class="cell" data-fig.asp="0.6">
 
 </div>
 </section>
@@ -353,20 +356,22 @@
 <p>&lt;goo.gl/p8Y61u&gt;</p>
 
 <img data-src="media/6-hand.png" class="r-stretch"></section>
-<section id="z-scores-2" class="slide level2">
-<h2><span class="math inline">\(z\)</span>-scores</h2>
+<section id="z-score-calculation" class="slide level2">
+<h2><span class="math inline">\(z\)</span>-score calculation</h2>
 <ul>
 <li><span class="math inline">\(z\)</span>-score formula:</li>
 </ul>
+<div class="center-element">
 <p><span class="math inline">\(z = \dfrac{X - \mu}\sigma\)</span> &nbsp;&nbsp;&nbsp;&nbsp;or…&nbsp;&nbsp;&nbsp;&nbsp; <span class="math inline">\(z = \dfrac{X - M}s\)</span></p>
+</div>
 <ul>
 <li>Numerator: deviation score</li>
 <li>Denominator: standard deviation</li>
 <li><span class="math inline">\(z\)</span> expresses deviation in SD units</li>
 </ul>
 </section>
-<section id="z-scores-3" class="slide level2">
-<h2><span class="math inline">\(z\)</span>-scores</h2>
+<section id="z-score-description" class="slide level2 small">
+<h2><span class="math inline">\(z\)</span>-score description</h2>
 <div class="columns">
 <div class="column small">
 <ul>
@@ -386,29 +391,115 @@
 </ul></li>
 </ul>
 </div><div class="column">
-<p><img data-src="media/z-distribution.png"></p>
+<p><img data-src="media/z-distribution.svg" class="invertable"></p>
+<div class="cell">
+
 </div>
 </div>
-</section></section>
-<section id="z-score-to-raw-score" class="title-slide slide level1 center">
-<h1><span class="math inline">\(z\)</span>-score to raw score</h1>
+</div>
+</section>
+<section id="example-test-scores" class="slide level2">
+<h2>Example: test scores</h2>
 <ul>
-<li>Determining raw score from <span class="math inline">\(z\)</span>-score</li>
+<li>How well did you do on a test</li>
+<li>Is your score good, bad, just ok?</li>
 </ul>
+<div class="cell">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Test</th>
+<th style="text-align: right;">Score</th>
+<th style="text-align: right;">M</th>
+<th style="text-align: right;">SD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">geniustest.com</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">70</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">mensa.lu</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(z\)</span>-score can describe location of a score in any distribution
+<ul>
+<li>Makes scores from different distributions comparable</li>
+</ul></li>
+</ul>
+</section>
+<section id="example-test-scores-1" class="slide level2">
+<h2>Example: test scores</h2>
+<ul>
+<li>Comparing scores from different distributions
+<ul>
+<li>How many SDs is a score above/below the mean?</li>
+</ul></li>
+</ul>
+<div class="columns">
+<div class="column center-element">
+<p><span class="math inline">\(z = \dfrac{80-70}{5} = \dfrac{10}{5} = 2\)</span></p>
+<p><img data-src="media/iq-dist-1.svg"></p>
+<div class="cell">
+
+</div>
+</div><div class="column center-element">
+<p><span class="math inline">\(z = \dfrac{40-20}{10} = \dfrac{20}{10} = 2\)</span></p>
+<p><img data-src="media/iq-dist-2.svg"></p>
+</div>
+</div>
+</section>
+<section id="determining-raw-score-from-z-score" class="slide level2">
+<h2>Determining raw score from <span class="math inline">\(z\)</span>-score</h2>
+<div class="center-element">
 <p><span class="math inline">\(z = \dfrac{X - \mu}\sigma\)</span> &nbsp;&nbsp;&nbsp;&nbsp;so…&nbsp;&nbsp;&nbsp;&nbsp; <span class="math inline">\(X = \mu + z\sigma\)</span></p>
+</div>
 <ul>
 <li>Algebraically solve for <span class="math inline">\(X\)</span></li>
 <li>Raw score <span class="math inline">\(X\)</span> equals population mean plus <span class="math inline">\(z\)</span> multiplied by standard deviation</li>
 </ul>
 </section>
+<section id="determining-raw-score-from-z-score-1" class="slide level2">
+<h2>Determining raw score from <span class="math inline">\(z\)</span>-score</h2>
+<div class="cell">
 
+</div>
+<div class="columns">
+<div class="column">
+<p><span class="math display">\[\begin{align}
+X &amp; = \mu + z\sigma \\
+&amp; = 70 + 2*5 \\
+&amp; = 70 + 10 \\
+&amp; = 80 \end{align}\]</span></p>
+<p><img data-src="media/iq-z-dist-1.svg"></p>
+</div><div class="column">
+<p><span class="math display">\[\begin{align}
+X &amp; = \mu + z\sigma \\
+&amp; = 20 + 2*10 \\
+&amp; = 20 + 20 \\
+&amp; = 40 \end{align}\]</span></p>
+<p><img data-src="media/iq-z-dist-2.svg"></p>
+</div>
+</div>
+</section></section>
 <section>
 <section id="standardized-distributions" class="title-slide slide level1 center">
 <h1>Standardized distributions</h1>
 
 </section>
-<section id="standardized-distributions-1" class="slide level2">
-<h2>Standardized distributions</h2>
+<section id="z-distribution" class="slide level2">
+<h2><span class="math inline">\(z\)</span> distribution</h2>
 <ul>
 <li>Every <span class="math inline">\(X\)</span> value can be transformed to a <span class="math inline">\(z\)</span>-score
 <ul>
@@ -428,9 +519,16 @@
 </ul></li>
 </ul>
 </section>
-<section id="other-standardized-distribtions" class="slide level2">
+<section id="example" class="slide level2">
+<h2>Example</h2>
+<div class="cell">
+
+</div>
+<p><img data-src="media/generic-dist-1.svg" class="invertable" style="width:80.0%"></p>
+<p><img data-src="media/generic-dist-2.svg" class="invertable" style="width:80.0%"></p>
+</section>
+<section id="other-standardized-distribtions" class="slide level2 small">
 <h2>Other standardized distribtions</h2>
-<p>Other standardized distributions</p>
 <ul>
 <li>Standardized: Predetermined mean &amp; SD
 <ul>
@@ -446,7 +544,55 @@
 2b. Add or subtract a constant to set the mean</li>
 </ol></li>
 </ul>
+</section>
+<section id="standardizing-scores" class="slide level2 smaller">
+<h2>Standardizing scores</h2>
+<div class="cell">
+
+</div>
+<div class="columns">
+<div class="column" style="width:12%;">
+
+</div><div class="column" style="width:22%;">
+<p>Original</p>
+</div><div class="column" style="width:22%;">
+<ol type="1">
+<li><span class="math inline">\(z\)</span>-scores</li>
+</ol>
+</div><div class="column" style="width:22%;">
+<p>2a. Set SD</p>
+</div><div class="column" style="width:22%;">
+<p>2b. Set <span class="math inline">\(M\)</span></p>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:12%;">
+<p>geniustest</p>
+</div><div class="column" style="width:22%;">
+<p><img data-src="media/standardizing-genius.svg" class="invertable"></p>
+</div><div class="column" style="width:22%;">
+<p><img data-src="media/standardizing-z.svg" class="invertable"></p>
+</div><div class="column" style="width:22%;">
+<p><img data-src="media/standardizing-sd.svg" class="invertable"></p>
+</div><div class="column" style="width:22%;">
+<p><img data-src="media/standardizing-iq.svg" class="invertable"></p>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:12%;">
+<p>mensa.lu</p>
+</div><div class="column" style="width:22%;">
+<p><img data-src="media/standardizing-mensa.svg" class="invertable"></p>
+</div><div class="column" style="width:22%;">
+<p><img data-src="media/standardizing-z.svg" class="invertable"></p>
+</div><div class="column" style="width:22%;">
+<p><img data-src="media/standardizing-sd.svg" class="invertable"></p>
+</div><div class="column" style="width:22%;">
+<p><img data-src="media/standardizing-iq.svg" class="invertable"></p>
+</div>
+</div>
 </section></section>
+<section>
 <section id="z-scores-and-inferential-stats" class="title-slide slide level1 center">
 <h1><span class="math inline">\(z\)</span>-scores and inferential stats</h1>
 <ul>
@@ -460,7 +606,73 @@
 </ul></li>
 </ul>
 </section>
+<section id="z-scores-and-inferential-stats-1" class="slide level2">
+<h2><span class="math inline">\(z\)</span>-scores and inferential stats</h2>
 
+<img data-src="media/spiderman-comic.jpg" class="r-stretch"></section>
+<section id="z-scores-and-inferential-stats-2" class="slide level2">
+<h2><span class="math inline">\(z\)</span>-scores and inferential stats</h2>
+
+<img data-src="media/stopwatch.gif" class="r-stretch"><ul>
+<li><a href="https://humanbenchmark.com/tests/reactiontime" class="uri">https://humanbenchmark.com/tests/reactiontime</a>
+<ul>
+<li>Do 5 reaction time trials</li>
+<li>(click when the color changes)</li>
+<li>Note your reaction time in <span class="math inline">\(ms\)</span></li>
+<li>Then click play to resume lecture when you’re done</li>
+</ul></li>
+</ul>
+</section>
+<section id="peter-parker" class="slide level2">
+<h2>Peter Parker</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img data-src="media/spiderman-small.png" class="center-element" style="width:70.0%"></p>
+<ul>
+<li>Peter Parker <span class="math inline">\(RT = 159ms\)</span>
+<ul>
+<li>Impressive?</li>
+<li>Depends on population characteristics</li>
+</ul></li>
+</ul>
+</div><div class="column center-element" style="width:70%;">
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p><img data-src="media/spiderman-dist.svg" class="invertable"></p>
+<p><span class="math inline">\(z = \dfrac{159 - 284}{50} = -2.5\)</span></p>
+</div>
+</div>
+</section>
+<section id="cbt-for-ocd" class="slide level2">
+<h2>CBT for OCD</h2>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<ul>
+<li>CBT for OCD
+<ul>
+<li>Pre-treatment population <span class="math inline">\(M = 30.25; SD = 14.89\)</span></li>
+<li>Suppose a treated individual scores <span class="math inline">\(X = 15.49\)</span></li>
+</ul></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="media/cbt-dist.svg" class="invertable"></p>
+</div><div class="column" style="width:50%;">
+<p><span class="math inline">\(\begin{align} z &amp; = \dfrac{X - M}{s} \\ &amp; = \dfrac{15.49 - 30.25}{14.89} \\ &amp; = -0.99 \end{align}\)</span></p>
+</div>
+</div>
+<div class="footer reference">
+<p>Abramowitz, J. S., Deacon, B. J., Olatunji, B. O., Wheaton, M. G., Berman, N. C., Losardo, D., . . . Hale, L. R. (2010). <em>Assessment of obsessive-compulsive symptom dimensions: Development and evaluation of the Dimensional Obsessive-Compulsive Scale. Psychological Assessment, 22</em>(1), 180-198. <a href="http://dx.doi.org/10.1037/a0018260" class="uri">http://dx.doi.org/10.1037/a0018260</a></p>
+</div>
+</section></section>
 <section id="learning-checks" class="title-slide slide level1 center">
 <h1>Learning checks</h1>
 <div style="text-align: center;">

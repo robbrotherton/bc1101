@@ -515,7 +515,7 @@
     "href": "slides/06_z-scores.html#other-standardized-distribtions",
     "title": "BC1101",
     "section": "Other standardized distribtions",
-    "text": "Other standardized distribtions\nOther standardized distributions\n\nStandardized: Predetermined mean & SD\n\n\\(z\\) distribution has \\(\\mu = 0\\) and \\(\\sigma = 1\\)\nSAT has \\(\\mu = 500\\) and \\(\\sigma = 100\\)\nIQ has \\(\\mu=100\\) and \\(\\sigma=15\\) points\n\nStandardizing a distribution has two steps\n\nOriginal raw scores transformed to \\(z\\)-scores\nThe \\(z\\)-scores are transformed to new \\(X\\) values so that the specific predetermined \\(\\mu\\) and \\(\\sigma\\) are attained\n2a. Multiply to set SD\n2b. Add or subtract a constant to set the mean"
+    "text": "Other standardized distribtions\n\nStandardized: Predetermined mean & SD\n\n\\(z\\) distribution has \\(\\mu = 0\\) and \\(\\sigma = 1\\)\nSAT has \\(\\mu = 500\\) and \\(\\sigma = 100\\)\nIQ has \\(\\mu=100\\) and \\(\\sigma=15\\) points\n\nStandardizing a distribution has two steps\n\nOriginal raw scores transformed to \\(z\\)-scores\nThe \\(z\\)-scores are transformed to new \\(X\\) values so that the specific predetermined \\(\\mu\\) and \\(\\sigma\\) are attained\n2a. Multiply to set SD\n2b. Add or subtract a constant to set the mean"
   },
   {
     "objectID": "slides/07_probability.html#definition-and-notation",
@@ -852,5 +852,103 @@
     "title": "BC1101",
     "section": "Star Wars variability",
     "text": "Star Wars variability\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\nMetaCritic.com\nIMDb.com\n\n  \n    Movie \n    N \n    M \n    SD \n    N \n    M \n    SD \n  \n \n\n  \n    Star Wars: Episode IV - A New Hope \n    24 \n    90.1 \n    16.7 \n    1,302,317 \n    85.0 \n    16.4 \n  \n  \n    Star Wars: Episode V - The Empire Strikes Back \n    25 \n    83.5 \n    20.8 \n    1,230,844 \n    85.9 \n    16.3 \n  \n  \n    Star Wars: Episode VI - Return of the Jedi \n    24 \n    63.8 \n    25.2 \n    1,006,122 \n    82.6 \n    15.5 \n  \n  \n    Star Wars: Episode I - The Phantom Menace \n    36 \n    56.4 \n    22.9 \n    769,435 \n    65.3 \n    20.3 \n  \n  \n    Star Wars: Episode II - Attack of the Clones \n    39 \n    60.3 \n    22.0 \n    678,519 \n    66.3 \n    20.2 \n  \n  \n    Star Wars: Episode III - Revenge of the Sith \n    40 \n    71.4 \n    19.7 \n    751,751 \n    76.1 \n    18.8 \n  \n  \n    Star Wars: Episode VII - The Force Awakens \n    55 \n    80.8 \n    14.2 \n    898,767 \n    77.7 \n    19.6 \n  \n  \n    Star Wars: Episode VIII - The Last Jedi \n    56 \n    84.1 \n    13.5 \n    602,045 \n    66.6 \n    24.5 \n  \n  \n    Star Wars: Episode IX - The Rise of Skywalker \n    61 \n    57.2 \n    16.5 \n    418,656 \n    64.7 \n    23.4 \n  \n\n\n\n\n\n\n\n\n\n\n\n \n\n\nMetaCritic.com\nIMDb.com\n\n  \n    Movie \n    N \n    M \n    SD \n    N \n    M \n    SD \n  \n \n\n  \n    Star Wars: Episode IV - A New Hope \n    24 \n    90.1 \n    16.7 \n    1,302,317 \n    85.0 \n    16.4 \n  \n  \n    Star Wars: Episode V - The Empire Strikes Back \n    25 \n    83.5 \n    20.8 \n    1,230,844 \n    85.9 \n    16.3 \n  \n  \n    Star Wars: Episode VI - Return of the Jedi \n    24 \n    63.8 \n    25.2 \n    1,006,122 \n    82.6 \n    15.5 \n  \n  \n    Star Wars: Episode I - The Phantom Menace \n    36 \n    56.4 \n    22.9 \n    769,435 \n    65.3 \n    20.3 \n  \n  \n    Star Wars: Episode II - Attack of the Clones \n    39 \n    60.3 \n    22.0 \n    678,519 \n    66.3 \n    20.2 \n  \n  \n    Star Wars: Episode III - Revenge of the Sith \n    40 \n    71.4 \n    19.7 \n    751,751 \n    76.1 \n    18.8 \n  \n  \n    Star Wars: Episode VII - The Force Awakens \n    55 \n    80.8 \n    14.2 \n    898,767 \n    77.7 \n    19.6 \n  \n  \n    Star Wars: Episode VIII - The Last Jedi \n    56 \n    84.1 \n    13.5 \n    602,045 \n    66.6 \n    24.5 \n  \n  \n    Star Wars: Episode IX - The Rise of Skywalker \n    61 \n    57.2 \n    16.5 \n    418,656 \n    64.7 \n    23.4"
+  },
+  {
+    "objectID": "slides/06_z-scores.html#z-score-calculation",
+    "href": "slides/06_z-scores.html#z-score-calculation",
+    "title": "BC1101",
+    "section": "\\(z\\)-score calculation",
+    "text": "\\(z\\)-score calculation\n\n\\(z\\)-score formula:\n\n\n\\(z = \\dfrac{X - \\mu}\\sigma\\)     or…     \\(z = \\dfrac{X - M}s\\)\n\n\nNumerator: deviation score\nDenominator: standard deviation\n\\(z\\) expresses deviation in SD units"
+  },
+  {
+    "objectID": "slides/06_z-scores.html#z-score-description",
+    "href": "slides/06_z-scores.html#z-score-description",
+    "title": "BC1101",
+    "section": "\\(z\\)-score description",
+    "text": "\\(z\\)-score description\n\n\n\n\\(z\\)-score describes exact location of any score in a distribution\nTwo pieces of information:\n\nSign\n\nPositive or negative\nIndicates whether score is located above or below the mean\n\nMagnitude\n\nIndicates distance between score and mean in standard deviation units\n\\(z = 0\\) is equal to the mean"
+  },
+  {
+    "objectID": "slides/06_z-scores.html#determining-raw-score-from-z-score",
+    "href": "slides/06_z-scores.html#determining-raw-score-from-z-score",
+    "title": "BC1101",
+    "section": "Determining raw score from \\(z\\)-score",
+    "text": "Determining raw score from \\(z\\)-score\n\n\\(z = \\dfrac{X - \\mu}\\sigma\\)     so…     \\(X = \\mu + z\\sigma\\)\n\n\nAlgebraically solve for \\(X\\)\nRaw score \\(X\\) equals population mean plus \\(z\\) multiplied by standard deviation"
+  },
+  {
+    "objectID": "slides/06_z-scores.html#example",
+    "href": "slides/06_z-scores.html#example",
+    "title": "BC1101",
+    "section": "Example",
+    "text": "Example"
+  },
+  {
+    "objectID": "slides/06_z-scores.html#example-test-scores",
+    "href": "slides/06_z-scores.html#example-test-scores",
+    "title": "BC1101",
+    "section": "Example: test scores",
+    "text": "Example: test scores\n\nHow well did you do on a test\nIs your score good, bad, just ok?\n\n\n\n\n\n\nTest\nScore\nM\nSD\n\n\n\n\ngeniustest.com\n80\n70\n70\n\n\nmensa.lu\n40\n20\n5\n\n\n\n\n\n\n\\(z\\)-score can describe location of a score in any distribution\n\nMakes scores from different distributions comparable"
+  },
+  {
+    "objectID": "slides/06_z-scores.html#example-test-scores-1",
+    "href": "slides/06_z-scores.html#example-test-scores-1",
+    "title": "BC1101",
+    "section": "Example: test scores",
+    "text": "Example: test scores\n\nComparing scores from different distributions\n\nHow many SDs is a score above/below the mean?\n\n\n\n\n\\(z = \\dfrac{80-70}{5} = \\dfrac{10}{5} = 2\\)\n\n\n\n\n\n\\(z = \\dfrac{40-20}{10} = \\dfrac{20}{10} = 2\\)"
+  },
+  {
+    "objectID": "slides/06_z-scores.html#determining-raw-score-from-z-score-1",
+    "href": "slides/06_z-scores.html#determining-raw-score-from-z-score-1",
+    "title": "BC1101",
+    "section": "Determining raw score from \\(z\\)-score",
+    "text": "Determining raw score from \\(z\\)-score\n\n\n\n\n\n\\[\\begin{align}\nX & = \\mu + z\\sigma \\\\\n& = 70 + 2*5 \\\\\n& = 70 + 10 \\\\\n& = 80 \\end{align}\\]\n\n\n\\[\\begin{align}\nX & = \\mu + z\\sigma \\\\\n& = 20 + 2*10 \\\\\n& = 20 + 20 \\\\\n& = 40 \\end{align}\\]"
+  },
+  {
+    "objectID": "slides/06_z-scores.html#z-distribution",
+    "href": "slides/06_z-scores.html#z-distribution",
+    "title": "BC1101",
+    "section": "\\(z\\) distribution",
+    "text": "\\(z\\) distribution\n\nEvery \\(X\\) value can be transformed to a \\(z\\)-score\n\n\\(z\\)-score distribution is called a standardized distribution\n\nCharacteristics of \\(z\\)-score transformation\n\nSame shape as original distribution\nMean of \\(z\\)-score distribution is always \\(0\\)\n\nBecause the mean is the balance point; \\(\\Sigma (X - \\mu)\\) always equals \\(0\\)\n\nStandard deviation is always \\(1.00\\)\n\nBecause \\(SD\\) is the denominator"
+  },
+  {
+    "objectID": "slides/06_z-scores.html#standardizing-scores",
+    "href": "slides/06_z-scores.html#standardizing-scores",
+    "title": "BC1101",
+    "section": "Standardizing scores",
+    "text": "Standardizing scores\n\n\n\n\n\n\n\nOriginal\n\n\n\\(z\\)-scores\n\n\n2a. Set SD\n\n2b. Set \\(M\\)\n\n\n\n\ngeniustest\n\n\n\n\n\n\n\n\n\n\n\n\nmensa.lu"
+  },
+  {
+    "objectID": "slides/06_z-scores.html#standardizing-scores-1",
+    "href": "slides/06_z-scores.html#standardizing-scores-1",
+    "title": "BC1101",
+    "section": "Standardizing scores",
+    "text": "Standardizing scores\n\n\n\n\nOriginal\n\n\n\\(z\\)-scores\n\n\n2a. Set SD\n\n2b. Set \\(M\\)\n\n\n\n\ngeniustest\n\n\n\n\n\n\n\n\n\n\n\n\nmensa.lu"
+  },
+  {
+    "objectID": "slides/06_z-scores.html#z-scores-and-inferential-stats-1",
+    "href": "slides/06_z-scores.html#z-scores-and-inferential-stats-1",
+    "title": "BC1101",
+    "section": "\\(z\\)-scores and inferential stats",
+    "text": "\\(z\\)-scores and inferential stats"
+  },
+  {
+    "objectID": "slides/06_z-scores.html#z-scores-and-inferential-stats-2",
+    "href": "slides/06_z-scores.html#z-scores-and-inferential-stats-2",
+    "title": "BC1101",
+    "section": "\\(z\\)-scores and inferential stats",
+    "text": "\\(z\\)-scores and inferential stats\n\n\nhttps://humanbenchmark.com/tests/reactiontime\n\nDo 5 reaction time trials\n(click when the color changes)\nNote your reaction time in \\(ms\\)\nThen click play to resume lecture when you’re done"
+  },
+  {
+    "objectID": "slides/06_z-scores.html#peter-parker",
+    "href": "slides/06_z-scores.html#peter-parker",
+    "title": "BC1101",
+    "section": "Peter Parker",
+    "text": "Peter Parker\n\n\n\n\nPeter Parker \\(RT = 159ms\\)\n\nImpressive?\nDepends on population characteristics\n\n\n\n\n\n\n\n\n\n\n\\(z = \\dfrac{159 - 284}{50} = -2.5\\)"
+  },
+  {
+    "objectID": "slides/06_z-scores.html#cbt-for-ocd",
+    "href": "slides/06_z-scores.html#cbt-for-ocd",
+    "title": "BC1101",
+    "section": "CBT for OCD",
+    "text": "CBT for OCD\n\n\n\n\n\n\n\nCBT for OCD\n\nPre-treatment population \\(M = 30.25; SD = 14.89\\)\nSuppose a treated individual scores \\(X = 15.49\\)\n\n\n\n\n\n\n\\(\\begin{align} z & = \\dfrac{X - M}{s} \\\\ & = \\dfrac{15.49 - 30.25}{14.89} \\\\ & = -0.99 \\end{align}\\)\n\n\n\nAbramowitz, J. S., Deacon, B. J., Olatunji, B. O., Wheaton, M. G., Berman, N. C., Losardo, D., . . . Hale, L. R. (2010). Assessment of obsessive-compulsive symptom dimensions: Development and evaluation of the Dimensional Obsessive-Compulsive Scale. Psychological Assessment, 22(1), 180-198. http://dx.doi.org/10.1037/a0018260"
   }
 ]

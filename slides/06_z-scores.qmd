@@ -4,9 +4,19 @@ format:
     chalkboard: true
 ---
 
-# 6|$z$-scores {.lecture-title}
+# 6|$z$-scores
 
-![](covers/06_z-scores.png)
+![](covers/06_z-scores.svg)
+
+```{r eval=FALSE}
+bc1101tools::plot_distribution(segments = -2:2, linetype = 1,
+                               fill_colors = c("thistle", "plum", "purple", "purple", "plum", "thistle")) +
+  ggplot2::theme_void()
+
+ggplot2::ggsave(here::here("slides", "covers", "06_z-scores.svg"),
+       width = 10, height = 5)
+```
+
 
 ```{r eval=FALSE, fig.asp=.6}
 library(ggplot2)
@@ -32,6 +42,7 @@ norm <- ggplot() +
 ggsave(here::here("slides", "media", "z-distribution.png"),norm, width = 7, height = 5)
 
 ```
+
 # Overview
 
 - $z$-scores?
@@ -39,6 +50,7 @@ ggsave(here::here("slides", "media", "z-distribution.png"),norm, width = 7, heig
   - How do you calculate them?
 - Standardized distributions
 - $z$-scores & probability / inferences
+
 
 # $z$-scores
 
@@ -48,19 +60,21 @@ Comparing hand spans
 
 ![](media/6-hand.png)
 
-## $z$-scores
+## $z$-score calculation
 
 - $z$-score formula:
 
+::: {.center-element}
 $z = \dfrac{X - \mu}\sigma$
 &nbsp;&nbsp;&nbsp;&nbsp;or...&nbsp;&nbsp;&nbsp;&nbsp;
 $z = \dfrac{X - M}s$
+:::
 
 - Numerator: deviation score
 - Denominator: standard deviation
 - $z$ expresses deviation in SD units
 
-## $z$-scores
+## $z$-score description {.small}
 
 :::: {.columns}
 ::: {.column .small}
@@ -74,26 +88,143 @@ $z = \dfrac{X - M}s$
     - $z = 0$ is equal to the mean
 :::
 ::: {.column}
-![](media/z-distribution.png)
+![](media/z-distribution.svg){.invertable}
+
+```{r}
+#| eval: false
+
+bc1101tools::plot_distribution(segments = -3:3,
+                               xlab = "z-score",
+                               linetype = 2) +
+  bc1101tools::theme_xonly()
+
+ggplot2::ggsave(here::here("slides", "media", "z-distribution.svg"),
+                width = 4, height = 3)
+```
+
 :::
 ::::
 
-# $z$-score to raw score
+## Example: test scores
 
-- Determining raw score from $z$-score
+- How well did you do on a test
+- Is your score good, bad, just ok?
 
+```{r}
+library(bc1101tools)
+
+genius <- list(x = 80, m = 70, sd = 5)
+genius$z <- (genius$x - genius$m) / genius$sd
+mensa  <- list(x = 40, m = 20, sd = 10)
+mensa$z <- (mensa$x - mensa$m) / mensa$sd
+
+data <- data.frame(Test = c("geniustest.com", "mensa.lu"),
+                   Score = c(genius$x, mensa$x),
+                   M = c(genius$m, mensa$m), 
+                   SD = c(genius$m, genius$sd))
+
+knitr::kable(data)
+
+```
+
+- $z$-score can describe location of a score in any distribution
+  - Makes scores from different distributions comparable
+
+
+## Example: test scores
+
+- Comparing scores from different distributions
+  - How many SDs is a score above/below the mean?
+
+:::: {.columns}
+
+::: {.column .center-element}
+$z = \dfrac{80-70}{5} = \dfrac{10}{5} = 2$
+
+![](media/iq-dist-1.svg)
+```{r}
+#| eval: false
+
+bc1101tools::plot_distribution(xlab = "geniustest.com", args = list(mean = 70, sd = 5), segments = seq(55, 85, 5), linetype = 2, arrow = genius$x) + bc1101tools::theme_xonly(yline = TRUE) +
+  ggplot2::theme(plot.margin = ggplot2::margin(b = 3))
+
+ggplot2::ggsave(here::here("slides", "media", "iq-dist-1.svg"), width = 3, height = 2)
+
+bc1101tools::plot_distribution(xlab = "mensa.lu", args = list(mean = 20, sd = 10), segments = seq(-10, 50, 10), linetype = 2, arrow = mensa$x) + bc1101tools::theme_xonly(yline = TRUE) +
+  ggplot2::theme(plot.margin = ggplot2::margin(b = 3)) +
+  ggplot2::geom_segment(ggplot2::aes(x = 40, xend = 40, y = dnorm(40, 20, 10)*3, yend = 0), arrow = ggplot2::arrow(type = "closed"), color = "red")
+
+ggplot2::ggsave(here::here("slides", "media", "iq-dist-2.svg"), width = 3, height = 2)
+```
+
+:::
+
+::: {.column .center-element}
+$z = \dfrac{40-20}{10} = \dfrac{20}{10} = 2$
+
+![](media/iq-dist-2.svg)
+:::
+::::
+
+## Determining raw score from $z$-score
+
+::: {.center-element}
 $z = \dfrac{X - \mu}\sigma$
 &nbsp;&nbsp;&nbsp;&nbsp;so...&nbsp;&nbsp;&nbsp;&nbsp;
 $X = \mu + z\sigma$
+:::
 
   - Algebraically solve for $X$ 
   - Raw score $X$ equals population mean plus $z$ multiplied by standard deviation 
 
+## Determining raw score from $z$-score
 
+```{r}
+#| eval: false
+
+bc1101tools::plot_distribution(xlab = "geniustest.com",
+                               segments = -3:3,
+                               linetype = 2,
+                               arrow = genius$z) +
+  bc1101tools::theme_xonly(yline = TRUE)
+
+ggplot2::ggsave(here::here("slides", "media", "iq-z-dist-1.svg"), width = 3, height = 2)
+
+bc1101tools::plot_distribution(xlab = "mensa.lu",
+                               segments = -3:3,
+                               linetype = 2,
+                               arrow = mensa$z) +
+  bc1101tools::theme_xonly(yline = TRUE)
+
+ggplot2::ggsave(here::here("slides", "media", "iq-z-dist-2.svg"), width = 3, height = 2)
+```
+
+:::: {.columns}
+
+::: {.column}
+$$\begin{align} 
+X & = \mu + z\sigma \\
+& = `r genius$m` + `r genius$z`*`r genius$sd` \\ 
+& = `r genius$m` + `r genius$z*genius$sd` \\
+& = `r genius$x` \end{align}$$
+
+![](media/iq-z-dist-1.svg)
+:::
+
+::: {.column}
+$$\begin{align} 
+X & = \mu + z\sigma \\
+& = `r mensa$m` + `r mensa$z`*`r mensa$sd` \\ 
+& = `r mensa$m` + `r mensa$z *   mensa$sd` \\
+& = `r mensa$x` \end{align}$$
+
+![](media/iq-z-dist-2.svg)
+:::
+::::
 
 # Standardized distributions
 
-## Standardized distributions
+## $z$ distribution
 
 - Every $X$ value can be transformed to a $z$-score
     - $z$-score distribution is called a standardized distribution 
@@ -104,9 +235,38 @@ $X = \mu + z\sigma$
     - Standard deviation is always $1.00$
         - Because $SD$ is the denominator
 
-## Other standardized distribtions
+## Example
 
-Other standardized distributions
+```{r}
+#| eval: false
+scores <- c(0, 2, 2, 3, 5, 6)
+
+zscores <- scale(scores, scale = bc1101tools::pop_sd(scores))
+
+bc1101tools::plot_histogram(scores, block = TRUE) +
+  ggplot2::scale_x_continuous(breaks = 0:6) +
+  ggplot2::coord_cartesian() +
+  bc1101tools::theme_bc1101()
+
+ggplot2::ggsave(here::here("slides", "media", "generic-dist-1.svg"),
+       width = 4, height = 1.5)
+
+bc1101tools::plot_histogram(zscores, binwidth = 0.5, block = TRUE) +
+  ggplot2::coord_cartesian() +
+  ggplot2::scale_x_continuous(breaks = seq(-1.5, 1.5, .5)) +
+  bc1101tools::theme_bc1101()
+
+ggplot2::ggsave(here::here("slides", "media", "generic-dist-2.svg"),
+       width = 4, height = 1.5)
+
+```
+
+![](media/generic-dist-1.svg){.invertable width=80%}
+
+![](media/generic-dist-2.svg){.invertable width=80%}
+
+
+## Other standardized distribtions {.small}
 
 - Standardized: Predetermined mean & SD
     - $z$ distribution has $\mu = 0$ and $\sigma = 1$
@@ -119,6 +279,95 @@ Other standardized distributions
       2a. Multiply to set SD  
       2b. Add or subtract a constant to set the mean
 
+## Standardizing scores {.smaller}
+
+```{r}
+#| eval: false
+library(bc1101tools)
+
+
+genius_plot <- plot_distribution(args = list(mean = genius$m, sd = genius$sd), segments = seq(genius$m - 3*genius$sd, genius$m + 3*genius$sd, genius$sd), linetype = 2) + 
+  theme_xonly(yline = TRUE)
+
+mensa_plot <- plot_distribution(args = list(mean = mensa$m, sd = mensa$sd), segments = seq(mensa$m - 3*mensa$sd, mensa$m + 3*mensa$sd, mensa$sd), linetype = 2) + 
+  theme_xonly(yline = TRUE)
+
+z_plot <- plot_distribution(segments = -3:3, linetype = 2) + theme_xonly(yline = TRUE)
+
+sd_plot <- plot_distribution(args = list(mean = 0, sd = 15),
+                        segments = seq(-45, 45, 15), linetype = 2) + theme_xonly(yline = TRUE)
+
+iq_plot <- plot_distribution(args = list(mean = 100, sd = 15), segments = seq(55, 145, 15), linetype = 2) + theme_xonly(yline = TRUE) + 
+  theme_xonly(yline = TRUE)
+  
+plots <- list(genius = genius_plot, mensa = mensa_plot, z = z_plot, sd = sd_plot, iq = iq_plot)
+
+for(i in seq_along(plots)) {
+  filename <- glue::glue(here::here("slides", "media", "standardizing-{names(plots)[i]}.svg"))
+  
+  print(plots[i])
+  
+  ggplot2::ggsave(filename = filename, width = 3, height = 1.5)
+  
+}
+
+```
+
+
+:::: {.columns }
+::: {.column width="12%"}
+ 
+:::
+::: {.column width="22%"}
+Original
+:::
+::: {.column width="22%"}
+1. $z$-scores
+:::
+::: {.column width="22%"}
+2a. Set SD
+:::
+::: {.column width="22%"}
+2b. Set $M$
+:::
+::::
+
+:::: {.columns}
+::: {.column width="12%"}
+geniustest
+:::
+::: {.column width="22%"}
+![](media/standardizing-genius.svg){.invertable}
+:::
+::: {.column width="22%"}
+![](media/standardizing-z.svg){.invertable}
+:::
+::: {.column width="22%"}
+![](media/standardizing-sd.svg){.invertable}
+:::
+::: {.column width="22%"}
+![](media/standardizing-iq.svg){.invertable}
+:::
+::::
+
+:::: {.columns}
+::: {.column width="12%"}
+mensa.lu
+:::
+::: {.column width="22%"}
+![](media/standardizing-mensa.svg){.invertable}
+:::
+::: {.column width="22%"}
+![](media/standardizing-z.svg){.invertable}
+:::
+::: {.column width="22%"}
+![](media/standardizing-sd.svg){.invertable}
+:::
+::: {.column width="22%"}
+![](media/standardizing-iq.svg){.invertable}
+:::
+::::
+
 # $z$-scores and inferential stats
 
 - What’s the use of $z$-scores?
@@ -129,7 +378,107 @@ Other standardized distributions
   - $z \approx 0$ is a typical score; $z \le -2.00$ or $\ge 2.00$ are less typical
 
 
+## $z$-scores and inferential stats
 
+![](media/spiderman-comic.jpg)
+
+
+## $z$-scores and inferential stats
+
+![](media/stopwatch.gif)
+
+- <https://humanbenchmark.com/tests/reactiontime>
+  - Do 5 reaction time trials
+  - (click when the color changes)
+  - Note your reaction time in $ms$
+  - Then click play to resume lecture when you're done
+
+
+## Peter Parker
+
+:::: {.columns}
+
+::: {.column width="30%"}
+![](media/spiderman-small.png){width=70% .center-element}
+
+- Peter Parker $RT = 159ms$
+  - Impressive?
+  - Depends on population characteristics
+:::
+
+::: {.column width="70%" .center-element}
+
+```{r spidey-data}
+rt <- list(m = 284, sd = 50, x = 159)
+rt$z <- (rt$x  -rt$m) / rt$sd
+```
+
+```{r}
+#| eval: false
+library(bc1101tools)
+plot_distribution(args = list(mean = rt$m, sd = rt$sd), 
+                  segments = seq(rt$m - 3*rt$sd, rt$m + 3*rt$sd, rt$sd), linetype = 2,
+                  arrow = rt$x,
+                  arrow_length = 6) +
+  theme_xonly(yline = TRUE)
+
+ggplot2::ggsave(here::here("slides", "media", "spiderman-dist.svg"),
+       width = 4, height = 3)
+
+```
+
+![](media/spiderman-dist.svg){.invertable}
+
+$z = \dfrac{`r rt$x` - `r rt$m`}{`r rt$sd`} = `r rt$z`$
+
+:::
+
+::::
+
+
+## CBT for OCD
+
+```{r cbt-data}
+cbt <- list(m = 30.25, sd = 14.89, x = 15.49)
+cbt$z <- (cbt$x  - cbt$m) / cbt$sd
+```
+
+```{r cbt-figs}
+#| eval: false
+
+library(bc1101tools)
+
+plot_distribution(args = list(mean = cbt$m, sd = cbt$sd), 
+                  segments = seq(cbt$m - 3*cbt$sd, cbt$m + 3*cbt$sd, cbt$sd), linetype = 2,
+                  arrow = cbt$x,
+                  arrow_length = 1.3) +
+  theme_xonly(yline = TRUE)
+
+ggplot2::ggsave(here::here("slides", "media", "cbt-dist.svg"),
+       width = 4, height = 3)
+```
+
+- CBT for OCD
+  - Pre-treatment population $M = `r cbt$m`; SD = `r cbt$sd`$
+  - Suppose a treated individual scores $X = `r cbt$x`$
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](media/cbt-dist.svg){.invertable}
+:::
+
+::: {.column width="50%"}
+$\begin{align} z & = \dfrac{X - M}{s} \\
+& = \dfrac{`r cbt$x` - `r cbt$m`}{`r cbt$sd`} \\
+& = `r round(cbt$z, 2)` \end{align}$
+:::
+
+::::
+
+::: {.footer .reference}
+Abramowitz, J. S., Deacon, B. J., Olatunji, B. O., Wheaton, M. G., Berman, N. C., Losardo, D., . . . Hale, L. R. (2010). *Assessment of obsessive-compulsive symptom dimensions: Development and evaluation of the Dimensional Obsessive-Compulsive Scale. Psychological Assessment, 22*(1), 180-198. <http://dx.doi.org/10.1037/a0018260>
+:::
 
 # Learning checks
 
