@@ -45,11 +45,10 @@ ggsave(here::here("slides", "media", "z-distribution.png"),norm, width = 7, heig
 
 # Overview
 
-- $z$-scores?
-  - What are they for?
-  - How do you calculate them?
-- Standardized distributions
-- $z$-scores & probability / inferences
+- [$z$-scores]
+- [Standardized distributions]
+- [$z$-scores & making inferences](#inferential)
+- [Learning checks]
 
 
 # $z$-scores
@@ -261,9 +260,9 @@ ggplot2::ggsave(here::here("slides", "media", "generic-dist-2.svg"),
 
 ```
 
-![](media/generic-dist-1.svg){.invertable width=80%}
+![](media/generic-dist-1.svg){.invertable width=70%}
 
-![](media/generic-dist-2.svg){.invertable width=80%}
+![](media/generic-dist-2.svg){.invertable width=70%}
 
 
 ## Other standardized distribtions {.small}
@@ -368,7 +367,7 @@ mensa.lu
 :::
 ::::
 
-# $z$-scores and inferential stats
+# $z$-scores and inferential stats {#inferential}
 
 - What’s the use of $z$-scores?
   - Research questions are often about looking for differences
@@ -394,12 +393,12 @@ mensa.lu
   - Then click play to resume lecture when you're done
 
 
-## Peter Parker
+## Peter Parker {.small}
 
 :::: {.columns}
 
 ::: {.column width="30%"}
-![](media/spiderman-small.png){width=70% .center-element}
+![](media/spiderman-small.png){width=50% .center-element}
 
 - Peter Parker $RT = 159ms$
   - Impressive?
@@ -482,11 +481,6 @@ Abramowitz, J. S., Deacon, B. J., Olatunji, B. O., Wheaton, M. G., Berman, N. C.
 
 # Learning checks
 
-::: {style="text-align: center;"}
-$z = \dfrac{X - \mu}{\sigma}$
-
-$X = \mu + z* \sigma$
-:::
 
 1. For a population with $\mu = 50$ and $\sigma = 10$, what is the $X$ value corresponding to $z = 0.4$?
 

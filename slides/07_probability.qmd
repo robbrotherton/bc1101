@@ -8,22 +8,59 @@ format:
 
 ![](covers/07_probability.svg)
 
+```{r data}
+rt <- list(m = 284, sd = 50, x = 159)
+rt$z <- (rt$x  -rt$m) / rt$sd
+```
+
+
+```{r figures}
+#| eval: false
+
+library(bc1101tools)
+library(ggplot2)
+
+z_fill <- plot_distribution(xlab = "z-score", segments = -2:2, linetype = 2, fill_colors = c('thistle', 'plum', 'purple', 'purple', 'thistle', 'plum')) +
+  theme_xonly() 
+
+z_fill
+
+ggsave(here::here("slides", "media", "z-distribution-filled.svg"),
+       width = 10, height = 6)
+
+z_fill + +
+  geom_text(aes(
+    x = c(-2.5, -1.5, -0.5, 0.5, 1.5, 2.5),
+    y = c(.005, .03, .1, .1, .03, .005),
+    label = c("2.28%", "13.59%", "34.13%", "34.13%", "13.59%", "2.28%")
+  ))
+
+ggsave(here::here("slides", "media", "z-distribution-labelled.svg"))
+
+
+plot_distribution(xlab = "z-score", segments = rt$z, linetype = 2, fill_colors = c('thistle', 'plum')) +
+  theme_xonly()
+
+ggsave(here::here("slides", "media", "spiderman-distribution.svg"),
+       width = 6, height = 4)
+
+```
+
 
 # Overview
 
-- What do statisticians mean by "probability"?
-  - Quantifying probability
-- "Random sampling"
-- Probability and $z$-scores
-- Making inferences
+- [Probability basics](#probability-and-games)
+- [Sampling]
+- [Probability and distributions]
+- [Probability and $z$-scores](#probability-and-z-scores)
+- [Learning checks]
 
 
 # Probability and games
 
 :::: {.columns}
 ::: {.column .small}
-- Probability & games
-    - Settlers of Catan
+- Settlers of Catan
     - Board of hex tiles, each with a number
     - Place “settlements” at intersection of tiles
     - Each turn, roll 2 dice
@@ -51,12 +88,23 @@ $p(A) = \dfrac{number \ of \ outcomes \ classified \ as \ A}{total \ number \ of
     - Numerator: number of those outcomes
     - Denominator: all possible outcomes
 
-![](media/heads.png)
-$p(heads) = 1/2 = .5$ 
+:::: {.columns}
 
-![](media/tails.png)
+::: {.column width="50%"}
+![](media/heads.png){width=20%}
+
+$p(heads) = 1/2 = .5$ 
+:::
+
+::: {.column width="50%"}
+![](media/tails.png){width=20%}
 
 $p(tails) = 1/2 = .5%$
+:::
+
+::::
+
+
 
 
 ## Example: rolling dice
@@ -64,17 +112,35 @@ $p(tails) = 1/2 = .5%$
 - All possible outcomes:
 - 1, 2, 3, 4, 5, 6
 
+![](media/red-dice.svg){width=20%}
+
+::: {.center-element}
 $p(6) = 1/6 = 0.17$
 
-$p(1) = \ ?$
+$p(1) = 1/6 = 0.17$
 
-$p(odd) = \ ?$  
+$p(odd) = 3/6 = 0.5$  
+:::
 
 
 
 ## Example: rolling 2 dice
 
+:::: {.columns}
+::: {.column width="60%"}
+![](media/red-and-blue-dice.svg){width=30%}
+:::
+
+::: {.column width="40%"}
+$p(2) = 1/36 = .03$  
+$p(12) = 1/36 = .03$  
+$p(7) = 6/36 = .17$
+:::
+::::
+
 ```{r}
+#| style: "margin-top: 1em; width: 100%;"
+
 
 library(kableExtra)
 
@@ -84,23 +150,23 @@ d <- d[c(7,1:6)]
 
 colnames(d) <- c("",1:6)
 
-dice_tab <- knitr::kable(d, 'html', escape = F, align ='c') %>%
-  row_spec(1:6, background = "white") %>%
-  column_spec(1:7, width = "20px") %>%
-  row_spec(0, color = 'red') %>%
-  column_spec(1, color = "blue", border_right = "1px solid black", bold = T)
-  # column_spec(c(3,4), width = "20%")
+dice_tab <- knitr::kable(d, 'html', escape = F, align ='c') |>  
+  row_spec(0, color = 'red', background = "rgba(255, 0, 0, 0.2)") |> 
+  column_spec(1, color = "blue", background = "rgba(0, 0, 255, 0.2)", border_right = "1px solid", bold = T) |> 
+  column_spec(1:7, width = "2em")
 
 dice_tab
 ```
 
 
-## Example: marbles
+# Sampling
+
+## Sampling marbles {.small}
 
 :::: {.columns}
 
 ::: {.column}
-![](media/jar-5050.png)
+![](media/jar-5050.svg){width=100%}
 :::
 
 ::: {.column}
@@ -117,12 +183,12 @@ $p(white) = 25/50 = .5$
 ::::
 
 
-## Example: marbles
+## More marbles
 
 :::: {.columns}
 
 ::: {.column}
-![](media/jar-8020.png)
+![](media/jar-4010.svg){width=100%}
 :::
 
 ::: {.column}
@@ -136,12 +202,12 @@ $p(white) = 10/50 = .2$
 ::::
 
 
-## Repeated sampling
+## Repeated sampling {.small}
 
 :::: {.columns}
 
 ::: {.column}
-![](media/jar-8020.png)
+![](media/jar-4010.svg){width=100%}
 :::
 
 ::: {.column}
@@ -160,12 +226,12 @@ $p(second \ white)$ depends on whether we put the first one back or not
 
 
 
-## Example: marbles
+## Repeated sampling {.small}
 
 :::: {.columns}
 
 ::: {.column}
-![](media/jar-8020.png)
+![](media/jar-4010.svg){width=100%}
 :::
 
 ::: {.column}
@@ -174,20 +240,8 @@ $p(second \ white)$ depends on whether we put the first one back or not
 $$\begin{align} p(white) & = 10/50 = .2 \\
 p(second \ white) & = 9/49 \approx .18 \\
 p(both \ white) & = .2 * .18  \approx .037 \end{align}$$
-:::
-
-::::
 
 
-## Example: marbles
-
-:::: {.columns}
-
-::: {.column}
-![](media/jar-8020.png)
-:::
-
-::: {.column}
 - With replacement
 
 $\begin{align} p(white) &= 10/50 = .2 \\
@@ -196,6 +250,8 @@ p(both \ white) &= .2 * .2 = .04\end{align}$
 :::
 
 ::::
+
+
 
 
 ## Random sampling
@@ -208,30 +264,43 @@ p(both \ white) &= .2 * .2 = .04\end{align}$
 - Requires sampling __with replacement__
 
 
-# Probability and distributions
+# Probability and distributions {.small}
 
-```{r out.width='100%'}
-library(ggplot2)
-set.seed(42)
-x <- sample(1:6, 10, replace = T)
+```{r}
+#| eval: false
 
-df <- data.frame(score = x, obs = 1:length(x))
+bc1101tools::plot_histogram(c(1, 1, 1, 1, 2, 2, 2, 4, 4, 5), block = TRUE) +
+  bc1101tools::theme_bc1101()
 
-p <- ggplot(df, aes(x = score, group = obs)) +
-  scale_y_continuous(expand = c(0,0)) +
-  coord_fixed() +
-  labs(x = "Score", y = "Frequency") +
-  papaja::theme_apa()
-
-prob_plot <- p + geom_histogram(binwidth = 1, color = "black", fill = "darkgrey")
-
-prob_plot
-
+ggplot2::ggsave(here::here("slides", "media", "prob-histogram.svg"),
+                width =  4, height = 4)
 ```
 
+:::: {.columns}
 
-# Probability and z-scores
+::: {.column width="60%"}
+![](media/prob-histogram.svg){.invertable width=100%}
+:::
 
+::: {.column width="40%"}
+::: {.center-element}
+$p(X = 1) = 4/10 = `r 4/10`$
+
+$p(X \ge 4) = 3/10 = `r round(3/10, 2)`$
+
+$p(1 \lt X \lt 5) = 5/10 = .5$
+:::
+:::
+
+::::
+
+
+
+# Probability and z-scores {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
 - Normal distribution
     - Symmetrical
     - Highest frequency in the middle
@@ -239,7 +308,81 @@ prob_plot
     - Very common distribution shape
     - Defined by an equation
     - Can be described by the proportions of area contained in each section
+:::
 
+::: {.column width="50%"}
+![](media/z-distribution-labelled.svg)
+
+::: {.center-element}
+$Y = \dfrac{1}{\sqrt{2 \pi \sigma^2}}e^{-(X-\mu)^2 / 2\sigma^2}$
+:::
+:::
+
+::::
+
+
+## Unit Normal Table
+
+
+
+## Using R
+
+- Better: Let R figure it out
+
+```{r echo=T, eval=T}
+pnorm(0.2)  # area to the left of z = 0.2
+
+
+pnorm(0.2, lower.tail=FALSE) # area to the right of z = 0.2
+
+
+# can specify different mean & SD
+pnorm(700, mean=500, sd=100, lower.tail=FALSE) 
+
+
+# can specify proportion & find corresponding score
+qnorm(.0228, mean=500, sd=100, lower.tail=FALSE) 
+```
+
+
+## Spiderman {.small}
+
+- Spiderman
+    - Are Peter Parker’s RTs “noticeably different?”
+    - $z = `r rt$z`$
+    - Can state [precise]{.emph} probability of observing a $z$-score that (or more) extreme
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](media/spiderman-distribution.svg)
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+#| eval: true
+
+pnorm(-2.5)
+
+pnorm(159, mean = 284, sd = 50)
+
+
+```
+
+:::
+
+::::
+
+
+## Warning
+
+- [Important:]{.emph}
+    - Probabilities given in the Unit Normal Table will be accurate only for normally distributed scores 
+    - Shape of the distribution must be verified
+    - Important assumption of Central Limit Theorem
+
+![](media/z-distribution-filled.svg)
 
 # Learning checks
 
