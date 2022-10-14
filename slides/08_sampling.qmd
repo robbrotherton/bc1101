@@ -4,15 +4,54 @@ format:
     chalkboard: true
 ---
 
-# 8|SAMPLING {.lecture-title}
+# 8|SAMPLING
 
-![](covers/08_sampling.gif)
+![](media/08_sampling-animated.gif){.invertable}
+
+```{r data}
+library(bc1101tools)
+library(dplyr)
+
+stick_heights <- c(60, 62, 64, 66)
+
+sampling_dist_df <- expand.grid(stick_heights, stick_heights) |> 
+  rowwise() |>
+  mutate(M = mean(c(Var1, Var2))) |> 
+  ungroup() |> 
+  mutate(Sample = row_number()) |> 
+  select(Sample, X1 = Var1, X2 = Var2, M)
+```
+
+```{r figures}
+#| eval: false
+
+library(ggplot2)
+
+plot_histogram(stick_heights, xlab = "Height (inches)") +
+  scale_x_continuous(breaks = 60:66) +
+  scale_y_continuous(breaks = 0:1, expand = expansion(c(0, .05))) +
+  theme_bc1101()
+
+ggsave(here::here("slides", "media", "stick-histogram.svg"),
+       width = 6, height = 1.3)
+
+plot_histogram(sampling_dist_df$M, xlab = "Sample Means", block = TRUE) +
+  scale_x_continuous(breaks = 60:66) +
+  theme_bc1101()
+
+ggsave(here::here("slides", "media", "stick-sampling-distribution.svg"),
+       width = 6, height = 4)
+
+```
 
 
 # Overview
 
-- Sampling error
-- Central Limit Theorem
+- [Sampling error]
+- [Distribution of sample means]
+- [Central Limit Theorem]
+- [Learning checks]
+
 
 ## Roadmap
 
@@ -31,27 +70,50 @@ format:
 
 ## Sampling error
 
-- Sampling Error
-  - Discrepancy between a sample statistic and the population parameter
-  - E.g. Opinion polling 
+- Discrepancy between a sample statistic and the population parameter
+  - E.g. Opinion polling
   - see [Pew explainer](https://www.pewresearch.org/fact-tank/2016/09/08/understanding-the-margin-of-error-in-election-polls/)
 
 ![](media/margin-of-error.png)
 
+
 ## Sampling error
 
-IQ video
 
-# Sampling distribution
+## Sampling error
+
+:::: {.center-element .invertable .r-stack}
+
+<video start="0" src="media/iq-sampling.mp4"></video>
+
+::: {.fragment}
+<video controls start="0" src="media/iq-sampling.mp4"></video>
+:::
+
+::::
+
+```{r}
+#| eval: true
+
+set.seed(40)
+n <- 200
+iq_samples <- replicate(n, rnorm(10, mean = 100, sd = 15) |> round(0), simplify = FALSE)
+iq_means <- lapply(iq_samples, mean)
+
+cat("Sample 1:", iq_samples[[1]], "   Mean =", iq_means[[1]])
+cat("Sample 2:", iq_samples[[2]], "   Mean =", iq_means[[2]])
+cat("Sample 3:", iq_samples[[3]], "   Mean =", iq_means[[3]])
+```
+
+
+# Distribution of Sample Means
 
 - "Distribution of Sample Means" / "Sampling distribution of the mean"
   - Distribution of sample means obtained by selecting all possible samples of size $n$ from a population
   - Often huge number of possible samples
   - But distribution forms a simple & predictable pattern
 
-## Sampling distribution
-
-- Characteristics
+## Characteristics {.smaller}
   - Shape
       - The distribution will be approximately normal
       - Sample $M$s are representative of population $\mu$
@@ -66,26 +128,66 @@ IQ video
       - Larger samples are more representative
 
 
+## Example: height distribution
+
+![](media/stickpeople.svg)
+
+![](media/stick-histogram.svg)
+
+## Example: height distribution of the mean
+
+:::: {.columns}
+
+::: {.column width="30%"}
+![](media/stick-histogram.svg)
+
+```{r stick-table}
+#| style: "font-size: 0.5em;line-height: 0.9em;"
+
+knitr::kable(sampling_dist_df)
+  
+```
+
+:::
+
+::: {.column width="70%"}
+Sampling distribution ($n = 2$)
+
+![](media/stick-sampling-distribution.svg)
+
+::: {.center-element .small}
+$p(M < 61) =\ ?$
+
+$p(62 \le M \le 64) =\ ?$
+
+$p(M > 65) =\ ?$
+:::
+
+:::
+
+::::
+
 
 # Central Limit Theorem
 
 - Sampling & the Central Limit Theorem
   - Distribution of samples means based on all possible samples from a population not feasible in most realistic situations
-- Central Limit Theorem
-  - We can mathematically predict shape, mean, & variability for any sample size & population
-  - For any population with mean $\mu$ and standard deviation $\sigma$, the distribution of sample means for sample size n will have…
+  - But we can [mathematically predict]{.emph} shape, mean, & variability for any sample size & population
+
+## Central Limit Theorem
+
+- For any population with mean $\mu$ and standard deviation $\sigma$, the distribution of sample means for sample size n will have…
   - An expected mean $\mu_M$ of $\mu$ 
   - A standard deviation of $\dfrac{\sigma} {\sqrt{n}}$ 
   - And will approach a normal distribution as $n$ approaches infinity
 
 
-## Shape
+## Shape {.small}
 
-- Shape of the sampling distribution
-  - Almost perfectly normal in either of two conditions 
+- Almost perfectly normal in either of two conditions 
   - The population from which the samples are selected is a normal distribution
   - Or…
-  - Sample $n$s are relatively large<br><br>
+  - Sample $n$s are relatively large
 
 ::: {.fragment}
 - ...what is *relatively large*? 
@@ -96,22 +198,22 @@ IQ video
 
 ## Mean
 
-- Mean of the sampling distribution
-  - Mean of the distribution of sample means is called the expected value of $M$ ( $\mu_M$ ) 
+- Mean of the distribution of sample means is called the [expected value of $M$ ( $\mu_M$ )]{.emph} 
   - On average, $M = \mu_M  = \mu$
-  - $M$ is unbiased
+  - $M$ is [unbiased]{.emph}
   - If we only have a single sample $M$, our best guess at the (unknown) population mean should always be the (known) sample mean
   - But we can acknowledge variability...
 
 ## Variability
 
-- Variability of the sampling distribution
-  - Standard deviation of the sample means
-  - "Standard error of the mean";  $\sigma_M$
+- Standard deviation of the sample means
+  - ["Standard error of the mean";  $\sigma_M$]{.emph}
   - Measure of how well a sample mean estimates its population mean
   - How much sampling error we can expect; how much distance is expected on average between $M$ and $\mu$
 
+::: {.center-element}
 $\sigma_M = \dfrac{\sigma}{\sqrt{n}}$ or $\dfrac{\sqrt{\sigma^2}}{\sqrt{n}}$ or $\sqrt{\dfrac{\sigma^2}{n}}$
+:::
 
 ## Variability
 
@@ -121,6 +223,36 @@ $\sigma_M = \dfrac{\sigma}{\sqrt{n}}$ or $\dfrac{\sqrt{\sigma^2}}{\sqrt{n}}$ or 
 
 ![](media/samp-dist-2.png)
 
+
+## Variability: heights sampling dist
+
+:::: {.columns}
+
+::: {.column width="30%"}
+![](media/stick-histogram.svg)
+
+```{r}
+#| style: "font-size: 0.5em; line-height: 0.9em;"
+
+knitr::kable(sampling_dist_df)
+  
+```
+
+:::
+
+::: {.column width="70%"}
+Sampling distribution ($n = 2$)
+
+![](media/stick-sampling-distribution.svg)
+
+::: {.center-element .small}
+$\sigma_M = \dfrac{\sigma}{\sqrt{n}} = \dfrac{2.24}{\sqrt{2}} = 1.58$
+:::
+
+:::
+
+::::
+
 ## Summary
 
 - Summary
@@ -129,7 +261,7 @@ $\sigma_M = \dfrac{\sigma}{\sqrt{n}}$ or $\dfrac{\sqrt{\sigma^2}}{\sqrt{n}}$ or 
     - standard deviation $\sigma_M = \sigma / \sqrt{n}$
     - Shape will be normal if population is normally distributed, or $n > 30$
 
-# Learning checks
+# Learning checks {.small}
 
 1. True or False?
   - The mean of a sample is always equal to the population mean

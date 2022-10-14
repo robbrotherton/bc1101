@@ -599,14 +599,14 @@
     "href": "slides/08_sampling.html#sampling-error-1",
     "title": "BC1101",
     "section": "Sampling error",
-    "text": "Sampling error\n\nSampling Error\n\nDiscrepancy between a sample statistic and the population parameter\nE.g. Opinion polling\nsee Pew explainer"
+    "text": "Sampling error\n\nDiscrepancy between a sample statistic and the population parameter\n\nE.g. Opinion polling\nsee Pew explainer"
   },
   {
     "objectID": "slides/08_sampling.html#sampling-error-2",
     "href": "slides/08_sampling.html#sampling-error-2",
     "title": "BC1101",
     "section": "Sampling error",
-    "text": "Sampling error\nIQ video"
+    "text": "Sampling error"
   },
   {
     "objectID": "slides/08_sampling.html#sampling-distribution-1",
@@ -620,21 +620,21 @@
     "href": "slides/08_sampling.html#shape",
     "title": "BC1101",
     "section": "Shape",
-    "text": "Shape\n\nShape of the sampling distribution\n\nAlmost perfectly normal in either of two conditions\nThe population from which the samples are selected is a normal distribution\nOr…\nSample \\(n\\)s are relatively large\n\n\n\n\n…what is relatively large?\n\nAs \\(n\\) approaches infinity, distribution of sample means approaches a normal distribution\nBut by \\(n = 30\\) means pile up symmetrically around \\(\\mu\\)\nPopulation distribution does not need to be normal; can be skewed, flat, bimodal, whatever"
+    "text": "Shape\n\nAlmost perfectly normal in either of two conditions\n\nThe population from which the samples are selected is a normal distribution\nOr…\nSample \\(n\\)s are relatively large\n\n\n\n\n…what is relatively large?\n\nAs \\(n\\) approaches infinity, distribution of sample means approaches a normal distribution\nBut by \\(n = 30\\) means pile up symmetrically around \\(\\mu\\)\nPopulation distribution does not need to be normal; can be skewed, flat, bimodal, whatever"
   },
   {
     "objectID": "slides/08_sampling.html#mean",
     "href": "slides/08_sampling.html#mean",
     "title": "BC1101",
     "section": "Mean",
-    "text": "Mean\n\nMean of the sampling distribution\n\nMean of the distribution of sample means is called the expected value of \\(M\\) ( \\(\\mu_M\\) )\nOn average, \\(M = \\mu_M = \\mu\\)\n\\(M\\) is unbiased\nIf we only have a single sample \\(M\\), our best guess at the (unknown) population mean should always be the (known) sample mean\nBut we can acknowledge variability…"
+    "text": "Mean\n\nMean of the distribution of sample means is called the expected value of \\(M\\) ( \\(\\mu_M\\) )\n\nOn average, \\(M = \\mu_M = \\mu\\)\n\\(M\\) is unbiased\nIf we only have a single sample \\(M\\), our best guess at the (unknown) population mean should always be the (known) sample mean\nBut we can acknowledge variability…"
   },
   {
     "objectID": "slides/08_sampling.html#variability",
     "href": "slides/08_sampling.html#variability",
     "title": "BC1101",
     "section": "Variability",
-    "text": "Variability\n\nVariability of the sampling distribution\n\nStandard deviation of the sample means\n“Standard error of the mean”; \\(\\sigma_M\\)\nMeasure of how well a sample mean estimates its population mean\nHow much sampling error we can expect; how much distance is expected on average between \\(M\\) and \\(\\mu\\)\n\n\n\\(\\sigma_M = \\dfrac{\\sigma}{\\sqrt{n}}\\) or \\(\\dfrac{\\sqrt{\\sigma^2}}{\\sqrt{n}}\\) or \\(\\sqrt{\\dfrac{\\sigma^2}{n}}\\)"
+    "text": "Variability\n\nStandard deviation of the sample means\n\n“Standard error of the mean”; \\(\\sigma_M\\)\nMeasure of how well a sample mean estimates its population mean\nHow much sampling error we can expect; how much distance is expected on average between \\(M\\) and \\(\\mu\\)\n\n\n\n\\(\\sigma_M = \\dfrac{\\sigma}{\\sqrt{n}}\\) or \\(\\dfrac{\\sqrt{\\sigma^2}}{\\sqrt{n}}\\) or \\(\\sqrt{\\dfrac{\\sigma^2}{n}}\\)"
   },
   {
     "objectID": "slides/08_sampling.html#variability-1",
@@ -1013,5 +1013,47 @@
     "title": "BC1101",
     "section": "Repeated sampling",
     "text": "Repeated sampling\n\n\n\n\n\nWithout replacement\n\n\\[\\begin{align} p(white) & = 10/50 = .2 \\\\\np(second \\ white) & = 9/49 \\approx .18 \\\\\np(both \\ white) & = .2 * .18  \\approx .037 \\end{align}\\]\n\nWith replacement\n\n\\(\\begin{align} p(white) &= 10/50 = .2 \\\\ p(second \\ white) &= 10/50 = .2 \\\\ p(both \\ white) &= .2 * .2 = .04\\end{align}\\)"
+  },
+  {
+    "objectID": "slides/08_sampling.html#sampling-error-3",
+    "href": "slides/08_sampling.html#sampling-error-3",
+    "title": "BC1101",
+    "section": "Sampling error",
+    "text": "Sampling error\n\n\n\n\n\n\n\n\n\n\nSample 1: 107 107 87 88 95 80 79 126 96 80    Mean = 94.5\n\n\nSample 2: 99 82 112 93 107 115 107 106 126 84    Mean = 103.1\n\n\nSample 3: 120 91 124 83 78 111 76 105 111 72    Mean = 97.1"
+  },
+  {
+    "objectID": "slides/08_sampling.html#characteristics",
+    "href": "slides/08_sampling.html#characteristics",
+    "title": "BC1101",
+    "section": "Characteristics",
+    "text": "Characteristics\n\nShape\n\nThe distribution will be approximately normal\nSample \\(M\\)s are representative of population \\(\\mu\\)\nMost means will be close to \\(\\mu\\); means far from \\(\\mu\\) are rare\n\nCenter\n\nThe center/average of the distribution will be close to \\(\\mu\\)\n\\(M\\) is a unbiased statistic\nOn average, \\(M = \\mu\\)\n\nVariability\n\nRelated to sample size, \\(n\\)\nThe larger the sample, the less the variability\nLarger samples are more representative"
+  },
+  {
+    "objectID": "slides/08_sampling.html#example-height-distribution",
+    "href": "slides/08_sampling.html#example-height-distribution",
+    "title": "BC1101",
+    "section": "Example: height distribution",
+    "text": "Example: height distribution"
+  },
+  {
+    "objectID": "slides/08_sampling.html#example-height-distribution-of-the-mean",
+    "href": "slides/08_sampling.html#example-height-distribution-of-the-mean",
+    "title": "BC1101",
+    "section": "Example: height distribution of the mean",
+    "text": "Example: height distribution of the mean\n\n\n\n\n\n\n\n\nSample\nX1\nX2\nM\n\n\n\n\n1\n60\n60\n60\n\n\n2\n62\n60\n61\n\n\n3\n64\n60\n62\n\n\n4\n66\n60\n63\n\n\n5\n60\n62\n61\n\n\n6\n62\n62\n62\n\n\n7\n64\n62\n63\n\n\n8\n66\n62\n64\n\n\n9\n60\n64\n62\n\n\n10\n62\n64\n63\n\n\n11\n64\n64\n64\n\n\n12\n66\n64\n65\n\n\n13\n60\n66\n63\n\n\n14\n62\n66\n64\n\n\n15\n64\n66\n65\n\n\n16\n66\n66\n66\n\n\n\n\n\n\nSampling distribution (\\(n = 2\\))\n\n\n\\(p(M < 61) =\\ ?\\)\n\\(p(62 \\le M \\le 64) =\\ ?\\)\n\\(p(M > 65) =\\ ?\\)"
+  },
+  {
+    "objectID": "slides/08_sampling.html#central-limit-theorem-1",
+    "href": "slides/08_sampling.html#central-limit-theorem-1",
+    "title": "BC1101",
+    "section": "Central Limit Theorem",
+    "text": "Central Limit Theorem\n\nFor any population with mean \\(\\mu\\) and standard deviation \\(\\sigma\\), the distribution of sample means for sample size n will have…\n\nAn expected mean \\(\\mu_M\\) of \\(\\mu\\)\nA standard deviation of \\(\\dfrac{\\sigma} {\\sqrt{n}}\\)\nAnd will approach a normal distribution as \\(n\\) approaches infinity"
+  },
+  {
+    "objectID": "slides/08_sampling.html#variability-heights-sampling-dist",
+    "href": "slides/08_sampling.html#variability-heights-sampling-dist",
+    "title": "BC1101",
+    "section": "Variability: heights sampling dist",
+    "text": "Variability: heights sampling dist\n\n\n\n\n\n\n\n\nSample\nX1\nX2\nM\n\n\n\n\n1\n60\n60\n60\n\n\n2\n62\n60\n61\n\n\n3\n64\n60\n62\n\n\n4\n66\n60\n63\n\n\n5\n60\n62\n61\n\n\n6\n62\n62\n62\n\n\n7\n64\n62\n63\n\n\n8\n66\n62\n64\n\n\n9\n60\n64\n62\n\n\n10\n62\n64\n63\n\n\n11\n64\n64\n64\n\n\n12\n66\n64\n65\n\n\n13\n60\n66\n63\n\n\n14\n62\n66\n64\n\n\n15\n64\n66\n65\n\n\n16\n66\n66\n66\n\n\n\n\n\n\nSampling distribution (\\(n = 2\\))\n\n\n\\(\\sigma_M = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{2.24}{\\sqrt{2}} = 1.58\\)"
   }
 ]

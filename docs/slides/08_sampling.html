@@ -325,17 +325,25 @@
     <div class="slides">
 
 
-<section id="sampling" class="title-slide slide level1 lecture-title center">
+<section id="sampling" class="title-slide slide level1 center">
 <h1>8|SAMPLING</h1>
 
-<img data-src="covers/08_sampling.gif" class="r-stretch"></section>
+<img data-src="media/08_sampling-animated.gif" class="invertable r-stretch"><div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+</section>
 
 <section>
 <section id="overview" class="title-slide slide level1 center">
 <h1>Overview</h1>
 <ul>
-<li>Sampling error</li>
-<li>Central Limit Theorem</li>
+<li><a href="#/sampling-error-3">Sampling error</a></li>
+<li><a href="#/distribution-of-sample-means">Distribution of sample means</a></li>
+<li><a href="#/central-limit-theorem-1">Central Limit Theorem</a></li>
+<li><a href="#/learning-checks">Learning checks</a></li>
 </ul>
 </section>
 <section id="roadmap" class="slide level2">
@@ -363,9 +371,8 @@
 <section id="sampling-error-1" class="slide level2">
 <h2>Sampling error</h2>
 <ul>
-<li>Sampling Error
+<li>Discrepancy between a sample statistic and the population parameter
 <ul>
-<li>Discrepancy between a sample statistic and the population parameter</li>
 <li>E.g. Opinion polling</li>
 <li>see <a href="https://www.pewresearch.org/fact-tank/2016/09/08/understanding-the-margin-of-error-in-election-polls/">Pew explainer</a></li>
 </ul></li>
@@ -374,11 +381,32 @@
 <img data-src="media/margin-of-error.png" class="r-stretch"></section>
 <section id="sampling-error-2" class="slide level2">
 <h2>Sampling error</h2>
-<p>IQ video</p>
+</section>
+<section id="sampling-error-3" class="slide level2">
+<h2>Sampling error</h2>
+<div class="center-element invertable r-stack">
+<video start="0" src="media/iq-sampling.mp4">
+</video>
+<div class="fragment">
+<video controls="" start="0" src="media/iq-sampling.mp4">
+</video>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Sample 1: 107 107 87 88 95 80 79 126 96 80    Mean = 94.5</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sample 2: 99 82 112 93 107 115 107 106 126 84    Mean = 103.1</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sample 3: 120 91 124 83 78 111 76 105 111 72    Mean = 97.1</code></pre>
+</div>
+</div>
 </section></section>
 <section>
-<section id="sampling-distribution" class="title-slide slide level1 center">
-<h1>Sampling distribution</h1>
+<section id="distribution-of-sample-means" class="title-slide slide level1 center">
+<h1>Distribution of Sample Means</h1>
 <ul>
 <li>“Distribution of Sample Means” / “Sampling distribution of the mean”
 <ul>
@@ -388,10 +416,8 @@
 </ul></li>
 </ul>
 </section>
-<section id="sampling-distribution-1" class="slide level2">
-<h2>Sampling distribution</h2>
-<ul>
-<li>Characteristics
+<section id="characteristics" class="slide level2 smaller">
+<h2>Characteristics</h2>
 <ul>
 <li>Shape
 <ul>
@@ -411,8 +437,140 @@
 <li>The larger the sample, the less the variability</li>
 <li>Larger samples are more representative</li>
 </ul></li>
-</ul></li>
 </ul>
+</section>
+<section id="example-height-distribution" class="slide level2">
+<h2>Example: height distribution</h2>
+<p><img data-src="media/stickpeople.svg"></p>
+<p><img data-src="media/stick-histogram.svg"></p>
+</section>
+<section id="example-height-distribution-of-the-mean" class="slide level2">
+<h2>Example: height distribution of the mean</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img data-src="media/stick-histogram.svg"></p>
+<div class="cell" style="font-size: 0.5em;line-height: 0.9em;">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Sample</th>
+<th style="text-align: right;">X1</th>
+<th style="text-align: right;">X2</th>
+<th style="text-align: right;">M</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">60</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">61</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">61</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">64</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">64</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">65</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">64</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">65</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">66</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><div class="column" style="width:70%;">
+<p>Sampling distribution (<span class="math inline">\(n = 2\)</span>)</p>
+<p><img data-src="media/stick-sampling-distribution.svg"></p>
+<div class="center-element small">
+<p><span class="math inline">\(p(M &lt; 61) =\ ?\)</span></p>
+<p><span class="math inline">\(p(62 \le M \le 64) =\ ?\)</span></p>
+<p><span class="math inline">\(p(M &gt; 65) =\ ?\)</span></p>
+</div>
+</div>
+</div>
 </section></section>
 <section>
 <section id="central-limit-theorem" class="title-slide slide level1 center">
@@ -421,26 +579,29 @@
 <li>Sampling &amp; the Central Limit Theorem
 <ul>
 <li>Distribution of samples means based on all possible samples from a population not feasible in most realistic situations</li>
+<li>But we can <span class="emph">mathematically predict</span> shape, mean, &amp; variability for any sample size &amp; population</li>
 </ul></li>
-<li>Central Limit Theorem
+</ul>
+</section>
+<section id="central-limit-theorem-1" class="slide level2">
+<h2>Central Limit Theorem</h2>
 <ul>
-<li>We can mathematically predict shape, mean, &amp; variability for any sample size &amp; population</li>
-<li>For any population with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>, the distribution of sample means for sample size n will have…</li>
+<li>For any population with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>, the distribution of sample means for sample size n will have…
+<ul>
 <li>An expected mean <span class="math inline">\(\mu_M\)</span> of <span class="math inline">\(\mu\)</span></li>
 <li>A standard deviation of <span class="math inline">\(\dfrac{\sigma} {\sqrt{n}}\)</span></li>
 <li>And will approach a normal distribution as <span class="math inline">\(n\)</span> approaches infinity</li>
 </ul></li>
 </ul>
 </section>
-<section id="shape" class="slide level2">
+<section id="shape" class="slide level2 small">
 <h2>Shape</h2>
 <ul>
-<li>Shape of the sampling distribution
+<li>Almost perfectly normal in either of two conditions
 <ul>
-<li>Almost perfectly normal in either of two conditions</li>
 <li>The population from which the samples are selected is a normal distribution</li>
 <li>Or…</li>
-<li>Sample <span class="math inline">\(n\)</span>s are relatively large<br><br></li>
+<li>Sample <span class="math inline">\(n\)</span>s are relatively large</li>
 </ul></li>
 </ul>
 <div class="fragment">
@@ -457,11 +618,10 @@
 <section id="mean" class="slide level2">
 <h2>Mean</h2>
 <ul>
-<li>Mean of the sampling distribution
+<li>Mean of the distribution of sample means is called the <span class="emph">expected value of <span class="math inline">\(M\)</span> ( <span class="math inline">\(\mu_M\)</span> )</span>
 <ul>
-<li>Mean of the distribution of sample means is called the expected value of <span class="math inline">\(M\)</span> ( <span class="math inline">\(\mu_M\)</span> )</li>
 <li>On average, <span class="math inline">\(M = \mu_M = \mu\)</span></li>
-<li><span class="math inline">\(M\)</span> is unbiased</li>
+<li><span class="math inline">\(M\)</span> is <span class="emph">unbiased</span></li>
 <li>If we only have a single sample <span class="math inline">\(M\)</span>, our best guess at the (unknown) population mean should always be the (known) sample mean</li>
 <li>But we can acknowledge variability…</li>
 </ul></li>
@@ -470,15 +630,16 @@
 <section id="variability" class="slide level2">
 <h2>Variability</h2>
 <ul>
-<li>Variability of the sampling distribution
+<li>Standard deviation of the sample means
 <ul>
-<li>Standard deviation of the sample means</li>
-<li>“Standard error of the mean”; <span class="math inline">\(\sigma_M\)</span></li>
+<li><span class="emph">“Standard error of the mean”; <span class="math inline">\(\sigma_M\)</span></span></li>
 <li>Measure of how well a sample mean estimates its population mean</li>
 <li>How much sampling error we can expect; how much distance is expected on average between <span class="math inline">\(M\)</span> and <span class="math inline">\(\mu\)</span></li>
 </ul></li>
 </ul>
+<div class="center-element">
 <p><span class="math inline">\(\sigma_M = \dfrac{\sigma}{\sqrt{n}}\)</span> or <span class="math inline">\(\dfrac{\sqrt{\sigma^2}}{\sqrt{n}}\)</span> or <span class="math inline">\(\sqrt{\dfrac{\sigma^2}{n}}\)</span></p>
+</div>
 </section>
 <section id="variability-1" class="slide level2">
 <h2>Variability</h2>
@@ -488,6 +649,132 @@
 <h2>Variability</h2>
 
 <img data-src="media/samp-dist-2.png" class="r-stretch"></section>
+<section id="variability-heights-sampling-dist" class="slide level2">
+<h2>Variability: heights sampling dist</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img data-src="media/stick-histogram.svg"></p>
+<div class="cell" style="font-size: 0.5em; line-height: 0.9em;">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Sample</th>
+<th style="text-align: right;">X1</th>
+<th style="text-align: right;">X2</th>
+<th style="text-align: right;">M</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">60</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">61</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">61</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">64</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">64</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">65</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">64</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">65</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">66</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><div class="column" style="width:70%;">
+<p>Sampling distribution (<span class="math inline">\(n = 2\)</span>)</p>
+<p><img data-src="media/stick-sampling-distribution.svg"></p>
+<div class="center-element small">
+<p><span class="math inline">\(\sigma_M = \dfrac{\sigma}{\sqrt{n}} = \dfrac{2.24}{\sqrt{2}} = 1.58\)</span></p>
+</div>
+</div>
+</div>
+</section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>
 <ul>
@@ -502,7 +789,7 @@
 </ul></li>
 </ul>
 </section></section>
-<section id="learning-checks" class="title-slide slide level1 center">
+<section id="learning-checks" class="title-slide slide level1 small center">
 <h1>Learning checks</h1>
 <ol type="1">
 <li>True or False?</li>
@@ -733,6 +1020,48 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
