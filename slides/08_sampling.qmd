@@ -6,7 +6,7 @@ format:
 
 # 8|SAMPLING
 
-![](media/08_sampling-animated.gif){.invertable}
+![](covers/08_sampling.svg){.invertable}
 
 ```{r data}
 library(bc1101tools)
@@ -44,6 +44,50 @@ ggsave(here::here("slides", "media", "stick-sampling-distribution.svg"),
 
 ```
 
+```{r cover}
+#| eval: false
+
+library(gganimate)
+library(dplyr)
+library(ggforce)
+
+# library(tweenr)
+library(gifski)
+# library(tidyverse)
+
+set.seed(42)
+n_samples <- 3000
+data <- rnorm(n_samples, mean = 100, sd = 15) %>% round(0)
+df <- data.frame(n = seq_along(data),
+                 x = data,
+                 y = 1) %>%
+  group_by(x) %>%
+  mutate(y_cum = cumsum(y))
+
+p <- ggplot(df, aes(x = x, y = y_cum, group = n)) +
+  ggforce::geom_regon(aes(x0 = x, y0 = y_cum-.5, sides = 4, r = sqrt((.5^2)*2), angle = 0), color = "white", fill = rgb(.5, .5, .5)) +
+  coord_fixed() +
+  # transition_reveal(n) +
+  theme_void() +
+  NULL
+
+ggsave(plot = p,
+       filename = here::here("slides", "covers", "08_sampling.svg"),
+       width = 10, height = 5)
+
+p_anim <- p +
+  transition_reveal(n)
+
+animate(p_anim,
+        bg = 'transparent',
+        nframes = length(data)/20,
+        renderer = av_renderer(),
+        fps = 10,
+        width = 1200, height = 600)
+
+anim_save(here::here("slides", "media", "08_sampling-animated-cover.mp4"))
+
+```
 
 # Overview
 
@@ -63,18 +107,39 @@ ggsave(here::here("slides", "media", "stick-sampling-distribution.svg"),
 
 # Sampling error
 
+:::: {.columns}
+
+::: {.column width="40%"}
 - Sampling Error
   - Discrepancy between a sample statistic and the population parameter
+:::
 
+::: {.column width="60%"}
 ![](media/pop-sample-ani.gif)
+:::
+
+::::
+
+
 
 ## Sampling error
 
+:::: {.columns}
+
+::: {.column width="40%"}
 - Discrepancy between a sample statistic and the population parameter
   - E.g. Opinion polling
   - see [Pew explainer](https://www.pewresearch.org/fact-tank/2016/09/08/understanding-the-margin-of-error-in-election-polls/)
+:::
 
+::: {.column width="60%"}
 ![](media/margin-of-error.png)
+:::
+
+::::
+
+
+
 
 
 ## Sampling error
@@ -134,7 +199,7 @@ cat("Sample 3:", iq_samples[[3]], "   Mean =", iq_means[[3]])
 
 ![](media/stick-histogram.svg)
 
-## Example: height distribution of the mean
+## Example: height distribution
 
 :::: {.columns}
 
@@ -155,7 +220,7 @@ Sampling distribution ($n = 2$)
 
 ![](media/stick-sampling-distribution.svg)
 
-::: {.center-element .small}
+::: {.center-element style="font-size: 0.8em; margin-top: -1em;"}
 $p(M < 61) =\ ?$
 
 $p(62 \le M \le 64) =\ ?$
@@ -166,6 +231,31 @@ $p(M > 65) =\ ?$
 :::
 
 ::::
+
+
+## Example: height distribution {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](media/stick-sampling-distribution.svg)
+
+- Now we can calculate variability of sample means
+  - Since we obtained every sample mean
+  - Use population SD formula
+:::
+
+::: {.column width="50%"}
+```{r}
+#| style: "font-size: 0.8em; line-height: 0.9em;"
+
+bc1101tools::SD_table(sampling_dist_df$M, population_sd = TRUE)
+  
+```
+:::
+
+::::
+
 
 
 # Central Limit Theorem

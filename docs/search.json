@@ -599,7 +599,7 @@
     "href": "slides/08_sampling.html#sampling-error-1",
     "title": "BC1101",
     "section": "Sampling error",
-    "text": "Sampling error\n\nDiscrepancy between a sample statistic and the population parameter\n\nE.g. Opinion polling\nsee Pew explainer"
+    "text": "Sampling error\n\n\n\nDiscrepancy between a sample statistic and the population parameter\n\nE.g. Opinion polling\nsee Pew explainer"
   },
   {
     "objectID": "slides/08_sampling.html#sampling-error-2",
@@ -718,7 +718,7 @@
     "href": "slides-index.html#sampling",
     "title": "Slides",
     "section": "8. Sampling",
-    "text": "8. Sampling\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nSampling error\nCentral Limit Theorem\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "8. Sampling\n\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nSampling error\nDistribution of sample means\nCentral Limit Theorem\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "slides/04_central-tendency.html#locating-the-median-1",
@@ -1054,6 +1054,20 @@
     "href": "slides/08_sampling.html#variability-heights-sampling-dist",
     "title": "BC1101",
     "section": "Variability: heights sampling dist",
-    "text": "Variability: heights sampling dist\n\n\n\n\n\n\n\n\nSample\nX1\nX2\nM\n\n\n\n\n1\n60\n60\n60\n\n\n2\n62\n60\n61\n\n\n3\n64\n60\n62\n\n\n4\n66\n60\n63\n\n\n5\n60\n62\n61\n\n\n6\n62\n62\n62\n\n\n7\n64\n62\n63\n\n\n8\n66\n62\n64\n\n\n9\n60\n64\n62\n\n\n10\n62\n64\n63\n\n\n11\n64\n64\n64\n\n\n12\n66\n64\n65\n\n\n13\n60\n66\n63\n\n\n14\n62\n66\n64\n\n\n15\n64\n66\n65\n\n\n16\n66\n66\n66\n\n\n\n\n\n\nSampling distribution (\\(n = 2\\))\n\n\n\\(\\sigma_M = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{2.24}{\\sqrt{2}} = 1.58\\)"
+    "text": "Variability: heights sampling dist\n\n\n\n\n\n\n\n \n  \n    Sample \n    X1 \n    X2 \n    M \n  \n \n\n  \n    1 \n    60 \n    60 \n    60 \n  \n  \n    2 \n    62 \n    60 \n    61 \n  \n  \n    3 \n    64 \n    60 \n    62 \n  \n  \n    4 \n    66 \n    60 \n    63 \n  \n  \n    5 \n    60 \n    62 \n    61 \n  \n  \n    6 \n    62 \n    62 \n    62 \n  \n  \n    7 \n    64 \n    62 \n    63 \n  \n  \n    8 \n    66 \n    62 \n    64 \n  \n  \n    9 \n    60 \n    64 \n    62 \n  \n  \n    10 \n    62 \n    64 \n    63 \n  \n  \n    11 \n    64 \n    64 \n    64 \n  \n  \n    12 \n    66 \n    64 \n    65 \n  \n  \n    13 \n    60 \n    66 \n    63 \n  \n  \n    14 \n    62 \n    66 \n    64 \n  \n  \n    15 \n    64 \n    66 \n    65 \n  \n  \n    16 \n    66 \n    66 \n    66 \n  \n\n\n\n\n\n\nSampling distribution (\\(n = 2\\))\n\n\n\\(\\sigma_M = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{2.24}{\\sqrt{2}} = 1.58\\)"
+  },
+  {
+    "objectID": "slides/08_sampling.html#example-height-distribution-1",
+    "href": "slides/08_sampling.html#example-height-distribution-1",
+    "title": "BC1101",
+    "section": "Example: height distribution",
+    "text": "Example: height distribution\n\n\n\n\n\n\n\n\nSample\nX1\nX2\nM\n\n\n\n\n1\n60\n60\n60\n\n\n2\n62\n60\n61\n\n\n3\n64\n60\n62\n\n\n4\n66\n60\n63\n\n\n5\n60\n62\n61\n\n\n6\n62\n62\n62\n\n\n7\n64\n62\n63\n\n\n8\n66\n62\n64\n\n\n9\n60\n64\n62\n\n\n10\n62\n64\n63\n\n\n11\n64\n64\n64\n\n\n12\n66\n64\n65\n\n\n13\n60\n66\n63\n\n\n14\n62\n66\n64\n\n\n15\n64\n66\n65\n\n\n16\n66\n66\n66\n\n\n\n\n\n\nSampling distribution (\\(n = 2\\))\n\n\n\\(p(M < 61) =\\ ?\\)\n\\(p(62 \\le M \\le 64) =\\ ?\\)\n\\(p(M > 65) =\\ ?\\)"
+  },
+  {
+    "objectID": "slides/08_sampling.html#example-height-distribution-2",
+    "href": "slides/08_sampling.html#example-height-distribution-2",
+    "title": "BC1101",
+    "section": "Example: height distribution",
+    "text": "Example: height distribution\n\n\n\n\nNow we can calculate variability of sample means\n\nSince we obtained every sample mean\nUse population SD formula\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    60 \n    -3 \n    9 \n  \n  \n    61 \n    -2 \n    4 \n  \n  \n    62 \n    -1 \n    1 \n  \n  \n    63 \n    0 \n    0 \n  \n  \n    61 \n    -2 \n    4 \n  \n  \n    62 \n    -1 \n    1 \n  \n  \n    63 \n    0 \n    0 \n  \n  \n    64 \n    1 \n    1 \n  \n  \n    62 \n    -1 \n    1 \n  \n  \n    63 \n    0 \n    0 \n  \n  \n    64 \n    1 \n    1 \n  \n  \n    65 \n    2 \n    4 \n  \n  \n    63 \n    0 \n    0 \n  \n  \n    64 \n    1 \n    1 \n  \n  \n    65 \n    2 \n    4 \n  \n  \n    66 \n    3 \n    9 \n  \n  \n    \\(M = 63.00\\) \n     \n    \\(SS = 40.00\\) \n  \n  \n     \n     \n    \\(\\sigma^2 = 2.50\\) \n  \n  \n     \n     \n    \\(\\sigma = 1.58\\)"
   }
 ]
