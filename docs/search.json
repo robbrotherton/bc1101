@@ -984,7 +984,7 @@
     "href": "slides/07_probability.html#spiderman",
     "title": "BC1101",
     "section": "Spiderman",
-    "text": "Spiderman\n\nSpiderman\n\nAre Peter Parker’s RTs “noticeably different?”\n\\(z = -2.5\\)\nCan state precise probability of observing a \\(z\\)-score that (or more) extreme\n\n\n\n\n\n\n\npnorm(-2.5)\n\n[1] 0.006209665\n\npnorm(159, mean = 284, sd = 50)\n\n[1] 0.006209665"
+    "text": "Spiderman\n\nSpiderman\n\nAre Peter Parker’s RTs “noticeably different?”\n\\(z = -2.5\\)\nCan state precise probability of observing a \\(z\\)-score that (or more) extreme\n\n\n\n\n\n\n\n\npnorm(-2.5)\n\n[1] 0.006209665\n\npnorm(159, mean = 284, sd = 50)\n\n[1] 0.006209665"
   },
   {
     "objectID": "slides/07_probability.html#warning",

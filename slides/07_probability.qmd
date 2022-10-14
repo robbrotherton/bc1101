@@ -352,6 +352,8 @@ qnorm(.0228, mean=500, sd=100, lower.tail=FALSE)
     - $z = `r rt$z`$
     - Can state [precise]{.emph} probability of observing a $z$-score that (or more) extreme
 
+![](media/spiderman-small-bw.png){width=10% style="position: absolute; top: 80%; left: -45%"}
+
 :::: {.columns}
 
 ::: {.column width="50%"}
