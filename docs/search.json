@@ -1069,5 +1069,222 @@
     "title": "BC1101",
     "section": "Example: height distribution",
     "text": "Example: height distribution\n\n\n\n\nNow we can calculate variability of sample means\n\nSince we obtained every sample mean\nUse population SD formula\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    60 \n    -3 \n    9 \n  \n  \n    61 \n    -2 \n    4 \n  \n  \n    62 \n    -1 \n    1 \n  \n  \n    63 \n    0 \n    0 \n  \n  \n    61 \n    -2 \n    4 \n  \n  \n    62 \n    -1 \n    1 \n  \n  \n    63 \n    0 \n    0 \n  \n  \n    64 \n    1 \n    1 \n  \n  \n    62 \n    -1 \n    1 \n  \n  \n    63 \n    0 \n    0 \n  \n  \n    64 \n    1 \n    1 \n  \n  \n    65 \n    2 \n    4 \n  \n  \n    63 \n    0 \n    0 \n  \n  \n    64 \n    1 \n    1 \n  \n  \n    65 \n    2 \n    4 \n  \n  \n    66 \n    3 \n    9 \n  \n  \n    \\(M = 63.00\\) \n     \n    \\(SS = 40.00\\) \n  \n  \n     \n     \n    \\(\\sigma^2 = 2.50\\) \n  \n  \n     \n     \n    \\(\\sigma = 1.58\\)"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#recap-1",
+    "href": "slides/09_hypothesis-testing.html#recap-1",
+    "title": "BC1101",
+    "section": "Recap",
+    "text": "Recap\n\nSampling distribution\n\nLets us find probabilities of sample means"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#central-limit-theorem",
+    "href": "slides/09_hypothesis-testing.html#central-limit-theorem",
+    "title": "BC1101",
+    "section": "Central Limit Theorem",
+    "text": "Central Limit Theorem\n\nTells us sampling distribution characteristics without having to take all possible sampes\n\n\n\\(\\mu_M = \\mu \\ \\ \\ \\ \\ \\ \\ \\ \\ \\  \\sigma_M = \\dfrac{\\sigma}{\\sqrt{n}}\\)"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#together",
+    "href": "slides/09_hypothesis-testing.html#together",
+    "title": "BC1101",
+    "section": "Together…",
+    "text": "Together…\n\n\n\nSample statistics, normal distributions, probability, Central Limit Theorem\n\nWe can find \\(z\\)-score for any sample mean\nUsing characteristics of sampling distribution of the mean \\((\\mu_M\\) and \\(\\sigma_M)\\)\nPosition of given sample mean in the population of all possible sample means\nThen find probability (using Unit Normal Table / pnorm(), just like for regular \\(z\\)-scores)\n\n\n\n\n\\(z = \\dfrac{M-\\mu_M}{\\sigma_M}\\)"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#making-inferences",
+    "href": "slides/09_hypothesis-testing.html#making-inferences",
+    "title": "BC1101",
+    "section": "Making inferences",
+    "text": "Making inferences\n\n\n\nSampling error\n\nStatistics obtained for a sample will be different from the corresponding parameters for the population and the statistics will differ from one sample to another\n\nProblem:\n\nIs difference between sample & population due to treatment effect or sampling error?\n\nAddressed by inferential statistics\n\n\nRight column"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#making-inferences-1",
+    "href": "slides/09_hypothesis-testing.html#making-inferences-1",
+    "title": "BC1101",
+    "section": "Making inferences",
+    "text": "Making inferences"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#making-inferences-2",
+    "href": "slides/09_hypothesis-testing.html#making-inferences-2",
+    "title": "BC1101",
+    "section": "Making inferences",
+    "text": "Making inferences"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#spiderman",
+    "href": "slides/09_hypothesis-testing.html#spiderman",
+    "title": "BC1101",
+    "section": "Spiderman",
+    "text": "Spiderman\n\nSpiderman\n\nAre Peter Parker’s RTs “noticeably different?”\n\\(z = -2.5\\)\nCan state precise probability of observing a \\(z\\)-score that (or more) extreme\n\n\n\n\n\n\n\n\npnorm(-2.5)\n\n[1] 0.006209665\n\npnorm(159, mean = 284, sd = 50)\n\n[1] 0.006209665"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#making-inferences-3",
+    "href": "slides/09_hypothesis-testing.html#making-inferences-3",
+    "title": "BC1101",
+    "section": "Making inferences",
+    "text": "Making inferences"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#making-inferences-4",
+    "href": "slides/09_hypothesis-testing.html#making-inferences-4",
+    "title": "BC1101",
+    "section": "Making inferences",
+    "text": "Making inferences\n\nA sample of spidermen (spidermans?)\n\nHow likely is a particular sample mean, given the population characteristics?\nPopulation \\(\\mu = 284; \\sigma = 50\\)\n\n\n\n\n\nSingle score of \\(X = 159\\)\nFind position of that score in population distribution and find probability\n\n\\(z = \\dfrac{X-\\mu}{\\sigma} = \\dfrac{159 - 284}{50} = -2.5\\)\n\npnorm(-2.5)\n\n[1] 0.006209665\n\n\n\n\nSample mean of \\(M = 159\\); \\(n = 5\\)\nFind position of that \\(M\\) in sampling distribution and find probability\n\n\\(z = \\dfrac{M-\\mu_M}{\\sigma_M} = \\dfrac{159 - 284}{50 / \\sqrt{5}} = -5.59\\)\n\npnorm(-5.59)\n\n[1] 1.135348e-08"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#making-inferences-5",
+    "href": "slides/09_hypothesis-testing.html#making-inferences-5",
+    "title": "BC1101",
+    "section": "Making inferences",
+    "text": "Making inferences\n\nFor sample size \\(n = 5\\), approximately 0.00000001 of sample means are this (or more) extreme\n\nGiven how unlikely the mean is, maybe spidermen aren’t from this population"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#making-inferences-6",
+    "href": "slides/09_hypothesis-testing.html#making-inferences-6",
+    "title": "BC1101",
+    "section": "Making inferences",
+    "text": "Making inferences"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#hypothesis-testing-2",
+    "href": "slides/09_hypothesis-testing.html#hypothesis-testing-2",
+    "title": "BC1101",
+    "section": "Hypothesis testing",
+    "text": "Hypothesis testing\n\nStep 1: State hypotheses\n\n“Null” and “alternative”\n\nStep 2: Set decision criteria\n\n\\(\\alpha\\) and critical region(s)\n\nStep 3: Collect & analyze data\n\nCalculate required statistics\n\nStep 4: Make decision\n\nCompare outcome with predicted probabilities\nAccept or reject the null hypothesis"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#state-hypotheses",
+    "href": "slides/09_hypothesis-testing.html#state-hypotheses",
+    "title": "BC1101",
+    "section": "1: State hypotheses",
+    "text": "1: State hypotheses\n\nNull hypothesis: \\(H_0\\)\n\nStates that “treatment” has no effect\nTreated population is indistinguishable from original population\nNo change, no difference, or no relationship\n\nAlternative hypothesis: \\(H_1\\)\n\nStates that treated population differs from nontreated population\nThere is a change, a difference, or there is a relationship in the general population\n\nLogical complements\n\nCan’t both be true\nEnsures falsifiability"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#state-hypotheses-1",
+    "href": "slides/09_hypothesis-testing.html#state-hypotheses-1",
+    "title": "BC1101",
+    "section": "1. State hypotheses",
+    "text": "1. State hypotheses\n\nClaim: This pill makes you smarter\n\n\\(H_0\\): The pill doesn’t effect intelligence\n\\(H_1\\): The pill affects intelligence\n\nClaim: Standing like superman makes you feel more confident\n\n\\(H_0\\): Posture does not affect confidence\n\\(H_1\\): Posture does affect confidence\n\nClaim: The more education people complete, the more they earn\n\n\\(H_0\\): Education is not associated with income\n\\(H_1\\): There is a relationship between education and income"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#decision-criterion",
+    "href": "slides/09_hypothesis-testing.html#decision-criterion",
+    "title": "BC1101",
+    "section": "2. Decision criterion",
+    "text": "2. Decision criterion\n\nIf the null hypothesis is true, what sample statistics are likely/unlikely?\n\nCentral Limit Theorem shows what samples are likely\nIf we get a very unlikely sample, we may reject the null\nSpecific sampling distribution depends on what test is being performed\n\nAlpha level & p-value\n\n\\(\\alpha\\) (alpha) is the probability value used to define “very unlikely” outcomes\np-value is the precise probability of statistics as extreme or more than observed sample statistic, assuming the null hypothesis is correct\nTypical alpha used by psychologists is \\(\\alpha = .05\\)\n\\(p < .05\\); “Statistically significant”"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#decision-criterion-1",
+    "href": "slides/09_hypothesis-testing.html#decision-criterion-1",
+    "title": "BC1101",
+    "section": "2. Decision criterion",
+    "text": "2. Decision criterion\n\nDivide distribution of sample means into two parts\n\nOutcomes likely if \\(H_0\\) is true\nOutcomes unlikely if \\(H_0\\) is true\nBoundaries for critical region(s) determined by alpha"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#decision-criterion-2",
+    "href": "slides/09_hypothesis-testing.html#decision-criterion-2",
+    "title": "BC1101",
+    "section": "2. Decision criterion",
+    "text": "2. Decision criterion\n\n\n\nDirectional tests\n\nResearcher has a specific prediction about the direction of the treatment\nSpecifies (in advance) looking for increase or decrease\n\n\n\n\n\n\n\n\n\n\nNondirectional tests\n\nLooking for a difference in either direction"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#data-collection",
+    "href": "slides/09_hypothesis-testing.html#data-collection",
+    "title": "BC1101",
+    "section": "3. Data collection",
+    "text": "3. Data collection\n\nRandomly sample population of interest\n\nCompute a sample statistic to show the exact position (probability) of the sample in the distribution of sample means\nExact form of test statistic depends on research design\n\\(z\\)-test; \\(t\\)-test; ANOVA; correlation & regression statistics etc etc etc…"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#make-decision",
+    "href": "slides/09_hypothesis-testing.html#make-decision",
+    "title": "BC1101",
+    "section": "4. Make decision",
+    "text": "4. Make decision\n\nTwo possible outcomes:\n\nIf the sample statistic is not located in critical region(s)\n\nFail to reject null\nMeaning there does not seem to be an effect\n\nSample statistic is located in critical region(s)\n\n\\(p < \\alpha\\)\nReject null\nMeaning there does seem to be an effect"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#z-test-spiderman",
+    "href": "slides/09_hypothesis-testing.html#z-test-spiderman",
+    "title": "BC1101",
+    "section": "\\(z\\)-test: Spiderman",
+    "text": "\\(z\\)-test: Spiderman\n\nFormal Spidermen z-test\n\n1: State Hypotheses\n\nNull: Radioactive spiderbites do not alter reaction times\nAlternative: Radioactive spiderbites alter reaction times\n\n2: Decision criteria\n\n\\(\\alpha = .05\\) two-tailed; Critical regions are -1.96 and 1.96\n\n3: Collect data; compute statistics & probabilities\n\n\\(\\mu = 284\\); \\(\\sigma = 50\\); so if \\(n = 5\\), \\(\\sigma_M = 50/\\sqrt{5} = 22.36\\)\n\\(M = 159\\); \\(z = (159 - 284) / 22.36 = -5.59\\)\n\n4: Decision\n\nObserved sample mean is in the critical region\n\\(p < .05\\)\nReject the null"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#z-test-cbt",
+    "href": "slides/09_hypothesis-testing.html#z-test-cbt",
+    "title": "BC1101",
+    "section": "\\(z\\)-test: CBT",
+    "text": "\\(z\\)-test: CBT\n\n\n\nDoes CBT affect OCD?\n\nState hypotheses\nSet decision criteria\n\n\nDecide on alpha, directionality, find z-scores for critical region\n\n\nCollect data; compute statistics & probabilities\n\n\nPre-treatment \\(\\mu = 30.25\\); \\(\\sigma = 14.89\\)\nTreated sample $M = 15.49; \\(n = 40\\)\n\n\nMake decision\n\n\nAbramowitz, J. S., Deacon, B. J., Olatunji, B. O., Wheaton, M. G., Berman, N. C., Losardo, D., . . . Hale, L. R. (2010). Assessment of obsessive-compulsive symptom dimensions: Development and evaluation of the Dimensional Obsessive-Compulsive Scale. Psychological Assessment, 22(1), 180-198. http://dx.doi.org/10.1037/a0018260"
+  },
+  {
+    "objectID": "slides/10_hypothesis-testing-pt-2.html#pt.-2",
+    "href": "slides/10_hypothesis-testing-pt-2.html#pt.-2",
+    "title": "BC1101",
+    "section": "pt. 2",
+    "text": "pt. 2"
+  },
+  {
+    "objectID": "slides/10_hypothesis-testing-pt-2.html#effect-size-1",
+    "href": "slides/10_hypothesis-testing-pt-2.html#effect-size-1",
+    "title": "BC1101",
+    "section": "Effect size",
+    "text": "Effect size\n\nQuantifying effect size\n\nOne measure: Cohen’s \\(d\\)\nQuantifies the absolute magnitude of a treatment effect, independent of sample size\nMeasures effect size in terms of standard deviation\n\\(d = 1.00\\): treatment changed \\(\\mu\\) by 1 SD\n\n\n\\[\\text{Cohen's } d = \\dfrac{\\text{mean difference}}{\\text{standard deviation}}\n= \\dfrac{\\mu_{treatment} - \\mu_{no \\ treatment}}{\\sigma}\\]\nFor \\(z\\)-tests:\n\\[\\text{Estimated Cohen's }d = \\dfrac{\\text{mean difference}}{\\text{standard deviation}}\n= \\dfrac{M_{treatment} - \\mu_{no \\ treatment}}{\\sigma}\\]"
+  },
+  {
+    "objectID": "slides/10_hypothesis-testing-pt-2.html#interpreting-cohens-d",
+    "href": "slides/10_hypothesis-testing-pt-2.html#interpreting-cohens-d",
+    "title": "BC1101",
+    "section": "Interpreting Cohen’s \\(d\\)",
+    "text": "Interpreting Cohen’s \\(d\\)\n\n\n\n\n\n\n \n  \n    d \n    Interpretation \n  \n \n\n  \n    0.2 \n    Small \n  \n  \n    0.5 \n    Medium \n  \n  \n    0.8 \n    Large"
+  },
+  {
+    "objectID": "slides/10_hypothesis-testing-pt-2.html#effect-size-sample-size",
+    "href": "slides/10_hypothesis-testing-pt-2.html#effect-size-sample-size",
+    "title": "BC1101",
+    "section": "Effect size & sample size",
+    "text": "Effect size & sample size\n\nSAT scores: \\(\\mu = 500; \\sigma = 100\\)\n\nAdminister treatment (banana); \\(M = 501\\)\nSignificant? \\((\\alpha = .05\\) two-tailed; critical values \\(z = \\pm 1.96)\\)\nSubstantial? (effect size)\n\n\n\n\nWith 50 participants…\n\\[z = \\dfrac{501 - 500}{100 / \\sqrt{50}} = 0.06\\\\\nd = \\dfrac{501 - 500}{100} = 0.01\\]\n\nWith 50,000 participants…\n\\[z = \\dfrac{501 - 500}{100 / \\sqrt{50000}} = 2.22\\\\\nd = \\dfrac{501 - 500}{100} = 0.01\\]"
+  },
+  {
+    "objectID": "slides/10_hypothesis-testing-pt-2.html#low-power",
+    "href": "slides/10_hypothesis-testing-pt-2.html#low-power",
+    "title": "BC1101",
+    "section": "Low power",
+    "text": "Low power\n\nRunning a study with low statistical power is like setting out to look for distant galaxies with a pair of binoculars: even if what you’re looking for is definitely out there, you have essentially no chance of seeing it.\n\n\nStuart Ritchie, Science Fictions"
+  },
+  {
+    "objectID": "slides/10_hypothesis-testing-pt-2.html#power-sample-sizes",
+    "href": "slides/10_hypothesis-testing-pt-2.html#power-sample-sizes",
+    "title": "BC1101",
+    "section": "Power & sample sizes",
+    "text": "Power & sample sizes\n\n\n\n\nSimmons, J. P., Nelson, L. D., & Simonsohn, U. (2013, January). Life after p-hacking. In Meeting of the society for personality and social psychology, New Orleans, LA (pp. 17-19). http://dx.doi.org/10.2139/ssrn.2205186"
+  },
+  {
+    "objectID": "slides/10_hypothesis-testing-pt-2.html#influences",
+    "href": "slides/10_hypothesis-testing-pt-2.html#influences",
+    "title": "BC1101",
+    "section": "Influences",
+    "text": "Influences\n\nFactors that influence power\n\nSee: http://rpsychologist.com/d3/NHST/\n\nEffect size\n\nLarger effect size; greater power\n\nSample size\n\nLarger sample size; greater power\n\nAlpha level\n\nLowering alpha (making the test more stringent) reduces power\n\nDirectional hypothesis\n\nUsing a one-tailed (directional) test increases power (relative to a two-tailed test)"
+  },
+  {
+    "objectID": "slides/10_hypothesis-testing-pt-2.html#using-statistical-power",
+    "href": "slides/10_hypothesis-testing-pt-2.html#using-statistical-power",
+    "title": "BC1101",
+    "section": "Using statistical power",
+    "text": "Using statistical power\n\nPower should be estimated before starting study\n\nUsing known quantities\nOr, more often, making assumptions about factors that influence power\n\nDetermining whether a research study is likely to be successful\n\nSpecify effect size, \\(n\\), \\(\\alpha\\); calculate power\n\nFiguring out how many participants you need\n\nSpecify desired power (e.g. .8), expected effect size, \\(\\alpha\\)\nCalculate required sample size"
+  },
+  {
+    "objectID": "slides-index.html#hypothesis-testing",
+    "href": "slides-index.html#hypothesis-testing",
+    "title": "Slides",
+    "section": "9. Hypothesis testing",
+    "text": "9. Hypothesis testing\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nRecap\nMaking inferences\nHypothesis testing\nLearning check\n\n    \n  \n\n  \nSlidesPanopto"
+  },
+  {
+    "objectID": "slides-index.html#hypothesis-testing-pt.-2",
+    "href": "slides-index.html#hypothesis-testing-pt.-2",
+    "title": "Slides",
+    "section": "10. Hypothesis testing pt. 2",
+    "text": "10. Hypothesis testing pt. 2\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nInferential errors\nEffect size\nStatistical power\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   }
 ]

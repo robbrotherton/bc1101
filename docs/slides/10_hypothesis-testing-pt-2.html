@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.1.251">
 
-  <title>BC1101 – hypothesis-testing</title>
+  <title>BC1101 – hypothesis-testing-pt-2</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -27,70 +27,6 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -390,436 +326,220 @@
 
 
 <section id="hypothesis-testing" class="title-slide slide level1 center">
-<h1>9|HYPOTHESIS TESTING</h1>
+<h1>10|HYPOTHESIS TESTING</h1>
+<p><span class="subhead">part 2</span></p>
 <div class="cell">
 
 </div>
-<div class="cell">
 
-</div>
-</section>
+<img data-src="covers/10_hypothesis-testing-pt-2.svg" class="invertable r-stretch"></section>
 
 <section id="overview" class="title-slide slide level1 center">
 <h1>Overview</h1>
 <ul>
-<li><a href="#/recap-1">Recap</a></li>
-<li><a href="#/making-inferences-6">Making inferences</a></li>
-<li><a href="#/hypothesis-testing-2">Hypothesis testing</a></li>
-<li><a href="#/learning-check">Learning check</a></li>
+<li><a href="#/inferential-errors">Inferential errors</a></li>
+<li><a href="#/effect-size-1">Effect size</a></li>
+<li><a href="#/statistical-power">Statistical power</a></li>
+<li><a href="#/learning-checks">Learning checks</a></li>
 </ul>
+</section>
+
+<section id="inferential-errors" class="title-slide slide level1 center">
+<h1>Inferential errors</h1>
+
 </section>
 
 <section>
-<section id="recap" class="title-slide slide level1 center">
-<h1>Recap</h1>
+<section id="effect-size" class="title-slide slide level1 small center">
+<h1>Effect size</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
-<li><span class="math inline">\(z\)</span>-scores, normal distributions, probability
+<li><em>Significant</em> effects are not always <em>substantial</em>
 <ul>
-<li><span class="math inline">\(z = \dfrac{X - \mu}{\sigma}\)</span></li>
-<li><span class="math inline">\(z\)</span>-scores reflect position in population distribution</li>
-<li>Find probabilities using Unit Normal Table / pnorm()</li>
+<li>As sample size increases, standard error of the mean decreases</li>
+<li>Even a tiny treatment effect might come out as “statistically significant”</li>
+</ul></li>
+<li>Need to consider <em>effect size</em>
+<ul>
+<li>How big is the treatment effect?</li>
+<li>Quantifies the absolute magnitude of a treatment effect, independent of sample size</li>
 </ul></li>
 </ul>
-<div class="r-stack">
-<p><img data-src="media/z-distribution.svg" class="invertable"></p>
-<p><img data-src="media/z-distribution-labelled.svg" class="fragment"></p>
-</div>
-</section>
-<section id="recap-1" class="slide level2">
-<h2>Recap</h2>
-<ul>
-<li>Sampling distribution
-<ul>
-<li>Lets us find probabilities of <span class="emph">sample means</span></li>
-</ul></li>
-</ul>
-</section>
-<section id="central-limit-theorem" class="slide level2">
-<h2>Central Limit Theorem</h2>
-<ul>
-<li>Tells us sampling distribution characteristics without having to take all possible sampes</li>
-</ul>
-<div class="c">
-<p><span class="math inline">\(\mu_M = \mu \ \ \ \ \ \ \ \ \ \  \sigma_M = \dfrac{\sigma}{\sqrt{n}}\)</span></p>
-</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
 
-<img data-src="media/samp-dist-1.png" class="invertable r-stretch"></section>
-<section id="together" class="slide level2 smaller">
-<h2>Together…</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>Sample statistics, normal distributions, probability, Central Limit Theorem
-<ul>
-<li>We can find <span class="math inline">\(z\)</span>-score for any sample mean</li>
-<li>Using characteristics of sampling distribution of the mean <span class="math inline">\((\mu_M\)</span> and <span class="math inline">\(\sigma_M)\)</span></li>
-<li>Position of given sample mean in the population of all possible sample means</li>
-<li>Then find probability (using Unit Normal Table / pnorm(), just like for regular <span class="math inline">\(z\)</span>-scores)</li>
-</ul></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="c">
-<p><span class="math inline">\(z = \dfrac{M-\mu_M}{\sigma_M}\)</span></p>
 </div>
-<p><img data-src="media/z-distribution-filled.svg"></p>
+<p><img data-src="media/effect-size-1.svg"></p>
+<p><img data-src="media/effect-size-2.svg"></p>
+<p><img data-src="media/effect-size-3.svg"></p>
 </div>
 </div>
 </section>
-<section id="making-inferences" class="slide level2 smaller">
-<h2>Making inferences</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
+<section id="effect-size-1" class="slide level2">
+<h2>Effect size</h2>
 <ul>
-<li>Sampling error
+<li>Quantifying effect size
 <ul>
-<li>Statistics obtained for a sample will be different from the corresponding parameters for the population and the statistics will differ from one sample to another</li>
-</ul></li>
-<li>Problem:
-<ul>
-<li>Is difference between sample &amp; population due to treatment effect or sampling error?</li>
-</ul></li>
-<li>Addressed by <span class="emph">inferential statistics</span></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<p>Right column</p>
-</div>
-</div>
-</section>
-<section id="making-inferences-1" class="slide level2">
-<h2>Making inferences</h2>
-
-<img data-src="media/spiderman-comic.jpg" class="r-stretch"></section>
-<section id="making-inferences-2" class="slide level2">
-<h2>Making inferences</h2>
-</section>
-<section id="spiderman" class="slide level2 small">
-<h2>Spiderman</h2>
-<ul>
-<li>Spiderman
-<ul>
-<li>Are Peter Parker’s RTs “noticeably different?”</li>
-<li><span class="math inline">\(z = -2.5\)</span></li>
-<li>Can state <span class="emph">precise</span> probability of observing a <span class="math inline">\(z\)</span>-score that (or more) extreme</li>
+<li>One measure: Cohen’s <span class="math inline">\(d\)</span></li>
+<li>Quantifies the absolute magnitude of a treatment effect, independent of sample size</li>
+<li>Measures effect size in terms of standard deviation</li>
+<li><span class="math inline">\(d = 1.00\)</span>: treatment changed <span class="math inline">\(\mu\)</span> by 1 SD</li>
 </ul></li>
 </ul>
-<p><img data-src="media/spiderman-small-bw.png" style="position: absolute; top: 80%; left: -45%;width:10.0%"></p>
+<p><span class="math display">\[\text{Cohen's } d = \dfrac{\text{mean difference}}{\text{standard deviation}}
+= \dfrac{\mu_{treatment} - \mu_{no \ treatment}}{\sigma}\]</span></p>
+<p>For <span class="math inline">\(z\)</span>-tests:</p>
+<p><span class="math display">\[\text{Estimated Cohen's }d = \dfrac{\text{mean difference}}{\text{standard deviation}}
+= \dfrac{M_{treatment} - \mu_{no \ treatment}}{\sigma}\]</span></p>
+</section>
+<section id="interpreting-cohens-d" class="slide level2">
+<h2>Interpreting Cohen’s <span class="math inline">\(d\)</span></h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><img data-src="media/spiderman-distribution.svg"></p>
-</div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">2.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.006209665</code></pre>
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> <i>d</i> </th>
+   <th style="text-align:center;"> Interpretation </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:center;"> Small </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 0.5 </td>
+   <td style="text-align:center;"> Medium </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 0.8 </td>
+   <td style="text-align:center;"> Large </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">pnorm</span>(<span class="dv">159</span>, <span class="at">mean =</span> <span class="dv">284</span>, <span class="at">sd =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.006209665</code></pre>
 </div>
-</div>
+</div><div class="column" style="width:50%;">
+<p><img data-src="media/effect-size-1.svg"></p>
+<p><img data-src="media/effect-size-2.svg"></p>
+<p><img data-src="media/effect-size-3.svg"></p>
 </div>
 </div>
 </section>
-<section id="making-inferences-3" class="slide level2">
-<h2>Making inferences</h2>
-
-<img data-src="media/spidermen.png" class="r-stretch"></section>
-<section id="making-inferences-4" class="slide level2 smaller">
-<h2>Making inferences</h2>
+<section id="effect-size-sample-size" class="slide level2">
+<h2>Effect size &amp; sample size</h2>
 <ul>
-<li>A sample of spidermen (spidermans?)
+<li>SAT scores: <span class="math inline">\(\mu = 500; \sigma = 100\)</span>
 <ul>
-<li>How likely is a particular sample mean, given the population characteristics?</li>
-<li>Population <span class="math inline">\(\mu = 284; \sigma = 50\)</span></li>
+<li>Administer treatment (banana); <span class="math inline">\(M = 501\)</span></li>
+<li>Significant? <span class="math inline">\((\alpha = .05\)</span> two-tailed; critical values <span class="math inline">\(z = \pm 1.96)\)</span></li>
+<li>Substantial? (effect size)</li>
 </ul></li>
 </ul>
 <div class="columns">
 <div class="column" style="width:50%;">
-<ul>
-<li>Single score of <span class="math inline">\(X = 159\)</span></li>
-<li>Find position of that score in population distribution and find probability</li>
-</ul>
-<p><span class="math inline">\(z = \dfrac{X-\mu}{\sigma} = \dfrac{159 - 284}{50} = -2.5\)</span></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">2.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.006209665</code></pre>
-</div>
-</div>
+<p>With 50 participants…</p>
+<p><span class="math display">\[z = \dfrac{501 - 500}{100 / \sqrt{50}} = 0.06\\
+d = \dfrac{501 - 500}{100} = 0.01\]</span></p>
 </div><div class="column" style="width:50%;">
-<ul>
-<li>Sample mean of <span class="math inline">\(M = 159\)</span>; <span class="math inline">\(n = 5\)</span></li>
-<li>Find position of that <span class="math inline">\(M\)</span> in sampling distribution and find probability</li>
-</ul>
-<p><span class="math inline">\(z = \dfrac{M-\mu_M}{\sigma_M} = \dfrac{159 - 284}{50 / \sqrt{5}} = -5.59\)</span></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">5.59</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.135348e-08</code></pre>
+<p>With 50,000 participants…</p>
+<p><span class="math display">\[z = \dfrac{501 - 500}{100 / \sqrt{50000}} = 2.22\\
+d = \dfrac{501 - 500}{100} = 0.01\]</span></p>
 </div>
 </div>
-</div>
-</div>
-</section>
-<section id="making-inferences-5" class="slide level2">
-<h2>Making inferences</h2>
-<ul>
-<li>For sample size <span class="math inline">\(n = 5\)</span>, approximately 0.00000001 of sample means are this (or more) extreme
-<ul>
-<li>Given how unlikely the mean is, maybe spidermen aren’t from this population</li>
-</ul></li>
-</ul>
-
-<img data-src="media/spiderman-sampling-distribution.svg" class="invertable r-stretch"></section>
-<section id="making-inferences-6" class="slide level2">
-<h2>Making inferences</h2>
-
-<img data-src="media/nhst-diagram.svg" class="r-stretch"></section></section>
-<section>
-<section id="hypothesis-testing-1" class="title-slide slide level1 center">
-<h1>Hypothesis testing</h1>
-<ul>
-<li>What do you suspect is going on? Be skeptical
-<ul>
-<li>Maybe spider bites affect RT</li>
-<li>But maybe not</li>
-</ul></li>
-<li>What are the chances?
-<ul>
-<li>Think about the probability of sample means</li>
-<li>Assuming that spider bites do nothing</li>
-</ul></li>
-<li>What is the data?
-<ul>
-<li>Observe actual sample mean</li>
-</ul></li>
-<li>Make a decision
-<ul>
-<li>Compare outcome with predicted probabilities</li>
-<li>Change your mind if observation seems unlikely enough</li>
-</ul></li>
-</ul>
-</section>
-<section id="hypothesis-testing-2" class="slide level2">
-<h2>Hypothesis testing</h2>
-<ul>
-<li>Step 1: State hypotheses
-<ul>
-<li>“Null” and “alternative”</li>
-</ul></li>
-<li>Step 2: Set decision criteria
-<ul>
-<li><span class="math inline">\(\alpha\)</span> and critical region(s)</li>
-</ul></li>
-<li>Step 3: Collect &amp; analyze data
-<ul>
-<li>Calculate required statistics</li>
-</ul></li>
-<li>Step 4: Make decision
-<ul>
-<li>Compare outcome with predicted probabilities</li>
-<li>Accept or reject the null hypothesis</li>
-</ul></li>
-</ul>
-</section>
-<section id="state-hypotheses" class="slide level2">
-<h2>1: State hypotheses</h2>
-<ul>
-<li>Null hypothesis: <span class="math inline">\(H_0\)</span>
-<ul>
-<li>States that “treatment” has no effect</li>
-<li>Treated population is indistinguishable from original population</li>
-<li>No change, no difference, or no relationship</li>
-</ul></li>
-<li>Alternative hypothesis: <span class="math inline">\(H_1\)</span>
-<ul>
-<li>States that treated population differs from nontreated population</li>
-<li>There is a change, a difference, or there is a relationship in the general population</li>
-</ul></li>
-<li>Logical complements
-<ul>
-<li>Can’t both be true</li>
-<li>Ensures <span class="emph">falsifiability</span></li>
-</ul></li>
-</ul>
-</section>
-<section id="state-hypotheses-1" class="slide level2">
-<h2>1. State hypotheses</h2>
-<ul>
-<li>Claim: This pill makes you smarter
-<ul>
-<li><span class="math inline">\(H_0\)</span>: The pill doesn’t effect intelligence</li>
-<li><span class="math inline">\(H_1\)</span>: The pill affects intelligence</li>
-</ul></li>
-<li>Claim: Standing like superman makes you feel more confident
-<ul>
-<li><span class="math inline">\(H_0\)</span>: Posture does not affect confidence</li>
-<li><span class="math inline">\(H_1\)</span>: Posture does affect confidence</li>
-</ul></li>
-<li>Claim: The more education people complete, the more they earn
-<ul>
-<li><span class="math inline">\(H_0\)</span>: Education is not associated with income</li>
-<li><span class="math inline">\(H_1\)</span>: There is a relationship between education and income</li>
-</ul></li>
-</ul>
-</section>
-<section id="decision-criterion" class="slide level2 smaller">
-<h2>2. Decision criterion</h2>
-<ul>
-<li>If the null hypothesis is true, what sample statistics are likely/unlikely?
-<ul>
-<li>Central Limit Theorem shows what samples are likely</li>
-<li>If we get a very unlikely sample, we may reject the null</li>
-<li>Specific sampling distribution depends on what test is being performed</li>
-</ul></li>
-<li>Alpha level &amp; p-value
-<ul>
-<li><span class="math inline">\(\alpha\)</span> (alpha) is the probability value used to define “very unlikely” outcomes</li>
-<li>p-value is the precise probability of statistics as extreme or more than observed sample statistic, assuming the null hypothesis is correct</li>
-<li>Typical alpha used by psychologists is <span class="math inline">\(\alpha = .05\)</span></li>
-<li><span class="math inline">\(p &lt; .05\)</span>; “Statistically significant”</li>
-</ul></li>
-</ul>
-</section>
-<section id="decision-criterion-1" class="slide level2">
-<h2>2. Decision criterion</h2>
-<ul>
-<li>Divide distribution of sample means into two parts
-<ul>
-<li>Outcomes likely if <span class="math inline">\(H_0\)</span> is true</li>
-<li>Outcomes unlikely if <span class="math inline">\(H_0\)</span> is true</li>
-<li>Boundaries for critical region(s) determined by alpha</li>
-</ul></li>
-</ul>
-<div class="cell">
-
-</div>
-</section>
-<section id="decision-criterion-2" class="slide level2">
-<h2>2. Decision criterion</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>Directional tests
-<ul>
-<li>Researcher has a specific prediction about the direction of the treatment</li>
-<li>Specifies (in advance) looking for increase or decrease</li>
-</ul></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<p><img data-src="media/directional-test-upper-tail.svg" style="width:80.0%"></p>
-<p><img data-src="media/directional-test-lower-tail.svg" style="width:80.0%"></p>
-</div>
-</div>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>Nondirectional tests
-<ul>
-<li>Looking for a difference in either direction</li>
-</ul></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<p><img data-src="media/nondirectional-test.svg"></p>
-</div>
-</div>
-</section>
-<section id="data-collection" class="slide level2">
-<h2>3. Data collection</h2>
-<ul>
-<li>Randomly sample population of interest
-<ul>
-<li>Compute a sample statistic to show the exact position (probability) of the sample in the distribution of sample means</li>
-<li>Exact form of test statistic depends on research design</li>
-<li><span class="math inline">\(z\)</span>-test; <span class="math inline">\(t\)</span>-test; ANOVA; correlation &amp; regression statistics etc etc etc…</li>
-</ul></li>
-</ul>
-</section>
-<section id="make-decision" class="slide level2 smaller">
-<h2>4. Make decision</h2>
-<ul>
-<li>Two possible outcomes:
-<ul>
-<li>If the sample statistic is not located in critical region(s)
-<ul>
-<li>Fail to reject null</li>
-<li>Meaning there does not seem to be an effect</li>
-</ul></li>
-<li>Sample statistic is located in critical region(s)
-<ul>
-<li><span class="math inline">\(p &lt; \alpha\)</span></li>
-<li>Reject null</li>
-<li>Meaning there does seem to be an effect</li>
-</ul></li>
-</ul></li>
-</ul>
-<div class="cell">
-
-</div>
-
-<img data-src="media/nondirectional-test-labelled.svg" class="r-stretch"></section></section>
-<section>
-<section id="z-test" class="title-slide slide level1 center">
-<h1><span class="math inline">\(z\)</span>-test</h1>
-<ul>
-<li><span class="math inline">\(z\)</span>-test is appropriate if:
-<ul>
-<li>Original population <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> are both known</li>
-<li>Sampling distribution is normally distributed</li>
-</ul></li>
-</ul>
-
-<img data-src="media/nhst-z-diagram.svg" class="r-stretch"></section>
-<section id="z-test-spiderman" class="slide level2 smaller">
-<h2><span class="math inline">\(z\)</span>-test: Spiderman</h2>
-<ul>
-<li>Formal Spidermen z-test
-<ul>
-<li>1: State Hypotheses
-<ul>
-<li>Null: Radioactive spiderbites do not alter reaction times</li>
-<li>Alternative: Radioactive spiderbites alter reaction times</li>
-</ul></li>
-<li>2: Decision criteria
-<ul>
-<li><span class="math inline">\(\alpha = .05\)</span> two-tailed; Critical regions are -1.96 and 1.96</li>
-</ul></li>
-<li>3: Collect data; compute statistics &amp; probabilities
-<ul>
-<li><span class="math inline">\(\mu = 284\)</span>; <span class="math inline">\(\sigma = 50\)</span>; so if <span class="math inline">\(n = 5\)</span>, <span class="math inline">\(\sigma_M = 50/\sqrt{5} = 22.36\)</span></li>
-<li><span class="math inline">\(M = 159\)</span>; <span class="math inline">\(z = (159 - 284) / 22.36 = -5.59\)</span></li>
-</ul></li>
-<li>4: Decision
-<ul>
-<li>Observed sample mean is in the critical region</li>
-<li><span class="math inline">\(p &lt; .05\)</span></li>
-<li>Reject the null</li>
-</ul></li>
-</ul></li>
-</ul>
 </section></section>
-<section id="learning-check" class="title-slide slide level1 smaller center">
-<h1>Learning check</h1>
+<section>
+<section id="statistical-power" class="title-slide slide level1 center">
+<h1>Statistical power</h1>
+<ul>
+<li>Power: Probability of correctly rejecting a false null hypothesis
+<ul>
+<li>Depends on size of treatment effect, sample size, alpha, directional / nondirectional hypotheses</li>
+<li>Power = 1 – <span class="math inline">\(\beta\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="influences" class="slide level2">
+<h2>Influences</h2>
+<ul>
+<li>Factors that influence power
+<ul>
+<li>See: <a href="http://rpsychologist.com/d3/NHST/" class="uri">http://rpsychologist.com/d3/NHST/</a></li>
+</ul></li>
+<li>Effect size
+<ul>
+<li>Larger effect size; greater power</li>
+</ul></li>
+<li>Sample size
+<ul>
+<li>Larger sample size; greater power</li>
+</ul></li>
+<li>Alpha level
+<ul>
+<li>Lowering alpha (making the test more stringent) reduces power</li>
+</ul></li>
+<li>Directional hypothesis
+<ul>
+<li>Using a one-tailed (directional) test increases power (relative to a two-tailed test)</li>
+</ul></li>
+</ul>
+</section>
+<section id="using-statistical-power" class="slide level2">
+<h2>Using statistical power</h2>
+<ul>
+<li>Power should be estimated before starting study
+<ul>
+<li>Using known quantities</li>
+<li>Or, more often, making assumptions about factors that influence power</li>
+</ul></li>
+<li>Determining whether a research study is likely to be successful
+<ul>
+<li>Specify effect size, <span class="math inline">\(n\)</span>, <span class="math inline">\(\alpha\)</span>; calculate power</li>
+</ul></li>
+<li>Figuring out how many participants you need
+<ul>
+<li>Specify desired power (e.g.&nbsp;.8), expected effect size, <span class="math inline">\(\alpha\)</span></li>
+<li>Calculate required sample size</li>
+</ul></li>
+</ul>
+</section>
+<section id="power-sample-sizes" class="slide level2">
+<h2>Power &amp; sample sizes</h2>
 <div class="cell">
 
 </div>
-<p>Does CBT affect OCD?</p>
-<ol type="1">
-<li><p>State hypotheses</p></li>
-<li><p>Set decision criteria</p>
-<ul>
-<li>Decide on alpha, directionality, find <span class="math inline">\(z\)</span>-scores for critical region</li>
-</ul></li>
-<li><p>Collect data; compute statistics &amp; probabilities</p>
-<ul>
-<li><p>Pre-treatment <span class="math inline">\(\mu = 30.25\)</span>; <span class="math inline">\(\sigma = 14.89\)</span></p></li>
-<li><p>Treated sample $M = 15.49; <span class="math inline">\(n = 40\)</span></p></li>
-</ul></li>
-<li><p>Make decision</p></li>
-</ol>
 <div class="footnote reference">
-<p>Abramowitz, J. S., Deacon, B. J., Olatunji, B. O., Wheaton, M. G., Berman, N. C., Losardo, D., . . . Hale, L. R. (2010). <em>Assessment of obsessive-compulsive symptom dimensions: Development and evaluation of the Dimensional Obsessive-Compulsive Scale. Psychological Assessment, 22</em>(1), 180-198. <a href="https://doi.org/10.1037/a0018260" class="uri">https://doi.org/10.1037/a0018260</a></p>
+<p>Simmons, J. P., Nelson, L. D., &amp; Simonsohn, U. (2013, January). Life after p-hacking. In <em>Meeting of the society for personality and social psychology</em>, New Orleans, LA (pp.&nbsp;17-19). http://dx.doi.org/10.2139/ssrn.2205186</p>
 </div>
+</section>
+<section id="low-power" class="slide level2">
+<h2>Low power</h2>
+<blockquote>
+<p>Running a study with low statistical power is like setting out to look for distant galaxies with a pair of binoculars: even if what you’re looking for is definitely out there, you have essentially no chance of seeing it.</p>
+</blockquote>
+<div class="footnote reference">
+<p>Stuart Ritchie, <em>Science Fictions</em></p>
+</div>
+</section></section>
+<section id="learning-checks" class="title-slide slide level1 small center">
+<h1>Learning checks</h1>
+<ul>
+<li>True/False
+<ul>
+<li>Larger differences between the sample and population mean increase effect size</li>
+<li>Increasing the sample size increases the effect size</li>
+<li>An effect that exists is more likely to be detected if <span class="math inline">\(n\)</span> is large</li>
+<li>An effect that exists is less likely to be detected if <span class="math inline">\(\sigma\)</span> is large</li>
+<li>A Type I error is like convicting an innocent person in a jury trial</li>
+<li>A Type II error is like convicting a guilty person in a jury trial</li>
+</ul></li>
+</ul>
 
 <div class="footer footer-default">
 

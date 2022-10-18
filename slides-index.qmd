@@ -139,7 +139,7 @@ card <- function(file, date, invertable_image = FALSE) {
 }
 ```
 
-# Part 1.
+# Part 1. Fundamentals
 
 :::: {.box}
 ## 1. Course Overview
@@ -204,6 +204,23 @@ card("08_sampling", "", TRUE)
 ::::
 
 
+
+# Part 2. Inferential statistics
+
+:::: {.box}
+## 9. Hypothesis testing
+```{r}
+card("09_hypothesis-testing", "")
+```
+::::
+
+
+:::: {.box}
+## 10. Hypothesis testing pt. 2
+```{r}
+card("10_hypothesis-testing-pt-2", "")
+```
+::::
 
 
 ```{r eval=FALSE, echo=FALSE}

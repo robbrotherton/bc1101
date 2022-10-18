@@ -1,0 +1,217 @@
+---
+format: 
+  revealjs:
+    chalkboard: true
+---
+
+# 10|HYPOTHESIS TESTING
+
+[part 2]{.subhead}
+
+
+```{r cover}
+#| eval: false
+
+library(bc1101tools)
+
+plot_distribution(xlim = c(-3, 4)) +
+  stat_function(fun = dnorm, args = list(mean = 1), xlim = c(-3, 4), linetype = 2, color = "blue") +
+  scale_x_continuous(expand = c(0,0)) +
+  theme_void()
+
+plot_save("10_hypothesis-testing-pt-2.svg", subdir = "covers", width = 10, height = 5)
+
+```
+
+![](covers/10_hypothesis-testing-pt-2.svg){.invertable}
+
+
+# Overview
+
+- [Inferential errors]
+- [Effect size]
+- [Statistical power]
+- [Learning checks]
+
+
+
+# Inferential errors
+
+# Effect size {.small}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- *Significant* effects are not always *substantial*
+  - As sample size increases, standard error of the mean decreases
+  - Even a tiny treatment effect might come out as “statistically significant”
+- Need to consider *effect size*
+  - How big is the treatment effect?
+  - Quantifies the absolute magnitude of a treatment effect, independent of sample size
+:::
+
+::: {.column width="50%"}
+```{r effect-size-distributions}
+#| eval: false
+
+library(bc1101tools)
+
+norm <- plot_distribution(xlim = c(-3.5, 3.5)) + theme_void()
+
+second_dist <- function(mean) {
+  ggplot2::stat_function(fun = dnorm, args = list(mean = mean), xlim = c(-3.5, 3.5),
+                linetype = 2,
+                color = "blue")
+}
+
+norm + second_dist(0.2)
+plot_save("effect-size-1.svg", height = 2)
+
+norm + second_dist(0.5)
+plot_save("effect-size-2.svg", height = 2)
+
+norm + second_dist(0.8)
+plot_save("effect-size-3.svg", height = 2)
+```
+
+![](media/effect-size-1.svg)
+
+![](media/effect-size-2.svg)
+
+![](media/effect-size-3.svg)
+
+:::
+
+::::
+
+
+## Effect size
+
+- Quantifying effect size
+  - One measure: Cohen’s $d$
+  - Quantifies the absolute magnitude of a treatment effect, independent of sample size
+  - Measures effect size in terms of standard deviation
+  - $d = 1.00$: treatment changed $\mu$ by 1 SD
+
+$$\text{Cohen's } d = \dfrac{\text{mean difference}}{\text{standard deviation}} 
+= \dfrac{\mu_{treatment} - \mu_{no \ treatment}}{\sigma}$$
+
+For $z$-tests:
+
+$$\text{Estimated Cohen's }d = \dfrac{\text{mean difference}}{\text{standard deviation}} 
+= \dfrac{M_{treatment} - \mu_{no \ treatment}}{\sigma}$$
+
+
+## Interpreting Cohen's $d$
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r effect_size_table}
+tab <- data.frame(d = c(0.2, 0.5, 0.8),
+                  Interpretation = c("Small","Medium","Large"))
+
+knitr::kable(tab, format='html', escape=F, col.names = c("<i>d</i>","Interpretation"), align = 'rc')
+```
+:::
+
+::: {.column width="50%"}
+![](media/effect-size-1.svg)
+
+![](media/effect-size-2.svg)
+
+![](media/effect-size-3.svg)
+:::
+
+::::
+
+## Effect size & sample size
+
+- SAT scores: $\mu = 500; \sigma = 100$
+  - Administer treatment (banana); $M = 501$
+  - Significant? $(\alpha = .05$ two-tailed; critical values $z = \pm 1.96)$
+  - Substantial? (effect size)
+
+:::: {.columns}
+
+::: {.column width="50%"}
+With 50 participants...
+
+$$z = \dfrac{501 - 500}{100 / \sqrt{50}} = 0.06\\
+d = \dfrac{501 - 500}{100} = 0.01$$
+:::
+
+::: {.column width="50%"}
+With 50,000 participants...
+
+$$z = \dfrac{501 - 500}{100 / \sqrt{50000}} = 2.22\\
+d = \dfrac{501 - 500}{100} = 0.01$$
+:::
+
+::::
+  
+# Statistical power
+
+- Power: Probability of correctly rejecting a false null hypothesis
+  - Depends on size of treatment effect, sample size, alpha, directional / nondirectional hypotheses
+  - Power = 1 – $\beta$
+
+
+## Influences
+
+- Factors that influence power
+  - See: <http://rpsychologist.com/d3/NHST/>
+- Effect size 
+  - Larger effect size; greater power
+- Sample size
+  - Larger sample size; greater power
+- Alpha level 
+  - Lowering alpha (making the test more stringent) reduces power
+- Directional hypothesis
+  - Using a one-tailed (directional) test increases power (relative to a two-tailed test)
+
+
+## Using statistical power
+
+- Power should be estimated before starting study
+  - Using known quantities 
+  - Or, more often, making assumptions about factors that influence power
+- Determining whether a research study is likely to be successful
+  - Specify effect size, $n$, $\alpha$; calculate power
+- Figuring out how many participants you need
+  - Specify desired power (e.g. .8), expected effect size, $\alpha$
+  - Calculate required sample size
+
+
+## Power & sample sizes
+
+```{r}
+#| eval: false
+t <- read.csv("dat/required_n.csv")
+colnames(t) <- c("Groups", "Measure", "Cohen's <i>d</i>", "Required <i>n</i> (per group)")
+
+kable(t, format = 'html', escape = F, align = 'llrr')
+```
+
+::: {.footnote .reference}
+Simmons, J. P., Nelson, L. D., & Simonsohn, U. (2013, January). Life after p-hacking. In *Meeting of the society for personality and social psychology*, New Orleans, LA (pp. 17-19). http://dx.doi.org/10.2139/ssrn.2205186 
+:::
+
+## Low power
+
+> Running a study with low statistical power is like setting out to look for distant galaxies with a pair of binoculars: even if what you're looking for is definitely out there, you have essentially no chance of seeing it.
+
+::: {.footnote .reference}
+Stuart Ritchie, *Science Fictions*
+:::
+
+# Learning checks {.small}
+
+- True/False
+  - Larger differences between the sample and population mean increase effect size
+  - Increasing the sample size increases the effect size
+  - An effect that exists is more likely to be detected if $n$ is large
+  - An effect that exists is less likely to be detected if $\sigma$ is large
+  - A Type I error is like convicting an innocent person in a jury trial
+  - A Type II error is like convicting a guilty person in a jury trial

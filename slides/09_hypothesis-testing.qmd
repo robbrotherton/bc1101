@@ -6,12 +6,54 @@ format:
 
 # 9|HYPOTHESIS TESTING
 
+```{r data}
+library(bc1101tools)
+rt <- bc1101tools::spiderman
+n <- 5
+sM <- rt$sd / sqrt(n)
+zM <- (rt$x - rt$m)/sM
+```
+
+```{r figures}
+#| eval: false
+
+library(ggplot2)
+scaleFUN <- function(x) sprintf("%.1f", x)
+
+segments <- seq(rt$m-3*sM, rt$m+3*sM, sM)
+
+plot_distribution(args = list(mean = rt$m, 
+                              sd = rt$sd/sqrt(5)),
+                  xlim = c(rt$x, rt$m+3*sM), segments = segments, 
+                  arrow = rt$x,
+                  arrow_y = 0.005,
+                  linetype = 2) +
+  scale_x_continuous(breaks = c(rt$x, segments),
+                     labels = scaleFUN,
+                     name = "Reaction Time (ms)") +
+  theme_xonly(yline = TRUE)
+
+plot_save("spiderman-sampling-distribution.svg", width = 7, height = 3)
+
+plot_nhst_diagram()
+
+plot_save("nhst-diagram.svg",
+          width = 8, height = 8)
+
+plot_nhst_diagram(pop1lab = "Original\nPopulation\n(known \U03BC & \U03C3)",
+                  sample2lab = "Treated\nSample\n(M & n)")
+
+plot_save("nhst-z-diagram.svg",
+          width = 8, height = 8)
+  
+```
+
 # Overview
 
-- Recap: $z$-scores, probability, Central Limit Theorem
-- Null Hypothesis Significance Testing
-  - Hypothesis test procedure
-  - The $z$ test
+- [Recap]
+- [Making inferences]
+- [Hypothesis testing]
+- [Learning check]
 
 
 # Recap
@@ -20,3 +62,375 @@ format:
   - $z = \dfrac{X - \mu}{\sigma}$ 
   - $z$-scores reflect position in population distribution
   - Find probabilities using Unit Normal Table / pnorm()
+
+::: {.r-stack}
+![](media/z-distribution.svg){.invertable}
+
+![](media/z-distribution-labelled.svg){.fragment}
+:::
+
+## Recap
+
+- Sampling distribution
+  - Lets us find probabilities of [sample means]{.emph}
+
+## Central Limit Theorem
+
+- Tells us sampling distribution characteristics without having to take all possible sampes
+
+::: {.c}
+$\mu_M = \mu  \ \ \ \ \ \ \ \ \ \  \sigma_M = \dfrac{\sigma}{\sqrt{n}}$
+:::
+
+![](media/samp-dist-1.png){.invertable}
+
+## Together... {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Sample statistics, normal distributions, probability, Central Limit Theorem
+  - We can find $z$-score for any sample mean
+  - Using characteristics of sampling distribution of the mean $(\mu_M$ and $\sigma_M)$ 
+  - Position of given sample mean in the population of all possible sample means 
+  - Then find probability (using Unit Normal Table / pnorm(), just like for regular $z$-scores)
+:::
+
+::: {.column width="50%"}
+::: {.c}
+$z = \dfrac{M-\mu_M}{\sigma_M}$
+:::
+
+![](media/z-distribution-filled.svg)
+:::
+
+::::
+
+
+## Making inferences {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Sampling error
+  - Statistics obtained for a sample will be different from the corresponding parameters for the population and the statistics will differ from one sample to another
+- Problem:
+  - Is difference between sample & population due to treatment effect or sampling error?
+- Addressed by [inferential statistics]{.emph}
+:::
+
+::: {.column width="50%"}
+Right column
+:::
+
+::::
+
+## Making inferences
+
+![](media/spiderman-comic.jpg)
+
+
+## Making inferences
+
+## Spiderman {.small}
+
+- Spiderman
+    - Are Peter Parker’s RTs “noticeably different?”
+    - $z = `r rt$z`$
+    - Can state [precise]{.emph} probability of observing a $z$-score that (or more) extreme
+
+![](media/spiderman-small-bw.png){width=10% style="position: absolute; top: 80%; left: -45%"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](media/spiderman-distribution.svg)
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+#| eval: true
+
+pnorm(-2.5)
+
+pnorm(159, mean = 284, sd = 50)
+
+
+```
+
+:::
+
+::::
+
+
+## Making inferences
+
+![](media/spidermen.png)
+
+## Making inferences {.smaller}
+
+- A sample of spidermen (spidermans?)
+  - How likely is a particular sample mean, given the population characteristics?
+  - Population $\mu = `r rt$m`; \sigma = `r rt$sd`$
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Single score of $X = `r rt$x`$
+- Find position of that score in population distribution and find probability
+
+$z = \dfrac{X-\mu}{\sigma} = \dfrac{`r rt$x` - `r rt$m`}{`r rt$sd`} = `r rt$z`$
+
+```{r echo=T}
+pnorm(-2.5)
+```
+:::
+
+::: {.column width="50%"}
+- Sample mean of $M = `r rt$x`$; $n = `r n`$
+- Find position of that $M$ in sampling distribution and find probability
+
+$z = \dfrac{M-\mu_M}{\sigma_M} = \dfrac{`r rt$x` - `r rt$m`}{`r rt$sd` / \sqrt{`r n`}} = `r round(zM, 2)`$
+
+```{r echo=T}
+pnorm(-5.59)
+```
+:::
+
+::::
+
+## Making inferences
+
+- For sample size $n = `r n`$, approximately `r format(pnorm(zM), scientific = FALSE, digits = 1)` of sample means are this (or more) extreme 
+  - Given how unlikely the mean is, maybe spidermen aren't from this population
+
+
+![](media/spiderman-sampling-distribution.svg){.invertable}
+
+
+## Making inferences
+
+![](media/nhst-diagram.svg)
+
+# Hypothesis testing
+
+- What do you suspect is going on? Be skeptical
+  - Maybe spider bites affect RT
+  - But maybe not
+- What are the chances?
+  - Think about the probability of sample means 
+  - Assuming that spider bites do nothing
+- What is the data?
+  - Observe actual sample mean
+- Make a decision
+  - Compare outcome with predicted probabilities
+  - Change your mind if observation seems unlikely enough
+
+## Hypothesis testing
+
+- Step 1: State hypotheses
+  - "Null" and "alternative"
+- Step 2: Set decision criteria
+  - $\alpha$ and critical region(s)
+- Step 3: Collect & analyze data
+  - Calculate required statistics
+- Step 4: Make decision
+  - Compare outcome with predicted probabilities
+  - Accept or reject the null hypothesis
+
+## 1: State hypotheses
+
+- Null hypothesis: $H_0$
+  - States that “treatment” has no effect
+  - Treated population is indistinguishable from original population
+  - No change, no difference, or no relationship
+- Alternative hypothesis: $H_1$
+  - States that treated population differs from nontreated population
+  - There is a change, a difference, or there is a relationship in the general population
+- Logical complements
+  - Can’t both be true
+  - Ensures [falsifiability]{.emph}
+
+## 1. State hypotheses
+
+- Claim: This pill makes you smarter
+  - $H_0$: The pill doesn’t effect intelligence
+  - $H_1$: The pill affects intelligence
+- Claim: Standing like superman makes you feel more confident
+  - $H_0$: Posture does not affect confidence
+  - $H_1$: Posture does affect confidence
+- Claim: The more education people complete, the more they earn
+  - $H_0$: Education is not associated with income
+  - $H_1$: There is a relationship between education and income
+
+
+## 2. Decision criterion {.smaller}
+
+- If the null hypothesis is true, what sample statistics are likely/unlikely?
+  - Central Limit Theorem shows what samples are likely
+  - If we get a very unlikely sample, we may reject the null
+  - Specific sampling distribution depends on what test is being performed
+
+- Alpha level & p-value
+  - $\alpha$ (alpha) is the probability value used to define “very unlikely” outcomes
+  - p-value is the precise probability of statistics as extreme or more than observed sample statistic, assuming the null hypothesis is correct
+  - Typical alpha used by psychologists is $\alpha = .05$
+  - $p < .05$; “Statistically significant”
+
+## 2. Decision criterion
+
+- Divide distribution of sample means into two parts
+  - Outcomes likely if $H_0$ is true
+  - Outcomes unlikely if $H_0$ is true
+  - Boundaries for critical region(s) determined by alpha
+
+```{r}
+#| eval: false
+
+plot_distribution(xlim = c(-4, 4), 
+                  segments = qnorm(.95),
+                  linetype = 0,
+                  fill_colors = c("white", "red")) +
+  theme_void()
+
+plot_save("directional-test-upper-tail.svg", height = 2)
+
+plot_distribution(xlim = c(-4, 4), 
+                  segments = qnorm(.05),
+                  linetype = 0,
+                  fill_colors = c("red", "white")) +
+  theme_void()
+
+plot_save("directional-test-lower-tail.svg", height = 2)
+
+
+nondir <- plot_distribution(xlim = c(-4, 4), 
+                  segments = qnorm(c(.025, .975)),
+                  linetype = 0,
+                  fill_colors = c("red", "white", "red")) +
+  theme_void()
+
+plot_save("nondirectional-test.svg",
+          plot = nondir,
+          height = 2)
+```
+
+
+
+## 2. Decision criterion
+
+:::: {.columns}
+::: {.column width="50%"}
+- Directional tests
+  - Researcher has a specific prediction about the direction of the treatment
+  - Specifies (in advance) looking for increase or decrease
+:::
+
+::: {.column width="50%"}
+![](media/directional-test-upper-tail.svg){width=80%}
+
+![](media/directional-test-lower-tail.svg){width=80%}
+:::
+::::
+
+:::: {.columns}
+::: {.column width="50%"}
+- Nondirectional tests
+  - Looking for a difference in either direction
+:::
+
+::: {.column width="50%"}
+![](media/nondirectional-test.svg)
+:::
+::::
+
+
+## 3. Data collection
+
+- Randomly sample population of interest
+  - Compute a sample statistic to show the exact position (probability) of the sample in the distribution of sample means
+  - Exact form of test statistic depends on research design
+  - $z$-test; $t$-test; ANOVA; correlation & regression statistics etc etc etc…
+
+
+## 4. Make decision {.smaller}
+
+- Two possible outcomes:
+  - If the sample statistic is not located in critical region(s)
+      - Fail to reject null
+      - Meaning there does not seem to be an effect
+  - Sample statistic is located in critical region(s)
+      - $p < \alpha$
+      - Reject null
+      - Meaning there does seem to be an effect
+
+```{r}
+#| eval: false
+library(ggplot2)
+
+lab_df <- data.frame(lab = c("Reject null", "Fail to\nreject null", "Reject null"),
+                     x = c(-3, 0, 3),
+                     y = c(0.02, .15, .02))
+
+
+nondir +
+  geom_text(data = lab_df, aes(x, y, label = lab))
+
+plot_save("nondirectional-test-labelled.svg", width = 9, height = 4)
+
+```
+
+![](media/nondirectional-test-labelled.svg)
+
+
+# $z$-test
+
+- $z$-test is appropriate if:
+  - Original population $\mu$ and $\sigma$ are both known
+  - Sampling distribution is normally distributed
+
+![](media/nhst-z-diagram.svg)
+
+## $z$-test: Spiderman {.smaller}
+
+- Formal Spidermen z-test
+  - 1: State Hypotheses
+      - Null: Radioactive spiderbites do not alter reaction times
+      - Alternative: Radioactive spiderbites alter reaction times
+  - 2: Decision criteria
+      - $\alpha = .05$ two-tailed; Critical regions are -1.96 and 1.96
+  - 3: Collect data; compute statistics & probabilities
+      - $\mu = `r rt$m`$; $\sigma = `r rt$sd`$; so if $n = `r n`$, $\sigma_M = `r rt$sd`/\sqrt{`r n`} = `r round(sM, 2)`$
+      - $M = `r rt$x`$; $z = (`r rt$x` - `r rt$m`) / `r round(sM, 2)` = `r round(zM, 2)`$
+  - 4: Decision
+      - Observed sample mean is in the critical region
+      - $p < .05$
+      - Reject the null
+
+
+# Learning check {.smaller}
+
+```{r}
+cbt <- bc1101tools::cbt
+```
+
+Does CBT affect OCD?
+
+1. State hypotheses
+
+2. Set decision criteria
+
+    - Decide on alpha, directionality, find $z$-scores for critical region
+
+3. Collect data; compute statistics & probabilities
+    - Pre-treatment $\mu = `r cbt$m`$; $\sigma = `r cbt$sd`$
+    
+    - Treated sample $M = `r cbt$x`; $n = `r cbt$n`$
+
+4. Make decision
+  
+::: {.footnote .reference}
+Abramowitz, J. S., Deacon, B. J., Olatunji, B. O., Wheaton, M. G., Berman, N. C., Losardo, D., . . . Hale, L. R. (2010). *Assessment of obsessive-compulsive symptom dimensions: Development and evaluation of the Dimensional Obsessive-Compulsive Scale. Psychological Assessment, 22*(1), 180-198. <https://doi.org/10.1037/a0018260>
+:::

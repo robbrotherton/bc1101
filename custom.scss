@@ -87,6 +87,16 @@ $code-block-border-color: #000000;
   font-size: 6rem !important;
 }
 
+.reveal .subhead {
+  font-size: 5rem !important;
+  font-weight: bold;
+  position: absolute;
+  top: 1.3em;
+  left: auto;
+  right: 0.3em;
+  opacity: 0.6;
+}
+
 /* this points to the cover image
 .reveal .slides>section:first-of-type img {
   position: absolute;
@@ -171,6 +181,10 @@ table thead {
   text-align: center;
 }
 
+.c {
+  text-align: center;
+}
+
 .emph {
   color: red;
   font-weight: bold;
@@ -186,3 +200,10 @@ table thead {
   transform: scale(1.1);
 }
 
+
+
+.reference {
+  padding-left: 1em;
+  text-indent: -1em;
+
+}
