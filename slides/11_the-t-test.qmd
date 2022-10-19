@@ -500,10 +500,5 @@ t = \dfrac{M - \mu}{s_M} &= \dfrac{`r round(M, 2)` - `r mu`}{`r round(SD, 2)`/\s
 1. What is the difference between the $t$ distribution and the $z$ distribution?
 2. The results of a hypothesis test are reported as follows: $t(21) = 2.38, p < .05$.  How many people were in the sample and what was the statistical decision?
 3. True/False
-<<<<<<< HEAD
     - An effect that exists is more likely to be detected if sample size $n$ is large
     - An effect that exists is less likely to be detected if the sample standard deviation $s$ is large
-=======
-  - An effect that exists is more likely to be detected if sample size $n$ is large
-  - An effect that exists is less likely to be detected if the sample standard deviation $s$ is large
->>>>>>> 7fa4305426aa3b7acab11293edca73746158b7bc
