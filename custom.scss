@@ -39,7 +39,7 @@ $code-block-border-color: #000000;
   }
 
   .invertable {
-    filter: invert(1);
+    filter: invert(1) hue-rotate(180deg);
   }
 
   .reveal h1, .reveal h2, .reveal h3 {
@@ -203,7 +203,8 @@ table thead {
 
 
 .reference {
-  padding-left: 1em;
+  text-align: left !important;
+  padding-left: 2em;
   text-indent: -1em;
 
 }

@@ -1286,5 +1286,96 @@
     "title": "Slides",
     "section": "10. Hypothesis testing pt. 2",
     "text": "10. Hypothesis testing pt. 2\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nInferential errors\nEffect size\nStatistical power\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+  },
+  {
+    "objectID": "slides/11_the-t-test.html#z-test-problem",
+    "href": "slides/11_the-t-test.html#z-test-problem",
+    "title": "BC1101",
+    "section": "\\(z\\)-test problem",
+    "text": "\\(z\\)-test problem\n\nProblem\n\nOften don’t know everything about original population"
+  },
+  {
+    "objectID": "slides/11_the-t-test.html#t-test-solution",
+    "href": "slides/11_the-t-test.html#t-test-solution",
+    "title": "BC1101",
+    "section": "\\(t\\)-test solution",
+    "text": "\\(t\\)-test solution\n\nEstimate population variability using sample"
+  },
+  {
+    "objectID": "slides/11_the-t-test.html#the-t-statistic",
+    "href": "slides/11_the-t-test.html#the-t-statistic",
+    "title": "BC1101",
+    "section": "The \\(t\\) statistic",
+    "text": "The \\(t\\) statistic\n\nEstimated standard error \\(s_M\\) used in place of (unknown) population standard error \\(\\sigma_M\\)\n\n\n\\[z = \\dfrac{M - \\mu}{\\require{enclose}\\enclose{horizontalstrike}{\\sigma_M}}\n\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\\nt = \\dfrac{M - \\mu}{s_M}\\]\n\\[\n\\begin{align}\n\\text{Standard error} = \\sigma_M = \\dfrac{\\sigma}{\\sqrt{n}}\n\\ \\text{or...} \\\n\\dfrac{\\sqrt{\\sigma^2}}{\\sqrt{n}} \\\n\\text{or...} \\\n\\sqrt{\\dfrac{\\sigma^2}{n}}\n\\\\ \\\\\n\\text{Estimated standard error} = s_M = \\dfrac{s}{\\sqrt{n}}\n\\ \\text{or...} \\\n\\dfrac{\\sqrt{s^2}}{\\sqrt{n}} \\\n\\text{or...} \\\n\\sqrt{\\dfrac{s^2}{n}}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "slides/11_the-t-test.html#degrees-of-freedom",
+    "href": "slides/11_the-t-test.html#degrees-of-freedom",
+    "title": "BC1101",
+    "section": "Degrees of freedom",
+    "text": "Degrees of freedom\n\nDegrees of freedom\n\n\\(df\\) depends on kind of \\(t\\)-test you’re doing\nSingle sample \\(t\\)-test: \\(df = n - 1\\)\n\n\n\\(\\text{Population variance} = \\sigma^2 = \\dfrac{SS}{N}\\)\n\\(\\text{Sample variance} = s^2 = \\dfrac{SS}{df} = \\dfrac{SS}{n-1}\\)\n\\(\\text{Sample standard deviation} = s = \\sqrt{\\dfrac{SS}{df}} = \\sqrt{\\dfrac{SS}{n-1}}\\)"
+  },
+  {
+    "objectID": "slides/11_the-t-test.html#the-t-distribution-1",
+    "href": "slides/11_the-t-test.html#the-t-distribution-1",
+    "title": "BC1101",
+    "section": "The \\(t\\) distribution",
+    "text": "The \\(t\\) distribution\n\n\n\n\n\njStat = require(\"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js\")\n\nd3 = require(\"https://d3js.org/d3.v5.min.js\")\n\n\nheight = 400\nwidth = 800\n\n\nviewof df = html`<input type=range min=1 max=50 step=1 value=1 style=\"width: 50%;\">`\n\n<!-- comment -->\ntex`df = ${df.toLocaleString(\"en\")}`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndata = {\n  var values = jStat(-4, 4, 210)[0],\n      <!-- df = df, -->\n      arr = [];\n  for (var i in values) {\n    arr.push(\n      {\n        value: values[i], \n        density: jStat.studentt.pdf(values[i], df)\n      }\n    )\n  }\n  return arr;\n}\n\nnorm_data = {\n  var values = jStat(-4, 4, 210)[0],\n      <!-- df = df, -->\n      arr = [];\n  for (var i in values) {\n    arr.push(\n      {\n        value: values[i],\n        density: jStat.normal.pdf(values[i], 0, 1)\n      }\n    )\n  }\n  return arr;\n}\n\n<!-- norm_data -->\n\n\nchart = {\n  const svg = d3.select(DOM.svg(width, height));\n\n  <!-- svg.append(\"g\") -->\n  <!--     .call(xAxis); -->\n\n  <!-- svg.append(\"g\") -->\n  <!--     .call(yAxis); -->\n  \n  svg.append(\"path\")\n      .datum(data)\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"red\")\n      .attr(\"stroke-width\", 4)\n      .attr(\"stroke-linejoin\", \"round\")\n      .attr(\"stroke-linecap\", \"round\")\n      .attr(\"d\", line);\n      \n  svg.append(\"path\")\n      .datum(norm_arr)\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"black\")\n      .attr(\"stroke-width\", 2)\n      .attr(\"stroke-linejoin\", \"round\")\n      .attr(\"stroke-linecap\", \"round\")\n      .attr(\"stroke-dasharray\", \"5, 5\")\n      .attr(\"d\", line)\n      .attr(\"class\", \"invertable\");\n  \n  return svg.node();\n}\n\n<!-- margin = ({top: 20, right: 0, bottom: 30, left: 40}) -->\nmargin = ({top: 20, right: 0, bottom: 0, left: 0})\n\nline = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density))\n\nx = d3.scaleLinear()\n  .domain([d3.min(data, d => d.value * 0.9), d3.max(data, d => d.value * 0.9)]).nice()\n  .range([margin.left, width - margin.right])\n\n<!-- y = d3.scaleLinear() -->\n<!--   .domain([d3.min(data, d => d.density * 0.9), d3.max(data, d => d.density / 0.9)]) -->\n<!--   .range([height - margin.bottom, margin.top]) -->\n  \ny = d3.scaleLinear()\n  .domain([0, 0.4])\n  .range([height - margin.bottom, margin.top])\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNormal distribution \\(t\\) distribution"
+  },
+  {
+    "objectID": "slides/11_the-t-test.html#t-table",
+    "href": "slides/11_the-t-test.html#t-table",
+    "title": "BC1101",
+    "section": "\\(t\\) table",
+    "text": "\\(t\\) table\n\n\nTable"
+  },
+  {
+    "objectID": "slides/11_the-t-test.html#t-table-1",
+    "href": "slides/11_the-t-test.html#t-table-1",
+    "title": "BC1101",
+    "section": "\\(t\\) table",
+    "text": "\\(t\\) table\n\n\nTable\n\n\nUsing R\npt() and qt() instead of pnorm() and qnorm()\n\n\nqnorm(.05)\n\n[1] -1.644854\n\nqt(.05)\n\nError in qt(0.05): argument \"df\" is missing, with no default\n\nqt(.05, df = 5)\n\n[1] -2.015048\n\nqt(.05, df = 10)\n\n[1] -1.812461"
+  },
+  {
+    "objectID": "slides/11_the-t-test.html#class-reaction-times",
+    "href": "slides/11_the-t-test.html#class-reaction-times",
+    "title": "BC1101",
+    "section": "Class reaction times",
+    "text": "Class reaction times\n\n\n [1] 327.0 335.0 359.0 430.0 275.4 272.0 350.0 343.2 278.0 354.0 303.0 328.0\n[13] 371.0 312.0 346.0 359.0    NA 259.0 313.6 258.0 244.0 374.4    NA 338.0\n[25] 290.0\n\n\n\n\n\n\n\n\n \n  \n    RT \n    \\(f\\) \n  \n \n\n  \n    240-259 \n    3 \n  \n  \n    260-279 \n    3 \n  \n  \n    280-299 \n    1 \n  \n  \n    300-319 \n    3 \n  \n  \n    320-339 \n    4 \n  \n  \n    340-359 \n    6 \n  \n  \n    360-379 \n    2 \n  \n  \n    380-399 \n    0 \n  \n  \n    400-419 \n    0 \n  \n  \n    420-439 \n    1"
+  },
+  {
+    "objectID": "slides/11_the-t-test.html#hypothesis-test",
+    "href": "slides/11_the-t-test.html#hypothesis-test",
+    "title": "BC1101",
+    "section": "Hypothesis test",
+    "text": "Hypothesis test\n\nFour steps:\n\n1: State the null and alternative hypotheses\n2: Locate the critical region using the \\(t\\) distribution probabilities, \\(df\\), and \\(\\alpha\\)\n3: Calculate the \\(t\\) test statistic\n4: Make a decision regarding \\(H_0\\) (null hypothesis)"
+  },
+  {
+    "objectID": "slides/11_the-t-test.html#state-hypotheses",
+    "href": "slides/11_the-t-test.html#state-hypotheses",
+    "title": "BC1101",
+    "section": "1. State hypotheses",
+    "text": "1. State hypotheses\n\nStep 1: State hypotheses\n\n\\(H_0\\): Stats students have the same average reaction times as the general population \\(\\mu = 284\\)\n\\(H_1\\): Stats students have different average reaction times to the general population"
+  },
+  {
+    "objectID": "slides/11_the-t-test.html#decision-criterion",
+    "href": "slides/11_the-t-test.html#decision-criterion",
+    "title": "BC1101",
+    "section": "2. Decision criterion",
+    "text": "2. Decision criterion\n\n\n\nSpecify \\(\\alpha\\), identify critical region(s)\nFor \\(t\\), depends on \\(df\\) and thus \\(n\\)\nFor single-sample \\(t\\)-test, \\(df = n – 1\\)"
+  },
+  {
+    "objectID": "slides/11_the-t-test.html#state-hypotheses-1",
+    "href": "slides/11_the-t-test.html#state-hypotheses-1",
+    "title": "BC1101",
+    "section": "3. State hypotheses",
+    "text": "3. State hypotheses\n\nStep 3: Collect data; compute the test statistic\n\nCalculate \\(t\\)-statistic for the sample mean\nQuantifies the difference between the observed sample mean and the hypothesized population mean divided by the estimated standard error\n\n\n\n\n\\(\\mu = 284 \\\\ M = 322.59 \\\\ SD = 45.31 \\\\ n = 23\\)\n\n\\[\\begin{align}\nt = \\dfrac{M - \\mu}{s_M} &= \\dfrac{322.59 - 284}{45.31/\\sqrt{23}} \\\\\n&= \\dfrac{38.59}{9.45} \\\\\n&= 4.08\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/11_the-t-test.html#state-hypotheses-2",
+    "href": "slides/11_the-t-test.html#state-hypotheses-2",
+    "title": "BC1101",
+    "section": "4. State hypotheses",
+    "text": "4. State hypotheses\n\nStep 4a: Make a decision about \\(H_0\\)\n\n\\(t = 4.08\\) exceeds critical values \\([-2.07, 2.07]\\)\n\\(p < \\alpha\\)\n“Statistically significant” difference"
   }
 ]

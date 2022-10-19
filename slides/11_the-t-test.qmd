@@ -1,0 +1,504 @@
+---
+format: 
+  revealjs:
+    chalkboard: true
+---
+
+# 11|THE $t$-TEST
+
+![](covers/11_the-t-test.svg)
+
+```{r cover}
+#| eval: false
+library(ggplot2)
+
+gg_color_hue <- function(n) {
+  hues = seq(15, 375, length = n + 1)
+  hcl(h = hues, l = 65, c = 100)[1:n]
+}
+
+dfs <- 1:100
+colors <- rep(gg_color_hue(10), 10)
+
+layers <- purrr::map2(.x = dfs,
+                      .y = colors,
+                     .f = ~stat_function(fun = dt, args = list(df = .x), xlim = c(-3, 3), color = .y))
+
+ggplot() +
+  layers +
+  scale_x_continuous(expand = c(0,0)) +
+  theme_void()
+
+bc1101tools::plot_save("11_the-t-test.svg",
+                       subdir = "covers",
+                       width = 10, height = 5)
+
+```
+
+
+# Overview
+
+- [$t$ vs. $z$]
+- [The $t$ distribution]
+- [The $t$-test]
+- [Learning checks]
+
+
+# $t$ vs. $z$
+
+# $z$-test
+
+- $z$-test
+  - Useful if we know everything about original population
+
+![](media/nhst-z-diagram.svg)
+
+
+## $z$-test problem
+
+- [Problem]{.emph}
+  - Often don't know everything about original population
+
+![](media/nhst-z-diagram.svg)
+
+## $t$-test solution
+
+- Estimate population variability using sample
+
+## The $t$ statistic {.smallest}
+
+- Estimated standard error $s_M$ used in place of (unknown) population standard error $\sigma_M$
+
+::: {.c}
+$$z = \dfrac{M - \mu}{\require{enclose}\enclose{horizontalstrike}{\sigma_M}}
+\ \ \ \ \ \ \ \ \ \ \ \ \ 
+t = \dfrac{M - \mu}{s_M}$$
+
+$$
+\begin{align}
+\text{Standard error} = \sigma_M = \dfrac{\sigma}{\sqrt{n}}
+\ \text{or...} \ 
+\dfrac{\sqrt{\sigma^2}}{\sqrt{n}} \
+\text{or...} \
+\sqrt{\dfrac{\sigma^2}{n}}
+\\ \\
+\text{Estimated standard error} = s_M = \dfrac{s}{\sqrt{n}}
+\ \text{or...} \ 
+\dfrac{\sqrt{s^2}}{\sqrt{n}} \
+\text{or...} \
+\sqrt{\dfrac{s^2}{n}}
+\end{align}
+$$
+:::
+
+
+## Degrees of freedom {.smallest}
+
+- Degrees of freedom
+  - $df$ depends on kind of $t$-test you're doing
+  - Single sample $t$-test: $df = n - 1$
+
+$\text{Population variance} = \sigma^2 = \dfrac{SS}{N}$
+
+$\text{Sample variance} = s^2 = \dfrac{SS}{df} = \dfrac{SS}{n-1}$
+
+$\text{Sample standard deviation} = s = \sqrt{\dfrac{SS}{df}} = \sqrt{\dfrac{SS}{n-1}}$
+
+
+
+# The $t$ distribution {.smaller}
+
+:::: {.columns}
+
+::: {.column width="40%"}
+- Degrees of freedom
+  - $t$ distribution is actually a family of distributions
+  - Slightly different curve for each value of $df$
+  - As $df$ increases, $t$ distribution gets closer to normal
+  - Because the more degrees of freedom, the better $s^2$ represents $\sigma^2$
+:::
+
+::: {.column width="60%"}
+
+```{r t-curves}
+#| eval: false
+library(bc1101tools)
+library(ggplot2)
+library(ggrepel)
+
+base <- ggplot() + 
+  scale_y_continuous(limits = c(0, .4)) +
+  theme_void()
+
+norm <- base + 
+  stat_function(fun = dnorm, xlim = c(-3, 3), linetype = 2) +
+  geom_label_repel(aes(x = 0, y = .4, label = "Normal distribution"), nudge_x = -1.5, label.size = 0, fill = NA)
+
+norm
+
+t5 <- base + 
+  stat_function(fun = dt, args = list(df = 5), xlim = c(-3, 3), color = "steelblue") +
+  geom_label_repel(aes(x = 0, y = dt(0, 5), label = "t(df = 5)"), 
+                   nudge_x = 1.5, nudge_y = -.01,
+                   label.size = 0, color = "steelblue", fill = NA)
+
+t10 <- base + 
+  stat_function(fun = dt, args = list(df = 10), xlim = c(-3, 3), color = hsv(.5, 1, .5)) +
+  geom_label_repel(aes(x = 0, y = dt(0, 10), label = "t(df = 10)"), nudge_x = 1.5, label.size = 0, color = hsv(.5, 1, .5), fill = NA)
+
+t30 <- base + 
+  stat_function(fun = dt, args = list(df = 30), xlim = c(-3, 3), color = "red") +
+  geom_label_repel(aes(x = 0, y = dt(0, 30), label = "t(df = 30)"), 
+                   nudge_x = 1.5, nudge_y = 1,
+                   label.size = 0, color = "red", fill = NA)
+
+w <- 5
+h <- 5
+plot_save("t-distribution-0.svg", plot = norm, width = w, height = h)
+plot_save("t-distribution-1.svg", plot = t5, width = w, height = h)
+plot_save("t-distribution-2.svg", plot = t10, width = w, height = h)
+plot_save("t-distribution-3.svg", plot = t30, width = w, height = h)
+```
+
+::: {.r-stack}
+
+![](media/t-distribution-1.svg){.fragment}
+
+![](media/t-distribution-2.svg){.fragment}
+
+![](media/t-distribution-3.svg){.fragment}
+
+![](media/t-distribution-0.svg){.invertable}
+:::
+:::
+
+::::
+
+
+## The $t$ distribution
+
+```{r}
+
+norm_df <- tibble::tibble(value = seq(-4, 4, length.out = 210),
+                          density = dnorm(value))
+
+norm_arr <- purrr::transpose(norm_df)
+
+
+ojs_define(norm_arr)
+
+```
+
+::: {.c}
+```{ojs}
+#| echo: false
+
+<!-- norm_arr -->
+
+<!-- norm_data -->
+
+jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js")
+
+d3 = require("https://d3js.org/d3.v5.min.js")
+
+
+height = 400
+width = 800
+
+
+viewof df = html`<input type=range min=1 max=50 step=1 value=1 style="width: 50%;">`
+
+<!-- comment -->
+tex`df = ${df.toLocaleString("en")}`
+
+
+data = {
+  var values = jStat(-4, 4, 210)[0],
+      <!-- df = df, -->
+      arr = [];
+  for (var i in values) {
+    arr.push(
+      {
+        value: values[i], 
+        density: jStat.studentt.pdf(values[i], df)
+      }
+    )
+  }
+  return arr;
+}
+
+norm_data = {
+  var values = jStat(-4, 4, 210)[0],
+      <!-- df = df, -->
+      arr = [];
+  for (var i in values) {
+    arr.push(
+      {
+        value: values[i],
+        density: jStat.normal.pdf(values[i], 0, 1)
+      }
+    )
+  }
+  return arr;
+}
+
+<!-- norm_data -->
+
+
+chart = {
+  const svg = d3.select(DOM.svg(width, height));
+
+  <!-- svg.append("g") -->
+  <!--     .call(xAxis); -->
+
+  <!-- svg.append("g") -->
+  <!--     .call(yAxis); -->
+  
+  svg.append("path")
+      .datum(data)
+      .attr("fill", "none")
+      .attr("stroke", "red")
+      .attr("stroke-width", 4)
+      .attr("stroke-linejoin", "round")
+      .attr("stroke-linecap", "round")
+      .attr("d", line);
+      
+  svg.append("path")
+      .datum(norm_arr)
+      .attr("fill", "none")
+      .attr("stroke", "black")
+      .attr("stroke-width", 2)
+      .attr("stroke-linejoin", "round")
+      .attr("stroke-linecap", "round")
+      .attr("stroke-dasharray", "5, 5")
+      .attr("d", line)
+      .attr("class", "invertable");
+  
+  return svg.node();
+}
+
+<!-- margin = ({top: 20, right: 0, bottom: 30, left: 40}) -->
+margin = ({top: 20, right: 0, bottom: 0, left: 0})
+
+line = d3.line()
+    .x(d => x(d.value))
+    .y(d => y(d.density))
+
+x = d3.scaleLinear()
+  .domain([d3.min(data, d => d.value * 0.9), d3.max(data, d => d.value * 0.9)]).nice()
+  .range([margin.left, width - margin.right])
+
+<!-- y = d3.scaleLinear() -->
+<!--   .domain([d3.min(data, d => d.density * 0.9), d3.max(data, d => d.density / 0.9)]) -->
+<!--   .range([height - margin.bottom, margin.top]) -->
+  
+y = d3.scaleLinear()
+  .domain([0, 0.4])
+  .range([height - margin.bottom, margin.top])
+
+  
+  
+<!-- xAxis = g => g -->
+<!--     .attr("transform", `translate(0,${height - margin.bottom})`) -->
+<!--     .call(d3.axisBottom(x) -->
+<!--         .tickSizeOuter(0)) -->
+
+<!-- yAxis = g => g -->
+<!--     .attr("transform", `translate(${margin.left},0)`) -->
+<!--     .call(d3.axisLeft(y)) -->
+<!--     .call(g => g.select(".domain").remove()) -->
+```
+:::
+
+::: {style="font-size: 0.5em; width: 70%; margin-left: 15%"}
+[Normal distribution]{style="text-decoration-line: overline; text-decoration-style: dashed;"} [$t$ distribution]{style="color: red; text-decoration-line: overline; float: right;"}
+:::
+
+
+## $t$ table
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Table
+:::
+
+::: {.column width="50%"}
+![](media/directional-test-lower-tail.svg){.invertable width=80%}
+
+![](media/directional-test-upper-tail.svg){.invertable width=80%}
+
+![](media/nondirectional-test.svg){.invertable width=80%}
+:::
+
+::::
+
+
+
+## $t$ table
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Table
+:::
+
+::: {.column width="50%"}
+- Using R
+- `pt()` and `qt()` instead of `pnorm()` and `qnorm()`
+
+```{r}
+#| echo: true
+#| error: true
+qnorm(.05)
+
+qt(.05)
+
+qt(.05, df = 5)
+
+qt(.05, df = 10)
+```
+
+:::
+
+::::
+
+
+# The $t$-test
+
+- Single-sample $t$ test
+
+## Class reaction times
+
+```{r}
+#| style: "margin-bottom: 1em;"
+
+library(bc1101tools)
+
+data <- bc1101tools::class_reaction_times
+rt <- bc1101tools::spiderman
+
+M <- mean(data, na.rm = TRUE)
+SD <- sd(data, na.rm = TRUE)
+n <- length(data[!is.na(data)])
+sM <- SD/sqrt(n)
+mu <- rt$m
+t_critical <- qt(.975, df = n - 1)
+t <- (M - mu) / sM
+
+print(data)
+```
+
+:::: {.columns}
+
+::: {.column width="30%"}
+```{r}
+#| style: "font-size: 0.5em;"
+
+data <- data[!is.na(data)]
+
+bc1101tools::frequency_table(data, binwidth = 20, values_name = "RT")
+```
+
+:::
+
+::: {.column width="70%"}
+```{r}
+#| eval: false
+
+plot_histogram(data, binwidth = 20, xlab = "Reaction Time (ms)") + bc1101tools::theme_bc1101() +
+  ggrepel::geom_label_repel(ggplot2::aes(x = rt$m, y = 0, label = glue::glue("mu = {rt$m}")),
+                            nudge_y = 5,
+                            color = "red",
+                            fill = NA,
+                            label.size = 0,
+                            segment.linetype = 2)
+
+plot_save("class-reaction-times-histogram.svg",
+          width = 6, height = 3)
+```
+
+![](media/class-reaction-times-histogram.svg){.invertable}
+:::
+
+::::
+
+
+## Hypothesis test
+
+- Four steps:
+  - 1: State the null and alternative hypotheses 
+  - 2: Locate the critical region using the $t$ distribution probabilities, $df$, and $\alpha$
+  - 3: Calculate the $t$ test statistic
+  - 4: Make a decision regarding $H_0$ (null hypothesis)
+
+## 1. State hypotheses
+
+- Step 1: State hypotheses
+  - $H_0$: Stats students have the same average reaction times as the general population $\mu = 284$
+  - $H_1$: Stats students have different average reaction times to the general population
+
+
+## 2. Decision criterion
+
+:::: {.columns}
+
+::: {.column width="80%"}
+- Specify $\alpha$, identify critical region(s)
+- For $t$, depends on $df$ and thus $n$
+- For single-sample $t$-test, $df = n – 1$
+:::
+
+::: {.column width="20%"}
+```{r}
+#| eval: false
+bc1101tools::t_table(dfs = c(1:6,20:31), qs = .025, dots = c(6, 18))
+```
+
+:::
+
+::::
+
+ 
+  
+  
+## 3. State hypotheses
+
+
+- Step 3: Collect data; compute the test statistic
+  - Calculate $t$-statistic for the sample mean
+  - Quantifies the difference between the observed sample mean and the hypothesized population mean divided by the estimated standard error
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+$\mu = 284 \\ M = `r round(M, 2)` \\ SD = `r round(SD, 2)` \\ n = `r n`$
+:::
+
+::: {.column width="50%"}
+$$\begin{align}
+t = \dfrac{M - \mu}{s_M} &= \dfrac{`r round(M, 2)` - `r mu`}{`r round(SD, 2)`/\sqrt{`r n`}} \\
+&= \dfrac{`r round(M - mu, 2)`}{`r round(sM, 2)`} \\
+&= `r round(t, 2)`
+\end{align}$$
+:::
+
+::::
+
+
+## 4. State hypotheses
+
+- Step 4a: Make a decision about $H_0$
+  - $t = `r round(t, 2)`$  exceeds critical values $[`r round(qt(c(.025, .975), df = n - 1), 2)`]$
+  - $p < \alpha$
+  - "Statistically significant" difference
+
+# Learning checks
+
+
+1. What is the difference between the $t$ distribution and the $z$ distribution?
+2. The results of a hypothesis test are reported as follows: $t(21) = 2.38, p < .05$.  How many people were in the sample and what was the statistical decision?
+3. True/False
+  - An effect that exists is more likely to be detected if sample size $n$ is large
+  - An effect that exists is less likely to be detected if the sample standard deviation $s$ is large
