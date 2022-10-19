@@ -195,9 +195,9 @@ cat("Sample 3:", iq_samples[[3]], "   Mean =", iq_means[[3]])
 
 ## Example: height distribution
 
-![](media/stickpeople.svg)
+![](media/stickpeople.svg){.invertable}
 
-![](media/stick-histogram.svg)
+![](media/stick-histogram.svg){.invertable}
 
 ## Example: height distribution
 
