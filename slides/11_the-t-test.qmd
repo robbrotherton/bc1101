@@ -48,10 +48,9 @@ bc1101tools::plot_save("11_the-t-test.svg",
 
 # $z$-test
 
-- $z$-test
-  - Useful if we know everything about original population
+- Useful if we know everything about original population
 
-![](media/nhst-z-diagram.svg)
+![](media/nhst-z-diagram.svg){.invertable}
 
 
 ## $z$-test problem

@@ -249,3 +249,145 @@ $$\begin{align}12 &= 7 + X \\ X &= ? \end{align}$$
 
 - Check Canvas & email regularly
 - Let me know about problems
+
+
+## Population
+
+```{css}
+<!-- #pop-circles { -->
+<!--   stroke: black; -->
+<!-- } -->
+
+<!-- @media (prefers-color-scheme: dark) { -->
+<!--   #pop-circles { -->
+<!--     stroke: white; -->
+<!--   } -->
+<!-- } -->
+```
+
+```{ojs}
+
+
+
+data = {
+  let arr = [];
+  for (var i = 0; i < 100; i++) {
+    arr.push({
+      x: Math.floor(Math.random() * xmax),
+      y: Math.floor(Math.random() * ymax),
+      color: Math.floor(Math.random() * 7)
+    });
+  }
+  return arr;
+}
+
+sample_colors = { 
+  let arr = [];
+  for (var i = 0; i < 10; i++) {
+    arr.push(Math.floor(Math.random() * 7))
+  }
+  return arr;
+}
+
+
+width = 1050
+height = 500
+r = 15
+xmax = 400
+ymax = 100
+sample_y = height - r
+margin = ({top: r, right: 10, bottom: r, left: 5});
+
+
+pop = {
+  const svg = d3.select(DOM.svg(width, height));
+
+  const circles = svg.append("g").attr("id", "pop-circles")
+  const sample = svg.append("g").attr("id", "sample-circles")
+  
+  let path = {
+    x: (width*0.5 + xmax*.5 + r),
+    y: (margin.top + ymax*0.5),
+    cy: (height - r - (margin.top + ymax*0.5)) * 0.5
+  };
+  
+  const paths = svg.append("g").attr("id", "paths")
+                        .attr("stroke", "black")
+                        .attr("stroke-dasharray", [5, 5])
+                        .attr("fill", "none")
+                        .attr("class", "invertable");
+                        
+  svg.append("polygon")
+    .attr("points", [[0,0],[10,0],[5,10]])
+    .attr("transform", "translate(220," + (path.cy+margin.top+ymax*0.5) +") scale(2) rotate(180)")
+    .attr("class", "invertable");
+    
+  svg.append("polygon")
+    .attr("points", [[0,0],[10,0],[5,10]])
+    .attr("transform", "translate(830," + (path.cy+margin.top+ymax*0.5) +") scale(2)")
+    .attr("class", "invertable");
+  
+  circles.selectAll("circle")
+    .data(data)
+    .enter()
+    .append("circle")
+      .attr("fill", d => color(d.color))
+      .attr("stroke", "black")
+      .attr("r", 15)
+      .attr("cx", d => x(d.x))
+      .attr("cy", d => y(d.y))
+          
+    circles
+      .transition()
+      .duration(500)
+      .attr("opacity", 0)
+      .transition()
+      .duration(500)
+      .attr("opacity", 1);
+      
+  svg.append("rect")
+    <!-- .attr("class", "invertable") -->
+    .attr("x", width/2 - xmax/2 - r)
+    .attr("y", 1)
+    .attr("width", xmax + 2*r)
+    .attr("height",ymax + 2*r)
+    .attr("stroke", "black")
+    .attr("fill", "white")
+    .attr("opacity", 0.9)
+    .text("Population");
+
+  paths.append("path")
+    .attr("d", "M" + path.x + "," + path.y + ", q200," + path.cy + " 0," + (height - r - path.y))
+    
+  paths.append("path")
+    .attr("d", "M" + (path.x - xmax - 2*r) + "," + path.y + ", q-200," + path.cy + " 0," + (height - r - path.y))
+    
+  sample.selectAll("circle")
+    .data(sample_colors)
+    .enter()
+    .append("circle")
+      .attr("fill", d => color(d))
+      .attr("stroke", "black")
+      .attr("r", r)
+      .attr("cx", function(d, i) {return (i * 41.5 + width/2 - xmax/2 + r)})
+      .attr("cy", sample_y);
+      
+  return svg.node();
+}
+
+
+
+x = d3.scaleLinear()
+  .domain([0, xmax])
+  .range([width/2 - xmax/2, width/2 + xmax/2])
+
+y = d3.scaleLinear()
+  .domain([0, ymax])
+  .range([margin.top + ymax, margin.top])
+  
+color = d3.scaleOrdinal().
+  domain(data.map(d => d.color))
+  .range(d3.schemeSet3);
+
+```
+

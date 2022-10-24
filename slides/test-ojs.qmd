@@ -3,61 +3,147 @@ format:
   html
 ---
 
-# 9|TESTING OJS
-
-```{ojs}
-//| output: all
-x = 10
-
-x + 5
-```
-
-
-## Something
-```{r eval=FALSE}
-readr::write_csv(palmerpenguins::penguins, "palmer-penguins.csv")
-```
+# Random
 
 
 ```{ojs}
+d3 = require("https://d3js.org/d3.v5.min.js")
+jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js")
+```
 
-data = FileAttachment("palmer-penguins.csv").csv({ typed: true })
 
-viewof bill_length_min = Inputs.range(
-  [32, 50], 
-  {value: 35, step: 1, label: "Bill length (min):"}
-)
-viewof islands = Inputs.checkbox(
-  ["Torgersen", "Biscoe", "Dream"], 
-  { value: ["Torgersen", "Biscoe"], 
-    label: "Islands:"
-  }
-)
+```{r}
+#| echo: false
+#| message: false
 
-filtered = data.filter(function(penguin) {
-  return bill_length_min < penguin.bill_length_mm &&
-         islands.includes(penguin.island);
-})
+library(dplyr)
+set.seed(42)
+n_samples <- 1200
 
-Plot.rectY(filtered, 
-  Plot.binX(
-    {y: "count"}, 
-    {x: "body_mass_g", fill: "species", thresholds: 20}
-  ))
-  .plot({
-    facet: {
-      data: filtered,
-      x: "sex",
-      y: "species",
-      marginRight: 80
-    },
-    marks: [
-      Plot.frame(),
-    ]
-  }
-)
+random_iq <- function(n = 10) rnorm(n, 100, 15) |> round()
+
+observations <- replicate(n_samples, random_iq(), simplify = FALSE)
+means <- purrr::map_dbl(observations, mean)
+
+samples <- tibble::tibble(id = 1:n_samples,
+                          sample = observations,
+                          mean = means,
+                          mean_bin = round(mean)) |> 
+  group_by(mean_bin) |> 
+  mutate(count = 1:n()) |> 
+  purrr::transpose()
+
+ojs_define(samples)
+```
+
+
+```{ojs}
+<!-- viewof quantity = html`<input type="range" value="1" min="1" max=${samples.length}>` -->
+viewof quantity = Inputs.range([1, samples.length], {value: 1, step: 1})
+```
+
+
+```{css}
+
+<!-- g#boxes > rect:hover { -->
+<!--   fill: steelblue; -->
+<!--   transition: 0.4s; -->
+<!-- } -->
+
+<!-- g#boxes > rect { -->
+<!--   fill: black; -->
+<!--   transition: 0.4s; -->
+<!-- } -->
 
 ```
 
 
+```{ojs}
+
+
+chart = {
+
+  const svg = d3.select(DOM.svg(width, height));
+
+  const g = svg.append("g").attr("id", "boxes")
+  
+  g.selectAll("rect")
+    .data(samples.slice(0, quantity))
+    .enter()
+    .append("rect")
+      .attr("class", "invertable")
+      .attr("fill", "black")
+      .attr("stroke", "none")
+      .attr("x", d => x(d.mean_bin - 0.5))
+      .attr("y", d => y(d.count))
+      .attr("width", (width-margin.left-margin.right)/100 * 0.9)
+      .attr("height", (height-margin.top-margin.bottom)/ylim * 0.9)
+      .each(function (d, i) {
+            if (i === quantity-1) {
+              // put all your operations on the second element, e.g.
+              d3.select(this).attr("fill", "red");    
+            }
+          });
+      
+  svg.append("text")
+      .attr("id", "xaxis")
+      .call(xAxis)
+      .attr("transform", `translate(0,${y(0)})`)
+      .attr("class", "axis")
+      .style("font-size", "0.5em");
+ 
+  svg.append("g").attr("id", "xaxis")
+      .call(xAxis)
+      .attr("transform", `translate(0,${y(0)})`)
+      .attr("class", "axis")
+      .style("font-size", "0.5em");
+      
+  svg.append("g").attr("id", "yaxis")
+      .call(yAxis)
+      .attr("transform", `translate(${x(50)}, 0)`)
+      .attr("class", "axis")
+      .style("font-size", "0.5em");
+      
+return svg.node();
+
+}
+
+```
+
+<div id="blah"></div>
+
+```{ojs}
+d = d3.select("div#blah")
+  .style("font-family", "KaTeX_Main")
+  .style("font-size", "1.1em")
+  .html("Observations: " + samples[quantity-1].sample.join(", ") + '<br/>' + "<i>M</i> = " + samples[quantity-1].mean)
+
+```
+
+
+
+```{ojs}
+
+width = 500
+height = 250
+
+ylim = 50
+
+margin = ({top: 20, right: 20, bottom: 20, left: 20})
+
+
+x = d3.scaleLinear()
+  .domain([50, 150])
+  .range([margin.left, width - margin.right])
+
+max_y = Math.max(...samples.map(o => o.count))
+
+y = d3.scaleLinear()
+  .domain([0, ylim])
+  .range([height - margin.bottom, margin.top])
+
+xAxis = d3.axisBottom(x).ticks(8)
+
+yAxis = d3.axisLeft(y).ticks(3)
+```
 

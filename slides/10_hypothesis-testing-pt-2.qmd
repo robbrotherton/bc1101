@@ -158,6 +158,273 @@ d = \dfrac{501 - 500}{100} = 0.01$$
   - Power = 1 – $\beta$
 
 
+## Power interactive
+
+```{r}
+# h0 <- tibble::tibble(
+#   value = seq(-4, 4, .01),
+#   density = dnorm(value)
+# ) |> 
+#   purrr::transpose()
+# 
+# ojs_define(h0)
+
+```
+
+
+```{ojs setup}
+#| echo: false
+
+d3 = require("https://d3js.org/d3.v5.min.js")
+jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js")
+
+width = 1000
+height = 400
+
+xlim = [-5, 5]
+
+
+h0 = {
+  var values = jStat(xlim[0], [xlim[1]], 210)[0],
+      arr = [];
+  for (var i in values) {
+    arr.push(
+      {
+        value: values[i], 
+        density: jStat.normal.pdf(values[i], 0, sd)
+      }
+    )
+  }
+  return arr;
+}
+
+
+ha = {
+  var arr = [];
+  
+  for (var i in h0) {
+    arr.push({
+      value: h0[i].value + mean_diff,
+      density: h0[i].density
+    })
+  }
+  return arr;
+}
+
+alpha_x = {
+  if(tails) {
+    return jStat.normal.inv(1 - alpha/2, 0, sd)
+  } else {
+    return jStat.normal.inv(1 - alpha, 0, sd)
+  }
+}
+
+alpha_x2 = {
+  if(tails) {
+    return -alpha_x
+  } else {
+    return -100
+  }
+}
+
+jStat.normal.cdf(1.96, 0, 1)
+
+```
+
+```{css}
+.ojs-controls {
+  width: 100%;
+  font-size: 0.5em;
+}
+
+.ojs-controls label {
+  width: 5em !important;
+}
+
+.ojs-controls input[type="text"] {
+  width: 3em !important;
+}
+
+.ojs-controls input[type="range] {
+  width: 10em !important;
+}
+
+
+
+.axis path,
+.grid path {
+  display: none;
+}
+
+
+```
+
+::: {.ojs-controls}
+```{ojs controls}
+#| echo: false
+
+viewof mean_diff = Inputs.range([-3, 3], {value: 1, step: 0.1, label: "Mean difference"})
+
+viewof n = Inputs.range([1, 100], {value: 1, step: 1, label: "n"})
+
+sd = 1/Math.sqrt(n)
+
+
+
+viewof alpha = Inputs.range([0.01, 0.10], {value: 0.05, step: 0.001, label: "Alpha"})
+
+viewof tails = Inputs.toggle({label: "Two-tailed", value: false})
+
+viewof show_alt = Inputs.toggle({label: "Show H1", value: false})
+```
+:::
+
+```{ojs chart}
+#| echo: false
+chart = {
+  const svg = d3.select(DOM.svg(width, height));
+
+  svg.append("g")
+      .call(xAxis)
+      .attr("transform", `translate(0,${y(0)})`)
+      .attr("class", "axis")
+      .style("font-size", "0.5em");
+
+  svg.append("path")
+      .datum(h0)
+      .attr("fill", "none")
+      .attr("stroke", "black")
+      .attr("stroke-width", 2)
+      .attr("stroke-linejoin", "round")
+      .attr("stroke-linecap", "round")
+      .attr("d", line)
+      .attr("class", "invertable");
+      
+  svg.append("text")             
+      .attr("transform", `translate(${x(0)} ,${y(0.1)})`)
+      .attr("class", "invertable")
+      .style("text-anchor", "middle")
+      .style('font-size', '1em')
+      .text('')
+      .append('tspan')
+        .html('H')
+        .append('tspan')
+        .html('0').attr('baseline-shift', 'sub').style('font-size', '0.5em');
+      
+<!-- alternative distribution -->
+{ if(show_alt) {
+    svg.append("path")
+      .datum(ha)
+      .attr("fill", "none")
+      .attr("stroke", "steelblue")
+      .attr("stroke-width", 2)
+      .attr("stroke-linejoin", "round")
+      .attr("stroke-linecap", "round")
+      .attr("stroke-dasharray", "5, 5")
+      .attr("d", line);
+      
+    svg.append("text")             
+      .attr("transform", `translate(${x(mean_diff)} ,${y(0.1)})`)
+      .style("text-anchor", "middle")
+      .style('fill', 'steelblue')
+      .style('font-size', '1em')
+      .text('')
+      .append('tspan')
+        .html('H')
+        .append('tspan')
+        .html('1').attr('baseline-shift', 'sub').style('font-size', '0.5em');
+     
+      
+<!-- fill region(s) of ha -->
+    svg.append("clipPath")
+    .attr("id", "haCliparea")
+    .append("rect")
+      .attr("transform", `translate(${x(alpha_x)} ,${margin.top})`)
+    <!-- .attr("x", alpha_x) -->
+    .attr("width", width/2)
+    .attr("height", height);
+    
+    svg.append("clipPath")
+    .attr("id", "haCliparea2")
+    .append("polygon")
+      <!-- .attr("transform", `translate(${x(alpha_x2)} ,${margin.top})`) -->
+    .attr("points", [[0,0], [0,height], [x(alpha_x2),height],[x(alpha_x2),0]]);
+    
+  svg.append("path")
+      .datum(ha)
+      .attr('clip-path', "url(#haCliparea)")
+      .attr("fill", "steelblue")
+      .attr("opacity", 0.7)
+      .attr("stroke", "steelblue")
+      .attr("stroke-width", 2.5)
+      .attr("d", line);
+      
+    svg.append("path")
+      .datum(ha)
+      .attr('clip-path', "url(#haCliparea2)")
+      .attr("fill", "steelblue")
+      .attr("opacity", 0.7)
+      .attr("stroke", "steelblue")
+      .attr("stroke-width", 2.5)
+      .attr("d", line);
+}}
+      
+<!-- label alpha -->
+    svg.append('line')
+    .attr('x1', x(alpha_x))
+    .attr('x2', x(alpha_x))
+    .attr('y1', margin.top + 10)
+    .attr('y2', height - margin.bottom)
+    .style('stroke', 'red')
+    .style('stroke-width', '1.5px')
+    
+    <!-- label alpha two-tailed -->
+    svg.append('line')
+    .attr('x1', x(alpha_x2))
+    .attr('x2', x(alpha_x2))
+    .attr('y1', margin.top + 10)
+    .attr('y2', height - margin.bottom)
+    .style('stroke', 'red')
+    .style('stroke-width', '1.5px')
+    
+    svg.append("text")             
+      .attr("transform", `translate(${x(alpha_x)} ,${margin.top})`)
+      .style("text-anchor", "middle")
+      .style('font-family', 'sans-serif')
+      .style('font-size', '0.4em')
+      .style('fill', 'red')
+      .text("critical region z " + alpha_x.toLocaleString(undefined, {maximumSignificantDigits: 3, minimumSignificantDigits: 3}));
+  
+  return svg.node();
+}
+
+margin = ({top: 20, right: 0, bottom: 30, left: 0})
+
+
+line = d3.line()
+    .x(d => x(d.value))
+    .y(d => y(d.density))
+
+x = d3.scaleLinear()
+  .domain([xlim[0], xlim[1]])
+  .range([margin.left, width - margin.right])
+
+
+y = d3.scaleLinear()
+  .domain([0, 0.6])
+  .range([height - margin.bottom, margin.top])
+  
+xAxis = d3.axisBottom(x).ticks(8)
+
+
+
+<!-- xAxis = g => g -->
+<!--     .attr("transform", `translate(0,${height - margin.bottom})`) -->
+<!--     .call(d3.axisBottom(x).ticks(10).tickSizeOuter(5)) -->
+  
+```
+
+
 ## Influences
 
 - Factors that influence power

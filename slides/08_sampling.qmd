@@ -311,6 +311,161 @@ $\sigma_M = \dfrac{\sigma}{\sqrt{n}}$ or $\dfrac{\sqrt{\sigma^2}}{\sqrt{n}}$ or 
 
 ## Variability
 
+```{ojs params}
+#| echo: false
+
+d3 = require("https://d3js.org/d3.v5.min.js")
+jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js")
+
+width = 1000
+height = 600
+
+```
+
+```{css}
+.n-label input[type="number"] {
+  font-family: KaTeX_Main;
+  font-size: 1.1em;
+  background: none;
+  border: none;
+  width: fit-content !important;
+}
+
+label {
+  width: fit-content !important;
+}
+
+.n-label div {
+  overflow: hidden !important;
+}
+
+.n-label {
+  position: absolute;
+  top: 5em;
+}
+
+
+```
+
+::: {.n-label}
+
+```{ojs n-control}
+#| echo: false
+#| class: "katex"
+
+viewof mu = Inputs.number({value: 100, label: tex`\mu = `})
+
+viewof sigma = Inputs.number({value: 15, label: tex`\sigma = `})
+
+viewof n = Inputs.range([1, 50], {value: 1, step: 1, label: tex`n = `})
+```
+
+```{ojs std-err-label}
+tex`\sigma_M = ${std_err.toLocaleString(undefined, {maximumFractionDigits: 2, minimumFractionDigits: 2})}`
+
+```
+:::
+
+
+```{ojs ojs-data}
+#| echo: false
+
+std_err = sigma / Math.sqrt(n)
+
+
+
+max_std_err = sigma / Math.sqrt(50)
+
+population_curve = {
+  var values = jStat(xlim[0], xlim[1], 210)[0],
+      arr = [];
+  for (var i in values) {
+    arr.push({
+        value: values[i], 
+        density: jStat.normal.pdf(values[i], mu, sigma)
+      })
+  }
+  return arr;
+}
+
+curve = {
+  var values = jStat(xlim[0], xlim[1], 210)[0],
+      arr = [];
+  for (var i in values) {
+    arr.push({
+        value: values[i], 
+        density: jStat.normal.pdf(values[i], mu, std_err)
+      })
+  }
+  return arr;
+}
+
+```
+
+```{ojs chart}
+#| echo: false
+#| style: "position: absolute; top: 0;"
+
+chart = {
+  const svg = d3.select(DOM.svg(width, height));
+
+  svg.append("g")
+      .call(xAxis)
+      .attr("transform", `translate(0,${y(0)})`)
+      .attr("class", "axis")
+      .style("font-size", "0.5em");
+
+  svg.append("path")
+      .datum(population_curve)
+      .attr("fill", "none")
+      .attr("stroke", "black")
+      .attr("opacity", 0.5)
+      .attr("stroke-width", 1.5)
+      .attr("stroke-dasharray", [10, 10])
+      .attr("d", line)
+      .attr("class", "invertable");
+      
+  svg.append("path")
+      .datum(curve)
+      .attr("fill", "none")
+      .attr("stroke", "black")
+      .attr("stroke-width", 4)
+      .attr("stroke-linejoin", "round")
+      .attr("stroke-linecap", "round")
+      .attr("d", line)
+      .attr("class", "invertable");
+      
+  return svg.node();
+}
+
+```
+
+```{ojs functions}
+
+margin = ({top: 20, right: 0, bottom: 30, left: 0})
+
+xlim = [mu - 3 * sigma, mu + 3 * sigma]
+
+line = d3.line()
+    .x(d => x(d.value))
+    .y(d => y(d.density))
+
+x = d3.scaleLinear()
+  .domain([xlim[0], xlim[1]])
+  .range([margin.left, width - margin.right])
+
+
+y = d3.scaleLinear()
+  .domain([0, jStat.normal.pdf(mu, mu, max_std_err)])
+  .range([height - margin.bottom, margin.top])
+  
+xAxis = d3.axisBottom(x).ticks(10)
+
+```
+
+
+## Variability
+
 ![](media/samp-dist-2.png)
 
 
@@ -354,7 +509,7 @@ $\sigma_M = \dfrac{\sigma}{\sqrt{n}} = \dfrac{2.24}{\sqrt{2}} = 1.58$
 # Learning checks {.small}
 
 1. True or False?
-  - The mean of a sample is always equal to the population mean
-  - The shape of a distribution of sample means is always normal
-  - As sample size increases, the value of the standard error always decreases
+    - The mean of a sample is always equal to the population mean
+    - The shape of a distribution of sample means is always normal
+    - As sample size increases, the value of the standard error always decreases
 2. Describe the distribution of sample means (shape, expected value of the mean, and standard error) for samples of $n = 100$ selected from a population with $\mu = 40$ and $\sigma = 10$.
