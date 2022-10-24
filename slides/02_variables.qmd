@@ -193,13 +193,183 @@ make_html_likert("5. A lot more than usual")
 
 # Populations & samples
 
-::: {.r-stack style="margin-top: -0.5em;"}
+## Draw sample, make inference
 
-![](media/pop-sample.gif){.invertable style="height: 60vh;"}
+```{css}
 
-![](media/pop-sample-ani.gif){.fragment .invertable style="height: 60vh;"}
+#population-box {
+  opacity: 0.9;
+}
 
+#population-box:hover {
+  opacity: 0;
+}
+
+#refresh form {
+  overflow: hidden;
+}
+
+#refresh button {
+  color: black;
+  background: none;
+  border: none;
+  font-size: 0.8em !important;
+}
+
+#refresh button:hover {
+  -webkit-animation:spin 1s linear;
+  -moz-animation:spin 1s linear;
+  animation:spin 1s;
+}
+
+@-moz-keyframes spin { 
+    100% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes spin { 
+    100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+    100% { 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg); 
+    } 
+}
+
+```
+
+::: {#refresh style="position: absolute; top: 50%; left: 15%;" }
+```{ojs}
+viewof s = Inputs.button(html`&#x21bb;`)
+```
 :::
+
+
+```{ojs}
+
+data = {
+  let arr = [];
+  for (var i = 0; i < 150; i++) {
+    arr.push({
+      x: Math.floor(Math.random() * xmax),
+      y: Math.floor(Math.random() * ymax),
+      color: Math.floor(Math.random() * 7)
+    });
+  }
+  return arr;
+}
+
+width = 1050
+height = 500
+r = 15
+xmax = 400
+ymax = 100
+sample_y = height - r - 1
+margin = ({top: r*2, right: 10, bottom: r, left: 5});
+
+
+pop = {
+  const svg = d3.select(DOM.svg(width, height));
+
+  const sample = svg.append("g").attr("id", "sample-circles")
+  const circles = svg.append("g").attr("id", "pop-circles")
+  
+  let path = {
+    x: (width*0.5 + xmax*.5 + r),
+    y: (margin.top + ymax*0.5),
+    cy: (height - r - (margin.top + ymax*0.5)) * 0.5
+  };
+  
+  const paths = svg.append("g").attr("id", "paths")
+                        .attr("stroke", "black")
+                        .attr("fill", "none")
+                        .attr("class", "invertable");
+                        
+
+  sample.selectAll("circle")
+    .data(new_sample)
+    .enter()
+    .append("circle")
+      .attr("fill", d => color(d))
+      .attr("stroke", "black")
+      .attr("r", r)
+      .attr("cx", function(d, i) {return (i * 41.5 + width/2 - xmax/2 + r)})
+      .attr("cy", 55)
+        .transition()
+        .duration(700)
+        .delay(function(d, i) {return i * 50})
+        .attr("cy", sample_y);
+  
+  circles.selectAll("circle")
+    .data(data)
+    .enter()
+    .append("circle")
+      .attr("fill", d => color(d.color))
+      .attr("stroke", "black")
+      .attr("r", 15)
+      .attr("cx", d => x(d.x))
+      .attr("cy", d => y(d.y))
+          
+  svg.append("rect").attr("id", "population-box")
+    .attr("x", width/2 - xmax/2 - r)
+    .attr("y", margin.top - r)
+    .attr("width", xmax + 2*r)
+    .attr("height",ymax + 2*r)
+    .attr("fill", "white")
+    
+  svg.append("rect").attr("id", "population-outline")
+    .attr("x", width/2 - xmax/2 - r)
+    .attr("y", margin.top - r)
+    .attr("width", xmax + 2*r)
+    .attr("height",ymax + 2*r)
+    .attr("stroke", "black")
+    .attr("fill", "none")
+    
+  paths.append("path").attr("id", "inference-path")
+    .attr("d", "M" + path.x + "," + path.y + ", q200," + path.cy + " 0," + (height - r - path.y))
+    .attr("stroke-dasharray", [5, 5])
+    
+  paths.append("path").attr("id", "sample-path")
+    .attr("d", "M" + (path.x - xmax - 2*r) + "," + path.y + ", q-200," + path.cy + " 0," + (height - r - path.y))
+    
+  svg.append("polygon").attr("id", "down-arrow")
+    .attr("points", [[0,0],[10,0],[5,10]])
+    .attr("transform", "translate(200," + (path.cy+margin.top+ymax*0.5 - 10) +") scale(2)")
+    .attr("class", "invertable");
+    
+  svg.append("polygon").attr("id", "up-arrow")
+    .attr("points", [[0,0],[10,0],[5,10]])
+    .attr("transform", "translate(850," + (path.cy+margin.top+ymax*0.5 + 10) +") scale(2) rotate(180)")
+    .attr("class", "invertable");
+    
+
+  return svg.node();
+}
+
+
+
+x = d3.scaleLinear()
+  .domain([0, xmax])
+  .range([width/2 - xmax/2, width/2 + xmax/2])
+
+y = d3.scaleLinear()
+  .domain([0, ymax])
+  .range([margin.top + ymax, margin.top])
+  
+color = d3.scaleOrdinal().
+  domain(data.map(d => d.color))
+  .range(d3.schemeSet3);
+  
+new_sample = {
+  s;
+  let arr = [];
+  for (var i = 0; i < 10; i++) {
+    arr.push(Math.floor(Math.random() * 7))
+  }
+  return arr;
+}
+
+```
+
 
 
 ## Terminology
