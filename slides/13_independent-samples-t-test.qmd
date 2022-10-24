@@ -1,0 +1,119 @@
+---
+format: 
+  revealjs:
+    chalkboard: true
+---
+
+# [13|INDEPENDENT-SAMPLES $t$-TEST]{.r-fit-text}
+
+![](covers/11_the-t-test.svg)
+
+# Overview
+
+- [Research design]
+- [Calculation]
+- [Hypothesis test]
+- [Learning checks]
+
+
+# Research design
+
+## Single-sample $t$-test design
+
+- Compare sample against expected population mean based on logic/theory/scale design
+- E.g. Happiness
+  - Give everyone $10
+  - "What is your current level of happiness?"
+
+## Independent-samples design
+
+What if...  
+
+
+:::: {.columns .c}
+
+::: {.column width="50%"}
+Group A:  
+Spend this on yourself
+:::
+
+::: {.column width="50%"}
+Group B:  
+Spend this on someone else
+:::
+
+::::
+
+- Later... "What is your current level of happiness?"
+
+
+::: {.footer .reference}
+Dunn, E. W., Aknin, L. B., & Norton, M. I. (2014). Prosocial spending and happiness: Using money to benefit others pays off. *Current Directions in Psychological Science, 23*(1), 41-47. https://doi.org/10.1177/0963721413512503
+:::
+
+
+## Independent-samples
+
+```{r}
+#| eval: false
+
+
+bc1101tools::plot_nhst_diagram(text.size = 5,
+                               pop1lab = "Partially\nknown\noriginal\npopulation\n(\U03BC)",
+                               pop2lab = "Unknown\ntreated\npopulation",
+                               sample2lab = "Treated\nSample\n(M, s, n)")
+
+```
+
+
+```{r}
+#| eval: false
+
+bc1101tools::plot_nhst_diagram(text.size = 5,
+                               pop1lab = "Unknown\ntreated\npopulation\nA",
+                               pop1line = 2, pop2fill = "white",
+                               pop2lab = "Unknown\ntreated\npopulation\nB",
+                               sample1lab = "Sample A\n(M, s, n)",
+                               sample2lab = "Sample B\n(M, s, n)", sample2fill = "white",
+                               sample_line = "white")
+
+```
+
+# Calculation {.small}
+
+Basic structure of all $t$-tests:
+
+::: {.c}
+$t = \dfrac{ \text{sample statistic} - \text{population parameter} }{\text{estimated standard error}}$
+<br><br>
+$t = \dfrac{ \text{how different was observed from predicted?} }{\text{how big a difference would we expect by chance?}}$
+<br><br>
+$t = \dfrac{ \text{data} - \text{hypothesis} }{\text{error}}$
+:::
+
+
+:::: {.columns .c}
+
+::: {.column width="50%"}
+Single-sample $t$
+
+$t = \dfrac{M-\mu}{s_M}$
+:::
+
+::: {.column width="50%"}
+Independent-samples $t$
+
+$t = \dfrac{(M_1-M_2)-(\mu_1-\mu_2)}{s_{M_1-M_2}}$
+:::
+
+::::
+
+
+# Learning checks
+
+1. What values of $t$ would you expect to see if the null hypothesis is true?
+2. Which combination of factors is most likely to produce a significant value for an independent-measures $t$ statistic?
+  - Small mean difference and large sample variances
+  - Small mean difference and small sample variances
+  - Large mean difference and large sample variances
+  - Large mean difference and small sample variances

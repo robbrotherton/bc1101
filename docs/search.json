@@ -1468,5 +1468,26 @@
     "title": "BC1101",
     "section": "CI & NHST",
     "text": "CI & NHST"
+  },
+  {
+    "objectID": "slides/13_independent-samples-t-test.html#single-sample-t-test-design",
+    "href": "slides/13_independent-samples-t-test.html#single-sample-t-test-design",
+    "title": "BC1101",
+    "section": "Single-sample \\(t\\)-test design",
+    "text": "Single-sample \\(t\\)-test design\n\nCompare sample against expected population mean based on logic/theory/scale design\nE.g. Happiness\n\nGive everyone $10\n“What is your current level of happiness?”"
+  },
+  {
+    "objectID": "slides/13_independent-samples-t-test.html#independent-samples-design",
+    "href": "slides/13_independent-samples-t-test.html#independent-samples-design",
+    "title": "BC1101",
+    "section": "Independent-samples design",
+    "text": "Independent-samples design\nWhat if…\n\n\nGroup A:\nSpend this on yourself\n\nGroup B:\nSpend this on someone else\n\n\n\nLater… “What is your current level of happiness?”\n\n\nDunn, E. W., Aknin, L. B., & Norton, M. I. (2014). Prosocial spending and happiness: Using money to benefit others pays off. Current Directions in Psychological Science, 23(1), 41-47. https://doi.org/10.1177/0963721413512503"
+  },
+  {
+    "objectID": "slides/13_independent-samples-t-test.html#independent-samples",
+    "href": "slides/13_independent-samples-t-test.html#independent-samples",
+    "title": "BC1101",
+    "section": "Independent-samples",
+    "text": "Independent-samples"
   }
 ]

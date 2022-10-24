@@ -292,7 +292,7 @@ pnorm(-5.59)
 plot_distribution(xlim = c(-4, 4), 
                   segments = qnorm(.95),
                   linetype = 0,
-                  fill_colors = c("white", "red")) +
+                  fill_colors = c(NA, "red")) +
   theme_void()
 
 plot_save("directional-test-upper-tail.svg", height = 2)
@@ -300,7 +300,7 @@ plot_save("directional-test-upper-tail.svg", height = 2)
 plot_distribution(xlim = c(-4, 4), 
                   segments = qnorm(.05),
                   linetype = 0,
-                  fill_colors = c("red", "white")) +
+                  fill_colors = c("red", NA)) +
   theme_void()
 
 plot_save("directional-test-lower-tail.svg", height = 2)
@@ -309,7 +309,7 @@ plot_save("directional-test-lower-tail.svg", height = 2)
 nondir <- plot_distribution(xlim = c(-4, 4), 
                   segments = qnorm(c(.025, .975)),
                   linetype = 0,
-                  fill_colors = c("red", "white", "red")) +
+                  fill_colors = c("red", NA, "red")) +
   theme_void()
 
 plot_save("nondirectional-test.svg",
