@@ -1,0 +1,254 @@
+---
+format: 
+  revealjs:
+    chalkboard: true
+---
+
+# 12|THE $t$-TEST
+
+[part 2]{.subhead}
+
+![](covers/11_the-t-test.svg)
+
+
+# Overview
+
+- [Research designs]
+- [Assumptions]
+- [Effect size]
+- [Confidence intervals]
+- [Learning checks]
+
+
+
+# Research designs
+
+- Single-sample $t$-test
+  - Compare sample against expected population mean based on logic/theory/scale design
+
+
+- E.g. 'common sense' theory
+  - Population average amount of sleep, $μ$ = 8 hours
+
+
+## Research designs
+
+- E.g. measure of happiness
+
+```{css}
+
+.form-check-input {
+  width: 2em;
+  height: 2em;
+}
+
+.likert {
+  border: 1px black solid;
+  margin-top: 1em;
+  padding: 0.5em;
+}
+
+.likert > p {
+  margin-top: 0;
+  font-style: normal;
+}
+
+.likert .likert-options {
+  display: flex; 
+  justify-content: center;
+}
+
+```
+
+::: {.likert}
+What is your current level of happiness?
+
+::: {.likert-options}
+```{r}
+make_html_likert <- function(label, checked = FALSE) {
+  htmltools::HTML(
+    glue::glue('
+      
+        <label class="form-check-label">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" {ifelse(checked, "checked", "")}>
+        {label}
+        </label>
+    ')
+  )
+}
+make_html_likert("1. A lot less than usual")
+make_html_likert("2. A little less than usual")
+make_html_likert("3. About average", TRUE)
+make_html_likert("4. A little more than usual")
+make_html_likert("5. A lot more than usual")
+
+```
+:::
+:::
+
+
+
+
+# Assumptions
+
+- Assumptions for [single-sample $t$-tests]{.emph:
+  1. Independence
+      - Independent random sampling
+      - Values in the sample are independent observations
+  2. Normality
+      - The population sampled is normally distributed
+      - With large samples $(n > 30)$, this assumption can be violated without affecting the validity of the hypothesis test
+  3. Homogeneity of variance
+      - Variability in the original and treated populations is the same
+
+
+# Effect size
+
+```{r}
+r <- function(x) sprintf("%.2f", x)
+rt <- bc1101tools::class_reaction_times
+
+n <- length(rt[!is.na(rt)])
+M <- mean(rt, na.rm = T)
+SD <- sd(rt, na.rm = T)
+mu <- 284
+d <- (M - mu)/SD
+
+t <- (M-mu) / (SD/sqrt(n))
+```
+
+
+- Hypothesis test Step 4: Make decision (reject null?)
+- Step 4b: Evaluate effect size
+  - Cohen’s $d$ for single-sample $t$-test
+  - Original equation included population SD, $\sigma$
+  - Estimated Cohen’s $d$ uses sample SD, $s$
+
+::: {.c .smaller}
+$\text{Estimated } d = \dfrac{\text{mean difference}}{\text{sample standard deviation}} = \dfrac{M - \mu}{s}$
+
+$\text{For class RT data, } d = \dfrac{`r r(M)` - `r round(mu, 2)`}{`r r(SD)`} = `r r(d)`$
+:::
+
+
+## $r^2$
+
+- Proportion of all variability in the data attributable to treatment effect
+- Simplifying assumption: Treatment adds or subtracts a constant to each score
+- E.g. 1 point on a scale of 1 to 5
+- $r^2$ separates that variability due to treatment from natural variability between scores
+
+::: {.c}
+$r^2 = \dfrac{SS_{treatment}}{SS_{total}}$
+:::
+
+
+## $r^2$ {.smallest}
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+1. Calculate sum of squared deviations from sample $M$
+    - This is variability [excluding]{.emph} treatment effect
+    - $SS_{without \ treatment}$
+2. Calculate $SS$ from $H_0$ $\mu$
+    - This is [total]{.emph} variability
+    - $SS_{total}$
+3. Substract $SS_{without \ treatment}$ from $SS_{total}$ to find $SS_{treatment}$
+    - [Variability attributable to treatment effect]{.emph}
+:::
+
+::: {.column width="50%"}
+Right column
+:::
+
+::::
+
+::: {.c}
+$$\begin{align}
+r^2 = \dfrac{SS_{treatment}}{SS_{total}} &= \dfrac{SS_{total} - SS_{without \ treatment}}{SS_{total}} \\
+&= \dfrac{10-6}{10} = `r (10-6)/10`
+\end{align}$$
+:::
+
+
+## $r^2$
+
+- If we already calculated $t$…
+
+::: {.c}
+$r^2 = \dfrac{t^2}{t^2 + df}$
+:::
+
+- Works for any kind of $t$-test
+  - Single / related / independent-samples
+
+
+- Interpreting $r^2$
+  - $r^2 = 0.01$:   small effect
+  - $r^2 = 0.09$:   medium effect
+  - $r^2 = 0.25$:   large effect
+  
+
+# Reporting results
+
+“Given the average reaction time for the population of $\mu = `r mu` ms$, according to humanbenchmark.com, a two-tailed single-sample $t$-test suggests that BC1101 students have significantly different reaction times $(M = `r r(M)`$; $SD = `r r(SD)`)$ than the general population; $t(`r n-1`) =$ $`r r(t)`$, $p < .05$, $d = `r r(d)`$.”
+
+
+# Confidence intervals {.smallest}
+
+- Complementary to significance & effect size
+- Quantifies precision of sample estimate
+- Comprised of: 
+  - [The point estimate]{.emph} 
+      - Our best guess of the population parameter 
+  - [Margin of error]{.emph} 
+      - A range either side of point estimate
+      - Indicates the amount of uncertainty surrounding estimate of population mean 
+      - Based on desired 'confidence', i.e. range of the distribution
+      - E.g. 95%, 99%, 80%, etc...
+
+## Calculating CI boundaries
+
+- So far, we have been specifying $\mu$, calculating $M$ and $s_M$, solving for $t$
+- For CI, rearrange to solve for $\mu$
+  - Calculate $M$ and $s_M$, specify $t$ (based on desired width of CI —99%, 95%, 90%, 80% etc), solve for $\mu$
+
+::: {.c}
+$t = \dfrac{M - \mu}{s_M}$
+
+$\mu = M \pm t * s_M$
+:::
+
+
+## Confidence interval interpretation {.small}
+
+- What does a confidence interval tell us?
+  - Indicates precision of parameter estimate
+  - “This sample came from a population which would produce sample means which fall within this range 95% of the time”
+  - NOT “we are 95% sure the true population mean is within this range”
+
+> "The parameter is an unknown constant and no probability statement concerning its value may be made."[^1]
+
+[^1]: Jerzy Neyman, original developer of confidence intervals
+
+## CI & NHST {.small}
+
+- $p$ value and CI always agree about statistical significance if CI is $1 – alpha$
+  - E.g. $\alpha = .05$ and 95% confidence interval
+- If the $p < \alpha$, the confidence interval will not contain the null hypothesis value
+- If the confidence interval does not contain the null hypothesis value, the results are statistically significant
+- Both significance level and confidence level define a distance from a mean to a limit
+  - The distances in both cases are exactly the same
+
+## CI & NHST
+
+# Learning checks
+
+1. What value of $t$ would you expect to see if the null hypothesis is true?
+2. Which combination of factors is most likely to produce a significant value for the $t$ statistic?
+    - Small mean difference and large sample variability
+    - Small mean difference and small sample variability
+    - Large mean difference and large sample variability
+    - Large mean difference and small sample variability

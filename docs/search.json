@@ -1405,5 +1405,68 @@
     "title": "BC1101",
     "section": "Draw sample, make inference",
     "text": "Draw sample, make inference\n\n\n\n\n\nviewof s = Inputs.button(html`&#x21bb;`)\n\n\n\n\n\n\n\n\ndata = {\n  let arr = [];\n  for (var i = 0; i < 150; i++) {\n    arr.push({\n      x: Math.floor(Math.random() * xmax),\n      y: Math.floor(Math.random() * ymax),\n      color: Math.floor(Math.random() * 7)\n    });\n  }\n  return arr;\n}\n\nwidth = 1050\nheight = 500\nr = 15\nxmax = 400\nymax = 100\nsample_y = height - r - 1\nmargin = ({top: r*2, right: 10, bottom: r, left: 5});\n\n\npop = {\n  const svg = d3.select(DOM.svg(width, height));\n\n  const sample = svg.append(\"g\").attr(\"id\", \"sample-circles\")\n  const circles = svg.append(\"g\").attr(\"id\", \"pop-circles\")\n  \n  let path = {\n    x: (width*0.5 + xmax*.5 + r),\n    y: (margin.top + ymax*0.5),\n    cy: (height - r - (margin.top + ymax*0.5)) * 0.5\n  };\n  \n  const paths = svg.append(\"g\").attr(\"id\", \"paths\")\n                        .attr(\"stroke\", \"black\")\n                        .attr(\"fill\", \"none\")\n                        .attr(\"class\", \"invertable\");\n                        \n\n  sample.selectAll(\"circle\")\n    .data(new_sample)\n    .enter()\n    .append(\"circle\")\n      .attr(\"fill\", d => color(d))\n      .attr(\"stroke\", \"black\")\n      .attr(\"r\", r)\n      .attr(\"cx\", function(d, i) {return (i * 41.5 + width/2 - xmax/2 + r)})\n      .attr(\"cy\", 55)\n        .transition()\n        .duration(700)\n        .delay(function(d, i) {return i * 50})\n        .attr(\"cy\", sample_y);\n  \n  circles.selectAll(\"circle\")\n    .data(data)\n    .enter()\n    .append(\"circle\")\n      .attr(\"fill\", d => color(d.color))\n      .attr(\"stroke\", \"black\")\n      .attr(\"r\", 15)\n      .attr(\"cx\", d => x(d.x))\n      .attr(\"cy\", d => y(d.y))\n          \n  svg.append(\"rect\").attr(\"id\", \"population-box\")\n    .attr(\"x\", width/2 - xmax/2 - r)\n    .attr(\"y\", margin.top - r)\n    .attr(\"width\", xmax + 2*r)\n    .attr(\"height\",ymax + 2*r)\n    .attr(\"fill\", \"white\")\n    \n  svg.append(\"rect\").attr(\"id\", \"population-outline\")\n    .attr(\"x\", width/2 - xmax/2 - r)\n    .attr(\"y\", margin.top - r)\n    .attr(\"width\", xmax + 2*r)\n    .attr(\"height\",ymax + 2*r)\n    .attr(\"stroke\", \"black\")\n    .attr(\"fill\", \"none\")\n    \n  paths.append(\"path\").attr(\"id\", \"inference-path\")\n    .attr(\"d\", \"M\" + path.x + \",\" + path.y + \", q200,\" + path.cy + \" 0,\" + (height - r - path.y))\n    .attr(\"stroke-dasharray\", [5, 5])\n    \n  paths.append(\"path\").attr(\"id\", \"sample-path\")\n    .attr(\"d\", \"M\" + (path.x - xmax - 2*r) + \",\" + path.y + \", q-200,\" + path.cy + \" 0,\" + (height - r - path.y))\n    \n  svg.append(\"polygon\").attr(\"id\", \"down-arrow\")\n    .attr(\"points\", [[0,0],[10,0],[5,10]])\n    .attr(\"transform\", \"translate(200,\" + (path.cy+margin.top+ymax*0.5 - 10) +\") scale(2)\")\n    .attr(\"class\", \"invertable\");\n    \n  svg.append(\"polygon\").attr(\"id\", \"up-arrow\")\n    .attr(\"points\", [[0,0],[10,0],[5,10]])\n    .attr(\"transform\", \"translate(850,\" + (path.cy+margin.top+ymax*0.5 + 10) +\") scale(2) rotate(180)\")\n    .attr(\"class\", \"invertable\");\n    \n\n  return svg.node();\n}\n\n\n\nx = d3.scaleLinear()\n  .domain([0, xmax])\n  .range([width/2 - xmax/2, width/2 + xmax/2])\n\ny = d3.scaleLinear()\n  .domain([0, ymax])\n  .range([margin.top + ymax, margin.top])\n  \ncolor = d3.scaleOrdinal().\n  domain(data.map(d => d.color))\n  .range(d3.schemeSet3);\n  \nnew_sample = {\n  s;\n  let arr = [];\n  for (var i = 0; i < 10; i++) {\n    arr.push(Math.floor(Math.random() * 7))\n  }\n  return arr;\n}"
+  },
+  {
+    "objectID": "slides/12_the-t-test-pt-2.html#research-designs-1",
+    "href": "slides/12_the-t-test-pt-2.html#research-designs-1",
+    "title": "BC1101",
+    "section": "Research designs",
+    "text": "Research designs\n\nE.g. measure of happiness\n\n\n\n\n\nWhat is your current level of happiness?\n\n\n\n  \n    \n    \n    1. A lot less than usual\n    \n\n\n  \n    \n    \n    2. A little less than usual\n    \n\n\n  \n    \n    \n    3. About average\n    \n\n\n  \n    \n    \n    4. A little more than usual\n    \n\n\n  \n    \n    \n    5. A lot more than usual"
+  },
+  {
+    "objectID": "slides/12_the-t-test-pt-2.html#r2",
+    "href": "slides/12_the-t-test-pt-2.html#r2",
+    "title": "BC1101",
+    "section": "\\(r^2\\)",
+    "text": "\\(r^2\\)\n\nProportion of all variability in the data attributable to treatment effect\nSimplifying assumption: Treatment adds or subtracts a constant to each score\nE.g. 1 point on a scale of 1 to 5\n\\(r^2\\) separates that variability due to treatment from natural variability between scores\n\n\n\\(r^2 = \\dfrac{SS_{treatment}}{SS_{total}}\\)"
+  },
+  {
+    "objectID": "slides/12_the-t-test-pt-2.html#r2-1",
+    "href": "slides/12_the-t-test-pt-2.html#r2-1",
+    "title": "BC1101",
+    "section": "\\(r^2\\)",
+    "text": "\\(r^2\\)\n\n\n\nCalculate sum of squared deviations from sample \\(M\\)\n\nThis is variability excluding treatment effect\n\\(SS_{without \\ treatment}\\)\n\nCalculate \\(SS\\) from \\(H_0\\) \\(\\mu\\)\n\nThis is total variability\n\\(SS_{total}\\)\n\nSubstract \\(SS_{without \\ treatment}\\) from \\(SS_{total}\\) to find \\(SS_{treatment}\\)\n\nVariability attributable to treatment effect\n\n\n\nRight column\n\n\n\n\\[\\begin{align}\nr^2 = \\dfrac{SS_{treatment}}{SS_{total}} &= \\dfrac{SS_{total} - SS_{without \\ treatment}}{SS_{total}} \\\\\n&= \\dfrac{10-6}{10} = 0.4\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/12_the-t-test-pt-2.html#r2-2",
+    "href": "slides/12_the-t-test-pt-2.html#r2-2",
+    "title": "BC1101",
+    "section": "\\(r^2\\)",
+    "text": "\\(r^2\\)\n\nIf we already calculated \\(t\\)…\n\n\n\\(r^2 = \\dfrac{t^2}{t^2 + df}\\)\n\n\nWorks for any kind of \\(t\\)-test\n\nSingle / related / independent-samples\n\nInterpreting \\(r^2\\)\n\n\\(r^2 = 0.01\\): small effect\n\\(r^2 = 0.09\\): medium effect\n\\(r^2 = 0.25\\): large effect"
+  },
+  {
+    "objectID": "slides/12_the-t-test-pt-2.html#calculating-ci-boundaries",
+    "href": "slides/12_the-t-test-pt-2.html#calculating-ci-boundaries",
+    "title": "BC1101",
+    "section": "Calculating CI boundaries",
+    "text": "Calculating CI boundaries\n\nSo far, we have been specifying \\(\\mu\\), calculating \\(M\\) and \\(s_M\\), solving for \\(t\\)\nFor CI, rearrange to solve for \\(\\mu\\)\n\nCalculate \\(M\\) and \\(s_M\\), specify \\(t\\) (based on desired width of CI —99%, 95%, 90%, 80% etc), solve for \\(\\mu\\)\n\n\n\n\\(t = \\dfrac{M - \\mu}{s_M}\\)\n\\(\\mu = M \\pm t * s_M\\)"
+  },
+  {
+    "objectID": "slides/12_the-t-test-pt-2.html#calculating-ci-boundaries-1",
+    "href": "slides/12_the-t-test-pt-2.html#calculating-ci-boundaries-1",
+    "title": "BC1101",
+    "section": "Calculating CI boundaries",
+    "text": "Calculating CI boundaries\n\\(=\\)\n\\(t\\)"
+  },
+  {
+    "objectID": "slides/12_the-t-test-pt-2.html#confidence-interval-interpretation",
+    "href": "slides/12_the-t-test-pt-2.html#confidence-interval-interpretation",
+    "title": "BC1101",
+    "section": "Confidence interval interpretation",
+    "text": "Confidence interval interpretation\n\nWhat does a confidence interval tell us?\n\nIndicates precision of parameter estimate\n“This sample came from a population which would produce sample means which fall within this range 95% of the time”\nNOT “we are 95% sure the true population mean is within this range”\n\n\n\n“The parameter is an unknown constant and no probability statement concerning its value may be made.”1\n\nJerzy Neyman, original developer of confidence intervals"
+  },
+  {
+    "objectID": "slides/12_the-t-test-pt-2.html#ci-nhst",
+    "href": "slides/12_the-t-test-pt-2.html#ci-nhst",
+    "title": "BC1101",
+    "section": "CI & NHST",
+    "text": "CI & NHST\n\n\\(p\\) value and CI always agree about statistical significance if CI is \\(1 – alpha\\)\n\nE.g. \\(\\alpha = .05\\) and 95% confidence interval\n\nIf the \\(p < \\alpha\\), the confidence interval will not contain the null hypothesis value\nIf the confidence interval does not contain the null hypothesis value, the results are statistically significant\nBoth significance level and confidence level define a distance from a mean to a limit\n\nThe distances in both cases are exactly the same"
+  },
+  {
+    "objectID": "slides/12_the-t-test-pt-2.html#ci-nhst-1",
+    "href": "slides/12_the-t-test-pt-2.html#ci-nhst-1",
+    "title": "BC1101",
+    "section": "CI & NHST",
+    "text": "CI & NHST"
   }
 ]
