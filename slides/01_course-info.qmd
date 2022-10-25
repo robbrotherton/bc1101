@@ -7,7 +7,64 @@ format:
 
 # 1|COURSE OVERVIEW
 
-![](covers/01_course-info.svg)
+<!-- ![](covers/01_course-info.svg){#cover} -->
+
+```{r}
+library(dplyr)
+word <- "STATISTICS"
+
+pal <- data.frame(id = 1:5,
+                  color = viridis::viridis(5, end = .6))
+
+data <- data.frame(letter = strsplit(word, "")[[1]]) |> 
+  dplyr::rowwise() |> 
+  dplyr::mutate(value = which(LETTERS==letter)) |> 
+  dplyr::group_by(letter) |> 
+  dplyr::mutate(id = cur_group_id()) |> 
+  ungroup() |> 
+  mutate(duration = sqrt(value / max(value)) * 300,
+         delay = lag(cumsum(duration - 100), default = 0)) |> 
+  left_join(pal) |> 
+  purrr::transpose()
+
+ojs_define(data)
+```
+
+```{ojs}
+w = 1050
+h = w/2
+
+cover = {
+
+  const svg = d3.select(DOM.svg(w, h))
+    <!-- .style("background", "#cccccc") -->
+    .style("transform", "scaleY(-1)")
+    
+  const g = svg.append("g")
+  
+  g
+    .selectAll("rect")
+    .data(data)
+    .enter()
+      .append("rect")
+      .attr("fill", "black")
+        .attr("x", function(d, i){return 5 + i*(w/10)})
+        .attr("y", 0)
+        .attr("height", 0)
+        .attr("width", w/10 - 10)
+        .attr("fill", d => d.color)
+          .transition()
+          .duration(d => d.duration)
+          .delay(d => d.delay)
+          .attr("height", d => d.value * 26)
+  
+
+ 
+ return svg.node()
+}
+
+
+```
 
 ```{r cover-course-info, eval=FALSE}
 library(ggplot2)
