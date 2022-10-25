@@ -1,0 +1,18 @@
+{
+  "hash": "bff2614b8fece73ef7bbb8d25d13f3e4",
+  "result": {
+    "markdown": "::: {.cell}\n\n:::\n\n```{ojs}\n\nmargins = ({top: 20, right: 20, bottom: 20, left: 20})\n\n\nbar_xScale = d3.scaleBand()\n  .domain([1,2,3,4,5])\n  .range([margins.left, 500 - margins.right])\n\nbar_yScale = d3.scaleLinear()\n  .domain([0, 3])\n  .range([300 - margins.bottom, margins.top])\n    \nbar_chart = {\n\n  const svg = d3.select(DOM.svg(500, 300))\n    .attr(\"class\", \"invertable\");\n  \n  const axis_lines = svg.append(\"g\")\n    .attr(\"stroke\", \"black\")\n    .attr(\"fill\", \"none\")\n    \n  const bars = svg.append(\"g\")\n    .attr(\"fill\", \"black\")\n    .attr(\"stroke\", \"none\")\n  \n  bars.selectAll(\"rect\")\n    .data(bar_data)\n    .enter()\n      .append(\"rect\") \n      .attr(\"transform\", \"rotate(180)\")\n      .attr(\"transform-origin\", \"center center\")\n      .attr(\"x\", d => bar_xScale(d.value))\n      .attr(\"y\", 20)\n      .attr(\"width\", (460/5-5))\n      .attr(\"height\", 0)\n        .transition()\n        .delay(function(d,i){return (6-i) * 300})\n        .duration(300)\n        .attr(\"height\", d => d.density*260/3)\n\n  const line_data = [\n    {x1: 10, x2: 490, y1: 290, y2: 290},\n    {x1: 10, x2: 10, y1: 290, y2: 10}\n  ]\n  \n  axis_lines.selectAll(\"line\")\n    .data(line_data)\n    .enter()\n      .append(\"line\")\n        .attr(\"x1\", d => d.x1)\n        .attr(\"x2\", d => d.x2)\n        .attr(\"y1\", d => d.y1)\n        .attr(\"y2\", d => d.y2)\n    \n  return svg.node();\n}\n```\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "<script type=\"ojs-define\">\r\n{\"contents\":[{\"name\":\"bar_data\",\"value\":[{\"value\":1,\"density\":1},{\"value\":2,\"density\":2},{\"value\":3,\"density\":3},{\"value\":4,\"density\":2},{\"value\":5,\"density\":1}]}]}\r\n</script>\r\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

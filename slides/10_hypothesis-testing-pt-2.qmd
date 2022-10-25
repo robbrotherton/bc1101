@@ -227,9 +227,19 @@ alpha_x2 = {
   }
 }
 
-jStat.normal.cdf(1.96, 0, 1)
+beta = jStat.normal.cdf(alpha_x, mean_diff, sd) - jStat.normal.cdf(alpha_x2, mean_diff, sd)
+
+power = 1 - beta
 
 ```
+
+::: {style="position: absolute; top: 50%; right: 0;"}
+```{ojs}
+tex`\beta = ${beta.toLocaleString()}`
+
+tex`\text{power} = ${power.toLocaleString()}`
+```
+:::
 
 ```{css}
 .ojs-controls {
@@ -273,9 +283,9 @@ sd = 1/Math.sqrt(n)
 
 viewof alpha = Inputs.range([0.01, 0.10], {value: 0.05, step: 0.001, label: "Alpha"})
 
-viewof tails = Inputs.toggle({label: "Two-tailed", value: false})
+viewof tails = Inputs.toggle({label: "Two-tailed", value: true})
 
-viewof show_alt = Inputs.toggle({label: "Show H1", value: false})
+viewof show_alt = Inputs.toggle({label: "Show H1", value: true})
 ```
 :::
 
@@ -289,8 +299,17 @@ chart = {
       .attr("transform", `translate(0,${y(0)})`)
       .attr("class", "axis")
       .style("font-size", "0.5em");
+  
+  const null_dist = svg.append("g").attr("id", "null-dist")
 
-  svg.append("path")
+  null_dist.append("path").attr("id", "critical-region-fill")
+      .datum(h0)
+      .attr("fill", "red")
+      .attr("stroke", "none")
+      .attr("d", line)
+      .attr('clip-path', "url(#clip-area)")
+      
+  null_dist.append("path").attr("id", "h0-curve")
       .datum(h0)
       .attr("fill", "none")
       .attr("stroke", "black")
@@ -300,7 +319,7 @@ chart = {
       .attr("d", line)
       .attr("class", "invertable");
       
-  svg.append("text")             
+  null_dist.append("text").attr("id", "h0-text")         
       .attr("transform", `translate(${x(0)} ,${y(0.1)})`)
       .attr("class", "invertable")
       .style("text-anchor", "middle")
@@ -310,6 +329,19 @@ chart = {
         .html('H')
         .append('tspan')
         .html('0').attr('baseline-shift', 'sub').style('font-size', '0.5em');
+    
+  svg.append("clipPath")
+    .attr("id", "clip-area")
+    .append("polygon")
+    .attr("points", [[0,0], [0,height], [x(alpha_x2),height],[x(alpha_x2),0],
+                     [x(alpha_x),0], [x(alpha_x),height], [width,height],[width,0]]);
+    
+
+  svg.append("clipPath").attr("id", "clip-area-interior")
+    .append("polygon")
+    .attr("points", [[x(alpha_x2),0],[x(alpha_x2),height],
+                     [x(alpha_x),height], [x(alpha_x),0]]);
+      
       
 <!-- alternative distribution -->
 { if(show_alt) {
@@ -333,59 +365,42 @@ chart = {
         .html('H')
         .append('tspan')
         .html('1').attr('baseline-shift', 'sub').style('font-size', '0.5em');
-     
-      
-<!-- fill region(s) of ha -->
-    svg.append("clipPath")
-    .attr("id", "haCliparea")
-    .append("rect")
-      .attr("transform", `translate(${x(alpha_x)} ,${margin.top})`)
-    <!-- .attr("x", alpha_x) -->
-    .attr("width", width/2)
-    .attr("height", height);
-    
-    svg.append("clipPath")
-    .attr("id", "haCliparea2")
-    .append("polygon")
-      <!-- .attr("transform", `translate(${x(alpha_x2)} ,${margin.top})`) -->
-    .attr("points", [[0,0], [0,height], [x(alpha_x2),height],[x(alpha_x2),0]]);
-    
+
   svg.append("path")
       .datum(ha)
-      .attr('clip-path', "url(#haCliparea)")
+      .attr('clip-path', "url(#clip-area)")
       .attr("fill", "steelblue")
       .attr("opacity", 0.7)
       .attr("stroke", "steelblue")
       .attr("stroke-width", 2.5)
       .attr("d", line);
       
-    svg.append("path")
+  svg.append("path")
       .datum(ha)
-      .attr('clip-path', "url(#haCliparea2)")
-      .attr("fill", "steelblue")
-      .attr("opacity", 0.7)
-      .attr("stroke", "steelblue")
-      .attr("stroke-width", 2.5)
+      .attr('clip-path', "url(#clip-area-interior)")
+      .attr("fill", "grey")
+      .attr("opacity", 0.3)
       .attr("d", line);
 }}
       
 <!-- label alpha -->
-    svg.append('line')
-    .attr('x1', x(alpha_x))
-    .attr('x2', x(alpha_x))
-    .attr('y1', margin.top + 10)
-    .attr('y2', height - margin.bottom)
-    .style('stroke', 'red')
-    .style('stroke-width', '1.5px')
-    
+
+    null_dist.append('line')
+      .attr('x1', x(alpha_x))
+      .attr('x2', x(alpha_x))
+      .attr('y1', margin.top + 10)
+      .attr('y2', height - margin.bottom)
+      .style('stroke', 'red')
+      .style('stroke-width', '1.5px')
+
     <!-- label alpha two-tailed -->
-    svg.append('line')
-    .attr('x1', x(alpha_x2))
-    .attr('x2', x(alpha_x2))
-    .attr('y1', margin.top + 10)
-    .attr('y2', height - margin.bottom)
-    .style('stroke', 'red')
-    .style('stroke-width', '1.5px')
+    null_dist.append('line')
+      .attr('x1', x(alpha_x2))
+      .attr('x2', x(alpha_x2))
+      .attr('y1', margin.top + 10)
+      .attr('y2', height - margin.bottom)
+      .style('stroke', 'red')
+      .style('stroke-width', '1.5px')
     
     svg.append("text")             
       .attr("transform", `translate(${x(alpha_x)} ,${margin.top})`)
@@ -411,7 +426,7 @@ x = d3.scaleLinear()
 
 
 y = d3.scaleLinear()
-  .domain([0, 0.6])
+  .domain([0, d3.max([0.6, jStat.normal.pdf(0, 0, sd)])])
   .range([height - margin.bottom, margin.top])
   
 xAxis = d3.axisBottom(x).ticks(8)
