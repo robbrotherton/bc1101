@@ -6,7 +6,94 @@ format:
 
 # 11|THE $t$-TEST
 
-![](covers/11_the-t-test.svg)
+<!-- ![](covers/11_the-t-test.svg) -->
+
+```{r}
+
+gg_color_hue <- function(n) {
+  hues = seq(15, 375, length = n + 1)
+  hcl(h = hues, l = 65, c = 100)[1:n]
+}
+
+n <- 100
+colors <- rep(gg_color_hue(10), length.out = n)
+ojs_define(colors)
+
+```
+
+```{ojs}
+<!-- cover_data -->
+w = 1050
+h = 500
+n = colors.length
+
+<!-- jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js") -->
+
+test_data = {
+
+  let arr = [];
+  let x_values = jStat(-3, 3, 210)[0]
+  
+  for(var i = 1; i <= n; i++) {
+    let density = [];
+    let objects = [];
+    
+    for(var j = 0; j < x_values.length; j++) {
+      let x = x_values[j];
+      let t = jStat.studentt.pdf(x, i);
+      objects.push({value: x, density: t});
+    }
+  
+  let new_path = {df: i,
+                  color: colors[i-1],
+                  data: objects}
+  arr.push(new_path);
+  }
+  return arr;
+}
+
+cover = {
+
+var svg = d3.select(DOM.svg(w, h));
+
+var container = svg.append("g")
+    .attr("class", ".container")
+
+var paths = container.selectAll("path")
+  .data(test_data)
+  .enter().append("g").attr("class", "t-path")
+
+var path = paths.append("path")
+  .attr("d", d => tline(d.data))
+  .style("stroke", d => d.color)
+  .style("fill", "none")
+
+  
+  path.each(function(d) { d.totalLength = this.getTotalLength(); })
+    .attr("stroke-dasharray", function(d) { return d.totalLength + " " + d.totalLength; })
+    .attr("stroke-dashoffset", function(d) { return d.totalLength; })
+    .transition()
+    .duration(function(d, i){return (1-i/n)*(3000)})
+    .delay(function(d, i){return  200*Math.sqrt(i*8)})
+    .attr("stroke-dashoffset", 0)
+
+    return svg.node()
+}
+
+tline = d3.line()
+    .x(function(d) { return tx(d.value); })
+    .y(function(d) { return ty(d.density); });
+
+tx = d3.scaleLinear()
+    .domain([-3, 3])
+    .range([0, w]);
+
+ty = d3.scaleLinear()
+    .domain([0, jStat.studentt.pdf(0, 101)])
+    .range([h, 0]);
+
+```
+
 
 ```{r cover}
 #| eval: false
@@ -35,6 +122,43 @@ bc1101tools::plot_save("11_the-t-test.svg",
 
 ```
 
+```{r diagrams}
+#| eval: false
+
+library(bc1101tools)
+
+w <- 6
+h <- 4.5
+
+
+z1 <- plot_nhst_diagram(text.size = 6,
+             pop1lab = "Known\nOriginal\npopulation\n(\U03BC, \U03C3)",
+             sample2lab = "Treated\nSample\n(M)")
+
+
+z2 <- plot_nhst_diagram(text.size = 6,
+             pop1color = "red", pop1lab = "Not fully\nknown original\npopulation\n(\U03BC)", pop1line = 2,
+             sample2lab = "Treated\nSample\n(M)")
+
+
+t <- plot_nhst_diagram(text.size = 6,
+             pop1color = "red", pop1lab = "Not fully\nknown original\npopulation\n(\U03BC)", pop1line = 2,
+             sample2lab = "Treated\nSample\n(M, s, n)")
+
+human_benchmark <- plot_nhst_diagram(5,
+             pop1lab = "humanbenchmark.com\npopulation\n(\U03BC)",
+             pop2lab = "BC1101\npopulation")
+
+plot_save(plot = z1, "nhst-z-diagram.svg", width = w, height = h)
+
+plot_save(plot = z2, "nhst-z-diagram-2.svg", width = w, height = h)
+
+plot_save(plot = t, "nhst-t-diagram.svg", width = w, height = h)
+
+plot_save(plot = human_benchmark, "nhst-class-diagram.svg", width = w*1.2, height = h*1.2)
+
+```
+
 
 # Overview
 
@@ -46,23 +170,61 @@ bc1101tools::plot_save("11_the-t-test.svg",
 
 # $t$ vs. $z$
 
-# $z$-test
+## $z$-test
 
 - Useful if we know everything about original population
 
-![](media/nhst-z-diagram.svg){.invertable}
+:::: {.columns}
+
+::: {.column width="70%"}
+![](media/nhst-z-diagram.svg){.invertable-blue}
+:::
+
+::: {.column width="30%" style="position: absolute; top: 50%;"}
+$z = \dfrac{M - \mu}{\sigma_M}$
+:::
+
+::::
 
 
-## $z$-test problem
 
-- [Problem]{.emph}
-  - Often don't know everything about original population
 
-![](media/nhst-z-diagram.svg)
+## Problem
+
+- Often don't know everything about original population
+
+:::: {.columns}
+
+::: {.column width="70%"}
+![](media/nhst-z-diagram-2.svg){.invertable-blue}
+:::
+
+::: {.column width="30%" style="position: absolute; top: 50%;"}
+
+
+$\renewcommand{\CancelColor}{\red}z = \dfrac{M - \mu}{\require{enclose}\enclose{horizontalstrike}{\sigma_M}}$
+:::
+
+::::
+
+
 
 ## $t$-test solution
 
 - Estimate population variability using sample
+
+:::: {.columns}
+
+::: {.column width="70%"}
+![](media/nhst-t-diagram.svg){.invertable-blue}
+:::
+
+::: {.column width="30%" style="position: absolute; top: 50%;"}
+$t = \dfrac{M-\mu}{s_M}$
+:::
+
+::::
+
 
 ## The $t$ statistic {.smallest}
 
@@ -93,9 +255,8 @@ $$
 
 ## Degrees of freedom {.smallest}
 
-- Degrees of freedom
-  - $df$ depends on kind of $t$-test you're doing
-  - Single sample $t$-test: $df = n - 1$
+- $df$ depends on kind of $t$-test you're doing
+- Single sample $t$-test: $df = n - 1$
 
 $\text{Population variance} = \sigma^2 = \dfrac{SS}{N}$
 
@@ -318,11 +479,13 @@ y = d3.scaleLinear()
 
 :::: {.columns}
 
-::: {.column width="50%"}
-Table
+::: {.column width="50%" style="font-size: 0.4em;"}
+```{r}
+bc1101tools::t_table()
+```
 :::
 
-::: {.column width="50%"}
+::: {.column width="50%" style="margin-top: -1em;"}
 ![](media/directional-test-lower-tail.svg){.invertable width=80%}
 
 ![](media/directional-test-upper-tail.svg){.invertable width=80%}
@@ -334,15 +497,17 @@ Table
 
 
 
-## $t$ table
+## $t$ table & R
 
 :::: {.columns}
 
-::: {.column width="50%"}
-Table
+::: {.column width="50%"  style="font-size: 0.4em;"}
+```{r}
+bc1101tools::t_table()
+```
 :::
 
-::: {.column width="50%"}
+::: {.column width="50%" .small}
 - Using R
 - `pt()` and `qt()` instead of `pnorm()` and `qnorm()`
 
@@ -365,7 +530,10 @@ qt(.05, df = 10)
 
 # The $t$-test
 
+- Hypothesis testing with $t$
 - Single-sample $t$ test
+
+![](media/nhst-t-diagram.svg){.invertable-blue}
 
 ## Class reaction times
 
@@ -442,16 +610,26 @@ plot_save("class-reaction-times-histogram.svg",
 
 :::: {.columns}
 
-::: {.column width="80%"}
+::: {.column width=70%}
 - Specify $\alpha$, identify critical region(s)
 - For $t$, depends on $df$ and thus $n$
 - For single-sample $t$-test, $df = n – 1$
+
+![](media/nondirectional-test.svg){width=100% .invertable}
 :::
 
-::: {.column width="20%"}
+::: {.column style="width: 30%; font-size: 0.5em; margin-top: -4em;"}
 ```{r}
-#| eval: false
-bc1101tools::t_table(dfs = c(1:6,20:31), qs = .025, dots = c(6, 18))
+library(dplyr)
+
+df <- tibble::tibble(df = c(1:5, 20:30),
+                 q = qt(.975, df)) |> 
+  mutate(df = as.character(df),
+         q = as.character(sprintf("%.3f", q))) |> 
+  tibble::add_row(df = "...", q = "...", .after = 5) |> 
+  tibble::add_row(df = "...", q = "...")
+
+knitr::kable(df, col.names = c("\\(df\\)", "\\(\\alpha = .05\\)"), align = "r")
 ```
 
 :::
@@ -492,6 +670,11 @@ t = \dfrac{M - \mu}{s_M} &= \dfrac{`r round(M, 2)` - `r mu`}{`r round(SD, 2)`/\s
   - $t = `r round(t, 2)`$  exceeds critical values $[`r round(qt(c(.025, .975), df = n - 1), 2)`]$
   - $p < \alpha$
   - "Statistically significant" difference
+
+## Conclusion
+
+![](media/nhst-class-diagram.svg){.invertable-blue}
+
 
 # Learning checks
 

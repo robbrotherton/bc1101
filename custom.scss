@@ -42,6 +42,10 @@ $code-block-border-color: #000000;
     filter: invert(1) hue-rotate(180deg) saturate(10);
   }
 
+   .invertable-blue {
+    filter: invert(1) hue-rotate(180deg) brightness(3) saturate(70%);
+  }
+
   .reveal h1, .reveal h2, .reveal h3 {
     color: #eee;
   }

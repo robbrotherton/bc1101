@@ -1299,7 +1299,7 @@
     "href": "slides/11_the-t-test.html#t-test-solution",
     "title": "BC1101",
     "section": "\\(t\\)-test solution",
-    "text": "\\(t\\)-test solution\n\nEstimate population variability using sample"
+    "text": "\\(t\\)-test solution\n\nEstimate population variability using sample\n\n\n\n\n\n\\(t = \\dfrac{M-\\mu}{s_M}\\)"
   },
   {
     "objectID": "slides/11_the-t-test.html#the-t-statistic",
@@ -1313,7 +1313,7 @@
     "href": "slides/11_the-t-test.html#degrees-of-freedom",
     "title": "BC1101",
     "section": "Degrees of freedom",
-    "text": "Degrees of freedom\n\nDegrees of freedom\n\n\\(df\\) depends on kind of \\(t\\)-test you’re doing\nSingle sample \\(t\\)-test: \\(df = n - 1\\)\n\n\n\\(\\text{Population variance} = \\sigma^2 = \\dfrac{SS}{N}\\)\n\\(\\text{Sample variance} = s^2 = \\dfrac{SS}{df} = \\dfrac{SS}{n-1}\\)\n\\(\\text{Sample standard deviation} = s = \\sqrt{\\dfrac{SS}{df}} = \\sqrt{\\dfrac{SS}{n-1}}\\)"
+    "text": "Degrees of freedom\n\n\\(df\\) depends on kind of \\(t\\)-test you’re doing\nSingle sample \\(t\\)-test: \\(df = n - 1\\)\n\n\\(\\text{Population variance} = \\sigma^2 = \\dfrac{SS}{N}\\)\n\\(\\text{Sample variance} = s^2 = \\dfrac{SS}{df} = \\dfrac{SS}{n-1}\\)\n\\(\\text{Sample standard deviation} = s = \\sqrt{\\dfrac{SS}{df}} = \\sqrt{\\dfrac{SS}{n-1}}\\)"
   },
   {
     "objectID": "slides/11_the-t-test.html#the-t-distribution-1",
@@ -1327,7 +1327,7 @@
     "href": "slides/11_the-t-test.html#t-table",
     "title": "BC1101",
     "section": "\\(t\\) table",
-    "text": "\\(t\\) table\n\n\nTable"
+    "text": "\\(t\\) table\n\n\n\n\n\n\n \n\nProportionin 1 tail\n\n0.1\n\n0.05\n\n0.025\n\n0.01\n\n0.005\n\n  \n    Proportionin 2 tails \n    0.2 \n    0.1 \n    0.05 \n    0.02 \n    0.01 \n  \n \n\n  \n    1 \n    3.078 \n    6.314 \n    12.706 \n    31.821 \n    63.657 \n  \n  \n    2 \n    1.886 \n    2.920 \n    4.303 \n    6.965 \n    9.925 \n  \n  \n    3 \n    1.638 \n    2.353 \n    3.182 \n    4.541 \n    5.841 \n  \n  \n    4 \n    1.533 \n    2.132 \n    2.776 \n    3.747 \n    4.604 \n  \n  \n    5 \n    1.476 \n    2.015 \n    2.571 \n    3.365 \n    4.032 \n  \n  \n    6 \n    1.440 \n    1.943 \n    2.447 \n    3.143 \n    3.707 \n  \n  \n    7 \n    1.415 \n    1.895 \n    2.365 \n    2.998 \n    3.499 \n  \n  \n    \\(df\\)       8 \n    1.397 \n    1.860 \n    2.306 \n    2.896 \n    3.355 \n  \n  \n    9 \n    1.383 \n    1.833 \n    2.262 \n    2.821 \n    3.250 \n  \n  \n    10 \n    1.372 \n    1.812 \n    2.228 \n    2.764 \n    3.169 \n  \n  \n    11 \n    1.363 \n    1.796 \n    2.201 \n    2.718 \n    3.106 \n  \n  \n    12 \n    1.356 \n    1.782 \n    2.179 \n    2.681 \n    3.055 \n  \n  \n    13 \n    1.350 \n    1.771 \n    2.160 \n    2.650 \n    3.012 \n  \n  \n    14 \n    1.345 \n    1.761 \n    2.145 \n    2.624 \n    2.977 \n  \n  \n    15 \n    1.341 \n    1.753 \n    2.131 \n    2.602 \n    2.947 \n  \n  \n    ... \n    ... \n    ... \n    ... \n    ... \n    ..."
   },
   {
     "objectID": "slides/11_the-t-test.html#t-table-1",
@@ -1362,7 +1362,7 @@
     "href": "slides/11_the-t-test.html#decision-criterion",
     "title": "BC1101",
     "section": "2. Decision criterion",
-    "text": "2. Decision criterion\n\n\n\nSpecify \\(\\alpha\\), identify critical region(s)\nFor \\(t\\), depends on \\(df\\) and thus \\(n\\)\nFor single-sample \\(t\\)-test, \\(df = n – 1\\)"
+    "text": "2. Decision criterion\n\n\n\nSpecify \\(\\alpha\\), identify critical region(s)\nFor \\(t\\), depends on \\(df\\) and thus \\(n\\)\nFor single-sample \\(t\\)-test, \\(df = n – 1\\)\n\n\n\n\n\n\n\n \n  \n    \\(df\\) \n    \\(\\alpha = .05\\) \n  \n \n\n  \n    1 \n    12.706 \n  \n  \n    2 \n    4.303 \n  \n  \n    3 \n    3.182 \n  \n  \n    4 \n    2.776 \n  \n  \n    5 \n    2.571 \n  \n  \n    ... \n    ... \n  \n  \n    20 \n    2.086 \n  \n  \n    21 \n    2.080 \n  \n  \n    22 \n    2.074 \n  \n  \n    23 \n    2.069 \n  \n  \n    24 \n    2.064 \n  \n  \n    25 \n    2.060 \n  \n  \n    26 \n    2.056 \n  \n  \n    27 \n    2.052 \n  \n  \n    28 \n    2.048 \n  \n  \n    29 \n    2.045 \n  \n  \n    30 \n    2.042 \n  \n  \n    ... \n    ..."
   },
   {
     "objectID": "slides/11_the-t-test.html#state-hypotheses-1",
@@ -1510,5 +1510,33 @@
     "title": "BC1101",
     "section": "Something else",
     "text": "Something else"
+  },
+  {
+    "objectID": "slides/11_the-t-test.html#problem",
+    "href": "slides/11_the-t-test.html#problem",
+    "title": "BC1101",
+    "section": "Problem",
+    "text": "Problem\n\nOften don’t know everything about original population\n\n\n\n\n\n\\(\\renewcommand{\\CancelColor}{\\red}z = \\dfrac{M - \\mu}{\\require{enclose}\\enclose{horizontalstrike}{\\sigma_M}}\\)"
+  },
+  {
+    "objectID": "slides/11_the-t-test.html#z-test",
+    "href": "slides/11_the-t-test.html#z-test",
+    "title": "BC1101",
+    "section": "\\(z\\)-test",
+    "text": "\\(z\\)-test\n\nUseful if we know everything about original population\n\n\n\n\n\n\\(z = \\dfrac{M - \\mu}{\\sigma_M}\\)"
+  },
+  {
+    "objectID": "slides/11_the-t-test.html#t-table-r",
+    "href": "slides/11_the-t-test.html#t-table-r",
+    "title": "BC1101",
+    "section": "\\(t\\) table & R",
+    "text": "\\(t\\) table & R\n\n\n\n\n\n\n \n\nProportionin 1 tail\n\n0.1\n\n0.05\n\n0.025\n\n0.01\n\n0.005\n\n  \n    Proportionin 2 tails \n    0.2 \n    0.1 \n    0.05 \n    0.02 \n    0.01 \n  \n \n\n  \n    1 \n    3.078 \n    6.314 \n    12.706 \n    31.821 \n    63.657 \n  \n  \n    2 \n    1.886 \n    2.920 \n    4.303 \n    6.965 \n    9.925 \n  \n  \n    3 \n    1.638 \n    2.353 \n    3.182 \n    4.541 \n    5.841 \n  \n  \n    4 \n    1.533 \n    2.132 \n    2.776 \n    3.747 \n    4.604 \n  \n  \n    5 \n    1.476 \n    2.015 \n    2.571 \n    3.365 \n    4.032 \n  \n  \n    6 \n    1.440 \n    1.943 \n    2.447 \n    3.143 \n    3.707 \n  \n  \n    7 \n    1.415 \n    1.895 \n    2.365 \n    2.998 \n    3.499 \n  \n  \n    \\(df\\)       8 \n    1.397 \n    1.860 \n    2.306 \n    2.896 \n    3.355 \n  \n  \n    9 \n    1.383 \n    1.833 \n    2.262 \n    2.821 \n    3.250 \n  \n  \n    10 \n    1.372 \n    1.812 \n    2.228 \n    2.764 \n    3.169 \n  \n  \n    11 \n    1.363 \n    1.796 \n    2.201 \n    2.718 \n    3.106 \n  \n  \n    12 \n    1.356 \n    1.782 \n    2.179 \n    2.681 \n    3.055 \n  \n  \n    13 \n    1.350 \n    1.771 \n    2.160 \n    2.650 \n    3.012 \n  \n  \n    14 \n    1.345 \n    1.761 \n    2.145 \n    2.624 \n    2.977 \n  \n  \n    15 \n    1.341 \n    1.753 \n    2.131 \n    2.602 \n    2.947 \n  \n  \n    ... \n    ... \n    ... \n    ... \n    ... \n    ... \n  \n\n\n\n\n\n\n\nUsing R\npt() and qt() instead of pnorm() and qnorm()\n\n\nqnorm(.05)\n\n[1] -1.644854\n\nqt(.05)\n\nError in qt(0.05): argument \"df\" is missing, with no default\n\nqt(.05, df = 5)\n\n[1] -2.015048\n\nqt(.05, df = 10)\n\n[1] -1.812461"
+  },
+  {
+    "objectID": "slides/11_the-t-test.html#conclusion",
+    "href": "slides/11_the-t-test.html#conclusion",
+    "title": "BC1101",
+    "section": "Conclusion",
+    "text": "Conclusion"
   }
 ]
