@@ -200,7 +200,7 @@
     "href": "slides/03_frequency.html#simple-example",
     "title": "BC1101",
     "section": "Simple example",
-    "text": "Simple example\n\nFrom raw scores\n\n\n\n2 1 2 3 4 3 3 2 2 1 5 3 4 1 2\n\n\n\n\n\nTo this\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    1 \n    3 \n  \n  \n    2 \n    5 \n  \n  \n    3 \n    4 \n  \n  \n    4 \n    2 \n  \n  \n    5 \n    1 \n  \n\n\n\n\n\n\n\n\nOr this"
+    "text": "Simple example\n\n\n\n\nFrom raw scores\n\n\n\n2 1 2 3 4 3 3 2 2 1 5 3 4 1 2\n\n\n\n\n\nTo this\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    1 \n    3 \n  \n  \n    2 \n    5 \n  \n  \n    3 \n    4 \n  \n  \n    4 \n    2 \n  \n  \n    5 \n    1 \n  \n\n\n\n\n\n\n\n\nOr this"
   },
   {
     "objectID": "slides/03_frequency.html#frequency-tables-1",
@@ -249,7 +249,7 @@
     "href": "slides/03_frequency.html#grouped-histogram",
     "title": "BC1101",
     "section": "Grouped histogram",
-    "text": "Grouped histogram\n\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    40-41 \n    1 \n  \n  \n    42-43 \n    1 \n  \n  \n    44-45 \n    2 \n  \n  \n    46-47 \n    0 \n  \n  \n    48-49 \n    1 \n  \n  \n    50-51 \n    3 \n  \n  \n    52-53 \n    6 \n  \n  \n    54-55 \n    7 \n  \n  \n    56-57 \n    9 \n  \n  \n    58-59 \n    10"
+    "text": "Grouped histogram\n\n\n\n\n\n \n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    40-41 \n    1 \n  \n  \n    42-43 \n    1 \n  \n  \n    44-45 \n    2 \n  \n  \n    46-47 \n    0 \n  \n  \n    48-49 \n    1 \n  \n  \n    50-51 \n    3 \n  \n  \n    52-53 \n    6 \n  \n  \n    54-55 \n    7 \n  \n  \n    56-57 \n    9 \n  \n  \n    58-59 \n    10"
   },
   {
     "objectID": "slides/03_frequency.html#frequency-polygon",
@@ -1545,5 +1545,12 @@
     "title": "Slides",
     "section": "11. The \\(t\\) test",
     "text": "11. The \\(t\\) test\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \n\\(t\\) vs. \\(z\\)\nThe \\(t\\) distribution\nThe \\(t\\)-test\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+  },
+  {
+    "objectID": "slides/03_frequency.html#screenshot",
+    "href": "slides/03_frequency.html#screenshot",
+    "title": "BC1101",
+    "section": "538 screenshot",
+    "text": "538 screenshot"
   }
 ]

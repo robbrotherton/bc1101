@@ -16,14 +16,19 @@ format:
 - [The $t$-test]
 - [Learning checks]
 
+```{r chunk-b, ref.label=I('chunk-a')}
+```
+
+```{r}
+answer
+```
+
 
 # $t$ vs. $z$
 
-
-```{r chunk-a}
-answer <- 2+2
+```{r, chunk-a}
+answer <- 2 + 2
 ```
-
 
 ## $z$-test
 

@@ -6,99 +6,8 @@ format:
 
 # 3|FREQUENCY
 
-![](covers/03_frequency.svg)
+<div id = "cover-image"></div>
 
-```{r data}
-
-# generic 'scores' used for generic frequency graph examples
-scores <- c(2, 1, 2, 3, 4, 3, 3, 2, 2, 1, 5, 3, 4, 1, 2)
-
-# some actual midterm scores
-midterms <- c(41,43,44,45,48,50,51,51,
-              52,52,52,53,53,53,54,54,
-              55,55,55,55,55,56,56,56,
-              56,56,57,57,57,57,58,58,
-              58,59,59,59,59,59,59,59)
-
-```
-
-```{r cover, eval=FALSE}
-library(ggplot2)
-
-ggplot(data.frame(x = scores), aes(x)) +
-  geom_density() +
-  scale_x_continuous(limits = c(0, 6)) +
-  theme_void()
-
-ggsave(here::here("slides", "covers", "03_frequency.svg"), 
-       width = 10, height = 5)
-
-
-```
-
-```{r 538-screenshots, eval=FALSE}
-webshot2::webshot(url = "https://projects.fivethirtyeight.com/biden-approval-rating/",
-                  selector = "#intro",
-                  file = here::here("slides", "media", "538-intro.png"))
-
-webshot2::webshot(url = "https://projects.fivethirtyeight.com/biden-approval-rating/",
-                  selector = ".main",
-                  file = here::here("slides", "media", "538-chart.png"))
-
-webshot2::webshot(url = "https://projects.fivethirtyeight.com/biden-approval-rating/",
-                  selector = ".polls",
-                  file = here::here("slides", "media", "538-table.png"))
-
-```
-
-```{r frequency-graphs, eval=FALSE}
-library(ggplot2)
-# library(gridExtra)
-# 
-p <- ggplot(NULL, aes(x = scores)) +
-  labs(x = "Scores", y = "Frequency") +
-  scale_x_continuous(limits = c(0,6), breaks = 0:6) +
-  scale_y_continuous(expand = c(0,0), limits = c(0, 5.5)) +
-  papaja::theme_apa(base_size = 18) +
-  # theme(axis.title.x = element_text(margin = margin(t = 1))) +
-  NULL
-
-pHist <- p + geom_histogram(binwidth = 1, color = "black", fill = "grey")
-pFreq <- p + geom_point(stat = "count") + geom_freqpoly(binwidth = 1)
-pBar <- p + geom_bar(stat = "count", color = 'black', fill = 'grey')
-pDens <- p + geom_density() + ylab("Proportion") +
-  scale_y_continuous(expand = c(0,0), limits = c(0, 0.4))
-
-pHist_Freq <- p + geom_histogram(binwidth = 1, color = "black", fill = "grey") +
-  geom_point(stat = "count") +
-  geom_freqpoly(binwidth = 1)
-
-ggplot2::ggsave(here::here("slides/media/freq-histogram.png"), pHist, width = 10, height = 8)
-ggplot2::ggsave(here::here("slides/media/freq-bar.png"), pBar, width = 10, height = 8)
-ggplot2::ggsave(here::here("slides/media/freq-freq-poly.png"), pFreq, width = 10, height = 8)
-ggplot2::ggsave(here::here("slides/media/freq-curve.png"), pDens, width = 10, height = 8)
-
-
-# vertical strip showing 4 example graphs
-g <- gridExtra::arrangeGrob(pHist, pFreq, pBar, pDens, ncol = 1)
-ggplot2::ggsave(here::here("slides/media/freq-graphs-demo-long.png"), g, width = 5, height = 12)
-
-# horizontal 
-g <- gridExtra::arrangeGrob(pHist, pFreq, nrow = 1)
-ggplot2::ggsave(here::here("slides/media/freq-graphs-demo.png"), g, width = 5, height = 2)
-
-
-# grouped frequency using midterm scores
-grouped_hist <- ggplot(NULL, aes(x = midterms)) +
-  geom_histogram(binwidth = 2, center = 40.5, closed = 'left', color = 'black', fill = 'grey') +
-  scale_x_continuous(breaks = 40:60) +
-  scale_y_continuous(breaks = 0:10, expand = c(0,0)) +
-  labs(x= "Grouped Midterm Scores", y = "Frequency") +
-  papaja::theme_apa()
-
-ggsave(here::here("slides/media/freq-grouped-histogram.png"), grouped_hist, width = 8, height = 6)
-
-```
 
 # Overview
 - [Frequency]
@@ -154,6 +63,9 @@ ggsave(here::here("slides/media/freq-grouped-histogram.png"), grouped_hist, widt
 
 ## Simple example
 
+```{r ref.label=I('data')}
+```
+
 - From raw scores
 ```{r}
 cat(scores)
@@ -176,7 +88,13 @@ bc1101tools::frequency_table(scores)
 
 - Or this
 
-![](media/freq-graphs-demo.jpg)
+::: {.r-hstack}
+![](media/freq-histogram-small.svg){.invertable}
+
+![](media/freq-poly-small.svg){.invertable}
+
+:::
+<!-- ![](media/freq-graphs-demo.jpg) -->
 :::
 
 ::::
@@ -270,9 +188,16 @@ bc1101tools::frequency_table(midterms, binwidth = 2)
   - Want to show more than one group?
 :::
 
-::: {.column width="30%" .top}
+::: {.column width="30%" .top .invertable}
 
-![](media/freq-graphs-demo-long.png)
+<!-- ![](media/freq-graphs-demo-long.png) -->
+![](media/freq-histogram-small.svg)
+
+![](media/freq-bar-small.svg){style="margin-top: -1em;"}
+
+![](media/freq-poly-small.svg){style="margin-top: -1em;"}
+
+![](media/freq-curve-small.svg){style="margin-top: -1em;"}
 :::
 
 ::::
@@ -290,7 +215,7 @@ bc1101tools::frequency_table(midterms, binwidth = 2)
 
 ::: {.column width="60%"}
 
-![](media/freq-bar.png)
+![](media/freq-bar.svg){.invertable}
 
 :::
 
@@ -310,7 +235,7 @@ bc1101tools::frequency_table(midterms, binwidth = 2)
 
 ::: {.column width="60%"}
 
-![](media/freq-histogram.png)
+![](media/freq-histogram.svg){.invertable}
 
 :::
 
@@ -319,10 +244,19 @@ bc1101tools::frequency_table(midterms, binwidth = 2)
 
 ## Grouped histogram
 
+```{css}
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+```
+
 :::: {.columns}
 
 ::: {.column width="80%"}
-![](media/freq-grouped-histogram.png)
+<span class="helper"></span>
+![](media/freq-grouped.svg){width=100% .invertable style="vertical-align: middle;"}
 :::
 
 ::: {.column width="20%" .table-small}
@@ -349,11 +283,11 @@ bc1101tools::frequency_table(midterms, binwidth = 2)
 
 ::: {.column width="60%"}
 ::: {.r-stack}
-![](media/freq-freq-poly.png)
+![](media/freq-poly.svg){.invertable}
 
 ::: {.fragment .fade-in}
 ::: {.fragment .fade-out}
-![](media/freq-histogram.png){.hide-print style="opacity: 0.5;"}
+![](media/freq-histogram.svg){.invertable style="opacity: 0.5;"}
 
 :::
 :::
@@ -388,7 +322,7 @@ bc1101tools::frequency_table(midterms, binwidth = 2)
 
 ::: {.column width="60%"}
 
-![](media/freq-curve.png)
+![](media/freq-curve.svg){.invertable}
 
 :::
 
@@ -420,3 +354,213 @@ bc1101tools::frequency_table(x = 5:1, f = c(2, 4, 1, 0, 3))
 ::::
 
 
+
+
+
+::: {.content-hidden}
+# Data and figures
+
+## Data
+
+```{r, data}
+# generic 'scores' used for generic frequency graph examples
+scores <- c(2, 1, 2, 3, 4, 3, 3, 2, 2, 1, 5, 3, 4, 1, 2)
+
+# some actual midterm scores
+midterms <- c(41,43,44,45,48,50,51,51,
+              52,52,52,53,53,53,54,54,
+              55,55,55,55,55,56,56,56,
+              56,56,57,57,57,57,58,58,
+              58,59,59,59,59,59,59,59)
+```
+
+## Cover
+:::
+
+```{r ojs-cover-data}
+d <- density(scores, to = 6)
+
+
+df <- data.frame(value = d$x,
+                 density = d$y) |> 
+  purrr::transpose()
+
+ojs_define(data = df)
+
+```
+
+```{ojs ojs-cover}
+
+coverAnim = {
+
+  const w = 1050
+  const h = 500
+  
+  const x = d3.scaleLinear()
+              .domain([0, 6])
+              .range([0,w])
+  const y = d3.scaleLinear()
+              .domain([0, 0.36])
+              .range([h,0])
+  const line = d3.line()
+                .x(d => x(d.value))
+                .y(d => y(d.density))
+  
+  const svg = d3.select("#cover-image")
+    .append("svg")
+    .attr("width", w)
+    .attr("height", h)
+    
+  const path = svg.append("path")
+    .datum(data)
+    .attr("d", line)
+    .attr("fill", "none")
+    .attr("stroke", "black")
+    .attr("class", "invertable")
+    .attr("stroke-width", 2)
+    
+  const length = path.node().getTotalLength()
+  
+  path
+    .attr("stroke-dasharray", length + " " + length)
+    .attr("stroke-dashoffset", length)
+  path
+    .transition()
+    .duration(2000)
+    .attr("stroke-dashoffset", 0)
+  
+  const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+  }
+
+  function anim() {
+    path
+    .transition().duration(2000).attr("stroke-dashoffset", -length)
+    .transition().duration(0).attr("stroke-dashoffset", length)
+    .transition()
+    .duration(3000)
+    .attr("stroke-dashoffset", 0)
+    .on("end", () => sleep(2000).then(anim))
+  };
+
+  svg.on("click", anim);
+                
+  return svg.node();
+  
+}
+
+```
+
+
+```{r cover-ggplot}
+#| eval: false
+
+library(ggplot2)
+
+g <- ggplot(data.frame(x = scores), aes(x)) +
+  geom_density() +
+  scale_x_continuous(limits = c(0, 6)) +
+  theme_void()
+ggplot2::stat_density(aes(scores))
+ggsave(here::here("slides", "covers", "03_frequency.svg"), 
+       width = 10, height = 5)
+
+
+```
+
+::: {.content-hidden}
+
+## 538 screenshot
+
+```{r 538-screenshots, eval=FALSE}
+webshot2::webshot(url = "https://projects.fivethirtyeight.com/biden-approval-rating/",
+                  selector = "#intro",
+                  file = here::here("slides", "media", "538-intro.png"))
+
+webshot2::webshot(url = "https://projects.fivethirtyeight.com/biden-approval-rating/",
+                  selector = ".main",
+                  file = here::here("slides", "media", "538-chart.png"))
+
+webshot2::webshot(url = "https://projects.fivethirtyeight.com/biden-approval-rating/",
+                  selector = ".polls",
+                  file = here::here("slides", "media", "538-table.png"))
+
+```
+
+## Frequency graphs
+
+```{r frequency-graphs, eval=FALSE}
+library(bc1101tools)
+library(ggplot2)
+# library(gridExtra)
+
+p <- ggplot(NULL, aes(x = scores)) +
+  labs(x = "Scores", y = "Frequency") +
+  scale_x_continuous(limits = c(0,6), breaks = 0:6) +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 5.5)) +
+  papaja::theme_apa(base_size = 18) +
+  # theme(axis.title.x = element_text(margin = margin(t = 1))) +
+  theme(plot.background = element_blank(),
+        panel.background = element_blank(),
+        # panel.spac = unit(c(0,0,0,0), "in"),
+        # axis.title.x = element_text(margin = margin(t = 10, b = 0))
+        ) +
+  NULL
+pHist
+pHist <- p + geom_histogram(binwidth = 1, color = "black", fill = "grey")
+pFreq <- p + geom_point(stat = "count") + geom_freqpoly(binwidth = 1)
+pBar <- p + geom_bar(stat = "count", color = 'black', fill = 'grey')
+pDens <- p + geom_density() + ylab("Proportion") +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 0.4))
+
+pHist_Freq <- p + geom_histogram(binwidth = 1, color = "black", fill = "grey") +
+  geom_point(stat = "count") +
+  geom_freqpoly(binwidth = 1)
+
+# ggplot2::ggsave(here::here("slides/media/freq-histogram.png"), pHist, width = 10, height = 8)
+# ggplot2::ggsave(here::here("slides/media/freq-bar.png"), pBar, width = 10, height = 8)
+# ggplot2::ggsave(here::here("slides/media/freq-freq-poly.png"), pFreq, width = 10, height = 8)
+# ggplot2::ggsave(here::here("slides/media/freq-curve.png"), pDens, width = 10, height = 8)
+width <- 6
+height <- 5
+
+plot_save("freq-histogram.svg", plot = pHist, width = width, height = height)
+plot_save("freq-bar.svg",       plot = pBar,  width = width, height = height)
+plot_save("freq-poly.svg",      plot = pFreq, width = width, height = height)
+plot_save("freq-curve.svg",     plot = pDens, width = width, height = height)
+
+plot_save("freq-histogram-small.svg", plot = pHist, width = 4, height = 2.5)
+plot_save("freq-bar-small.svg",       plot = pBar,  width = 4, height = 2.5)
+plot_save("freq-poly-small.svg",      plot = pFreq, width = 4, height = 2.5)
+plot_save("freq-curve-small.svg",     plot = pDens, width = 4, height = 2.5)
+
+# vertical strip showing 4 example graphs
+g <- gridExtra::arrangeGrob(pHist, pFreq, pBar, pDens, ncol = 1)
+ggplot2::ggsave(here::here("slides/media/freq-graphs-demo-long.png"), g, width = 5, height = 12)
+
+# horizontal 
+g <- gridExtra::arrangeGrob(pHist, pFreq, nrow = 1)
+ggplot2::ggsave(here::here("slides/media/freq-graphs-demo.png"), g, width = 5, height = 2)
+
+
+# grouped frequency using midterm scores
+grouped_hist <- ggplot(NULL, aes(x = midterms)) +
+  geom_histogram(binwidth = 2, center = 40.5, closed = 'left', color = 'black', fill = 'grey') +
+  scale_x_continuous(breaks = 40:60) +
+  scale_y_continuous(breaks = 0:10, expand = c(0,0)) +
+  labs(x= "Grouped Midterm Scores", y = "Frequency") +
+  theme_bc1101()
+
+plot_save("freq-grouped.svg", plot = grouped_hist, width = 5, height = 3)
+# grouped_hist
+
+grouped_histogram <- plot_histogram(midterms, binwidth = 2) + 
+  scale_x_continuous(breaks = seq(40, 60, 1)) +
+  theme_bc1101()
+
+# grouped_histogram
+ggsave(here::here("slides/media/freq-grouped-histogram.png"), grouped_hist, width = 8, height = 6)
+
+```
+
+:::
