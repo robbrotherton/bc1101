@@ -6,158 +6,7 @@ format:
 
 # 11|THE $t$-TEST
 
-<!-- ![](covers/11_the-t-test.svg) -->
-
-```{r}
-
-gg_color_hue <- function(n) {
-  hues = seq(15, 375, length = n + 1)
-  hcl(h = hues, l = 65, c = 100)[1:n]
-}
-
-n <- 100
-colors <- rep(gg_color_hue(10), length.out = n)
-ojs_define(colors)
-
-```
-
-```{ojs}
-<!-- cover_data -->
-w = 1050
-h = 500
-n = colors.length
-
-<!-- jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js") -->
-
-test_data = {
-
-  let arr = [];
-  let x_values = jStat(-3, 3, 210)[0]
-  
-  for(var i = 1; i <= n; i++) {
-    let density = [];
-    let objects = [];
-    
-    for(var j = 0; j < x_values.length; j++) {
-      let x = x_values[j];
-      let t = jStat.studentt.pdf(x, i);
-      objects.push({value: x, density: t});
-    }
-  
-  let new_path = {df: i,
-                  color: colors[i-1],
-                  data: objects}
-  arr.push(new_path);
-  }
-  return arr;
-}
-
-cover = {
-
-var svg = d3.select(DOM.svg(w, h));
-
-var container = svg.append("g")
-    .attr("class", ".container")
-
-var paths = container.selectAll("path")
-  .data(test_data)
-  .enter().append("g").attr("class", "t-path")
-
-var path = paths.append("path")
-  .attr("d", d => tline(d.data))
-  .style("stroke", d => d.color)
-  .style("fill", "none")
-
-  
-  path.each(function(d) { d.totalLength = this.getTotalLength(); })
-    .attr("stroke-dasharray", function(d) { return d.totalLength + " " + d.totalLength; })
-    .attr("stroke-dashoffset", function(d) { return d.totalLength; })
-    .transition()
-    .duration(function(d, i){return (1-i/n)*(3000)})
-    .delay(function(d, i){return  200*Math.sqrt(i*8)})
-    .attr("stroke-dashoffset", 0)
-
-    return svg.node()
-}
-
-tline = d3.line()
-    .x(function(d) { return tx(d.value); })
-    .y(function(d) { return ty(d.density); });
-
-tx = d3.scaleLinear()
-    .domain([-3, 3])
-    .range([0, w]);
-
-ty = d3.scaleLinear()
-    .domain([0, jStat.studentt.pdf(0, 101)])
-    .range([h, 0]);
-
-```
-
-
-```{r cover}
-#| eval: false
-library(ggplot2)
-
-gg_color_hue <- function(n) {
-  hues = seq(15, 375, length = n + 1)
-  hcl(h = hues, l = 65, c = 100)[1:n]
-}
-
-dfs <- 1:100
-colors <- rep(gg_color_hue(10), 10)
-
-layers <- purrr::map2(.x = dfs,
-                      .y = colors,
-                     .f = ~stat_function(fun = dt, args = list(df = .x), xlim = c(-3, 3), color = .y))
-
-ggplot() +
-  layers +
-  scale_x_continuous(expand = c(0,0)) +
-  theme_void()
-
-bc1101tools::plot_save("11_the-t-test.svg",
-                       subdir = "covers",
-                       width = 10, height = 5)
-
-```
-
-```{r diagrams}
-#| eval: false
-
-library(bc1101tools)
-
-w <- 6
-h <- 4.5
-
-
-z1 <- plot_nhst_diagram(text.size = 6,
-             pop1lab = "Known\nOriginal\npopulation\n(\U03BC, \U03C3)",
-             sample2lab = "Treated\nSample\n(M)")
-
-
-z2 <- plot_nhst_diagram(text.size = 6,
-             pop1color = "red", pop1lab = "Not fully\nknown original\npopulation\n(\U03BC)", pop1line = 2,
-             sample2lab = "Treated\nSample\n(M)")
-
-
-t <- plot_nhst_diagram(text.size = 6,
-             pop1color = "red", pop1lab = "Not fully\nknown original\npopulation\n(\U03BC)", pop1line = 2,
-             sample2lab = "Treated\nSample\n(M, s, n)")
-
-human_benchmark <- plot_nhst_diagram(5,
-             pop1lab = "humanbenchmark.com\npopulation\n(\U03BC)",
-             pop2lab = "BC1101\npopulation")
-
-plot_save(plot = z1, "nhst-z-diagram.svg", width = w, height = h)
-
-plot_save(plot = z2, "nhst-z-diagram-2.svg", width = w, height = h)
-
-plot_save(plot = t, "nhst-t-diagram.svg", width = w, height = h)
-
-plot_save(plot = human_benchmark, "nhst-class-diagram.svg", width = w*1.2, height = h*1.2)
-
-```
+<div id="cover-image"></div>
 
 
 # Overview
@@ -280,45 +129,7 @@ $\text{Sample standard deviation} = s = \sqrt{\dfrac{SS}{df}} = \sqrt{\dfrac{SS}
 
 ::: {.column width="60%"}
 
-```{r t-curves}
-#| eval: false
-library(bc1101tools)
-library(ggplot2)
-library(ggrepel)
 
-base <- ggplot() + 
-  scale_y_continuous(limits = c(0, .4)) +
-  theme_void()
-
-norm <- base + 
-  stat_function(fun = dnorm, xlim = c(-3, 3), linetype = 2) +
-  geom_label_repel(aes(x = 0, y = .4, label = "Normal distribution"), nudge_x = -1.5, label.size = 0, fill = NA)
-
-norm
-
-t5 <- base + 
-  stat_function(fun = dt, args = list(df = 5), xlim = c(-3, 3), color = "steelblue") +
-  geom_label_repel(aes(x = 0, y = dt(0, 5), label = "t(df = 5)"), 
-                   nudge_x = 1.5, nudge_y = -.01,
-                   label.size = 0, color = "steelblue", fill = NA)
-
-t10 <- base + 
-  stat_function(fun = dt, args = list(df = 10), xlim = c(-3, 3), color = hsv(.5, 1, .5)) +
-  geom_label_repel(aes(x = 0, y = dt(0, 10), label = "t(df = 10)"), nudge_x = 1.5, label.size = 0, color = hsv(.5, 1, .5), fill = NA)
-
-t30 <- base + 
-  stat_function(fun = dt, args = list(df = 30), xlim = c(-3, 3), color = "red") +
-  geom_label_repel(aes(x = 0, y = dt(0, 30), label = "t(df = 30)"), 
-                   nudge_x = 1.5, nudge_y = 1,
-                   label.size = 0, color = "red", fill = NA)
-
-w <- 5
-h <- 5
-plot_save("t-distribution-0.svg", plot = norm, width = w, height = h)
-plot_save("t-distribution-1.svg", plot = t5, width = w, height = h)
-plot_save("t-distribution-2.svg", plot = t10, width = w, height = h)
-plot_save("t-distribution-3.svg", plot = t30, width = w, height = h)
-```
 
 ::: {.r-stack}
 
@@ -684,3 +495,241 @@ t = \dfrac{M - \mu}{s_M} &= \dfrac{`r round(M, 2)` - `r mu`}{`r round(SD, 2)`/\s
 3. True/False
     - An effect that exists is more likely to be detected if sample size $n$ is large
     - An effect that exists is less likely to be detected if the sample standard deviation $s$ is large
+
+
+
+
+
+
+::: {.content-hidden}
+# Data & figures
+
+## Cover
+:::
+
+```{r cover-data}
+
+gg_color_hue <- function(n) {
+  hues = seq(15, 375, length = n + 1)
+  hcl(h = hues, l = 65, c = 100)[1:n]
+}
+
+n <- 100
+colors <- rep(gg_color_hue(10), length.out = n)
+
+
+l <- purrr::map2(seq_len(n), colors,
+           ~list(id = .x, 
+                 color = .y,
+                 data = tibble::tibble(value = seq(-3,3,length.out = 210),
+                                                density = dt(value, .x)) |> 
+             purrr::transpose()))
+
+ojs_define(test_data = l)
+
+```
+
+
+```{ojs}
+
+<!-- jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js") -->
+
+
+
+cover = {
+
+const w = 1050
+const h = 500
+const n = test_data.length
+
+const tx = d3.scaleLinear()
+    .domain([-3, 3])
+    .range([0, w]);
+
+const ty = d3.scaleLinear()
+    .domain([0, jStat.studentt.pdf(0, 101)])
+    .range([h, 0]);
+
+const tline = d3.line()
+    .x(function(d) { return tx(d.value); })
+    .y(function(d) { return ty(d.density); });
+
+
+var svg = d3.select("#cover-image")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h)
+            
+var container = svg.append("g")
+    .attr("class", ".container")
+
+var paths = container.selectAll("path")
+  .data(test_data)
+  .enter().append("g").attr("class", "t-path")
+
+var path = paths.append("path")
+  .attr("d", d => tline(d.data))
+  .style("stroke", d => d.color)
+  .style("fill", "none")
+  .each(function(d) { d.totalLength = this.getTotalLength(); })
+  .each(function(d, i) { d.duration = 300 + (1-i/(n-1))*(3000); })
+  <!-- .each(function(d, i) { d.delay = 200*Math.sqrt(i*8); }) -->
+  .each(function(d, i) { d.delay = Math.sqrt(i*20000); })
+  .attr("stroke-dasharray", function(d) { return d.totalLength + " " + d.totalLength; })
+  .attr("stroke-dashoffset", d => d.totalLength)
+  
+  function animIn() {
+    path
+    // .transition().duration(0).delay(0).attr("stroke-dashoffset", d => d.totalLength)
+    // // transition back on screen moving right
+    .transition()
+    .duration(1500)
+    .delay(d => d.delay)
+    .attr("stroke-dashoffset", 0)
+  };
+  
+  animIn();
+
+const sleep = (milliseconds) => {
+  return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
+
+function animOut() {
+    path
+    // reset to on-screen
+    .transition().duration(0).delay(0).attr("stroke-dashoffset", 0)
+    // transtion off to the right
+    .transition()
+    .duration(1500)
+    .delay(d => d.delay)
+    .attr("stroke-dashoffset", d  => -d.totalLength)
+    // reset to off screen left
+    .transition().duration(0).delay(0).attr("stroke-dashoffset", d => d.totalLength)
+    // // transition back on screen moving right
+    .transition()
+    .duration(1500)
+    .delay(100)
+    .attr("stroke-dashoffset", 0)
+    .on("end", () => sleep(2500).then(animOut))
+};
+
+  svg.on("click", animOut)
+
+
+
+}
+
+```
+
+
+```{r ggplot-cover}
+#| eval: false
+library(ggplot2)
+
+gg_color_hue <- function(n) {
+  hues = seq(15, 375, length = n + 1)
+  hcl(h = hues, l = 65, c = 100)[1:n]
+}
+
+dfs <- 1:100
+colors <- rep(gg_color_hue(10), 10)
+
+layers <- purrr::map2(.x = dfs,
+                      .y = colors,
+                     .f = ~stat_function(fun = dt, args = list(df = .x), xlim = c(-3, 3), color = .y))
+
+ggplot() +
+  layers +
+  scale_x_continuous(expand = c(0,0)) +
+  theme_void()
+
+bc1101tools::plot_save("11_the-t-test.svg",
+                       subdir = "covers",
+                       width = 10, height = 5)
+
+```
+
+::: {.content-hidden}
+## NHST diagrams
+
+
+```{r diagrams}
+#| eval: false
+
+library(bc1101tools)
+
+w <- 6
+h <- 4.5
+
+
+z1 <- plot_nhst_diagram(text.size = 6,
+             pop1lab = "Known\nOriginal\npopulation\n(\U03BC, \U03C3)",
+             sample2lab = "Treated\nSample\n(M)")
+
+
+z2 <- plot_nhst_diagram(text.size = 6,
+             pop1color = "red", pop1lab = "Not fully\nknown original\npopulation\n(\U03BC)", pop1line = 2,
+             sample2lab = "Treated\nSample\n(M)")
+
+
+t <- plot_nhst_diagram(text.size = 6,
+             pop1color = "red", pop1lab = "Not fully\nknown original\npopulation\n(\U03BC)", pop1line = 2,
+             sample2lab = "Treated\nSample\n(M, s, n)")
+
+human_benchmark <- plot_nhst_diagram(5,
+             pop1lab = "humanbenchmark.com\npopulation\n(\U03BC)",
+             pop2lab = "BC1101\npopulation")
+
+plot_save(plot = z1, "nhst-z-diagram.svg", width = w, height = h)
+
+plot_save(plot = z2, "nhst-z-diagram-2.svg", width = w, height = h)
+
+plot_save(plot = t, "nhst-t-diagram.svg", width = w, height = h)
+
+plot_save(plot = human_benchmark, "nhst-class-diagram.svg", width = w*1.2, height = h*1.2)
+
+```
+
+## t curves
+
+```{r t-curves}
+#| eval: false
+library(bc1101tools)
+library(ggplot2)
+library(ggrepel)
+
+base <- ggplot() + 
+  scale_y_continuous(limits = c(0, .4)) +
+  theme_void()
+
+norm <- base + 
+  stat_function(fun = dnorm, xlim = c(-3, 3), linetype = 2) +
+  geom_label_repel(aes(x = 0, y = .4, label = "Normal distribution"), nudge_x = -1.5, label.size = 0, fill = NA)
+
+norm
+
+t5 <- base + 
+  stat_function(fun = dt, args = list(df = 5), xlim = c(-3, 3), color = "steelblue") +
+  geom_label_repel(aes(x = 0, y = dt(0, 5), label = "t(df = 5)"), 
+                   nudge_x = 1.5, nudge_y = -.01,
+                   label.size = 0, color = "steelblue", fill = NA)
+
+t10 <- base + 
+  stat_function(fun = dt, args = list(df = 10), xlim = c(-3, 3), color = hsv(.5, 1, .5)) +
+  geom_label_repel(aes(x = 0, y = dt(0, 10), label = "t(df = 10)"), nudge_x = 1.5, label.size = 0, color = hsv(.5, 1, .5), fill = NA)
+
+t30 <- base + 
+  stat_function(fun = dt, args = list(df = 30), xlim = c(-3, 3), color = "red") +
+  geom_label_repel(aes(x = 0, y = dt(0, 30), label = "t(df = 30)"), 
+                   nudge_x = 1.5, nudge_y = 1,
+                   label.size = 0, color = "red", fill = NA)
+
+w <- 5
+h <- 5
+plot_save("t-distribution-0.svg", plot = norm, width = w, height = h)
+plot_save("t-distribution-1.svg", plot = t5, width = w, height = h)
+plot_save("t-distribution-2.svg", plot = t10, width = w, height = h)
+plot_save("t-distribution-3.svg", plot = t30, width = w, height = h)
+```
+
+:::
