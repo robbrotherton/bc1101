@@ -222,6 +222,13 @@ card("10_hypothesis-testing-pt-2", "")
 ```
 ::::
 
+:::: {.box}
+## 11. The $t$ test
+```{r}
+card("11_the-t-test", "")
+```
+::::
+
 
 ```{r eval=FALSE, echo=FALSE}
 
