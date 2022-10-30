@@ -1,19 +1,6 @@
-/*-- scss:defaults --*/
-
-/*--
-$body-bg: #b7b09c;
-$body-color: #4e3629;
-$link-color: #ffc72c;
-$presentation-heading-color: #cc0000;
-$code-color: #cc0000;
-$code-block-bg: #ded9ca;
-$code-block-border-color: #000000;
---*/
-
-
 /*-- scss:rules --*/
 
-#theme-toggle {
+.reveal #theme-toggle {
   float: right;
   margin-right: 0.5rem;
 }

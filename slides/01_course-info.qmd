@@ -7,120 +7,9 @@ format:
 
 # 1|COURSE OVERVIEW
 
-<!-- ![](covers/01_course-info.svg){#cover} -->
+::: {#cover-image}
+:::
 
-```{r}
-library(dplyr)
-word <- "STATISTICS"
-
-pal <- data.frame(id = 1:5,
-                  color = viridis::viridis(5, end = .6))
-
-data <- data.frame(letter = strsplit(word, "")[[1]]) |> 
-  dplyr::rowwise() |> 
-  dplyr::mutate(value = which(LETTERS==letter)) |> 
-  dplyr::group_by(letter) |> 
-  dplyr::mutate(id = cur_group_id()) |> 
-  ungroup() |> 
-  mutate(duration = sqrt(value / max(value)) * 300,
-         delay = lag(cumsum(duration - 100), default = 0)) |> 
-  left_join(pal) |> 
-  purrr::transpose()
-
-ojs_define(data)
-```
-
-```{ojs}
-w = 1050
-h = w/2
-
-cover = {
-
-  const svg = d3.select(DOM.svg(w, h))
-    <!-- .style("background", "#cccccc") -->
-    .style("transform", "scaleY(-1)")
-    
-  const g = svg.append("g")
-  
-  g
-    .selectAll("rect")
-    .data(data)
-    .enter()
-      .append("rect")
-      .attr("fill", "black")
-        .attr("x", function(d, i){return 5 + i*(w/10)})
-        .attr("y", 0)
-        .attr("height", 0)
-        .attr("width", w/10 - 10)
-        .attr("fill", d => d.color)
-          .transition()
-          .duration(d => d.duration)
-          .delay(d => d.delay)
-          .attr("height", d => d.value * 26)
-  
-
- 
- return svg.node()
-}
-
-
-```
-
-```{r cover-course-info, eval=FALSE}
-library(ggplot2)
-
-word <- "STATISTICS"
-
-df <- data.frame(letter = strsplit(word, "")[[1]]) |> 
-  dplyr::rowwise() |> 
-  dplyr::mutate(value = which(LETTERS==letter)) |> 
-  tibble::rowid_to_column(var = "id")
-
-ggplot(df, aes(x = id, y = value, fill = letter)) +
-  geom_col() +
-  scale_fill_viridis_d(option = "D", end = .6, guide = "none") +
-  theme_void()
-
-ggsave(here::here("slides", "covers", "01_course-info.svg"), width = 10, height = 5)
-
-# Variables cover
-
-
-# variability cover
-
-sd <- seq(1, 5, .1)
-xvals <- seq(-5, 5, .1)
-
-df <- data.frame(id = rep(sd, each = length(xvals)),
-                 x = rep(xvals, length(sd)),
-                 y = purrr::map(.x = sd, ~dnorm(x = xvals, sd = .x)) |> 
-  unlist())
-
-ggplot(df) +
-  geom_path(aes(x, y, group = id, alpha = 1/id)) +
-  scale_alpha_identity(guide = "none") +
-  scale_x_continuous(expand = c(0,0)) +
-  theme_void()
-
-ggsave(here::here("slides", "covers", "05_variability.svg"), width = 10, height = 5)
-
-ggplot(data = NULL, aes(x = 0, y = 0, image = here::here("slides", "covers", "02_variables.svg"))) +
-  ggimage::geom_image()
-
-# frequency cover
-dfs <- 1:100
-xvals <- seq(-3, 3, .1)
-
-df <- data.frame(id = rep(dfs, each = length(xvals)),
-                 x = rep(xvals, length(dfs)),
-                 y = purrr::map(.x = dfs, ~dt(x = xvals, df = .x)) |> 
-  unlist())
-
-ggplot(df) +
-  geom_path(aes(x, y, group = id), alpha = .5) +
-  theme_void()
-
-```
 
 ## Overview
 
@@ -308,3 +197,121 @@ $$\begin{align}12 &= 7 + X \\ X &= ? \end{align}$$
 - Let me know about problems
 
 
+::: {.content-hidden}
+# Data and figures
+:::
+
+```{r}
+library(dplyr)
+word <- "STATISTICS"
+
+pal <- data.frame(id = 1:5,
+                  color = viridis::viridis(5, end = .6))
+
+data <- data.frame(letter = strsplit(word, "")[[1]]) |> 
+  dplyr::rowwise() |> 
+  dplyr::mutate(value = which(LETTERS==letter)) |> 
+  dplyr::group_by(letter) |> 
+  dplyr::mutate(id = cur_group_id()) |> 
+  ungroup() |> 
+  mutate(duration = sqrt(value / max(value)) * 300,
+         delay = lag(cumsum(duration - 100), default = 0)) |> 
+  left_join(pal) |> 
+  purrr::transpose()
+
+ojs_define(data)
+```
+
+```{ojs}
+w = 1050
+h = w/2
+
+cover = {
+
+  const svg = d3.select("#cover-image")
+    .append("svg")
+    .attr("width", w)
+    .attr("height", h)
+    .style("transform", "scaleY(-1)")
+    
+  const g = svg.append("g")
+  
+  g
+    .selectAll("rect")
+    .data(data)
+    .enter()
+      .append("rect")
+      .attr("fill", "black")
+        .attr("x", function(d, i){return 5 + i*(w/10)})
+        .attr("y", 0)
+        .attr("height", 0)
+        .attr("width", w/10 - 10)
+        .attr("fill", d => d.color)
+          .transition()
+          .duration(d => d.duration)
+          .delay(d => d.delay)
+          .attr("height", d => d.value * 26)
+  
+
+ 
+ return svg.node()
+}
+
+
+```
+
+```{r cover-course-info, eval=FALSE}
+library(ggplot2)
+
+word <- "STATISTICS"
+
+df <- data.frame(letter = strsplit(word, "")[[1]]) |> 
+  dplyr::rowwise() |> 
+  dplyr::mutate(value = which(LETTERS==letter)) |> 
+  tibble::rowid_to_column(var = "id")
+
+ggplot(df, aes(x = id, y = value, fill = letter)) +
+  geom_col() +
+  scale_fill_viridis_d(option = "D", end = .6, guide = "none") +
+  theme_void()
+
+ggsave(here::here("slides", "covers", "01_course-info.svg"), width = 10, height = 5)
+
+# Variables cover
+
+
+# variability cover
+
+sd <- seq(1, 5, .1)
+xvals <- seq(-5, 5, .1)
+
+df <- data.frame(id = rep(sd, each = length(xvals)),
+                 x = rep(xvals, length(sd)),
+                 y = purrr::map(.x = sd, ~dnorm(x = xvals, sd = .x)) |> 
+  unlist())
+
+ggplot(df) +
+  geom_path(aes(x, y, group = id, alpha = 1/id)) +
+  scale_alpha_identity(guide = "none") +
+  scale_x_continuous(expand = c(0,0)) +
+  theme_void()
+
+ggsave(here::here("slides", "covers", "05_variability.svg"), width = 10, height = 5)
+
+ggplot(data = NULL, aes(x = 0, y = 0, image = here::here("slides", "covers", "02_variables.svg"))) +
+  ggimage::geom_image()
+
+# frequency cover
+dfs <- 1:100
+xvals <- seq(-3, 3, .1)
+
+df <- data.frame(id = rep(dfs, each = length(xvals)),
+                 x = rep(xvals, length(dfs)),
+                 y = purrr::map(.x = dfs, ~dt(x = xvals, df = .x)) |> 
+  unlist())
+
+ggplot(df) +
+  geom_path(aes(x, y, group = id), alpha = .5) +
+  theme_void()
+
+```

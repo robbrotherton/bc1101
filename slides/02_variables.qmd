@@ -1,14 +1,13 @@
 ---
-format: 
-  revealjs:
-    chalkboard: true
+format: revealjs
 ---
 
 # 2|VARIABLES
 
-![](covers/02_variables.svg)
+::: {#cover-image style="position: absolute"}
+:::
 
-
+![](covers/02_variables.svg){style="position: absolute;"}
 
 # Overview
 
@@ -571,3 +570,55 @@ new_sample = {
 - For each variable...
   1. Identify the scale of measurement that probably is used
   2. Explain whether the variable is continuous or discrete
+  
+::: {.content-hidden}
+# Data and figures
+:::
+
+```{ojs}
+
+cover = {
+
+  const w = 1050
+  const h = 500
+  const marginX = 100
+  const marginY = 30
+  
+  const svg = d3.select("#cover-image")
+    .append("svg")
+    .attr("width", w)
+    .attr("height", h)
+    
+  const lines = svg.append("g").attr("id", "axis-lines")
+    .attr("stroke", "black")
+    .attr("class", "invertable")
+    
+  lines.append("line")
+      .attr("x1", marginX)
+      .attr("x2", w-marginX)
+      .attr("y1", h-marginY)
+      .attr("y2", h-marginY)
+  lines.append("line")
+    .attr("x1", marginX)
+    .attr("x2", marginX)
+    .attr("y1", h-marginY)
+    .attr("y2", marginY)
+  
+  const labels = svg.append("g").attr("id", "axis-text")
+    .attr("stroke", "black")
+    .attr("class", "invertable")
+    .attr("font-family", "KaTeX_Main")
+    .attr("font-style", "italic")
+  
+  labels.append("text")
+    .attr("x", w/2)
+    .attr("y", h - (marginY-30))
+    .text("x")
+  labels.append("text")
+    .attr("x", marginX-30)
+    .attr("y", h/2)
+    .text("y")
+}
+
+```
+

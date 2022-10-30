@@ -1,85 +1,82 @@
 /*-- scss:defaults --*/
 
-/*--
-$body-bg: #b7b09c;
-$body-color: #4e3629;
-$link-color: #ffc72c;
-$presentation-heading-color: #cc0000;
-$code-color: #cc0000;
-$code-block-bg: #ded9ca;
-$code-block-border-color: #000000;
---*/
 
 
 /*-- scss:rules --*/
 
+:root {
+    --background-color-light: white;
+    --background-color-dark: #333;
+    --heading-color-dark: #ddd;
+    --text-color: #121416d8;
+    --link-color: #543fd7;
+    --menu-color: #5d90e4;
+}
+
 #theme-toggle {
+  color: var(--menu-color);
+  font-style: bold;
+  background: none;
+  border: 1px;
+  height: 1.3rem;
+  width: 1.3rem;
   float: right;
-  margin-right: 0.5rem;
+  font-size: 1.3rem;
+  margin-right: 1rem;
+}
+#theme-toggle:hover {
+  cursor: pointer;
+}
+
+.d-none {
+  display: none;
+}
+[data-theme='light'] .d-block-light {
+  display: block !important;
+}
+[data-theme='dark'] .d-block-dark {
+    display: block !important;
 }
 
 .btn-outline-dark {
     background-color: #eee;
 }
 
-@media (prefers-color-scheme: dark) {
-  $body-bg: #181818;
-  $body-color: white;
-  $link-color: #75AADB;
+body, .reveal {
+  transition-duration: 1s;
 }
 
-@media (prefers-color-scheme: dark) {
-  body, .reveal {
-    background: #333;
-    color: white;
-  }
 
-  /*.reveal {
-    background: #555;
+[data-theme='dark'] .reveal {
+    background-color: var(--background-color-dark);
     color: white;
-  }*/
+}
 
-  .reveal blockquote {
+[data-theme='dark'] .reveal h1 {
+    color: var(--heading-color-dark);
+}
+[data-theme='dark'] .reveal h2 {
+    color: var(--heading-color-dark);
+}
+[data-theme='dark'] .reveal h3 {
+    color: var(--heading-color-dark);
+}
+
+
+[data-theme='dark'] a {
+    color: lightblue;
+    transition-duration: 0.5s;
+}
+[data-theme='dark'] .reveal blockquote {
     color: #ddd;
   }
 
-  .invertable {
+[data-theme='dark'] .invertable {
     filter: invert(1) hue-rotate(180deg) saturate(10);
-  }
-
-   .invertable-blue {
+}
+[data-theme='dark'] .invertable-blue {
     filter: invert(1) hue-rotate(180deg) brightness(3) saturate(70%);
   }
-
-  .reveal h1, .reveal h2, .reveal h3 {
-    color: #eee;
-  }
-
-  .reveal table tr:hover {
-  background-color: #444;
-  }
-
-  a, .reveal a {
-    color: #71adff;
-  }
-
-  .btn-outline-dark {
-    color: #eee;
-    background-color: #555;
-  }
-
-    .btn-outline-dark:hover {
-    color: #555;
-    background-color: #eee;
-  }
-
-}
-
-@media print {
-               hide-print {
-                  visibility: hidden;
-               }
-            }
 
 
 /* for lecture slides */

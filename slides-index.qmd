@@ -1,7 +1,6 @@
 ---
+format: html
 title: "Slides"
-execute: 
-  echo: false
 ---
 
 ```{css styling}

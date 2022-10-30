@@ -397,65 +397,7 @@
 <section>
 <section id="course-overview" class="title-slide slide level1 center">
 <h1>1|COURSE OVERVIEW</h1>
-<!-- ![](covers/01_course-info.svg){#cover} -->
-<div class="cell">
-
-</div>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="34" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 33;"><span id="cb1-34"><a href="#cb1-34"></a>w <span class="op">=</span> <span class="dv">1050</span></span>
-<span id="cb1-35"><a href="#cb1-35"></a>h <span class="op">=</span> w<span class="op">/</span><span class="dv">2</span></span>
-<span id="cb1-36"><a href="#cb1-36"></a></span>
-<span id="cb1-37"><a href="#cb1-37"></a>cover <span class="op">=</span> {</span>
-<span id="cb1-38"><a href="#cb1-38"></a></span>
-<span id="cb1-39"><a href="#cb1-39"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(DOM<span class="op">.</span><span class="fu">svg</span>(w<span class="op">,</span> h))</span>
-<span id="cb1-40"><a href="#cb1-40"></a>    <span class="op">&lt;!--</span> <span class="op">.</span><span class="fu">style</span>(<span class="st">"background"</span><span class="op">,</span> <span class="st">"#cccccc"</span>) <span class="op">--&gt;</span></span>
-<span id="cb1-41"><a href="#cb1-41"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"scaleY(-1)"</span>)</span>
-<span id="cb1-42"><a href="#cb1-42"></a>    </span>
-<span id="cb1-43"><a href="#cb1-43"></a>  <span class="kw">const</span> g <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb1-44"><a href="#cb1-44"></a>  </span>
-<span id="cb1-45"><a href="#cb1-45"></a>  g</span>
-<span id="cb1-46"><a href="#cb1-46"></a>    <span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"rect"</span>)</span>
-<span id="cb1-47"><a href="#cb1-47"></a>    <span class="op">.</span><span class="fu">data</span>(data)</span>
-<span id="cb1-48"><a href="#cb1-48"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb1-49"><a href="#cb1-49"></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
-<span id="cb1-50"><a href="#cb1-50"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"black"</span>)</span>
-<span id="cb1-51"><a href="#cb1-51"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> <span class="kw">function</span>(d<span class="op">,</span> i){<span class="cf">return</span> <span class="dv">5</span> <span class="op">+</span> i<span class="op">*</span>(w<span class="op">/</span><span class="dv">10</span>)})</span>
-<span id="cb1-52"><a href="#cb1-52"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> <span class="dv">0</span>)</span>
-<span id="cb1-53"><a href="#cb1-53"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> <span class="dv">0</span>)</span>
-<span id="cb1-54"><a href="#cb1-54"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w<span class="op">/</span><span class="dv">10</span> <span class="op">-</span> <span class="dv">10</span>)</span>
-<span id="cb1-55"><a href="#cb1-55"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">color</span>)</span>
-<span id="cb1-56"><a href="#cb1-56"></a>          <span class="op">.</span><span class="fu">transition</span>()</span>
-<span id="cb1-57"><a href="#cb1-57"></a>          <span class="op">.</span><span class="fu">duration</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">duration</span>)</span>
-<span id="cb1-58"><a href="#cb1-58"></a>          <span class="op">.</span><span class="fu">delay</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">delay</span>)</span>
-<span id="cb1-59"><a href="#cb1-59"></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">value</span> <span class="op">*</span> <span class="dv">26</span>)</span>
-<span id="cb1-60"><a href="#cb1-60"></a>  </span>
-<span id="cb1-61"><a href="#cb1-61"></a></span>
-<span id="cb1-62"><a href="#cb1-62"></a> </span>
-<span id="cb1-63"><a href="#cb1-63"></a> <span class="cf">return</span> svg<span class="op">.</span><span class="fu">node</span>()</span>
-<span id="cb1-64"><a href="#cb1-64"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-1" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-2" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-3" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-</div>
-<div class="cell">
+<div id="cover-image">
 
 </div>
 </section>
@@ -570,10 +512,10 @@
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># comment your R code to show thought process</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># e.g. here I'm adding 2 and 2</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># comment your R code to show thought process</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># e.g. here I'm adding 2 and 2</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
@@ -681,9 +623,73 @@
 <li>Check Canvas &amp; email regularly</li>
 <li>Let me know about problems</li>
 </ul>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="226" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 225;"><span id="cb3-226"><a href="#cb3-226"></a>w <span class="op">=</span> <span class="dv">1050</span></span>
+<span id="cb3-227"><a href="#cb3-227"></a>h <span class="op">=</span> w<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb3-228"><a href="#cb3-228"></a></span>
+<span id="cb3-229"><a href="#cb3-229"></a>cover <span class="op">=</span> {</span>
+<span id="cb3-230"><a href="#cb3-230"></a></span>
+<span id="cb3-231"><a href="#cb3-231"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#cover-image"</span>)</span>
+<span id="cb3-232"><a href="#cb3-232"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)</span>
+<span id="cb3-233"><a href="#cb3-233"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)</span>
+<span id="cb3-234"><a href="#cb3-234"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
+<span id="cb3-235"><a href="#cb3-235"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"scaleY(-1)"</span>)</span>
+<span id="cb3-236"><a href="#cb3-236"></a>    </span>
+<span id="cb3-237"><a href="#cb3-237"></a>  <span class="kw">const</span> g <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb3-238"><a href="#cb3-238"></a>  </span>
+<span id="cb3-239"><a href="#cb3-239"></a>  g</span>
+<span id="cb3-240"><a href="#cb3-240"></a>    <span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"rect"</span>)</span>
+<span id="cb3-241"><a href="#cb3-241"></a>    <span class="op">.</span><span class="fu">data</span>(data)</span>
+<span id="cb3-242"><a href="#cb3-242"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb3-243"><a href="#cb3-243"></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
+<span id="cb3-244"><a href="#cb3-244"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"black"</span>)</span>
+<span id="cb3-245"><a href="#cb3-245"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> <span class="kw">function</span>(d<span class="op">,</span> i){<span class="cf">return</span> <span class="dv">5</span> <span class="op">+</span> i<span class="op">*</span>(w<span class="op">/</span><span class="dv">10</span>)})</span>
+<span id="cb3-246"><a href="#cb3-246"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> <span class="dv">0</span>)</span>
+<span id="cb3-247"><a href="#cb3-247"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> <span class="dv">0</span>)</span>
+<span id="cb3-248"><a href="#cb3-248"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w<span class="op">/</span><span class="dv">10</span> <span class="op">-</span> <span class="dv">10</span>)</span>
+<span id="cb3-249"><a href="#cb3-249"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">color</span>)</span>
+<span id="cb3-250"><a href="#cb3-250"></a>          <span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb3-251"><a href="#cb3-251"></a>          <span class="op">.</span><span class="fu">duration</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">duration</span>)</span>
+<span id="cb3-252"><a href="#cb3-252"></a>          <span class="op">.</span><span class="fu">delay</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">delay</span>)</span>
+<span id="cb3-253"><a href="#cb3-253"></a>          <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">value</span> <span class="op">*</span> <span class="dv">26</span>)</span>
+<span id="cb3-254"><a href="#cb3-254"></a>  </span>
+<span id="cb3-255"><a href="#cb3-255"></a></span>
+<span id="cb3-256"><a href="#cb3-256"></a> </span>
+<span id="cb3-257"><a href="#cb3-257"></a> <span class="cf">return</span> svg<span class="op">.</span><span class="fu">node</span>()</span>
+<span id="cb3-258"><a href="#cb3-258"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+
+</div>
 
 <div class="footer footer-default">
-
+<button id="theme-toggle">
+<span class="d-block-light d-none">☽</span><span class="d-block-dark d-none">☼</span>
+</button>
 </div>
 </section></section>
     </div>
@@ -718,7 +724,7 @@
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true,"transitions":true},
 'chalkboard': {"buttons":true},
 'smaller': false,
  
@@ -899,8 +905,28 @@
         ]
       });
     </script>
+    <script>
+    var toggle = document.getElementById("theme-toggle");
+
+    var storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    if (storedTheme)
+        document.documentElement.setAttribute('data-theme', storedTheme)
+
+
+    toggle.onclick = function() {
+        var currentTheme = document.documentElement.getAttribute("data-theme");
+        var targetTheme = "light";
+
+        if (currentTheme === "light") {
+            targetTheme = "dark";
+        }
+
+        document.documentElement.setAttribute('data-theme', targetTheme)
+        localStorage.setItem('theme', targetTheme);
+    };
+    </script>
     <script type="ojs-module-contents">
-    {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"w = 1050\nh = w/2\n\ncover = {\n\n  const svg = d3.select(DOM.svg(w, h))\n    <!-- .style(\"background\", \"#cccccc\") -->\n    .style(\"transform\", \"scaleY(-1)\")\n    \n  const g = svg.append(\"g\")\n  \n  g\n    .selectAll(\"rect\")\n    .data(data)\n    .enter()\n      .append(\"rect\")\n      .attr(\"fill\", \"black\")\n        .attr(\"x\", function(d, i){return 5 + i*(w/10)})\n        .attr(\"y\", 0)\n        .attr(\"height\", 0)\n        .attr(\"width\", w/10 - 10)\n        .attr(\"fill\", d => d.color)\n          .transition()\n          .duration(d => d.duration)\n          .delay(d => d.delay)\n          .attr(\"height\", d => d.value * 26)\n  \n\n \n return svg.node()\n}\n\n"}]}
+    {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"w = 1050\nh = w/2\n\ncover = {\n\n  const svg = d3.select(\"#cover-image\")\n    .append(\"svg\")\n    .attr(\"width\", w)\n    .attr(\"height\", h)\n    .style(\"transform\", \"scaleY(-1)\")\n    \n  const g = svg.append(\"g\")\n  \n  g\n    .selectAll(\"rect\")\n    .data(data)\n    .enter()\n      .append(\"rect\")\n      .attr(\"fill\", \"black\")\n        .attr(\"x\", function(d, i){return 5 + i*(w/10)})\n        .attr(\"y\", 0)\n        .attr(\"height\", 0)\n        .attr(\"width\", w/10 - 10)\n        .attr(\"fill\", d => d.color)\n          .transition()\n          .duration(d => d.duration)\n          .delay(d => d.delay)\n          .attr(\"height\", d => d.value * 26)\n  \n\n \n return svg.node()\n}\n\n"}]}
     </script>
     <script type="module">
     window._ojs.paths.runtimeToDoc = "../../slides";

@@ -22,8 +22,16 @@ link-external-newwindow: true
 format:
   html:
     toc: true
-
-theme: custom.scss
+    theme:
+      light: custom.scss
+      dark: custom.scss
+  revealjs:
+    chalkboard: true
+    theme: custom-reveal.scss
+    menu:
+      transitions: true
+    footer: '<button id="theme-toggle"><span class="d-block-light d-none">&#x263D;</span><span class="d-block-dark d-none">&#x263C;</span></button>'
+    include-after-body: dark-reveal.js
 
 execute:
   echo: false
