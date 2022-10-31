@@ -7,7 +7,7 @@ format: revealjs
 ::: {#cover-image style="position: absolute"}
 :::
 
-![](covers/02_variables.svg){style="position: absolute;"}
+![](covers/variables-no-axis.svg){style="position: absolute;"}
 
 # Overview
 
@@ -580,9 +580,9 @@ new_sample = {
 cover = {
 
   const w = 1050
-  const h = 500
-  const marginX = 100
-  const marginY = 30
+  const h = 525
+  const marginX = 105
+  const marginY = 45
   
   const svg = d3.select("#cover-image")
     .append("svg")

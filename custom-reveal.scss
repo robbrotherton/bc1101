@@ -14,19 +14,16 @@
 }
 
 #theme-toggle {
-  font-style: bold;
   background: none;
   border: none;
-  height: 1.3rem;
-  width: 1.3rem;
+  height: 1.45rem;
+  width: 1.45rem;
   float: right;
-  font-size: 1.3rem;
-  margin-right: 1rem;
+  margin-right: 0.75rem;
 }
 #theme-toggle:hover {
   cursor: pointer;
 }
-
 
 .d-none {
   display: none;
@@ -41,17 +38,32 @@
   color: var(--menu-color);
   fill: var(--menu-color);
   font-weight: bold;
-  height: 1.3rem !important;
   margin: 0 !important;
-  margin-left: 0 !important;
-  width: 1.3rem !important;
+}
+@media print {
+  .d-block {display: none;}
 }
 #moon {
-  transform: translate(-25%, -15%);
+  height: 1.5rem;
+  transform: translate(-25%);
 }
 #sun {
+  height: 1.5rem;
   transform: translate(-25%, -5%);
 }
+@media screen and (max-width: 800px) {
+  #theme-toggle {
+    height: 1.1rem;
+    width: 1.1rem;
+  }
+  #moon, #sun {
+    height: 1.1rem;
+  }
+}
+
+
+
+
 .btn-outline-dark {
     background-color: #eee;
 }
