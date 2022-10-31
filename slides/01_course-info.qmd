@@ -15,8 +15,7 @@ format: revealjs
 - [Lectures]
 - [Recitation]
 - [Exams]
-- [Final grades]
-- [Other stuff](#lastly)
+- [Other stuff]
 
 
 ## About me
@@ -276,42 +275,5 @@ ggplot(df, aes(x = id, y = value, fill = letter)) +
   theme_void()
 
 ggsave(here::here("slides", "covers", "01_course-info.svg"), width = 10, height = 5)
-
-# Variables cover
-
-
-# variability cover
-
-sd <- seq(1, 5, .1)
-xvals <- seq(-5, 5, .1)
-
-df <- data.frame(id = rep(sd, each = length(xvals)),
-                 x = rep(xvals, length(sd)),
-                 y = purrr::map(.x = sd, ~dnorm(x = xvals, sd = .x)) |> 
-  unlist())
-
-ggplot(df) +
-  geom_path(aes(x, y, group = id, alpha = 1/id)) +
-  scale_alpha_identity(guide = "none") +
-  scale_x_continuous(expand = c(0,0)) +
-  theme_void()
-
-ggsave(here::here("slides", "covers", "05_variability.svg"), width = 10, height = 5)
-
-ggplot(data = NULL, aes(x = 0, y = 0, image = here::here("slides", "covers", "02_variables.svg"))) +
-  ggimage::geom_image()
-
-# frequency cover
-dfs <- 1:100
-xvals <- seq(-3, 3, .1)
-
-df <- data.frame(id = rep(dfs, each = length(xvals)),
-                 x = rep(xvals, length(dfs)),
-                 y = purrr::map(.x = dfs, ~dt(x = xvals, df = .x)) |> 
-  unlist())
-
-ggplot(df) +
-  geom_path(aes(x, y, group = id), alpha = .5) +
-  theme_void()
 
 ```

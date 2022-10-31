@@ -5,7 +5,9 @@ project:
 website:
   title: "BC1101"
   repo-url: https://github.com/robbrotherton/quarto-test-website
-  repo-actions: issue
+  repo-actions:
+    - source
+    - issue
   navbar:
     left:
       - href: index.qmd
@@ -33,15 +35,16 @@ format:
     menu:
       custom: [
       {
-        title: 'Links',
-        icon: '<i class="fa fas fa-info">',
-        content: '<h1>External Links</h1>
+        title: 'Source',
+        icon: '<i class="fas fa-github-source">',
+        content: '<h1>Source code</h1>
+        The source code for these slides is available on GitHub.
 <ul class="slide-menu-items">
   <li class="slide-menu-item">
-    <a href="https://github.com/denehyg/reveal.js-menu">Reveal.js-menu</a>
+    <a href="https://github.com/robbrotherton/quarto-test-website/tree/main/slides">Browse source code</a>
   </li>
   <li class="slide-menu-item">
-    <a href="https://github.com/hakimel/reveal.js">Reveal.js</a>
+    <a href="https://github.com/robbrotherton/quarto-test-website/issues/new">Report an issue</a>
   </li>
 </ul>'
       }
