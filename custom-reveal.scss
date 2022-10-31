@@ -14,10 +14,9 @@
 }
 
 #theme-toggle {
-  color: var(--menu-color);
   font-style: bold;
   background: none;
-  border: 1px;
+  border: none;
   height: 1.3rem;
   width: 1.3rem;
   float: right;
@@ -28,6 +27,7 @@
   cursor: pointer;
 }
 
+
 .d-none {
   display: none;
 }
@@ -37,7 +37,20 @@
 [data-theme='dark'] .d-block-dark {
     display: block !important;
 }
-
+.d-block {
+  color: var(--menu-color);
+  font-weight: bold;
+  height: 1.3rem !important;
+  margin: 0 !important;
+  margin-left: 0 !important;
+  width: 1.3rem !important;
+}
+#moon {
+  transform: translate(-25%, -15%);
+}
+#sun {
+  transform: translate(-25%, -5%);
+}
 .btn-outline-dark {
     background-color: #eee;
 }

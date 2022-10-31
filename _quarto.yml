@@ -30,7 +30,7 @@ format:
     theme: custom-reveal.scss
     menu:
       transitions: true
-    footer: '<button id="theme-toggle"><span class="d-block-light d-none">&#x263D;</span><span class="d-block-dark d-none">&#x263C;</span></button>'
+    footer: '<button id="theme-toggle"><span id="moon" class="d-block d-block-light d-none">&#x263D;</span><span id="sun" class="d-block d-block-dark d-none">&#x263C;</span></button>'
     include-after-body: dark-reveal.js
 
 execute:
