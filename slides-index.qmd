@@ -76,18 +76,13 @@ title: "Slides"
   top: 0.6em;
 }
 
-@media (prefers-color-scheme: dark) {
-.box {
-border-color: #555
-}
 
-.box:hover {
-border-color: #ccc
-}
-
-.date {
+[data-theme='dark'] .box {
+    border-color: #555
+} .box:hover {
+border-color: #aaa
+} .date {
 color: #ccc
-}
 }
 
 ```
@@ -138,7 +133,7 @@ card <- function(file, date, invertable_image = FALSE) {
 }
 ```
 
-# Part 1. Fundamentals
+<!-- # Part 1. Fundamentals -->
 
 :::: {.box}
 ## 1. Course Overview
@@ -204,12 +199,12 @@ card("08_sampling", "", TRUE)
 
 
 
-# Part 2. Inferential statistics
+<!-- # Part 2. Inferential statistics -->
 
 :::: {.box}
 ## 9. Hypothesis testing
 ```{r}
-card("09_hypothesis-testing", "")
+card("09_hypothesis-testing", "", TRUE)
 ```
 ::::
 
@@ -217,7 +212,7 @@ card("09_hypothesis-testing", "")
 :::: {.box}
 ## 10. Hypothesis testing pt. 2
 ```{r}
-card("10_hypothesis-testing-pt-2", "")
+card("10_hypothesis-testing-pt-2", "", TRUE)
 ```
 ::::
 

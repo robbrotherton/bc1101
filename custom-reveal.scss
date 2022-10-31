@@ -10,8 +10,16 @@
     --heading-color-dark: #ddd;
     --text-color: #121416d8;
     --link-color: #543fd7;
+    --link-color-dark: lightblue;
     --menu-color: #5d90e4;
 }
+
+/* stuff for the dark mode toggle button */
+
+[data-theme='dark'] .bi-moon:before {
+    content: "\f5a2";
+}
+
 
 #theme-toggle {
   background: none;
@@ -62,7 +70,9 @@
 }
 
 
-
+.fa-info:before {
+  content: "\f129" !important;
+}
 
 .btn-outline-dark {
     background-color: #eee;
@@ -74,6 +84,10 @@ body, .reveal {
 
 
 [data-theme='dark'] .reveal {
+    background-color: var(--background-color-dark);
+    color: white;
+}
+[data-theme='dark'] body {
     background-color: var(--background-color-dark);
     color: white;
 }
@@ -90,21 +104,33 @@ body, .reveal {
 
 
 [data-theme='dark'] a {
-    color: lightblue;
-    transition-duration: 0.5s;
+    color: var(--link-color-dark);
 }
+[data-theme='dark'] .sidebar nav[role=doc-toc] ul>li>a.active {
+  border-left: 1px solid var(--link-color-dark);
+  color: var(--link-color-dark) !important;
+}
+
 [data-theme='dark'] .reveal blockquote {
     color: #ddd;
   }
+
 
 [data-theme='dark'] .invertable {
     filter: invert(1) hue-rotate(180deg) saturate(10);
 }
 [data-theme='dark'] .invertable-blue {
     filter: invert(1) hue-rotate(180deg) brightness(3) saturate(70%);
-  }
+}
 
 
+[data-theme='dark'] .btn-outline-dark {
+    color: #eee;
+    background-color: #555;
+} .btn-outline-dark:hover {
+    color: #555;
+    background-color: #eee;
+}
 /* for lecture slides */
 
 /* doesn't work; changes every h1, because each slide is its own section?

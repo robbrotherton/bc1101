@@ -35,12 +35,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -94,10 +92,12 @@ ul.task-list li input[type="checkbox"] {
 </i> 
  </a>
   </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="./_"><i class="bi bi-moon" role="img">
+</i> 
+ </a>
+  </li>  
 </ul>
-              <div class="quarto-toggle-container">
-                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-              </div>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
@@ -112,9 +112,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#part-1.-fundamentals" id="toc-part-1.-fundamentals" class="nav-link active" data-scroll-target="#part-1.-fundamentals">Part 1. Fundamentals</a>
-  <ul class="collapse">
-  <li><a href="#course-overview" id="toc-course-overview" class="nav-link" data-scroll-target="#course-overview">1. Course Overview</a></li>
+  <li><a href="#course-overview" id="toc-course-overview" class="nav-link active" data-scroll-target="#course-overview">1. Course Overview</a></li>
   <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables">2. Variables</a></li>
   <li><a href="#frequency" id="toc-frequency" class="nav-link" data-scroll-target="#frequency">3. Frequency</a></li>
   <li><a href="#central-tendency" id="toc-central-tendency" class="nav-link" data-scroll-target="#central-tendency">4. Central Tendency</a></li>
@@ -122,13 +120,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#z-scores" id="toc-z-scores" class="nav-link" data-scroll-target="#z-scores">6. <span class="math inline">\(z\)</span>-Scores</a></li>
   <li><a href="#probability" id="toc-probability" class="nav-link" data-scroll-target="#probability">7. Probability</a></li>
   <li><a href="#sampling" id="toc-sampling" class="nav-link" data-scroll-target="#sampling">8. Sampling</a></li>
-  </ul></li>
-  <li><a href="#part-2.-inferential-statistics" id="toc-part-2.-inferential-statistics" class="nav-link" data-scroll-target="#part-2.-inferential-statistics">Part 2. Inferential statistics</a>
-  <ul class="collapse">
   <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing">9. Hypothesis testing</a></li>
   <li><a href="#hypothesis-testing-pt.-2" id="toc-hypothesis-testing-pt.-2" class="nav-link" data-scroll-target="#hypothesis-testing-pt.-2">10. Hypothesis testing pt.&nbsp;2</a></li>
   <li><a href="#the-t-test" id="toc-the-t-test" class="nav-link" data-scroll-target="#the-t-test">11. The <span class="math inline">\(t\)</span> test</a></li>
-  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/robbrotherton/quarto-test-website/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -225,18 +219,13 @@ ul.task-list li input[type="checkbox"] {
   top: 0.6em;
 }
 
-@media (prefers-color-scheme: dark) {
-.box {
-border-color: #555
-}
 
-.box:hover {
-border-color: #ccc
-}
-
-.date {
+[data-theme='dark'] .box {
+    border-color: #555
+} .box:hover {
+border-color: #aaa
+} .date {
 color: #ccc
-}
 }
 
 </style>
@@ -244,8 +233,7 @@ color: #ccc
 <div class="cell">
 
 </div>
-<section id="part-1.-fundamentals" class="level1">
-<h1>Part 1. Fundamentals</h1>
+<!-- # Part 1. Fundamentals -->
 <section id="course-overview" class="level2 box">
 <h2 class="anchored" data-anchor-id="course-overview">1. Course Overview</h2>
 <div class="cell">
@@ -504,20 +492,19 @@ title insets content: "" ::before, messing things up -->
 </div>
 </div>
 </section>
-</section>
-<section id="part-2.-inferential-statistics" class="level1">
-<h1>Part 2. Inferential statistics</h1>
+<!-- # Part 2. Inferential statistics -->
 <section id="hypothesis-testing" class="level2 box">
 <h2 class="anchored" data-anchor-id="hypothesis-testing">9. Hypothesis testing</h2>
 <div class="cell">
 <div class="cell-output-display">
+
 <div class="date"></div>
 
 <div class="lecture-card">
 
   <div class="card-body">
     <div class="lecture-image">
-<p><a href="slides/09_hypothesis-testing.html" target="_blank"><img src="slides/covers/09_hypothesis-testing.svg" class="box-image "></a></p>
+<p><a href="slides/09_hypothesis-testing.html" target="_blank"><img src="slides/covers/09_hypothesis-testing.svg" class="box-image invertable"></a></p>
     </div>
 
     <div class="lecture-overview">
@@ -542,13 +529,14 @@ title insets content: "" ::before, messing things up -->
 <h2 class="anchored" data-anchor-id="hypothesis-testing-pt.-2">10. Hypothesis testing pt.&nbsp;2</h2>
 <div class="cell">
 <div class="cell-output-display">
+
 <div class="date"></div>
 
 <div class="lecture-card">
 
   <div class="card-body">
     <div class="lecture-image">
-<p><a href="slides/10_hypothesis-testing-pt-2.html" target="_blank"><img src="slides/covers/10_hypothesis-testing-pt-2.svg" class="box-image "></a></p>
+<p><a href="slides/10_hypothesis-testing-pt-2.html" target="_blank"><img src="slides/covers/10_hypothesis-testing-pt-2.svg" class="box-image invertable"></a></p>
     </div>
 
     <div class="lecture-overview">
@@ -606,9 +594,31 @@ title insets content: "" ::before, messing things up -->
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+<script>
+var toggle = $('a[href$="_"]')
+
+var storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+if (storedTheme)
+    document.documentElement.setAttribute('data-theme', storedTheme)
+
+toggle.click(function( event ) {
+  event.preventDefault();
+
+  var currentTheme = document.documentElement.getAttribute("data-theme");
+    var targetTheme = "light";
+
+    if (currentTheme === "light") {
+        targetTheme = "dark";
+    }
+
+    document.documentElement.setAttribute('data-theme', targetTheme)
+    localStorage.setItem('theme', targetTheme);
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -629,119 +639,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  let localAlternateSentinel = 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } 
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
