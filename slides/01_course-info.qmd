@@ -258,7 +258,9 @@ cover = {
 
 ```
 
-```{r cover-course-info, eval=FALSE}
+```{r cover-ggplot}
+#| eval: false
+
 library(ggplot2)
 
 word <- "STATISTICS"
