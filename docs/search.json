@@ -116,7 +116,7 @@
     "href": "slides/01_course-info.html#lastly",
     "title": "BC1101",
     "section": "Lastly",
-    "text": "Lastly\n\nCheck Canvas & email regularly\nLet me know about problems\n\n\n\n\n\nw = 1050\nh = w/2\n\ncover = {\n\n  const svg = d3.select(\"#cover-image\")\n    .append(\"svg\")\n    .attr(\"width\", w)\n    .attr(\"height\", h)\n    .style(\"transform\", \"scaleY(-1)\")\n    \n  const g = svg.append(\"g\")\n  \n  g\n    .selectAll(\"rect\")\n    .data(data)\n    .enter()\n      .append(\"rect\")\n      .attr(\"fill\", \"black\")\n        .attr(\"x\", function(d, i){return 5 + i*(w/10)})\n        .attr(\"y\", 0)\n        .attr(\"height\", 0)\n        .attr(\"width\", w/10 - 10)\n        .attr(\"fill\", d => d.color)\n          .transition()\n          .duration(d => d.duration)\n          .delay(d => d.delay)\n          .attr(\"height\", d => d.value * 26)\n  \n\n \n return svg.node()\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n../dark-theme.button"
+    "text": "Lastly\n\nCheck Canvas & email regularly\nLet me know about problems\n\n\n\n\n\nw = 1050\nh = w/2\n\ncover = {\n\n  const svg = d3.select(\"#cover-image\")\n    .append(\"svg\")\n    .attr(\"width\", w)\n    .attr(\"height\", h)\n    .style(\"transform\", \"scaleY(-1)\")\n    \n  const g = svg.append(\"g\")\n  \n  g\n    .selectAll(\"rect\")\n    .data(data)\n    .enter()\n      .append(\"rect\")\n      .attr(\"fill\", \"black\")\n        .attr(\"x\", function(d, i){return 5 + i*(w/10)})\n        .attr(\"y\", 0)\n        .attr(\"height\", 0)\n        .attr(\"width\", w/10 - 10)\n        .attr(\"fill\", d => d.color)\n          .transition()\n          .duration(d => d.duration)\n          .delay(d => d.delay)\n          .attr(\"height\", d => d.value * 26)\n  \n\n \n return svg.node()\n}"
   },
   {
     "objectID": "slides/02_variables.html#producing-a-statistic",
@@ -166,6 +166,13 @@
     "title": "BC1101",
     "section": "Likert scales",
     "text": "Likert scales\n\n\n\n\nWhat is your current level of happiness?\n\n\n\n  \n    \n    \n    1. A lot less than usual\n    \n\n\n  \n    \n    \n    2. A little less than usual\n    \n\n\n  \n    \n    \n    3. About average\n    \n\n\n  \n    \n    \n    4. A little more than usual\n    \n\n\n  \n    \n    \n    5. A lot more than usual"
+  },
+  {
+    "objectID": "slides/02_variables.html#draw-sample-make-inference",
+    "href": "slides/02_variables.html#draw-sample-make-inference",
+    "title": "BC1101",
+    "section": "Draw sample, make inference",
+    "text": "Draw sample, make inference\n\n\n\n\n\nviewof s = Inputs.button(html`&#x21bb;`)\n\n\n\n\n\n\n\n\ndata = {\n  let arr = [];\n  for (var i = 0; i < 150; i++) {\n    arr.push({\n      x: Math.floor(Math.random() * xmax),\n      y: Math.floor(Math.random() * ymax),\n      color: Math.floor(Math.random() * 7)\n    });\n  }\n  return arr;\n}\n\nwidth = 1050\nheight = 500\nr = 15\nxmax = 400\nymax = 100\nsample_y = height - r - 1\nmargin = ({top: r*2, right: 10, bottom: r, left: 5});\n\n\npop = {\n  const svg = d3.select(DOM.svg(width, height));\n\n  const sample = svg.append(\"g\").attr(\"id\", \"sample-circles\")\n  const circles = svg.append(\"g\").attr(\"id\", \"pop-circles\")\n  \n  let path = {\n    x: (width*0.5 + xmax*.5 + r),\n    y: (margin.top + ymax*0.5),\n    cy: (height - r - (margin.top + ymax*0.5)) * 0.5\n  };\n  \n  const paths = svg.append(\"g\").attr(\"id\", \"paths\")\n                        .attr(\"stroke\", \"black\")\n                        .attr(\"fill\", \"none\")\n                        .attr(\"class\", \"invertable\");\n                        \n  const labels = svg.append(\"g\").attr(\"id\", \"labels\")\n                        .attr(\"text-anchor\", \"middle\")\n                        .attr(\"dy\", \"1em\")\n                        .attr(\"class\", \"invertable\");\n                        \n\n  sample.selectAll(\"circle\")\n    .data(new_sample)\n    .enter()\n    .append(\"circle\")\n      .attr(\"fill\", d => color(d))\n      .attr(\"stroke\", \"black\")\n      .attr(\"r\", r)\n      .attr(\"cx\", function(d, i) {return (i * 41.5 + width/2 - xmax/2 + r)})\n      .attr(\"cy\", 55)\n        .transition()\n        .duration(700)\n        .delay(function(d, i) {return i * 50})\n        .attr(\"cy\", sample_y);\n  \n  circles.selectAll(\"circle\")\n    .data(data)\n    .enter()\n    .append(\"circle\")\n      .attr(\"fill\", d => color(d.color))\n      .attr(\"stroke\", \"black\")\n      .attr(\"r\", 15)\n      .attr(\"cx\", d => x(d.x))\n      .attr(\"cy\", d => y(d.y))\n          \n  svg.append(\"rect\").attr(\"id\", \"population-box\")\n    .attr(\"x\", width/2 - xmax/2 - r)\n    .attr(\"y\", margin.top - r)\n    .attr(\"width\", xmax + 2*r)\n    .attr(\"height\",ymax + 2*r)\n    .attr(\"fill\", \"white\")\n    \n  svg.append(\"rect\").attr(\"id\", \"population-outline\")\n    .attr(\"x\", width/2 - xmax/2 - r)\n    .attr(\"y\", margin.top - r)\n    .attr(\"width\", xmax + 2*r)\n    .attr(\"height\",ymax + 2*r)\n    .attr(\"stroke\", \"black\")\n    .attr(\"fill\", \"none\")\n    \n  paths.append(\"path\").attr(\"id\", \"inference-path\")\n    .attr(\"d\", \"M\" + path.x + \" \" + path.y + \" q200 \" + path.cy + \" 0 \" + (height - r - path.y))\n    .attr(\"stroke-dasharray\", [5, 5])\n    \n  paths.append(\"path\").attr(\"id\", \"sample-path\")\n    .attr(\"d\", \"M\" + (path.x - xmax - 2*r) + \" \" + path.y + \" q-200,\" + path.cy + \" 0 \" + (height - r - path.y))\n    \n  svg.append(\"polygon\").attr(\"id\", \"down-arrow\")\n    .attr(\"points\", [[0,0],[10,0],[5,10]])\n    .attr(\"transform\", \"translate(200,\" + (path.cy+margin.top+ymax*0.5 - 10) +\") scale(2)\")\n    .attr(\"class\", \"invertable\");\n    \n  svg.append(\"polygon\").attr(\"id\", \"up-arrow\")\n    .attr(\"points\", [[0,0],[10,0],[5,10]])\n    .attr(\"transform\", \"translate(850,\" + (path.cy+margin.top+ymax*0.5 + 10) +\") scale(2) rotate(180)\")\n    .attr(\"class\", \"invertable\");\n    \n  labels.append(\"text\").attr(\"id\", \"population-label\")\n    .text(\"POPULATION\")\n    .attr(\"x\", width/2)\n    .attr(\"y\", margin.top + ymax + 2*r + 20)\n    \n  labels.append(\"text\").attr(\"id\", \"sample-label\")\n    .text(\"SAMPLE\")\n    .attr(\"x\", width/2)\n    .attr(\"y\", sample_y - r - 10)\n    \n\n  return svg.node();\n}\n\n\n\nx = d3.scaleLinear()\n  .domain([0, xmax])\n  .range([width/2 - xmax/2, width/2 + xmax/2])\n\ny = d3.scaleLinear()\n  .domain([0, ymax])\n  .range([margin.top + ymax, margin.top])\n  \ncolor = d3.scaleOrdinal().\n  domain(data.map(d => d.color))\n  .range(d3.schemeSet3);\n  \nnew_sample = {\n  s;\n  let arr = [];\n  for (var i = 0; i < 10; i++) {\n    arr.push(Math.floor(Math.random() * 7))\n  }\n  return arr;\n}"
   },
   {
     "objectID": "slides/02_variables.html#terminology",
@@ -280,13 +287,6 @@
     "text": "Population curve\n\n\n\nUsed for population distributions\n\nWhen population is large, scores for each individual are usually not known\nSmooth curve indicates exact scores were not used\nConvey relative frequency"
   },
   {
-    "objectID": "slides/04_central-tendency.html#overview",
-    "href": "slides/04_central-tendency.html#overview",
-    "title": "BC1101",
-    "section": "Overview",
-    "text": "Overview\n\nMode\nMedian\nMean"
-  },
-  {
     "objectID": "slides/04_central-tendency.html#finding-the-center",
     "href": "slides/04_central-tendency.html#finding-the-center",
     "title": "BC1101",
@@ -357,6 +357,13 @@
     "text": "Locating the median\n\nPut scores in order\nFind the number that gives and equal number of scores on either side\nOdd number of scores\n\nMedian is the center score\n\n\n\n1 2 3 4 5"
   },
   {
+    "objectID": "slides/04_central-tendency.html#locating-the-median-1",
+    "href": "slides/04_central-tendency.html#locating-the-median-1",
+    "title": "BC1101",
+    "section": "Locating the median",
+    "text": "Locating the median\n\nPut scores in order\nFind the number that gives and equal number of scores on either side\nEven number of scores:\n\nAverage the 2 numbers either side of center\n\n\n\n1 2 3 | 4 5 6\n(3 + 4) / 2 = 3.5\n65 70 70 80 90 90\n65 70 80 80 80 90 92 95"
+  },
+  {
     "objectID": "slides/04_central-tendency.html#mean-1",
     "href": "slides/04_central-tendency.html#mean-1",
     "title": "BC1101",
@@ -392,32 +399,25 @@
     "text": "Distributions\n\nSensitivity to outliers\n\nExtreme values; observations far from the center\nMean is more influenced by outliers than median"
   },
   {
-    "objectID": "slides/04_central-tendency.html#distributions-2",
-    "href": "slides/04_central-tendency.html#distributions-2",
+    "objectID": "slides/05_variability.html#variability-example-1",
+    "href": "slides/05_variability.html#variability-example-1",
     "title": "BC1101",
-    "section": "Distributions",
-    "text": "Distributions\n\nSensitivity to outliers\n\nExtreme values; observations far from the center\nMean is more influenced by outliers than median"
+    "section": "Variability example",
+    "text": "Variability example\n\n\n\n\n\n\n\n\nLeptokurtotic\n\n\n\n\nPlatykurtotic"
   },
   {
-    "objectID": "slides/04_central-tendency.html#distributions-3",
-    "href": "slides/04_central-tendency.html#distributions-3",
-    "title": "BC1101",
-    "section": "Distributions",
-    "text": "Distributions\n\nSensitivity to outliers\n\nExtreme values; observations far from the center\nMean is more influenced by outliers than median"
-  },
-  {
-    "objectID": "slides/05_variability.html#variability-2",
-    "href": "slides/05_variability.html#variability-2",
+    "objectID": "slides/05_variability.html#variability-1",
+    "href": "slides/05_variability.html#variability-1",
     "title": "BC1101",
     "section": "Variability",
     "text": "Variability\n\nLike the mean\n\nA descriptive statistic\nSingle number to summarize dataset\n\nUnlike the mean\n\nRather than describing the middle of the data, variability describes the spread of the data\nHigher variability means greater differences between scores\n\nPurpose\n\nQuantify how well an individual score represents the distribution\nImportant for inferential stats"
   },
   {
-    "objectID": "slides/05_variability.html#variability-3",
-    "href": "slides/05_variability.html#variability-3",
+    "objectID": "slides/05_variability.html#measures-of-variability",
+    "href": "slides/05_variability.html#measures-of-variability",
     "title": "BC1101",
-    "section": "Variability",
-    "text": "Variability\n\nMeasures of variability\n\nQuantitative distance measures based on the differences between scores\nEach has different characteristics\n\nRange\n\nDescribes the spread of scores\nDistance of most extreme scores from each other\n\n\\(SS\\), Variance, and Standard Deviation\n\nCompanion concepts, but different things\nDescribe distance of scores from the mean\nSmall values: low variability; scores clustered close to mean\nHigher values: greater variability; scores widely scattered"
+    "section": "Measures of variability",
+    "text": "Measures of variability\n\nQuantitative distance measures based on the differences between scores\n\nEach has different characteristics\n\nRange\n\nDescribes the spread of scores\nDistance of most extreme scores from each other\n\n\\(SS\\), Variance, and Standard Deviation\n\nCompanion concepts, but different things\nDescribe distance of scores from the mean\nSmall values: low variability; scores clustered close to mean\nHigher values: greater variability; scores widely scattered"
   },
   {
     "objectID": "slides/05_variability.html#range-1",
@@ -434,361 +434,11 @@
     "text": "Range\n\nCharacteristics\n\nDoes not consider all the data\nBased only on two scores: most extreme values\nImprecise, unreliable measure of variability\nNot often useful for descriptive/inferential stats\n\nBut checking range & min/max values can be useful for finding mistakes in data input\n\nImpossible range / min & max values"
   },
   {
-    "objectID": "slides/05_variability.html#variance",
-    "href": "slides/05_variability.html#variance",
-    "title": "BC1101",
-    "section": "Variance",
-    "text": "Variance\n\nDetermine the deviation of each score\n\nDistance from the mean\nDeviation score = \\(X - \\mu\\)\n\n\n\n\nTo find “average deviation” just sum the deviations and divide by \\(n\\)?\n\nDead end; always sums to \\(0\\)"
-  },
-  {
-    "objectID": "slides/05_variability.html#variance-1",
-    "href": "slides/05_variability.html#variance-1",
-    "title": "BC1101",
-    "section": "Variance",
-    "text": "Variance\n\n\n\nFind the deviation for each score\n\n\n\\(X - \\mu\\)\n\n\n\n\n\nSquare deviations\n\n\n\\((X - \\mu)^2\\)\n\n\n\n\n\nSum the squared deviations\n\n\n\\(SS = \\Sigma(X - \\mu)^2\\)\n\n\n\n\n\nFind average of squared deviations\n\n\n\\(\\sigma^2 = \\dfrac{SS}N\\)\n\n\n\n\n\nTake square root of variance\n\n\n\\(\\sigma = \\sqrt{\\sigma^2} = \\sqrt{\\dfrac{SS}N}\\)"
-  },
-  {
-    "objectID": "slides/05_variability.html#variance-2",
-    "href": "slides/05_variability.html#variance-2",
-    "title": "BC1101",
-    "section": "Variance",
-    "text": "Variance\n\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    0 \n     \n     \n  \n  \n    4 \n     \n     \n  \n  \n    5 \n     \n     \n  \n  \n    5 \n     \n     \n  \n  \n    6 \n     \n     \n  \n  \n    10 \n     \n     \n  \n  \n    \\(M = 5.00\\) \n     \n      \n  \n  \n     \n     \n      \n  \n  \n     \n     \n      \n  \n\n\n\n\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    0 \n    -5 \n    25 \n  \n  \n    4 \n    -1 \n    1 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    6 \n    1 \n    1 \n  \n  \n    10 \n    5 \n    25 \n  \n  \n    \\(M = 5.00\\) \n     \n    \\(SS = 52.00\\) \n  \n  \n     \n     \n    \\(s^2 = 10.40\\) \n  \n  \n     \n     \n    \\(s = 3.22\\) \n  \n\n\n\n\n\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    0 \n    -5 \n    25 \n  \n  \n    1 \n    -4 \n    16 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    9 \n    4 \n    16 \n  \n  \n    10 \n    5 \n    25 \n  \n  \n    \\(M = 5.00\\) \n     \n    \\(SS = 82.00\\) \n  \n  \n     \n     \n    \\(s^2 = 16.40\\) \n  \n  \n     \n     \n    \\(s = 4.05\\)"
-  },
-  {
-    "objectID": "slides/05_variability.html#standard-deviation",
-    "href": "slides/05_variability.html#standard-deviation",
-    "title": "BC1101",
-    "section": "Standard deviation",
-    "text": "Standard deviation\n\nVery important concept! Especially later\n\n\n\n\nDefinitional formula\n\nFind each deviation score \\((X – \\mu)\\)\nSquare each deviation score \\((X–\\mu)^2\\)\nSum up the squared deviations \\(\\Sigma(X–\\mu)^2\\)\n\n\n\n\\(SS = \\Sigma(X - \\mu)^2\\)\n\n\n\nComputational formula\n\nSquare each score & sum the squared scores\nFind the sum of scores, square it, divide by \\(N\\)\nSubtract the second part from the first\n\n\n\n\\(SS = \\Sigma X^2 - \\dfrac{(\\Sigma X)^2}N\\)"
-  },
-  {
-    "objectID": "slides/05_variability.html#degrees-of-freedom-1",
-    "href": "slides/05_variability.html#degrees-of-freedom-1",
-    "title": "BC1101",
-    "section": "Degrees of freedom",
-    "text": "Degrees of freedom\n\n\n🂠\n\n\n🂠\n\n\n🂠"
-  },
-  {
-    "objectID": "slides/05_variability.html#degrees-of-freedom-2",
-    "href": "slides/05_variability.html#degrees-of-freedom-2",
-    "title": "BC1101",
-    "section": "Degrees of freedom",
-    "text": "Degrees of freedom\n\n\n🃓\n\n\n🂠\n\n\n🂠"
-  },
-  {
-    "objectID": "slides/05_variability.html#degrees-of-freedom-3",
-    "href": "slides/05_variability.html#degrees-of-freedom-3",
-    "title": "BC1101",
-    "section": "Degrees of freedom",
-    "text": "Degrees of freedom\n\n\n🃓\n\n\n🃕\n\n\n🂠"
-  },
-  {
-    "objectID": "slides/05_variability.html#degrees-of-freedom-4",
-    "href": "slides/05_variability.html#degrees-of-freedom-4",
-    "title": "BC1101",
-    "section": "Degrees of freedom",
-    "text": "Degrees of freedom\n\nWhy \\(n – 1\\)?\n\n\\(M = 5\\)\n\\(n = 3\\)\n\nIf you know the first 2 scores:\n\n3, 5\n\\(M = \\dfrac{\\Sigma X}{N} = \\dfrac{3 + 5 + X}{3}\\)\nSo \\(X = 3*M - 3 - 5 = 7\\)\n\nThere is only 1 possible value that \\(X\\) can be\n\nIt is not free to vary\nWe’ve lost 1 degree of freedom"
-  },
-  {
-    "objectID": "slides/06_z-scores.html#z-scores-2",
-    "href": "slides/06_z-scores.html#z-scores-2",
-    "title": "BC1101",
-    "section": "\\(z\\)-scores",
-    "text": "\\(z\\)-scores\n\n\\(z\\)-score formula:\n\n\\(z = \\dfrac{X - \\mu}\\sigma\\)     or…     \\(z = \\dfrac{X - M}s\\)\n\nNumerator: deviation score\nDenominator: standard deviation\n\\(z\\) expresses deviation in SD units"
-  },
-  {
-    "objectID": "slides/06_z-scores.html#z-scores-3",
-    "href": "slides/06_z-scores.html#z-scores-3",
-    "title": "BC1101",
-    "section": "\\(z\\)-scores",
-    "text": "\\(z\\)-scores\n\n\n\n\\(z\\)-score describes exact location of any score in a distribution\nTwo pieces of information:\n\nSign\n\nPositive or negative\nIndicates whether score is located above or below the mean\n\nMagnitude\n\nIndicates distance between score and mean in standard deviation units\n\\(z = 0\\) is equal to the mean"
-  },
-  {
-    "objectID": "slides/06_z-scores.html#standardized-distributions-1",
-    "href": "slides/06_z-scores.html#standardized-distributions-1",
-    "title": "BC1101",
-    "section": "Standardized distributions",
-    "text": "Standardized distributions\n\nEvery \\(X\\) value can be transformed to a \\(z\\)-score\n\n\\(z\\)-score distribution is called a standardized distribution\n\nCharacteristics of \\(z\\)-score transformation\n\nSame shape as original distribution\nMean of \\(z\\)-score distribution is always \\(0\\)\n\nBecause the mean is the balance point; \\(\\Sigma (X - \\mu)\\) always equals \\(0\\)\n\nStandard deviation is always \\(1.00\\)\n\nBecause \\(SD\\) is the denominator"
-  },
-  {
-    "objectID": "slides/06_z-scores.html#other-standardized-distribtions",
-    "href": "slides/06_z-scores.html#other-standardized-distribtions",
-    "title": "BC1101",
-    "section": "Other standardized distribtions",
-    "text": "Other standardized distribtions\n\nStandardized: Predetermined mean & SD\n\n\\(z\\) distribution has \\(\\mu = 0\\) and \\(\\sigma = 1\\)\nSAT has \\(\\mu = 500\\) and \\(\\sigma = 100\\)\nIQ has \\(\\mu=100\\) and \\(\\sigma=15\\) points\n\nStandardizing a distribution has two steps\n\nOriginal raw scores transformed to \\(z\\)-scores\nThe \\(z\\)-scores are transformed to new \\(X\\) values so that the specific predetermined \\(\\mu\\) and \\(\\sigma\\) are attained\n2a. Multiply to set SD\n2b. Add or subtract a constant to set the mean"
-  },
-  {
-    "objectID": "slides/07_probability.html#definition-and-notation",
-    "href": "slides/07_probability.html#definition-and-notation",
-    "title": "BC1101",
-    "section": "Definition and notation",
-    "text": "Definition and notation\n\nDefinition & notation\n\nSeveral different outcomes are possible\nThe probability of any specific outcome is a fraction of all possible outcomes\n\\(p\\) is the symbol for “probability”\nProbability of some specific outcome is specified by \\(p(event)\\)\n\n\n\\(p(A) = \\dfrac{number \\ of \\ outcomes \\ classified \\ as \\ A}{total \\ number \\ of \\ possible \\ outcomes}\\)"
-  },
-  {
-    "objectID": "slides/07_probability.html#example-coin-flip",
-    "href": "slides/07_probability.html#example-coin-flip",
-    "title": "BC1101",
-    "section": "Example: coin flip",
-    "text": "Example: coin flip\n\nE.g. Flipping a coin\n\nNumerator: number of those outcomes\nDenominator: all possible outcomes\n\n\n\n\n\n\\(p(heads) = 1/2 = .5\\)\n\n\n\\(p(tails) = 1/2 = .5%\\)"
-  },
-  {
-    "objectID": "slides/07_probability.html#example-rolling-dice",
-    "href": "slides/07_probability.html#example-rolling-dice",
-    "title": "BC1101",
-    "section": "Example: rolling dice",
-    "text": "Example: rolling dice\n\nAll possible outcomes:\n1, 2, 3, 4, 5, 6\n\n\n\n\\(p(6) = 1/6 = 0.17\\)\n\\(p(1) = 1/6 = 0.17\\)\n\\(p(odd) = 3/6 = 0.5\\)"
-  },
-  {
-    "objectID": "slides/07_probability.html#example-rolling-2-dice",
-    "href": "slides/07_probability.html#example-rolling-2-dice",
-    "title": "BC1101",
-    "section": "Example: rolling 2 dice",
-    "text": "Example: rolling 2 dice\n\n\n\n\n\\(p(2) = 1/36 = .03\\)\n\\(p(12) = 1/36 = .03\\)\n\\(p(7) = 6/36 = .17\\)\n\n\n\n\n\n\n \n  \n     \n    1 \n    2 \n    3 \n    4 \n    5 \n    6 \n  \n \n\n  \n    1 \n    2 \n    3 \n    4 \n    5 \n    6 \n    7 \n  \n  \n    2 \n    3 \n    4 \n    5 \n    6 \n    7 \n    8 \n  \n  \n    3 \n    4 \n    5 \n    6 \n    7 \n    8 \n    9 \n  \n  \n    4 \n    5 \n    6 \n    7 \n    8 \n    9 \n    10 \n  \n  \n    5 \n    6 \n    7 \n    8 \n    9 \n    10 \n    11 \n  \n  \n    6 \n    7 \n    8 \n    9 \n    10 \n    11 \n    12"
-  },
-  {
-    "objectID": "slides/07_probability.html#example-marbles",
-    "href": "slides/07_probability.html#example-marbles",
-    "title": "BC1101",
-    "section": "Example: marbles",
-    "text": "Example: marbles\n\n\n\n\n\nJar of marbles\n\nJar is population\nContains 25 white & 25 blue marbles\nWhat is the probability of randomly drawing a white marble?\nNumber of those outcomes (25)\nDivided by total number of outcomes (50)\n\n\n\\(p(white) = 25/50 = .5\\)"
-  },
-  {
-    "objectID": "slides/07_probability.html#example-marbles-1",
-    "href": "slides/07_probability.html#example-marbles-1",
-    "title": "BC1101",
-    "section": "Example: marbles",
-    "text": "Example: marbles\n\n\n\n\n\nDifferent jar\n\n40 blue & 10 white marbles\nWhat is the probability of randomly drawing a white marble?\n\n\n\\(p(white) = 10/50 = .2\\)"
-  },
-  {
-    "objectID": "slides/07_probability.html#repeated-sampling",
-    "href": "slides/07_probability.html#repeated-sampling",
-    "title": "BC1101",
-    "section": "Repeated sampling",
-    "text": "Repeated sampling\n\n\n\n\n\nRepeated sampling\n\n40 blue, 10 white\nWhat is the probability of randomly drawing one white marble and then drawing a second white marble?\n\n\n\\(p(first \\ white) = 10/50 = .2\\)\n\\(p(second \\ white)\\) depends on whether we put the first one back or not"
-  },
-  {
-    "objectID": "slides/07_probability.html#example-marbles-2",
-    "href": "slides/07_probability.html#example-marbles-2",
-    "title": "BC1101",
-    "section": "Example: marbles",
-    "text": "Example: marbles\n\n\n\n\n\nWithout replacement\n\n\\[\\begin{align} p(white) & = 10/50 = .2 \\\\\np(second \\ white) & = 9/49 \\approx .18 \\\\\np(both \\ white) & = .2 * .18  \\approx .037 \\end{align}\\]\n\nWith replacement\n\n\\(\\begin{align} p(white) &= 10/50 = .2 \\\\ p(second \\ white) &= 10/50 = .2 \\\\ p(both \\ white) &= .2 * .2 = .04\\end{align}\\)"
-  },
-  {
-    "objectID": "slides/07_probability.html#example-marbles-3",
-    "href": "slides/07_probability.html#example-marbles-3",
-    "title": "BC1101",
-    "section": "Example: marbles",
-    "text": "Example: marbles\n\n\n\n\n\nWith replacement\n\n\\(\\begin{align} p(white) &= 10/50 = .2 \\\\ p(second \\ white) &= 10/50 = .2 \\\\ p(both \\ white) &= .2 * .2 = .04\\end{align}\\)"
-  },
-  {
-    "objectID": "slides/07_probability.html#random-sampling",
-    "href": "slides/07_probability.html#random-sampling",
-    "title": "BC1101",
-    "section": "Random sampling",
-    "text": "Random sampling\n\n“Random sample” definition\n\nA sample produced by a process that assures:\n\nEach individual in the population has an equal chance of being selected\nProbability of being selected stays constant from one selection to the next when more than one individual is selected\n\n“Independent random sampling”\n\nRequires sampling with replacement"
-  },
-  {
-    "objectID": "slides/08_sampling.html#roadmap",
-    "href": "slides/08_sampling.html#roadmap",
-    "title": "BC1101",
-    "section": "Roadmap",
-    "text": "Roadmap\n\nSo far…\n\n\\(z\\)-scores describe the location of a single score in a sample or in a population\nNormal distributions: precisely quantify probability of obtaining certain scores\n\nMoving forward…"
-  },
-  {
-    "objectID": "slides/08_sampling.html#sampling-error-1",
-    "href": "slides/08_sampling.html#sampling-error-1",
-    "title": "BC1101",
-    "section": "Sampling error",
-    "text": "Sampling error\n\n\n\nDiscrepancy between a sample statistic and the population parameter\n\nE.g. Opinion polling\nsee Pew explainer"
-  },
-  {
-    "objectID": "slides/08_sampling.html#sampling-error-2",
-    "href": "slides/08_sampling.html#sampling-error-2",
-    "title": "BC1101",
-    "section": "Sampling error",
-    "text": "Sampling error"
-  },
-  {
-    "objectID": "slides/08_sampling.html#sampling-distribution-1",
-    "href": "slides/08_sampling.html#sampling-distribution-1",
-    "title": "BC1101",
-    "section": "Sampling distribution",
-    "text": "Sampling distribution\n\nCharacteristics\n\nShape\n\nThe distribution will be approximately normal\nSample \\(M\\)s are representative of population \\(\\mu\\)\nMost means will be close to \\(\\mu\\); means far from \\(\\mu\\) are rare\n\nCenter\n\nThe center/average of the distribution will be close to \\(\\mu\\)\n\\(M\\) is a unbiased statistic\nOn average, \\(M = \\mu\\)\n\nVariability\n\nRelated to sample size, \\(n\\)\nThe larger the sample, the less the variability\nLarger samples are more representative"
-  },
-  {
-    "objectID": "slides/08_sampling.html#shape",
-    "href": "slides/08_sampling.html#shape",
-    "title": "BC1101",
-    "section": "Shape",
-    "text": "Shape\n\nAlmost perfectly normal in either of two conditions\n\nThe population from which the samples are selected is a normal distribution\nOr…\nSample \\(n\\)s are relatively large\n\n\n\n\n…what is relatively large?\n\nAs \\(n\\) approaches infinity, distribution of sample means approaches a normal distribution\nBut by \\(n = 30\\) means pile up symmetrically around \\(\\mu\\)\nPopulation distribution does not need to be normal; can be skewed, flat, bimodal, whatever"
-  },
-  {
-    "objectID": "slides/08_sampling.html#mean",
-    "href": "slides/08_sampling.html#mean",
-    "title": "BC1101",
-    "section": "Mean",
-    "text": "Mean\n\nMean of the distribution of sample means is called the expected value of \\(M\\) ( \\(\\mu_M\\) )\n\nOn average, \\(M = \\mu_M = \\mu\\)\n\\(M\\) is unbiased\nIf we only have a single sample \\(M\\), our best guess at the (unknown) population mean should always be the (known) sample mean\nBut we can acknowledge variability…"
-  },
-  {
-    "objectID": "slides/08_sampling.html#variability",
-    "href": "slides/08_sampling.html#variability",
-    "title": "BC1101",
-    "section": "Variability",
-    "text": "Variability\n\nStandard deviation of the sample means\n\n“Standard error of the mean”; \\(\\sigma_M\\)\nMeasure of how well a sample mean estimates its population mean\nHow much sampling error we can expect; how much distance is expected on average between \\(M\\) and \\(\\mu\\)\n\n\n\n\\(\\sigma_M = \\dfrac{\\sigma}{\\sqrt{n}}\\) or \\(\\dfrac{\\sqrt{\\sigma^2}}{\\sqrt{n}}\\) or \\(\\sqrt{\\dfrac{\\sigma^2}{n}}\\)"
-  },
-  {
-    "objectID": "slides/08_sampling.html#variability-1",
-    "href": "slides/08_sampling.html#variability-1",
-    "title": "BC1101",
-    "section": "Variability",
-    "text": "Variability"
-  },
-  {
-    "objectID": "slides/08_sampling.html#variability-2",
-    "href": "slides/08_sampling.html#variability-2",
-    "title": "BC1101",
-    "section": "Variability",
-    "text": "Variability\n\nd3 = require(\"https://d3js.org/d3.v5.min.js\")\njStat = require(\"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js\")\n\nwidth = 1000\nheight = 600\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nviewof mu = Inputs.number({value: 100, label: tex`\\mu = `})\n\nviewof sigma = Inputs.number({value: 15, label: tex`\\sigma = `})\n\nviewof n = Inputs.range([1, 50], {value: 1, step: 1, label: tex`n = `})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntex`\\sigma_M = ${std_err.toLocaleString(undefined, {maximumFractionDigits: 2, minimumFractionDigits: 2})}`\n\n\n\n\n\n\n\n\nstd_err = sigma / Math.sqrt(n)\n\n\n\nmax_std_err = sigma / Math.sqrt(50)\n\npopulation_curve = {\n  var values = jStat(xlim[0], xlim[1], 210)[0],\n      arr = [];\n  for (var i in values) {\n    arr.push({\n        value: values[i], \n        density: jStat.normal.pdf(values[i], mu, sigma)\n      })\n  }\n  return arr;\n}\n\ncurve = {\n  var values = jStat(xlim[0], xlim[1], 210)[0],\n      arr = [];\n  for (var i in values) {\n    arr.push({\n        value: values[i], \n        density: jStat.normal.pdf(values[i], mu, std_err)\n      })\n  }\n  return arr;\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nchart = {\n  const svg = d3.select(DOM.svg(width, height));\n\n  svg.append(\"g\")\n      .call(xAxis)\n      .attr(\"transform\", `translate(0,${y(0)})`)\n      .attr(\"class\", \"axis\")\n      .style(\"font-size\", \"0.5em\");\n\n  svg.append(\"path\")\n      .datum(population_curve)\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"black\")\n      .attr(\"opacity\", 0.5)\n      .attr(\"stroke-width\", 1.5)\n      .attr(\"stroke-dasharray\", [10, 10])\n      .attr(\"d\", line)\n      .attr(\"class\", \"invertable\");\n      \n  svg.append(\"path\")\n      .datum(curve)\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"black\")\n      .attr(\"stroke-width\", 4)\n      .attr(\"stroke-linejoin\", \"round\")\n      .attr(\"stroke-linecap\", \"round\")\n      .attr(\"d\", line)\n      .attr(\"class\", \"invertable\");\n      \n  return svg.node();\n}\n\n\n\n\n\n\n\nmargin = ({top: 20, right: 0, bottom: 30, left: 0})\n\nxlim = [mu - 3 * sigma, mu + 3 * sigma]\n\nline = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density))\n\nx = d3.scaleLinear()\n  .domain([xlim[0], xlim[1]])\n  .range([margin.left, width - margin.right])\n\n\ny = d3.scaleLinear()\n  .domain([0, jStat.normal.pdf(mu, mu, max_std_err)])\n  .range([height - margin.bottom, margin.top])\n  \nxAxis = d3.axisBottom(x).ticks(10)"
-  },
-  {
-    "objectID": "slides/08_sampling.html#summary",
-    "href": "slides/08_sampling.html#summary",
-    "title": "BC1101",
-    "section": "Summary",
-    "text": "Summary\n\nSummary\n\nDistribution of sample means for samples of size \\(n\\) will have…\n\na mean of \\(\\mu_M\\)\nstandard deviation \\(\\sigma_M = \\sigma / \\sqrt{n}\\)\nShape will be normal if population is normally distributed, or \\(n > 30\\)"
-  },
-  {
-    "objectID": "slides/test-ojs.html",
-    "href": "slides/test-ojs.html",
-    "title": "BC1101",
-    "section": "",
-    "text": "d3 = require(\"https://d3js.org/d3.v5.min.js\")\njStat = require(\"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<!-- viewof quantity = html`<input type=\"range\" value=\"1\" min=\"1\" max=${samples.length}>` -->\nviewof quantity = Inputs.range([1, samples.length], {value: 1, step: 1})\n\n\n\n\n\n\n\n\n\n\nchart = {\n\n  const svg = d3.select(DOM.svg(width, height));\n\n  const g = svg.append(\"g\").attr(\"id\", \"boxes\")\n  \n  g.selectAll(\"rect\")\n    .data(samples.slice(0, quantity))\n    .enter()\n    .append(\"rect\")\n      .attr(\"class\", \"invertable\")\n      .attr(\"fill\", \"black\")\n      .attr(\"stroke\", \"none\")\n      .attr(\"x\", d => x(d.mean_bin - 0.5))\n      .attr(\"y\", d => y(d.count))\n      .attr(\"width\", (width-margin.left-margin.right)/100 * 0.9)\n      .attr(\"height\", (height-margin.top-margin.bottom)/ylim * 0.9)\n      .each(function (d, i) {\n            if (i === quantity-1) {\n              // put all your operations on the second element, e.g.\n              d3.select(this).attr(\"fill\", \"red\");    \n            }\n          });\n      \n  svg.append(\"text\")\n      .attr(\"id\", \"xaxis\")\n      .call(xAxis)\n      .attr(\"transform\", `translate(0,${y(0)})`)\n      .attr(\"class\", \"axis\")\n      .style(\"font-size\", \"0.5em\");\n \n  svg.append(\"g\").attr(\"id\", \"xaxis\")\n      .call(xAxis)\n      .attr(\"transform\", `translate(0,${y(0)})`)\n      .attr(\"class\", \"axis\")\n      .style(\"font-size\", \"0.5em\");\n      \n  svg.append(\"g\").attr(\"id\", \"yaxis\")\n      .call(yAxis)\n      .attr(\"transform\", `translate(${x(50)}, 0)`)\n      .attr(\"class\", \"axis\")\n      .style(\"font-size\", \"0.5em\");\n      \nreturn svg.node();\n\n}\n\n\n\n\n\n\n\n\n\n\nd = d3.select(\"div#blah\")\n  .style(\"font-family\", \"KaTeX_Main\")\n  .style(\"font-size\", \"1.1em\")\n  .html(\"Observations: \" + samples[quantity-1].sample.join(\", \") + '<br/>' + \"<i>M</i> = \" + samples[quantity-1].mean)\n\n\n\n\n\n\n\nwidth = 500\nheight = 250\n\nylim = 50\n\nmargin = ({top: 20, right: 20, bottom: 20, left: 20})\n\n\nx = d3.scaleLinear()\n  .domain([50, 150])\n  .range([margin.left, width - margin.right])\n\nmax_y = Math.max(...samples.map(o => o.count))\n\ny = d3.scaleLinear()\n  .domain([0, ylim])\n  .range([height - margin.bottom, margin.top])\n\nxAxis = d3.axisBottom(x).ticks(8)\n\nyAxis = d3.axisLeft(y).ticks(3)"
-  },
-  {
-    "objectID": "slides-index.html#course-overview",
-    "href": "slides-index.html#course-overview",
-    "title": "Slides",
-    "section": "1. Course Overview",
-    "text": "1. Course Overview\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nTextbook\nLectures\nRecitation\nExams\nFinal grades\nOther stuff\n\n    \n  \n\n  \nSlidesPanopto"
-  },
-  {
-    "objectID": "slides-index.html#variables",
-    "href": "slides-index.html#variables",
-    "title": "Slides",
-    "section": "2. Variables",
-    "text": "2. Variables\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nStatistics: Why? How? What?\nMeasuring things\nPopulations & samples\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
-  },
-  {
-    "objectID": "slides-index.html#frequency",
-    "href": "slides-index.html#frequency",
-    "title": "Slides",
-    "section": "3. Frequency",
-    "text": "3. Frequency\n\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nFrequency\nFrequency tables\nFrequency graphs\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
-  },
-  {
-    "objectID": "slides-index.html#central-tendency",
-    "href": "slides-index.html#central-tendency",
-    "title": "Slides",
-    "section": "4. Central Tendency",
-    "text": "4. Central Tendency\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nMode\nMedian\nMean\nDistributions\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
-  },
-  {
-    "objectID": "slides-index.html#variability",
-    "href": "slides-index.html#variability",
-    "title": "Slides",
-    "section": "5. Variability",
-    "text": "5. Variability\n\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nVariability\nRange\nSum of squares, variance, SD\nDegrees of freedom\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
-  },
-  {
-    "objectID": "slides-index.html#z-scores",
-    "href": "slides-index.html#z-scores",
-    "title": "Slides",
-    "section": "6. \\(z\\)-Scores",
-    "text": "6. \\(z\\)-Scores\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \n\\(z\\)-scores\nStandardized distributions\n\\(z\\)-scores & making inferences\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
-  },
-  {
-    "objectID": "slides-index.html#probability",
-    "href": "slides-index.html#probability",
-    "title": "Slides",
-    "section": "7. Probability",
-    "text": "7. Probability\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nProbability basics\nSampling\nProbability and distributions\nProbability and \\(z\\)-scores\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
-  },
-  {
-    "objectID": "slides-index.html#sampling",
-    "href": "slides-index.html#sampling",
-    "title": "Slides",
-    "section": "8. Sampling",
-    "text": "8. Sampling\n\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nSampling error\nDistribution of sample means\nCentral Limit Theorem\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
-  },
-  {
-    "objectID": "slides/04_central-tendency.html#locating-the-median-1",
-    "href": "slides/04_central-tendency.html#locating-the-median-1",
-    "title": "BC1101",
-    "section": "Locating the median",
-    "text": "Locating the median\n\nPut scores in order\nFind the number that gives and equal number of scores on either side\nEven number of scores:\n\nAverage the 2 numbers either side of center\n\n\n\n1 2 3 | 4 5 6\n(3 + 4) / 2 = 3.5\n65 70 70 80 90 90\n65 70 80 80 80 90 92 95"
-  },
-  {
-    "objectID": "slides/05_variability.html#measures-of-variability",
-    "href": "slides/05_variability.html#measures-of-variability",
-    "title": "BC1101",
-    "section": "Measures of variability",
-    "text": "Measures of variability\n\nQuantitative distance measures based on the differences between scores\n\nEach has different characteristics\n\nRange\n\nDescribes the spread of scores\nDistance of most extreme scores from each other\n\n\\(SS\\), Variance, and Standard Deviation\n\nCompanion concepts, but different things\nDescribe distance of scores from the mean\nSmall values: low variability; scores clustered close to mean\nHigher values: greater variability; scores widely scattered"
-  },
-  {
     "objectID": "slides/05_variability.html#definitions",
     "href": "slides/05_variability.html#definitions",
     "title": "BC1101",
     "section": "Definitions",
     "text": "Definitions\n\nDeviation\n\nDistance from the mean: deviation score = \\(X – \\mu\\)\n\n\\(SS\\): Sum of squares\n\nSum of squared deviations\n\nVariance\n\nThe mean squared deviation\nAverage squared distance from the mean\nCalculation differs for population and samples\n\nStandard deviation\n\nThe square root of the variance\nProvides a measure of the average (standard) distance of scores from the mean"
-  },
-  {
-    "objectID": "slides/05_variability.html#variability-example-1",
-    "href": "slides/05_variability.html#variability-example-1",
-    "title": "BC1101",
-    "section": "Variability example",
-    "text": "Variability example\n\n\n\n\n\n\n\n\nLeptokurtotic\n\n\n\n\nPlatykurtotic"
-  },
-  {
-    "objectID": "slides/05_variability.html#variability-1",
-    "href": "slides/05_variability.html#variability-1",
-    "title": "BC1101",
-    "section": "Variability",
-    "text": "Variability\n\nLike the mean\n\nA descriptive statistic\nSingle number to summarize dataset\n\nUnlike the mean\n\nRather than describing the middle of the data, variability describes the spread of the data\nHigher variability means greater differences between scores\n\nPurpose\n\nQuantify how well an individual score represents the distribution\nImportant for inferential stats"
-  },
-  {
-    "objectID": "slides/05_variability.html#sd-variance-for-samples",
-    "href": "slides/05_variability.html#sd-variance-for-samples",
-    "title": "BC1101",
-    "section": "SD & variance for samples",
-    "text": "SD & variance for samples\n\nResearch goal:\n\nDraw general conclusions about population based on limited information from a sample\n\nProblem:\n\nSamples have less variability than population they are drawn from\nComputing the Variance and Standard Deviation in the same way as for a population would give a biased estimate of the population parameter\nBiased estimate: Systematically overestimates or underestimates the parameter\nUnbiased estimate: Average value of statistic is equal to population parameter\nVariance & SD for samples underestimate population parameters"
-  },
-  {
-    "objectID": "slides/05_variability.html#sd-variance-for-samples-1",
-    "href": "slides/05_variability.html#sd-variance-for-samples-1",
-    "title": "BC1101",
-    "section": "SD & variance for samples",
-    "text": "SD & variance for samples\n\nWhy samples underestimate variability\n\nSoup"
-  },
-  {
-    "objectID": "slides/05_variability.html#sd-variance-for-samples-2",
-    "href": "slides/05_variability.html#sd-variance-for-samples-2",
-    "title": "BC1101",
-    "section": "SD & variance for samples",
-    "text": "SD & variance for samples\n\nWhy samples underestimate variability\n\nHeight"
-  },
-  {
-    "objectID": "slides/05_variability.html#variability-of-samples",
-    "href": "slides/05_variability.html#variability-of-samples",
-    "title": "BC1101",
-    "section": "Variability of samples",
-    "text": "Variability of samples\n\nSimple solution: divide \\(SS\\) by \\(n – 1\\) instead of \\(n\\)\n\nProduces unbiased estimate of the population variance"
-  },
-  {
-    "objectID": "slides/05_variability.html#sample-variability-equations",
-    "href": "slides/05_variability.html#sample-variability-equations",
-    "title": "BC1101",
-    "section": "Sample variability equations",
-    "text": "Sample variability equations\n\n\n\nFind the deviation for each score\n\n\n\\(X - \\mu\\)\n\n\n\n\n\nSquare deviations\n\n\n\\((X - \\mu)^2\\)\n\n\n\n\n\nSum the squared deviations\n\n\n\\(SS = \\Sigma(X - \\mu)^2\\)\n\n\n\n\n\nFind average of squared deviations\n\n\n\\(\\sigma^2 = \\dfrac{SS} {\\color{red}{n-1}}\\)\n\n\n\n\n\nTake square root of variance\n\n\n\\(\\sigma = \\sqrt{\\sigma^2} = \\sqrt{\\dfrac{SS}{\\color{red}{n-1}}}\\)"
   },
   {
     "objectID": "slides/05_variability.html#approach",
@@ -847,6 +497,34 @@
     "text": "Variability equations for samples\n\n\n\nFind the deviation for each score\n\n\n\\(X - \\mu\\)\n\n\n\n\n\nSquare deviations\n\n\n\\((X - \\mu)^2\\)\n\n\n\n\n\nSum the squared deviations\n\n\n\\(SS = \\Sigma(X - \\mu)^2\\)\n\n\n\n\n\nFind average of squared deviations\n\n\n\\(\\sigma^2 = \\dfrac{SS} {\\color{red}{n-1}}\\)\n\n\n\n\n\nTake square root of variance\n\n\n\\(\\sigma = \\sqrt{\\sigma^2} = \\sqrt{\\dfrac{SS}{\\color{red}{n-1}}}\\)"
   },
   {
+    "objectID": "slides/05_variability.html#degrees-of-freedom-1",
+    "href": "slides/05_variability.html#degrees-of-freedom-1",
+    "title": "BC1101",
+    "section": "Degrees of freedom",
+    "text": "Degrees of freedom\n\n\n🂠\n\n\n🂠\n\n\n🂠"
+  },
+  {
+    "objectID": "slides/05_variability.html#degrees-of-freedom-2",
+    "href": "slides/05_variability.html#degrees-of-freedom-2",
+    "title": "BC1101",
+    "section": "Degrees of freedom",
+    "text": "Degrees of freedom\n\n\n🃓\n\n\n🂠\n\n\n🂠"
+  },
+  {
+    "objectID": "slides/05_variability.html#degrees-of-freedom-3",
+    "href": "slides/05_variability.html#degrees-of-freedom-3",
+    "title": "BC1101",
+    "section": "Degrees of freedom",
+    "text": "Degrees of freedom\n\n\n🃓\n\n\n🃕\n\n\n🂠"
+  },
+  {
+    "objectID": "slides/05_variability.html#degrees-of-freedom-4",
+    "href": "slides/05_variability.html#degrees-of-freedom-4",
+    "title": "BC1101",
+    "section": "Degrees of freedom",
+    "text": "Degrees of freedom\n\nWhy \\(n – 1\\)?\n\n\\(M = 5\\)\n\\(n = 3\\)\n\nIf you know the first 2 scores:\n\n3, 5\n\\(M = \\dfrac{\\Sigma X}{N} = \\dfrac{3 + 5 + X}{3}\\)\nSo \\(X = 3*M - 3 - 5 = 7\\)\n\nThere is only 1 possible value that \\(X\\) can be\n\nIt is not free to vary\nWe’ve lost 1 degree of freedom"
+  },
+  {
     "objectID": "slides/05_variability.html#star-wars-variability",
     "href": "slides/05_variability.html#star-wars-variability",
     "title": "BC1101",
@@ -868,20 +546,6 @@
     "text": "\\(z\\)-score description\n\n\n\n\\(z\\)-score describes exact location of any score in a distribution\nTwo pieces of information:\n\nSign\n\nPositive or negative\nIndicates whether score is located above or below the mean\n\nMagnitude\n\nIndicates distance between score and mean in standard deviation units\n\\(z = 0\\) is equal to the mean"
   },
   {
-    "objectID": "slides/06_z-scores.html#determining-raw-score-from-z-score",
-    "href": "slides/06_z-scores.html#determining-raw-score-from-z-score",
-    "title": "BC1101",
-    "section": "Determining raw score from \\(z\\)-score",
-    "text": "Determining raw score from \\(z\\)-score\n\n\\(z = \\dfrac{X - \\mu}\\sigma\\)     so…     \\(X = \\mu + z\\sigma\\)\n\n\nAlgebraically solve for \\(X\\)\nRaw score \\(X\\) equals population mean plus \\(z\\) multiplied by standard deviation"
-  },
-  {
-    "objectID": "slides/06_z-scores.html#example",
-    "href": "slides/06_z-scores.html#example",
-    "title": "BC1101",
-    "section": "Example",
-    "text": "Example"
-  },
-  {
     "objectID": "slides/06_z-scores.html#example-test-scores",
     "href": "slides/06_z-scores.html#example-test-scores",
     "title": "BC1101",
@@ -894,6 +558,13 @@
     "title": "BC1101",
     "section": "Example: test scores",
     "text": "Example: test scores\n\nComparing scores from different distributions\n\nHow many SDs is a score above/below the mean?\n\n\n\n\n\\(z = \\dfrac{80-70}{5} = \\dfrac{10}{5} = 2\\)\n\n\n\n\n\n\\(z = \\dfrac{40-20}{10} = \\dfrac{20}{10} = 2\\)"
+  },
+  {
+    "objectID": "slides/06_z-scores.html#determining-raw-score-from-z-score",
+    "href": "slides/06_z-scores.html#determining-raw-score-from-z-score",
+    "title": "BC1101",
+    "section": "Determining raw score from \\(z\\)-score",
+    "text": "Determining raw score from \\(z\\)-score\n\n\\(z = \\dfrac{X - \\mu}\\sigma\\)     so…     \\(X = \\mu + z\\sigma\\)\n\n\nAlgebraically solve for \\(X\\)\nRaw score \\(X\\) equals population mean plus \\(z\\) multiplied by standard deviation"
   },
   {
     "objectID": "slides/06_z-scores.html#determining-raw-score-from-z-score-1",
@@ -910,6 +581,20 @@
     "text": "\\(z\\) distribution\n\nEvery \\(X\\) value can be transformed to a \\(z\\)-score\n\n\\(z\\)-score distribution is called a standardized distribution\n\nCharacteristics of \\(z\\)-score transformation\n\nSame shape as original distribution\nMean of \\(z\\)-score distribution is always \\(0\\)\n\nBecause the mean is the balance point; \\(\\Sigma (X - \\mu)\\) always equals \\(0\\)\n\nStandard deviation is always \\(1.00\\)\n\nBecause \\(SD\\) is the denominator"
   },
   {
+    "objectID": "slides/06_z-scores.html#example",
+    "href": "slides/06_z-scores.html#example",
+    "title": "BC1101",
+    "section": "Example",
+    "text": "Example"
+  },
+  {
+    "objectID": "slides/06_z-scores.html#other-standardized-distribtions",
+    "href": "slides/06_z-scores.html#other-standardized-distribtions",
+    "title": "BC1101",
+    "section": "Other standardized distribtions",
+    "text": "Other standardized distribtions\n\nStandardized: Predetermined mean & SD\n\n\\(z\\) distribution has \\(\\mu = 0\\) and \\(\\sigma = 1\\)\nSAT has \\(\\mu = 500\\) and \\(\\sigma = 100\\)\nIQ has \\(\\mu=100\\) and \\(\\sigma=15\\) points\n\nStandardizing a distribution has two steps\n\nOriginal raw scores transformed to \\(z\\)-scores\nThe \\(z\\)-scores are transformed to new \\(X\\) values so that the specific predetermined \\(\\mu\\) and \\(\\sigma\\) are attained\n2a. Multiply to set SD\n2b. Add or subtract a constant to set the mean"
+  },
+  {
     "objectID": "slides/06_z-scores.html#standardizing-scores",
     "href": "slides/06_z-scores.html#standardizing-scores",
     "title": "BC1101",
@@ -917,22 +602,15 @@
     "text": "Standardizing scores\n\n\n\n\n\n\n\nOriginal\n\n\n\\(z\\)-scores\n\n\n2a. Set SD\n\n2b. Set \\(M\\)\n\n\n\n\ngeniustest\n\n\n\n\n\n\n\n\n\n\n\n\nmensa.lu"
   },
   {
-    "objectID": "slides/06_z-scores.html#standardizing-scores-1",
-    "href": "slides/06_z-scores.html#standardizing-scores-1",
+    "objectID": "slides/06_z-scores.html#z-scores-and-inferential-stats",
+    "href": "slides/06_z-scores.html#z-scores-and-inferential-stats",
     "title": "BC1101",
-    "section": "Standardizing scores",
-    "text": "Standardizing scores\n\n\n\n\nOriginal\n\n\n\\(z\\)-scores\n\n\n2a. Set SD\n\n2b. Set \\(M\\)\n\n\n\n\ngeniustest\n\n\n\n\n\n\n\n\n\n\n\n\nmensa.lu"
+    "section": "\\(z\\)-scores and inferential stats",
+    "text": "\\(z\\)-scores and inferential stats"
   },
   {
     "objectID": "slides/06_z-scores.html#z-scores-and-inferential-stats-1",
     "href": "slides/06_z-scores.html#z-scores-and-inferential-stats-1",
-    "title": "BC1101",
-    "section": "\\(z\\)-scores and inferential stats",
-    "text": "\\(z\\)-scores and inferential stats\n\n\nhttps://humanbenchmark.com/tests/reactiontime\n\nDo 5 reaction time trials\n(click when the color changes)\nNote your reaction time in \\(ms\\)\nThen click play to resume lecture when you’re done"
-  },
-  {
-    "objectID": "slides/06_z-scores.html#z-scores-and-inferential-stats-2",
-    "href": "slides/06_z-scores.html#z-scores-and-inferential-stats-2",
     "title": "BC1101",
     "section": "\\(z\\)-scores and inferential stats",
     "text": "\\(z\\)-scores and inferential stats\n\n\nhttps://humanbenchmark.com/tests/reactiontime\n\nDo 5 reaction time trials\n(click when the color changes)\nNote your reaction time in \\(ms\\)\nThen click play to resume lecture when you’re done"
@@ -952,46 +630,32 @@
     "text": "CBT for OCD\n\n\n\n\n\n\n\nCBT for OCD\n\nPre-treatment population \\(M = 30.25; SD = 14.89\\)\nSuppose a treated individual scores \\(X = 15.49\\)\n\n\n\n\n\n\n\\(\\begin{align} z & = \\dfrac{X - M}{s} \\\\ & = \\dfrac{15.49 - 30.25}{14.89} \\\\ & = -0.99 \\end{align}\\)\n\n\n\nAbramowitz, J. S., Deacon, B. J., Olatunji, B. O., Wheaton, M. G., Berman, N. C., Losardo, D., . . . Hale, L. R. (2010). Assessment of obsessive-compulsive symptom dimensions: Development and evaluation of the Dimensional Obsessive-Compulsive Scale. Psychological Assessment, 22(1), 180-198. http://dx.doi.org/10.1037/a0018260"
   },
   {
-    "objectID": "slides/06_z-scores.html#z-scores-and-inferential-stats",
-    "href": "slides/06_z-scores.html#z-scores-and-inferential-stats",
+    "objectID": "slides/07_probability.html#definition-and-notation",
+    "href": "slides/07_probability.html#definition-and-notation",
     "title": "BC1101",
-    "section": "\\(z\\)-scores and inferential stats",
-    "text": "\\(z\\)-scores and inferential stats"
+    "section": "Definition and notation",
+    "text": "Definition and notation\n\nDefinition & notation\n\nSeveral different outcomes are possible\nThe probability of any specific outcome is a fraction of all possible outcomes\n\\(p\\) is the symbol for “probability”\nProbability of some specific outcome is specified by \\(p(event)\\)\n\n\n\\(p(A) = \\dfrac{number \\ of \\ outcomes \\ classified \\ as \\ A}{total \\ number \\ of \\ possible \\ outcomes}\\)"
   },
   {
-    "objectID": "slides/07_probability.html#test-hover",
-    "href": "slides/07_probability.html#test-hover",
+    "objectID": "slides/07_probability.html#example-coin-flip",
+    "href": "slides/07_probability.html#example-coin-flip",
     "title": "BC1101",
-    "section": "test hover",
-    "text": "test hover\n\n\n\n\n\\(p(X = 1)=\\) \\(4/10 = 0.4\\)\n\\(p(X \\ge 4) = 3/10 = 0.3\\)\n\\(p(1 \\lt X \\lt 5) = 5/10 = .5\\)"
+    "section": "Example: coin flip",
+    "text": "Example: coin flip\n\nE.g. Flipping a coin\n\nNumerator: number of those outcomes\nDenominator: all possible outcomes\n\n\n\n\n\n\\(p(heads) = 1/2 = .5\\)\n\n\n\\(p(tails) = 1/2 = .5%\\)"
   },
   {
-    "objectID": "slides/07_probability.html#using-r",
-    "href": "slides/07_probability.html#using-r",
+    "objectID": "slides/07_probability.html#example-rolling-dice",
+    "href": "slides/07_probability.html#example-rolling-dice",
     "title": "BC1101",
-    "section": "Using R",
-    "text": "Using R\n\nBetter: Let R figure it out\n\n\npnorm(0.2)  # area to the left of z = 0.2\n\n[1] 0.5792597\n\npnorm(0.2, lower.tail=FALSE) # area to the right of z = 0.2\n\n[1] 0.4207403\n\n# can specify different mean & SD\npnorm(700, mean=500, sd=100, lower.tail=FALSE) \n\n[1] 0.02275013\n\n# can specify proportion & find corresponding score\nqnorm(.0228, mean=500, sd=100, lower.tail=FALSE) \n\n[1] 699.9077"
+    "section": "Example: rolling dice",
+    "text": "Example: rolling dice\n\nAll possible outcomes:\n1, 2, 3, 4, 5, 6\n\n\n\n\\(p(6) = 1/6 = 0.17\\)\n\\(p(1) = 1/6 = 0.17\\)\n\\(p(odd) = 3/6 = 0.5\\)"
   },
   {
-    "objectID": "slides/07_probability.html#unit-normal-table",
-    "href": "slides/07_probability.html#unit-normal-table",
+    "objectID": "slides/07_probability.html#example-rolling-2-dice",
+    "href": "slides/07_probability.html#example-rolling-2-dice",
     "title": "BC1101",
-    "section": "Unit Normal Table",
-    "text": "Unit Normal Table"
-  },
-  {
-    "objectID": "slides/07_probability.html#spiderman",
-    "href": "slides/07_probability.html#spiderman",
-    "title": "BC1101",
-    "section": "Spiderman",
-    "text": "Spiderman\n\nSpiderman\n\nAre Peter Parker’s RTs “noticeably different?”\n\\(z = -2.5\\)\nCan state precise probability of observing a \\(z\\)-score that (or more) extreme\n\n\n\n\n\n\n\n\npnorm(-2.5)\n\n[1] 0.006209665\n\npnorm(159, mean = 284, sd = 50)\n\n[1] 0.006209665"
-  },
-  {
-    "objectID": "slides/07_probability.html#warning",
-    "href": "slides/07_probability.html#warning",
-    "title": "BC1101",
-    "section": "Warning",
-    "text": "Warning\n\nImportant:\n\nProbabilities given in the Unit Normal Table will be accurate only for normally distributed scores\nShape of the distribution must be verified\nImportant assumption of Central Limit Theorem"
+    "section": "Example: rolling 2 dice",
+    "text": "Example: rolling 2 dice\n\n\n\n\n\\(p(2) = 1/36 = .03\\)\n\\(p(12) = 1/36 = .03\\)\n\\(p(7) = 6/36 = .17\\)\n\n\n\n\n\n\n \n  \n     \n    1 \n    2 \n    3 \n    4 \n    5 \n    6 \n  \n \n\n  \n    1 \n    2 \n    3 \n    4 \n    5 \n    6 \n    7 \n  \n  \n    2 \n    3 \n    4 \n    5 \n    6 \n    7 \n    8 \n  \n  \n    3 \n    4 \n    5 \n    6 \n    7 \n    8 \n    9 \n  \n  \n    4 \n    5 \n    6 \n    7 \n    8 \n    9 \n    10 \n  \n  \n    5 \n    6 \n    7 \n    8 \n    9 \n    10 \n    11 \n  \n  \n    6 \n    7 \n    8 \n    9 \n    10 \n    11 \n    12"
   },
   {
     "objectID": "slides/07_probability.html#sampling-marbles",
@@ -1008,11 +672,74 @@
     "text": "More marbles\n\n\n\n\n\nDifferent jar\n\n40 blue & 10 white marbles\nWhat is the probability of randomly drawing a white marble?\n\n\n\\(p(white) = 10/50 = .2\\)"
   },
   {
+    "objectID": "slides/07_probability.html#repeated-sampling",
+    "href": "slides/07_probability.html#repeated-sampling",
+    "title": "BC1101",
+    "section": "Repeated sampling",
+    "text": "Repeated sampling\n\n\n\n\n\nRepeated sampling\n\n40 blue, 10 white\nWhat is the probability of randomly drawing one white marble and then drawing a second white marble?\n\n\n\\(p(first \\ white) = 10/50 = .2\\)\n\\(p(second \\ white)\\) depends on whether we put the first one back or not"
+  },
+  {
     "objectID": "slides/07_probability.html#repeated-sampling-1",
     "href": "slides/07_probability.html#repeated-sampling-1",
     "title": "BC1101",
     "section": "Repeated sampling",
     "text": "Repeated sampling\n\n\n\n\n\nWithout replacement\n\n\\[\\begin{align} p(white) & = 10/50 = .2 \\\\\np(second \\ white) & = 9/49 \\approx .18 \\\\\np(both \\ white) & = .2 * .18  \\approx .037 \\end{align}\\]\n\nWith replacement\n\n\\(\\begin{align} p(white) &= 10/50 = .2 \\\\ p(second \\ white) &= 10/50 = .2 \\\\ p(both \\ white) &= .2 * .2 = .04\\end{align}\\)"
+  },
+  {
+    "objectID": "slides/07_probability.html#random-sampling",
+    "href": "slides/07_probability.html#random-sampling",
+    "title": "BC1101",
+    "section": "Random sampling",
+    "text": "Random sampling\n\n“Random sample” definition\n\nA sample produced by a process that assures:\n\nEach individual in the population has an equal chance of being selected\nProbability of being selected stays constant from one selection to the next when more than one individual is selected\n\n“Independent random sampling”\n\nRequires sampling with replacement"
+  },
+  {
+    "objectID": "slides/07_probability.html#unit-normal-table",
+    "href": "slides/07_probability.html#unit-normal-table",
+    "title": "BC1101",
+    "section": "Unit Normal Table",
+    "text": "Unit Normal Table"
+  },
+  {
+    "objectID": "slides/07_probability.html#using-r",
+    "href": "slides/07_probability.html#using-r",
+    "title": "BC1101",
+    "section": "Using R",
+    "text": "Using R\n\nBetter: Let R figure it out\n\n\npnorm(0.2)  # area to the left of z = 0.2\n\n[1] 0.5792597\n\npnorm(0.2, lower.tail=FALSE) # area to the right of z = 0.2\n\n[1] 0.4207403\n\n# can specify different mean & SD\npnorm(700, mean=500, sd=100, lower.tail=FALSE) \n\n[1] 0.02275013\n\n# can specify proportion & find corresponding score\nqnorm(.0228, mean=500, sd=100, lower.tail=FALSE) \n\n[1] 699.9077"
+  },
+  {
+    "objectID": "slides/07_probability.html#spiderman",
+    "href": "slides/07_probability.html#spiderman",
+    "title": "BC1101",
+    "section": "Spiderman",
+    "text": "Spiderman\n\nSpiderman\n\nAre Peter Parker’s RTs “noticeably different?”\n\\(z = -2.5\\)\nCan state precise probability of observing a \\(z\\)-score that (or more) extreme\n\n\n\n\n\n\n\n\npnorm(-2.5)\n\n[1] 0.006209665\n\npnorm(159, mean = 284, sd = 50)\n\n[1] 0.006209665"
+  },
+  {
+    "objectID": "slides/07_probability.html#warning",
+    "href": "slides/07_probability.html#warning",
+    "title": "BC1101",
+    "section": "Warning",
+    "text": "Warning\n\nImportant:\n\nProbabilities given in the Unit Normal Table will be accurate only for normally distributed scores\nShape of the distribution must be verified\nImportant assumption of Central Limit Theorem"
+  },
+  {
+    "objectID": "slides/08_sampling.html#roadmap",
+    "href": "slides/08_sampling.html#roadmap",
+    "title": "BC1101",
+    "section": "Roadmap",
+    "text": "Roadmap\n\nSo far…\n\n\\(z\\)-scores describe the location of a single score in a sample or in a population\nNormal distributions: precisely quantify probability of obtaining certain scores\n\nMoving forward…"
+  },
+  {
+    "objectID": "slides/08_sampling.html#sampling-error-1",
+    "href": "slides/08_sampling.html#sampling-error-1",
+    "title": "BC1101",
+    "section": "Sampling error",
+    "text": "Sampling error\n\n\n\nDiscrepancy between a sample statistic and the population parameter\n\nE.g. Opinion polling\nsee Pew explainer"
+  },
+  {
+    "objectID": "slides/08_sampling.html#sampling-error-2",
+    "href": "slides/08_sampling.html#sampling-error-2",
+    "title": "BC1101",
+    "section": "Sampling error",
+    "text": "Sampling error"
   },
   {
     "objectID": "slides/08_sampling.html#sampling-error-3",
@@ -1036,27 +763,6 @@
     "text": "Example: height distribution"
   },
   {
-    "objectID": "slides/08_sampling.html#example-height-distribution-of-the-mean",
-    "href": "slides/08_sampling.html#example-height-distribution-of-the-mean",
-    "title": "BC1101",
-    "section": "Example: height distribution of the mean",
-    "text": "Example: height distribution of the mean\n\n\n\n\n\n\n\n\nSample\nX1\nX2\nM\n\n\n\n\n1\n60\n60\n60\n\n\n2\n62\n60\n61\n\n\n3\n64\n60\n62\n\n\n4\n66\n60\n63\n\n\n5\n60\n62\n61\n\n\n6\n62\n62\n62\n\n\n7\n64\n62\n63\n\n\n8\n66\n62\n64\n\n\n9\n60\n64\n62\n\n\n10\n62\n64\n63\n\n\n11\n64\n64\n64\n\n\n12\n66\n64\n65\n\n\n13\n60\n66\n63\n\n\n14\n62\n66\n64\n\n\n15\n64\n66\n65\n\n\n16\n66\n66\n66\n\n\n\n\n\n\nSampling distribution (\\(n = 2\\))\n\n\n\\(p(M < 61) =\\ ?\\)\n\\(p(62 \\le M \\le 64) =\\ ?\\)\n\\(p(M > 65) =\\ ?\\)"
-  },
-  {
-    "objectID": "slides/08_sampling.html#central-limit-theorem-1",
-    "href": "slides/08_sampling.html#central-limit-theorem-1",
-    "title": "BC1101",
-    "section": "Central Limit Theorem",
-    "text": "Central Limit Theorem\n\nFor any population with mean \\(\\mu\\) and standard deviation \\(\\sigma\\), the distribution of sample means for sample size n will have…\n\nAn expected mean \\(\\mu_M\\) of \\(\\mu\\)\nA standard deviation of \\(\\dfrac{\\sigma} {\\sqrt{n}}\\)\nAnd will approach a normal distribution as \\(n\\) approaches infinity"
-  },
-  {
-    "objectID": "slides/08_sampling.html#variability-heights-sampling-dist",
-    "href": "slides/08_sampling.html#variability-heights-sampling-dist",
-    "title": "BC1101",
-    "section": "Variability: heights sampling dist",
-    "text": "Variability: heights sampling dist\n\n\n\n\n\n\n\n \n  \n    Sample \n    X1 \n    X2 \n    M \n  \n \n\n  \n    1 \n    60 \n    60 \n    60 \n  \n  \n    2 \n    62 \n    60 \n    61 \n  \n  \n    3 \n    64 \n    60 \n    62 \n  \n  \n    4 \n    66 \n    60 \n    63 \n  \n  \n    5 \n    60 \n    62 \n    61 \n  \n  \n    6 \n    62 \n    62 \n    62 \n  \n  \n    7 \n    64 \n    62 \n    63 \n  \n  \n    8 \n    66 \n    62 \n    64 \n  \n  \n    9 \n    60 \n    64 \n    62 \n  \n  \n    10 \n    62 \n    64 \n    63 \n  \n  \n    11 \n    64 \n    64 \n    64 \n  \n  \n    12 \n    66 \n    64 \n    65 \n  \n  \n    13 \n    60 \n    66 \n    63 \n  \n  \n    14 \n    62 \n    66 \n    64 \n  \n  \n    15 \n    64 \n    66 \n    65 \n  \n  \n    16 \n    66 \n    66 \n    66 \n  \n\n\n\n\n\n\nSampling distribution (\\(n = 2\\))\n\n\n\\(\\sigma_M = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{2.24}{\\sqrt{2}} = 1.58\\)"
-  },
-  {
     "objectID": "slides/08_sampling.html#example-height-distribution-1",
     "href": "slides/08_sampling.html#example-height-distribution-1",
     "title": "BC1101",
@@ -1069,6 +775,69 @@
     "title": "BC1101",
     "section": "Example: height distribution",
     "text": "Example: height distribution\n\n\n\n\nNow we can calculate variability of sample means\n\nSince we obtained every sample mean\nUse population SD formula\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    60 \n    -3 \n    9 \n  \n  \n    61 \n    -2 \n    4 \n  \n  \n    62 \n    -1 \n    1 \n  \n  \n    63 \n    0 \n    0 \n  \n  \n    61 \n    -2 \n    4 \n  \n  \n    62 \n    -1 \n    1 \n  \n  \n    63 \n    0 \n    0 \n  \n  \n    64 \n    1 \n    1 \n  \n  \n    62 \n    -1 \n    1 \n  \n  \n    63 \n    0 \n    0 \n  \n  \n    64 \n    1 \n    1 \n  \n  \n    65 \n    2 \n    4 \n  \n  \n    63 \n    0 \n    0 \n  \n  \n    64 \n    1 \n    1 \n  \n  \n    65 \n    2 \n    4 \n  \n  \n    66 \n    3 \n    9 \n  \n  \n    \\(M = 63.00\\) \n     \n    \\(SS = 40.00\\) \n  \n  \n     \n     \n    \\(\\sigma^2 = 2.50\\) \n  \n  \n     \n     \n    \\(\\sigma = 1.58\\)"
+  },
+  {
+    "objectID": "slides/08_sampling.html#central-limit-theorem-1",
+    "href": "slides/08_sampling.html#central-limit-theorem-1",
+    "title": "BC1101",
+    "section": "Central Limit Theorem",
+    "text": "Central Limit Theorem\n\nFor any population with mean \\(\\mu\\) and standard deviation \\(\\sigma\\), the distribution of sample means for sample size n will have…\n\nAn expected mean \\(\\mu_M\\) of \\(\\mu\\)\nA standard deviation of \\(\\dfrac{\\sigma} {\\sqrt{n}}\\)\nAnd will approach a normal distribution as \\(n\\) approaches infinity"
+  },
+  {
+    "objectID": "slides/08_sampling.html#shape",
+    "href": "slides/08_sampling.html#shape",
+    "title": "BC1101",
+    "section": "Shape",
+    "text": "Shape\n\nAlmost perfectly normal in either of two conditions\n\nThe population from which the samples are selected is a normal distribution\nOr…\nSample \\(n\\)s are relatively large\n\n\n\n\n…what is relatively large?\n\nAs \\(n\\) approaches infinity, distribution of sample means approaches a normal distribution\nBut by \\(n = 30\\) means pile up symmetrically around \\(\\mu\\)\nPopulation distribution does not need to be normal; can be skewed, flat, bimodal, whatever"
+  },
+  {
+    "objectID": "slides/08_sampling.html#mean",
+    "href": "slides/08_sampling.html#mean",
+    "title": "BC1101",
+    "section": "Mean",
+    "text": "Mean\n\nMean of the distribution of sample means is called the expected value of \\(M\\) ( \\(\\mu_M\\) )\n\nOn average, \\(M = \\mu_M = \\mu\\)\n\\(M\\) is unbiased\nIf we only have a single sample \\(M\\), our best guess at the (unknown) population mean should always be the (known) sample mean\nBut we can acknowledge variability…"
+  },
+  {
+    "objectID": "slides/08_sampling.html#variability",
+    "href": "slides/08_sampling.html#variability",
+    "title": "BC1101",
+    "section": "Variability",
+    "text": "Variability\n\nStandard deviation of the sample means\n\n“Standard error of the mean”; \\(\\sigma_M\\)\nMeasure of how well a sample mean estimates its population mean\nHow much sampling error we can expect; how much distance is expected on average between \\(M\\) and \\(\\mu\\)\n\n\n\n\\(\\sigma_M = \\dfrac{\\sigma}{\\sqrt{n}}\\) or \\(\\dfrac{\\sqrt{\\sigma^2}}{\\sqrt{n}}\\) or \\(\\sqrt{\\dfrac{\\sigma^2}{n}}\\)"
+  },
+  {
+    "objectID": "slides/08_sampling.html#variability-1",
+    "href": "slides/08_sampling.html#variability-1",
+    "title": "BC1101",
+    "section": "Variability",
+    "text": "Variability"
+  },
+  {
+    "objectID": "slides/08_sampling.html#variability-2",
+    "href": "slides/08_sampling.html#variability-2",
+    "title": "BC1101",
+    "section": "Variability",
+    "text": "Variability\n\nd3 = require(\"https://d3js.org/d3.v5.min.js\")\njStat = require(\"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js\")\n\nwidth = 1000\nheight = 600\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nviewof mu = Inputs.number({value: 100, label: tex`\\mu = `})\n\nviewof sigma = Inputs.number({value: 15, label: tex`\\sigma = `})\n\nviewof n = Inputs.range([1, 50], {value: 1, step: 1, label: tex`n = `})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntex`\\sigma_M = ${std_err.toLocaleString(undefined, {maximumFractionDigits: 2, minimumFractionDigits: 2})}`\n\n\n\n\n\n\n\n\nstd_err = sigma / Math.sqrt(n)\n\n\n\nmax_std_err = sigma / Math.sqrt(50)\n\npopulation_curve = {\n  var values = jStat(xlim[0], xlim[1], 210)[0],\n      arr = [];\n  for (var i in values) {\n    arr.push({\n        value: values[i], \n        density: jStat.normal.pdf(values[i], mu, sigma)\n      })\n  }\n  return arr;\n}\n\ncurve = {\n  var values = jStat(xlim[0], xlim[1], 210)[0],\n      arr = [];\n  for (var i in values) {\n    arr.push({\n        value: values[i], \n        density: jStat.normal.pdf(values[i], mu, std_err)\n      })\n  }\n  return arr;\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nchart = {\n  const svg = d3.select(DOM.svg(width, height));\n\n  svg.append(\"g\")\n      .call(xAxis)\n      .attr(\"transform\", `translate(0,${y(0)})`)\n      .attr(\"class\", \"axis\")\n      .style(\"font-size\", \"0.5em\");\n\n  svg.append(\"path\")\n      .datum(population_curve)\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"black\")\n      .attr(\"opacity\", 0.5)\n      .attr(\"stroke-width\", 1.5)\n      .attr(\"stroke-dasharray\", [10, 10])\n      .attr(\"d\", line)\n      .attr(\"class\", \"invertable\");\n      \n  svg.append(\"path\")\n      .datum(curve)\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"black\")\n      .attr(\"stroke-width\", 4)\n      .attr(\"stroke-linejoin\", \"round\")\n      .attr(\"stroke-linecap\", \"round\")\n      .attr(\"d\", line)\n      .attr(\"class\", \"invertable\");\n      \n  return svg.node();\n}\n\n\n\n\n\n\n\nmargin = ({top: 20, right: 0, bottom: 30, left: 0})\n\nxlim = [mu - 3 * sigma, mu + 3 * sigma]\n\nline = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density))\n\nx = d3.scaleLinear()\n  .domain([xlim[0], xlim[1]])\n  .range([margin.left, width - margin.right])\n\n\ny = d3.scaleLinear()\n  .domain([0, jStat.normal.pdf(mu, mu, max_std_err)])\n  .range([height - margin.bottom, margin.top])\n  \nxAxis = d3.axisBottom(x).ticks(10)"
+  },
+  {
+    "objectID": "slides/08_sampling.html#variability-3",
+    "href": "slides/08_sampling.html#variability-3",
+    "title": "BC1101",
+    "section": "Variability",
+    "text": "Variability"
+  },
+  {
+    "objectID": "slides/08_sampling.html#variability-heights-sampling-dist",
+    "href": "slides/08_sampling.html#variability-heights-sampling-dist",
+    "title": "BC1101",
+    "section": "Variability: heights sampling dist",
+    "text": "Variability: heights sampling dist\n\n\n\n\n\n\n\n \n  \n    Sample \n    X1 \n    X2 \n    M \n  \n \n\n  \n    1 \n    60 \n    60 \n    60 \n  \n  \n    2 \n    62 \n    60 \n    61 \n  \n  \n    3 \n    64 \n    60 \n    62 \n  \n  \n    4 \n    66 \n    60 \n    63 \n  \n  \n    5 \n    60 \n    62 \n    61 \n  \n  \n    6 \n    62 \n    62 \n    62 \n  \n  \n    7 \n    64 \n    62 \n    63 \n  \n  \n    8 \n    66 \n    62 \n    64 \n  \n  \n    9 \n    60 \n    64 \n    62 \n  \n  \n    10 \n    62 \n    64 \n    63 \n  \n  \n    11 \n    64 \n    64 \n    64 \n  \n  \n    12 \n    66 \n    64 \n    65 \n  \n  \n    13 \n    60 \n    66 \n    63 \n  \n  \n    14 \n    62 \n    66 \n    64 \n  \n  \n    15 \n    64 \n    66 \n    65 \n  \n  \n    16 \n    66 \n    66 \n    66 \n  \n\n\n\n\n\n\nSampling distribution (\\(n = 2\\))\n\n\n\\(\\sigma_M = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{2.24}{\\sqrt{2}} = 1.58\\)"
+  },
+  {
+    "objectID": "slides/08_sampling.html#summary",
+    "href": "slides/08_sampling.html#summary",
+    "title": "BC1101",
+    "section": "Summary",
+    "text": "Summary\n\nSummary\n\nDistribution of sample means for samples of size \\(n\\) will have…\n\na mean of \\(\\mu_M\\)\nstandard deviation \\(\\sigma_M = \\sigma / \\sqrt{n}\\)\nShape will be normal if population is normally distributed, or \\(n > 30\\)"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#recap-1",
@@ -1211,20 +980,6 @@
     "text": "\\(z\\)-test: Spiderman\n\nFormal Spidermen z-test\n\n1: State Hypotheses\n\nNull: Radioactive spiderbites do not alter reaction times\nAlternative: Radioactive spiderbites alter reaction times\n\n2: Decision criteria\n\n\\(\\alpha = .05\\) two-tailed; Critical regions are -1.96 and 1.96\n\n3: Collect data; compute statistics & probabilities\n\n\\(\\mu = 284\\); \\(\\sigma = 50\\); so if \\(n = 5\\), \\(\\sigma_M = 50/\\sqrt{5} = 22.36\\)\n\\(M = 159\\); \\(z = (159 - 284) / 22.36 = -5.59\\)\n\n4: Decision\n\nObserved sample mean is in the critical region\n\\(p < .05\\)\nReject the null"
   },
   {
-    "objectID": "slides/09_hypothesis-testing.html#z-test-cbt",
-    "href": "slides/09_hypothesis-testing.html#z-test-cbt",
-    "title": "BC1101",
-    "section": "\\(z\\)-test: CBT",
-    "text": "\\(z\\)-test: CBT\n\n\n\nDoes CBT affect OCD?\n\nState hypotheses\nSet decision criteria\n\n\nDecide on alpha, directionality, find z-scores for critical region\n\n\nCollect data; compute statistics & probabilities\n\n\nPre-treatment \\(\\mu = 30.25\\); \\(\\sigma = 14.89\\)\nTreated sample $M = 15.49; \\(n = 40\\)\n\n\nMake decision\n\n\nAbramowitz, J. S., Deacon, B. J., Olatunji, B. O., Wheaton, M. G., Berman, N. C., Losardo, D., . . . Hale, L. R. (2010). Assessment of obsessive-compulsive symptom dimensions: Development and evaluation of the Dimensional Obsessive-Compulsive Scale. Psychological Assessment, 22(1), 180-198. http://dx.doi.org/10.1037/a0018260"
-  },
-  {
-    "objectID": "slides/10_hypothesis-testing-pt-2.html#pt.-2",
-    "href": "slides/10_hypothesis-testing-pt-2.html#pt.-2",
-    "title": "BC1101",
-    "section": "pt. 2",
-    "text": "pt. 2"
-  },
-  {
     "objectID": "slides/10_hypothesis-testing-pt-2.html#effect-size-1",
     "href": "slides/10_hypothesis-testing-pt-2.html#effect-size-1",
     "title": "BC1101",
@@ -1246,18 +1001,11 @@
     "text": "Effect size & sample size\n\nSAT scores: \\(\\mu = 500; \\sigma = 100\\)\n\nAdminister treatment (banana); \\(M = 501\\)\nSignificant? \\((\\alpha = .05\\) two-tailed; critical values \\(z = \\pm 1.96)\\)\nSubstantial? (effect size)\n\n\n\n\nWith 50 participants…\n\\[z = \\dfrac{501 - 500}{100 / \\sqrt{50}} = 0.06\\\\\nd = \\dfrac{501 - 500}{100} = 0.01\\]\n\nWith 50,000 participants…\n\\[z = \\dfrac{501 - 500}{100 / \\sqrt{50000}} = 2.22\\\\\nd = \\dfrac{501 - 500}{100} = 0.01\\]"
   },
   {
-    "objectID": "slides/10_hypothesis-testing-pt-2.html#low-power",
-    "href": "slides/10_hypothesis-testing-pt-2.html#low-power",
+    "objectID": "slides/10_hypothesis-testing-pt-2.html#power-interactive",
+    "href": "slides/10_hypothesis-testing-pt-2.html#power-interactive",
     "title": "BC1101",
-    "section": "Low power",
-    "text": "Low power\n\nRunning a study with low statistical power is like setting out to look for distant galaxies with a pair of binoculars: even if what you’re looking for is definitely out there, you have essentially no chance of seeing it.\n\n\nStuart Ritchie, Science Fictions"
-  },
-  {
-    "objectID": "slides/10_hypothesis-testing-pt-2.html#power-sample-sizes",
-    "href": "slides/10_hypothesis-testing-pt-2.html#power-sample-sizes",
-    "title": "BC1101",
-    "section": "Power & sample sizes",
-    "text": "Power & sample sizes\n\n\n\n\nSimmons, J. P., Nelson, L. D., & Simonsohn, U. (2013, January). Life after p-hacking. In Meeting of the society for personality and social psychology, New Orleans, LA (pp. 17-19). http://dx.doi.org/10.2139/ssrn.2205186"
+    "section": "Power interactive",
+    "text": "Power interactive\n\n\n\n\nd3 = require(\"https://d3js.org/d3.v5.min.js\")\njStat = require(\"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js\")\n\nwidth = 1000\nheight = 400\n\nxlim = [-5, 5]\n\n\nh0 = {\n  var values = jStat(xlim[0], [xlim[1]], 210)[0],\n      arr = [];\n  for (var i in values) {\n    arr.push(\n      {\n        value: values[i], \n        density: jStat.normal.pdf(values[i], 0, sd)\n      }\n    )\n  }\n  return arr;\n}\n\n\nha = {\n  var arr = [];\n  \n  for (var i in h0) {\n    arr.push({\n      value: h0[i].value + mean_diff,\n      density: h0[i].density\n    })\n  }\n  return arr;\n}\n\nalpha_x = {\n  if(tails) {\n    return jStat.normal.inv(1 - alpha/2, 0, sd)\n  } else {\n    return jStat.normal.inv(1 - alpha, 0, sd)\n  }\n}\n\nalpha_x2 = {\n  if(tails) {\n    return -alpha_x\n  } else {\n    return -100\n  }\n}\n\nbeta = jStat.normal.cdf(alpha_x, mean_diff, sd) - jStat.normal.cdf(alpha_x2, mean_diff, sd)\n\npower = 1 - beta\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntex`\\beta = ${beta.toLocaleString()}`\n\n\n\n\n\n\n\ntex`\\text{power} = ${power.toLocaleString()}`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nviewof mean_diff = Inputs.range([-3, 3], {value: 1, step: 0.1, label: \"Mean difference\"})\n\nviewof n = Inputs.range([1, 100], {value: 1, step: 1, label: \"n\"})\n\nsd = 1/Math.sqrt(n)\n\n\n\nviewof alpha = Inputs.range([0.01, 0.10], {value: 0.05, step: 0.001, label: \"Alpha\"})\n\nviewof tails = Inputs.toggle({label: \"Two-tailed\", value: true})\n\nviewof show_alt = Inputs.toggle({label: \"Show H1\", value: true})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nchart = {\n  const svg = d3.select(DOM.svg(width, height));\n\n  svg.append(\"g\")\n      .call(xAxis)\n      .attr(\"transform\", `translate(0,${y(0)})`)\n      .attr(\"class\", \"axis\")\n      .style(\"font-size\", \"0.5em\");\n  \n  const null_dist = svg.append(\"g\").attr(\"id\", \"null-dist\")\n\n  null_dist.append(\"path\").attr(\"id\", \"critical-region-fill\")\n      .datum(h0)\n      .attr(\"fill\", \"red\")\n      .attr(\"stroke\", \"none\")\n      .attr(\"d\", line)\n      .attr('clip-path', \"url(#clip-area)\")\n      \n  null_dist.append(\"path\").attr(\"id\", \"h0-curve\")\n      .datum(h0)\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"black\")\n      .attr(\"stroke-width\", 2)\n      .attr(\"stroke-linejoin\", \"round\")\n      .attr(\"stroke-linecap\", \"round\")\n      .attr(\"d\", line)\n      .attr(\"class\", \"invertable\");\n      \n  null_dist.append(\"text\").attr(\"id\", \"h0-text\")         \n      .attr(\"transform\", `translate(${x(0)} ,${y(0.1)})`)\n      .attr(\"class\", \"invertable\")\n      .style(\"text-anchor\", \"middle\")\n      .style('font-size', '1em')\n      .text('')\n      .append('tspan')\n        .html('H')\n        .append('tspan')\n        .html('0').attr('baseline-shift', 'sub').style('font-size', '0.5em');\n    \n  svg.append(\"clipPath\")\n    .attr(\"id\", \"clip-area\")\n    .append(\"polygon\")\n    .attr(\"points\", [[0,0], [0,height], [x(alpha_x2),height],[x(alpha_x2),0],\n                     [x(alpha_x),0], [x(alpha_x),height], [width,height],[width,0]]);\n    \n\n  svg.append(\"clipPath\").attr(\"id\", \"clip-area-interior\")\n    .append(\"polygon\")\n    .attr(\"points\", [[x(alpha_x2),0],[x(alpha_x2),height],\n                     [x(alpha_x),height], [x(alpha_x),0]]);\n      \n      \n<!-- alternative distribution -->\n{ if(show_alt) {\n    svg.append(\"path\")\n      .datum(ha)\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"steelblue\")\n      .attr(\"stroke-width\", 2)\n      .attr(\"stroke-linejoin\", \"round\")\n      .attr(\"stroke-linecap\", \"round\")\n      .attr(\"stroke-dasharray\", \"5, 5\")\n      .attr(\"d\", line);\n      \n    svg.append(\"text\")             \n      .attr(\"transform\", `translate(${x(mean_diff)} ,${y(0.1)})`)\n      .style(\"text-anchor\", \"middle\")\n      .style('fill', 'steelblue')\n      .style('font-size', '1em')\n      .text('')\n      .append('tspan')\n        .html('H')\n        .append('tspan')\n        .html('1').attr('baseline-shift', 'sub').style('font-size', '0.5em');\n\n  svg.append(\"path\")\n      .datum(ha)\n      .attr('clip-path', \"url(#clip-area)\")\n      .attr(\"fill\", \"steelblue\")\n      .attr(\"opacity\", 0.7)\n      .attr(\"stroke\", \"steelblue\")\n      .attr(\"stroke-width\", 2.5)\n      .attr(\"d\", line);\n      \n  svg.append(\"path\")\n      .datum(ha)\n      .attr('clip-path', \"url(#clip-area-interior)\")\n      .attr(\"fill\", \"grey\")\n      .attr(\"opacity\", 0.3)\n      .attr(\"d\", line);\n}}\n      \n<!-- label alpha -->\n\n    null_dist.append('line')\n      .attr('x1', x(alpha_x))\n      .attr('x2', x(alpha_x))\n      .attr('y1', margin.top + 10)\n      .attr('y2', height - margin.bottom)\n      .style('stroke', 'red')\n      .style('stroke-width', '1.5px')\n\n    <!-- label alpha two-tailed -->\n    null_dist.append('line')\n      .attr('x1', x(alpha_x2))\n      .attr('x2', x(alpha_x2))\n      .attr('y1', margin.top + 10)\n      .attr('y2', height - margin.bottom)\n      .style('stroke', 'red')\n      .style('stroke-width', '1.5px')\n    \n    svg.append(\"text\")             \n      .attr(\"transform\", `translate(${x(alpha_x)} ,${margin.top})`)\n      .style(\"text-anchor\", \"middle\")\n      .style('font-family', 'sans-serif')\n      .style('font-size', '0.4em')\n      .style('fill', 'red')\n      .text(\"critical region z \" + alpha_x.toLocaleString(undefined, {maximumSignificantDigits: 3, minimumSignificantDigits: 3}));\n  \n  return svg.node();\n}\n\nmargin = ({top: 20, right: 0, bottom: 30, left: 0})\n\n\nline = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density))\n\nx = d3.scaleLinear()\n  .domain([xlim[0], xlim[1]])\n  .range([margin.left, width - margin.right])\n\n\ny = d3.scaleLinear()\n  .domain([0, d3.max([0.6, jStat.normal.pdf(0, 0, sd)])])\n  .range([height - margin.bottom, margin.top])\n  \nxAxis = d3.axisBottom(x).ticks(8)"
   },
   {
     "objectID": "slides/10_hypothesis-testing-pt-2.html#influences",
@@ -1274,25 +1022,32 @@
     "text": "Using statistical power\n\nPower should be estimated before starting study\n\nUsing known quantities\nOr, more often, making assumptions about factors that influence power\n\nDetermining whether a research study is likely to be successful\n\nSpecify effect size, \\(n\\), \\(\\alpha\\); calculate power\n\nFiguring out how many participants you need\n\nSpecify desired power (e.g. .8), expected effect size, \\(\\alpha\\)\nCalculate required sample size"
   },
   {
-    "objectID": "slides-index.html#hypothesis-testing",
-    "href": "slides-index.html#hypothesis-testing",
-    "title": "Slides",
-    "section": "9. Hypothesis testing",
-    "text": "9. Hypothesis testing\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nRecap\nMaking inferences\nHypothesis testing\nLearning check\n\n    \n  \n\n  \nSlidesPanopto"
-  },
-  {
-    "objectID": "slides-index.html#hypothesis-testing-pt.-2",
-    "href": "slides-index.html#hypothesis-testing-pt.-2",
-    "title": "Slides",
-    "section": "10. Hypothesis testing pt. 2",
-    "text": "10. Hypothesis testing pt. 2\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nInferential errors\nEffect size\nStatistical power\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
-  },
-  {
-    "objectID": "slides/11_the-t-test.html#z-test-problem",
-    "href": "slides/11_the-t-test.html#z-test-problem",
+    "objectID": "slides/10_hypothesis-testing-pt-2.html#power-sample-sizes",
+    "href": "slides/10_hypothesis-testing-pt-2.html#power-sample-sizes",
     "title": "BC1101",
-    "section": "\\(z\\)-test problem",
-    "text": "\\(z\\)-test problem\n\nProblem\n\nOften don’t know everything about original population"
+    "section": "Power & sample sizes",
+    "text": "Power & sample sizes\n\n\n\n\nSimmons, J. P., Nelson, L. D., & Simonsohn, U. (2013, January). Life after p-hacking. In Meeting of the society for personality and social psychology, New Orleans, LA (pp. 17-19). http://dx.doi.org/10.2139/ssrn.2205186"
+  },
+  {
+    "objectID": "slides/10_hypothesis-testing-pt-2.html#low-power",
+    "href": "slides/10_hypothesis-testing-pt-2.html#low-power",
+    "title": "BC1101",
+    "section": "Low power",
+    "text": "Low power\n\nRunning a study with low statistical power is like setting out to look for distant galaxies with a pair of binoculars: even if what you’re looking for is definitely out there, you have essentially no chance of seeing it.\n\n\nStuart Ritchie, Science Fictions"
+  },
+  {
+    "objectID": "slides/11_the-t-test.html#z-test",
+    "href": "slides/11_the-t-test.html#z-test",
+    "title": "BC1101",
+    "section": "\\(z\\)-test",
+    "text": "\\(z\\)-test\n\nUseful if we know everything about original population\n\n\n\n\n\n\\(z = \\dfrac{M - \\mu}{\\sigma_M}\\)"
+  },
+  {
+    "objectID": "slides/11_the-t-test.html#problem",
+    "href": "slides/11_the-t-test.html#problem",
+    "title": "BC1101",
+    "section": "Problem",
+    "text": "Problem\n\nOften don’t know everything about original population\n\n\n\n\n\n\\(\\renewcommand{\\CancelColor}{\\red}z = \\dfrac{M - \\mu}{\\require{enclose}\\enclose{horizontalstrike}{\\sigma_M}}\\)"
   },
   {
     "objectID": "slides/11_the-t-test.html#t-test-solution",
@@ -1330,11 +1085,11 @@
     "text": "\\(t\\) table\n\n\n\n\n\n\n \n\nProportionin 1 tail\n\n0.1\n\n0.05\n\n0.025\n\n0.01\n\n0.005\n\n  \n    Proportionin 2 tails \n    0.2 \n    0.1 \n    0.05 \n    0.02 \n    0.01 \n  \n \n\n  \n    1 \n    3.078 \n    6.314 \n    12.706 \n    31.821 \n    63.657 \n  \n  \n    2 \n    1.886 \n    2.920 \n    4.303 \n    6.965 \n    9.925 \n  \n  \n    3 \n    1.638 \n    2.353 \n    3.182 \n    4.541 \n    5.841 \n  \n  \n    4 \n    1.533 \n    2.132 \n    2.776 \n    3.747 \n    4.604 \n  \n  \n    5 \n    1.476 \n    2.015 \n    2.571 \n    3.365 \n    4.032 \n  \n  \n    6 \n    1.440 \n    1.943 \n    2.447 \n    3.143 \n    3.707 \n  \n  \n    7 \n    1.415 \n    1.895 \n    2.365 \n    2.998 \n    3.499 \n  \n  \n    \\(df\\)       8 \n    1.397 \n    1.860 \n    2.306 \n    2.896 \n    3.355 \n  \n  \n    9 \n    1.383 \n    1.833 \n    2.262 \n    2.821 \n    3.250 \n  \n  \n    10 \n    1.372 \n    1.812 \n    2.228 \n    2.764 \n    3.169 \n  \n  \n    11 \n    1.363 \n    1.796 \n    2.201 \n    2.718 \n    3.106 \n  \n  \n    12 \n    1.356 \n    1.782 \n    2.179 \n    2.681 \n    3.055 \n  \n  \n    13 \n    1.350 \n    1.771 \n    2.160 \n    2.650 \n    3.012 \n  \n  \n    14 \n    1.345 \n    1.761 \n    2.145 \n    2.624 \n    2.977 \n  \n  \n    15 \n    1.341 \n    1.753 \n    2.131 \n    2.602 \n    2.947 \n  \n  \n    ... \n    ... \n    ... \n    ... \n    ... \n    ..."
   },
   {
-    "objectID": "slides/11_the-t-test.html#t-table-1",
-    "href": "slides/11_the-t-test.html#t-table-1",
+    "objectID": "slides/11_the-t-test.html#t-table-r",
+    "href": "slides/11_the-t-test.html#t-table-r",
     "title": "BC1101",
-    "section": "\\(t\\) table",
-    "text": "\\(t\\) table\n\n\nTable\n\n\nUsing R\npt() and qt() instead of pnorm() and qnorm()\n\n\nqnorm(.05)\n\n[1] -1.644854\n\nqt(.05)\n\nError in qt(0.05): argument \"df\" is missing, with no default\n\nqt(.05, df = 5)\n\n[1] -2.015048\n\nqt(.05, df = 10)\n\n[1] -1.812461"
+    "section": "\\(t\\) table & R",
+    "text": "\\(t\\) table & R\n\n\n\n\n\n\n \n\nProportionin 1 tail\n\n0.1\n\n0.05\n\n0.025\n\n0.01\n\n0.005\n\n  \n    Proportionin 2 tails \n    0.2 \n    0.1 \n    0.05 \n    0.02 \n    0.01 \n  \n \n\n  \n    1 \n    3.078 \n    6.314 \n    12.706 \n    31.821 \n    63.657 \n  \n  \n    2 \n    1.886 \n    2.920 \n    4.303 \n    6.965 \n    9.925 \n  \n  \n    3 \n    1.638 \n    2.353 \n    3.182 \n    4.541 \n    5.841 \n  \n  \n    4 \n    1.533 \n    2.132 \n    2.776 \n    3.747 \n    4.604 \n  \n  \n    5 \n    1.476 \n    2.015 \n    2.571 \n    3.365 \n    4.032 \n  \n  \n    6 \n    1.440 \n    1.943 \n    2.447 \n    3.143 \n    3.707 \n  \n  \n    7 \n    1.415 \n    1.895 \n    2.365 \n    2.998 \n    3.499 \n  \n  \n    \\(df\\)       8 \n    1.397 \n    1.860 \n    2.306 \n    2.896 \n    3.355 \n  \n  \n    9 \n    1.383 \n    1.833 \n    2.262 \n    2.821 \n    3.250 \n  \n  \n    10 \n    1.372 \n    1.812 \n    2.228 \n    2.764 \n    3.169 \n  \n  \n    11 \n    1.363 \n    1.796 \n    2.201 \n    2.718 \n    3.106 \n  \n  \n    12 \n    1.356 \n    1.782 \n    2.179 \n    2.681 \n    3.055 \n  \n  \n    13 \n    1.350 \n    1.771 \n    2.160 \n    2.650 \n    3.012 \n  \n  \n    14 \n    1.345 \n    1.761 \n    2.145 \n    2.624 \n    2.977 \n  \n  \n    15 \n    1.341 \n    1.753 \n    2.131 \n    2.602 \n    2.947 \n  \n  \n    ... \n    ... \n    ... \n    ... \n    ... \n    ... \n  \n\n\n\n\n\n\n\nUsing R\npt() and qt() instead of pnorm() and qnorm()\n\n\nqnorm(.05)\n\n[1] -1.644854\n\nqt(.05)\n\nError in qt(0.05): argument \"df\" is missing, with no default\n\nqt(.05, df = 5)\n\n[1] -2.015048\n\nqt(.05, df = 10)\n\n[1] -1.812461"
   },
   {
     "objectID": "slides/11_the-t-test.html#class-reaction-times",
@@ -1379,32 +1134,11 @@
     "text": "4. State hypotheses\n\nStep 4a: Make a decision about \\(H_0\\)\n\n\\(t = 4.08\\) exceeds critical values \\([-2.07, 2.07]\\)\n\\(p < \\alpha\\)\n“Statistically significant” difference"
   },
   {
-    "objectID": "slides/10_hypothesis-testing-pt-2.html#power-interactive",
-    "href": "slides/10_hypothesis-testing-pt-2.html#power-interactive",
+    "objectID": "slides/11_the-t-test.html#conclusion",
+    "href": "slides/11_the-t-test.html#conclusion",
     "title": "BC1101",
-    "section": "Power interactive",
-    "text": "Power interactive\n\n\n\n\nd3 = require(\"https://d3js.org/d3.v5.min.js\")\njStat = require(\"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js\")\n\nwidth = 1000\nheight = 400\n\nxlim = [-5, 5]\n\n\nh0 = {\n  var values = jStat(xlim[0], [xlim[1]], 210)[0],\n      arr = [];\n  for (var i in values) {\n    arr.push(\n      {\n        value: values[i], \n        density: jStat.normal.pdf(values[i], 0, sd)\n      }\n    )\n  }\n  return arr;\n}\n\n\nha = {\n  var arr = [];\n  \n  for (var i in h0) {\n    arr.push({\n      value: h0[i].value + mean_diff,\n      density: h0[i].density\n    })\n  }\n  return arr;\n}\n\nalpha_x = {\n  if(tails) {\n    return jStat.normal.inv(1 - alpha/2, 0, sd)\n  } else {\n    return jStat.normal.inv(1 - alpha, 0, sd)\n  }\n}\n\nalpha_x2 = {\n  if(tails) {\n    return -alpha_x\n  } else {\n    return -100\n  }\n}\n\nbeta = jStat.normal.cdf(alpha_x, mean_diff, sd) - jStat.normal.cdf(alpha_x2, mean_diff, sd)\n\npower = 1 - beta\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntex`\\beta = ${beta.toLocaleString()}`\n\n\n\n\n\n\n\ntex`\\text{power} = ${power.toLocaleString()}`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nviewof mean_diff = Inputs.range([-3, 3], {value: 1, step: 0.1, label: \"Mean difference\"})\n\nviewof n = Inputs.range([1, 100], {value: 1, step: 1, label: \"n\"})\n\nsd = 1/Math.sqrt(n)\n\n\n\nviewof alpha = Inputs.range([0.01, 0.10], {value: 0.05, step: 0.001, label: \"Alpha\"})\n\nviewof tails = Inputs.toggle({label: \"Two-tailed\", value: true})\n\nviewof show_alt = Inputs.toggle({label: \"Show H1\", value: true})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nchart = {\n  const svg = d3.select(DOM.svg(width, height));\n\n  svg.append(\"g\")\n      .call(xAxis)\n      .attr(\"transform\", `translate(0,${y(0)})`)\n      .attr(\"class\", \"axis\")\n      .style(\"font-size\", \"0.5em\");\n  \n  const null_dist = svg.append(\"g\").attr(\"id\", \"null-dist\")\n\n  null_dist.append(\"path\").attr(\"id\", \"critical-region-fill\")\n      .datum(h0)\n      .attr(\"fill\", \"red\")\n      .attr(\"stroke\", \"none\")\n      .attr(\"d\", line)\n      .attr('clip-path', \"url(#clip-area)\")\n      \n  null_dist.append(\"path\").attr(\"id\", \"h0-curve\")\n      .datum(h0)\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"black\")\n      .attr(\"stroke-width\", 2)\n      .attr(\"stroke-linejoin\", \"round\")\n      .attr(\"stroke-linecap\", \"round\")\n      .attr(\"d\", line)\n      .attr(\"class\", \"invertable\");\n      \n  null_dist.append(\"text\").attr(\"id\", \"h0-text\")         \n      .attr(\"transform\", `translate(${x(0)} ,${y(0.1)})`)\n      .attr(\"class\", \"invertable\")\n      .style(\"text-anchor\", \"middle\")\n      .style('font-size', '1em')\n      .text('')\n      .append('tspan')\n        .html('H')\n        .append('tspan')\n        .html('0').attr('baseline-shift', 'sub').style('font-size', '0.5em');\n    \n  svg.append(\"clipPath\")\n    .attr(\"id\", \"clip-area\")\n    .append(\"polygon\")\n    .attr(\"points\", [[0,0], [0,height], [x(alpha_x2),height],[x(alpha_x2),0],\n                     [x(alpha_x),0], [x(alpha_x),height], [width,height],[width,0]]);\n    \n\n  svg.append(\"clipPath\").attr(\"id\", \"clip-area-interior\")\n    .append(\"polygon\")\n    .attr(\"points\", [[x(alpha_x2),0],[x(alpha_x2),height],\n                     [x(alpha_x),height], [x(alpha_x),0]]);\n      \n      \n<!-- alternative distribution -->\n{ if(show_alt) {\n    svg.append(\"path\")\n      .datum(ha)\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"steelblue\")\n      .attr(\"stroke-width\", 2)\n      .attr(\"stroke-linejoin\", \"round\")\n      .attr(\"stroke-linecap\", \"round\")\n      .attr(\"stroke-dasharray\", \"5, 5\")\n      .attr(\"d\", line);\n      \n    svg.append(\"text\")             \n      .attr(\"transform\", `translate(${x(mean_diff)} ,${y(0.1)})`)\n      .style(\"text-anchor\", \"middle\")\n      .style('fill', 'steelblue')\n      .style('font-size', '1em')\n      .text('')\n      .append('tspan')\n        .html('H')\n        .append('tspan')\n        .html('1').attr('baseline-shift', 'sub').style('font-size', '0.5em');\n\n  svg.append(\"path\")\n      .datum(ha)\n      .attr('clip-path', \"url(#clip-area)\")\n      .attr(\"fill\", \"steelblue\")\n      .attr(\"opacity\", 0.7)\n      .attr(\"stroke\", \"steelblue\")\n      .attr(\"stroke-width\", 2.5)\n      .attr(\"d\", line);\n      \n  svg.append(\"path\")\n      .datum(ha)\n      .attr('clip-path', \"url(#clip-area-interior)\")\n      .attr(\"fill\", \"grey\")\n      .attr(\"opacity\", 0.3)\n      .attr(\"d\", line);\n}}\n      \n<!-- label alpha -->\n\n    null_dist.append('line')\n      .attr('x1', x(alpha_x))\n      .attr('x2', x(alpha_x))\n      .attr('y1', margin.top + 10)\n      .attr('y2', height - margin.bottom)\n      .style('stroke', 'red')\n      .style('stroke-width', '1.5px')\n\n    <!-- label alpha two-tailed -->\n    null_dist.append('line')\n      .attr('x1', x(alpha_x2))\n      .attr('x2', x(alpha_x2))\n      .attr('y1', margin.top + 10)\n      .attr('y2', height - margin.bottom)\n      .style('stroke', 'red')\n      .style('stroke-width', '1.5px')\n    \n    svg.append(\"text\")             \n      .attr(\"transform\", `translate(${x(alpha_x)} ,${margin.top})`)\n      .style(\"text-anchor\", \"middle\")\n      .style('font-family', 'sans-serif')\n      .style('font-size', '0.4em')\n      .style('fill', 'red')\n      .text(\"critical region z \" + alpha_x.toLocaleString(undefined, {maximumSignificantDigits: 3, minimumSignificantDigits: 3}));\n  \n  return svg.node();\n}\n\nmargin = ({top: 20, right: 0, bottom: 30, left: 0})\n\n\nline = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density))\n\nx = d3.scaleLinear()\n  .domain([xlim[0], xlim[1]])\n  .range([margin.left, width - margin.right])\n\n\ny = d3.scaleLinear()\n  .domain([0, d3.max([0.6, jStat.normal.pdf(0, 0, sd)])])\n  .range([height - margin.bottom, margin.top])\n  \nxAxis = d3.axisBottom(x).ticks(8)"
-  },
-  {
-    "objectID": "slides/08_sampling.html#variability-3",
-    "href": "slides/08_sampling.html#variability-3",
-    "title": "BC1101",
-    "section": "Variability",
-    "text": "Variability"
-  },
-  {
-    "objectID": "slides/01_course-info.html#population",
-    "href": "slides/01_course-info.html#population",
-    "title": "BC1101",
-    "section": "Population",
-    "text": "Population\n\n\n\n\n\nviewof s = Inputs.button(html`&#x21bb;`)\n\n\n\n\n\n\n\n\ndata = {\n  let arr = [];\n  for (var i = 0; i < 150; i++) {\n    arr.push({\n      x: Math.floor(Math.random() * xmax),\n      y: Math.floor(Math.random() * ymax),\n      color: Math.floor(Math.random() * 7)\n    });\n  }\n  return arr;\n}\n\nwidth = 1050\nheight = 500\nr = 15\nxmax = 400\nymax = 100\nsample_y = height - r - 1\nmargin = ({top: r*2, right: 10, bottom: r, left: 5});\n\n\npop = {\n  const svg = d3.select(DOM.svg(width, height));\n\n  const sample = svg.append(\"g\").attr(\"id\", \"sample-circles\")\n  const circles = svg.append(\"g\").attr(\"id\", \"pop-circles\")\n  \n  let path = {\n    x: (width*0.5 + xmax*.5 + r),\n    y: (margin.top + ymax*0.5),\n    cy: (height - r - (margin.top + ymax*0.5)) * 0.5\n  };\n  \n  const paths = svg.append(\"g\").attr(\"id\", \"paths\")\n                        .attr(\"stroke\", \"black\")\n                        .attr(\"fill\", \"none\")\n                        .attr(\"class\", \"invertable\");\n                        \n\n  sample.selectAll(\"circle\")\n    .data(new_sample)\n    .enter()\n    .append(\"circle\")\n      .attr(\"fill\", d => color(d))\n      .attr(\"stroke\", \"black\")\n      .attr(\"r\", r)\n      .attr(\"cx\", function(d, i) {return (i * 41.5 + width/2 - xmax/2 + r)})\n      .attr(\"cy\", 55)\n        .transition()\n        .duration(700)\n        .delay(function(d, i) {return i * 50})\n        .attr(\"cy\", sample_y);\n  \n  circles.selectAll(\"circle\")\n    .data(data)\n    .enter()\n    .append(\"circle\")\n      .attr(\"fill\", d => color(d.color))\n      .attr(\"stroke\", \"black\")\n      .attr(\"r\", 15)\n      .attr(\"cx\", d => x(d.x))\n      .attr(\"cy\", d => y(d.y))\n          \n  svg.append(\"rect\")\n    .attr(\"x\", width/2 - xmax/2 - r)\n    .attr(\"y\", margin.top - r)\n    .attr(\"width\", xmax + 2*r)\n    .attr(\"height\",ymax + 2*r)\n    .attr(\"stroke\", \"black\")\n    .attr(\"fill\", \"white\")\n    .attr(\"opacity\", 0.9)\n    .text(\"Population\");\n\n  paths.append(\"path\").attr(\"id\", \"inference-path\")\n    .attr(\"d\", \"M\" + path.x + \",\" + path.y + \", q200,\" + path.cy + \" 0,\" + (height - r - path.y))\n    .attr(\"stroke-dasharray\", [5, 5])\n    \n  paths.append(\"path\").attr(\"id\", \"sample-path\")\n    .attr(\"d\", \"M\" + (path.x - xmax - 2*r) + \",\" + path.y + \", q-200,\" + path.cy + \" 0,\" + (height - r - path.y))\n    \n  svg.append(\"polygon\").attr(\"id\", \"down-arrow\")\n    .attr(\"points\", [[0,0],[10,0],[5,10]])\n    .attr(\"transform\", \"translate(200,\" + (path.cy+margin.top+ymax*0.5 - 10) +\") scale(2)\")\n    .attr(\"class\", \"invertable\");\n    \n  svg.append(\"polygon\").attr(\"id\", \"up-arrow\")\n    .attr(\"points\", [[0,0],[10,0],[5,10]])\n    .attr(\"transform\", \"translate(850,\" + (path.cy+margin.top+ymax*0.5 + 10) +\") scale(2) rotate(180)\")\n    .attr(\"class\", \"invertable\");\n    \n\n  return svg.node();\n}\n\n\n\nx = d3.scaleLinear()\n  .domain([0, xmax])\n  .range([width/2 - xmax/2, width/2 + xmax/2])\n\ny = d3.scaleLinear()\n  .domain([0, ymax])\n  .range([margin.top + ymax, margin.top])\n  \ncolor = d3.scaleOrdinal().\n  domain(data.map(d => d.color))\n  .range(d3.schemeSet3);\n  \nnew_sample = {\n  s;\n  let arr = [];\n  for (var i = 0; i < 10; i++) {\n    arr.push(Math.floor(Math.random() * 7))\n  }\n  return arr;\n}"
-  },
-  {
-    "objectID": "slides/02_variables.html#draw-sample-make-inference",
-    "href": "slides/02_variables.html#draw-sample-make-inference",
-    "title": "BC1101",
-    "section": "Draw sample, make inference",
-    "text": "Draw sample, make inference\n\n\n\n\n\nviewof s = Inputs.button(html`&#x21bb;`)\n\n\n\n\n\n\n\n\ndata = {\n  let arr = [];\n  for (var i = 0; i < 150; i++) {\n    arr.push({\n      x: Math.floor(Math.random() * xmax),\n      y: Math.floor(Math.random() * ymax),\n      color: Math.floor(Math.random() * 7)\n    });\n  }\n  return arr;\n}\n\nwidth = 1050\nheight = 500\nr = 15\nxmax = 400\nymax = 100\nsample_y = height - r - 1\nmargin = ({top: r*2, right: 10, bottom: r, left: 5});\n\n\npop = {\n  const svg = d3.select(DOM.svg(width, height));\n\n  const sample = svg.append(\"g\").attr(\"id\", \"sample-circles\")\n  const circles = svg.append(\"g\").attr(\"id\", \"pop-circles\")\n  \n  let path = {\n    x: (width*0.5 + xmax*.5 + r),\n    y: (margin.top + ymax*0.5),\n    cy: (height - r - (margin.top + ymax*0.5)) * 0.5\n  };\n  \n  const paths = svg.append(\"g\").attr(\"id\", \"paths\")\n                        .attr(\"stroke\", \"black\")\n                        .attr(\"fill\", \"none\")\n                        .attr(\"class\", \"invertable\");\n                        \n  const labels = svg.append(\"g\").attr(\"id\", \"labels\")\n                        .attr(\"text-anchor\", \"middle\")\n                        .attr(\"dy\", \"1em\")\n                        .attr(\"class\", \"invertable\");\n                        \n\n  sample.selectAll(\"circle\")\n    .data(new_sample)\n    .enter()\n    .append(\"circle\")\n      .attr(\"fill\", d => color(d))\n      .attr(\"stroke\", \"black\")\n      .attr(\"r\", r)\n      .attr(\"cx\", function(d, i) {return (i * 41.5 + width/2 - xmax/2 + r)})\n      .attr(\"cy\", 55)\n        .transition()\n        .duration(700)\n        .delay(function(d, i) {return i * 50})\n        .attr(\"cy\", sample_y);\n  \n  circles.selectAll(\"circle\")\n    .data(data)\n    .enter()\n    .append(\"circle\")\n      .attr(\"fill\", d => color(d.color))\n      .attr(\"stroke\", \"black\")\n      .attr(\"r\", 15)\n      .attr(\"cx\", d => x(d.x))\n      .attr(\"cy\", d => y(d.y))\n          \n  svg.append(\"rect\").attr(\"id\", \"population-box\")\n    .attr(\"x\", width/2 - xmax/2 - r)\n    .attr(\"y\", margin.top - r)\n    .attr(\"width\", xmax + 2*r)\n    .attr(\"height\",ymax + 2*r)\n    .attr(\"fill\", \"white\")\n    \n  svg.append(\"rect\").attr(\"id\", \"population-outline\")\n    .attr(\"x\", width/2 - xmax/2 - r)\n    .attr(\"y\", margin.top - r)\n    .attr(\"width\", xmax + 2*r)\n    .attr(\"height\",ymax + 2*r)\n    .attr(\"stroke\", \"black\")\n    .attr(\"fill\", \"none\")\n    \n  paths.append(\"path\").attr(\"id\", \"inference-path\")\n    .attr(\"d\", \"M\" + path.x + \" \" + path.y + \" q200 \" + path.cy + \" 0 \" + (height - r - path.y))\n    .attr(\"stroke-dasharray\", [5, 5])\n    \n  paths.append(\"path\").attr(\"id\", \"sample-path\")\n    .attr(\"d\", \"M\" + (path.x - xmax - 2*r) + \" \" + path.y + \" q-200,\" + path.cy + \" 0 \" + (height - r - path.y))\n    \n  svg.append(\"polygon\").attr(\"id\", \"down-arrow\")\n    .attr(\"points\", [[0,0],[10,0],[5,10]])\n    .attr(\"transform\", \"translate(200,\" + (path.cy+margin.top+ymax*0.5 - 10) +\") scale(2)\")\n    .attr(\"class\", \"invertable\");\n    \n  svg.append(\"polygon\").attr(\"id\", \"up-arrow\")\n    .attr(\"points\", [[0,0],[10,0],[5,10]])\n    .attr(\"transform\", \"translate(850,\" + (path.cy+margin.top+ymax*0.5 + 10) +\") scale(2) rotate(180)\")\n    .attr(\"class\", \"invertable\");\n    \n  labels.append(\"text\").attr(\"id\", \"population-label\")\n    .text(\"POPULATION\")\n    .attr(\"x\", width/2)\n    .attr(\"y\", margin.top + ymax + 2*r + 20)\n    \n  labels.append(\"text\").attr(\"id\", \"sample-label\")\n    .text(\"SAMPLE\")\n    .attr(\"x\", width/2)\n    .attr(\"y\", sample_y - r - 10)\n    \n\n  return svg.node();\n}\n\n\n\nx = d3.scaleLinear()\n  .domain([0, xmax])\n  .range([width/2 - xmax/2, width/2 + xmax/2])\n\ny = d3.scaleLinear()\n  .domain([0, ymax])\n  .range([margin.top + ymax, margin.top])\n  \ncolor = d3.scaleOrdinal().\n  domain(data.map(d => d.color))\n  .range(d3.schemeSet3);\n  \nnew_sample = {\n  s;\n  let arr = [];\n  for (var i = 0; i < 10; i++) {\n    arr.push(Math.floor(Math.random() * 7))\n  }\n  return arr;\n}"
+    "section": "Conclusion",
+    "text": "Conclusion"
   },
   {
     "objectID": "slides/12_the-t-test-pt-2.html#research-designs-1",
@@ -1440,13 +1174,6 @@
     "title": "BC1101",
     "section": "Calculating CI boundaries",
     "text": "Calculating CI boundaries\n\nSo far, we have been specifying \\(\\mu\\), calculating \\(M\\) and \\(s_M\\), solving for \\(t\\)\nFor CI, rearrange to solve for \\(\\mu\\)\n\nCalculate \\(M\\) and \\(s_M\\), specify \\(t\\) (based on desired width of CI —99%, 95%, 90%, 80% etc), solve for \\(\\mu\\)\n\n\n\n\\(t = \\dfrac{M - \\mu}{s_M}\\)\n\\(\\mu = M \\pm t * s_M\\)"
-  },
-  {
-    "objectID": "slides/12_the-t-test-pt-2.html#calculating-ci-boundaries-1",
-    "href": "slides/12_the-t-test-pt-2.html#calculating-ci-boundaries-1",
-    "title": "BC1101",
-    "section": "Calculating CI boundaries",
-    "text": "Calculating CI boundaries\n\\(=\\)\n\\(t\\)"
   },
   {
     "objectID": "slides/12_the-t-test-pt-2.html#confidence-interval-interpretation",
@@ -1491,13 +1218,6 @@
     "text": "Independent-samples"
   },
   {
-    "objectID": "slides/02_variables.html#something",
-    "href": "slides/02_variables.html#something",
-    "title": "BC1101",
-    "section": "Something",
-    "text": "Something\n\n\n\n\n\n\nsmooth_curve = {\n  const svg_curve = d3.select(DOM.svg(500, 300))\n    .attr(\"class\", \"invertable\");\n  \n  const axis_lines = svg_curve.append(\"g\")\n    .attr(\"stroke\", \"black\")\n    .attr(\"fill\", \"none\")\n  \n  var p = svg_curve.append(\"path\")\n    .datum(curve_data)\n    .attr(\"stroke\", \"black\")\n    .attr(\"stroke-width\", 2)\n    .attr(\"fill\", \"none\")\n    .attr(\"d\", line)\n    \n  var totalLength = p.node().getTotalLength();\n  \n  p\n      .attr(\"stroke-dasharray\", totalLength + \" \" + totalLength)\n      .attr(\"stroke-dashoffset\", totalLength)\n      .transition()\n        .duration(2000)\n        .attr(\"stroke-dashoffset\", 0)\n        \n  const line_data = [\n    {x1: 10, x2: 490, y1: 290, y2: 290},\n    {x1: 10, x2: 10, y1: 290, y2: 10}\n  ]\n  \n  axis_lines.selectAll(\"line\")\n    .data(line_data)\n    .enter()\n      .append(\"line\")\n        .attr(\"x1\", d => d.x1)\n        .attr(\"x2\", d => d.x2)\n        .attr(\"y1\", d => d.y1)\n        .attr(\"y2\", d => d.y2)\n    \n  return svg_curve.node();\n}\n\n\n\n\n\n\n\n\n\nbar_xScale = d3.scaleBand()\n  .domain([1,2,3,4,5])\n  .range([margins.left, 500 - margins.right])\n\nbar_yScale = d3.scaleLinear()\n  .domain([0, 3])\n  .range([300 - margins.bottom, margins.top])\n    \nbar_chart = {\n\n  const svg = d3.select(DOM.svg(500, 300))\n    .attr(\"class\", \"invertable\");\n  \n  const axis_lines = svg.append(\"g\")\n    .attr(\"stroke\", \"black\")\n    .attr(\"fill\", \"none\")\n    \n  const bars = svg.append(\"g\")\n    .attr(\"fill\", \"black\")\n    .attr(\"stroke\", \"none\")\n  \n  bars.selectAll(\"rect\")\n    .data(bar_data)\n    .enter()\n      .append(\"rect\") \n      .attr(\"transform\", \"rotate(180)\")\n      .attr(\"transform-origin\", \"center center\")\n      .attr(\"x\", d => bar_xScale(d.value))\n      .attr(\"y\", 20)\n      .attr(\"width\", (460/5-5))\n      .attr(\"height\", 0)\n        .transition()\n        .delay(function(d,i){return (6-i) * 300})\n        .duration(300)\n        .attr(\"height\", d => d.density*260/3)\n\n  const line_data = [\n    {x1: 10, x2: 490, y1: 290, y2: 290},\n    {x1: 10, x2: 10, y1: 290, y2: 10}\n  ]\n  \n  axis_lines.selectAll(\"line\")\n    .data(line_data)\n    .enter()\n      .append(\"line\")\n        .attr(\"x1\", d => d.x1)\n        .attr(\"x2\", d => d.x2)\n        .attr(\"y1\", d => d.y1)\n        .attr(\"y2\", d => d.y2)\n    \n  return svg.node();\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmargins = ({top: 20, right: 20, bottom: 20, left: 20})\n\nline = d3.line()\n    .x(d => xScale(d.value))\n    .y(d => yScale(d.density))\n    \nxScale = d3.scaleLinear()\n  .domain([-3, 3])\n  .range([margins.left, 500 - margins.right])\n\nyScale = d3.scaleLinear()\n  .domain([0, 0.4])\n  .range([300 - margins.bottom, margins.top])"
-  },
-  {
     "objectID": "slides/d3-fig/d3-bar.html",
     "href": "slides/d3-fig/d3-bar.html",
     "title": "BC1101",
@@ -1505,39 +1225,81 @@
     "text": "margins = ({top: 20, right: 20, bottom: 20, left: 20})\n\n\nbar_xScale = d3.scaleBand()\n  .domain([1,2,3,4,5])\n  .range([margins.left, 500 - margins.right])\n\nbar_yScale = d3.scaleLinear()\n  .domain([0, 3])\n  .range([300 - margins.bottom, margins.top])\n    \nbar_chart = {\n\n  const svg = d3.select(DOM.svg(500, 300))\n    .attr(\"class\", \"invertable\");\n  \n  const axis_lines = svg.append(\"g\")\n    .attr(\"stroke\", \"black\")\n    .attr(\"fill\", \"none\")\n    \n  const bars = svg.append(\"g\")\n    .attr(\"fill\", \"black\")\n    .attr(\"stroke\", \"none\")\n  \n  bars.selectAll(\"rect\")\n    .data(bar_data)\n    .enter()\n      .append(\"rect\") \n      .attr(\"transform\", \"rotate(180)\")\n      .attr(\"transform-origin\", \"center center\")\n      .attr(\"x\", d => bar_xScale(d.value))\n      .attr(\"y\", 20)\n      .attr(\"width\", (460/5-5))\n      .attr(\"height\", 0)\n        .transition()\n        .delay(function(d,i){return (6-i) * 300})\n        .duration(300)\n        .attr(\"height\", d => d.density*260/3)\n\n  const line_data = [\n    {x1: 10, x2: 490, y1: 290, y2: 290},\n    {x1: 10, x2: 10, y1: 290, y2: 10}\n  ]\n  \n  axis_lines.selectAll(\"line\")\n    .data(line_data)\n    .enter()\n      .append(\"line\")\n        .attr(\"x1\", d => d.x1)\n        .attr(\"x2\", d => d.x2)\n        .attr(\"y1\", d => d.y1)\n        .attr(\"y2\", d => d.y2)\n    \n  return svg.node();\n}"
   },
   {
-    "objectID": "slides/02_variables.html#something-else",
-    "href": "slides/02_variables.html#something-else",
+    "objectID": "slides/test-ojs.html",
+    "href": "slides/test-ojs.html",
     "title": "BC1101",
-    "section": "Something else",
-    "text": "Something else"
+    "section": "",
+    "text": "d3 = require(\"https://d3js.org/d3.v5.min.js\")\njStat = require(\"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<!-- viewof quantity = html`<input type=\"range\" value=\"1\" min=\"1\" max=${samples.length}>` -->\nviewof quantity = Inputs.range([1, samples.length], {value: 1, step: 1})\n\n\n\n\n\n\n\n\n\n\nchart = {\n\n  const svg = d3.select(DOM.svg(width, height));\n\n  const g = svg.append(\"g\").attr(\"id\", \"boxes\")\n  \n  g.selectAll(\"rect\")\n    .data(samples.slice(0, quantity))\n    .enter()\n    .append(\"rect\")\n      .attr(\"class\", \"invertable\")\n      .attr(\"fill\", \"black\")\n      .attr(\"stroke\", \"none\")\n      .attr(\"x\", d => x(d.mean_bin - 0.5))\n      .attr(\"y\", d => y(d.count))\n      .attr(\"width\", (width-margin.left-margin.right)/100 * 0.9)\n      .attr(\"height\", (height-margin.top-margin.bottom)/ylim * 0.9)\n      .each(function (d, i) {\n            if (i === quantity-1) {\n              // put all your operations on the second element, e.g.\n              d3.select(this).attr(\"fill\", \"red\");    \n            }\n          });\n      \n  svg.append(\"text\")\n      .attr(\"id\", \"xaxis\")\n      .call(xAxis)\n      .attr(\"transform\", `translate(0,${y(0)})`)\n      .attr(\"class\", \"axis\")\n      .style(\"font-size\", \"0.5em\");\n \n  svg.append(\"g\").attr(\"id\", \"xaxis\")\n      .call(xAxis)\n      .attr(\"transform\", `translate(0,${y(0)})`)\n      .attr(\"class\", \"axis\")\n      .style(\"font-size\", \"0.5em\");\n      \n  svg.append(\"g\").attr(\"id\", \"yaxis\")\n      .call(yAxis)\n      .attr(\"transform\", `translate(${x(50)}, 0)`)\n      .attr(\"class\", \"axis\")\n      .style(\"font-size\", \"0.5em\");\n      \nreturn svg.node();\n\n}\n\n\n\n\n\n\n\n\n\n\nd = d3.select(\"div#blah\")\n  .style(\"font-family\", \"KaTeX_Main\")\n  .style(\"font-size\", \"1.1em\")\n  .html(\"Observations: \" + samples[quantity-1].sample.join(\", \") + '<br/>' + \"<i>M</i> = \" + samples[quantity-1].mean)\n\n\n\n\n\n\n\nwidth = 500\nheight = 250\n\nylim = 50\n\nmargin = ({top: 20, right: 20, bottom: 20, left: 20})\n\n\nx = d3.scaleLinear()\n  .domain([50, 150])\n  .range([margin.left, width - margin.right])\n\nmax_y = Math.max(...samples.map(o => o.count))\n\ny = d3.scaleLinear()\n  .domain([0, ylim])\n  .range([height - margin.bottom, margin.top])\n\nxAxis = d3.axisBottom(x).ticks(8)\n\nyAxis = d3.axisLeft(y).ticks(3)"
   },
   {
-    "objectID": "slides/11_the-t-test.html#problem",
-    "href": "slides/11_the-t-test.html#problem",
-    "title": "BC1101",
-    "section": "Problem",
-    "text": "Problem\n\nOften don’t know everything about original population\n\n\n\n\n\n\\(\\renewcommand{\\CancelColor}{\\red}z = \\dfrac{M - \\mu}{\\require{enclose}\\enclose{horizontalstrike}{\\sigma_M}}\\)"
+    "objectID": "slides-index.html#course-overview",
+    "href": "slides-index.html#course-overview",
+    "title": "Slides",
+    "section": "1. Course Overview",
+    "text": "1. Course Overview\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nTextbook\nLectures\nRecitation\nExams\nFinal grades\nOther stuff\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
-    "objectID": "slides/11_the-t-test.html#z-test",
-    "href": "slides/11_the-t-test.html#z-test",
-    "title": "BC1101",
-    "section": "\\(z\\)-test",
-    "text": "\\(z\\)-test\n\nUseful if we know everything about original population\n\n\n\n\n\n\\(z = \\dfrac{M - \\mu}{\\sigma_M}\\)"
+    "objectID": "slides-index.html#variables",
+    "href": "slides-index.html#variables",
+    "title": "Slides",
+    "section": "2. Variables",
+    "text": "2. Variables\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nStatistics: Why? How? What?\nMeasuring things\nPopulations & samples\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
-    "objectID": "slides/11_the-t-test.html#t-table-r",
-    "href": "slides/11_the-t-test.html#t-table-r",
-    "title": "BC1101",
-    "section": "\\(t\\) table & R",
-    "text": "\\(t\\) table & R\n\n\n\n\n\n\n \n\nProportionin 1 tail\n\n0.1\n\n0.05\n\n0.025\n\n0.01\n\n0.005\n\n  \n    Proportionin 2 tails \n    0.2 \n    0.1 \n    0.05 \n    0.02 \n    0.01 \n  \n \n\n  \n    1 \n    3.078 \n    6.314 \n    12.706 \n    31.821 \n    63.657 \n  \n  \n    2 \n    1.886 \n    2.920 \n    4.303 \n    6.965 \n    9.925 \n  \n  \n    3 \n    1.638 \n    2.353 \n    3.182 \n    4.541 \n    5.841 \n  \n  \n    4 \n    1.533 \n    2.132 \n    2.776 \n    3.747 \n    4.604 \n  \n  \n    5 \n    1.476 \n    2.015 \n    2.571 \n    3.365 \n    4.032 \n  \n  \n    6 \n    1.440 \n    1.943 \n    2.447 \n    3.143 \n    3.707 \n  \n  \n    7 \n    1.415 \n    1.895 \n    2.365 \n    2.998 \n    3.499 \n  \n  \n    \\(df\\)       8 \n    1.397 \n    1.860 \n    2.306 \n    2.896 \n    3.355 \n  \n  \n    9 \n    1.383 \n    1.833 \n    2.262 \n    2.821 \n    3.250 \n  \n  \n    10 \n    1.372 \n    1.812 \n    2.228 \n    2.764 \n    3.169 \n  \n  \n    11 \n    1.363 \n    1.796 \n    2.201 \n    2.718 \n    3.106 \n  \n  \n    12 \n    1.356 \n    1.782 \n    2.179 \n    2.681 \n    3.055 \n  \n  \n    13 \n    1.350 \n    1.771 \n    2.160 \n    2.650 \n    3.012 \n  \n  \n    14 \n    1.345 \n    1.761 \n    2.145 \n    2.624 \n    2.977 \n  \n  \n    15 \n    1.341 \n    1.753 \n    2.131 \n    2.602 \n    2.947 \n  \n  \n    ... \n    ... \n    ... \n    ... \n    ... \n    ... \n  \n\n\n\n\n\n\n\nUsing R\npt() and qt() instead of pnorm() and qnorm()\n\n\nqnorm(.05)\n\n[1] -1.644854\n\nqt(.05)\n\nError in qt(0.05): argument \"df\" is missing, with no default\n\nqt(.05, df = 5)\n\n[1] -2.015048\n\nqt(.05, df = 10)\n\n[1] -1.812461"
+    "objectID": "slides-index.html#frequency",
+    "href": "slides-index.html#frequency",
+    "title": "Slides",
+    "section": "3. Frequency",
+    "text": "3. Frequency\n\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nFrequency\nFrequency tables\nFrequency graphs\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
-    "objectID": "slides/11_the-t-test.html#conclusion",
-    "href": "slides/11_the-t-test.html#conclusion",
-    "title": "BC1101",
-    "section": "Conclusion",
-    "text": "Conclusion"
+    "objectID": "slides-index.html#central-tendency",
+    "href": "slides-index.html#central-tendency",
+    "title": "Slides",
+    "section": "4. Central Tendency",
+    "text": "4. Central Tendency\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nMode\nMedian\nMean\nDistributions\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+  },
+  {
+    "objectID": "slides-index.html#variability",
+    "href": "slides-index.html#variability",
+    "title": "Slides",
+    "section": "5. Variability",
+    "text": "5. Variability\n\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nVariability\nRange\nSum of squares, variance, SD\nDegrees of freedom\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+  },
+  {
+    "objectID": "slides-index.html#z-scores",
+    "href": "slides-index.html#z-scores",
+    "title": "Slides",
+    "section": "6. \\(z\\)-Scores",
+    "text": "6. \\(z\\)-Scores\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \n\\(z\\)-scores\nStandardized distributions\n\\(z\\)-scores & making inferences\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+  },
+  {
+    "objectID": "slides-index.html#probability",
+    "href": "slides-index.html#probability",
+    "title": "Slides",
+    "section": "7. Probability",
+    "text": "7. Probability\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nProbability basics\nSampling\nProbability and distributions\nProbability and \\(z\\)-scores\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+  },
+  {
+    "objectID": "slides-index.html#sampling",
+    "href": "slides-index.html#sampling",
+    "title": "Slides",
+    "section": "8. Sampling",
+    "text": "8. Sampling\n\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nSampling error\nDistribution of sample means\nCentral Limit Theorem\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+  },
+  {
+    "objectID": "slides-index.html#hypothesis-testing",
+    "href": "slides-index.html#hypothesis-testing",
+    "title": "Slides",
+    "section": "9. Hypothesis testing",
+    "text": "9. Hypothesis testing\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nRecap\nMaking inferences\nHypothesis testing\nLearning check\n\n    \n  \n\n  \nSlidesPanopto"
+  },
+  {
+    "objectID": "slides-index.html#hypothesis-testing-pt.-2",
+    "href": "slides-index.html#hypothesis-testing-pt.-2",
+    "title": "Slides",
+    "section": "10. Hypothesis testing pt. 2",
+    "text": "10. Hypothesis testing pt. 2\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nInferential errors\nEffect size\nStatistical power\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "slides-index.html#the-t-test",
@@ -1545,12 +1307,5 @@
     "title": "Slides",
     "section": "11. The \\(t\\) test",
     "text": "11. The \\(t\\) test\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \n\\(t\\) vs. \\(z\\)\nThe \\(t\\) distribution\nThe \\(t\\)-test\nLearning checks\n\n\n    \n  \n\n  \nSlidesPanopto"
-  },
-  {
-    "objectID": "slides/03_frequency.html#screenshot",
-    "href": "slides/03_frequency.html#screenshot",
-    "title": "BC1101",
-    "section": "538 screenshot",
-    "text": "538 screenshot"
   }
 ]
