@@ -52,9 +52,9 @@ format:
 :::
 
 ::: {.column width="50%" style="margin-top: -3em;"}
-![](media/538-intro.png)
-![](media/538-chart.png)
-![](media/538-table.png)
+![](media/538-intro.png){style="margin-bottom: 0;"}
+![](media/538-chart.png){style="margin-top: -15px; margin-bottom: 0;"}
+![](media/538-table.png){style="margin-top: -15px;"}
 :::
 ::::
 
@@ -166,12 +166,13 @@ bc1101tools::frequency_table(midterms)
 ::: {.column width="50%" .table-small}
 ```{r}
 bc1101tools::frequency_table(midterms, binwidth = 2)
+
 ```
 :::
 
 ::::
 
-# Data vizualization {#data-viz .heading-background background-image="media/snow_map.jpg"}
+# Data vizualization {#data-viz .heading-background  background-image="media/snow_map.jpg"}
 
 [[Interactive map]](https://ralucanicola.github.io/cholera-map-3D/)
 
@@ -190,7 +191,6 @@ bc1101tools::frequency_table(midterms, binwidth = 2)
 
 ::: {.column width="30%" .top .invertable}
 
-<!-- ![](media/freq-graphs-demo-long.png) -->
 ![](media/freq-histogram-small.svg)
 
 ![](media/freq-bar-small.svg){style="margin-top: -1em;"}
@@ -300,13 +300,13 @@ bc1101tools::frequency_table(midterms, binwidth = 2)
 
 - Useful for comparing distributions
 
-![](media/freq-poly-groups.png)
+![](media/freq-poly-groups.svg){.invertable}
 
 ## Frequency polygon
 
 - ...where overlapping histograms are harder to understand
 
-![](media/histogram-groups.png)
+![](media/histogram-groups.svg){.invertable-desaturate}
 
 
 ## Population curve {.small}
@@ -561,6 +561,41 @@ grouped_histogram <- plot_histogram(midterms, binwidth = 2) +
 # grouped_histogram
 ggsave(here::here("slides/media/freq-grouped-histogram.png"), grouped_hist, width = 8, height = 6)
 
+```
+
+```{r grouped-freq-poly}
+#| eval: false
+library(ggplot2)
+library(bc1101tools)
+
+scores2 <- c(1,2,3,3,4,4,4,4,4,4,5,5,5,5,5)
+
+freq_dat <- data.frame(set = rep(c("A","B"), each = length(scores)),
+                       value = c(scores, scores2))
+
+grouped_poly <- ggplot(freq_dat, aes(x = value, linetype = set)) +
+  geom_freqpoly(binwidth = 1) + geom_point(stat = "count") +
+  labs(x = "Scores", y = "Frequency") +
+  scale_x_continuous(limits = c(0,6), breaks = 0:6) +
+  scale_y_continuous(expand = c(0,0)) +
+  theme(legend.position = "none") +
+  theme_bc1101()
+# grouped_poly
+plot_save("freq-poly-groups.svg", plot = grouped_poly, width = 6, height = 4)
+
+grouped_hist <- ggplot(freq_dat, aes(x = value, group = set, fill = set)) +
+  geom_histogram(binwidth = 1, color = "black", alpha = .5, position = 'identity') +
+  labs(x = "Scores", y = "Frequency") +
+  scale_fill_manual(values=c("#69b3a2", "#404080")) +
+  scale_x_continuous(limits = c(0,6), breaks = 0:6) +
+  scale_y_continuous(expand = c(0,0)) +
+  theme(legend.position = "none") +
+  theme_bc1101()
+# grouped_hist
+plot_save("histogram-groups.svg", plot = grouped_hist, width = 6, height = 4)
+
+
+```
 ```
 
 :::

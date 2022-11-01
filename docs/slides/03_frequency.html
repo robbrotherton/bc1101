@@ -463,7 +463,7 @@
 </ul></li>
 </ul>
 </div><div class="column" style="margin-top: -3em;">
-<p><img data-src="media/538-intro.png"> <img data-src="media/538-chart.png"> <img data-src="media/538-table.png"></p>
+<p><img data-src="media/538-intro.png" style="margin-bottom: 0;"> <img data-src="media/538-chart.png" style="margin-top: -15px; margin-bottom: 0;"> <img data-src="media/538-table.png" style="margin-top: -15px;"></p>
 </div>
 </div>
 </section>
@@ -826,7 +826,6 @@
 </ul></li>
 </ul>
 </div><div class="column top invertable" style="width:30%;">
-<!-- ![](media/freq-graphs-demo-long.png) -->
 <p><img data-src="media/freq-histogram-small.svg"></p>
 <p><img data-src="media/freq-bar-small.svg" style="margin-top: -1em;"></p>
 <p><img data-src="media/freq-poly-small.svg" style="margin-top: -1em;"></p>
@@ -971,14 +970,14 @@
 <li>Useful for comparing distributions</li>
 </ul>
 
-<img data-src="media/freq-poly-groups.png" class="r-stretch"></section>
+<img data-src="media/freq-poly-groups.svg" class="invertable r-stretch"></section>
 <section id="frequency-polygon-2" class="slide level2">
 <h2>Frequency polygon</h2>
 <ul>
 <li>…where overlapping histograms are harder to understand</li>
 </ul>
 
-<img data-src="media/histogram-groups.png" class="r-stretch"></section>
+<img data-src="media/histogram-groups.svg" class="invertable-desaturate r-stretch"></section>
 <section id="population-curve" class="slide level2 small">
 <h2>Population curve</h2>
 <div class="columns">
@@ -1167,7 +1166,7 @@
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"},{"title":"Links","icon":"<i class=\"fa fas fa-info\">","content":"<h1>External Links</h1> <ul class=\"slide-menu-items\"> <li class=\"slide-menu-item\"> <a href=\"https://github.com/denehyg/reveal.js-menu\">Reveal.js-menu</a> </li> <li class=\"slide-menu-item\"> <a href=\"https://github.com/hakimel/reveal.js\">Reveal.js</a> </li> </ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"},{"title":"Source","icon":"<i class=\"fas fa-github-source\">","src":"../reveal-menu-github.html"}],"openButton":true},
 'chalkboard': {"buttons":true},
 'smaller': false,
  
@@ -1367,6 +1366,22 @@
         document.documentElement.setAttribute('data-theme', targetTheme)
         localStorage.setItem('theme', targetTheme);
     };
+    </script>
+    <script>
+      git = document.querySelector('[data-panel="Custom1"]');
+      function changeLink() {
+        var link = document.getElementById('source-link');
+        var href = link.getAttribute('href');
+
+        var path = window.location.pathname;
+        var html = path.replace('/slides', '');
+        var qmd = html.replace('html', 'qmd');
+        link.setAttribute('href', href.concat(qmd));
+
+        var issueLink = document.getElementById('issue-link');
+        issueLink.setAttribute('href', issueLink.getAttribute('href').concat('?title=').concat(html));
+      }
+      git.addEventListener("click", changeLink);
     </script>
     
     <script type="ojs-module-contents">
