@@ -1307,5 +1307,12 @@
     "title": "Slides",
     "section": "11. The \\(t\\) test",
     "text": "11. The \\(t\\) test\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \n\\(t\\) vs. \\(z\\)\nThe \\(t\\) distribution\nThe \\(t\\)-test\nLearning checks\n\n\n    \n  \n\n  \nSlidesPanopto"
+  },
+  {
+    "objectID": "slides/02_variables.html#cover",
+    "href": "slides/02_variables.html#cover",
+    "title": "BC1101",
+    "section": "Cover",
+    "text": "Cover\n\n\n\n\ncov = { \n\n  const w = 1050\n  const h = 525\n  \n  d3.xml('covers/02_variables.svg')\n  .then(data => {\n    d3.select(\"#svg-container\").node()\n      .append(data.documentElement)\n    \n    const svg = d3.select(\"#svg-container\").select(\"svg\")\n      .attr(\"width\", w)\n      .attr(\"height\",h)\n      \n    const clip = svg.append(\"clipPath\").attr(\"id\", \"clip\")\n      .append(\"rect\")\n      .attr(\"x\", -w*2)\n      .attr(\"y\", h*2)\n      .attr(\"width\", w*2)\n      .attr(\"height\",h*2)\n      .attr(\"fill\", \"none\")\n      \n    clip\n      .transition().duration(3000)\n      .attr(\"x\", 0)\n      .attr(\"y\", 0)\n    \n    svg.select(\"polyline\")\n      .attr('clip-path', \"url(#clip)\")\n    \n      \n    svg.selectAll(\".axis-text\")\n      .style(\"opacity\", 0)\n      .transition().delay(1000).duration(3000).style(\"opacity\", 1)\n  });\n}"
   }
 ]

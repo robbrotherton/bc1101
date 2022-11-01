@@ -730,7 +730,7 @@
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"},{"title":"Source","icon":"<i class=\"fas fa-github-source\">","content":"<h1>Source code</h1> The source code for these slides is available on GitHub. <ul class=\"slide-menu-items\"> <li class=\"slide-menu-item\"> <a href=\"https://github.com/robbrotherton/quarto-test-website/tree/main/slides\">Browse source code</a> </li> <li class=\"slide-menu-item\"> <a href=\"https://github.com/robbrotherton/quarto-test-website/issues/new\">Report an issue</a> </li> </ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"},{"title":"Source","icon":"<i class=\"fas fa-github-source\">","src":"../reveal-menu-github.html"}],"openButton":true},
 'chalkboard': {"buttons":true},
 'smaller': false,
  
@@ -930,6 +930,22 @@
         document.documentElement.setAttribute('data-theme', targetTheme)
         localStorage.setItem('theme', targetTheme);
     };
+    </script>
+    <script>
+      git = document.querySelector('[data-panel="Custom1"]');
+      function changeLink() {
+        var link = document.getElementById('source-link');
+        var href = link.getAttribute('href');
+
+        var path = window.location.pathname;
+        var html = path.replace('/slides', '');
+        var qmd = html.replace('html', 'qmd');
+        link.setAttribute('href', href.concat(qmd));
+
+        var issueLink = document.getElementById('issue-link');
+        issueLink.setAttribute('href', issueLink.getAttribute('href').concat('?title=').concat(html));
+      }
+      git.addEventListener("click", changeLink);
     </script>
     <script type="ojs-module-contents">
     {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"w = 1050\nh = w/2\n\ncover = {\n\n  const svg = d3.select(\"#cover-image\")\n    .append(\"svg\")\n    .attr(\"width\", w)\n    .attr(\"height\", h)\n    .style(\"transform\", \"scaleY(-1)\")\n    \n  const g = svg.append(\"g\")\n  \n  g\n    .selectAll(\"rect\")\n    .data(data)\n    .enter()\n      .append(\"rect\")\n      .attr(\"fill\", \"black\")\n        .attr(\"x\", function(d, i){return 5 + i*(w/10)})\n        .attr(\"y\", 0)\n        .attr(\"height\", 0)\n        .attr(\"width\", w/10 - 10)\n        .attr(\"fill\", d => d.color)\n          .transition()\n          .duration(d => d.duration)\n          .delay(d => d.delay)\n          .attr(\"height\", d => d.value * 26)\n  \n\n \n return svg.node()\n}\n\n"}]}
