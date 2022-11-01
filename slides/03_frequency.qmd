@@ -1,12 +1,11 @@
 ---
-format: 
-  revealjs:
-    chalkboard: true
+format: revealjs
 ---
 
 # 3|FREQUENCY
 
-<div id = "cover-image"></div>
+::: {#cover-image}
+:::
 
 
 # Overview

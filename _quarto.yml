@@ -1,7 +1,9 @@
 project:
   type: website
   output-dir: docs
-  resources: reveal-menu-github.html
+  resources:
+    - reveal-menu-github.html
+    - slides/icons/
 
 website:
   title: "BC1101"
