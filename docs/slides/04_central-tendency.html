@@ -328,10 +328,7 @@
 <section id="central-tendency" class="title-slide slide level1 center">
 <h1>4|CENTRAL TENDENCY</h1>
 
-<img data-src="covers/04_central-tendency.svg" class="r-stretch"><div class="cell">
-
-</div>
-</section>
+<img data-src="covers/04_central-tendency.svg" class="r-stretch"></section>
 
 <section id="overview" class="title-slide slide level1 center">
 <h1>Overview</h1>
@@ -359,9 +356,6 @@
 </section>
 <section id="finding-the-center" class="slide level2">
 <h2>Finding the center</h2>
-<div class="cell">
-
-</div>
 <p>Where is the center of the distribution?</p>
 
 <img data-src="media/central-tendency-symmetrical.svg" class="invertable r-stretch"></section>
@@ -514,9 +508,6 @@
 </div>
 </div>
 <p><img data-src="media/central-tendency-bimodal.svg" class="invertable" style="margin-top: -1em;"></p>
-<div class="cell">
-
-</div>
 </section>
 <section id="mode-3" class="slide level2">
 <h2>Mode</h2>
@@ -656,9 +647,6 @@
 <div class="r-stack">
 <p><img data-src="media/central-tendency-balance.svg" style="width:20em"></p>
 <p><img data-src="media/central-tendency-balance-2.svg" class="fragment" style="width:20em"></p>
-</div>
-<div class="cell">
-
 </div>
 </section></section>
 <section>
@@ -807,7 +795,7 @@
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"},{"title":"Links","icon":"<i class=\"fa fas fa-info\">","content":"<h1>External Links</h1> <ul class=\"slide-menu-items\"> <li class=\"slide-menu-item\"> <a href=\"https://github.com/denehyg/reveal.js-menu\">Reveal.js-menu</a> </li> <li class=\"slide-menu-item\"> <a href=\"https://github.com/hakimel/reveal.js\">Reveal.js</a> </li> </ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"},{"title":"Source","icon":"<i class=\"fas fa-github-source\">","src":"../reveal-menu-github.html"}],"openButton":true},
 'chalkboard': {"buttons":true},
 'smaller': false,
  
@@ -1007,6 +995,23 @@
         document.documentElement.setAttribute('data-theme', targetTheme)
         localStorage.setItem('theme', targetTheme);
     };
+    </script>
+    <script>
+      git = document.querySelector('[data-panel="Custom1"]');
+      function changeLink() {
+        var link = document.getElementById('source-link');
+        var href = link.getAttribute('href');
+
+        var path = window.location.pathname;
+        var html = path.split('/');
+        html = html[html.length - 1];
+        var qmd = html.replace('html', 'qmd');
+        link.setAttribute('href', href.concat('/' + qmd));
+
+        var issueLink = document.getElementById('issue-link');
+        issueLink.setAttribute('href', issueLink.getAttribute('href').concat('?title=').concat(html));
+      }
+      git.addEventListener("click", changeLink);
     </script>
     
     <script>

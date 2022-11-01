@@ -1,25 +1,12 @@
 ---
-format: 
-  revealjs:
-    chalkboard: true
+format: revealjs
 ---
 
 # 4|CENTRAL TENDENCY
 
 ![](covers/04_central-tendency.svg)
 
-```{r eval=FALSE}
-# 339
-# 757
-# 726
-# seed <- as.integer(runif(1, max = 1000))
-set.seed(726)
-data <- as.integer(rnorm(30, mean = 50, sd = 3))
-bc1101tools::balance_beam(data, size = 0)
 
-ggplot2::ggsave(here::here("slides", "covers", "04_central-tendency.svg          "), width = 10, height = 5)
-
-```
 
 
 # Overview
@@ -41,50 +28,6 @@ ggplot2::ggsave(here::here("slides", "covers", "04_central-tendency.svg         
 
 
 ## Finding the center
-
-```{r distributions, eval=FALSE}
-library(ggplot2)
-
-distPlot <- function(x, y = NULL) {
-  ggplot(NULL, aes(x = x)) + 
-    geom_histogram(binwidth = 1, color = 'black', fill = 'grey') +
-    scale_x_continuous(limits = c(.5,9.5), breaks = 1:9) +
-    scale_y_continuous(expand = c(0,0)) +
-    labs(x = "X", y = "Frequency") +
-    papaja::theme_apa()
-}
-
-transparent_bg <- theme(
-    panel.background = element_rect(fill='transparent'), #transparent panel bg
-    plot.background = element_rect(fill='transparent', color=NA), #transparent plot bg
-    panel.grid.major = element_blank(), #remove major gridlines
-    panel.grid.minor = element_blank(), #remove minor gridlines
-    legend.background = element_rect(fill='transparent'), #transparent legend bg
-    legend.box.background = element_rect(fill='transparent') #transparent legend panel
-  )
-
-sym <- c(2,3,3,4,4,4,5,5,5,5,6,6,6,7,7,8)
-skew <- c(1,2,3,4,5,6,6,7,7,7,8,8,8,8,9,9)
-bi <- c(1,1,2,2,2,2,3,3,7,7,8,8,8,8,9,9)
-
-symPlot <- distPlot(sym) + transparent_bg
-ggsave(here::here("slides", "media", "central-tendency-symmetrical.svg"), symPlot, 
-       width=4, height = 2, bg = "transparent")
-skewPlot <- distPlot(skew) + transparent_bg
-ggsave(here::here("slides", "media", "central-tendency-skew.svg"), skewPlot, 
-       width=4, height = 2, bg = "transparent")
-biPlot <- distPlot(bi) + transparent_bg
-ggsave(here::here("slides", "media", "central-tendency-bimodal.svg"), biPlot,
-       width=4, height = 2, bg = "transparent")
-
-realBi <- c(2,5,8,6,3,1,2,2,4,6,7)
-realBiPlot <- distPlot(rep(0:10, realBi)) +
-  scale_x_continuous(limits = c(-.5,10.5), breaks = 0:10) +
-  xlab("Tone Identification Score\n(number correct out of 10)") +  transparent_bg
-
-ggsave(here::here("slides", "media", "central-tendency-bimodal-real.svg"), realBiPlot,
-       width=4, height = 2, bg = "transparent")
-```
 
 Where is the center of the distribution?
 
@@ -162,14 +105,7 @@ bc1101tools::frequency_table(x =                     c("90-99","80-89","70-79","
 
 ![](media/central-tendency-bimodal.svg){.invertable style="margin-top: -1em;"}
 
-```{r eval=FALSE}
-gridExtra::grid.arrange(symPlot + labs(x = NULL, y = NULL), 
-             skewPlot + labs(x = NULL, y = NULL), 
-             biPlot + labs(x = NULL, y = NULL),
-               widths = c(1, 1, 1, 1),
-  layout_matrix = rbind(c(1, 1, 2, 2),
-                        c(NA, 3, 3, NA)))
-```
+
 
 
 ## Mode
@@ -308,17 +244,7 @@ $\mu = \dfrac{\Sigma X} N$
 ![](media/central-tendency-balance-2.svg){.fragment width=20em}
 :::
 
-```{r eval=FALSE}
-data <- c(1, 2, 6, 6, 10)
 
-bc1101tools::balance_beam(data)
-
-ggplot2::ggsave(here::here("slides", "media", "central-tendency-balance.svg"), width = 5, height = 2)
-
-bc1101tools::balance_beam(data, label_boxes = TRUE)
-
-ggplot2::ggsave(here::here("slides", "media", "central-tendency-balance-2.svg"), width = 5, height = 2)
-```
 
 
 # Distributions
@@ -527,3 +453,94 @@ ggsave(here::here("slides", "media", "central-tendency-learning-check-dist.svg")
 ```
   
 
+
+::: {.content-hidden}
+# Data and figures
+
+## Cover
+
+```{r cover-ggplot}
+#| eval: false
+
+set.seed(726)
+data <- as.integer(rnorm(30, mean = 50, sd = 3))
+bc1101tools::balance_beam(data, size = 0)
+
+ggplot2::ggsave(here::here("slides", "covers", "04_central-tendency.svg          "), width = 10, height = 5)
+
+```
+
+## Distribution plots
+
+```{r distributions}
+#| eval: false
+
+library(ggplot2)
+
+distPlot <- function(x, y = NULL) {
+  ggplot(NULL, aes(x = x)) + 
+    geom_histogram(binwidth = 1, color = 'black', fill = 'grey') +
+    scale_x_continuous(limits = c(.5,9.5), breaks = 1:9) +
+    scale_y_continuous(expand = c(0,0)) +
+    labs(x = "X", y = "Frequency") +
+    papaja::theme_apa()
+}
+
+transparent_bg <- theme(
+    panel.background = element_rect(fill='transparent'), #transparent panel bg
+    plot.background = element_rect(fill='transparent', color=NA), #transparent plot bg
+    panel.grid.major = element_blank(), #remove major gridlines
+    panel.grid.minor = element_blank(), #remove minor gridlines
+    legend.background = element_rect(fill='transparent'), #transparent legend bg
+    legend.box.background = element_rect(fill='transparent') #transparent legend panel
+  )
+
+sym <- c(2,3,3,4,4,4,5,5,5,5,6,6,6,7,7,8)
+skew <- c(1,2,3,4,5,6,6,7,7,7,8,8,8,8,9,9)
+bi <- c(1,1,2,2,2,2,3,3,7,7,8,8,8,8,9,9)
+
+symPlot <- distPlot(sym) + transparent_bg
+ggsave(here::here("slides", "media", "central-tendency-symmetrical.svg"), symPlot, 
+       width=4, height = 2, bg = "transparent")
+skewPlot <- distPlot(skew) + transparent_bg
+ggsave(here::here("slides", "media", "central-tendency-skew.svg"), skewPlot, 
+       width=4, height = 2, bg = "transparent")
+biPlot <- distPlot(bi) + transparent_bg
+ggsave(here::here("slides", "media", "central-tendency-bimodal.svg"), biPlot,
+       width=4, height = 2, bg = "transparent")
+
+realBi <- c(2,5,8,6,3,1,2,2,4,6,7)
+realBiPlot <- distPlot(rep(0:10, realBi)) +
+  scale_x_continuous(limits = c(-.5,10.5), breaks = 0:10) +
+  xlab("Tone Identification Score\n(number correct out of 10)") +  transparent_bg
+
+ggsave(here::here("slides", "media", "central-tendency-bimodal-real.svg"), realBiPlot,
+       width=4, height = 2, bg = "transparent")
+```
+
+```{r eval=FALSE}
+gridExtra::grid.arrange(symPlot + labs(x = NULL, y = NULL), 
+             skewPlot + labs(x = NULL, y = NULL), 
+             biPlot + labs(x = NULL, y = NULL),
+               widths = c(1, 1, 1, 1),
+  layout_matrix = rbind(c(1, 1, 2, 2),
+                        c(NA, 3, 3, NA)))
+```
+
+## Balance beam
+
+```{r}
+#| eval: false
+
+data <- c(1, 2, 6, 6, 10)
+
+bc1101tools::balance_beam(data)
+
+ggplot2::ggsave(here::here("slides", "media", "central-tendency-balance.svg"), width = 5, height = 2)
+
+bc1101tools::balance_beam(data, label_boxes = TRUE)
+
+ggplot2::ggsave(here::here("slides", "media", "central-tendency-balance-2.svg"), width = 5, height = 2)
+```
+
+:::
