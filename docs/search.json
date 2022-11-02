@@ -1218,13 +1218,6 @@
     "text": "Independent-samples"
   },
   {
-    "objectID": "slides/d3-fig/d3-bar.html",
-    "href": "slides/d3-fig/d3-bar.html",
-    "title": "BC1101",
-    "section": "",
-    "text": "margins = ({top: 20, right: 20, bottom: 20, left: 20})\n\n\nbar_xScale = d3.scaleBand()\n  .domain([1,2,3,4,5])\n  .range([margins.left, 500 - margins.right])\n\nbar_yScale = d3.scaleLinear()\n  .domain([0, 3])\n  .range([300 - margins.bottom, margins.top])\n    \nbar_chart = {\n\n  const svg = d3.select(DOM.svg(500, 300))\n    .attr(\"class\", \"invertable\");\n  \n  const axis_lines = svg.append(\"g\")\n    .attr(\"stroke\", \"black\")\n    .attr(\"fill\", \"none\")\n    \n  const bars = svg.append(\"g\")\n    .attr(\"fill\", \"black\")\n    .attr(\"stroke\", \"none\")\n  \n  bars.selectAll(\"rect\")\n    .data(bar_data)\n    .enter()\n      .append(\"rect\") \n      .attr(\"transform\", \"rotate(180)\")\n      .attr(\"transform-origin\", \"center center\")\n      .attr(\"x\", d => bar_xScale(d.value))\n      .attr(\"y\", 20)\n      .attr(\"width\", (460/5-5))\n      .attr(\"height\", 0)\n        .transition()\n        .delay(function(d,i){return (6-i) * 300})\n        .duration(300)\n        .attr(\"height\", d => d.density*260/3)\n\n  const line_data = [\n    {x1: 10, x2: 490, y1: 290, y2: 290},\n    {x1: 10, x2: 10, y1: 290, y2: 10}\n  ]\n  \n  axis_lines.selectAll(\"line\")\n    .data(line_data)\n    .enter()\n      .append(\"line\")\n        .attr(\"x1\", d => d.x1)\n        .attr(\"x2\", d => d.x2)\n        .attr(\"y1\", d => d.y1)\n        .attr(\"y2\", d => d.y2)\n    \n  return svg.node();\n}"
-  },
-  {
     "objectID": "slides/test-ojs.html",
     "href": "slides/test-ojs.html",
     "title": "BC1101",
@@ -1236,7 +1229,7 @@
     "href": "slides-index.html#course-overview",
     "title": "Slides",
     "section": "1. Course Overview",
-    "text": "1. Course Overview\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nTextbook\nLectures\nRecitation\nExams\nFinal grades\nOther stuff\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "1. Course Overview\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nTextbook\nLectures\nRecitation\nExams\nOther stuff\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "slides-index.html#variables",
@@ -1257,7 +1250,7 @@
     "href": "slides-index.html#central-tendency",
     "title": "Slides",
     "section": "4. Central Tendency",
-    "text": "4. Central Tendency\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nMode\nMedian\nMean\nDistributions\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "4. Central Tendency\n\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nMode\nMedian\nMean\nDistributions\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "slides-index.html#variability",
@@ -1307,12 +1300,5 @@
     "title": "Slides",
     "section": "11. The \\(t\\) test",
     "text": "11. The \\(t\\) test\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \n\\(t\\) vs. \\(z\\)\nThe \\(t\\) distribution\nThe \\(t\\)-test\nLearning checks\n\n\n    \n  \n\n  \nSlidesPanopto"
-  },
-  {
-    "objectID": "slides/02_variables.html#cover",
-    "href": "slides/02_variables.html#cover",
-    "title": "BC1101",
-    "section": "Cover",
-    "text": "Cover\n\n\n\n\ncov = { \n\n  const w = 1050\n  const h = 525\n  \n  d3.xml('covers/02_variables.svg')\n  .then(data => {\n    d3.select(\"#svg-container\").node()\n      .append(data.documentElement)\n    \n    const svg = d3.select(\"#svg-container\").select(\"svg\")\n      .attr(\"width\", w)\n      .attr(\"height\",h)\n      \n    const clip = svg.append(\"clipPath\").attr(\"id\", \"clip\")\n      .append(\"rect\")\n      .attr(\"x\", -w*2)\n      .attr(\"y\", h*2)\n      .attr(\"width\", w*2)\n      .attr(\"height\",h*2)\n      .attr(\"fill\", \"none\")\n      \n    clip\n      .transition().duration(3000)\n      .attr(\"x\", 0)\n      .attr(\"y\", 0)\n    \n    svg.select(\"polyline\")\n      .attr('clip-path', \"url(#clip)\")\n    \n      \n    svg.selectAll(\".axis-text\")\n      .style(\"opacity\", 0)\n      .transition().delay(1000).duration(3000).style(\"opacity\", 1)\n  });\n}"
   }
 ]

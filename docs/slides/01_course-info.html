@@ -938,9 +938,10 @@
         var href = link.getAttribute('href');
 
         var path = window.location.pathname;
-        var html = path.replace('/slides', '');
+        var html = path.split('/');
+        html = html[html.length - 1];
         var qmd = html.replace('html', 'qmd');
-        link.setAttribute('href', href.concat(qmd));
+        link.setAttribute('href', href.concat('/' + qmd));
 
         var issueLink = document.getElementById('issue-link');
         issueLink.setAttribute('href', issueLink.getAttribute('href').concat('?title=').concat(html));
