@@ -27,6 +27,70 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -319,6 +383,8 @@
       margin-right: 0; 
     }
   </style>
+  <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+  <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -328,7 +394,7 @@
 <section id="central-tendency" class="title-slide slide level1 center">
 <h1>4|CENTRAL TENDENCY</h1>
 
-<img data-src="covers/04_central-tendency.svg" class="r-stretch"></section>
+<img data-src="covers/04_central-tendency.svg" class="invertable r-stretch"></section>
 
 <section id="overview" class="title-slide slide level1 center">
 <h1>Overview</h1>
@@ -336,7 +402,7 @@
 <li><a href="#/mode">Mode</a></li>
 <li><a href="#/median-1">Median</a></li>
 <li><a href="#/mean-1">Mean</a></li>
-<li><a href="#/distributions-1">Distributions</a></li>
+<li><a href="#/distributions">Distributions</a></li>
 <li><a href="#/learning-checks">Learning checks</a></li>
 </ul>
 </section>
@@ -620,17 +686,13 @@
 <section id="calculating-the-mean" class="slide level2">
 <h2>Calculating the mean</h2>
 <ul>
-<li>Calculating the mean
-<ul>
 <li>Sum of scores divided by number of scores</li>
 <li>Represented by a symbol (unlike mode &amp; median)</li>
-</ul></li>
 </ul>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Sample: <span class="math inline">\(M = \dfrac{\Sigma X} n\)</span></p>
-<p>(sometimes<br>
-<span class="math inline">\(X\)</span> or <span class="math inline">\(\overline{X}\)</span>)</p>
+<p>(sometimes <span class="math inline">\(\overline{X}\)</span>)</p>
 </div><div class="column" style="width:50%;">
 <p>Population: <span class="math inline">\(\mu = \dfrac{\Sigma X} N\)</span></p>
 </div>
@@ -645,16 +707,13 @@
 </ul></li>
 </ul>
 <div class="r-stack">
-<p><img data-src="media/central-tendency-balance.svg" style="width:20em"></p>
-<p><img data-src="media/central-tendency-balance-2.svg" class="fragment" style="width:20em"></p>
+<p><img data-src="media/central-tendency-balance.svg" class="invertable" style="width:20em"></p>
+<p><img data-src="media/central-tendency-balance-2.svg" class="fragment invertable" style="width:20em"></p>
 </div>
 </section></section>
 <section>
 <section id="distributions" class="title-slide slide level1 center">
 <h1>Distributions</h1>
-<div class="cell">
-
-</div>
 <div class="cell">
 
 </div>
@@ -686,8 +745,8 @@
 </div>
 </div>
 </section>
-<section id="distributions-1" class="slide level2">
-<h2>Distributions</h2>
+<section id="distributions-people" class="slide level2">
+<h2>Distributions: people</h2>
 <ul>
 <li>Sensitivity to outliers
 <ul>
@@ -695,9 +754,13 @@
 <li>Mean is more influenced by outliers than median</li>
 </ul></li>
 </ul>
-<div class="r-stack">
-<p><img data-src="media/central-tendency-bar-1.png"></p>
-<p><img data-src="media/central-tendency-bar-2.png" class="fragment"></p>
+<div class="r-hstack">
+<div id="distributions-people-container">
+
+</div>
+<div id="distributions-monopoly-man-container" class="fragment">
+
+</div>
 </div>
 </section></section>
 <section id="summary" class="title-slide slide level1 smaller center">
@@ -747,8 +810,103 @@
 </div>
 </div>
 <div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="570" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 569;"><span id="cb1-570"><a href="#cb1-570"></a>people_illustration <span class="op">=</span> {</span>
+<span id="cb1-571"><a href="#cb1-571"></a></span>
+<span id="cb1-572"><a href="#cb1-572"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">650</span></span>
+<span id="cb1-573"><a href="#cb1-573"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">400</span></span>
+<span id="cb1-574"><a href="#cb1-574"></a>  <span class="kw">const</span> personWidth <span class="op">=</span> <span class="dv">80</span></span>
+<span id="cb1-575"><a href="#cb1-575"></a>  </span>
+<span id="cb1-576"><a href="#cb1-576"></a>  <span class="kw">const</span> data <span class="op">=</span> [</span>
+<span id="cb1-577"><a href="#cb1-577"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$33,000"</span>}<span class="op">,</span></span>
+<span id="cb1-578"><a href="#cb1-578"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$34,000"</span>}<span class="op">,</span></span>
+<span id="cb1-579"><a href="#cb1-579"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$35,000"</span>}<span class="op">,</span></span>
+<span id="cb1-580"><a href="#cb1-580"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$35,000"</span>}<span class="op">,</span></span>
+<span id="cb1-581"><a href="#cb1-581"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$35,000"</span>}<span class="op">,</span></span>
+<span id="cb1-582"><a href="#cb1-582"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$36,000"</span>}<span class="op">,</span></span>
+<span id="cb1-583"><a href="#cb1-583"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">6</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$37,000"</span>}<span class="op">,</span></span>
+<span id="cb1-584"><a href="#cb1-584"></a>  ]</span>
+<span id="cb1-585"><a href="#cb1-585"></a>      </span>
+<span id="cb1-586"><a href="#cb1-586"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#distributions-people-container"</span>)</span>
+<span id="cb1-587"><a href="#cb1-587"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)</span>
+<span id="cb1-588"><a href="#cb1-588"></a>  </span>
+<span id="cb1-589"><a href="#cb1-589"></a>  <span class="kw">const</span> imgs <span class="op">=</span> svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"image"</span>)</span>
+<span id="cb1-590"><a href="#cb1-590"></a>    <span class="op">.</span><span class="fu">data</span>(data)</span>
+<span id="cb1-591"><a href="#cb1-591"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-592"><a href="#cb1-592"></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg:image"</span>)</span>
+<span id="cb1-593"><a href="#cb1-593"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="dv">50</span> <span class="op">+</span> d<span class="op">.</span><span class="at">id</span> <span class="op">*</span> personWidth)</span>
+<span id="cb1-594"><a href="#cb1-594"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="dv">50</span>)</span>
+<span id="cb1-595"><a href="#cb1-595"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'width'</span><span class="op">,</span> personWidth)</span>
+<span id="cb1-596"><a href="#cb1-596"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"xlink:href"</span><span class="op">,</span> <span class="st">"media/person.svg"</span>)</span>
+<span id="cb1-597"><a href="#cb1-597"></a>      </span>
+<span id="cb1-598"><a href="#cb1-598"></a>  <span class="kw">const</span> incomes <span class="op">=</span> svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-599"><a href="#cb1-599"></a>    <span class="op">.</span><span class="fu">data</span>(data)</span>
+<span id="cb1-600"><a href="#cb1-600"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-601"><a href="#cb1-601"></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-602"><a href="#cb1-602"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'text-anchor'</span><span class="op">,</span> <span class="st">'middle'</span>)</span>
+<span id="cb1-603"><a href="#cb1-603"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="dv">50</span> <span class="op">+</span> personWidth<span class="op">/</span><span class="dv">2</span> <span class="op">+</span> d<span class="op">.</span><span class="at">id</span> <span class="op">*</span> personWidth)</span>
+<span id="cb1-604"><a href="#cb1-604"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="dv">30</span>)</span>
+<span id="cb1-605"><a href="#cb1-605"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.5em'</span>)</span>
+<span id="cb1-606"><a href="#cb1-606"></a>      <span class="op">.</span><span class="fu">text</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">income</span>)</span>
+<span id="cb1-607"><a href="#cb1-607"></a></span>
+<span id="cb1-608"><a href="#cb1-608"></a>  <span class="kw">const</span> mean1 <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-609"><a href="#cb1-609"></a>    <span class="op">.</span><span class="fu">data</span>([<span class="st">'median: $35,000'</span><span class="op">,</span> <span class="st">'&lt;tspan style="font-family: Times; font-style: italic"&gt;M&lt;/tspan&gt; = $35,000'</span>])</span>
+<span id="cb1-610"><a href="#cb1-610"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-611"><a href="#cb1-611"></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-612"><a href="#cb1-612"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'text-anchor'</span><span class="op">,</span> <span class="st">'middle'</span>)</span>
+<span id="cb1-613"><a href="#cb1-613"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> personWidth <span class="op">*</span> <span class="dv">7</span><span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb1-614"><a href="#cb1-614"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="kw">function</span>(d<span class="op">,</span>i){<span class="cf">return</span> <span class="dv">250</span> <span class="op">+</span> i<span class="op">*</span><span class="dv">50</span>})</span>
+<span id="cb1-615"><a href="#cb1-615"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.8em'</span>)</span>
+<span id="cb1-616"><a href="#cb1-616"></a>      <span class="op">.</span><span class="fu">html</span>(d <span class="kw">=&gt;</span> d)</span>
+<span id="cb1-617"><a href="#cb1-617"></a>}</span>
+<span id="cb1-618"><a href="#cb1-618"></a></span>
+<span id="cb1-619"><a href="#cb1-619"></a>monopoly_man <span class="op">=</span> {</span>
+<span id="cb1-620"><a href="#cb1-620"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">400</span></span>
+<span id="cb1-621"><a href="#cb1-621"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">400</span></span>
+<span id="cb1-622"><a href="#cb1-622"></a>  <span class="kw">const</span> personWidth <span class="op">=</span> <span class="dv">80</span></span>
+<span id="cb1-623"><a href="#cb1-623"></a>  </span>
+<span id="cb1-624"><a href="#cb1-624"></a>  </span>
+<span id="cb1-625"><a href="#cb1-625"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#distributions-monopoly-man-container"</span>)</span>
+<span id="cb1-626"><a href="#cb1-626"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)</span>
+<span id="cb1-627"><a href="#cb1-627"></a>    </span>
+<span id="cb1-628"><a href="#cb1-628"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"svg:image"</span>)</span>
+<span id="cb1-629"><a href="#cb1-629"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> <span class="dv">100</span>)</span>
+<span id="cb1-630"><a href="#cb1-630"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="dv">30</span>)</span>
+<span id="cb1-631"><a href="#cb1-631"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'width'</span><span class="op">,</span> <span class="dv">200</span>)</span>
+<span id="cb1-632"><a href="#cb1-632"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"xlink:href"</span><span class="op">,</span> <span class="st">"media/monopoly-man.svg"</span>)</span>
+<span id="cb1-633"><a href="#cb1-633"></a>      </span>
+<span id="cb1-634"><a href="#cb1-634"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-635"><a href="#cb1-635"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'text-anchor'</span><span class="op">,</span> <span class="st">'middle'</span>)</span>
+<span id="cb1-636"><a href="#cb1-636"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.5em'</span>)</span>
+<span id="cb1-637"><a href="#cb1-637"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> w<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb1-638"><a href="#cb1-638"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="dv">30</span>)</span>
+<span id="cb1-639"><a href="#cb1-639"></a>      <span class="op">.</span><span class="fu">text</span>(<span class="st">"$1 billion"</span>)</span>
+<span id="cb1-640"><a href="#cb1-640"></a>      </span>
+<span id="cb1-641"><a href="#cb1-641"></a>  <span class="kw">const</span> new_mean <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-642"><a href="#cb1-642"></a>    <span class="op">.</span><span class="fu">data</span>([<span class="st">'new median: $35,000'</span><span class="op">,</span> <span class="st">'new &lt;tspan style="font-family: Times; font-style: italic"&gt;M&lt;/tspan&gt; = $125 million'</span>])</span>
+<span id="cb1-643"><a href="#cb1-643"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-644"><a href="#cb1-644"></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-645"><a href="#cb1-645"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'text-anchor'</span><span class="op">,</span> <span class="st">'middle'</span>)</span>
+<span id="cb1-646"><a href="#cb1-646"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> w<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb1-647"><a href="#cb1-647"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="kw">function</span>(d<span class="op">,</span>i){<span class="cf">return</span> <span class="dv">250</span> <span class="op">+</span> i<span class="op">*</span><span class="dv">50</span>})</span>
+<span id="cb1-648"><a href="#cb1-648"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.8em'</span>)</span>
+<span id="cb1-649"><a href="#cb1-649"></a>      <span class="op">.</span><span class="fu">html</span>(d <span class="kw">=&gt;</span> d)</span>
+<span id="cb1-650"><a href="#cb1-650"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
 
 </div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<!-- ![](media/monopoly-man.svg) -->
 
 <div class="footer footer-default">
 <button id="theme-toggle">
@@ -1012,6 +1170,17 @@
         issueLink.setAttribute('href', issueLink.getAttribute('href').concat('?title=').concat(html));
       }
       git.addEventListener("click", changeLink);
+    </script>
+    
+    <script type="ojs-module-contents">
+    {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\npeople_illustration = {\n\n  const w = 650\n  const h = 400\n  const personWidth = 80\n  \n  const data = [\n    {id: 0, income: \"$33,000\"},\n    {id: 1, income: \"$34,000\"},\n    {id: 2, income: \"$35,000\"},\n    {id: 3, income: \"$35,000\"},\n    {id: 4, income: \"$35,000\"},\n    {id: 5, income: \"$36,000\"},\n    {id: 6, income: \"$37,000\"},\n  ]\n      \n  const svg = d3.select(\"#distributions-people-container\")\n    .append(\"svg\").attr(\"width\", w).attr(\"height\", h).attr(\"class\", \"invertable\")\n  \n  const imgs = svg.selectAll(\"image\")\n    .data(data)\n    .enter()\n      .append(\"svg:image\")\n      .attr('x', d => 50 + d.id * personWidth)\n      .attr('y', 50)\n      .attr('width', personWidth)\n      .attr(\"xlink:href\", \"media/person.svg\")\n      \n  const incomes = svg.selectAll(\"text\")\n    .data(data)\n    .enter()\n      .append(\"text\")\n      .attr('text-anchor', 'middle')\n      .attr('x', d => 50 + personWidth/2 + d.id * personWidth)\n      .attr('y', 30)\n      .style('font-size', '0.5em')\n      .text(d => d.income)\n\n  const mean1 = svg.append(\"g\").selectAll(\"text\")\n    .data(['median: $35,000', '<tspan style=\"font-family: Times; font-style: italic\">M</tspan> = $35,000'])\n    .enter()\n      .append(\"text\")\n      .attr('text-anchor', 'middle')\n      .attr('x', personWidth * 7/2)\n      .attr('y', function(d,i){return 250 + i*50})\n      .style('font-size', '0.8em')\n      .html(d => d)\n}\n\nmonopoly_man = {\n  const w = 400\n  const h = 400\n  const personWidth = 80\n  \n  \n  const svg = d3.select(\"#distributions-monopoly-man-container\")\n    .append(\"svg\").attr(\"width\", w).attr(\"height\", h).attr(\"class\", \"invertable\")\n    \n  svg.append(\"svg:image\")\n      .attr('x', 100)\n      .attr('y', 30)\n      .attr('width', 200)\n      .attr(\"xlink:href\", \"media/monopoly-man.svg\")\n      \n  svg.append(\"text\")\n      .attr('text-anchor', 'middle')\n      .style('font-size', '0.5em')\n      .attr('x', w/2)\n      .attr('y', 30)\n      .text(\"$1 billion\")\n      \n  const new_mean = svg.append(\"g\").selectAll(\"text\")\n    .data(['new median: $35,000', 'new <tspan style=\"font-family: Times; font-style: italic\">M</tspan> = $125 million'])\n    .enter()\n      .append(\"text\")\n      .attr('text-anchor', 'middle')\n      .attr('x', w/2)\n      .attr('y', function(d,i){return 250 + i*50})\n      .style('font-size', '0.8em')\n      .html(d => d)\n}\n\n"}]}
+    </script>
+    <script type="module">
+    window._ojs.paths.runtimeToDoc = "../../slides";
+    window._ojs.paths.runtimeToRoot = "../..";
+    window._ojs.paths.docToRoot = "..";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
     </script>
     
     <script>

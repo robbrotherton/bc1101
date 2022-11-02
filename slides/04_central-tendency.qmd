@@ -4,7 +4,7 @@ format: revealjs
 
 # 4|CENTRAL TENDENCY
 
-![](covers/04_central-tendency.svg)
+![](covers/04_central-tendency.svg){.invertable}
 
 
 
@@ -211,9 +211,8 @@ bc1101tools::frequency_table(x =                     c("90-99","80-89","70-79","
 
 ## Calculating the mean
 
-- Calculating the mean
-  - Sum of scores divided by number of scores
-  - Represented by a symbol (unlike mode & median)
+- Sum of scores divided by number of scores
+- Represented by a symbol (unlike mode & median)
 
 :::: {.columns}
 
@@ -221,8 +220,7 @@ bc1101tools::frequency_table(x =                     c("90-99","80-89","70-79","
 Sample:
 $M = \dfrac{\Sigma X} n$
 
-(sometimes  
-$X$ or $\overline{X}$)
+(sometimes $\overline{X}$)
 :::
 
 ::: {.column width="50%"}
@@ -239,9 +237,9 @@ $\mu = \dfrac{\Sigma X} N$
 
 ::: {.r-stack}
 
-![](media/central-tendency-balance.svg){width=20em}
+![](media/central-tendency-balance.svg){.invertable width=20em}
 
-![](media/central-tendency-balance-2.svg){.fragment width=20em}
+![](media/central-tendency-balance-2.svg){.fragment .invertable width=20em}
 :::
 
 
@@ -249,13 +247,188 @@ $\mu = \dfrac{\Sigma X} N$
 
 # Distributions
 
+
 ```{r colors}
 mean_color <- "#D81B60"
 median_color <- "#1E88E5"
 mode_color <- "#FFC107"
 ```
 
+
+
+::: {.center-element}
+[mean]{class="invertable" style="color: `r mean_color`;"},
+[median]{class="invertable" style="color: `r median_color`;"},
+[mode]{class="invertable" style="color: `r mode_color`;"}
+:::
+
+::: {layout-ncol=2 .invertable style="margin-top: -2em;"}
+
+::: {.r-stack}
+![](media/dist-norm.svg)
+
+![](media/dist-norm-labelled.svg){.fragment fragment-index=1}
+:::
+
+::: {.r-stack}
+![](media/dist-negative.svg)
+
+![](media/dist-negative-labelled.svg){.fragment fragment-index=1}
+:::
+
+:::
+
+::: {layout-ncol=2 .invertable}
+
+::: {.r-stack}
+![](media/dist-positive.svg)
+
+![](media/dist-positive-labelled.svg){.fragment fragment-index=1}
+:::
+
+::: {.r-stack}
+![](media/dist-bimodal.svg)
+
+![](media/dist-bimodal-labelled.svg){.fragment fragment-index=1}
+:::
+
+:::
+
+
+## Distributions: people
+
+- Sensitivity to outliers
+  - Extreme values; observations far from the center
+  - Mean is more influenced by outliers than median
+
+:::: {.r-hstack}
+
+::: {#distributions-people-container}
+:::
+
+::: {#distributions-monopoly-man-container .fragment}
+:::
+
+::::
+
+
+# Summary {.smaller}
+
+- Mode
+  - Most useful for nominal/ordinal data
+  - Reflects the single most common score
+  - Or more complicated (bimodal) distributions
+- Median
+  - Most useful for interval/ratio data
+  - Represents the midpoint in terms of number of scores
+  - Less influenced by outliers; helpful for skewed data
+- Mean
+  - Most useful for interval/ratio data
+  - Represents the midpoint in terms of distances of scores
+  - More influenced by outliers; best for normal data
+
+
+# Learning checks {.small}
+
+- __True or False__: It is possible for more than 50% of the scores in a distribution to have values above the:
+    a) mode
+    b) mean
+    c) median
+
+:::: {.columns}
+::: {.column}
+- What shape is this distribution?
+  - What can you predict about its mode, mean, and median?
+:::
+
+::: {.column style="margin-top: -2em;"}
+![](media/central-tendency-learning-check-dist.svg){.invertable}
+:::
+::::
+
+
+
+
+
+
+
+
+
+::: {.content-hidden}
+# Data and figures
+
+## Cover
+
+```{r cover-ggplot}
+#| eval: false
+
+set.seed(726)
+data <- as.integer(rnorm(30, mean = 50, sd = 3))
+bc1101tools::balance_beam(data, size = 0)
+
+ggplot2::ggsave(here::here("slides", "covers", "04_central-tendency.svg          "), width = 10, height = 5)
+
+```
+
+## Mean/median/mode distribution plots
+
+```{r distributions-toy-example}
+#| eval: false
+
+library(ggplot2)
+
+distPlot <- function(x, y = NULL) {
+  ggplot(NULL, aes(x = x)) + 
+    geom_histogram(binwidth = 1, color = 'black', fill = 'grey') +
+    scale_x_continuous(limits = c(.5,9.5), breaks = 1:9) +
+    scale_y_continuous(expand = c(0,0)) +
+    labs(x = "X", y = "Frequency") +
+    papaja::theme_apa()
+}
+
+transparent_bg <- theme(
+    panel.background = element_rect(fill='transparent'), #transparent panel bg
+    plot.background = element_rect(fill='transparent', color=NA), #transparent plot bg
+    panel.grid.major = element_blank(), #remove major gridlines
+    panel.grid.minor = element_blank(), #remove minor gridlines
+    legend.background = element_rect(fill='transparent'), #transparent legend bg
+    legend.box.background = element_rect(fill='transparent') #transparent legend panel
+  )
+
+sym <- c(2,3,3,4,4,4,5,5,5,5,6,6,6,7,7,8)
+skew <- c(1,2,3,4,5,6,6,7,7,7,8,8,8,8,9,9)
+bi <- c(1,1,2,2,2,2,3,3,7,7,8,8,8,8,9,9)
+
+symPlot <- distPlot(sym) + transparent_bg
+ggsave(here::here("slides", "media", "central-tendency-symmetrical.svg"), symPlot, 
+       width=4, height = 2, bg = "transparent")
+skewPlot <- distPlot(skew) + transparent_bg
+ggsave(here::here("slides", "media", "central-tendency-skew.svg"), skewPlot, 
+       width=4, height = 2, bg = "transparent")
+biPlot <- distPlot(bi) + transparent_bg
+ggsave(here::here("slides", "media", "central-tendency-bimodal.svg"), biPlot,
+       width=4, height = 2, bg = "transparent")
+
+realBi <- c(2,5,8,6,3,1,2,2,4,6,7)
+realBiPlot <- distPlot(rep(0:10, realBi)) +
+  scale_x_continuous(limits = c(-.5,10.5), breaks = 0:10) +
+  xlab("Tone Identification Score\n(number correct out of 10)") +  transparent_bg
+
+ggsave(here::here("slides", "media", "central-tendency-bimodal-real.svg"), realBiPlot,
+       width=4, height = 2, bg = "transparent")
+```
+
 ```{r eval=FALSE}
+gridExtra::grid.arrange(symPlot + labs(x = NULL, y = NULL), 
+             skewPlot + labs(x = NULL, y = NULL), 
+             biPlot + labs(x = NULL, y = NULL),
+               widths = c(1, 1, 1, 1),
+  layout_matrix = rbind(c(1, 1, 2, 2),
+                        c(NA, 3, 3, NA)))
+```
+
+```{r distributions-ggplot}
+#| eval: false
 library(ggplot2)
 library(gridExtra)
 
@@ -357,176 +530,6 @@ for (i in seq_along(plots)) {
 }
 ```
 
-::: {.center-element}
-[mean]{class="invertable" style="color: `r mean_color`;"},
-[median]{class="invertable" style="color: `r median_color`;"},
-[mode]{class="invertable" style="color: `r mode_color`;"}
-:::
-
-::: {layout-ncol=2 .invertable style="margin-top: -2em;"}
-
-::: {.r-stack}
-![](media/dist-norm.svg)
-
-![](media/dist-norm-labelled.svg){.fragment fragment-index=1}
-:::
-
-::: {.r-stack}
-![](media/dist-negative.svg)
-
-![](media/dist-negative-labelled.svg){.fragment fragment-index=1}
-:::
-
-:::
-
-::: {layout-ncol=2 .invertable}
-
-::: {.r-stack}
-![](media/dist-positive.svg)
-
-![](media/dist-positive-labelled.svg){.fragment fragment-index=1}
-:::
-
-::: {.r-stack}
-![](media/dist-bimodal.svg)
-
-![](media/dist-bimodal-labelled.svg){.fragment fragment-index=1}
-:::
-
-:::
-
-
-## Distributions
-
-- Sensitivity to outliers
-  - Extreme values; observations far from the center
-  - Mean is more influenced by outliers than median
-
-::: {.r-stack}
-![](media/central-tendency-bar-1.png)
-
-![](media/central-tendency-bar-2.png){.fragment}
-:::
-
-# Summary {.smaller}
-
-- Mode
-  - Most useful for nominal/ordinal data
-  - Reflects the single most common score
-  - Or more complicated (bimodal) distributions
-- Median
-  - Most useful for interval/ratio data
-  - Represents the midpoint in terms of number of scores
-  - Less influenced by outliers; helpful for skewed data
-- Mean
-  - Most useful for interval/ratio data
-  - Represents the midpoint in terms of distances of scores
-  - More influenced by outliers; best for normal data
-
-
-# Learning checks {.small}
-
-- __True or False__: It is possible for more than 50% of the scores in a distribution to have values above the:
-    a) mode
-    b) mean
-    c) median
-
-:::: {.columns}
-::: {.column}
-- What shape is this distribution?
-  - What can you predict about its mode, mean, and median?
-:::
-
-::: {.column style="margin-top: -2em;"}
-![](media/central-tendency-learning-check-dist.svg){.invertable}
-:::
-::::
-
-```{r eval=FALSE}
-library(ggplot2)
-ggplot() +
-stat_function(fun = dbeta, args = c(5, 2), xlim = c(0, 1)) +
-  theme_void()
-
-ggsave(here::here("slides", "media", "central-tendency-learning-check-dist.svg"),
-       width = 5, height = 3)
-```
-  
-
-
-::: {.content-hidden}
-# Data and figures
-
-## Cover
-
-```{r cover-ggplot}
-#| eval: false
-
-set.seed(726)
-data <- as.integer(rnorm(30, mean = 50, sd = 3))
-bc1101tools::balance_beam(data, size = 0)
-
-ggplot2::ggsave(here::here("slides", "covers", "04_central-tendency.svg          "), width = 10, height = 5)
-
-```
-
-## Distribution plots
-
-```{r distributions}
-#| eval: false
-
-library(ggplot2)
-
-distPlot <- function(x, y = NULL) {
-  ggplot(NULL, aes(x = x)) + 
-    geom_histogram(binwidth = 1, color = 'black', fill = 'grey') +
-    scale_x_continuous(limits = c(.5,9.5), breaks = 1:9) +
-    scale_y_continuous(expand = c(0,0)) +
-    labs(x = "X", y = "Frequency") +
-    papaja::theme_apa()
-}
-
-transparent_bg <- theme(
-    panel.background = element_rect(fill='transparent'), #transparent panel bg
-    plot.background = element_rect(fill='transparent', color=NA), #transparent plot bg
-    panel.grid.major = element_blank(), #remove major gridlines
-    panel.grid.minor = element_blank(), #remove minor gridlines
-    legend.background = element_rect(fill='transparent'), #transparent legend bg
-    legend.box.background = element_rect(fill='transparent') #transparent legend panel
-  )
-
-sym <- c(2,3,3,4,4,4,5,5,5,5,6,6,6,7,7,8)
-skew <- c(1,2,3,4,5,6,6,7,7,7,8,8,8,8,9,9)
-bi <- c(1,1,2,2,2,2,3,3,7,7,8,8,8,8,9,9)
-
-symPlot <- distPlot(sym) + transparent_bg
-ggsave(here::here("slides", "media", "central-tendency-symmetrical.svg"), symPlot, 
-       width=4, height = 2, bg = "transparent")
-skewPlot <- distPlot(skew) + transparent_bg
-ggsave(here::here("slides", "media", "central-tendency-skew.svg"), skewPlot, 
-       width=4, height = 2, bg = "transparent")
-biPlot <- distPlot(bi) + transparent_bg
-ggsave(here::here("slides", "media", "central-tendency-bimodal.svg"), biPlot,
-       width=4, height = 2, bg = "transparent")
-
-realBi <- c(2,5,8,6,3,1,2,2,4,6,7)
-realBiPlot <- distPlot(rep(0:10, realBi)) +
-  scale_x_continuous(limits = c(-.5,10.5), breaks = 0:10) +
-  xlab("Tone Identification Score\n(number correct out of 10)") +  transparent_bg
-
-ggsave(here::here("slides", "media", "central-tendency-bimodal-real.svg"), realBiPlot,
-       width=4, height = 2, bg = "transparent")
-```
-
-```{r eval=FALSE}
-gridExtra::grid.arrange(symPlot + labs(x = NULL, y = NULL), 
-             skewPlot + labs(x = NULL, y = NULL), 
-             biPlot + labs(x = NULL, y = NULL),
-               widths = c(1, 1, 1, 1),
-  layout_matrix = rbind(c(1, 1, 2, 2),
-                        c(NA, 3, 3, NA)))
-```
-
 ## Balance beam
 
 ```{r}
@@ -543,4 +546,109 @@ bc1101tools::balance_beam(data, label_boxes = TRUE)
 ggplot2::ggsave(here::here("slides", "media", "central-tendency-balance-2.svg"), width = 5, height = 2)
 ```
 
+## Learning check distribution
+
+```{r learning-check-distribution}
+#| eval: false
+
+library(ggplot2)
+ggplot() +
+stat_function(fun = dbeta, args = c(5, 2), xlim = c(0, 1)) +
+  theme_void()
+
+ggsave(here::here("slides", "media", "central-tendency-learning-check-dist.svg"),
+       width = 5, height = 3)
+```
+
+
+## Distributions: people illustration
+
 :::
+
+```{ojs}
+
+people_illustration = {
+
+  const w = 650
+  const h = 400
+  const personWidth = 80
+  
+  const data = [
+    {id: 0, income: "$33,000"},
+    {id: 1, income: "$34,000"},
+    {id: 2, income: "$35,000"},
+    {id: 3, income: "$35,000"},
+    {id: 4, income: "$35,000"},
+    {id: 5, income: "$36,000"},
+    {id: 6, income: "$37,000"},
+  ]
+      
+  const svg = d3.select("#distributions-people-container")
+    .append("svg").attr("width", w).attr("height", h).attr("class", "invertable")
+  
+  const imgs = svg.selectAll("image")
+    .data(data)
+    .enter()
+      .append("svg:image")
+      .attr('x', d => 50 + d.id * personWidth)
+      .attr('y', 50)
+      .attr('width', personWidth)
+      .attr("xlink:href", "media/person.svg")
+      
+  const incomes = svg.selectAll("text")
+    .data(data)
+    .enter()
+      .append("text")
+      .attr('text-anchor', 'middle')
+      .attr('x', d => 50 + personWidth/2 + d.id * personWidth)
+      .attr('y', 30)
+      .style('font-size', '0.5em')
+      .text(d => d.income)
+
+  const mean1 = svg.append("g").selectAll("text")
+    .data(['median: $35,000', '<tspan style="font-family: Times; font-style: italic">M</tspan> = $35,000'])
+    .enter()
+      .append("text")
+      .attr('text-anchor', 'middle')
+      .attr('x', personWidth * 7/2)
+      .attr('y', function(d,i){return 250 + i*50})
+      .style('font-size', '0.8em')
+      .html(d => d)
+}
+
+monopoly_man = {
+  const w = 400
+  const h = 400
+  const personWidth = 80
+  
+  
+  const svg = d3.select("#distributions-monopoly-man-container")
+    .append("svg").attr("width", w).attr("height", h).attr("class", "invertable")
+    
+  svg.append("svg:image")
+      .attr('x', 100)
+      .attr('y', 30)
+      .attr('width', 200)
+      .attr("xlink:href", "media/monopoly-man.svg")
+      
+  svg.append("text")
+      .attr('text-anchor', 'middle')
+      .style('font-size', '0.5em')
+      .attr('x', w/2)
+      .attr('y', 30)
+      .text("$1 billion")
+      
+  const new_mean = svg.append("g").selectAll("text")
+    .data(['new median: $35,000', 'new <tspan style="font-family: Times; font-style: italic">M</tspan> = $125 million'])
+    .enter()
+      .append("text")
+      .attr('text-anchor', 'middle')
+      .attr('x', w/2)
+      .attr('y', function(d,i){return 250 + i*50})
+      .style('font-size', '0.8em')
+      .html(d => d)
+}
+
+```
+
+<!-- ![](media/monopoly-man.svg) -->

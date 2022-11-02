@@ -382,7 +382,7 @@
     "href": "slides/04_central-tendency.html#calculating-the-mean",
     "title": "BC1101",
     "section": "Calculating the mean",
-    "text": "Calculating the mean\n\nCalculating the mean\n\nSum of scores divided by number of scores\nRepresented by a symbol (unlike mode & median)\n\n\n\n\nSample: \\(M = \\dfrac{\\Sigma X} n\\)\n(sometimes\n\\(X\\) or \\(\\overline{X}\\))\n\nPopulation: \\(\\mu = \\dfrac{\\Sigma X} N\\)"
+    "text": "Calculating the mean\n\nSum of scores divided by number of scores\nRepresented by a symbol (unlike mode & median)\n\n\n\nSample: \\(M = \\dfrac{\\Sigma X} n\\)\n(sometimes \\(\\overline{X}\\))\n\nPopulation: \\(\\mu = \\dfrac{\\Sigma X} N\\)"
   },
   {
     "objectID": "slides/04_central-tendency.html#visualizing-the-mean",
@@ -1300,5 +1300,12 @@
     "title": "Slides",
     "section": "11. The \\(t\\) test",
     "text": "11. The \\(t\\) test\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \n\\(t\\) vs. \\(z\\)\nThe \\(t\\) distribution\nThe \\(t\\)-test\nLearning checks\n\n\n    \n  \n\n  \nSlidesPanopto"
+  },
+  {
+    "objectID": "slides/04_central-tendency.html#distributions-people",
+    "href": "slides/04_central-tendency.html#distributions-people",
+    "title": "BC1101",
+    "section": "Distributions: people",
+    "text": "Distributions: people\n\nSensitivity to outliers\n\nExtreme values; observations far from the center\nMean is more influenced by outliers than median"
   }
 ]
