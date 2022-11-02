@@ -365,9 +365,6 @@
 </section>
 <section id="variability-example-1" class="slide level2">
 <h2>Variability example</h2>
-<div class="cell">
-
-</div>
 <div class="columns invertable">
 <div class="column center-element">
 <p><img data-src="media/you-dist.svg"></p>
@@ -505,7 +502,7 @@
 <li>Deviation score = <span class="math inline">\(X - \mu\)</span></li>
 </ul></li>
 </ul>
-<p><img data-src="media/central-tendency-balance-2.svg" style="height: 7em; margin-top: -0.5em; margin-bottom: -0.5em;"></p>
+<p><img data-src="media/central-tendency-balance-2.svg" class="invertable" style="height: 7em; margin-top: -0.5em; margin-bottom: -0.5em;"></p>
 <ul>
 <li>To find “average deviation” just sum the deviations and divide by <span class="math inline">\(n\)</span>?
 <ul>
@@ -762,9 +759,6 @@
 <li>Height</li>
 </ul></li>
 </ul>
-<div class="cell">
-
-</div>
 
 <img data-src="media/height.svg" class="invertable r-stretch"></section>
 <section id="calculating-variability-of-samples" class="slide level2">
@@ -926,8 +920,8 @@
 <li>“Why the latest film in the galaxy-spanning franchise has proved so unexpectedly polarizing.”</li>
 </ul></li>
 </ul>
-
-<img data-src="media/5-star-wars.png" class="r-stretch"></section>
+<!-- ![](media/5-star-wars.png) -->
+</section>
 <section id="star-wars-variability" class="slide level2 smallest">
 <h2>Star Wars variability</h2>
 <div class="cell">
@@ -1426,20 +1420,26 @@
     </script>
     <script>
       git = document.querySelector('[data-panel="Custom1"]');
+
       function changeLink() {
         var link = document.getElementById('source-link');
         var href = link.getAttribute('href');
 
         var path = window.location.pathname;
         var html = path.split('/');
-        html = html[html.length - 1];
-        var qmd = html.replace('html', 'qmd');
+        var lecture = html[html.length - 1];
+        var qmd = lecture.replace('html', 'qmd');
         link.setAttribute('href', href.concat('/' + qmd));
 
+        var page = window.location.hash.replace('#/', ' : ');
+
         var issueLink = document.getElementById('issue-link');
-        issueLink.setAttribute('href', issueLink.getAttribute('href').concat('?title=').concat(html));
+        issueLink.setAttribute('href', issueLink.getAttribute('href').concat('?title=' + ' Issue with ' + lecture + page));
+
       }
+
       git.addEventListener("click", changeLink);
+
     </script>
     
     <script>
