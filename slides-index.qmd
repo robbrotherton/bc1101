@@ -162,7 +162,7 @@ card("03_frequency", "", TRUE)
 :::: {.box}
 ## 4. Central Tendency
 ```{r}
-card("04_central-tendency", "")
+card("04_central-tendency", "", invertable_image = TRUE)
 ```
 ::::
 
