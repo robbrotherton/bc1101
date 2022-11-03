@@ -1,47 +1,11 @@
 ---
-format: 
-  revealjs:
-    chalkboard: true
+format: revealjs
 ---
 
 # 6|$z$-scores
 
 ![](covers/06_z-scores.svg)
 
-```{r eval=FALSE}
-bc1101tools::plot_distribution(segments = -2:2, linetype = 1,
-                               fill_colors = c("thistle", "plum", "purple", "purple", "plum", "thistle")) +
-  ggplot2::theme_void()
-
-ggplot2::ggsave(here::here("slides", "covers", "06_z-scores.svg"),
-       width = 10, height = 5)
-```
-
-
-```{r eval=FALSE, fig.asp=.6}
-library(ggplot2)
-labs <- list(lines = lines <- c(-2,-1,-0,1,2),
-             x = c(-2.8, -1.5, -0.5, 0.5, 1.5, 2.8),
-             y = c(0.03, 0.06, 0.16, 0.16, 0.06, 0.03),
-             lab = c("2.28%", "13.59%", "34.13%", "34.13%", "13.59%", "2.28%"))
-
-
-norm <- ggplot() +
- stat_function(data = data.frame(x = c(-3.5, 3.5)), aes(x), fun = "dnorm") +
-  scale_x_continuous(breaks = -3:3) +
-  scale_y_continuous(expand = c(0,0)) +
-  geom_segment(data = NULL, aes(x = labs$lines, xend = labs$lines, y = 0, yend = dnorm(labs$lines)), linetype = 2) +
-#  annotate("text", x = labs$x, y = labs$y, label = labs$lab) +
-  labs(x = "z-score", y = NULL) +
-  theme(axis.line.x = element_line(color = "black"),
-        axis.text.y = element_blank(),
-        axis.text.x = element_text(size = 15),
-        axis.ticks.y = element_blank(),
-        panel.background = element_blank())
-
-ggsave(here::here("slides", "media", "z-distribution.png"),norm, width = 7, height = 5)
-
-```
 
 # Overview
 
@@ -76,6 +40,7 @@ $z = \dfrac{X - M}s$
 ## $z$-score description {.small}
 
 :::: {.columns}
+
 ::: {.column .small}
 - $z$-score describes exact location of any score in a distribution
 - Two pieces of information:
@@ -86,23 +51,14 @@ $z = \dfrac{X - M}s$
     - Indicates distance between score and mean in standard deviation units
     - $z = 0$ is equal to the mean
 :::
+
+
 ::: {.column}
-![](media/z-distribution.svg){.invertable}
-
-```{r}
-#| eval: false
-
-bc1101tools::plot_distribution(segments = -3:3,
-                               xlab = "z-score",
-                               linetype = 2) +
-  bc1101tools::theme_xonly()
-
-ggplot2::ggsave(here::here("slides", "media", "z-distribution.svg"),
-                width = 4, height = 3)
-```
-
+![](media/z-distribution.svg){.invertable style="position: absolute; top: 50%; left: 25%; transform: translate(-50%, -50%);"}
 :::
+
 ::::
+
 
 ## Example: test scores
 
@@ -140,28 +96,15 @@ knitr::kable(data)
 ::: {.column .center-element}
 $z = \dfrac{80-70}{5} = \dfrac{10}{5} = 2$
 
-![](media/iq-dist-1.svg)
-```{r}
-#| eval: false
+![](media/iq-dist-1.svg){.invertable}
 
-bc1101tools::plot_distribution(xlab = "geniustest.com", args = list(mean = 70, sd = 5), segments = seq(55, 85, 5), linetype = 2, arrow = genius$x) + bc1101tools::theme_xonly(yline = TRUE) +
-  ggplot2::theme(plot.margin = ggplot2::margin(b = 3))
-
-ggplot2::ggsave(here::here("slides", "media", "iq-dist-1.svg"), width = 3, height = 2)
-
-bc1101tools::plot_distribution(xlab = "mensa.lu", args = list(mean = 20, sd = 10), segments = seq(-10, 50, 10), linetype = 2, arrow = mensa$x) + bc1101tools::theme_xonly(yline = TRUE) +
-  ggplot2::theme(plot.margin = ggplot2::margin(b = 3)) +
-  ggplot2::geom_segment(ggplot2::aes(x = 40, xend = 40, y = dnorm(40, 20, 10)*3, yend = 0), arrow = ggplot2::arrow(type = "closed"), color = "red")
-
-ggplot2::ggsave(here::here("slides", "media", "iq-dist-2.svg"), width = 3, height = 2)
-```
 
 :::
 
 ::: {.column .center-element}
 $z = \dfrac{40-20}{10} = \dfrac{20}{10} = 2$
 
-![](media/iq-dist-2.svg)
+![](media/iq-dist-2.svg){.invertable}
 :::
 ::::
 
@@ -178,25 +121,6 @@ $X = \mu + z\sigma$
 
 ## Determining raw score from $z$-score
 
-```{r}
-#| eval: false
-
-bc1101tools::plot_distribution(xlab = "geniustest.com",
-                               segments = -3:3,
-                               linetype = 2,
-                               arrow = genius$z) +
-  bc1101tools::theme_xonly(yline = TRUE)
-
-ggplot2::ggsave(here::here("slides", "media", "iq-z-dist-1.svg"), width = 3, height = 2)
-
-bc1101tools::plot_distribution(xlab = "mensa.lu",
-                               segments = -3:3,
-                               linetype = 2,
-                               arrow = mensa$z) +
-  bc1101tools::theme_xonly(yline = TRUE)
-
-ggplot2::ggsave(here::here("slides", "media", "iq-z-dist-2.svg"), width = 3, height = 2)
-```
 
 :::: {.columns}
 
@@ -207,7 +131,7 @@ X & = \mu + z\sigma \\
 & = `r genius$m` + `r genius$z*genius$sd` \\
 & = `r genius$x` \end{align}$$
 
-![](media/iq-z-dist-1.svg)
+![](media/iq-z-dist-1.svg){.invertable}
 :::
 
 ::: {.column}
@@ -217,7 +141,7 @@ X & = \mu + z\sigma \\
 & = `r mensa$m` + `r mensa$z *   mensa$sd` \\
 & = `r mensa$x` \end{align}$$
 
-![](media/iq-z-dist-2.svg)
+![](media/iq-z-dist-2.svg){.invertable}
 :::
 ::::
 
@@ -235,30 +159,6 @@ X & = \mu + z\sigma \\
         - Because $SD$ is the denominator
 
 ## Example
-
-```{r}
-#| eval: false
-scores <- c(0, 2, 2, 3, 5, 6)
-
-zscores <- scale(scores, scale = bc1101tools::pop_sd(scores))
-
-bc1101tools::plot_histogram(scores, block = TRUE) +
-  ggplot2::scale_x_continuous(breaks = 0:6) +
-  ggplot2::coord_cartesian() +
-  bc1101tools::theme_bc1101()
-
-ggplot2::ggsave(here::here("slides", "media", "generic-dist-1.svg"),
-       width = 4, height = 1.5)
-
-bc1101tools::plot_histogram(zscores, binwidth = 0.5, block = TRUE) +
-  ggplot2::coord_cartesian() +
-  ggplot2::scale_x_continuous(breaks = seq(-1.5, 1.5, .5)) +
-  bc1101tools::theme_bc1101()
-
-ggplot2::ggsave(here::here("slides", "media", "generic-dist-2.svg"),
-       width = 4, height = 1.5)
-
-```
 
 ![](media/generic-dist-1.svg){.invertable width=70%}
 
@@ -278,40 +178,9 @@ ggplot2::ggsave(here::here("slides", "media", "generic-dist-2.svg"),
       2a. Multiply to set SD  
       2b. Add or subtract a constant to set the mean
 
+
+
 ## Standardizing scores {.smaller}
-
-```{r}
-#| eval: false
-library(bc1101tools)
-
-
-genius_plot <- plot_distribution(args = list(mean = genius$m, sd = genius$sd), segments = seq(genius$m - 3*genius$sd, genius$m + 3*genius$sd, genius$sd), linetype = 2) + 
-  theme_xonly(yline = TRUE)
-
-mensa_plot <- plot_distribution(args = list(mean = mensa$m, sd = mensa$sd), segments = seq(mensa$m - 3*mensa$sd, mensa$m + 3*mensa$sd, mensa$sd), linetype = 2) + 
-  theme_xonly(yline = TRUE)
-
-z_plot <- plot_distribution(segments = -3:3, linetype = 2) + theme_xonly(yline = TRUE)
-
-sd_plot <- plot_distribution(args = list(mean = 0, sd = 15),
-                        segments = seq(-45, 45, 15), linetype = 2) + theme_xonly(yline = TRUE)
-
-iq_plot <- plot_distribution(args = list(mean = 100, sd = 15), segments = seq(55, 145, 15), linetype = 2) + theme_xonly(yline = TRUE) + 
-  theme_xonly(yline = TRUE)
-  
-plots <- list(genius = genius_plot, mensa = mensa_plot, z = z_plot, sd = sd_plot, iq = iq_plot)
-
-for(i in seq_along(plots)) {
-  filename <- glue::glue(here::here("slides", "media", "standardizing-{names(plots)[i]}.svg"))
-  
-  print(plots[i])
-  
-  ggplot2::ggsave(filename = filename, width = 3, height = 1.5)
-  
-}
-
-```
-
 
 :::: {.columns }
 ::: {.column width="12%"}
@@ -367,6 +236,8 @@ mensa.lu
 :::
 ::::
 
+
+
 # $z$-scores and inferential stats {#inferential}
 
 - What’s the use of $z$-scores?
@@ -384,7 +255,7 @@ mensa.lu
 
 ## $z$-scores and inferential stats
 
-![](media/stopwatch.gif)
+![](media/stopwatch.gif){width=20% .invertable-blue}
 
 - <https://humanbenchmark.com/tests/reactiontime>
   - Do 5 reaction time trials
@@ -396,7 +267,6 @@ mensa.lu
 ## Peter Parker {.small}
 
 :::: {.columns}
-
 ::: {.column width="30%"}
 ![](media/spiderman-small.png){width=50% .center-element}
 
@@ -412,52 +282,24 @@ rt <- list(m = 284, sd = 50, x = 159)
 rt$z <- (rt$x  -rt$m) / rt$sd
 ```
 
-```{r}
-#| eval: false
-library(bc1101tools)
-plot_distribution(args = list(mean = rt$m, sd = rt$sd), 
-                  segments = seq(rt$m - 3*rt$sd, rt$m + 3*rt$sd, rt$sd), linetype = 2,
-                  arrow = rt$x,
-                  arrow_length = 6) +
-  theme_xonly(yline = TRUE)
-
-ggplot2::ggsave(here::here("slides", "media", "spiderman-dist.svg"),
-       width = 4, height = 3)
-
-```
 
 ![](media/spiderman-dist.svg){.invertable}
 
 $z = \dfrac{`r rt$x` - `r rt$m`}{`r rt$sd`} = `r rt$z`$
 
 :::
-
 ::::
 
 
-## CBT for OCD
+## CBT for OCD {.small}
 
 ```{r cbt-data}
 cbt <- list(m = 30.25, sd = 14.89, x = 15.49)
 cbt$z <- (cbt$x  - cbt$m) / cbt$sd
 ```
 
-```{r cbt-figs}
-#| eval: false
 
-library(bc1101tools)
-
-plot_distribution(args = list(mean = cbt$m, sd = cbt$sd), 
-                  segments = seq(cbt$m - 3*cbt$sd, cbt$m + 3*cbt$sd, cbt$sd), linetype = 2,
-                  arrow = cbt$x,
-                  arrow_length = 1.3) +
-  theme_xonly(yline = TRUE)
-
-ggplot2::ggsave(here::here("slides", "media", "cbt-dist.svg"),
-       width = 4, height = 3)
-```
-
-- CBT for OCD
+- Efficacy of CBT for OCD^[[Abramowitz et al. (2010)](http://dx.doi.org/10.1037/a0018260)]
   - Pre-treatment population $M = `r cbt$m`; SD = `r cbt$sd`$
   - Suppose a treated individual scores $X = `r cbt$x`$
 
@@ -475,9 +317,6 @@ $\begin{align} z & = \dfrac{X - M}{s} \\
 
 ::::
 
-::: {.footer .reference}
-Abramowitz, J. S., Deacon, B. J., Olatunji, B. O., Wheaton, M. G., Berman, N. C., Losardo, D., . . . Hale, L. R. (2010). *Assessment of obsessive-compulsive symptom dimensions: Development and evaluation of the Dimensional Obsessive-Compulsive Scale. Psychological Assessment, 22*(1), 180-198. <http://dx.doi.org/10.1037/a0018260>
-:::
 
 # Learning checks
 
@@ -486,3 +325,172 @@ Abramowitz, J. S., Deacon, B. J., Olatunji, B. O., Wheaton, M. G., Berman, N. C.
 
 2. In a sample distribution, $X = 56$ corresponds to $z = 1.00$, and $X = 47$ corresponds to $z = -0.50$. Find the mean and standard deviation for the sample.
 
+
+::: {.content-hidden}
+
+# Data and figures
+
+## Cover
+
+```{r cover-ggplot}
+#| eval: false
+
+bc1101tools::plot_distribution(segments = -2:2, linetype = 1,
+                               fill_colors = c("thistle", "plum", "purple", "purple", "plum", "thistle")) +
+  ggplot2::theme_void()
+
+ggplot2::ggsave(here::here("slides", "covers", "06_z-scores.svg"),
+       width = 10, height = 5)
+```
+
+## z distribution
+
+```{r z-distribution}
+#| eval: false
+
+library(ggplot2)
+labs <- list(lines = lines <- c(-2,-1,-0,1,2),
+             x = c(-2.8, -1.5, -0.5, 0.5, 1.5, 2.8),
+             y = c(0.03, 0.06, 0.16, 0.16, 0.06, 0.03),
+             lab = c("2.28%", "13.59%", "34.13%", "34.13%", "13.59%", "2.28%"))
+
+
+norm <- ggplot() +
+ stat_function(data = data.frame(x = c(-3.5, 3.5)), aes(x), fun = "dnorm") +
+  scale_x_continuous(breaks = -3:3) +
+  scale_y_continuous(expand = c(0,0)) +
+  geom_segment(data = NULL, aes(x = labs$lines, xend = labs$lines, y = 0, yend = dnorm(labs$lines)), linetype = 2) +
+#  annotate("text", x = labs$x, y = labs$y, label = labs$lab) +
+  labs(x = "z-score", y = NULL) +
+  theme(axis.line.x = element_line(color = "black"),
+        axis.text.y = element_blank(),
+        axis.text.x = element_text(size = 15),
+        axis.ticks.y = element_blank(),
+        panel.background = element_blank())
+
+ggsave(here::here("slides", "media", "z-distribution.png"),norm, width = 7, height = 5)
+
+```
+
+```{r}
+#| eval: false
+
+bc1101tools::plot_distribution(segments = -3:3,
+                               xlab = "z-score",
+                               linetype = 2) +
+  bc1101tools::theme_xonly()
+
+ggplot2::ggsave(here::here("slides", "media", "z-distribution.svg"),
+                width = 4, height = 3)
+```
+
+
+## IQ distributions
+
+```{r}
+#| eval: false
+
+bc1101tools::plot_distribution(xlab = "geniustest.com", args = list(mean = 70, sd = 5), segments = seq(55, 85, 5), linetype = 2, arrow = genius$x) + bc1101tools::theme_xonly(yline = TRUE) +
+  ggplot2::theme(plot.margin = ggplot2::margin(b = 3))
+
+ggplot2::ggsave(here::here("slides", "media", "iq-dist-1.svg"), width = 3, height = 2)
+
+bc1101tools::plot_distribution(xlab = "mensa.lu", args = list(mean = 20, sd = 10), segments = seq(-10, 50, 10), linetype = 2, arrow = mensa$x) + bc1101tools::theme_xonly(yline = TRUE) +
+  ggplot2::theme(plot.margin = ggplot2::margin(b = 3)) +
+  ggplot2::geom_segment(ggplot2::aes(x = 40, xend = 40, y = dnorm(40, 20, 10)*3, yend = 0), arrow = ggplot2::arrow(type = "closed"), color = "red")
+
+ggplot2::ggsave(here::here("slides", "media", "iq-dist-2.svg"), width = 3, height = 2)
+```
+
+```{r}
+#| eval: false
+
+bc1101tools::plot_distribution(xlab = "geniustest.com",
+                               segments = -3:3,
+                               linetype = 2,
+                               arrow = genius$z) +
+  bc1101tools::theme_xonly(yline = TRUE)
+
+ggplot2::ggsave(here::here("slides", "media", "iq-z-dist-1.svg"), width = 3, height = 2)
+
+bc1101tools::plot_distribution(xlab = "mensa.lu",
+                               segments = -3:3,
+                               linetype = 2,
+                               arrow = mensa$z) +
+  bc1101tools::theme_xonly(yline = TRUE)
+
+ggplot2::ggsave(here::here("slides", "media", "iq-z-dist-2.svg"), width = 3, height = 2)
+```
+
+### Standardizing
+
+```{r}
+#| eval: false
+library(bc1101tools)
+
+
+genius_plot <- plot_distribution(args = list(mean = genius$m, sd = genius$sd), segments = seq(genius$m - 3*genius$sd, genius$m + 3*genius$sd, genius$sd), linetype = 2) + 
+  theme_xonly(yline = TRUE)
+
+mensa_plot <- plot_distribution(args = list(mean = mensa$m, sd = mensa$sd), segments = seq(mensa$m - 3*mensa$sd, mensa$m + 3*mensa$sd, mensa$sd), linetype = 2) + 
+  theme_xonly(yline = TRUE)
+
+z_plot <- plot_distribution(segments = -3:3, linetype = 2) + theme_xonly(yline = TRUE)
+
+sd_plot <- plot_distribution(args = list(mean = 0, sd = 15),
+                        segments = seq(-45, 45, 15), linetype = 2) + theme_xonly(yline = TRUE)
+
+iq_plot <- plot_distribution(args = list(mean = 100, sd = 15), segments = seq(55, 145, 15), linetype = 2) + theme_xonly(yline = TRUE) + 
+  theme_xonly(yline = TRUE)
+  
+plots <- list(genius = genius_plot, mensa = mensa_plot, z = z_plot, sd = sd_plot, iq = iq_plot)
+
+for(i in seq_along(plots)) {
+  filename <- glue::glue(here::here("slides", "media", "standardizing-{names(plots)[i]}.svg"))
+  
+  print(plots[i])
+  
+  ggplot2::ggsave(filename = filename, width = 3, height = 1.5)
+  
+}
+
+```
+
+## Generic z distribution
+
+```{r}
+#| eval: false
+scores <- c(0, 2, 2, 3, 5, 6)
+zscores <- scale(scores, scale = bc1101tools::pop_sd(scores))
+bc1101tools::plot_histogram(scores, block = TRUE) +
+  ggplot2::scale_x_continuous(breaks = 0:6) +
+  ggplot2::coord_cartesian() +
+  bc1101tools::theme_bc1101()
+ggplot2::ggsave(here::here("slides", "media", "generic-dist-1.svg"),
+       width = 4, height = 1.5)
+bc1101tools::plot_histogram(zscores, binwidth = 0.5, block = TRUE) +
+  ggplot2::coord_cartesian() +
+  ggplot2::scale_x_continuous(breaks = seq(-1.5, 1.5, .5)) +
+  bc1101tools::theme_bc1101()
+ggplot2::ggsave(here::here("slides", "media", "generic-dist-2.svg"),
+       width = 4, height = 1.5)
+```
+
+
+## CBT for OCD example
+
+```{r cbt-figs}
+#| eval: false
+
+library(bc1101tools)
+
+plot_distribution(args = list(mean = cbt$m, sd = cbt$sd), 
+                  segments = seq(cbt$m - 3*cbt$sd, cbt$m + 3*cbt$sd, cbt$sd), linetype = 2,
+                  arrow = cbt$x,
+                  arrow_length = 1.3) +
+  theme_xonly(yline = TRUE)
+
+ggplot2::ggsave(here::here("slides", "media", "cbt-dist.svg"),
+       width = 4, height = 3)
+```
+:::
