@@ -613,7 +613,7 @@
     "href": "slides/06_z-scores.html#z-scores-and-inferential-stats-1",
     "title": "BC1101",
     "section": "\\(z\\)-scores and inferential stats",
-    "text": "\\(z\\)-scores and inferential stats\n\n\nhttps://humanbenchmark.com/tests/reactiontime\n\nDo 5 reaction time trials\n(click when the color changes)\nNote your reaction time in \\(ms\\)\nThen click play to resume lecture when you’re done"
+    "text": "\\(z\\)-scores and inferential stats\n\n\n\n\nhttps://humanbenchmark.com/tests/reactiontime\n\nDo 5 reaction time trials\n(click when the color changes)\nNote your reaction time in \\(ms\\)\nThen click play to resume lecture when you’re done"
   },
   {
     "objectID": "slides/06_z-scores.html#peter-parker",
@@ -1307,5 +1307,12 @@
     "title": "BC1101",
     "section": "Distributions: people",
     "text": "Distributions: people\n\nSensitivity to outliers\n\nExtreme values; observations far from the center\nMean is more influenced by outliers than median"
+  },
+  {
+    "objectID": "slides/06_z-scores.html#ojs-stopwatch",
+    "href": "slides/06_z-scores.html#ojs-stopwatch",
+    "title": "BC1101",
+    "section": "OJS stopwatch",
+    "text": "OJS stopwatch\n\n\n\n\nstopwatch = {\n  const w = 200\n  const h = 200\n  \n  const svg = d3.select(\"#stopwatch-container\")\n    .append(\"svg\").attr(\"width\", w).attr(\"height\", h)\n    \n  svg.append(\"circle\")\n    .attr(\"r\", w/2)\n    .attr(\"fill\", \"lightblue\")\n    .attr(\"transform\", \"translate(100, 100)\")\n    \n  svg.append(\"circle\")\n    .attr(\"r\", 10)\n    .attr(\"fill\", \"white\")\n    .attr(\"transform\", \"translate(100, 100)\")\n    \n  svg.append(\"rect\")\n    .attr(\"rx\", 5)\n    .attr(\"ry\", 5)\n    .attr(\"width\", 30)\n    .attr(\"height\", 10)\n    .attr(\"fill\", \"lightblue\")\n    .attr(\"transform\", \"translate(175, 15) rotate(45)\")\n    \n  const hand = svg.append(\"line\")\n    .attr(\"y1\", 15)\n    .attr(\"y2\", -85)\n    .attr(\"stroke\", \"white\")\n    .attr(\"stroke-width\", 5)\n    .attr(\"transform\", \"translate(100, 100)\")\n    \n  function rotateHand() {\n    var i = d3.interpolate(0, 360);\n      return function(t) {\n        return \"translate(100, 100) rotate(\" + i(t) + \")\";\n      }\n  }\n  \n  function anim() {\n    hand\n    .transition().duration(3000).ease(d3.easeLinear)\n    .attrTween(\"transform\", rotateHand)\n    .on(\"end\", anim)\n  }\n  \n  anim();\n}"
   }
 ]

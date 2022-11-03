@@ -255,13 +255,17 @@ mensa.lu
 
 ## $z$-scores and inferential stats
 
-![](media/stopwatch.gif){width=20% .invertable-blue}
+::: {#stopwatch-container .center-element}
+:::
 
 - <https://humanbenchmark.com/tests/reactiontime>
   - Do 5 reaction time trials
   - (click when the color changes)
   - Note your reaction time in $ms$
   - Then click play to resume lecture when you're done
+
+
+
 
 
 ## Peter Parker {.small}
@@ -493,4 +497,58 @@ plot_distribution(args = list(mean = cbt$m, sd = cbt$sd),
 ggplot2::ggsave(here::here("slides", "media", "cbt-dist.svg"),
        width = 4, height = 3)
 ```
+
+## Stopwatch
+
 :::
+
+```{ojs}
+stopwatch = {
+  const w = 200
+  const h = 200
+  
+  const svg = d3.select("#stopwatch-container")
+    .append("svg").attr("width", w).attr("height", h)
+    
+  svg.append("circle")
+    .attr("r", w/2)
+    .attr("fill", "lightblue")
+    .attr("transform", "translate(100, 100)")
+    
+  svg.append("circle")
+    .attr("r", 10)
+    .attr("fill", "white")
+    .attr("transform", "translate(100, 100)")
+    
+  svg.append("rect")
+    .attr("rx", 5)
+    .attr("ry", 5)
+    .attr("width", 30)
+    .attr("height", 10)
+    .attr("fill", "lightblue")
+    .attr("transform", "translate(175, 15) rotate(45)")
+    
+  const hand = svg.append("line")
+    .attr("y1", 15)
+    .attr("y2", -85)
+    .attr("stroke", "white")
+    .attr("stroke-width", 5)
+    .attr("transform", "translate(100, 100)")
+    
+  function rotateHand() {
+    var i = d3.interpolate(0, 360);
+      return function(t) {
+        return "translate(100, 100) rotate(" + i(t) + ")";
+      }
+  }
+  
+  function anim() {
+    hand
+    .transition().duration(5000).ease(d3.easeLinear)
+    .attrTween("transform", rotateHand)
+    .on("end", anim)
+  }
+  
+  anim();
+}
+```
