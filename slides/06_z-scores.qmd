@@ -454,7 +454,7 @@ for(i in seq_along(plots)) {
   
   print(plots[i])
   
-  ggplot2::ggsave(filename = filename, width = 3, height = 1.5)
+  ggplot2::ggsave(filename = filename, width = 3, height = 2)
   
 }
 
