@@ -243,19 +243,10 @@ bc1101tools::frequency_table(midterms, binwidth = 2)
 
 ## Grouped histogram
 
-```{css}
-.helper {
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-}
-```
-
 :::: {.columns}
 
 ::: {.column width="80%"}
-<span class="helper"></span>
-![](media/freq-grouped.svg){width=100% .invertable style="vertical-align: middle;"}
+![](media/freq-grouped.svg){.invertable width=100% style="margin-top: 1.5em;"}
 :::
 
 ::: {.column width="20%" .table-small}
