@@ -1314,5 +1314,12 @@
     "title": "BC1101",
     "section": "OJS stopwatch",
     "text": "OJS stopwatch\n\n\n\n\nstopwatch = {\n  const w = 200\n  const h = 200\n  \n  const svg = d3.select(\"#stopwatch-container\")\n    .append(\"svg\").attr(\"width\", w).attr(\"height\", h)\n    \n  svg.append(\"circle\")\n    .attr(\"r\", w/2)\n    .attr(\"fill\", \"lightblue\")\n    .attr(\"transform\", \"translate(100, 100)\")\n    \n  svg.append(\"circle\")\n    .attr(\"r\", 10)\n    .attr(\"fill\", \"white\")\n    .attr(\"transform\", \"translate(100, 100)\")\n    \n  svg.append(\"rect\")\n    .attr(\"rx\", 5)\n    .attr(\"ry\", 5)\n    .attr(\"width\", 30)\n    .attr(\"height\", 10)\n    .attr(\"fill\", \"lightblue\")\n    .attr(\"transform\", \"translate(175, 15) rotate(45)\")\n    \n  const hand = svg.append(\"line\")\n    .attr(\"y1\", 15)\n    .attr(\"y2\", -85)\n    .attr(\"stroke\", \"white\")\n    .attr(\"stroke-width\", 5)\n    .attr(\"transform\", \"translate(100, 100)\")\n    \n  function rotateHand() {\n    var i = d3.interpolate(0, 360);\n      return function(t) {\n        return \"translate(100, 100) rotate(\" + i(t) + \")\";\n      }\n  }\n  \n  function anim() {\n    hand\n    .transition().duration(3000).ease(d3.easeLinear)\n    .attrTween(\"transform\", rotateHand)\n    .on(\"end\", anim)\n  }\n  \n  anim();\n}"
+  },
+  {
+    "objectID": "slides/05_variability.html#height",
+    "href": "slides/05_variability.html#height",
+    "title": "BC1101",
+    "section": "Height",
+    "text": "Height\n\n\n\n\n\nviewof s = Inputs.button(html`&#x21bb;`)"
   }
 ]

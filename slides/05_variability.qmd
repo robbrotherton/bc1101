@@ -275,6 +275,18 @@ $SS = \Sigma X^2 - \dfrac{(\Sigma X)^2}N$
 
 ![](media/height.svg){.invertable}
 
+## Height
+
+::: {#height-container .center-element}
+:::
+
+::: {.refresh-sample-button style="position: absolute; left: 50%; transform: translate(-50%, -50%);"}
+```{ojs}
+//| style: "width: 1.2em; overflow: hidden;"
+
+viewof s = Inputs.button(html`&#x21bb;`)
+```
+:::
 
 ## Calculating variability of samples
 
@@ -565,3 +577,77 @@ plot_save("height.svg", height = 3)
 ```
 
 :::
+
+::: {.content-hidden}
+## Height
+:::
+
+
+```{ojs}
+jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js")
+
+sample = {
+  s;
+  let arr = [];
+  for (var i = 0; i < 10; i++) {
+    arr.push(jStat.normal.sample(0, 1))
+  }
+  return arr;
+}
+```
+
+
+```{r}
+data <- tibble::tibble(value = seq(-4, 4, length.out = 201),
+                       density = dnorm(value)) |> 
+  purrr::transpose()
+
+ojs_define(data)
+```
+
+```{ojs}
+
+w = 800
+h = 500
+  
+x = d3.scaleLinear()
+    .domain([-4, 4])
+    .range([0, w])
+y = d3.scaleLinear()
+    .domain([0, 0.41])
+    .range([h-100, 0])
+line = d3.line()
+    .x(d => x(d.value))
+    .y(d => y(d.density))
+    
+
+update_svg = {
+    
+  d3.select("#heights-svg").remove()
+  
+  const svg = d3.select("#height-container")
+    .append("svg").attr("id", "heights-svg")
+    .attr("width", w).attr("height", h)
+  
+  const curve = svg.append("path")
+      .attr("d", line(data))
+      .attr("stroke", "black")
+      .attr("stroke-width", 3)
+      .attr("fill", "none")
+      .attr("class", "invertable")
+      
+  const g = svg.append("g")
+
+  const circles = g.selectAll("circle")
+    .data(sample)
+    .enter()
+    .append("circle")
+      .attr("fill", "lightblue")
+      .attr("r", 10)
+      .attr("cx", d => x(d))
+      .attr("cy", h - 50)
+      .attr("opacity", 0)
+      .transition().duration(0).delay(function(d, i){return i*50}).attr("opacity", 1)
+}
+
+```
