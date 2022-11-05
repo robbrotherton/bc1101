@@ -10,6 +10,11 @@ execute:
 :::
 
 ```{ojs}
+viewof legend = Inputs.checkbox(["SD (n)", "SD (n-1)", "M"], {value: ["SD (n)", "SD (n-1)"]})
+```
+
+
+```{ojs}
 jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js")
 ```
 
@@ -66,7 +71,7 @@ y = d3.scaleLinear()
     .range([h-100, 0])
 
 xSD = d3.scaleLinear()
-    .domain([0, 2])
+    .domain([-1, 1])
     .range([curveWidth, w])
 ySD = d3.scaleLinear()
     .domain([0, 35])
@@ -75,23 +80,39 @@ ySD = d3.scaleLinear()
 line = d3.line()
     .x(d => x(d.value))
     .y(d => y(d.density))
-<!-- xAxis = g => g -->
-<!--     .attr("transform", `translate(0,${height - margin.bottom})`) -->
-<!--     .call(d3.axisBottom(x) -->
-<!--         .tickSizeOuter(0)) -->
 ```
 
 ```{ojs}
-function sd (array) {
+
+function mean(array) {
+    return array.reduce((a, b) => a + b) / array.length;
+}
+
+function sample_variance(array) {
     const n = array.length
-    const mean = array.reduce((a, b) => a + b) / n
-    
-    const sampleSD = Math.sqrt(array.map(x => Math.pow(x - mean,   2)).reduce((a, b) => a + b) / (n - 1))
-    
-    const populationSD = Math.sqrt(array.map(x => Math.pow(x - mean,   2)).reduce((a, b) => a + b) / n)
-    
-    return {sampleSD: sampleSD, populationSD: populationSD}
-  }
+    const m = mean(array)
+    return array.map(x => Math.pow(x - m, 2)).reduce((a, b) => a + b) / (n - 1);
+}
+
+function population_variance(array) {
+    const n = array.length
+    const m = mean(array)
+    return array.map(x => Math.pow(x - m, 2)).reduce((a, b) => a + b) / n;
+}
+
+function get_descriptives (array) {
+    return {mean: mean(array),
+            sample_variance: sample_variance(array) - 1, 
+            population_variance: population_variance(array) - 1}
+}
+
+<!-- function get_descriptives_x (array) { -->
+<!--     var id = array.length; -->
+<!--     return [{id: id, estimate: "mean", value: mean(array)}, -->
+<!--             {id: id, estimate: "pSD", value: population_sd(array)}, -->
+<!--             {id: id, estimate: "sSD", value: sample_sd(array)}} -->
+<!-- } -->
+
 ```
 
 
@@ -100,19 +121,27 @@ update_svg = {
 
   const dodge = dodger(radius * 2 + 1);
   
-
   var sdArray = [];
   var sample = [];
   var sdMeanErrorSample;
   var sdMeanErrorPopulation;
     
+  function clearData() {
+    sdArray = [];
+    sample = [];
+    sampleCircles.selectAll('circle').remove()
+    sampleDots.selectAll("circle").remove()
+    popDots.selectAll("circle").remove()
+    biasLines.selectAll("line").attr("x1", xSD(0)).attr("x2", xSD(0))
+  }
+  
   function newSample() {
     for (var i = 0; i < 10; i++) {
       sample[i] = jStat.normal.sample(0, 1);
     }
     console.log(sample);
-    sdArray.unshift(sd(sample));
-    if (sdArray.length > 35) sdArray.splice(35, 1);
+    sdArray.unshift(get_descriptives(sample));
+    if (sdArray.length > 100) sdArray.splice(100, 1);
     console.log(sdArray);
     
     updateSD();
@@ -123,25 +152,46 @@ update_svg = {
   function updateSD() {
     sampleDots.selectAll("circle").remove()
     popDots.selectAll("circle").remove()
+    biasMean.selectAll("circle").remove()
     
     sampleDots.selectAll("circle")
-      .data(sdArray)
+      .data(sdArray.slice(0,35))
       .enter().append('circle')
       .attr("r", 5)
-      .attr("cx", d => xSD(d.sampleSD))
+      .attr("cx", d => xSD(d.sample_variance))
       .attr("cy", function(d,i){return ySD(i-1)})
       .transition().duration(300)
       .attr("cy", function(d,i){return ySD(i)})
       
     popDots.selectAll("circle")
-      .data(sdArray)
+      .data(sdArray.slice(0,35))
       .enter().append('circle')
-      <!-- .attr("fill", "red") -->
       .attr("r", 5)
-      .attr("cx", d => xSD(d.populationSD))
+      .attr("cx", d => xSD(d.population_variance))
       .attr("cy", function(d,i){return ySD(i-1)})
       .transition().duration(300)
       .attr("cy", function(d,i){return ySD(i)})
+      
+    biasMean.selectAll("circle")
+      .data(sdArray.slice(0,35))
+      .enter().append('circle')
+      .attr("r", 5)
+      .attr("cx", d => xSD(d.mean))
+      .attr("cy", function(d,i){return ySD(i-1)})
+      .transition().duration(300)
+      .attr("cy", function(d,i){return ySD(i)})
+  }
+  
+  function updateLines() {
+      var meanSample = mean(sdArray.map(d => d.sample_variance))
+      var meanPopulation = mean(sdArray.map(d => d.population_variance))
+      var meanMean = mean(sdArray.map(d => d.mean))
+      
+      biasLines.selectAll("line")
+        .data([meanSample, meanPopulation, meanMean])
+        .transition().duration(200)
+        .attr("x1", d => xSD(d))
+        .attr("x2", d => xSD(d))
   }
   
   function updateSampleCircles() {
@@ -150,30 +200,41 @@ update_svg = {
       .data(sample)
       .enter().append("circle")
       .attr("class", "sample")
-      .attr("r", 10)
+      .attr("r", 5)
       .attr("cx", d => x(d))
-      .attr("cy", h - 50)
+      .attr("cy", h - 80)
   }
   
-  function mean(array) {
-    return array.reduce((a, b) => a + b) / array.length;
+  const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+  }
+  var playing = false;
+  function playButtonClicked() {
+    
+    playing = !playing; 
+    console.log(playing);
+  
+  play_button.text(function(){
+    if(playing) {
+      return "◼"
+  } else {
+    return "▶"
+  }
+  })
+  
+  if (playing) {
+    continuouslyDrawSamples();
+  }
   }
   
-  function updateLines() {
-      var meanSample = mean(sdArray.map(d => d.sampleSD))
-      var meanPopulation = mean(sdArray.map(d => d.populationSD))
-      
-      sdSampleLine
-        .transition().duration(200)
-        .attr("x1", xSD(meanSample))
-        .attr("x2", xSD(meanSample))
-        
-      sdPopulationLine
-        .transition().duration(200)
-        .attr("x1", xSD(meanPopulation))
-        .attr("x2", xSD(meanPopulation))
-      
+  function continuouslyDrawSamples() {
+    if (playing) {
+      newSample();
+      sleep(500).then(continuouslyDrawSamples);
+    }
   }
+  
+
 
   
   d3.select("#heights-svg").remove()
@@ -199,6 +260,11 @@ update_svg = {
         .attr("cx", d => d.cx)
         .attr("cy", d => (h - 100) - d.cy)
         .attr("r", radius)
+  pop.append("text")
+    .text("POPULATION")
+    .attr("x", curveWidth/2)
+    .attr("y", h - 150)
+    .attr("text-anchor", "middle")
       
   const curve = svg.append("path")
       .attr("d", line(data))
@@ -208,50 +274,88 @@ update_svg = {
       .attr("class", "invertable")
       
   const sdAxis = svg.append("g").attr("class", "axis invertable")
-  
+  const axisLabels = [-0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75]
   sdAxis.selectAll("line")
-    .data([0.5, 0.75, 1, 1.25, 1.5])
+    .data(axisLabels)
     .enter().append("line")
       .attr("class", function(d,i){
-        if(i==2) {return "axis-major"} else {return "axis-minor"}
+        if(i==3) {return "axis-major"} else {return "axis-minor"}
       })
       .attr("x1", d => xSD(d))
       .attr("x2", d => xSD(d))
       .attr("y1", ySD(0))
       .attr("y2", ySD(34))
-  sdAxis.selectAll("text")
-    .data([0.5, 0.75, 1, 1.25, 1.5])
-    .enter().append("text")
+  sdAxis.selectAll("text").data(axisLabels).enter().append("text")
       .text(d => d)
       .attr("x", d => xSD(d))
       .attr("y", ySD(-1))
       .attr("text-anchor", "middle")
+  sdAxis.append("text").attr("class", "bias-chart-title")
+    .text("Under/Over-Estimation of parameter")
+    .attr("x", xSD(0))
+    .attr("y", ySD(-4))
+    .attr("text-anchor", "middle")
     
-  const sampleDots = svg.append("g").attr("class", "sampleDots")
-  const popDots = svg.append("g").attr("class", "popDots")
+  var showMean = true
+  function showHideMean() {
+    showMean = !showMean
+    if(showMean) {
+      svg.select("#legend-mean").attr("class", "show-mean")
+      biasMean.selectAll("circle").attr("r", 5)
+      biasChart.select(".mean-line").attr("stroke-width", 2)
+    } else {
+      svg.select("#legend-mean").attr("class", "hide-mean")
+      biasMean.selectAll("circle").attr("r", 0)
+      biasChart.select(".mean-line").attr("stroke-width", 0)
+    }
+    console.log(showMean)
+  }
+  const biasLegend = svg.append("g")
+  biasLegend.append("circle").attr("id", "legend-mean")
+    .attr("cx", xSD(0))
+    .attr("cy", ySD(-3))
+    .attr("r", 5)
+    .on("click", showHideMean)
+  
+  const biasChart = svg.append("g")
+  const biasMean = svg.append("g").attr("class", "mean-dots")
+  const sampleDots = svg.append("g").attr("class", "sample-dots")
+  const popDots = svg.append("g").attr("class", "pop-dots")
   const sampleCircles = svg.append("g")
   
-  const sdSampleLine = svg.append("line")
-    .attr("class", "sampleLine")
-    .attr("stroke-width", 2)
-    .attr("x1", xSD(1))
-    .attr("x2", xSD(1))
-    .attr("y1", ySD(0))
-    .attr("y2", ySD(34))
-  const sdPopulationLine = svg.append("line")
-    .attr("class", "popLine")
-    .attr("stroke-width", 2)
-    .attr("x1", xSD(1))
-    .attr("x2", xSD(1))
-    .attr("y1", ySD(0))
-    .attr("y2", ySD(34))
+  const biasLines = biasChart.append("g")
+  biasLines.append("line").attr("class", "sample-line")
+  biasLines.append("line").attr("class", "pop-line")
+  biasLines.append("line").attr("class", "mean-line")
+    .attr("opacity", showMean)
+  biasLines.selectAll("line")
+        .attr("stroke-width", 2)
+        .attr("x1", xSD(0))
+        .attr("x2", xSD(0))
+        .attr("y1", ySD(0))
+        .attr("y2", ySD(34))
   
-  const button = svg.append("text")
-  .attr("class", "invertable")
+<!-- buttons -->
+  const reset_button = svg.append("text")
+  .attr("class", "button invertable")
     .html("&#x21bb;")
     .attr("x", 10)
     .attr("y", h - 50)
+    .on("click", clearData)
+  
+  const button = svg.append("text")
+  .attr("class", "button invertable")
+    .text("ᐳ")
+    .attr("x", 30)
+    .attr("y", h - 50)
     .on("click", newSample)
+    
+  const play_button = svg.append("text").attr("id", "play-button")
+  .attr("class", "button invertable")
+    .attr("x", 50)
+    .attr("y", h - 50)
+    .html("►")
+    .on("click", playButtonClicked)
     
 
     
@@ -264,6 +368,12 @@ update_svg = {
 
 ```{css}
 
+.axis {
+  font-size: 0.75em;
+}
+.bias-chart-title {
+  font-size: 1.2em;
+}
 .axis-major {
   stroke: black;
   stroke-width: 2;
@@ -283,18 +393,40 @@ update_svg = {
   stroke: white;
 }
 
-.sampleDots, .sampleLine {
+.sample-dots, .sample-line {
   fill: var(--link-color);
   stroke: var(--link-color);
 }
 
-.popDots, .popLine {
+.mean-dots, .mean-line {
+  fill: plum;
+  stroke: plum;
+}
+
+.pop-dots, .pop-line {
   fill: pink;
   stroke: pink;
 }
 
-.axis {
-  font-size: 0.75em;
+
+
+
+.button {
+   font-family: Times;
+}
+.button:hover {
+  fill: red;
+  cursor: pointer;
+}
+
+#legend-mean {
+  fill: plum;
+}
+.show-mean {
+  opacity: 1;
+}
+.hide-mean {
+  opacity: 0.5
 }
 
 ```
