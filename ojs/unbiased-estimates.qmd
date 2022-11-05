@@ -1,9 +1,10 @@
 ---
-title: "(Un)Biased estimated"
+title: "(Un)Biased estimates"
 format: html
 execute: 
   echo: false
 ---
+
 
 ::: {#height-container}
 :::
@@ -18,42 +19,92 @@ data <- tibble::tibble(value = seq(-4, 4, length.out = 201),
   purrr::transpose()
 
 ojs_define(data)
+
+set.seed(6)
+population <- rnorm(3000)
+
+ojs_define(population)
 ```
 
 ```{ojs}
+dodger = radius => {
+  const radius2 = radius ** 2;
+  const bisect = d3.bisector(d => d.x);
+  const circles = [];
+  return x => {
+    const l = bisect.left(circles, x - radius);
+    const r = bisect.right(circles, x + radius, l);
+    let y = 0;
+    for (let i = l; i < r; ++i) {
+      const { x: xi, y: yi } = circles[i];
+      const x2 = (xi - x) ** 2;
+      const y2 = (yi - y) ** 2;
+      if (radius2 > x2 + y2) {
+        y = yi + Math.sqrt(radius2 - x2) + 1e-6;
+        i = l - 1;
+        continue;
+      }
+    }
+    circles.splice(bisect.left(circles, x, l, r), 0, { x, y });
+    return y;
+  };
+}
+```
 
+```{ojs}
 w = 800
 h = 500
-  
+curveWidth = 500
+
+radius = 1.4
+
 x = d3.scaleLinear()
     .domain([-4, 4])
-    .range([0, 500])
+    .range([0, curveWidth])
 y = d3.scaleLinear()
-    .domain([0, 0.41])
+    .domain([0, 0.5])
     .range([h-100, 0])
 
 xSD = d3.scaleLinear()
-    .domain([-0.5, 0.5])
-    .range([550, 650])
-<!-- ySD = d3.scaleLinear() -->
-<!--     .domain([0, 0.41]) -->
-<!--     .range([h-100, 0]) -->
+    .domain([0, 2])
+    .range([curveWidth, w])
+ySD = d3.scaleLinear()
+    .domain([0, 35])
+    .range([100, h-100])
     
 line = d3.line()
     .x(d => x(d.value))
     .y(d => y(d.density))
-    
+<!-- xAxis = g => g -->
+<!--     .attr("transform", `translate(0,${height - margin.bottom})`) -->
+<!--     .call(d3.axisBottom(x) -->
+<!--         .tickSizeOuter(0)) -->
+```
 
-update_svg = {
-
-  function sd (array) {
+```{ojs}
+function sd (array) {
     const n = array.length
     const mean = array.reduce((a, b) => a + b) / n
-    return Math.sqrt(array.map(x => Math.pow(x - mean,   2)).reduce((a, b) => a + b) / n)
+    
+    const sampleSD = Math.sqrt(array.map(x => Math.pow(x - mean,   2)).reduce((a, b) => a + b) / (n - 1))
+    
+    const populationSD = Math.sqrt(array.map(x => Math.pow(x - mean,   2)).reduce((a, b) => a + b) / n)
+    
+    return {sampleSD: sampleSD, populationSD: populationSD}
   }
+```
+
+
+```{ojs}
+update_svg = {
+
+  const dodge = dodger(radius * 2 + 1);
   
+
   var sdArray = [];
   var sample = [];
+  var sdMeanErrorSample;
+  var sdMeanErrorPopulation;
     
   function newSample() {
     for (var i = 0; i < 10; i++) {
@@ -66,34 +117,62 @@ update_svg = {
     
     updateSD();
     updateSampleCircles();
+    updateLines();
   }
   
   function updateSD() {
-    sdText.selectAll("circle").remove()
+    sampleDots.selectAll("circle").remove()
+    popDots.selectAll("circle").remove()
     
-    sdText.selectAll("circle")
+    sampleDots.selectAll("circle")
       .data(sdArray)
       .enter().append('circle')
-      .attr("fill", "red")
       .attr("r", 5)
-      .attr("cx", d => xSD(d))
-      .attr("cy", function(d,i){return h - (i-1) * 15})
+      .attr("cx", d => xSD(d.sampleSD))
+      .attr("cy", function(d,i){return ySD(i-1)})
       .transition().duration(300)
-      .attr("cy", function(d,i){return h - i * 15})
+      .attr("cy", function(d,i){return ySD(i)})
+      
+    popDots.selectAll("circle")
+      .data(sdArray)
+      .enter().append('circle')
+      <!-- .attr("fill", "red") -->
+      .attr("r", 5)
+      .attr("cx", d => xSD(d.populationSD))
+      .attr("cy", function(d,i){return ySD(i-1)})
+      .transition().duration(300)
+      .attr("cy", function(d,i){return ySD(i)})
   }
   
   function updateSampleCircles() {
-    console.log("updating circles");
     sampleCircles.selectAll('circle').remove()
     sampleCircles.selectAll('circle')
       .data(sample)
       .enter().append("circle")
-      .attr("fill", "lightblue")
+      .attr("class", "sample")
       .attr("r", 10)
       .attr("cx", d => x(d))
       .attr("cy", h - 50)
-      .attr("opacity", 0)
-      .transition().duration(0).delay(function(d, i){return i*50}).attr("opacity", 1);
+  }
+  
+  function mean(array) {
+    return array.reduce((a, b) => a + b) / array.length;
+  }
+  
+  function updateLines() {
+      var meanSample = mean(sdArray.map(d => d.sampleSD))
+      var meanPopulation = mean(sdArray.map(d => d.populationSD))
+      
+      sdSampleLine
+        .transition().duration(200)
+        .attr("x1", xSD(meanSample))
+        .attr("x2", xSD(meanSample))
+        
+      sdPopulationLine
+        .transition().duration(200)
+        .attr("x1", xSD(meanPopulation))
+        .attr("x2", xSD(meanPopulation))
+      
   }
 
   
@@ -103,6 +182,24 @@ update_svg = {
     .append("svg").attr("id", "heights-svg")
     .attr("width", w).attr("height", h)
     
+  const pop = svg.append("g")
+  
+  var popData = [];
+  for (let i = 0; i < population.length; ++i) {
+    const cx = x(population[i]);
+    const cy = dodge(cx) - radius - 1;
+    popData.push({cx: cx, cy: cy})
+  }
+  
+  pop.selectAll("circle")
+      .data(popData)
+      .enter()
+      .append("circle")
+        .attr("class", "pop")
+        .attr("cx", d => d.cx)
+        .attr("cy", d => (h - 100) - d.cy)
+        .attr("r", radius)
+      
   const curve = svg.append("path")
       .attr("d", line(data))
       .attr("stroke", "black")
@@ -110,35 +207,94 @@ update_svg = {
       .attr("fill", "none")
       .attr("class", "invertable")
       
-  const SDline = svg.append("line")
-    .attr("x1", xSD(1))
-    .attr("x2", xSD(1))
-    .attr("y1", 0)
-    .attr("y2", h)
-    .attr("stroke", "black")
+  const sdAxis = svg.append("g").attr("class", "axis invertable")
+  
+  sdAxis.selectAll("line")
+    .data([0.5, 0.75, 1, 1.25, 1.5])
+    .enter().append("line")
+      .attr("class", function(d,i){
+        if(i==2) {return "axis-major"} else {return "axis-minor"}
+      })
+      .attr("x1", d => xSD(d))
+      .attr("x2", d => xSD(d))
+      .attr("y1", ySD(0))
+      .attr("y2", ySD(34))
+  sdAxis.selectAll("text")
+    .data([0.5, 0.75, 1, 1.25, 1.5])
+    .enter().append("text")
+      .text(d => d)
+      .attr("x", d => xSD(d))
+      .attr("y", ySD(-1))
+      .attr("text-anchor", "middle")
     
-  const sdText = svg.append("g")
+  const sampleDots = svg.append("g").attr("class", "sampleDots")
+  const popDots = svg.append("g").attr("class", "popDots")
   const sampleCircles = svg.append("g")
   
+  const sdSampleLine = svg.append("line")
+    .attr("class", "sampleLine")
+    .attr("stroke-width", 2)
+    .attr("x1", xSD(1))
+    .attr("x2", xSD(1))
+    .attr("y1", ySD(0))
+    .attr("y2", ySD(34))
+  const sdPopulationLine = svg.append("line")
+    .attr("class", "popLine")
+    .attr("stroke-width", 2)
+    .attr("x1", xSD(1))
+    .attr("x2", xSD(1))
+    .attr("y1", ySD(0))
+    .attr("y2", ySD(34))
+  
   const button = svg.append("text")
+  .attr("class", "invertable")
     .html("&#x21bb;")
     .attr("x", 10)
     .attr("y", h - 50)
     .on("click", newSample)
     
-  
-  <!-- sdText.selectAll("circle") -->
-  <!--       .data(sdArray) -->
-  <!--       .enter() -->
-  <!--       .append("circle") -->
-  <!--       .attr("fill", "red") -->
-  <!--       .attr("r", 5) -->
-  <!--       .attr("cx", d => xSD(d)) -->
-  <!--       .attr("cy", function(d,i){return 20 + i * 30}) -->
-  
-  newSample();
+
+    
+  <!-- newSample(); -->
 
 
+}
+
+```
+
+```{css}
+
+.axis-major {
+  stroke: black;
+  stroke-width: 2;
+}
+.axis-minor {
+  stroke: #ddd;
+  stroke-width: 1;
+}
+
+.pop, .sample {
+  fill: lightblue;
+}
+.pop {
+  stroke: lightblue;
+}
+.sample {
+  stroke: white;
+}
+
+.sampleDots, .sampleLine {
+  fill: var(--link-color);
+  stroke: var(--link-color);
+}
+
+.popDots, .popLine {
+  fill: pink;
+  stroke: pink;
+}
+
+.axis {
+  font-size: 0.75em;
 }
 
 ```
