@@ -342,197 +342,12 @@ make_html_likert("5. A lot more than usual")
 
 # Populations & samples
 
+
+
 ## Draw sample, make inference
 
-```{css}
-
-#population-box {
-  opacity: 0.9;
-}
-
-#population-box:hover {
-  opacity: 0;
-}
-
-#refresh form {
-  overflow: hidden;
-}
-
-#refresh button {
-  color: black;
-  background: none;
-  border: none;
-  font-size: 0.8em !important;
-}
-
-#refresh button:hover {
-  -webkit-animation:spin 1s linear;
-  -moz-animation:spin 1s linear;
-  animation:spin 1s;
-}
-
-@-moz-keyframes spin { 
-    100% { -moz-transform: rotate(360deg); } 
-}
-@-webkit-keyframes spin { 
-    100% { -webkit-transform: rotate(360deg); } 
-}
-@keyframes spin { 
-    100% { 
-        -webkit-transform: rotate(360deg); 
-        transform:rotate(360deg); 
-    } 
-}
-
-```
-
-::: {#refresh .invertable style="position: absolute; top: 49%; left: 15%;" }
-```{ojs}
-viewof s = Inputs.button(html`&#x21bb;`)
-```
+::: {#sample-inference-container}
 :::
-
-
-```{ojs}
-
-data = {
-  let arr = [];
-  for (var i = 0; i < 150; i++) {
-    arr.push({
-      x: Math.floor(Math.random() * xmax),
-      y: Math.floor(Math.random() * ymax),
-      color: Math.floor(Math.random() * 7)
-    });
-  }
-  return arr;
-}
-
-width = 1050
-height = 500
-r = 15
-xmax = 400
-ymax = 100
-sample_y = height - r - 1
-margin = ({top: r*2, right: 10, bottom: r, left: 5});
-
-
-pop = {
-  const svg = d3.select(DOM.svg(width, height));
-
-  const sample = svg.append("g").attr("id", "sample-circles")
-  const circles = svg.append("g").attr("id", "pop-circles")
-  
-  let path = {
-    x: (width*0.5 + xmax*.5 + r),
-    y: (margin.top + ymax*0.5),
-    cy: (height - r - (margin.top + ymax*0.5)) * 0.5
-  };
-  
-  const paths = svg.append("g").attr("id", "paths")
-                        .attr("stroke", "black")
-                        .attr("fill", "none")
-                        .attr("class", "invertable");
-                        
-  const labels = svg.append("g").attr("id", "labels")
-                        .attr("text-anchor", "middle")
-                        .attr("dy", "1em")
-                        .attr("class", "invertable");
-                        
-
-  sample.selectAll("circle")
-    .data(new_sample)
-    .enter()
-    .append("circle")
-      .attr("fill", d => color(d))
-      .attr("stroke", "black")
-      .attr("r", r)
-      .attr("cx", function(d, i) {return (i * 41.5 + width/2 - xmax/2 + r)})
-      .attr("cy", 55)
-        .transition()
-        .duration(700)
-        .delay(function(d, i) {return i * 50})
-        .attr("cy", sample_y);
-  
-  circles.selectAll("circle")
-    .data(data)
-    .enter()
-    .append("circle")
-      .attr("fill", d => color(d.color))
-      .attr("stroke", "black")
-      .attr("r", 15)
-      .attr("cx", d => x(d.x))
-      .attr("cy", d => y(d.y))
-          
-  svg.append("rect").attr("id", "population-box")
-    .attr("x", width/2 - xmax/2 - r)
-    .attr("y", margin.top - r)
-    .attr("width", xmax + 2*r)
-    .attr("height",ymax + 2*r)
-    .attr("fill", "white")
-    
-  svg.append("rect").attr("id", "population-outline")
-    .attr("x", width/2 - xmax/2 - r)
-    .attr("y", margin.top - r)
-    .attr("width", xmax + 2*r)
-    .attr("height",ymax + 2*r)
-    .attr("stroke", "black")
-    .attr("fill", "none")
-    
-  paths.append("path").attr("id", "inference-path")
-    .attr("d", "M" + path.x + " " + path.y + " q200 " + path.cy + " 0 " + (height - r - path.y))
-    .attr("stroke-dasharray", [5, 5])
-    
-  paths.append("path").attr("id", "sample-path")
-    .attr("d", "M" + (path.x - xmax - 2*r) + " " + path.y + " q-200," + path.cy + " 0 " + (height - r - path.y))
-    
-  svg.append("polygon").attr("id", "down-arrow")
-    .attr("points", [[0,0],[10,0],[5,10]])
-    .attr("transform", "translate(200," + (path.cy+margin.top+ymax*0.5 - 10) +") scale(2)")
-    .attr("class", "invertable");
-    
-  svg.append("polygon").attr("id", "up-arrow")
-    .attr("points", [[0,0],[10,0],[5,10]])
-    .attr("transform", "translate(850," + (path.cy+margin.top+ymax*0.5 + 10) +") scale(2) rotate(180)")
-    .attr("class", "invertable");
-    
-  labels.append("text").attr("id", "population-label")
-    .text("POPULATION")
-    .attr("x", width/2)
-    .attr("y", margin.top + ymax + 2*r + 20)
-    
-  labels.append("text").attr("id", "sample-label")
-    .text("SAMPLE")
-    .attr("x", width/2)
-    .attr("y", sample_y - r - 10)
-    
-
-  return svg.node();
-}
-
-
-
-x = d3.scaleLinear()
-  .domain([0, xmax])
-  .range([width/2 - xmax/2, width/2 + xmax/2])
-
-y = d3.scaleLinear()
-  .domain([0, ymax])
-  .range([margin.top + ymax, margin.top])
-  
-color = d3.scaleOrdinal().
-  domain(data.map(d => d.color))
-  .range(d3.schemeSet3);
-  
-new_sample = {
-  s;
-  let arr = [];
-  for (var i = 0; i < 10; i++) {
-    arr.push(Math.floor(Math.random() * 7))
-  }
-  return arr;
-}
-
-```
 
 
 
@@ -668,3 +483,170 @@ cover = {
 
 ```
 
+::: {.content-hidden}
+## Sample inferences interactive
+:::
+
+```{ojs}
+
+data = {
+  let arr = [];
+  for (var i = 0; i < 150; i++) {
+    arr.push({
+      x: Math.floor(Math.random() * xmax),
+      y: Math.floor(Math.random() * ymax),
+      color: Math.floor(Math.random() * 7)
+    });
+  }
+  return arr;
+}
+
+width = 1050
+height = 500
+r = 15
+xmax = 400
+ymax = 100
+sample_y = height - r - 1
+margin = ({top: r*2, right: 10, bottom: r, left: 5});
+
+
+pop = {
+
+  var sampleData = [];
+  
+  const svg = d3.select("#sample-inference-container")
+  .append("svg").attr("width", width).attr("height", height)
+  
+  const sample = svg.append("g").attr("id", "sample-circles")
+  const circles = svg.append("g").attr("id", "pop-circles")
+  
+  const arrowPoints = [[-5,5],[5,5],[0,-5]]
+  
+  let path = {
+    x: (width*0.5 + xmax*.5 + r),
+    y: (margin.top + ymax*0.5),
+    cy: (height - r - (margin.top + ymax*0.5)) * 0.5
+  };
+  
+  function generateSample() {
+    let arr = [];
+    for (var i = 0; i < 10; i++) {
+      arr.push(Math.floor(Math.random() * 7))
+    }
+    return arr;
+  }
+  
+  function drawNewSample() {
+    sampleData = generateSample();
+    
+    sample.selectAll("circle").remove()
+    
+    sample.selectAll("circle")
+    .data(sampleData)
+    .enter()
+    .append("circle")
+      .attr("fill", d => color(d))
+      .attr("stroke", "black")
+      .attr("r", r)
+      .attr("cx", function(d, i) {return (i * 41.5 + width/2 - xmax/2 + r)})
+      .attr("cy", 55)
+        .transition()
+        .duration(700)
+        .delay(function(d, i) {return i * 50})
+        .attr("cy", sample_y);
+  
+  }
+  
+  const paths = svg.append("g").attr("id", "paths")
+                        .attr("stroke", "black")
+                        .attr("fill", "none")
+                        .attr("class", "invertable");
+                        
+  const labels = svg.append("g").attr("id", "labels")
+                        .attr("text-anchor", "middle")
+                        .attr("dy", "1em")
+                        .attr("class", "invertable");
+                        
+  
+  circles.selectAll("circle")
+    .data(data)
+    .enter()
+    .append("circle")
+      .attr("fill", d => color(d.color))
+      .attr("stroke", "black")
+      .attr("r", 15)
+      .attr("cx", d => x(d.x))
+      .attr("cy", d => y(d.y))
+          
+  svg.append("rect").attr("id", "population-box")
+    .attr("x", width/2 - xmax/2 - r)
+    .attr("y", margin.top - r)
+    .attr("width", xmax + 2*r)
+    .attr("height",ymax + 2*r)
+    .style("stroke", "black")
+    .style("fill", "white")
+    .style("fill-opacity", 0.9)
+    .on("mouseover", function(d){d3.select(this).style("fill-opacity", 0.1)})
+    .on("mouseout", function(d){d3.select(this).style("fill-opacity", 0.9)})
+    
+    
+  paths.append("path").attr("id", "inference-path")
+    .attr("d", "M" + path.x + " " + path.y + " q200 " + path.cy + " 0 " + (height - r - path.y))
+    .attr("stroke-dasharray", [5, 5])
+    
+  paths.append("path").attr("id", "sample-path")
+    .attr("d", "M" + (path.x - xmax - 2*r) + " " + path.y + " q-200," + path.cy + " 0 " + (height - r - path.y))
+    
+    
+
+  
+  svg.append("polygon").attr("id", "down-arrow")
+    .attr("points", [[0,0],[10,0],[5,10]])
+    .attr("transform", "translate(200," + (path.cy+margin.top+ymax*0.5 - 10) +") scale(2)")
+    .attr("class", "invertable")
+    .on("click", drawNewSample)
+    
+  svg.append("polygon").attr("id", "up-arrow")
+    .attr("points", [[0,0],[10,0],[5,10]])
+    .attr("transform", "translate(850," + (path.cy+margin.top+ymax*0.5 + 10) +") scale(2) rotate(180)")
+    .attr("class", "invertable");
+    
+  labels.append("text").attr("id", "population-label")
+    .text("POPULATION")
+    .attr("x", width/2)
+    .attr("y", margin.top + ymax + 2*r + 20)
+    
+  labels.append("text").attr("id", "sample-label")
+    .text("SAMPLE")
+    .attr("x", width/2)
+    .attr("y", sample_y - r - 10)
+    
+  drawNewSample();
+  return svg.node();
+  
+}
+
+
+
+x = d3.scaleLinear()
+  .domain([0, xmax])
+  .range([width/2 - xmax/2, width/2 + xmax/2])
+
+y = d3.scaleLinear()
+  .domain([0, ymax])
+  .range([margin.top + ymax, margin.top])
+  
+color = d3.scaleOrdinal().
+  domain(data.map(d => d.color))
+  .range(d3.schemeSet3);
+  
+<!-- new_sample = { -->
+<!--   s; -->
+<!--   let arr = []; -->
+<!--   for (var i = 0; i < 10; i++) { -->
+<!--     arr.push(Math.floor(Math.random() * 7)) -->
+<!--   } -->
+<!--   return arr; -->
+<!-- } -->
+
+```
