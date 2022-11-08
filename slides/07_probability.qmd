@@ -1,7 +1,5 @@
 ---
-format: 
-  revealjs:
-    chalkboard: true
+format: revealjs
 ---
 
 # 7|PROBABILITY
@@ -13,38 +11,6 @@ rt <- list(m = 284, sd = 50, x = 159)
 rt$z <- (rt$x  -rt$m) / rt$sd
 ```
 
-
-```{r figures}
-#| eval: false
-
-library(bc1101tools)
-library(ggplot2)
-
-z_fill <- plot_distribution(xlab = "z-score", segments = -2:2, linetype = 2, fill_colors = c('thistle', 'plum', 'purple', 'purple', 'thistle', 'plum')) +
-  theme_xonly() 
-
-z_fill
-
-ggsave(here::here("slides", "media", "z-distribution-filled.svg"),
-       width = 10, height = 6)
-
-z_fill + +
-  geom_text(aes(
-    x = c(-2.5, -1.5, -0.5, 0.5, 1.5, 2.5),
-    y = c(.005, .03, .1, .1, .03, .005),
-    label = c("2.28%", "13.59%", "34.13%", "34.13%", "13.59%", "2.28%")
-  ))
-
-ggsave(here::here("slides", "media", "z-distribution-labelled.svg"))
-
-
-plot_distribution(xlab = "z-score", segments = rt$z, linetype = 2, fill_colors = c('thistle', 'plum')) +
-  theme_xonly()
-
-ggsave(here::here("slides", "media", "spiderman-distribution.svg"),
-       width = 6, height = 4)
-
-```
 
 
 # Overview
@@ -139,7 +105,7 @@ $p(7) = 6/36 = .17$
 ::::
 
 ```{r}
-#| style: "margin-top: 1em; width: 100%;"
+#| style: "font-size: 0.8em; margin-top: 1em; width: 100%;"
 
 
 library(kableExtra)
@@ -166,12 +132,11 @@ dice_tab
 :::: {.columns}
 
 ::: {.column}
-![](media/jar-5050.svg){width=100%}
+![](media/jar-5050.svg){width=80%}
 :::
 
 ::: {.column}
 - Jar of marbles
-    - Jar is population
     - Contains 25 white & 25 blue marbles
     - What is the probability of randomly drawing a white marble?
     - Number of those outcomes (25)
@@ -188,7 +153,7 @@ $p(white) = 25/50 = .5$
 :::: {.columns}
 
 ::: {.column}
-![](media/jar-4010.svg){width=100%}
+![](media/jar-4010.svg){width=80%}
 :::
 
 ::: {.column}
@@ -207,7 +172,7 @@ $p(white) = 10/50 = .2$
 :::: {.columns}
 
 ::: {.column}
-![](media/jar-4010.svg){width=100%}
+![](media/jar-4010.svg){width=80%}
 :::
 
 ::: {.column}
@@ -226,12 +191,12 @@ $p(second \ white)$ depends on whether we put the first one back or not
 
 
 
-## Repeated sampling {.small}
+## Repeated sampling {.smaller}
 
 :::: {.columns}
 
 ::: {.column}
-![](media/jar-4010.svg){width=100%}
+![](media/jar-4010.svg){width=80%}
 :::
 
 ::: {.column}
@@ -311,7 +276,7 @@ $p(1 \lt X \lt 5) = 5/10 = .5$
 :::
 
 ::: {.column width="50%"}
-![](media/z-distribution-labelled.svg)
+![](media/z-distribution-labelled.svg){.invertable-blue}
 
 ::: {.center-element}
 $Y = \dfrac{1}{\sqrt{2 \pi \sigma^2}}e^{-(X-\mu)^2 / 2\sigma^2}$
@@ -322,6 +287,31 @@ $Y = \dfrac{1}{\sqrt{2 \pi \sigma^2}}e^{-(X-\mu)^2 / 2\sigma^2}$
 
 
 ## Unit Normal Table
+
+:::: {.columns}
+
+::: {.column width="50%" style="font-size: 0.35em;"}
+```{r}
+
+data <- tibble::tibble(z = seq(0, 2, .1),
+                       p_body = pnorm(z),
+                       p_tail = pnorm(z, lower.tail = FALSE),
+                       p_btwn = p_body - 0.5)
+
+knitr::kable(data, digits = 4, 
+             col.names = c("\\(z\\)", "Proportion in body", "Proportion in tail", "Proportion between \\(M\\) and \\(z\\)"))
+
+```
+:::
+
+::: {.column width="50%"}
+![z = 0](media/z-0.svg){.invertable-blue style="margin-top: -2em; margin-bottom: 0;"}
+![](media/z-1.svg){.invertable-blue style="margin-bottom: 0;"}
+
+![](media/z-minus-1.svg){.invertable-blue}
+:::
+
+::::
 
 
 
@@ -352,12 +342,12 @@ qnorm(.0228, mean=500, sd=100, lower.tail=FALSE)
     - $z = `r rt$z`$
     - Can state [precise]{.emph} probability of observing a $z$-score that (or more) extreme
 
-![](media/spiderman-small-bw.png){width=10% style="position: absolute; top: 80%; left: -45%"}
+![](media/spiderman-small-bw.png){width=10% style="position: absolute; top: 72%; left: -40%"}
 
 :::: {.columns}
 
 ::: {.column width="50%"}
-![](media/spiderman-distribution.svg)
+![](media/spiderman-distribution.svg){.invertable-blue style="margin-top: -1em;"}
 :::
 
 ::: {.column width="50%"}
@@ -384,7 +374,7 @@ pnorm(159, mean = 284, sd = 50)
     - Shape of the distribution must be verified
     - Important assumption of Central Limit Theorem
 
-![](media/z-distribution-filled.svg)
+![](media/z-distribution-filled.svg){.invertable-blue}
 
 # Learning checks
 
@@ -394,3 +384,66 @@ Which (if any) of the following meet the definition of a true random sample?
 2. Standing on the street and surveying people who happen to walk by
 3. Getting Intro Psych students to participate in return for course credit
 4. Calling random phone numbers from a database
+
+
+::: {.content-hidden}
+
+# Data and figures
+
+## Generic z distributions
+```{r figures}
+#| eval: false
+
+library(bc1101tools)
+library(ggplot2)
+
+z_fill <- plot_distribution(xlab = "z-score", segments = -2:2, linetype = 2, fill_colors = c('thistle', 'plum', 'purple', 'purple', 'thistle', 'plum')) +
+  theme_xonly() 
+
+z_fill
+
+plot_save("z-distribution-filled.svg", width = 5, height = 3)
+
+z_fill +
+  geom_text(aes(
+    x = c(-3, -1.5, -0.5, 0.5, 1.5, 3),
+    y = c(.02, .03, .1, .1, .03, .02),
+    label = c("2.28%", "13.59%", "34.13%", "34.13%", "13.59%", "2.28%")
+  ))
+
+
+plot_save("z-distribution-labelled.svg", width = 5, height = 3)
+
+
+```
+
+## Unit Normal Table figures
+
+```{r}
+#| eval: false
+library(bc1101tools)
+
+plot_distribution(segments = c(0), fill_colors = c("thistle", "plum"), linetype = 2) + theme_xonly()
+plot_save("z-0.svg", width = 4, height = 2)
+
+plot_distribution(segments = c(1), fill_colors = c("thistle", "plum"), linetype = 2) + theme_xonly()
+plot_save("z-1.svg", width = 4, height = 2)
+
+plot_distribution(segments = c(-1), fill_colors = c("thistle", "plum"), linetype = 2) + theme_xonly()
+plot_save("z-minus-1.svg", width = 4, height = 2)
+```
+
+## Spiderman figure
+
+```{r}
+#| eval: false
+
+plot_distribution(xlim = c(-4, 4), xlab = "z-score", segments = rt$z, linetype = 2, fill_colors = c('red', 'plum')) +
+  theme_xonly()
+
+plot_save("spiderman-distribution.svg",
+       width = 4, height = 3)
+```
+
+:::
+

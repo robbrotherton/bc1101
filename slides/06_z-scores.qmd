@@ -4,7 +4,8 @@ format: revealjs
 
 # 6|$z$-scores
 
-![](covers/06_z-scores.svg)
+::: {#cover-container}
+:::
 
 
 # Overview
@@ -336,6 +337,98 @@ $\begin{align} z & = \dfrac{X - M}{s} \\
 
 ## Cover
 
+:::
+
+```{r}
+data <- tibble::tibble(value = seq(-3, 3, .1),
+                       density = dnorm(value)) |> 
+  purrr::transpose()
+
+ojs_define(data)
+```
+
+```{ojs}
+
+w = 1050
+h = 500
+
+xScale = d3.scaleLinear()
+  .domain([-3, 3])
+  .range([0, w])
+yScale = d3.scaleLinear()
+  .domain([0, 0.42])
+  .range([h, 0])
+line = d3.line()
+    .x(d => xScale(d.value))
+    .y(d => yScale(d.density))
+
+chart = {
+
+const svg = d3.select("#cover-container")
+  .append("svg")
+  .attr("width", w).attr("height", h)
+
+const g = svg.selectAll("g")
+  .data([0,1,2,3])
+  .enter()
+  .append("g")
+    .append("path").attr("id", d => "path" + d)
+    .attr("d", line(data))
+    
+svg.select("#path0").attr("class", "invertable")
+  .style("fill", "none")
+  .style("stroke", "black")
+  .style("stroke-width", 2)
+
+svg.selectAll("#path1, #path2, #path3").attr("class", "fill")
+    .style("fill", "thistle")
+    .style("fill-opacity", 0)
+
+
+svg.select("#path1").attr("clip-path", "url(#clip1)")
+svg.select("#path2").attr("clip-path", "url(#clip2)")
+svg.select("#path3").attr("clip-path", "url(#clip3)")
+
+
+var Gen = d3.line()
+  .x(d => xScale(d.value))
+  .y(d => yScale(d.density))
+
+const clipPaths = svg.append("g")
+
+clipPaths.append("clipPath").attr("id", "clip1")
+  .append("path")
+    .attr("d", Gen([{value: -3, density: 0},
+                    {value: -3, density: 1},
+                    {value:  3, density: 1},
+                    {value:  3, density: 0},
+                    {value: -3, density: 0}]))
+clipPaths.append("clipPath").attr("id", "clip2")
+  .append("path")
+    .attr("d", Gen([{value: -2, density: 0},
+                    {value: -2, density: 1},
+                    {value: 2, density: 1},
+                    {value: 2, density: 0},
+                    {value: -2, density: 0}]))
+clipPaths.append("clipPath").attr("id", "clip3")
+  .append("path")
+    .attr("d", Gen([{value: -1, density: 0},
+                    {value: -1, density: 1},
+                    {value:  1, density: 1},
+                    {value:  1, density: 0},
+                    {value: -1, density: 0}]))
+                    
+svg.selectAll(".fill")
+  .data([0,1,2])
+  .transition().duration(3000).delay(d => d * 1000)
+    .style("fill-opacity", 0.4)
+
+
+}
+
+```
+
+::: {.content-hidden}
 ```{r cover-ggplot}
 #| eval: false
 
