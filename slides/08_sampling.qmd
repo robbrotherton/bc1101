@@ -1,12 +1,13 @@
 ---
-format: 
-  revealjs:
-    chalkboard: true
+format: revealjs
 ---
 
 # 8|SAMPLING
 
-![](covers/08_sampling.svg){.invertable}
+::: {#cover-container}
+:::
+
+<!-- ![](covers/08_sampling.svg){.invertable} -->
 
 ```{r data}
 library(bc1101tools)
@@ -44,50 +45,14 @@ ggsave(here::here("slides", "media", "stick-sampling-distribution.svg"),
 
 ```
 
-```{r cover}
-#| eval: false
+## import
 
-library(gganimate)
-library(dplyr)
-library(ggforce)
-
-# library(tweenr)
-library(gifski)
-# library(tidyverse)
-
-set.seed(42)
-n_samples <- 3000
-data <- rnorm(n_samples, mean = 100, sd = 15) %>% round(0)
-df <- data.frame(n = seq_along(data),
-                 x = data,
-                 y = 1) %>%
-  group_by(x) %>%
-  mutate(y_cum = cumsum(y))
-
-p <- ggplot(df, aes(x = x, y = y_cum, group = n)) +
-  ggforce::geom_regon(aes(x0 = x, y0 = y_cum-.5, sides = 4, r = sqrt((.5^2)*2), angle = 0), color = "white", fill = rgb(.5, .5, .5)) +
-  coord_fixed() +
-  # transition_reveal(n) +
-  theme_void() +
-  NULL
-
-ggsave(plot = p,
-       filename = here::here("slides", "covers", "08_sampling.svg"),
-       width = 10, height = 5)
-
-p_anim <- p +
-  transition_reveal(n)
-
-animate(p_anim,
-        bg = 'transparent',
-        nframes = length(data)/20,
-        renderer = av_renderer(),
-        fps = 10,
-        width = 1200, height = 600)
-
-anim_save(here::here("slides", "media", "08_sampling-animated-cover.mp4"))
-
+::: {.column width=50%}
+```{ojs}
+import { pop } from "./02_variables.qmd";
+pop
 ```
+:::
 
 # Overview
 
@@ -513,3 +478,135 @@ $\sigma_M = \dfrac{\sigma}{\sqrt{n}} = \dfrac{2.24}{\sqrt{2}} = 1.58$
     - The shape of a distribution of sample means is always normal
     - As sample size increases, the value of the standard error always decreases
 2. Describe the distribution of sample means (shape, expected value of the mean, and standard error) for samples of $n = 100$ selected from a population with $\mu = 40$ and $\sigma = 10$.
+
+
+
+::: {.content-hidden}
+
+# Data and figures
+
+## Cover
+
+```{r cover-ggplot}
+#| eval: false
+
+library(gganimate)
+library(dplyr)
+library(ggforce)
+
+# library(tweenr)
+library(gifski)
+# library(tidyverse)
+
+set.seed(42)
+n_samples <- 3000
+data <- rnorm(n_samples, mean = 100, sd = 15) %>% round(0)
+df <- data.frame(n = seq_along(data),
+                 x = data,
+                 y = 1) %>%
+  group_by(x) %>%
+  mutate(y_cum = cumsum(y))
+
+p <- ggplot(df, aes(x = x, y = y_cum, group = n)) +
+  ggforce::geom_regon(aes(x0 = x, y0 = y_cum-.5, sides = 4, r = sqrt((.5^2)*2), angle = 0), color = "white", fill = rgb(.5, .5, .5)) +
+  coord_fixed() +
+  # transition_reveal(n) +
+  theme_void() +
+  NULL
+
+ggsave(plot = p,
+       filename = here::here("slides", "covers", "08_sampling.svg"),
+       width = 10, height = 5)
+
+p_anim <- p +
+  transition_reveal(n)
+
+animate(p_anim,
+        bg = 'transparent',
+        nframes = length(data)/20,
+        renderer = av_renderer(),
+        fps = 10,
+        width = 1200, height = 600)
+
+anim_save(here::here("slides", "media", "08_sampling-animated-cover.mp4"))
+
+```
+
+```{r}
+#| eval: false
+set.seed(42)
+n_samples <- 3000
+data <- rnorm(n_samples, mean = 100, sd = 21) %>% round(0)
+df <- data.frame(n = seq_along(data),
+                 x = data,
+                 y = 1) %>%
+  group_by(x) %>%
+  mutate(y_cum = cumsum(y))
+
+ggplot(df, aes(x = x, y = y_cum, group = n)) +
+  ggforce::geom_regon(aes(x0 = x, y0 = y_cum-.5, sides = 4, r = sqrt((.5^2)*1.5), angle = 0), color = NA, fill = rgb(.5, .5, .5)) +
+  coord_fixed() +
+  # transition_reveal(n) +
+  theme_void() +
+  NULL
+
+bc1101tools::plot_save("08_sampling.svg", subdir = "covers", width = 10, height = 5)
+```
+
+:::
+
+```{r cover-data}
+
+set.seed(42)
+n_samples <- 3000
+data <- rnorm(n_samples, mean = 100, sd = 21) %>% round(0)
+df <- data.frame(n = seq_along(data),
+                 xValue = data,
+                 yValue = 1) %>%
+  group_by(xValue) %>%
+  mutate(y_cum = cumsum(yValue)) 
+
+data <- df |> 
+  purrr::transpose()
+
+ojs_define(data)
+
+```
+
+```{ojs}
+
+w = 1050
+h = 500
+
+xScale = d3.scaleLinear()
+  .domain([25, 175])
+  .range([0, w])
+yScale = d3.scaleLinear()
+  .domain([0, 70])
+  .range([h, 0])
+
+cover = {
+
+const svg = d3.select("#cover-container")
+  .append("svg")
+  .attr("width", w).attr("height", h)
+
+svg.selectAll("rect")
+  .data(data)
+  .enter()
+  .append("rect")
+    .attr("class", "invertable")
+    .attr("x", d => xScale(d.xValue))
+    .attr("y", d => yScale(d.y_cum))
+    .attr("width", 5)
+    .attr("height",5)
+    .style("fill", "black")
+    .style("stroke", "none")
+    .style("opacity", 0)
+    .transition().duration(0).delay((d,i) => i*2)
+      .style("opacity", 1)
+
+}
+```
+
+
