@@ -1,6 +1,7 @@
 ---
 title: "(Un)Biased estimates"
 format: html
+toc: false
 execute: 
   echo: false
 ---
@@ -186,6 +187,19 @@ update_svg = {
       running_averages[2].id.push(cur_n)
 
 }
+
+  function updateVisibility() {
+  
+    var params = ["population", "sample", "mean"]
+    
+    for (var i = 0; i < 3; i++) {
+      var param = params[i]
+      var elementIds = "#" + param + "-estimate, #" + param + "-line"
+      
+      svg.selectAll(elementIds).classed("hide", legendStatus[i].hide)
+      timesvg.selectAll("#" + param + "-path").classed("hide", legendStatus[i].hide)
+    }
+  }
   
   function newSample() {
     
@@ -208,8 +222,13 @@ update_svg = {
     updateSampleCircles();
     updateLines();
     updatePath();
+    updateVisibility();
     
     svg.select("#counter").text(nSamplesDrawn)
+    
+    svg.selectAll("#population-estimate, #population-line, #population-path").classed("hide", legendStatus[0].hide)
+    svg.selectAll("#sample-estimate, #sample-line, #sample-path").classed("hide", legendStatus[1].hide)
+    svg.selectAll("#mean-estimate, #mean-line, #mean-path").classed("hide", legendStatus[2].hide)
   }
   
   function updateBiasChart() {
@@ -224,8 +243,6 @@ update_svg = {
             .attr("cx", d => xSD(d.value))
             .attr("cy", d => biasY(d.id))
             .attr("id", d => d.param + "-estimate")
-        
-        biasDots.selectAll("#mean-estimate").attr("class", meanClass)
   }
   
   function updateLines() {
@@ -252,8 +269,7 @@ update_svg = {
         .append("path")
           .attr("d", d => biasLine(d.id, d.value))
           .attr("id", d => d.param + "-path")
-          
-     <!-- biasPaths.selectAll("#mean-path").attr("class", meanClass)  -->
+
   }
   
   function updateSampleCircles() {
@@ -360,17 +376,21 @@ update_svg = {
     .attr("y", ySD(-4))
     .attr("text-anchor", "middle")
     
-  var showMean = false
-  var meanClass = showMean === true ? "show" : "hide"
+  var legendStatus = [{param: "population", hide: false},
+                      {param: "sample",     hide: false},
+                      {param: "mean",       hide: true}]
+                      
   
-  function showHideMean() {
-    showMean = !showMean
-    meanClass = showMean === true ? "show" : "hide"
-    svg.selectAll("#mean-estimate, #mean-line, #mean-path").attr("class", meanClass)
+  function updateLegendStatus(param) {
+    var index;
+    if (param==="population") {index = 0;} 
+    if (param==="sample") {index = 1;} 
+    if (param==="mean") {index = 2;} 
     
-    biasPaths.select("#mean-estimate").attr("class", meanClass)
-    <!-- svg.select("#mean-path").attr("class", meanClass) -->
+    legendStatus[index].hide = !legendStatus[index].hide
     
+    var classes = "#" + param + "-estimate, #" + param + "-line, #" + param + "-path"
+    svg.selectAll(classes).classed("hide", legendStatus[index].hide)
   }
   
   const sampleCircles = svg.append("g")
@@ -378,13 +398,19 @@ update_svg = {
   const biasDots = biasChart.append("g")
   const biasLines = biasChart.append("g")
   
+  
   const biasLegend = svg.append("g")
-  biasLegend.append("circle").attr("id", "legend-mean")
-    .attr("cx", xSD(0))
+  biasLegend.selectAll("circle")
+    .data(legendStatus)
+    .enter()
+    .append("circle").attr("id", d => d.param + "-legend")
+    .attr("cx", (d,i) => xSD(i-1))
     .attr("cy", ySD(-3))
     .attr("r", 5)
-    .on("click", showHideMean)
+    .attr("class", "legend-dots")
+    .on("click", function(event, data){updateLegendStatus(data.param);})
   
+
   
   biasLines.selectAll("line")
     .data(running_averages)
@@ -395,7 +421,7 @@ update_svg = {
       .attr("y1", ySD(0))
       .attr("y2", ySD(34))
         
-   svg.selectAll("#mean-estimate, #mean-line, #mean-path").attr("class", meanClass)
+
          
         
         
@@ -465,7 +491,10 @@ update_svg = {
         .attr("y1", d => timeY(d)).attr("y2", d => timeY(d))
         .attr("class", function(d){if(d===0){return"axis-major"}else{return "axis-minor"}})
     
-  const biasPaths = timesvg.append("g").style("stroke-width", 2)
+  const biasPaths = timesvg.append("g")
+  
+  
+     <!-- svg.selectAll("#mean-estimate, #mean-line, #mean-path").attr("class", meanClass) -->
 
 }
 
@@ -477,6 +506,12 @@ update_svg = {
 :::
 
 ```{css}
+
+:root {
+  --population-color: pink;
+  --sample-color: var(--link-color);
+  --mean-color: purple;
+}
 
 .axis {
   font-size: 0.75em;
@@ -504,31 +539,32 @@ update_svg = {
 }
 
 #sample-estimate, #sample-line {
-  fill: var(--link-color);
-  stroke: var(--link-color);
+  fill: var(--sample-color);
+  stroke: var(--sample-color);
 }
 
 #mean-estimate, #mean-line {
-  fill: plum;
-  stroke: plum;
+  fill:   var(--mean-color);
+  stroke: var(--mean-color);
 }
 
 #population-estimate, #population-line {
-  fill: pink;
-  stroke: pink;
+  fill:   var(--population-color);
+  stroke: var(--population-color);
 }
 
 .bias-paths {
   fill: none
 }
+
 #mean-path {
-  stroke: plum;
+  stroke: var(--mean-color);
 }
 #sample-path {
-  stroke: var(--link-color);
+  stroke: var(--sample-color);
 }
 #population-path {
-  stroke: pink;
+  stroke: var(--population-color);
 }
 
 .hide {
@@ -549,14 +585,12 @@ update_svg = {
   fill: plum;
 }
 
-
-
-<!-- .show-mean { -->
-<!--   opacity: 1; -->
-<!-- } -->
-<!-- .hide-mean { -->
-<!--   opacity: 0.5 -->
-<!-- } -->
+.legend-dots {
+  z-index: 100;
+}
+.legend-dots:hover {
+  cursor: pointer;
+}
 
 ```
 
