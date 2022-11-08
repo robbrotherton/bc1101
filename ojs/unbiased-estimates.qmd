@@ -226,9 +226,9 @@ update_svg = {
     
     svg.select("#counter").text(nSamplesDrawn)
     
-    svg.selectAll("#population-estimate, #population-line, #population-path").classed("hide", legendStatus[0].hide)
-    svg.selectAll("#sample-estimate, #sample-line, #sample-path").classed("hide", legendStatus[1].hide)
-    svg.selectAll("#mean-estimate, #mean-line, #mean-path").classed("hide", legendStatus[2].hide)
+    <!-- svg.selectAll("#population-estimate, #population-line, #population-path").classed("hide", legendStatus[0].hide) -->
+    <!-- svg.selectAll("#sample-estimate, #sample-line, #sample-path").classed("hide", legendStatus[1].hide) -->
+    <!-- svg.selectAll("#mean-estimate, #mean-line, #mean-path").classed("hide", legendStatus[2].hide) -->
   }
   
   function updateBiasChart() {
@@ -239,7 +239,7 @@ update_svg = {
           .data(sample_estimates.flat().slice(-210))
           .enter()
           .append("circle")
-            .attr("r", 5)
+            .attr("r", 3)
             .attr("cx", d => xSD(d.value))
             .attr("cy", d => biasY(d.id))
             .attr("id", d => d.param + "-estimate")
@@ -330,7 +330,10 @@ update_svg = {
     .attr("width", w).attr("height", h)
     
   const pop = svg.append("g")
-
+  const sampleCircles = svg.append("g")
+  const biasChart = svg.append("g")
+  const biasDots = biasChart.append("g")
+  const biasLines = biasChart.append("g")
   
   pop.selectAll("circle")
       .data(popData)
@@ -389,14 +392,13 @@ update_svg = {
     
     legendStatus[index].hide = !legendStatus[index].hide
     
-    var classes = "#" + param + "-estimate, #" + param + "-line, #" + param + "-path"
+    var classes = "#" + param + "-estimate, #" + param + "-line"
     svg.selectAll(classes).classed("hide", legendStatus[index].hide)
+    timesvg.selectAll("#" + param + "-path").classed("hide", legendStatus[index].hide)
+    svg.select("#" + param + "-legend").classed("legend-unselected", legendStatus[index].hide)
   }
   
-  const sampleCircles = svg.append("g")
-  const biasChart = svg.append("g")
-  const biasDots = biasChart.append("g")
-  const biasLines = biasChart.append("g")
+  
   
   
   const biasLegend = svg.append("g")
@@ -404,10 +406,11 @@ update_svg = {
     .data(legendStatus)
     .enter()
     .append("circle").attr("id", d => d.param + "-legend")
-    .attr("cx", (d,i) => xSD(i-1))
+    .attr("cx", (d,i) => xSD((i-1)*0.5))
     .attr("cy", ySD(-3))
     .attr("r", 5)
     .attr("class", "legend-dots")
+    .classed("legend-unselected", d => d.hide)
     .on("click", function(event, data){updateLegendStatus(data.param);})
   
 
@@ -538,19 +541,23 @@ update_svg = {
   stroke: white;
 }
 
-#sample-estimate, #sample-line {
+#sample-estimate, #sample-line, #sample-legend {
   fill: var(--sample-color);
   stroke: var(--sample-color);
 }
 
-#mean-estimate, #mean-line {
+#mean-estimate, #mean-line, #mean-legend {
   fill:   var(--mean-color);
   stroke: var(--mean-color);
 }
 
-#population-estimate, #population-line {
+#population-estimate, #population-line, #population-legend {
   fill:   var(--population-color);
   stroke: var(--population-color);
+}
+
+.legend-unselected {
+  fill-opacity: 0.1 !important;
 }
 
 .bias-paths {
@@ -581,13 +588,7 @@ update_svg = {
   cursor: pointer;
 }
 
-#legend-mean {
-  fill: plum;
-}
 
-.legend-dots {
-  z-index: 100;
-}
 .legend-dots:hover {
   cursor: pointer;
 }
