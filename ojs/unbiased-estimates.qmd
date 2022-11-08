@@ -9,10 +9,8 @@ execute:
 ::: {#height-container}
 :::
 
-```{ojs}
-viewof legend = Inputs.checkbox(["SD (n)", "SD (n-1)", "M"], {value: ["SD (n)", "SD (n-1)"]})
-```
-
+::: {#timeline-container}
+:::
 
 ```{ojs}
 jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js")
@@ -54,6 +52,8 @@ dodger = radius => {
     return y;
   };
 }
+
+dodge = dodger(radius * 2 + 1);
 ```
 
 ```{ojs}
@@ -76,6 +76,15 @@ xSD = d3.scaleLinear()
 ySD = d3.scaleLinear()
     .domain([0, 35])
     .range([100, h-100])
+
+yy = d3.scaleLinear()
+    .domain([-1, 1])
+    .range([200, 0])
+yAxis = g => g
+    .attr("transform", `translate(1,0)`)
+    .call(d3.axisLeft(yy))
+xAxisGrid = d3.axisBottom(x).tickSize(-200).tickFormat('').ticks(10);
+yAxisGrid = d3.axisLeft(y).tickSize(-300).tickFormat('').ticks(10);
     
 line = d3.line()
     .x(d => x(d.value))
@@ -106,12 +115,21 @@ function get_descriptives (array) {
             population_variance: population_variance(array) - 1}
 }
 
-<!-- function get_descriptives_x (array) { -->
-<!--     var id = array.length; -->
-<!--     return [{id: id, estimate: "mean", value: mean(array)}, -->
-<!--             {id: id, estimate: "pSD", value: population_sd(array)}, -->
-<!--             {id: id, estimate: "sSD", value: sample_sd(array)}} -->
-<!-- } -->
+function getNewData (array) {
+    
+    return {sample_estimates: getSampleEstimates(array)
+            <!-- running_averages: getRunningAverages(array) -->
+            }
+}
+
+function getSampleEstimates(array) {
+    return [{param: "population", value: population_variance(array) - 1},
+            {param: "sample",     value: sample_variance(array) - 1},
+            {param: "mean",       value: mean(array)}]
+}
+
+
+
 
 ```
 
@@ -119,79 +137,123 @@ function get_descriptives (array) {
 ```{ojs}
 update_svg = {
 
-  const dodge = dodger(radius * 2 + 1);
-  
-  var sdArray = [];
   var sample = [];
-  var sdMeanErrorSample;
-  var sdMeanErrorPopulation;
+  var sample_estimates = [];
+  var running_averages = [{param: "population", value: [0], id: [0]},
+                          {param: "sample",     value: [0], id: [0]},
+                          {param: "mean",       value: [0], id: [0]}];
+  
+  var nSamplesDrawn = 0;
+  
+  var legendSelected = ["sample", "population"]
+  
+  var biasY = d3.scaleLinear()
+    .range([h-100, 100])
+    
+  
     
   function clearData() {
-    sdArray = [];
     sample = [];
+    sample_estimates = [];
+    running_averages = [{param: "population",   value: [0], id: [0]},
+                          {param: "sample",     value: [0], id: [0]},
+                          {param: "mean",       value: [0], id: [0]}];
+    nSamplesDrawn = 0;
+    
     sampleCircles.selectAll('circle').remove()
-    sampleDots.selectAll("circle").remove()
-    popDots.selectAll("circle").remove()
+    biasDots.selectAll("circle").remove()
     biasLines.selectAll("line").attr("x1", xSD(0)).attr("x2", xSD(0))
   }
   
+  function updateRunningAverages(estimates) {
+      var cur_n = nSamplesDrawn
+      var prev_n = cur_n - 1
+      
+      var old = running_averages[0].value[prev_n]
+      var new_pop = ((old * prev_n) + estimates[0].value)/cur_n
+      running_averages[0].value.push(new_pop)
+      
+      var old = running_averages[1].value[prev_n]
+      var new_sam = ((old * prev_n) + estimates[1].value)/cur_n
+      running_averages[1].value.push(new_sam)
+      
+      var old = running_averages[2].value[prev_n]
+      var new_mea = ((old * prev_n) + estimates[2].value)/cur_n
+      running_averages[2].value.push(new_mea)
+    
+      running_averages[0].id.push(cur_n)
+      running_averages[1].id.push(cur_n)
+      running_averages[2].id.push(cur_n)
+
+}
+  
   function newSample() {
+    
+    nSamplesDrawn++
+    
     for (var i = 0; i < 10; i++) {
       sample[i] = jStat.normal.sample(0, 1);
     }
-    console.log(sample);
-    sdArray.unshift(get_descriptives(sample));
-    if (sdArray.length > 100) sdArray.splice(100, 1);
-    console.log(sdArray);
     
-    updateSD();
+    var estimates = getSampleEstimates(sample)
+    estimates.map(d => d.id = nSamplesDrawn);
+    sample_estimates.push(estimates)
+    
+    estimates.map(d => d.id = nSamplesDrawn);
+    sample_estimates.push(estimates)
+    
+    updateRunningAverages(estimates);
+    
+    updateBiasChart();
     updateSampleCircles();
     updateLines();
+    updatePath();
+    
+    svg.select("#counter").text(nSamplesDrawn)
   }
   
-  function updateSD() {
-    sampleDots.selectAll("circle").remove()
-    popDots.selectAll("circle").remove()
-    biasMean.selectAll("circle").remove()
-    
-    sampleDots.selectAll("circle")
-      .data(sdArray.slice(0,35))
-      .enter().append('circle')
-      .attr("r", 5)
-      .attr("cx", d => xSD(d.sample_variance))
-      .attr("cy", function(d,i){return ySD(i-1)})
-      .transition().duration(300)
-      .attr("cy", function(d,i){return ySD(i)})
+  function updateBiasChart() {
+      biasY.domain([nSamplesDrawn-35, nSamplesDrawn])
       
-    popDots.selectAll("circle")
-      .data(sdArray.slice(0,35))
-      .enter().append('circle')
-      .attr("r", 5)
-      .attr("cx", d => xSD(d.population_variance))
-      .attr("cy", function(d,i){return ySD(i-1)})
-      .transition().duration(300)
-      .attr("cy", function(d,i){return ySD(i)})
-      
-    biasMean.selectAll("circle")
-      .data(sdArray.slice(0,35))
-      .enter().append('circle')
-      .attr("r", 5)
-      .attr("cx", d => xSD(d.mean))
-      .attr("cy", function(d,i){return ySD(i-1)})
-      .transition().duration(300)
-      .attr("cy", function(d,i){return ySD(i)})
+      biasDots.selectAll("circle").remove()
+        biasDots.selectAll("circle")
+          .data(sample_estimates.flat().slice(-210))
+          .enter()
+          .append("circle")
+            .attr("r", 5)
+            .attr("cx", d => xSD(d.value))
+            .attr("cy", d => biasY(d.id))
+            .attr("id", d => d.param + "-estimate")
+        
+        biasDots.selectAll("#mean-estimate").attr("class", meanClass)
   }
   
   function updateLines() {
-      var meanSample = mean(sdArray.map(d => d.sample_variance))
-      var meanPopulation = mean(sdArray.map(d => d.population_variance))
-      var meanMean = mean(sdArray.map(d => d.mean))
+
+      const dat = [
+        running_averages[0].value[nSamplesDrawn],
+        running_averages[1].value[nSamplesDrawn],
+        running_averages[2].value[nSamplesDrawn]
+      ]
       
       biasLines.selectAll("line")
-        .data([meanSample, meanPopulation, meanMean])
-        .transition().duration(200)
-        .attr("x1", d => xSD(d))
-        .attr("x2", d => xSD(d))
+        .data(dat)
+        .attr("x1", d => xSD(d)).attr("x2", d => xSD(d))
+  }
+  
+  function updatePath() {
+      biasPaths.selectAll("g").remove()
+      
+      biasPaths.selectAll("g")
+        .data(running_averages)
+        .enter()
+        .append("g")
+        .attr("class", "bias-paths")
+        .append("path")
+          .attr("d", d => biasLine(d.id, d.value))
+          .attr("id", d => d.param + "-path")
+          
+     <!-- biasPaths.selectAll("#mean-path").attr("class", meanClass)  -->
   }
   
   function updateSampleCircles() {
@@ -230,8 +292,16 @@ update_svg = {
   function continuouslyDrawSamples() {
     if (playing) {
       newSample();
-      sleep(500).then(continuouslyDrawSamples);
+      sleep(200).then(continuouslyDrawSamples);
     }
+  }
+  
+    
+  var popData = [];
+  for (let i = 0; i < population.length; ++i) {
+    const cx = x(population[i]);
+    const cy = dodge(cx) - radius - 1;
+    popData.push({cx: cx, cy: cy})
   }
   
 
@@ -244,13 +314,7 @@ update_svg = {
     .attr("width", w).attr("height", h)
     
   const pop = svg.append("g")
-  
-  var popData = [];
-  for (let i = 0; i < population.length; ++i) {
-    const cx = x(population[i]);
-    const cy = dodge(cx) - radius - 1;
-    popData.push({cx: cx, cy: cy})
-  }
+
   
   pop.selectAll("circle")
       .data(popData)
@@ -296,20 +360,24 @@ update_svg = {
     .attr("y", ySD(-4))
     .attr("text-anchor", "middle")
     
-  var showMean = true
+  var showMean = false
+  var meanClass = showMean === true ? "show" : "hide"
+  
   function showHideMean() {
     showMean = !showMean
-    if(showMean) {
-      svg.select("#legend-mean").attr("class", "show-mean")
-      biasMean.selectAll("circle").attr("r", 5)
-      biasChart.select(".mean-line").attr("stroke-width", 2)
-    } else {
-      svg.select("#legend-mean").attr("class", "hide-mean")
-      biasMean.selectAll("circle").attr("r", 0)
-      biasChart.select(".mean-line").attr("stroke-width", 0)
-    }
-    console.log(showMean)
+    meanClass = showMean === true ? "show" : "hide"
+    svg.selectAll("#mean-estimate, #mean-line, #mean-path").attr("class", meanClass)
+    
+    biasPaths.select("#mean-estimate").attr("class", meanClass)
+    <!-- svg.select("#mean-path").attr("class", meanClass) -->
+    
   }
+  
+  const sampleCircles = svg.append("g")
+  const biasChart = svg.append("g")
+  const biasDots = biasChart.append("g")
+  const biasLines = biasChart.append("g")
+  
   const biasLegend = svg.append("g")
   biasLegend.append("circle").attr("id", "legend-mean")
     .attr("cx", xSD(0))
@@ -317,23 +385,33 @@ update_svg = {
     .attr("r", 5)
     .on("click", showHideMean)
   
-  const biasChart = svg.append("g")
-  const biasMean = svg.append("g").attr("class", "mean-dots")
-  const sampleDots = svg.append("g").attr("class", "sample-dots")
-  const popDots = svg.append("g").attr("class", "pop-dots")
-  const sampleCircles = svg.append("g")
   
-  const biasLines = biasChart.append("g")
-  biasLines.append("line").attr("class", "sample-line")
-  biasLines.append("line").attr("class", "pop-line")
-  biasLines.append("line").attr("class", "mean-line")
-    .attr("opacity", showMean)
   biasLines.selectAll("line")
-        .attr("stroke-width", 2)
-        .attr("x1", xSD(0))
-        .attr("x2", xSD(0))
-        .attr("y1", ySD(0))
-        .attr("y2", ySD(34))
+    .data(running_averages)
+    .enter()
+    .append("line").attr("id", d => d.param + "-line")
+      .attr("stroke-width", 2)
+      .attr("x1", d => xSD(0)).attr("x2", d => xSD(0))
+      .attr("y1", ySD(0))
+      .attr("y2", ySD(34))
+        
+   svg.selectAll("#mean-estimate, #mean-line, #mean-path").attr("class", meanClass)
+         
+        
+        
+    const sample_counter = svg.append("g")
+    sample_counter.append("text")
+        .text(d => "Total samples: ")
+        .attr("x", 500)
+        .attr("y", 450)
+        .attr("text-anchor", "end")
+    sample_counter.append("text").attr("id", "counter")
+        .text(d => "0")
+        .attr("x", 505)
+        .attr("y", 450)
+        .attr("text-anchor", "start")
+        
+  
   
 <!-- buttons -->
   const reset_button = svg.append("text")
@@ -360,11 +438,43 @@ update_svg = {
 
     
   <!-- newSample(); -->
+  
+  
+  const timeX = d3.scaleLinear()
+    .domain([0,500])
+    .range([0, 300])
+  const timeY = d3.scaleLinear()
+    .domain([-1, 1])
+    .range([200, 0])
+  const biasLine = function(x, y){
+      return d3.line()
+      .x(function(d,i) { return timeX(x[i]); }) 
+      .y(function(d,i) { return timeY(y[i]); })
+      (Array(x.length));
+  }
+  
+  const timesvg =   d3.select("#timeline-container")
+    .append("svg").attr("id", "timeline-svg")
+    .attr("width", 300).attr("height", 200)
 
+  timesvg.append("g")
+      .selectAll("line")
+      .data([-.75, -.5, -.25, 0, .25])
+      .enter().append("line")
+        .attr("x1", d => timeX(1)).attr("x2", d => timeX(500))
+        .attr("y1", d => timeY(d)).attr("y2", d => timeY(d))
+        .attr("class", function(d){if(d===0){return"axis-major"}else{return "axis-minor"}})
+    
+  const biasPaths = timesvg.append("g").style("stroke-width", 2)
 
 }
 
 ```
+
+
+::: {.content-hidden}
+# CSS
+:::
 
 ```{css}
 
@@ -393,22 +503,38 @@ update_svg = {
   stroke: white;
 }
 
-.sample-dots, .sample-line {
+#sample-estimate, #sample-line {
   fill: var(--link-color);
   stroke: var(--link-color);
 }
 
-.mean-dots, .mean-line {
+#mean-estimate, #mean-line {
   fill: plum;
   stroke: plum;
 }
 
-.pop-dots, .pop-line {
+#population-estimate, #population-line {
   fill: pink;
   stroke: pink;
 }
 
+.bias-paths {
+  fill: none
+}
+#mean-path {
+  stroke: plum;
+}
+#sample-path {
+  stroke: var(--link-color);
+}
+#population-path {
+  stroke: pink;
+}
 
+.hide {
+  fill: none !important;
+  stroke: none !important;
+}
 
 
 .button {
@@ -422,12 +548,15 @@ update_svg = {
 #legend-mean {
   fill: plum;
 }
-.show-mean {
-  opacity: 1;
-}
-.hide-mean {
-  opacity: 0.5
-}
+
+
+
+<!-- .show-mean { -->
+<!--   opacity: 1; -->
+<!-- } -->
+<!-- .hide-mean { -->
+<!--   opacity: 0.5 -->
+<!-- } -->
 
 ```
 
