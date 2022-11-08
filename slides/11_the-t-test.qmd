@@ -172,6 +172,14 @@ ojs_define(norm_arr)
 ```
 
 ::: {.c}
+
+<div data-prevent-swipe>
+```{ojs}
+viewof df = html`<input type=range min=1 max=50 step=1 value=1 style="width: 50%;">`
+```
+</div>
+
+
 ```{ojs}
 #| echo: false
 
@@ -187,8 +195,6 @@ d3 = require("https://d3js.org/d3.v5.min.js")
 height = 400
 width = 800
 
-
-viewof df = html`<input type=range min=1 max=50 step=1 value=1 style="width: 50%;">`
 
 <!-- comment -->
 tex`df = ${df.toLocaleString("en")}`
