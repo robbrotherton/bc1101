@@ -414,10 +414,9 @@
 </section>
 <section id="import" class="slide level2">
 <h2>import</h2>
-<div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="52" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 51;"><span id="cb1-52"><a href="#cb1-52"></a><span class="im">import</span> { pop } <span class="im">from</span> <span class="st">"./02_variables.qmd"</span><span class="op">;</span></span>
-<span id="cb1-53"><a href="#cb1-53"></a>pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="51" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 50;"><span id="cb1-51"><a href="#cb1-51"></a><span class="im">import</span> { pop } <span class="im">from</span> <span class="st">"./02_variables.qmd"</span><span class="op">;</span></span>
+<span id="cb1-52"><a href="#cb1-52"></a>pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -429,7 +428,6 @@
 <div>
 <div id="ojs-cell-1-2" data-nodetype="expression">
 
-</div>
 </div>
 </div>
 </div>
@@ -885,11 +883,11 @@
 <section id="variability-2" class="slide level2">
 <h2>Variability</h2>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="280" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 279;"><span id="cb5-280"><a href="#cb5-280"></a>d3 <span class="op">=</span> <span class="pp">require</span>(<span class="st">"https://d3js.org/d3.v5.min.js"</span>)</span>
-<span id="cb5-281"><a href="#cb5-281"></a>jStat <span class="op">=</span> <span class="pp">require</span>(<span class="st">"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js"</span>)</span>
-<span id="cb5-282"><a href="#cb5-282"></a></span>
-<span id="cb5-283"><a href="#cb5-283"></a>width <span class="op">=</span> <span class="dv">1000</span></span>
-<span id="cb5-284"><a href="#cb5-284"></a>height <span class="op">=</span> <span class="dv">600</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="278" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 277;"><span id="cb5-278"><a href="#cb5-278"></a>d3 <span class="op">=</span> <span class="pp">require</span>(<span class="st">"https://d3js.org/d3.v5.min.js"</span>)</span>
+<span id="cb5-279"><a href="#cb5-279"></a>jStat <span class="op">=</span> <span class="pp">require</span>(<span class="st">"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js"</span>)</span>
+<span id="cb5-280"><a href="#cb5-280"></a></span>
+<span id="cb5-281"><a href="#cb5-281"></a>width <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb5-282"><a href="#cb5-282"></a>height <span class="op">=</span> <span class="dv">600</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-2-1" data-nodetype="declaration">
@@ -947,11 +945,11 @@ label {
 </div>
 <div class="n-label">
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="318" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 317;"><span id="cb6-318"><a href="#cb6-318"></a>viewof mu <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">value</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="fu">tex</span><span class="vs">`</span><span class="sc">\m</span><span class="vs">u = `</span>})</span>
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="316" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 315;"><span id="cb6-316"><a href="#cb6-316"></a>viewof mu <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">value</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="fu">tex</span><span class="vs">`</span><span class="sc">\m</span><span class="vs">u = `</span>})</span>
+<span id="cb6-317"><a href="#cb6-317"></a></span>
+<span id="cb6-318"><a href="#cb6-318"></a>viewof sigma <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">value</span><span class="op">:</span> <span class="dv">15</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="fu">tex</span><span class="vs">`</span><span class="sc">\s</span><span class="vs">igma = `</span>})</span>
 <span id="cb6-319"><a href="#cb6-319"></a></span>
-<span id="cb6-320"><a href="#cb6-320"></a>viewof sigma <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">number</span>({<span class="dt">value</span><span class="op">:</span> <span class="dv">15</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="fu">tex</span><span class="vs">`</span><span class="sc">\s</span><span class="vs">igma = `</span>})</span>
-<span id="cb6-321"><a href="#cb6-321"></a></span>
-<span id="cb6-322"><a href="#cb6-322"></a>viewof n <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">50</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="fu">tex</span><span class="vs">`n = `</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-320"><a href="#cb6-320"></a>viewof n <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">50</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="fu">tex</span><span class="vs">`n = `</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-3-1" data-nodetype="declaration">
@@ -975,7 +973,7 @@ label {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="328" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 327;"><span id="cb7-328"><a href="#cb7-328"></a><span class="fu">tex</span><span class="vs">`</span><span class="sc">\s</span><span class="vs">igma_M = </span><span class="sc">${</span>std_err<span class="op">.</span><span class="fu">toLocaleString</span>(<span class="kw">undefined</span><span class="op">,</span> {<span class="dt">maximumFractionDigits</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">minimumFractionDigits</span><span class="op">:</span> <span class="dv">2</span>})<span class="sc">}</span><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="326" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 325;"><span id="cb7-326"><a href="#cb7-326"></a><span class="fu">tex</span><span class="vs">`</span><span class="sc">\s</span><span class="vs">igma_M = </span><span class="sc">${</span>std_err<span class="op">.</span><span class="fu">toLocaleString</span>(<span class="kw">undefined</span><span class="op">,</span> {<span class="dt">maximumFractionDigits</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">minimumFractionDigits</span><span class="op">:</span> <span class="dv">2</span>})<span class="sc">}</span><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="expression">
 
@@ -984,35 +982,35 @@ label {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="336" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 335;"><span id="cb8-336"><a href="#cb8-336"></a>std_err <span class="op">=</span> sigma <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(n)</span>
+<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="334" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 333;"><span id="cb8-334"><a href="#cb8-334"></a>std_err <span class="op">=</span> sigma <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb8-335"><a href="#cb8-335"></a></span>
+<span id="cb8-336"><a href="#cb8-336"></a></span>
 <span id="cb8-337"><a href="#cb8-337"></a></span>
-<span id="cb8-338"><a href="#cb8-338"></a></span>
+<span id="cb8-338"><a href="#cb8-338"></a>max_std_err <span class="op">=</span> sigma <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">50</span>)</span>
 <span id="cb8-339"><a href="#cb8-339"></a></span>
-<span id="cb8-340"><a href="#cb8-340"></a>max_std_err <span class="op">=</span> sigma <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">50</span>)</span>
-<span id="cb8-341"><a href="#cb8-341"></a></span>
-<span id="cb8-342"><a href="#cb8-342"></a>population_curve <span class="op">=</span> {</span>
-<span id="cb8-343"><a href="#cb8-343"></a>  <span class="kw">var</span> values <span class="op">=</span> <span class="fu">jStat</span>(xlim[<span class="dv">0</span>]<span class="op">,</span> xlim[<span class="dv">1</span>]<span class="op">,</span> <span class="dv">210</span>)[<span class="dv">0</span>]<span class="op">,</span></span>
-<span id="cb8-344"><a href="#cb8-344"></a>      arr <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb8-345"><a href="#cb8-345"></a>  <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> values) {</span>
-<span id="cb8-346"><a href="#cb8-346"></a>    arr<span class="op">.</span><span class="fu">push</span>({</span>
-<span id="cb8-347"><a href="#cb8-347"></a>        <span class="dt">value</span><span class="op">:</span> values[i]<span class="op">,</span> </span>
-<span id="cb8-348"><a href="#cb8-348"></a>        <span class="dt">density</span><span class="op">:</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">pdf</span>(values[i]<span class="op">,</span> mu<span class="op">,</span> sigma)</span>
-<span id="cb8-349"><a href="#cb8-349"></a>      })</span>
-<span id="cb8-350"><a href="#cb8-350"></a>  }</span>
-<span id="cb8-351"><a href="#cb8-351"></a>  <span class="cf">return</span> arr<span class="op">;</span></span>
-<span id="cb8-352"><a href="#cb8-352"></a>}</span>
-<span id="cb8-353"><a href="#cb8-353"></a></span>
-<span id="cb8-354"><a href="#cb8-354"></a>curve <span class="op">=</span> {</span>
-<span id="cb8-355"><a href="#cb8-355"></a>  <span class="kw">var</span> values <span class="op">=</span> <span class="fu">jStat</span>(xlim[<span class="dv">0</span>]<span class="op">,</span> xlim[<span class="dv">1</span>]<span class="op">,</span> <span class="dv">210</span>)[<span class="dv">0</span>]<span class="op">,</span></span>
-<span id="cb8-356"><a href="#cb8-356"></a>      arr <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb8-357"><a href="#cb8-357"></a>  <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> values) {</span>
-<span id="cb8-358"><a href="#cb8-358"></a>    arr<span class="op">.</span><span class="fu">push</span>({</span>
-<span id="cb8-359"><a href="#cb8-359"></a>        <span class="dt">value</span><span class="op">:</span> values[i]<span class="op">,</span> </span>
-<span id="cb8-360"><a href="#cb8-360"></a>        <span class="dt">density</span><span class="op">:</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">pdf</span>(values[i]<span class="op">,</span> mu<span class="op">,</span> std_err)</span>
-<span id="cb8-361"><a href="#cb8-361"></a>      })</span>
-<span id="cb8-362"><a href="#cb8-362"></a>  }</span>
-<span id="cb8-363"><a href="#cb8-363"></a>  <span class="cf">return</span> arr<span class="op">;</span></span>
-<span id="cb8-364"><a href="#cb8-364"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-340"><a href="#cb8-340"></a>population_curve <span class="op">=</span> {</span>
+<span id="cb8-341"><a href="#cb8-341"></a>  <span class="kw">var</span> values <span class="op">=</span> <span class="fu">jStat</span>(xlim[<span class="dv">0</span>]<span class="op">,</span> xlim[<span class="dv">1</span>]<span class="op">,</span> <span class="dv">210</span>)[<span class="dv">0</span>]<span class="op">,</span></span>
+<span id="cb8-342"><a href="#cb8-342"></a>      arr <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb8-343"><a href="#cb8-343"></a>  <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> values) {</span>
+<span id="cb8-344"><a href="#cb8-344"></a>    arr<span class="op">.</span><span class="fu">push</span>({</span>
+<span id="cb8-345"><a href="#cb8-345"></a>        <span class="dt">value</span><span class="op">:</span> values[i]<span class="op">,</span> </span>
+<span id="cb8-346"><a href="#cb8-346"></a>        <span class="dt">density</span><span class="op">:</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">pdf</span>(values[i]<span class="op">,</span> mu<span class="op">,</span> sigma)</span>
+<span id="cb8-347"><a href="#cb8-347"></a>      })</span>
+<span id="cb8-348"><a href="#cb8-348"></a>  }</span>
+<span id="cb8-349"><a href="#cb8-349"></a>  <span class="cf">return</span> arr<span class="op">;</span></span>
+<span id="cb8-350"><a href="#cb8-350"></a>}</span>
+<span id="cb8-351"><a href="#cb8-351"></a></span>
+<span id="cb8-352"><a href="#cb8-352"></a>curve <span class="op">=</span> {</span>
+<span id="cb8-353"><a href="#cb8-353"></a>  <span class="kw">var</span> values <span class="op">=</span> <span class="fu">jStat</span>(xlim[<span class="dv">0</span>]<span class="op">,</span> xlim[<span class="dv">1</span>]<span class="op">,</span> <span class="dv">210</span>)[<span class="dv">0</span>]<span class="op">,</span></span>
+<span id="cb8-354"><a href="#cb8-354"></a>      arr <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb8-355"><a href="#cb8-355"></a>  <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> values) {</span>
+<span id="cb8-356"><a href="#cb8-356"></a>    arr<span class="op">.</span><span class="fu">push</span>({</span>
+<span id="cb8-357"><a href="#cb8-357"></a>        <span class="dt">value</span><span class="op">:</span> values[i]<span class="op">,</span> </span>
+<span id="cb8-358"><a href="#cb8-358"></a>        <span class="dt">density</span><span class="op">:</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">pdf</span>(values[i]<span class="op">,</span> mu<span class="op">,</span> std_err)</span>
+<span id="cb8-359"><a href="#cb8-359"></a>      })</span>
+<span id="cb8-360"><a href="#cb8-360"></a>  }</span>
+<span id="cb8-361"><a href="#cb8-361"></a>  <span class="cf">return</span> arr<span class="op">;</span></span>
+<span id="cb8-362"><a href="#cb8-362"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-5-1" data-nodetype="declaration">
@@ -1043,37 +1041,37 @@ label {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="370" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 369;"><span id="cb9-370"><a href="#cb9-370"></a>chart <span class="op">=</span> {</span>
-<span id="cb9-371"><a href="#cb9-371"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(DOM<span class="op">.</span><span class="fu">svg</span>(width<span class="op">,</span> height))<span class="op">;</span></span>
-<span id="cb9-372"><a href="#cb9-372"></a></span>
-<span id="cb9-373"><a href="#cb9-373"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb9-374"><a href="#cb9-374"></a>      <span class="op">.</span><span class="fu">call</span>(xAxis)</span>
-<span id="cb9-375"><a href="#cb9-375"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(0,</span><span class="sc">${</span><span class="fu">y</span>(<span class="dv">0</span>)<span class="sc">}</span><span class="vs">)`</span>)</span>
-<span id="cb9-376"><a href="#cb9-376"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"axis"</span>)</span>
-<span id="cb9-377"><a href="#cb9-377"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"0.5em"</span>)<span class="op">;</span></span>
-<span id="cb9-378"><a href="#cb9-378"></a></span>
-<span id="cb9-379"><a href="#cb9-379"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
-<span id="cb9-380"><a href="#cb9-380"></a>      <span class="op">.</span><span class="fu">datum</span>(population_curve)</span>
-<span id="cb9-381"><a href="#cb9-381"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
-<span id="cb9-382"><a href="#cb9-382"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)</span>
-<span id="cb9-383"><a href="#cb9-383"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"opacity"</span><span class="op">,</span> <span class="fl">0.5</span>)</span>
-<span id="cb9-384"><a href="#cb9-384"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="fl">1.5</span>)</span>
-<span id="cb9-385"><a href="#cb9-385"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dasharray"</span><span class="op">,</span> [<span class="dv">10</span><span class="op">,</span> <span class="dv">10</span>])</span>
-<span id="cb9-386"><a href="#cb9-386"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> line)</span>
-<span id="cb9-387"><a href="#cb9-387"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)<span class="op">;</span></span>
-<span id="cb9-388"><a href="#cb9-388"></a>      </span>
-<span id="cb9-389"><a href="#cb9-389"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
-<span id="cb9-390"><a href="#cb9-390"></a>      <span class="op">.</span><span class="fu">datum</span>(curve)</span>
-<span id="cb9-391"><a href="#cb9-391"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
-<span id="cb9-392"><a href="#cb9-392"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)</span>
-<span id="cb9-393"><a href="#cb9-393"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">4</span>)</span>
-<span id="cb9-394"><a href="#cb9-394"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-linejoin"</span><span class="op">,</span> <span class="st">"round"</span>)</span>
-<span id="cb9-395"><a href="#cb9-395"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-linecap"</span><span class="op">,</span> <span class="st">"round"</span>)</span>
-<span id="cb9-396"><a href="#cb9-396"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> line)</span>
-<span id="cb9-397"><a href="#cb9-397"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)<span class="op">;</span></span>
-<span id="cb9-398"><a href="#cb9-398"></a>      </span>
-<span id="cb9-399"><a href="#cb9-399"></a>  <span class="cf">return</span> svg<span class="op">.</span><span class="fu">node</span>()<span class="op">;</span></span>
-<span id="cb9-400"><a href="#cb9-400"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="368" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 367;"><span id="cb9-368"><a href="#cb9-368"></a>chart <span class="op">=</span> {</span>
+<span id="cb9-369"><a href="#cb9-369"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(DOM<span class="op">.</span><span class="fu">svg</span>(width<span class="op">,</span> height))<span class="op">;</span></span>
+<span id="cb9-370"><a href="#cb9-370"></a></span>
+<span id="cb9-371"><a href="#cb9-371"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb9-372"><a href="#cb9-372"></a>      <span class="op">.</span><span class="fu">call</span>(xAxis)</span>
+<span id="cb9-373"><a href="#cb9-373"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(0,</span><span class="sc">${</span><span class="fu">y</span>(<span class="dv">0</span>)<span class="sc">}</span><span class="vs">)`</span>)</span>
+<span id="cb9-374"><a href="#cb9-374"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"axis"</span>)</span>
+<span id="cb9-375"><a href="#cb9-375"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"0.5em"</span>)<span class="op">;</span></span>
+<span id="cb9-376"><a href="#cb9-376"></a></span>
+<span id="cb9-377"><a href="#cb9-377"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
+<span id="cb9-378"><a href="#cb9-378"></a>      <span class="op">.</span><span class="fu">datum</span>(population_curve)</span>
+<span id="cb9-379"><a href="#cb9-379"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
+<span id="cb9-380"><a href="#cb9-380"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)</span>
+<span id="cb9-381"><a href="#cb9-381"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"opacity"</span><span class="op">,</span> <span class="fl">0.5</span>)</span>
+<span id="cb9-382"><a href="#cb9-382"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="fl">1.5</span>)</span>
+<span id="cb9-383"><a href="#cb9-383"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dasharray"</span><span class="op">,</span> [<span class="dv">10</span><span class="op">,</span> <span class="dv">10</span>])</span>
+<span id="cb9-384"><a href="#cb9-384"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> line)</span>
+<span id="cb9-385"><a href="#cb9-385"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)<span class="op">;</span></span>
+<span id="cb9-386"><a href="#cb9-386"></a>      </span>
+<span id="cb9-387"><a href="#cb9-387"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
+<span id="cb9-388"><a href="#cb9-388"></a>      <span class="op">.</span><span class="fu">datum</span>(curve)</span>
+<span id="cb9-389"><a href="#cb9-389"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
+<span id="cb9-390"><a href="#cb9-390"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)</span>
+<span id="cb9-391"><a href="#cb9-391"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">4</span>)</span>
+<span id="cb9-392"><a href="#cb9-392"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-linejoin"</span><span class="op">,</span> <span class="st">"round"</span>)</span>
+<span id="cb9-393"><a href="#cb9-393"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-linecap"</span><span class="op">,</span> <span class="st">"round"</span>)</span>
+<span id="cb9-394"><a href="#cb9-394"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> line)</span>
+<span id="cb9-395"><a href="#cb9-395"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)<span class="op">;</span></span>
+<span id="cb9-396"><a href="#cb9-396"></a>      </span>
+<span id="cb9-397"><a href="#cb9-397"></a>  <span class="cf">return</span> svg<span class="op">.</span><span class="fu">node</span>()<span class="op">;</span></span>
+<span id="cb9-398"><a href="#cb9-398"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-6" data-nodetype="declaration">
 
@@ -1081,24 +1079,24 @@ label {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="410" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 409;"><span id="cb10-410"><a href="#cb10-410"></a>margin <span class="op">=</span> ({<span class="dt">top</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">right</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">bottom</span><span class="op">:</span> <span class="dv">30</span><span class="op">,</span> <span class="dt">left</span><span class="op">:</span> <span class="dv">0</span>})</span>
+<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="408" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 407;"><span id="cb10-408"><a href="#cb10-408"></a>margin <span class="op">=</span> ({<span class="dt">top</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">right</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">bottom</span><span class="op">:</span> <span class="dv">30</span><span class="op">,</span> <span class="dt">left</span><span class="op">:</span> <span class="dv">0</span>})</span>
+<span id="cb10-409"><a href="#cb10-409"></a></span>
+<span id="cb10-410"><a href="#cb10-410"></a>xlim <span class="op">=</span> [mu <span class="op">-</span> <span class="dv">3</span> <span class="op">*</span> sigma<span class="op">,</span> mu <span class="op">+</span> <span class="dv">3</span> <span class="op">*</span> sigma]</span>
 <span id="cb10-411"><a href="#cb10-411"></a></span>
-<span id="cb10-412"><a href="#cb10-412"></a>xlim <span class="op">=</span> [mu <span class="op">-</span> <span class="dv">3</span> <span class="op">*</span> sigma<span class="op">,</span> mu <span class="op">+</span> <span class="dv">3</span> <span class="op">*</span> sigma]</span>
-<span id="cb10-413"><a href="#cb10-413"></a></span>
-<span id="cb10-414"><a href="#cb10-414"></a>line <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()</span>
-<span id="cb10-415"><a href="#cb10-415"></a>    <span class="op">.</span><span class="fu">x</span>(d <span class="kw">=&gt;</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">value</span>))</span>
-<span id="cb10-416"><a href="#cb10-416"></a>    <span class="op">.</span><span class="fu">y</span>(d <span class="kw">=&gt;</span> <span class="fu">y</span>(d<span class="op">.</span><span class="at">density</span>))</span>
-<span id="cb10-417"><a href="#cb10-417"></a></span>
-<span id="cb10-418"><a href="#cb10-418"></a>x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb10-419"><a href="#cb10-419"></a>  <span class="op">.</span><span class="fu">domain</span>([xlim[<span class="dv">0</span>]<span class="op">,</span> xlim[<span class="dv">1</span>]])</span>
-<span id="cb10-420"><a href="#cb10-420"></a>  <span class="op">.</span><span class="fu">range</span>([margin<span class="op">.</span><span class="at">left</span><span class="op">,</span> width <span class="op">-</span> margin<span class="op">.</span><span class="at">right</span>])</span>
-<span id="cb10-421"><a href="#cb10-421"></a></span>
-<span id="cb10-422"><a href="#cb10-422"></a></span>
-<span id="cb10-423"><a href="#cb10-423"></a>y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb10-424"><a href="#cb10-424"></a>  <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">pdf</span>(mu<span class="op">,</span> mu<span class="op">,</span> max_std_err)])</span>
-<span id="cb10-425"><a href="#cb10-425"></a>  <span class="op">.</span><span class="fu">range</span>([height <span class="op">-</span> margin<span class="op">.</span><span class="at">bottom</span><span class="op">,</span> margin<span class="op">.</span><span class="at">top</span>])</span>
-<span id="cb10-426"><a href="#cb10-426"></a>  </span>
-<span id="cb10-427"><a href="#cb10-427"></a>xAxis <span class="op">=</span> d3<span class="op">.</span><span class="fu">axisBottom</span>(x)<span class="op">.</span><span class="fu">ticks</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-412"><a href="#cb10-412"></a>line <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()</span>
+<span id="cb10-413"><a href="#cb10-413"></a>    <span class="op">.</span><span class="fu">x</span>(d <span class="kw">=&gt;</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">value</span>))</span>
+<span id="cb10-414"><a href="#cb10-414"></a>    <span class="op">.</span><span class="fu">y</span>(d <span class="kw">=&gt;</span> <span class="fu">y</span>(d<span class="op">.</span><span class="at">density</span>))</span>
+<span id="cb10-415"><a href="#cb10-415"></a></span>
+<span id="cb10-416"><a href="#cb10-416"></a>x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb10-417"><a href="#cb10-417"></a>  <span class="op">.</span><span class="fu">domain</span>([xlim[<span class="dv">0</span>]<span class="op">,</span> xlim[<span class="dv">1</span>]])</span>
+<span id="cb10-418"><a href="#cb10-418"></a>  <span class="op">.</span><span class="fu">range</span>([margin<span class="op">.</span><span class="at">left</span><span class="op">,</span> width <span class="op">-</span> margin<span class="op">.</span><span class="at">right</span>])</span>
+<span id="cb10-419"><a href="#cb10-419"></a></span>
+<span id="cb10-420"><a href="#cb10-420"></a></span>
+<span id="cb10-421"><a href="#cb10-421"></a>y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb10-422"><a href="#cb10-422"></a>  <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">pdf</span>(mu<span class="op">,</span> mu<span class="op">,</span> max_std_err)])</span>
+<span id="cb10-423"><a href="#cb10-423"></a>  <span class="op">.</span><span class="fu">range</span>([height <span class="op">-</span> margin<span class="op">.</span><span class="at">bottom</span><span class="op">,</span> margin<span class="op">.</span><span class="at">top</span>])</span>
+<span id="cb10-424"><a href="#cb10-424"></a>  </span>
+<span id="cb10-425"><a href="#cb10-425"></a>xAxis <span class="op">=</span> d3<span class="op">.</span><span class="fu">axisBottom</span>(x)<span class="op">.</span><span class="fu">ticks</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-7-1" data-nodetype="declaration">
@@ -1304,38 +1302,38 @@ label {
 
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="578" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 577;"><span id="cb11-578"><a href="#cb11-578"></a>w <span class="op">=</span> <span class="dv">1050</span></span>
-<span id="cb11-579"><a href="#cb11-579"></a>h <span class="op">=</span> <span class="dv">500</span></span>
-<span id="cb11-580"><a href="#cb11-580"></a></span>
-<span id="cb11-581"><a href="#cb11-581"></a>xScale <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb11-582"><a href="#cb11-582"></a>  <span class="op">.</span><span class="fu">domain</span>([<span class="dv">25</span><span class="op">,</span> <span class="dv">175</span>])</span>
-<span id="cb11-583"><a href="#cb11-583"></a>  <span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> w])</span>
-<span id="cb11-584"><a href="#cb11-584"></a>yScale <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb11-585"><a href="#cb11-585"></a>  <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">70</span>])</span>
-<span id="cb11-586"><a href="#cb11-586"></a>  <span class="op">.</span><span class="fu">range</span>([h<span class="op">,</span> <span class="dv">0</span>])</span>
+<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="576" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 575;"><span id="cb11-576"><a href="#cb11-576"></a>w <span class="op">=</span> <span class="dv">1050</span></span>
+<span id="cb11-577"><a href="#cb11-577"></a>h <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb11-578"><a href="#cb11-578"></a></span>
+<span id="cb11-579"><a href="#cb11-579"></a>xScale <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb11-580"><a href="#cb11-580"></a>  <span class="op">.</span><span class="fu">domain</span>([<span class="dv">25</span><span class="op">,</span> <span class="dv">175</span>])</span>
+<span id="cb11-581"><a href="#cb11-581"></a>  <span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> w])</span>
+<span id="cb11-582"><a href="#cb11-582"></a>yScale <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb11-583"><a href="#cb11-583"></a>  <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">70</span>])</span>
+<span id="cb11-584"><a href="#cb11-584"></a>  <span class="op">.</span><span class="fu">range</span>([h<span class="op">,</span> <span class="dv">0</span>])</span>
+<span id="cb11-585"><a href="#cb11-585"></a></span>
+<span id="cb11-586"><a href="#cb11-586"></a>cover <span class="op">=</span> {</span>
 <span id="cb11-587"><a href="#cb11-587"></a></span>
-<span id="cb11-588"><a href="#cb11-588"></a>cover <span class="op">=</span> {</span>
-<span id="cb11-589"><a href="#cb11-589"></a></span>
-<span id="cb11-590"><a href="#cb11-590"></a><span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#cover-container"</span>)</span>
-<span id="cb11-591"><a href="#cb11-591"></a>  <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)</span>
-<span id="cb11-592"><a href="#cb11-592"></a>  <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
-<span id="cb11-593"><a href="#cb11-593"></a></span>
-<span id="cb11-594"><a href="#cb11-594"></a>svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"rect"</span>)</span>
-<span id="cb11-595"><a href="#cb11-595"></a>  <span class="op">.</span><span class="fu">data</span>(data)</span>
-<span id="cb11-596"><a href="#cb11-596"></a>  <span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb11-597"><a href="#cb11-597"></a>  <span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
-<span id="cb11-598"><a href="#cb11-598"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)</span>
-<span id="cb11-599"><a href="#cb11-599"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">xScale</span>(d<span class="op">.</span><span class="at">xValue</span>))</span>
-<span id="cb11-600"><a href="#cb11-600"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">yScale</span>(d<span class="op">.</span><span class="at">y_cum</span>))</span>
-<span id="cb11-601"><a href="#cb11-601"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> <span class="dv">5</span>)</span>
-<span id="cb11-602"><a href="#cb11-602"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span><span class="dv">5</span>)</span>
-<span id="cb11-603"><a href="#cb11-603"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"black"</span>)</span>
-<span id="cb11-604"><a href="#cb11-604"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
-<span id="cb11-605"><a href="#cb11-605"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"opacity"</span><span class="op">,</span> <span class="dv">0</span>)</span>
-<span id="cb11-606"><a href="#cb11-606"></a>    <span class="op">.</span><span class="fu">transition</span>()<span class="op">.</span><span class="fu">duration</span>(<span class="dv">0</span>)<span class="op">.</span><span class="fu">delay</span>((d<span class="op">,</span>i) <span class="kw">=&gt;</span> i<span class="op">*</span><span class="dv">2</span>)</span>
-<span id="cb11-607"><a href="#cb11-607"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"opacity"</span><span class="op">,</span> <span class="dv">1</span>)</span>
-<span id="cb11-608"><a href="#cb11-608"></a></span>
-<span id="cb11-609"><a href="#cb11-609"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-588"><a href="#cb11-588"></a><span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#cover-container"</span>)</span>
+<span id="cb11-589"><a href="#cb11-589"></a>  <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)</span>
+<span id="cb11-590"><a href="#cb11-590"></a>  <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
+<span id="cb11-591"><a href="#cb11-591"></a></span>
+<span id="cb11-592"><a href="#cb11-592"></a>svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"rect"</span>)</span>
+<span id="cb11-593"><a href="#cb11-593"></a>  <span class="op">.</span><span class="fu">data</span>(data)</span>
+<span id="cb11-594"><a href="#cb11-594"></a>  <span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb11-595"><a href="#cb11-595"></a>  <span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
+<span id="cb11-596"><a href="#cb11-596"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)</span>
+<span id="cb11-597"><a href="#cb11-597"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">xScale</span>(d<span class="op">.</span><span class="at">xValue</span>))</span>
+<span id="cb11-598"><a href="#cb11-598"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">yScale</span>(d<span class="op">.</span><span class="at">y_cum</span>))</span>
+<span id="cb11-599"><a href="#cb11-599"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> <span class="dv">5</span>)</span>
+<span id="cb11-600"><a href="#cb11-600"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span><span class="dv">5</span>)</span>
+<span id="cb11-601"><a href="#cb11-601"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"black"</span>)</span>
+<span id="cb11-602"><a href="#cb11-602"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
+<span id="cb11-603"><a href="#cb11-603"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"opacity"</span><span class="op">,</span> <span class="dv">0</span>)</span>
+<span id="cb11-604"><a href="#cb11-604"></a>    <span class="op">.</span><span class="fu">transition</span>()<span class="op">.</span><span class="fu">duration</span>(<span class="dv">0</span>)<span class="op">.</span><span class="fu">delay</span>((d<span class="op">,</span>i) <span class="kw">=&gt;</span> i<span class="op">*</span><span class="dv">2</span>)</span>
+<span id="cb11-605"><a href="#cb11-605"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"opacity"</span><span class="op">,</span> <span class="dv">1</span>)</span>
+<span id="cb11-606"><a href="#cb11-606"></a></span>
+<span id="cb11-607"><a href="#cb11-607"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-8-1" data-nodetype="declaration">

@@ -47,12 +47,10 @@ ggsave(here::here("slides", "media", "stick-sampling-distribution.svg"),
 
 ## import
 
-::: {.column width=50%}
 ```{ojs}
 import { pop } from "./02_variables.qmd";
 pop
 ```
-:::
 
 # Overview
 
