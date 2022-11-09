@@ -515,12 +515,13 @@ pop = {
   var sampleData = [];
   
   const svg = d3.select("#sample-inference-container")
-  .append("svg").attr("width", width).attr("height", height)
+    .append("svg").attr("width", width).attr("height", height)
   
   const sample = svg.append("g").attr("id", "sample-circles")
   const circles = svg.append("g").attr("id", "pop-circles")
   
-  const arrowPoints = [[-5,5],[5,5],[0,-5]]
+  const arrowData = [{id: -1, points: [[-10,-10],[10,-10],[0,10]]},
+                     {id: 1,  points: [[-10,10],[10,10],[0,-10]]}]
   
   let path = {
     x: (width*0.5 + xmax*.5 + r),
@@ -554,7 +555,18 @@ pop = {
         .duration(700)
         .delay(function(d, i) {return i * 50})
         .attr("cy", sample_y);
+        
+    paths.select("#sample-path")
+      .attr("stroke-dasharray", len + " " + len).attr("stroke-dashoffset", len)
+      .transition().duration(900).attr("stroke-dashoffset", 0)
+  }
   
+  function animateArrow() {
+    arrows.select("#arrow0")
+      .transition().duration(200)
+      .attr("transform", d => "translate(" + (width/2 + 315*d.id) + " ," + (path.cy+margin.top+ymax*0.5 - 10) +") scale(2.5)")
+      .transition().duration(300)
+      .attr("transform", d => "translate(" + (width/2 + 315*d.id) + " ," + (path.cy+margin.top+ymax*0.5 - 10) +") scale(1.5)")
   }
   
   const paths = svg.append("g").attr("id", "paths")
@@ -566,7 +578,8 @@ pop = {
                         .attr("text-anchor", "middle")
                         .attr("dy", "1em")
                         .attr("class", "invertable");
-                        
+  
+  const arrows = svg.append("g")         
   
   circles.selectAll("circle")
     .data(data)
@@ -589,28 +602,32 @@ pop = {
     .on("mouseover", function(d){d3.select(this).style("fill-opacity", 0.1)})
     .on("mouseout", function(d){d3.select(this).style("fill-opacity", 0.9)})
     
+  
     
   paths.append("path").attr("id", "inference-path")
     .attr("d", "M" + path.x + " " + path.y + " q200 " + path.cy + " 0 " + (height - r - path.y))
     .attr("stroke-dasharray", [5, 5])
     
+  
   paths.append("path").attr("id", "sample-path")
     .attr("d", "M" + (path.x - xmax - 2*r) + " " + path.y + " q-200," + path.cy + " 0 " + (height - r - path.y))
     
-    
+  var len = paths.select("#sample-path").node().getTotalLength();
 
-  
-  svg.append("polygon").attr("id", "down-arrow")
-    .attr("points", [[0,0],[10,0],[5,10]])
-    .attr("transform", "translate(200," + (path.cy+margin.top+ymax*0.5 - 10) +") scale(2)")
-    .attr("class", "invertable")
+  arrows.selectAll("polygon")
+    .data(arrowData)
+    .enter().append("polygon")
+      .attr("points", d => d.points)
+      .attr("id", function(d,i){return "arrow" + i})
+      .attr("class", "invertable")
+      .style("fill", "black")
+      .attr("transform", d => "translate(" + (width/2 + 315*d.id) + " ," + (path.cy+margin.top+ymax*0.5 - 10) +") scale(1.5)")
+      
+  svg.select("#arrow0")
+    .on("mouseover", animateArrow)
     .on("click", drawNewSample)
-    
-  svg.append("polygon").attr("id", "up-arrow")
-    .attr("points", [[0,0],[10,0],[5,10]])
-    .attr("transform", "translate(850," + (path.cy+margin.top+ymax*0.5 + 10) +") scale(2) rotate(180)")
-    .attr("class", "invertable");
-    
+  
+
   labels.append("text").attr("id", "population-label")
     .text("POPULATION")
     .attr("x", width/2)

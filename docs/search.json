@@ -620,7 +620,7 @@
     "href": "slides/06_z-scores.html#peter-parker",
     "title": "BC1101",
     "section": "Peter Parker",
-    "text": "Peter Parker\n\n\n\n\nPeter Parker \\(RT = 159ms\\)\n\nImpressive?\nDepends on population characteristics\n\n\n\n\n\n\n\n\\(z = \\dfrac{159 - 284}{50} = -2.5\\)"
+    "text": "Peter Parker\n\n\n\n\nPeter Parker \\(RT = 159ms\\)\n\nImpressive?\nDepends on population characteristics\n\n\n\n\n\n\n\n\\(\\begin{align} z & = \\dfrac{X - \\mu}{\\sigma} \\\\ & = \\dfrac{159 - 284}{50} = -2.5 \\end{align}\\)"
   },
   {
     "objectID": "slides/06_z-scores.html#cbt-for-ocd",

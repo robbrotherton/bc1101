@@ -20,9 +20,9 @@ format: revealjs
 
 Comparing hand spans
 
-<goo.gl/p8Y61u>
+[goo.gl/p8Y61u](goo.gl/p8Y61u)
 
-![](media/6-hand.png)
+![](media/hand.svg){.invertable}
 
 ## $z$-score calculation
 
@@ -290,7 +290,8 @@ rt$z <- (rt$x  -rt$m) / rt$sd
 
 ![](media/spiderman-dist.svg){.invertable}
 
-$z = \dfrac{`r rt$x` - `r rt$m`}{`r rt$sd`} = `r rt$z`$
+$\begin{align} z & = \dfrac{X - \mu}{\sigma} \\
+& = \dfrac{`r rt$x` - `r rt$m`}{`r rt$sd`} = `r rt$z` \end{align}$
 
 :::
 ::::
@@ -487,12 +488,12 @@ ggplot2::ggsave(here::here("slides", "media", "z-distribution.svg"),
 ```{r}
 #| eval: false
 
-bc1101tools::plot_distribution(xlab = "geniustest.com", args = list(mean = 70, sd = 5), segments = seq(55, 85, 5), linetype = 2, arrow = genius$x) + bc1101tools::theme_xonly(yline = TRUE) +
+bc1101tools::plot_distribution(xlab = "geniustest.com", args = list(mean = 70, sd = 5), segments = seq(55, 85, 5), linetype = 2, arrow = genius$x, arrow_y = .04) + bc1101tools::theme_xonly(yline = TRUE) +
   ggplot2::theme(plot.margin = ggplot2::margin(b = 3))
 
 ggplot2::ggsave(here::here("slides", "media", "iq-dist-1.svg"), width = 3, height = 2)
 
-bc1101tools::plot_distribution(xlab = "mensa.lu", args = list(mean = 20, sd = 10), segments = seq(-10, 50, 10), linetype = 2, arrow = mensa$x) + bc1101tools::theme_xonly(yline = TRUE) +
+bc1101tools::plot_distribution(xlab = "mensa.lu", args = list(mean = 20, sd = 10), segments = seq(-10, 50, 10), linetype = 2, arrow = mensa$x, arrow_y = .02) + bc1101tools::theme_xonly(yline = TRUE) +
   ggplot2::theme(plot.margin = ggplot2::margin(b = 3)) +
   ggplot2::geom_segment(ggplot2::aes(x = 40, xend = 40, y = dnorm(40, 20, 10)*3, yend = 0), arrow = ggplot2::arrow(type = "closed"), color = "red")
 
@@ -598,7 +599,7 @@ ggplot2::ggsave(here::here("slides", "media", "cbt-dist.svg"),
 ```{ojs}
 stopwatch = {
   const w = 200
-  const h = 200
+  const h = 215
   
   const svg = d3.select("#stopwatch-container")
     .append("svg").attr("width", w).attr("height", h)
@@ -606,12 +607,12 @@ stopwatch = {
   svg.append("circle")
     .attr("r", w/2)
     .attr("fill", "lightblue")
-    .attr("transform", "translate(100, 100)")
+    .attr("transform", "translate(100, 110)")
     
   svg.append("circle")
     .attr("r", 10)
     .attr("fill", "white")
-    .attr("transform", "translate(100, 100)")
+    .attr("transform", "translate(100, 110)")
     
   svg.append("rect")
     .attr("rx", 5)
@@ -619,19 +620,19 @@ stopwatch = {
     .attr("width", 30)
     .attr("height", 10)
     .attr("fill", "lightblue")
-    .attr("transform", "translate(175, 15) rotate(45)")
+    .attr("transform", "translate(85, 0)")
     
   const hand = svg.append("line")
     .attr("y1", 15)
     .attr("y2", -85)
     .attr("stroke", "white")
     .attr("stroke-width", 5)
-    .attr("transform", "translate(100, 100)")
+    .attr("transform", "translate(100, 110)")
     
   function rotateHand() {
     var i = d3.interpolate(0, 360);
       return function(t) {
-        return "translate(100, 100) rotate(" + i(t) + ")";
+        return "translate(100, 110) rotate(" + i(t) + ")";
       }
   }
   
