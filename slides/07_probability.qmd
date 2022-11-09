@@ -488,28 +488,35 @@ table_selection = {
   var num = 0
   
   function getNumberFromTable() {
-  
-  try {
-    num = d3.select(this).select("td")._groups[0][0].innerHTML;
-  } catch {} finally {update();}
+    try {
+      num = d3.select(this).select("td")._groups[0][0].innerHTML;
+    } catch {} finally {update();}
   }
   
   d3.select("#tbl").selectAll("tr").on("mouseover", getNumberFromTable)
   
   const w = 500
   const h = 400
+  
+  const margins = {t: 50, r: 10, b: 50, l: 10}
+  
   const x = d3.scaleLinear()
     .domain([-3,3])
-    .range([0,w])
+    .range([margins.l,w-margins.r])
   const y = d3.scaleLinear()
     .domain([0,0.41])
-    .range([h,0])
+    .range([h-margins.b,margins.t])
   const line = d3.line()
     .x(d => x(d.value))
     .y(d => y(d.density))
+  const axis = d3.axisBottom(x)
   
   const svg = d3.select("#z-container")
     .append("svg").attr("width", w).attr("height", h)
+  
+  svg.append("g")
+    .call(axis)
+    .attr("transform", "translate(0," + y(0) +")")
   
   svg.append("path").attr("d", line(curve))
     .style("stroke", "black").style("fill", "none")
