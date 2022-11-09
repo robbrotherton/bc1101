@@ -732,21 +732,21 @@
     "href": "slides/08_sampling.html#sampling-error-1",
     "title": "BC1101",
     "section": "Sampling error",
-    "text": "Sampling error\n\n\n\nDiscrepancy between a sample statistic and the population parameter\n\nE.g. Opinion polling\nsee Pew explainer"
+    "text": "Sampling error\n\n\n\n\nError: Discrepancy between a sample statistic and the population parameter\n\n\nimport { pop } from \"./02_variables.qmd\";"
   },
   {
     "objectID": "slides/08_sampling.html#sampling-error-2",
     "href": "slides/08_sampling.html#sampling-error-2",
     "title": "BC1101",
     "section": "Sampling error",
-    "text": "Sampling error"
+    "text": "Sampling error\n\n\n\nDiscrepancy between a sample statistic and the population parameter\n\nE.g. Opinion polling\nsee Pew explainer"
   },
   {
     "objectID": "slides/08_sampling.html#sampling-error-3",
     "href": "slides/08_sampling.html#sampling-error-3",
     "title": "BC1101",
     "section": "Sampling error",
-    "text": "Sampling error\n\n\n\n\n\n\n\n\n\n\nSample 1: 107 107 87 88 95 80 79 126 96 80    Mean = 94.5\n\n\nSample 2: 99 82 112 93 107 115 107 106 126 84    Mean = 103.1\n\n\nSample 3: 120 91 124 83 78 111 76 105 111 72    Mean = 97.1"
+    "text": "Sampling error"
   },
   {
     "objectID": "slides/08_sampling.html#characteristics",
@@ -1356,5 +1356,12 @@
     "title": "BC1101",
     "section": "Unit Normal Table",
     "text": "Unit Normal Table\n\n\n\n\n\n\n \n  \n    \\(z\\) \n    Proportion in body \n    Proportion in tail \n    Proportion between \\(M\\) and \\(z\\) \n  \n \n\n  \n    0.0 \n    0.5000 \n    0.5000 \n    0.0000 \n  \n  \n    0.1 \n    0.5398 \n    0.4602 \n    0.0398 \n  \n  \n    0.2 \n    0.5793 \n    0.4207 \n    0.0793 \n  \n  \n    0.3 \n    0.6179 \n    0.3821 \n    0.1179 \n  \n  \n    0.4 \n    0.6554 \n    0.3446 \n    0.1554 \n  \n  \n    0.5 \n    0.6915 \n    0.3085 \n    0.1915 \n  \n  \n    0.6 \n    0.7257 \n    0.2743 \n    0.2257 \n  \n  \n    0.7 \n    0.7580 \n    0.2420 \n    0.2580 \n  \n  \n    0.8 \n    0.7881 \n    0.2119 \n    0.2881 \n  \n  \n    0.9 \n    0.8159 \n    0.1841 \n    0.3159 \n  \n  \n    1.0 \n    0.8413 \n    0.1587 \n    0.3413 \n  \n  \n    1.1 \n    0.8643 \n    0.1357 \n    0.3643 \n  \n  \n    1.2 \n    0.8849 \n    0.1151 \n    0.3849 \n  \n  \n    1.3 \n    0.9032 \n    0.0968 \n    0.4032 \n  \n  \n    1.4 \n    0.9192 \n    0.0808 \n    0.4192 \n  \n  \n    1.5 \n    0.9332 \n    0.0668 \n    0.4332 \n  \n  \n    1.6 \n    0.9452 \n    0.0548 \n    0.4452 \n  \n  \n    1.7 \n    0.9554 \n    0.0446 \n    0.4554 \n  \n  \n    1.8 \n    0.9641 \n    0.0359 \n    0.4641 \n  \n  \n    1.9 \n    0.9713 \n    0.0287 \n    0.4713 \n  \n  \n    2.0 \n    0.9772 \n    0.0228 \n    0.4772"
+  },
+  {
+    "objectID": "slides/08_sampling.html#sampling-error-4",
+    "href": "slides/08_sampling.html#sampling-error-4",
+    "title": "BC1101",
+    "section": "Sampling error",
+    "text": "Sampling error\n\n\n\n\n\n\n\n\n\n\nSample 1: 107 107 87 88 95 80 79 126 96 80    Mean = 94.5\n\n\nSample 2: 99 82 112 93 107 115 107 106 126 84    Mean = 103.1\n\n\nSample 3: 120 91 124 83 78 111 76 105 111 72    Mean = 97.1"
   }
 ]
