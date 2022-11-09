@@ -243,12 +243,12 @@ ggplot2::ggsave(here::here("slides", "media", "prob-histogram.svg"),
 
 :::: {.columns}
 
-::: {.column width="60%"}
+::: {.column width="70%"}
 ![](media/prob-histogram.svg){.invertable width=100%}
 :::
 
-::: {.column width="40%"}
-::: {.center-element}
+::: {.column width="30%"}
+::: {.center-element style="margin-left: -8em; margin-top: 2em;"}
 $p(X = 1) = 4/10 = `r 4/10`$
 
 $p(X \ge 4) = 3/10 = `r round(3/10, 2)`$
@@ -305,10 +305,33 @@ knitr::kable(data, digits = 4,
 :::
 
 ::: {.column width="50%"}
-![z = 0](media/z-0.svg){.invertable-blue style="margin-top: -2em; margin-bottom: 0;"}
+
+![](media/z-0.svg){.invertable-blue style="margin-top: -2em; margin-bottom: 0;"}
+
 ![](media/z-1.svg){.invertable-blue style="margin-bottom: 0;"}
 
 ![](media/z-minus-1.svg){.invertable-blue}
+:::
+
+::::
+
+
+## Unit Normal Table
+
+:::: {.columns}
+
+::: {#tbl .column width="50%" style="font-size: 0.35em;"}
+```{r}
+knitr::kable(data, digits = 4, 
+             col.names = c("\\(z\\)", "Proportion in body", "Proportion in tail", "Proportion between \\(M\\) and \\(z\\)"))
+```
+:::
+
+::: {.column width="50%"}
+
+::: {#z-container}
+:::
+
 :::
 
 ::::
@@ -433,6 +456,7 @@ plot_distribution(segments = c(-1), fill_colors = c("thistle", "plum"), linetype
 plot_save("z-minus-1.svg", width = 4, height = 2)
 ```
 
+
 ## Spiderman figure
 
 ```{r}
@@ -445,5 +469,73 @@ plot_save("spiderman-distribution.svg",
        width = 4, height = 3)
 ```
 
+## OJS unit normal curve
+
 :::
+
+
+```{r}
+curve <- tibble::tibble(value = seq(-3, 3, .1),
+                        density = dnorm(value)) |> 
+  purrr::transpose()
+
+ojs_define(curve)
+```
+
+```{ojs}
+
+table_selection = {
+  var num = 0
+  
+  function getNumberFromTable() {
+  
+  try {
+    num = d3.select(this).select("td")._groups[0][0].innerHTML;
+  } catch {} finally {update();}
+  }
+  
+  d3.select("#tbl").selectAll("tr").on("mouseover", getNumberFromTable)
+  
+  const w = 500
+  const h = 400
+  const x = d3.scaleLinear()
+    .domain([-3,3])
+    .range([0,w])
+  const y = d3.scaleLinear()
+    .domain([0,0.41])
+    .range([h,0])
+  const line = d3.line()
+    .x(d => x(d.value))
+    .y(d => y(d.density))
+  
+  const svg = d3.select("#z-container")
+    .append("svg").attr("width", w).attr("height", h)
+  
+  svg.append("path").attr("d", line(curve))
+    .style("stroke", "black").style("fill", "none")
+    .attr("class", "invertable")
+    
+  svg.append("path")
+    .style("fill", "thistle").style("fill-opacity", 0.5)
+    .attr("d", line(curve))
+    
+  svg.append("path")
+    .style("fill", "thistle").style("fill-opacity", 0.5)
+    .attr("d", line(curve))
+    .attr("clip-path", "url(#clip)")
+
+    
+  function update() {
+  
+  svg.selectAll("clipPath").remove()
+  svg.append("clipPath").attr("id", "clip")
+    .append("rect")
+    .attr("width", x(num))
+    .attr("height", h)
+  }
+  
+  update();
+}
+
+```
 
