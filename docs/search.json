@@ -816,7 +816,7 @@
     "href": "slides/08_sampling.html#variability-2",
     "title": "BC1101",
     "section": "Variability",
-    "text": "Variability\n\nd3 = require(\"https://d3js.org/d3.v5.min.js\")\njStat = require(\"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js\")\n\nwidth = 1000\nheight = 600\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nviewof mu = Inputs.number({value: 100, label: tex`\\mu = `})\n\nviewof sigma = Inputs.number({value: 15, label: tex`\\sigma = `})\n\nviewof n = Inputs.range([1, 50], {value: 1, step: 1, label: tex`n = `})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntex`\\sigma_M = ${std_err.toLocaleString(undefined, {maximumFractionDigits: 2, minimumFractionDigits: 2})}`\n\n\n\n\n\n\n\n\nstd_err = sigma / Math.sqrt(n)\n\n\n\nmax_std_err = sigma / Math.sqrt(50)\n\npopulation_curve = {\n  var values = jStat(xlim[0], xlim[1], 210)[0],\n      arr = [];\n  for (var i in values) {\n    arr.push({\n        value: values[i], \n        density: jStat.normal.pdf(values[i], mu, sigma)\n      })\n  }\n  return arr;\n}\n\ncurve = {\n  var values = jStat(xlim[0], xlim[1], 210)[0],\n      arr = [];\n  for (var i in values) {\n    arr.push({\n        value: values[i], \n        density: jStat.normal.pdf(values[i], mu, std_err)\n      })\n  }\n  return arr;\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nchart = {\n  const svg = d3.select(DOM.svg(width, height));\n\n  svg.append(\"g\")\n      .call(xAxis)\n      .attr(\"transform\", `translate(0,${y(0)})`)\n      .attr(\"class\", \"axis\")\n      .style(\"font-size\", \"0.5em\");\n\n  svg.append(\"path\")\n      .datum(population_curve)\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"black\")\n      .attr(\"opacity\", 0.5)\n      .attr(\"stroke-width\", 1.5)\n      .attr(\"stroke-dasharray\", [10, 10])\n      .attr(\"d\", line)\n      .attr(\"class\", \"invertable\");\n      \n  svg.append(\"path\")\n      .datum(curve)\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"black\")\n      .attr(\"stroke-width\", 4)\n      .attr(\"stroke-linejoin\", \"round\")\n      .attr(\"stroke-linecap\", \"round\")\n      .attr(\"d\", line)\n      .attr(\"class\", \"invertable\");\n      \n  return svg.node();\n}\n\n\n\n\n\n\n\nmargin = ({top: 20, right: 0, bottom: 30, left: 0})\n\nxlim = [mu - 3 * sigma, mu + 3 * sigma]\n\nline = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density))\n\nx = d3.scaleLinear()\n  .domain([xlim[0], xlim[1]])\n  .range([margin.left, width - margin.right])\n\n\ny = d3.scaleLinear()\n  .domain([0, jStat.normal.pdf(mu, mu, max_std_err)])\n  .range([height - margin.bottom, margin.top])\n  \nxAxis = d3.axisBottom(x).ticks(10)"
+    "text": "Variability"
   },
   {
     "objectID": "slides/08_sampling.html#variability-3",
@@ -1369,6 +1369,6 @@
     "href": "slides/08_sampling.html#sampling-error-iq",
     "title": "BC1101",
     "section": "Sampling error: IQ",
-    "text": "Sampling error: IQ\n\n\nviewof quantity = Inputs.range([1, samples.length], {value: 1, step: 1})"
+    "text": "Sampling error: IQ"
   }
 ]

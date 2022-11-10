@@ -82,17 +82,12 @@ import { pop } from "./02_variables.qmd";
 
 ## Sampling error: IQ
 
-<div data-prevent-swipe>
-```{ojs}
-viewof quantity = Inputs.range([1, samples.length], {value: 1, step: 1})
-```
-</div>
+::: {#sampling-info}
+:::
 
 ::: {#sampling-chart}
 :::
 
-::: {#sampling-info}
-:::
 
 
 
@@ -240,166 +235,20 @@ $\sigma_M = \dfrac{\sigma}{\sqrt{n}}$ or $\dfrac{\sqrt{\sigma^2}}{\sqrt{n}}$ or 
 
 ## Variability
 
-![](media/samp-dist-1.png)
+<!-- ![](media/samp-dist-1.png) -->
+![](media/sampling-distributions.svg){.invertable}
 
 ## Variability
 
-```{ojs params}
-#| echo: false
-
-d3 = require("https://d3js.org/d3.v5.min.js")
-jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js")
-
-width = 1000
-height = 600
-
-```
-
-```{css}
-.n-label input[type="number"] {
-  font-family: KaTeX_Main;
-  font-size: 1.1em;
-  background: none;
-  border: none;
-  width: fit-content !important;
-}
-
-label {
-  width: fit-content !important;
-}
-
-.n-label div {
-  overflow: hidden !important;
-}
-
-.n-label {
-  position: absolute;
-  top: 5em;
-}
+![](media/standard-error-curve.svg){.invertable}
 
 
-```
+## Variability
 
-::: {.n-label}
-
-```{ojs n-control}
-#| echo: false
-#| class: "katex"
-
-viewof mu = Inputs.number({value: 100, label: tex`\mu = `})
-
-viewof sigma = Inputs.number({value: 15, label: tex`\sigma = `})
-
-viewof n = Inputs.range([1, 50], {value: 1, step: 1, label: tex`n = `})
-```
-
-```{ojs std-err-label}
-tex`\sigma_M = ${std_err.toLocaleString(undefined, {maximumFractionDigits: 2, minimumFractionDigits: 2})}`
-
-```
+::: {#sampling-distribution-container}
 :::
 
 
-```{ojs ojs-data}
-#| echo: false
-
-std_err = sigma / Math.sqrt(n)
-
-
-
-max_std_err = sigma / Math.sqrt(50)
-
-population_curve = {
-  var values = jStat(xlim[0], xlim[1], 210)[0],
-      arr = [];
-  for (var i in values) {
-    arr.push({
-        value: values[i], 
-        density: jStat.normal.pdf(values[i], mu, sigma)
-      })
-  }
-  return arr;
-}
-
-curve = {
-  var values = jStat(xlim[0], xlim[1], 210)[0],
-      arr = [];
-  for (var i in values) {
-    arr.push({
-        value: values[i], 
-        density: jStat.normal.pdf(values[i], mu, std_err)
-      })
-  }
-  return arr;
-}
-
-```
-
-```{ojs chart}
-#| echo: false
-#| style: "position: absolute; top: 0;"
-
-chart = {
-  const svg = d3.select(DOM.svg(width, height));
-
-  svg.append("g")
-      .call(xAxis)
-      .attr("transform", `translate(0,${y(0)})`)
-      .attr("class", "axis")
-      .style("font-size", "0.5em");
-
-  svg.append("path")
-      .datum(population_curve)
-      .attr("fill", "none")
-      .attr("stroke", "black")
-      .attr("opacity", 0.5)
-      .attr("stroke-width", 1.5)
-      .attr("stroke-dasharray", [10, 10])
-      .attr("d", line)
-      .attr("class", "invertable");
-      
-  svg.append("path")
-      .datum(curve)
-      .attr("fill", "none")
-      .attr("stroke", "black")
-      .attr("stroke-width", 4)
-      .attr("stroke-linejoin", "round")
-      .attr("stroke-linecap", "round")
-      .attr("d", line)
-      .attr("class", "invertable");
-      
-  return svg.node();
-}
-
-```
-
-```{ojs functions}
-
-margin = ({top: 20, right: 0, bottom: 30, left: 0})
-
-xlim = [mu - 3 * sigma, mu + 3 * sigma]
-
-line = d3.line()
-    .x(d => x(d.value))
-    .y(d => y(d.density))
-
-x = d3.scaleLinear()
-  .domain([xlim[0], xlim[1]])
-  .range([margin.left, width - margin.right])
-
-
-y = d3.scaleLinear()
-  .domain([0, jStat.normal.pdf(mu, mu, max_std_err)])
-  .range([height - margin.bottom, margin.top])
-  
-xAxis = d3.axisBottom(x).ticks(10)
-
-```
-
-
-## Variability
-
-![](media/samp-dist-2.png)
 
 
 ## Variability: heights sampling dist
@@ -582,8 +431,6 @@ svg.selectAll("rect")
 :::
 
 
-
-
 ```{r}
 #| echo: false
 #| message: false
@@ -616,8 +463,8 @@ ojs_define(samples)
 sampling_chart = {
 
   const w = 1050
-  const h = 450
-  const margin = ({top: 20, right: 200, bottom: 40, left: 200})
+  const h = 500
+  const margin = ({top: 20, right: 200, bottom: 100, left: 200})
   const xlims = [75, 125]
   const xRange = xlims[1] - xlims[0]
   const x = d3.scaleLinear()
@@ -638,9 +485,82 @@ sampling_chart = {
   
   const svg =  d3.select("#sampling-chart")
     .append("svg").attr("width", w).attr("height", h)
-
+    <!-- .style("background", "pink") -->
+    
+  const controls = svg.append("g").attr("transform", `translate(0,${h-margin.bottom/2})`)
+  
+  var quantity = 0;
+  const slider = d3
+    .sliderBottom()
+    .min(0)
+    .max(500)
+    .width(w - margin.left - margin.right)
+    .displayValue(false)
+    .step(1)
+    .ticks(0)
+    .default(0)
+    .on("onchange", q => {
+      quantity = q; 
+      drawBoxes();
+      describeSample();
+    })
+    
+  controls.append("g").attr("transform", `translate(${margin.left}, 40)`).call(slider)
+  
+  const buttonData = [{id: "reset", text: "↻"},
+                      {id: "next", text: "ᐳ"},
+                      {id: "play", text: "►"}]
+                      
+  
+  const buttons = controls.append("g")
+    .attr("transform", `translate(0, 20)`)
+    .attr("class", "invertable")
+    
+  buttons.selectAll("text")
+    .data(buttonData)
+    .enter().append("text")
+    .attr("id", d => "button-" + d.id)
+    .attr("class", "button")
+    .text(d => d.text)
+    .attr("x", (d,i) => 400 + i * 75)
+  
+  var playing = false;
+  d3.select("#button-next").on("click", drawOne)
+  d3.select("#button-play").on("click", playClicked)
+  
   const g = svg.append("g").attr("id", "boxes")
   
+  function drawOne() {
+  if (quantity >= samples.length) {
+    playing = false;
+    return false
+  }
+    quantity++;
+    drawBoxes();
+    describeSample();
+  }
+  
+  function playClicked() {
+    playing = !playing
+    console.log(playing)
+    if(playing) {
+      drawContinuously();
+    }
+  }
+  
+  const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+  }
+  
+  function drawContinuously() {
+    if(playing) {
+      drawOne();
+      sleep(10).then(drawContinuously);
+    }
+  }
+  
+  function drawBoxes() {
+  g.selectAll("rect").remove()
   g.selectAll("rect")
     .data(samples.slice(0, quantity))
     .enter()
@@ -657,7 +577,8 @@ sampling_chart = {
               // put all your operations on the second element, e.g.
               d3.select(this).attr("fill", "red");    
             }
-          });
+          })
+  }
   svg.append("g").attr("id", "xaxis")
       .call(xAxis)
       .attr("transform", `translate(0,${y(0)})`)
@@ -669,17 +590,19 @@ sampling_chart = {
   <!--     .attr("transform", `translate(${x(xlims[0])}, 0)`) -->
   <!--     .attr("class", "axis") -->
   <!--     .style("font-size", "0.5em"); -->
-
+  
+  d3.select("#sampling-info")
+      .style("font-family", "KaTeX_Main")
+      .style("font-size", "0.9em")
+      .html("Observations:<br/><span style='font-style: italic;'>M =</span>")
+      
+  function describeSample() {
+    d3.select("#sampling-info")
+      .style("font-family", "KaTeX_Main")
+      .style("font-size", "0.9em")
+      .html("Observations: " + samples[quantity-1].sample.join(", ") + '<br/>' + "<i>M</i> = " + samples[quantity-1].mean)
+  }
 }
-
-```
-
-
-```{ojs}
-d = d3.select("#sampling-info")
-  .style("font-family", "KaTeX_Main")
-  .style("font-size", "0.9em")
-  .html("Observations: " + samples[quantity-1].sample.join(", ") + '<br/>' + "<i>M</i> = " + samples[quantity-1].mean)
 
 ```
 
@@ -729,4 +652,242 @@ ggsave(here::here("slides", "media", "stick-sampling-distribution.svg"),
 
 ```
 
+
+## CLT distributions
+
+```{r clt-dists-params}
+M <- 100
+sigma <- 15
+```
+
+```{r different-dists}
+#| eval: false
+library(ggplot2)
+
+M <- 100
+sigma <- 15
+ns = c(1, 4, 10, 30)
+
+labels <- tibble::tibble(group = 1:4,
+                         n = ns,
+                         sm = sigma/sqrt(n),
+                         x = M,
+                         y = dnorm(x, M, sm),
+                         label = expression(paste("Value is ", sigma,",", R^{2},'=0.6')))
+
+dists <- purrr::map_df(.x = ns,
+                       ~tibble::tibble(x = seq(M-3*sigma, M+3*sigma, length.out = 200),
+                                       y = dnorm(x, M, sd = sigma/sqrt(.x)),
+                                       label = .x),
+                       .id = "group")
+
+ggplot() +
+  # annotate("text", data = labels, aes(x = M, y = y, label = label)) +
+  geom_text(data = labels, aes(x = M, y = y+.01), label = expression(italic(n=="")), vjust = 0, hjust = 0.8, family = "serif") +
+  geom_text(data = labels, aes(x = M, y = y+.01, label = n), hjust = -.5, vjust = 0, family = "serif") +
+  geom_text(data = labels, aes(x = M, y = y+.001), label = expression(italic(sigma[M]=="")), vjust = 0, hjust = .8, family = "serif") +
+  geom_text(data = labels, aes(x = M, y = y+.001, label = round(sm, 2)), vjust = 0, hjust = -0.3, family = "serif") +
+  geom_path(data = dists, aes(x, y)) +
+  facet_wrap(~group, nrow = 1) +
+  scale_y_continuous(expand = expansion(c(0.001, 0.1))) +
+  theme_void() +
+  theme(panel.grid = element_blank(),
+        axis.line.x = element_line(),
+        axis.text.x = element_text(),
+        axis.ticks.x = element_line(),
+        axis.ticks.length = unit(.075, "in"),
+        strip.text.x = element_blank())
+
+bc1101tools::plot_save("sampling-distributions.svg", width = 6, height = 3)
+
+```
+
+```{r clt-dist-curve}
+#| eval: false
+
+library(ggplot2)
+
+curve_df <- tibble::tibble(x = seq(1, 100, 0.5),
+                     y = sigma/sqrt(x))
+
+points_df <- tibble::tibble(x = c(1, 4, 10, 30),
+                            y = sigma/sqrt(x))
+
+ggplot() +
+  geom_path(data = curve_df, aes(x, y)) +
+  geom_point(data = points_df, aes(x, y)) +
+  scale_y_continuous(limits = c(0, 15), breaks = 0:15, expand = expansion(c(0, 0.01))) +
+  labs(x = "Sample size (n)", y = expression(Standard~error~"("*based~on~sigma==15*")")) +
+  bc1101tools::theme_bc1101()
+
+bc1101tools::plot_save("standard-error-curve.svg", width = 6, height = 3)
+
+```
+
 :::
+
+::: {.content-hidden}
+## OJS
+:::
+
+```{ojs ojs-data}
+d3 = require.alias({
+  "d3-array": "d3@5",
+  "d3-axis": "d3@5",
+  "d3-dispatch": "d3@5",
+  "d3-drag": "d3@5",
+  "d3-ease": "d3@5",
+  "d3-scale": "d3@5",
+  "d3-selection": "d3@5",
+  "d3-transition": "d3@5"
+})("d3@5", "d3-simple-slider@1")
+
+jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js")
+
+width = 1000
+height = 600
+
+
+
+```
+
+```{ojs chart}
+#| echo: false
+#| style: "position: absolute; top: 0;"
+
+
+chart = {
+
+  var mu = 100
+  var sigma = 15
+  var n = 1
+  var std_err = sigma/Math.sqrt(n)
+  const max_std_err = sigma / Math.sqrt(50)
+  
+  const margin = ({top: 20, right: 0, bottom: 30, left: 0})
+
+  const xlim = [mu - 3 * sigma, mu + 3 * sigma]
+
+  const x = d3.scaleLinear()
+    .domain([xlim[0], xlim[1]])
+    .range([margin.left, width - margin.right])
+  const y = d3.scaleLinear()
+    .domain([0, jStat.normal.pdf(mu, mu, max_std_err)])
+    .range([height - margin.bottom, margin.top])
+  const line = d3.line()
+    .x(d => x(d.value))
+    .y(d => y(d.density))
+  
+  const xAxis = d3.axisBottom(x).ticks(10)
+  
+  function makeCurve(mu, sm) {
+    var values = jStat(xlim[0], xlim[1], 210)[0],
+        arr = [];
+    for (var i in values) {
+      arr.push({
+          value: values[i], 
+          density: jStat.normal.pdf(values[i], mu, sm)
+      })
+    }
+    return arr;
+  }
+  
+  const population_curve = makeCurve(mu, sigma)
+  
+  const muInput = d3.select("#sampling-distribution-container").append("input")
+    .attr("class", "invertable").attr("id", "sigma-value")
+    .attr('type','text')
+    .attr('name','textInput')
+    .attr('value', sigma)
+    .style("position", "absolute").style("top", "200px").style("left", "1.5em")
+    .style("font-family", "KaTeX_Main")
+    .style("font-size", "1em")
+    .style("width", "3em")
+    .style("border", "none").style("background", "none")
+    
+  const inputHandler = function(e) {
+    console.log(e.target.value);
+    sigma = e.target.value;
+    <!-- updateValues(); -->
+    <!-- updateAxis(); -->
+    <!-- redrawCurves(); -->
+  }
+  
+  const sigmaInput = document.getElementById('sigma-value')
+  sigmaInput.addEventListener('input', inputHandler);
+  sigmaInput.addEventListener('propertychange', inputHandler);
+  
+  const svg = d3.select("#sampling-distribution-container").append("svg")
+    .attr("width", width).attr("height", height)
+
+  svg.append("g")
+      .call(xAxis)
+      .attr("transform", `translate(0,${y(0)})`)
+      .attr("class", "axis")
+      .style("font-size", "0.5em");
+
+  svg.append("path")
+      .datum(population_curve)
+      .attr("fill", "none")
+      .attr("stroke", "black")
+      .attr("opacity", 0.5)
+      .attr("stroke-width", 1.5)
+      .attr("stroke-dasharray", [10, 10])
+      .attr("d", line)
+      .attr("class", "invertable");
+      
+  const curve = svg.append("path")
+      <!-- .datum(makeCurve(mu, std_err)) -->
+      .attr("fill", "none")
+      .attr("stroke", "black")
+      .attr("stroke-width", 4)
+      .attr("stroke-linejoin", "round")
+      .attr("stroke-linecap", "round")
+      .attr("d", line(makeCurve(mu, std_err)))
+      .attr("class", "invertable");
+      
+  const data = Array.from({length: 50}, (_, i) => i + 1)
+  const f = d3.format(".2f")
+  let val = 1
+  var sliderSimple = d3
+    .sliderBottom()
+    .min(d3.min(data))
+    .max(d3.max(data))
+    .width(300)
+    .displayValue(false)
+    .step(1)
+    <!-- .marks(data) -->
+    .ticks(0)
+    .default(n)
+    .on('onchange', n => {
+      std_err = sigma/Math.sqrt(n)
+      d3.select('#n-value').html("<tspan font-style='italic'>n</tspan> = " + n);
+      d3.select('#sigmaM-value').html("<tspan font-style='italic'>σ</tspan><tspan font-size='0.5em' font-style='italic' baseline-shift='sub'>M</tspan> = " + f(std_err));
+      curve.attr("d", line(makeCurve(mu, std_err)))
+    });
+
+  var gSimple = svg.append('g')
+    .attr('transform', 'translate(0,100)')
+    .style("font-family", "KaTeX_Main")
+    
+  const labels = gSimple.append("g").attr("class", "invertable")
+    
+  labels.append("text").attr("id", "mu").html("<tspan id='mu-value' font-style='italic'>μ</tspan> = " + mu)
+  labels.append("text").attr("id", "sigma-value").html("<tspan font-style='italic'>σ</tspan> = ").attr("y", 50)
+    
+  labels.append("text").attr("id", "n-value").html("<tspan font-style='italic'>n</tspan> = " + n).attr("y", 100)
+  
+  labels.append("text").attr("id", "sigmaM-value").attr("y", 150)
+    .html("<tspan font-style='italic'>σ</tspan><tspan font-size='0.5em' font-style='italic' baseline-shift='sub'>M</tspan> = " + f(std_err))
+
+  
+  const sl = gSimple.append("g").call(sliderSimple)
+  sl.attr('transform', 'translate(140, 80)')
+  .attr("data-prevent-swipe", true)
+      
+  return svg.node();
+  
+  
+}
+
+```
