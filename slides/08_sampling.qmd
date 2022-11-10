@@ -505,7 +505,8 @@ sampling_chart = {
       describeSample();
     })
     
-  controls.append("g").attr("transform", `translate(${margin.left}, 40)`).call(slider)
+  controls.append("g").attr("transform", `translate(${margin.left}, 40)`)
+    .call(slider).attr("data-prevent-swipe", true)
   
   const buttonData = [{id: "reset", text: "↻"},
                       {id: "next", text: "ᐳ"},
@@ -514,7 +515,6 @@ sampling_chart = {
   
   const buttons = controls.append("g")
     .attr("transform", `translate(0, 20)`)
-    .attr("class", "invertable")
     
   buttons.selectAll("text")
     .data(buttonData)

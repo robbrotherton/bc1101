@@ -7,12 +7,11 @@
 :root {
     --background-color-light: white;
     --background-color-dark: #333;
-    --text-color-light: black;
+    --text-color-light: #121416d8;
     --text-color-dark: white;
     --heading-color: #333
     --heading-color-dark: #ddd;
-    --text-color: #121416d8;
-    --link-color: #5f93e5;
+    --link-color-light: #5f93e5;
     --link-color-dark: lightblue;
     --menu-color: #5f93e5;
 }
@@ -20,11 +19,13 @@
 html[data-theme='light'] {
     --background-color: var(--background-color-light);
     --text-color: var(--text-color-light);
+    --link-color: var(--link-color-light);
 }
 
 html[data-theme='dark'] {
     --background-color: var(--background-color-dark);
     --text-color: var(--text-color-dark);
+    --link-color: var(--link-color-dark);
 }
 
 .reveal {
@@ -34,6 +35,10 @@ html[data-theme='dark'] {
 body {
     background-color: var(--background-color);
     color: var(--text-color);
+}
+
+a, .reveal a {
+    color: var(--link-color);
 }
 
 
@@ -137,9 +142,7 @@ body, .reveal {
 }
 
 
-[data-theme='dark'] a {
-    color: var(--link-color-dark);
-}
+
 [data-theme='dark'] .sidebar nav[role=doc-toc] ul>li>a.active {
   border-left: 1px solid var(--link-color-dark);
   color: var(--link-color-dark) !important;
