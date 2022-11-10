@@ -746,7 +746,7 @@
     "href": "slides/08_sampling.html#sampling-error-3",
     "title": "BC1101",
     "section": "Sampling error",
-    "text": "Sampling error"
+    "text": "Sampling error\n\n\n\n\n\n\n\n\n\n\nSample 1: 107 107 87 88 95 80 79 126 96 80    Mean = 94.5\n\n\nSample 2: 99 82 112 93 107 115 107 106 126 84    Mean = 103.1\n\n\nSample 3: 120 91 124 83 78 111 76 105 111 72    Mean = 97.1"
   },
   {
     "objectID": "slides/08_sampling.html#characteristics",
@@ -1363,5 +1363,12 @@
     "title": "BC1101",
     "section": "Sampling error",
     "text": "Sampling error\n\n\n\n\n\n\n\n\n\n\nSample 1: 107 107 87 88 95 80 79 126 96 80    Mean = 94.5\n\n\nSample 2: 99 82 112 93 107 115 107 106 126 84    Mean = 103.1\n\n\nSample 3: 120 91 124 83 78 111 76 105 111 72    Mean = 97.1"
+  },
+  {
+    "objectID": "slides/08_sampling.html#sampling-error-iq",
+    "href": "slides/08_sampling.html#sampling-error-iq",
+    "title": "BC1101",
+    "section": "Sampling error: IQ",
+    "text": "Sampling error: IQ\n\n\nviewof quantity = Inputs.range([1, samples.length], {value: 1, step: 1})"
   }
 ]

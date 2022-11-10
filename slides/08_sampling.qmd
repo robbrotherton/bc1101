@@ -80,33 +80,20 @@ import { pop } from "./02_variables.qmd";
 
 
 
-## Sampling error
+## Sampling error: IQ
 
+<div data-prevent-swipe>
+```{ojs}
+viewof quantity = Inputs.range([1, samples.length], {value: 1, step: 1})
+```
+</div>
 
-## Sampling error
-
-:::: {.center-element .invertable .r-stack}
-
-<video start="0" src="media/iq-sampling.mp4"></video>
-
-::: {.fragment}
-<video controls start="0" src="media/iq-sampling.mp4"></video>
+::: {#sampling-chart}
 :::
 
-::::
+::: {#sampling-info}
+:::
 
-```{r}
-#| eval: true
-
-set.seed(40)
-n <- 200
-iq_samples <- replicate(n, rnorm(10, mean = 100, sd = 15) |> round(0), simplify = FALSE)
-iq_means <- lapply(iq_samples, mean)
-
-cat("Sample 1:", iq_samples[[1]], "   Mean =", iq_means[[1]])
-cat("Sample 2:", iq_samples[[2]], "   Mean =", iq_means[[2]])
-cat("Sample 3:", iq_samples[[3]], "   Mean =", iq_means[[3]])
-```
 
 
 # Distribution of Sample Means
@@ -133,7 +120,15 @@ cat("Sample 3:", iq_samples[[3]], "   Mean =", iq_means[[3]])
 
 ## Example: height distribution
 
-![](media/stickpeople.svg){.invertable}
+::: {.r-hstack style="align-items: baseline; padding-left: 1.2em;"}
+![](media/person.svg){.invertable height=150px style="margin-right: 1.5em;"}
+
+![](media/person.svg){.invertable height=160px style="margin-right: 1.5em;"}
+
+![](media/person.svg){.invertable height=170px style="margin-right: 1.5em;"}
+
+![](media/person.svg){.invertable height=180px style="margin-left: 1.5em;"}
+:::
 
 ![](media/stick-histogram.svg){.invertable}
 
@@ -142,7 +137,7 @@ cat("Sample 3:", iq_samples[[3]], "   Mean =", iq_means[[3]])
 :::: {.columns}
 
 ::: {.column width="30%"}
-![](media/stick-histogram.svg)
+![](media/stick-histogram.svg){.invertable}
 
 ```{r stick-table}
 #| style: "font-size: 0.5em;line-height: 0.9em;"
@@ -156,7 +151,7 @@ knitr::kable(sampling_dist_df)
 ::: {.column width="70%"}
 Sampling distribution ($n = 2$)
 
-![](media/stick-sampling-distribution.svg)
+![](media/stick-sampling-distribution.svg){.invertable}
 
 ::: {.center-element style="font-size: 0.8em; margin-top: -1em;"}
 $p(M < 61) =\ ?$
@@ -176,7 +171,7 @@ $p(M > 65) =\ ?$
 :::: {.columns}
 
 ::: {.column width="50%"}
-![](media/stick-sampling-distribution.svg)
+![](media/stick-sampling-distribution.svg){.invertable}
 
 - Now we can calculate variability of sample means
   - Since we obtained every sample mean
@@ -412,7 +407,7 @@ xAxis = d3.axisBottom(x).ticks(10)
 :::: {.columns}
 
 ::: {.column width="30%"}
-![](media/stick-histogram.svg)
+![](media/stick-histogram.svg){.invertable}
 
 ```{r}
 #| style: "font-size: 0.5em; line-height: 0.9em;"
@@ -426,7 +421,7 @@ knitr::kable(sampling_dist_df)
 ::: {.column width="70%"}
 Sampling distribution ($n = 2$)
 
-![](media/stick-sampling-distribution.svg)
+![](media/stick-sampling-distribution.svg){.invertable}
 
 ::: {.center-element .small}
 $\sigma_M = \dfrac{\sigma}{\sqrt{n}} = \dfrac{2.24}{\sqrt{2}} = 1.58$
@@ -581,6 +576,116 @@ svg.selectAll("rect")
 
 }
 ```
+
+::: {.content-hidden}
+## Sampling IQ
+:::
+
+
+
+
+```{r}
+#| echo: false
+#| message: false
+
+library(dplyr)
+set.seed(42)
+n_samples <- 500
+
+random_iq <- function(n = 10) rnorm(n, 100, 15) |> round()
+
+observations <- replicate(n_samples, random_iq(), simplify = FALSE)
+means <- purrr::map_dbl(observations, mean)
+
+samples <- tibble::tibble(id = 1:n_samples,
+                          sample = observations,
+                          mean = means,
+                          mean_bin = round(mean)) |> 
+  group_by(mean_bin) |> 
+  mutate(count = 1:n()) |> 
+  purrr::transpose()
+
+ojs_define(samples)
+```
+
+
+
+```{ojs}
+
+
+sampling_chart = {
+
+  const w = 1050
+  const h = 450
+  const margin = ({top: 20, right: 200, bottom: 40, left: 200})
+  const xlims = [75, 125]
+  const xRange = xlims[1] - xlims[0]
+  const x = d3.scaleLinear()
+    .domain(xlims)
+    .range([margin.left, width - margin.right])
+
+  const max_y = Math.max(...samples.map(o => o.count))
+
+  const y = d3.scaleLinear()
+    .domain([0, max_y])
+    .range([h - margin.bottom, margin.top])
+
+  const xAxis = d3.axisBottom(x).ticks(8)
+  const yAxis = d3.axisLeft(y).ticks(3)
+
+
+  d3.select("#sampling-chart").select("svg").remove()
+  
+  const svg =  d3.select("#sampling-chart")
+    .append("svg").attr("width", w).attr("height", h)
+
+  const g = svg.append("g").attr("id", "boxes")
+  
+  g.selectAll("rect")
+    .data(samples.slice(0, quantity))
+    .enter()
+    .append("rect")
+      .attr("class", "invertable")
+      .attr("fill", "black")
+      .attr("stroke", "none")
+      .attr("x", d => x(d.mean_bin - 0.5))
+      .attr("y", d => y(d.count))
+      .attr("width", (width-margin.left-margin.right)/xRange * 0.9)
+      .attr("height", (h-margin.top-margin.bottom)/max_y * 0.9)
+      .each(function (d, i) {
+            if (i === quantity-1) {
+              // put all your operations on the second element, e.g.
+              d3.select(this).attr("fill", "red");    
+            }
+          });
+  svg.append("g").attr("id", "xaxis")
+      .call(xAxis)
+      .attr("transform", `translate(0,${y(0)})`)
+      .attr("class", "axis")
+      .style("font-size", "0.5em");
+      
+  <!-- svg.append("g").attr("id", "yaxis") -->
+  <!--     .call(yAxis) -->
+  <!--     .attr("transform", `translate(${x(xlims[0])}, 0)`) -->
+  <!--     .attr("class", "axis") -->
+  <!--     .style("font-size", "0.5em"); -->
+
+}
+
+```
+
+
+```{ojs}
+d = d3.select("#sampling-info")
+  .style("font-family", "KaTeX_Main")
+  .style("font-size", "0.9em")
+  .html("Observations: " + samples[quantity-1].sample.join(", ") + '<br/>' + "<i>M</i> = " + samples[quantity-1].mean)
+
+```
+
+
+
+
 
 ::: {.content-hidden}
 
