@@ -843,54 +843,54 @@ X &amp; = \mu + z\sigma \\
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="599" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 598;"><span id="cb2-599"><a href="#cb2-599"></a>stopwatch <span class="op">=</span> {</span>
-<span id="cb2-600"><a href="#cb2-600"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">200</span></span>
-<span id="cb2-601"><a href="#cb2-601"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">215</span></span>
-<span id="cb2-602"><a href="#cb2-602"></a>  </span>
-<span id="cb2-603"><a href="#cb2-603"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#stopwatch-container"</span>)</span>
-<span id="cb2-604"><a href="#cb2-604"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
-<span id="cb2-605"><a href="#cb2-605"></a>    </span>
-<span id="cb2-606"><a href="#cb2-606"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"circle"</span>)</span>
-<span id="cb2-607"><a href="#cb2-607"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"r"</span><span class="op">,</span> w<span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb2-608"><a href="#cb2-608"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"lightblue"</span>)</span>
-<span id="cb2-609"><a href="#cb2-609"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"translate(100, 110)"</span>)</span>
-<span id="cb2-610"><a href="#cb2-610"></a>    </span>
-<span id="cb2-611"><a href="#cb2-611"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"circle"</span>)</span>
-<span id="cb2-612"><a href="#cb2-612"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"r"</span><span class="op">,</span> <span class="dv">10</span>)</span>
-<span id="cb2-613"><a href="#cb2-613"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"white"</span>)</span>
-<span id="cb2-614"><a href="#cb2-614"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"translate(100, 110)"</span>)</span>
-<span id="cb2-615"><a href="#cb2-615"></a>    </span>
-<span id="cb2-616"><a href="#cb2-616"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
-<span id="cb2-617"><a href="#cb2-617"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"rx"</span><span class="op">,</span> <span class="dv">5</span>)</span>
-<span id="cb2-618"><a href="#cb2-618"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"ry"</span><span class="op">,</span> <span class="dv">5</span>)</span>
-<span id="cb2-619"><a href="#cb2-619"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> <span class="dv">30</span>)</span>
-<span id="cb2-620"><a href="#cb2-620"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> <span class="dv">10</span>)</span>
-<span id="cb2-621"><a href="#cb2-621"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"lightblue"</span>)</span>
-<span id="cb2-622"><a href="#cb2-622"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"translate(85, 0)"</span>)</span>
-<span id="cb2-623"><a href="#cb2-623"></a>    </span>
-<span id="cb2-624"><a href="#cb2-624"></a>  <span class="kw">const</span> hand <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
-<span id="cb2-625"><a href="#cb2-625"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> <span class="dv">15</span>)</span>
-<span id="cb2-626"><a href="#cb2-626"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> <span class="op">-</span><span class="dv">85</span>)</span>
-<span id="cb2-627"><a href="#cb2-627"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"white"</span>)</span>
-<span id="cb2-628"><a href="#cb2-628"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">5</span>)</span>
-<span id="cb2-629"><a href="#cb2-629"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"translate(100, 110)"</span>)</span>
-<span id="cb2-630"><a href="#cb2-630"></a>    </span>
-<span id="cb2-631"><a href="#cb2-631"></a>  <span class="kw">function</span> <span class="fu">rotateHand</span>() {</span>
-<span id="cb2-632"><a href="#cb2-632"></a>    <span class="kw">var</span> i <span class="op">=</span> d3<span class="op">.</span><span class="fu">interpolate</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">360</span>)<span class="op">;</span></span>
-<span id="cb2-633"><a href="#cb2-633"></a>      <span class="cf">return</span> <span class="kw">function</span>(t) {</span>
-<span id="cb2-634"><a href="#cb2-634"></a>        <span class="cf">return</span> <span class="st">"translate(100, 110) rotate("</span> <span class="op">+</span> <span class="fu">i</span>(t) <span class="op">+</span> <span class="st">")"</span><span class="op">;</span></span>
-<span id="cb2-635"><a href="#cb2-635"></a>      }</span>
-<span id="cb2-636"><a href="#cb2-636"></a>  }</span>
-<span id="cb2-637"><a href="#cb2-637"></a>  </span>
-<span id="cb2-638"><a href="#cb2-638"></a>  <span class="kw">function</span> <span class="fu">anim</span>() {</span>
-<span id="cb2-639"><a href="#cb2-639"></a>    hand</span>
-<span id="cb2-640"><a href="#cb2-640"></a>    <span class="op">.</span><span class="fu">transition</span>()<span class="op">.</span><span class="fu">duration</span>(<span class="dv">5000</span>)<span class="op">.</span><span class="fu">ease</span>(d3<span class="op">.</span><span class="at">easeLinear</span>)</span>
-<span id="cb2-641"><a href="#cb2-641"></a>    <span class="op">.</span><span class="fu">attrTween</span>(<span class="st">"transform"</span><span class="op">,</span> rotateHand)</span>
-<span id="cb2-642"><a href="#cb2-642"></a>    <span class="op">.</span><span class="fu">on</span>(<span class="st">"end"</span><span class="op">,</span> anim)</span>
-<span id="cb2-643"><a href="#cb2-643"></a>  }</span>
-<span id="cb2-644"><a href="#cb2-644"></a>  </span>
-<span id="cb2-645"><a href="#cb2-645"></a>  <span class="fu">anim</span>()<span class="op">;</span></span>
-<span id="cb2-646"><a href="#cb2-646"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="631" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 630;"><span id="cb2-631"><a href="#cb2-631"></a>stopwatch <span class="op">=</span> {</span>
+<span id="cb2-632"><a href="#cb2-632"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb2-633"><a href="#cb2-633"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">215</span></span>
+<span id="cb2-634"><a href="#cb2-634"></a>  </span>
+<span id="cb2-635"><a href="#cb2-635"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#stopwatch-container"</span>)</span>
+<span id="cb2-636"><a href="#cb2-636"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
+<span id="cb2-637"><a href="#cb2-637"></a>    </span>
+<span id="cb2-638"><a href="#cb2-638"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"circle"</span>)</span>
+<span id="cb2-639"><a href="#cb2-639"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"r"</span><span class="op">,</span> w<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb2-640"><a href="#cb2-640"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"lightblue"</span>)</span>
+<span id="cb2-641"><a href="#cb2-641"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"translate(100, 110)"</span>)</span>
+<span id="cb2-642"><a href="#cb2-642"></a>    </span>
+<span id="cb2-643"><a href="#cb2-643"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"circle"</span>)</span>
+<span id="cb2-644"><a href="#cb2-644"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"r"</span><span class="op">,</span> <span class="dv">10</span>)</span>
+<span id="cb2-645"><a href="#cb2-645"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"white"</span>)</span>
+<span id="cb2-646"><a href="#cb2-646"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"translate(100, 110)"</span>)</span>
+<span id="cb2-647"><a href="#cb2-647"></a>    </span>
+<span id="cb2-648"><a href="#cb2-648"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
+<span id="cb2-649"><a href="#cb2-649"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"rx"</span><span class="op">,</span> <span class="dv">5</span>)</span>
+<span id="cb2-650"><a href="#cb2-650"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"ry"</span><span class="op">,</span> <span class="dv">5</span>)</span>
+<span id="cb2-651"><a href="#cb2-651"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> <span class="dv">30</span>)</span>
+<span id="cb2-652"><a href="#cb2-652"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> <span class="dv">10</span>)</span>
+<span id="cb2-653"><a href="#cb2-653"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"lightblue"</span>)</span>
+<span id="cb2-654"><a href="#cb2-654"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"translate(85, 0)"</span>)</span>
+<span id="cb2-655"><a href="#cb2-655"></a>    </span>
+<span id="cb2-656"><a href="#cb2-656"></a>  <span class="kw">const</span> hand <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
+<span id="cb2-657"><a href="#cb2-657"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> <span class="dv">15</span>)</span>
+<span id="cb2-658"><a href="#cb2-658"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> <span class="op">-</span><span class="dv">85</span>)</span>
+<span id="cb2-659"><a href="#cb2-659"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"white"</span>)</span>
+<span id="cb2-660"><a href="#cb2-660"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">5</span>)</span>
+<span id="cb2-661"><a href="#cb2-661"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"translate(100, 110)"</span>)</span>
+<span id="cb2-662"><a href="#cb2-662"></a>    </span>
+<span id="cb2-663"><a href="#cb2-663"></a>  <span class="kw">function</span> <span class="fu">rotateHand</span>() {</span>
+<span id="cb2-664"><a href="#cb2-664"></a>    <span class="kw">var</span> i <span class="op">=</span> d3<span class="op">.</span><span class="fu">interpolate</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">360</span>)<span class="op">;</span></span>
+<span id="cb2-665"><a href="#cb2-665"></a>      <span class="cf">return</span> <span class="kw">function</span>(t) {</span>
+<span id="cb2-666"><a href="#cb2-666"></a>        <span class="cf">return</span> <span class="st">"translate(100, 110) rotate("</span> <span class="op">+</span> <span class="fu">i</span>(t) <span class="op">+</span> <span class="st">")"</span><span class="op">;</span></span>
+<span id="cb2-667"><a href="#cb2-667"></a>      }</span>
+<span id="cb2-668"><a href="#cb2-668"></a>  }</span>
+<span id="cb2-669"><a href="#cb2-669"></a>  </span>
+<span id="cb2-670"><a href="#cb2-670"></a>  <span class="kw">function</span> <span class="fu">anim</span>() {</span>
+<span id="cb2-671"><a href="#cb2-671"></a>    hand</span>
+<span id="cb2-672"><a href="#cb2-672"></a>    <span class="op">.</span><span class="fu">transition</span>()<span class="op">.</span><span class="fu">duration</span>(<span class="dv">5000</span>)<span class="op">.</span><span class="fu">ease</span>(d3<span class="op">.</span><span class="at">easeLinear</span>)</span>
+<span id="cb2-673"><a href="#cb2-673"></a>    <span class="op">.</span><span class="fu">attrTween</span>(<span class="st">"transform"</span><span class="op">,</span> rotateHand)</span>
+<span id="cb2-674"><a href="#cb2-674"></a>    <span class="op">.</span><span class="fu">on</span>(<span class="st">"end"</span><span class="op">,</span> anim)</span>
+<span id="cb2-675"><a href="#cb2-675"></a>  }</span>
+<span id="cb2-676"><a href="#cb2-676"></a>  </span>
+<span id="cb2-677"><a href="#cb2-677"></a>  <span class="fu">anim</span>()<span class="op">;</span></span>
+<span id="cb2-678"><a href="#cb2-678"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="declaration">
 

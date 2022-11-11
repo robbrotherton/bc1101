@@ -420,12 +420,12 @@ Which (if any) of the following meet the definition of a true random sample?
 library(bc1101tools)
 library(ggplot2)
 
-z_fill <- plot_distribution(xlab = "z-score", segments = -2:2, linetype = 2, fill_colors = c('thistle', 'plum', 'purple', 'purple', 'thistle', 'plum')) +
+z_fill <- plot_distribution(xlab = "z-score", segments = -2:2, linetype = 2, fill_colors = c('thistle', 'plum', 'purple', 'purple', 'plum', 'thistle')) +
   theme_xonly() 
 
 z_fill
 
-plot_save("z-distribution-filled.svg", width = 5, height = 3)
+plot_save("z-distribution-filled.svg", width = 4, height = 3)
 
 z_fill +
   geom_text(aes(
@@ -435,7 +435,7 @@ z_fill +
   ))
 
 
-plot_save("z-distribution-labelled.svg", width = 5, height = 3)
+plot_save("z-distribution-labelled.svg", width = 4, height = 3)
 
 
 ```

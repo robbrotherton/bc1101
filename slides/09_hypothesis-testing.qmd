@@ -89,17 +89,15 @@ $z = \dfrac{M-\mu_M}{\sigma_M}$
 :::
 
 ::: {.column width="50%"}
-Right column
+![](media/nhst-diagram-generic.svg){.invertable}
 :::
 
 ::::
 
-## Making inferences
+## Making inferences: Spiderman
 
 ![](media/spiderman-comic.jpg)
 
-
-## Making inferences
 
 ## Spiderman {.small}
 
@@ -255,6 +253,7 @@ pnorm(-5.59)
   - Outcomes unlikely if $H_0$ is true
   - Boundaries for critical region(s) determined by alpha
 
+![](media/nondirectional-test-labelled.svg){.invertable}
 
 
 ## 2. Decision criterion {.small}
@@ -316,7 +315,7 @@ pnorm(-5.59)
 
 ![](media/nhst-z-diagram.svg){.invertable}
 
-## $z$-test: Spiderman {.smaller}
+## Spiderman $z$-test {.smaller}
 
 - Formal Spidermen z-test
   - 1: State Hypotheses
@@ -339,7 +338,7 @@ pnorm(-5.59)
 cbt <- bc1101tools::cbt
 ```
 
-Does CBT affect OCD?
+Does CBT affect OCD? ([Abramowitz et al., 2010](http://dx.doi.org/10.1037/a0018260))
 
 1. State hypotheses
 
@@ -354,10 +353,6 @@ Does CBT affect OCD?
 
 4. Make decision
   
-::: {.footnote .reference}
-Abramowitz, J. S., Deacon, B. J., Olatunji, B. O., Wheaton, M. G., Berman, N. C., Losardo, D., . . . Hale, L. R. (2010). *Assessment of obsessive-compulsive symptom dimensions: Development and evaluation of the Dimensional Obsessive-Compulsive Scale. Psychological Assessment, 22*(1), 180-198. <https://doi.org/10.1037/a0018260>
-:::
-
 
 
 
@@ -385,7 +380,17 @@ plot_save("09_hypothesis-testing.svg", width = 10, height = 5, subdir = "covers"
 
 ```
 
-# z distributions
+## NHST diagram generic
+
+```{r}
+bc1101tools::plot_nhst_diagram(pop1lab = "Original\npopulation",
+                               pop2lab = "Treated\npopulation")
+
+bc1101tools::plot_save("nhst-diagram-generic.svg", width = 6, height = 5)
+```
+
+
+## z distributions
 
 ```{r figures}
 #| eval: false

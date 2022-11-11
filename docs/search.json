@@ -865,7 +865,7 @@
     "href": "slides/09_hypothesis-testing.html#making-inferences",
     "title": "BC1101",
     "section": "Making inferences",
-    "text": "Making inferences\n\n\n\nSampling error\n\nStatistics obtained for a sample will be different from the corresponding parameters for the population and the statistics will differ from one sample to another\n\nProblem:\n\nIs difference between sample & population due to treatment effect or sampling error?\n\nAddressed by inferential statistics\n\n\nRight column"
+    "text": "Making inferences\n\n\n\nSampling error\n\nStatistics obtained for a sample will be different from the corresponding parameters for the population and the statistics will differ from one sample to another\n\nProblem:\n\nIs difference between sample & population due to treatment effect or sampling error?\n\nAddressed by inferential statistics"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#making-inferences-1",
@@ -879,7 +879,7 @@
     "href": "slides/09_hypothesis-testing.html#making-inferences-2",
     "title": "BC1101",
     "section": "Making inferences",
-    "text": "Making inferences"
+    "text": "Making inferences\n\nA sample of spidermen (spidermans?)\n\nHow likely is a particular sample mean, given the population characteristics?\nPopulation \\(\\mu = 284; \\sigma = 50\\)\n\n\n\n\n\nSingle score of \\(X = 159\\)\nFind position of that score in population distribution and find probability\n\n\\(z = \\dfrac{X-\\mu}{\\sigma} = \\dfrac{159 - 284}{50} = -2.5\\)\n\npnorm(-2.5)\n\n[1] 0.006209665\n\n\n\n\nSample mean of \\(M = 159\\); \\(n = 5\\)\nFind position of that \\(M\\) in sampling distribution and find probability\n\n\\(z = \\dfrac{M-\\mu_M}{\\sigma_M} = \\dfrac{159 - 284}{50 / \\sqrt{5}} = -5.59\\)\n\npnorm(-5.59)\n\n[1] 1.135348e-08"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#spiderman",
@@ -893,14 +893,14 @@
     "href": "slides/09_hypothesis-testing.html#making-inferences-3",
     "title": "BC1101",
     "section": "Making inferences",
-    "text": "Making inferences"
+    "text": "Making inferences\n\nFor sample size \\(n = 5\\), approximately 0.00000001 of sample means are this (or more) extreme\n\nGiven how unlikely the mean is, maybe spidermen aren’t from this population"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#making-inferences-4",
     "href": "slides/09_hypothesis-testing.html#making-inferences-4",
     "title": "BC1101",
     "section": "Making inferences",
-    "text": "Making inferences\n\nA sample of spidermen (spidermans?)\n\nHow likely is a particular sample mean, given the population characteristics?\nPopulation \\(\\mu = 284; \\sigma = 50\\)\n\n\n\n\n\nSingle score of \\(X = 159\\)\nFind position of that score in population distribution and find probability\n\n\\(z = \\dfrac{X-\\mu}{\\sigma} = \\dfrac{159 - 284}{50} = -2.5\\)\n\npnorm(-2.5)\n\n[1] 0.006209665\n\n\n\n\nSample mean of \\(M = 159\\); \\(n = 5\\)\nFind position of that \\(M\\) in sampling distribution and find probability\n\n\\(z = \\dfrac{M-\\mu_M}{\\sigma_M} = \\dfrac{159 - 284}{50 / \\sqrt{5}} = -5.59\\)\n\npnorm(-5.59)\n\n[1] 1.135348e-08"
+    "text": "Making inferences"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#making-inferences-5",
@@ -1370,5 +1370,19 @@
     "title": "BC1101",
     "section": "Sampling error: IQ",
     "text": "Sampling error: IQ"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#making-inferences-spiderman",
+    "href": "slides/09_hypothesis-testing.html#making-inferences-spiderman",
+    "title": "BC1101",
+    "section": "Making inferences: Spiderman",
+    "text": "Making inferences: Spiderman"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#spiderman-z-test",
+    "href": "slides/09_hypothesis-testing.html#spiderman-z-test",
+    "title": "BC1101",
+    "section": "Spiderman \\(z\\)-test",
+    "text": "Spiderman \\(z\\)-test\n\nFormal Spidermen z-test\n\n1: State Hypotheses\n\nNull: Radioactive spiderbites do not alter reaction times\nAlternative: Radioactive spiderbites alter reaction times\n\n2: Decision criteria\n\n\\(\\alpha = .05\\) two-tailed; Critical regions are -1.96 and 1.96\n\n3: Collect data; compute statistics & probabilities\n\n\\(\\mu = 284\\); \\(\\sigma = 50\\); so if \\(n = 5\\), \\(\\sigma_M = 50/\\sqrt{5} = 22.36\\)\n\\(M = 159\\); \\(z = (159 - 284) / 22.36 = -5.59\\)\n\n4: Decision\n\nObserved sample mean is in the critical region\n\\(p < .05\\)\nReject the null"
   }
 ]
