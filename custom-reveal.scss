@@ -41,6 +41,13 @@ a, .reveal a {
     color: var(--link-color);
 }
 
+.math {
+  font-family: KaTeX_Main;
+}
+
+.italic {
+  font-style: italic;
+}
 
 /* stuff for the dark mode toggle button */
 
@@ -324,6 +331,9 @@ table thead {
 .button {
   fill: var(--link-color);
   font-family: Times;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 .button:hover {
   fill: red;

@@ -245,6 +245,20 @@ $\sigma_M = \dfrac{\sigma}{\sqrt{n}}$ or $\dfrac{\sqrt{\sigma^2}}{\sqrt{n}}$ or 
 
 ## Variability
 
+::: {#sampling-distribution-controls style="align-content: baseline; position: absolute; top: 4em; width: 50%;"}
+
+<label for="mu-input" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">μ = </label>
+<input type="text" id="mu-input" class="invertable" name="mu" value="100" style="background: none; border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; width: 2em; vertical-align: unset;">
+
+<label for="sigma-input" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">σ = </label>
+<input type="text" id="sigma-input" class="invertable" name="sigma" value="15" style="background: none; border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; width: 2em; vertical-align: unset;">
+
+<label for="n-input" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">n = </label><span id="n-value" class="math" style="display: inline-block; width: 1em;">1</span><input data-prevent-swipe type="range" id="n-input" name="n" value="1" min="1" max="50" style="border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; margin-left: 0.5em; width: 50%; vertical-align: unset;">
+
+<p><span id="std-err-label" class="math italic">σ<sub>M</sub> = </span><span id="std-err-value" class="math"></span></p>
+
+:::
+
 ::: {#sampling-distribution-container}
 :::
 
@@ -794,28 +808,56 @@ chart = {
   
   const population_curve = makeCurve(mu, sigma)
   
-  const muInput = d3.select("#sampling-distribution-container").append("input")
-    .attr("class", "invertable").attr("id", "sigma-value")
-    .attr('type','text')
-    .attr('name','textInput')
-    .attr('value', sigma)
-    .style("position", "absolute").style("top", "200px").style("left", "1.5em")
-    .style("font-family", "KaTeX_Main")
-    .style("font-size", "1em")
-    .style("width", "3em")
-    .style("border", "none").style("background", "none")
-    
-  const inputHandler = function(e) {
-    console.log(e.target.value);
-    sigma = e.target.value;
-    <!-- updateValues(); -->
+  <!-- const muInput = d3.select("#sampling-distribution-container").append("input") -->
+  <!--   .attr("class", "invertable").attr("id", "sigma-value") -->
+  <!--   .attr('type','text') -->
+  <!--   .attr('name','textInput') -->
+  <!--   .attr('value', sigma) -->
+  <!--   .style("position", "absolute").style("top", "200px").style("left", "1.5em") -->
+  <!--   .style("font-family", "KaTeX_Main") -->
+  <!--   .style("font-size", "1em") -->
+  <!--   .style("width", "3em") -->
+  <!--   .style("border", "none").style("background", "none") -->
+
+  <!-- const inputHandler = function(e) { -->
+  <!--   console.log(e.target.value); -->
+  <!--   sigma = e.target.value; -->
+  <!--   <!-- updateValues(); --> -->
+  <!--   <!-- updateAxis(); --> -->
+  <!--   <!-- redrawCurves(); --> -->
+  <!-- } -->
+  
+  <!-- const sigmaInput = document.getElementById('sigma-value') -->
+  <!-- sigmaInput.addEventListener('input', inputHandler); -->
+  <!-- sigmaInput.addEventListener('propertychange', inputHandler); -->
+  
+  const nInput = document.getElementById('n-input')
+  <!-- sigmaInput.addEventListener('input', inputHandler); -->
+  nInput.oninput = function() {
+    n = nInput.value
+    std_err = sigma/Math.sqrt(n)
+    console.log(nInput.value)
+    updateValues();
     <!-- updateAxis(); -->
-    <!-- redrawCurves(); -->
+    redrawSamplingDistCurve();
+  };
+  
+  function updateValues() {
+    d3.select("#n-value").text(n)
+    d3.select("#std-err-value")
+      .text(f(std_err))
   }
   
-  const sigmaInput = document.getElementById('sigma-value')
-  sigmaInput.addEventListener('input', inputHandler);
-  sigmaInput.addEventListener('propertychange', inputHandler);
+  function redrawSamplingDistCurve() {
+    curve.attr("d", line(makeCurve(mu, std_err)))
+  };
+  <!-- const inputHandler = function(e) { -->
+  <!--   console.log(nInput.value); -->
+  <!--   <!-- sigma = e.target.value; --> -->
+  <!--   <!-- updateValues(); --> -->
+  <!--   <!-- updateAxis(); --> -->
+  <!--   <!-- redrawCurves(); --> -->
+  <!-- } -->
   
   const svg = d3.select("#sampling-distribution-container").append("svg")
     .attr("width", width).attr("height", height)
@@ -846,46 +888,46 @@ chart = {
       .attr("d", line(makeCurve(mu, std_err)))
       .attr("class", "invertable");
       
-  const data = Array.from({length: 50}, (_, i) => i + 1)
   const f = d3.format(".2f")
-  let val = 1
-  var sliderSimple = d3
-    .sliderBottom()
-    .min(d3.min(data))
-    .max(d3.max(data))
-    .width(300)
-    .displayValue(false)
-    .step(1)
-    <!-- .marks(data) -->
-    .ticks(0)
-    .default(n)
-    .on('onchange', n => {
-      std_err = sigma/Math.sqrt(n)
-      d3.select('#n-value').html("<tspan font-style='italic'>n</tspan> = " + n);
-      d3.select('#sigmaM-value').html("<tspan font-style='italic'>σ</tspan><tspan font-size='0.5em' font-style='italic' baseline-shift='sub'>M</tspan> = " + f(std_err));
-      curve.attr("d", line(makeCurve(mu, std_err)))
-    });
+  <!-- const data = Array.from({length: 50}, (_, i) => i + 1) -->
+  <!-- let val = 1 -->
+  <!-- var sliderSimple = d3 -->
+  <!--   .sliderBottom() -->
+  <!--   .min(d3.min(data)) -->
+  <!--   .max(d3.max(data)) -->
+  <!--   .width(300) -->
+  <!--   .displayValue(false) -->
+  <!--   .step(1) -->
+  <!--   <!-- .marks(data) --> -->
+  <!--   .ticks(0) -->
+  <!--   .default(n) -->
+  <!--   .on('onchange', n => { -->
+  <!--     std_err = sigma/Math.sqrt(n) -->
+  <!--     d3.select('#n-value').html("<tspan font-style='italic'>n</tspan> = " + n); -->
+  <!--     d3.select('#sigmaM-value').html("<tspan font-style='italic'>σ</tspan><tspan font-size='0.5em' font-style='italic' baseline-shift='sub'>M</tspan> = " + f(std_err)); -->
+  <!--     curve.attr("d", line(makeCurve(mu, std_err))) -->
+  <!--   }); -->
 
-  var gSimple = svg.append('g')
-    .attr('transform', 'translate(0,100)')
-    .style("font-family", "KaTeX_Main")
-    
-  const labels = gSimple.append("g").attr("class", "invertable")
-    
-  labels.append("text").attr("id", "mu").html("<tspan id='mu-value' font-style='italic'>μ</tspan> = " + mu)
-  labels.append("text").attr("id", "sigma-value").html("<tspan font-style='italic'>σ</tspan> = ").attr("y", 50)
-    
-  labels.append("text").attr("id", "n-value").html("<tspan font-style='italic'>n</tspan> = " + n).attr("y", 100)
-  
-  labels.append("text").attr("id", "sigmaM-value").attr("y", 150)
-    .html("<tspan font-style='italic'>σ</tspan><tspan font-size='0.5em' font-style='italic' baseline-shift='sub'>M</tspan> = " + f(std_err))
+  <!-- var gSimple = svg.append('g') -->
+  <!--   .attr('transform', 'translate(0,100)') -->
+  <!--   .style("font-family", "KaTeX_Main") -->
 
-  
-  const sl = gSimple.append("g").call(sliderSimple)
-  sl.attr('transform', 'translate(140, 80)')
-  .attr("data-prevent-swipe", true)
+  <!-- const labels = gSimple.append("g").attr("class", "invertable") -->
+
+  <!-- labels.append("text").attr("id", "mu").html("<tspan id='mu-value' font-style='italic'>μ</tspan> = " + mu) -->
+  <!-- labels.append("text").attr("id", "sigma-value").html("<tspan font-style='italic'>σ</tspan> = ").attr("y", 50) -->
+
+  <!-- labels.append("text").attr("id", "n-value").html("<tspan font-style='italic'>n</tspan> = " + n).attr("y", 100) -->
+
+  <!-- labels.append("text").attr("id", "sigmaM-value").attr("y", 150) -->
+  <!--   .html("<tspan font-style='italic'>σ</tspan><tspan font-size='0.5em' font-style='italic' baseline-shift='sub'>M</tspan> = " + f(std_err)) -->
+
+
+  <!-- const sl = gSimple.append("g").call(sliderSimple) -->
+  <!-- sl.attr('transform', 'translate(140, 80)') -->
+  <!-- .attr("data-prevent-swipe", true) -->
       
-  return svg.node();
+  updateValues();
   
   
 }
