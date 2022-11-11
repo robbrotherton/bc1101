@@ -6,7 +6,7 @@ format:
 
 # 9|HYPOTHESIS TESTING
 
-![](covers/09_hypothesis-testing.svg)
+![](covers/09_hypothesis-testing.svg){.invertable}
 
 ```{r data}
 library(bc1101tools)
@@ -16,39 +16,6 @@ sM <- rt$sd / sqrt(n)
 zM <- (rt$x - rt$m)/sM
 ```
 
-```{r figures}
-#| eval: false
-
-library(ggplot2)
-scaleFUN <- function(x) sprintf("%.1f", x)
-
-segments <- seq(rt$m-3*sM, rt$m+3*sM, sM)
-
-plot_distribution(args = list(mean = rt$m, 
-                              sd = rt$sd/sqrt(5)),
-                  xlim = c(rt$x, rt$m+3*sM), segments = segments, 
-                  arrow = rt$x,
-                  arrow_y = 0.005,
-                  linetype = 2) +
-  scale_x_continuous(breaks = c(rt$x, segments),
-                     labels = scaleFUN,
-                     name = "Reaction Time (ms)") +
-  theme_xonly(yline = TRUE)
-
-plot_save("spiderman-sampling-distribution.svg", width = 7, height = 3)
-
-plot_nhst_diagram()
-
-plot_save("nhst-diagram.svg",
-          width = 8, height = 8)
-
-plot_nhst_diagram(pop1lab = "Original\nPopulation\n(known \U03BC & \U03C3)",
-                  sample2lab = "Treated\nSample\n(M & n)")
-
-plot_save("nhst-z-diagram.svg",
-          width = 8, height = 8)
-  
-```
 
 # Overview
 
@@ -66,9 +33,9 @@ plot_save("nhst-z-diagram.svg",
   - Find probabilities using Unit Normal Table / pnorm()
 
 ::: {.r-stack}
-![](media/z-distribution.svg){.invertable}
+![](media/z-distribution.svg){.invertable .fragment .fade-out fragment-index=1}
 
-![](media/z-distribution-labelled.svg){.fragment}
+![](media/z-distribution-labelled.svg){.invertable-blue .fragment fragment-index=1}
 :::
 
 ## Recap
@@ -84,7 +51,7 @@ plot_save("nhst-z-diagram.svg",
 $\mu_M = \mu  \ \ \ \ \ \ \ \ \ \  \sigma_M = \dfrac{\sigma}{\sqrt{n}}$
 :::
 
-![](media/samp-dist-1.png){.invertable}
+![](media/sampling-distributions.svg){.invertable}
 
 ## Together... {.smaller}
 
@@ -103,7 +70,7 @@ $\mu_M = \mu  \ \ \ \ \ \ \ \ \ \  \sigma_M = \dfrac{\sigma}{\sqrt{n}}$
 $z = \dfrac{M-\mu_M}{\sigma_M}$
 :::
 
-![](media/z-distribution-filled.svg)
+![](media/z-distribution-filled.svg){.invertable-blue}
 :::
 
 ::::
@@ -146,7 +113,7 @@ Right column
 :::: {.columns}
 
 ::: {.column width="50%"}
-![](media/spiderman-distribution.svg)
+![](media/spiderman-distribution.svg){.invertable-blue}
 :::
 
 ::: {.column width="50%"}
@@ -214,9 +181,9 @@ pnorm(-5.59)
 
 ## Making inferences
 
-![](media/nhst-diagram.svg)
+![](media/nhst-diagram.svg){.invertable-blue}
 
-# Hypothesis testing
+# Hypothesis testing {.smaller}
 
 - What do you suspect is going on? Be skeptical
   - Maybe spider bites affect RT
@@ -230,7 +197,7 @@ pnorm(-5.59)
   - Compare outcome with predicted probabilities
   - Change your mind if observation seems unlikely enough
 
-## Hypothesis testing
+## Hypothesis testing {.smaller}
 
 - Step 1: State hypotheses
   - "Null" and "alternative"
@@ -242,7 +209,7 @@ pnorm(-5.59)
   - Compare outcome with predicted probabilities
   - Accept or reject the null hypothesis
 
-## 1: State hypotheses
+## 1: State hypotheses {.smaller}
 
 - Null hypothesis: $H_0$
   - States that “treatment” has no effect
@@ -255,7 +222,7 @@ pnorm(-5.59)
   - Can’t both be true
   - Ensures [falsifiability]{.emph}
 
-## 1. State hypotheses
+## 1. State hypotheses {.smaller}
 
 - Claim: This pill makes you smarter
   - $H_0$: The pill doesn’t effect intelligence
@@ -288,40 +255,9 @@ pnorm(-5.59)
   - Outcomes unlikely if $H_0$ is true
   - Boundaries for critical region(s) determined by alpha
 
-```{r}
-#| eval: false
-
-plot_distribution(xlim = c(-4, 4), 
-                  segments = qnorm(.95),
-                  linetype = 0,
-                  fill_colors = c(NA, "red")) +
-  theme_void()
-
-plot_save("directional-test-upper-tail.svg", height = 2)
-
-plot_distribution(xlim = c(-4, 4), 
-                  segments = qnorm(.05),
-                  linetype = 0,
-                  fill_colors = c("red", NA)) +
-  theme_void()
-
-plot_save("directional-test-lower-tail.svg", height = 2)
 
 
-nondir <- plot_distribution(xlim = c(-4, 4), 
-                  segments = qnorm(c(.025, .975)),
-                  linetype = 0,
-                  fill_colors = c("red", NA, "red")) +
-  theme_void()
-
-plot_save("nondirectional-test.svg",
-          plot = nondir,
-          height = 2)
-```
-
-
-
-## 2. Decision criterion
+## 2. Decision criterion {.small}
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -331,9 +267,9 @@ plot_save("nondirectional-test.svg",
 :::
 
 ::: {.column width="50%"}
-![](media/directional-test-upper-tail.svg){width=80%}
+![](media/directional-test-upper-tail.svg){.invertable width=80% style="margin-top: -1em;"}
 
-![](media/directional-test-lower-tail.svg){width=80%}
+![](media/directional-test-lower-tail.svg){.invertable width=80%}
 :::
 ::::
 
@@ -344,7 +280,7 @@ plot_save("nondirectional-test.svg",
 :::
 
 ::: {.column width="50%"}
-![](media/nondirectional-test.svg)
+![](media/nondirectional-test.svg){.invertable}
 :::
 ::::
 
@@ -368,23 +304,8 @@ plot_save("nondirectional-test.svg",
       - Reject null
       - Meaning there does seem to be an effect
 
-```{r}
-#| eval: false
-library(ggplot2)
 
-lab_df <- data.frame(lab = c("Reject null", "Fail to\nreject null", "Reject null"),
-                     x = c(-3, 0, 3),
-                     y = c(0.02, .15, .02))
-
-
-nondir +
-  geom_text(data = lab_df, aes(x, y, label = lab))
-
-plot_save("nondirectional-test-labelled.svg", width = 9, height = 4)
-
-```
-
-![](media/nondirectional-test-labelled.svg)
+![](media/nondirectional-test-labelled.svg){.invertable}
 
 
 # $z$-test
@@ -393,7 +314,7 @@ plot_save("nondirectional-test-labelled.svg", width = 9, height = 4)
   - Original population $\mu$ and $\sigma$ are both known
   - Sampling distribution is normally distributed
 
-![](media/nhst-z-diagram.svg)
+![](media/nhst-z-diagram.svg){.invertable}
 
 ## $z$-test: Spiderman {.smaller}
 
@@ -446,7 +367,7 @@ Abramowitz, J. S., Deacon, B. J., Olatunji, B. O., Wheaton, M. G., Berman, N. C.
 # Data and figures
 
 ## Cover
-:::
+
 
 ```{r}
 #| eval: false
@@ -464,4 +385,88 @@ plot_save("09_hypothesis-testing.svg", width = 10, height = 5, subdir = "covers"
 
 ```
 
+# z distributions
 
+```{r figures}
+#| eval: false
+
+library(ggplot2)
+scaleFUN <- function(x) sprintf("%.1f", x)
+
+segments <- seq(rt$m-3*sM, rt$m+3*sM, sM)
+
+plot_distribution(args = list(mean = rt$m, 
+                              sd = rt$sd/sqrt(5)),
+                  xlim = c(rt$x, rt$m+3*sM), segments = segments, 
+                  arrow = rt$x,
+                  arrow_y = 0.005,
+                  linetype = 2) +
+  scale_x_continuous(breaks = c(rt$x, segments),
+                     labels = scaleFUN,
+                     name = "Reaction Time (ms)") +
+  theme_xonly(yline = TRUE)
+
+plot_save("spiderman-sampling-distribution.svg", width = 7, height = 3)
+
+plot_nhst_diagram()
+
+plot_save("nhst-diagram.svg",
+          width = 8, height = 8)
+
+plot_nhst_diagram(pop1lab = "Original\nPopulation\n(known \U03BC & \U03C3)",
+                  sample2lab = "Treated\nSample\n(M & n)")
+
+plot_save("nhst-z-diagram.svg",
+          width = 8, height = 8)
+  
+```
+
+
+## Directional tests
+
+```{r}
+#| eval: false
+library(bc1101tools)
+library(ggplot2)
+
+plot_distribution(xlim = c(-4, 4), 
+                  segments = qnorm(.95),
+                  linetype = 0,
+                  fill_colors = c(NA, "red")) +
+  theme_void()
+
+plot_save("directional-test-upper-tail.svg", width = 5, height = 2)
+
+plot_distribution(xlim = c(-4, 4), 
+                  segments = qnorm(.05),
+                  linetype = 0,
+                  fill_colors = c("red", NA)) +
+  theme_void()
+
+plot_save("directional-test-lower-tail.svg", width = 5, height = 2)
+
+
+nondir <- plot_distribution(xlim = c(-4, 4), 
+                  segments = qnorm(c(.025, .975)),
+                  linetype = 0,
+                  fill_colors = c("red", NA, "red")) +
+  theme_void()
+
+plot_save("nondirectional-test.svg",
+          plot = nondir,
+          width = 5, height = 2)
+
+
+lab_df <- data.frame(lab = c("Reject null", "Fail to\nreject null", "Reject null"),
+                     x = c(-3, 0, 3),
+                     y = c(0.05, .15, .05))
+
+
+nondir +
+  geom_text(data = lab_df, aes(x, y, label = lab))
+
+plot_save("nondirectional-test-labelled.svg", width = 4, height = 1.7)
+
+```
+
+:::

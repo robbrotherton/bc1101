@@ -392,10 +392,7 @@
 <section id="hypothesis-testing" class="title-slide slide level1 center">
 <h1>9|HYPOTHESIS TESTING</h1>
 
-<img data-src="covers/09_hypothesis-testing.svg" class="r-stretch"><div class="cell">
-
-</div>
-<div class="cell">
+<img data-src="covers/09_hypothesis-testing.svg" class="invertable r-stretch"><div class="cell">
 
 </div>
 </section>
@@ -422,8 +419,8 @@
 </ul></li>
 </ul>
 <div class="r-stack">
-<p><img data-src="media/z-distribution.svg" class="invertable"></p>
-<p><img data-src="media/z-distribution-labelled.svg" class="fragment"></p>
+<p><img data-src="media/z-distribution.svg" class="invertable fragment fade-out" data-fragment-index="1"></p>
+<p><img data-src="media/z-distribution-labelled.svg" class="invertable-blue fragment" data-fragment-index="1"></p>
 </div>
 </section>
 <section id="recap-1" class="slide level2">
@@ -444,7 +441,7 @@
 <p><span class="math inline">\(\mu_M = \mu \ \ \ \ \ \ \ \ \ \  \sigma_M = \dfrac{\sigma}{\sqrt{n}}\)</span></p>
 </div>
 
-<img data-src="media/samp-dist-1.png" class="invertable r-stretch"></section>
+<img data-src="media/sampling-distributions.svg" class="invertable r-stretch"></section>
 <section id="together" class="slide level2 smaller">
 <h2>Together…</h2>
 <div class="columns">
@@ -462,7 +459,7 @@
 <div class="c">
 <p><span class="math inline">\(z = \dfrac{M-\mu_M}{\sigma_M}\)</span></p>
 </div>
-<p><img data-src="media/z-distribution-filled.svg"></p>
+<p><img data-src="media/z-distribution-filled.svg" class="invertable-blue"></p>
 </div>
 </div>
 </section>
@@ -506,7 +503,7 @@
 <p><img data-src="media/spiderman-small-bw.png" style="position: absolute; top: 80%; left: -45%;width:10.0%"></p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><img data-src="media/spiderman-distribution.svg"></p>
+<p><img data-src="media/spiderman-distribution.svg" class="invertable-blue"></p>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">2.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -575,9 +572,9 @@
 <section id="making-inferences-6" class="slide level2">
 <h2>Making inferences</h2>
 
-<img data-src="media/nhst-diagram.svg" class="r-stretch"></section></section>
+<img data-src="media/nhst-diagram.svg" class="invertable-blue r-stretch"></section></section>
 <section>
-<section id="hypothesis-testing-1" class="title-slide slide level1 center">
+<section id="hypothesis-testing-1" class="title-slide slide level1 smaller center">
 <h1>Hypothesis testing</h1>
 <ul>
 <li>What do you suspect is going on? Be skeptical
@@ -601,7 +598,7 @@
 </ul></li>
 </ul>
 </section>
-<section id="hypothesis-testing-2" class="slide level2">
+<section id="hypothesis-testing-2" class="slide level2 smaller">
 <h2>Hypothesis testing</h2>
 <ul>
 <li>Step 1: State hypotheses
@@ -623,7 +620,7 @@
 </ul></li>
 </ul>
 </section>
-<section id="state-hypotheses" class="slide level2">
+<section id="state-hypotheses" class="slide level2 smaller">
 <h2>1: State hypotheses</h2>
 <ul>
 <li>Null hypothesis: <span class="math inline">\(H_0\)</span>
@@ -644,7 +641,7 @@
 </ul></li>
 </ul>
 </section>
-<section id="state-hypotheses-1" class="slide level2">
+<section id="state-hypotheses-1" class="slide level2 smaller">
 <h2>1. State hypotheses</h2>
 <ul>
 <li>Claim: This pill makes you smarter
@@ -692,11 +689,8 @@
 <li>Boundaries for critical region(s) determined by alpha</li>
 </ul></li>
 </ul>
-<div class="cell">
-
-</div>
 </section>
-<section id="decision-criterion-2" class="slide level2">
+<section id="decision-criterion-2" class="slide level2 small">
 <h2>2. Decision criterion</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -708,8 +702,8 @@
 </ul></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<p><img data-src="media/directional-test-upper-tail.svg" style="width:80.0%"></p>
-<p><img data-src="media/directional-test-lower-tail.svg" style="width:80.0%"></p>
+<p><img data-src="media/directional-test-upper-tail.svg" class="invertable" style="margin-top: -1em;;width:80.0%"></p>
+<p><img data-src="media/directional-test-lower-tail.svg" class="invertable" style="width:80.0%"></p>
 </div>
 </div>
 <div class="columns">
@@ -721,7 +715,7 @@
 </ul></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<p><img data-src="media/nondirectional-test.svg"></p>
+<p><img data-src="media/nondirectional-test.svg" class="invertable"></p>
 </div>
 </div>
 </section>
@@ -754,11 +748,8 @@
 </ul></li>
 </ul></li>
 </ul>
-<div class="cell">
 
-</div>
-
-<img data-src="media/nondirectional-test-labelled.svg" class="r-stretch"></section></section>
+<img data-src="media/nondirectional-test-labelled.svg" class="invertable r-stretch"></section></section>
 <section>
 <section id="z-test" class="title-slide slide level1 center">
 <h1><span class="math inline">\(z\)</span>-test</h1>
@@ -770,7 +761,7 @@
 </ul></li>
 </ul>
 
-<img data-src="media/nhst-z-diagram.svg" class="r-stretch"></section>
+<img data-src="media/nhst-z-diagram.svg" class="invertable r-stretch"></section>
 <section id="z-test-spiderman" class="slide level2 smaller">
 <h2><span class="math inline">\(z\)</span>-test: Spiderman</h2>
 <ul>
@@ -820,9 +811,6 @@
 </ol>
 <div class="footnote reference">
 <p>Abramowitz, J. S., Deacon, B. J., Olatunji, B. O., Wheaton, M. G., Berman, N. C., Losardo, D., . . . Hale, L. R. (2010). <em>Assessment of obsessive-compulsive symptom dimensions: Development and evaluation of the Dimensional Obsessive-Compulsive Scale. Psychological Assessment, 22</em>(1), 180-198. <a href="https://doi.org/10.1037/a0018260" class="uri">https://doi.org/10.1037/a0018260</a></p>
-</div>
-<div class="cell">
-
 </div>
 
 <div class="footer footer-default">
@@ -1073,20 +1061,26 @@
     </script>
     <script>
       git = document.querySelector('[data-panel="Custom1"]');
+
       function changeLink() {
         var link = document.getElementById('source-link');
         var href = link.getAttribute('href');
 
         var path = window.location.pathname;
         var html = path.split('/');
-        html = html[html.length - 1];
-        var qmd = html.replace('html', 'qmd');
+        var lecture = html[html.length - 1];
+        var qmd = lecture.replace('html', 'qmd');
         link.setAttribute('href', href.concat('/' + qmd));
 
+        var page = window.location.hash.replace('#/', ' : ');
+
         var issueLink = document.getElementById('issue-link');
-        issueLink.setAttribute('href', issueLink.getAttribute('href').concat('?title=').concat(html));
+        issueLink.setAttribute('href', issueLink.getAttribute('href').concat('?title=' + ' Issue with ' + lecture + page));
+
       }
+
       git.addEventListener("click", changeLink);
+
     </script>
     
     <script>
