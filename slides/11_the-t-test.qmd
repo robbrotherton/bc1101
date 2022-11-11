@@ -1,12 +1,11 @@
 ---
-format: 
-  revealjs:
-    chalkboard: true
+format: revealjs
 ---
 
 # 11|THE $t$-TEST
 
-<div id="cover-image"></div>
+::: {#cover-image}
+:::
 
 
 # Overview
@@ -16,19 +15,10 @@ format:
 - [The $t$-test]
 - [Learning checks]
 
-```{r chunk-b, ref.label=I('chunk-a')}
-```
-
-```{r}
-answer
-```
 
 
 # $t$ vs. $z$
 
-```{r, chunk-a}
-answer <- 2 + 2
-```
 
 ## $z$-test
 
@@ -467,7 +457,7 @@ knitr::kable(df, col.names = c("\\(df\\)", "\\(\\alpha = .05\\)"), align = "r")
  
   
   
-## 3. State hypotheses
+## 3. State hypotheses {.small}
 
 
 - Step 3: Collect data; compute the test statistic
