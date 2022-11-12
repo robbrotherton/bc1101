@@ -224,6 +224,14 @@ card("11_the-t-test", "")
 ::::
 
 
+
+:::: {.box}
+## 12. The $t$ test part 2
+```{r}
+card("12_the-t-test-pt-2", "")
+```
+::::
+
 ```{r eval=FALSE, echo=FALSE}
 
 # simple card; title, image, buttons

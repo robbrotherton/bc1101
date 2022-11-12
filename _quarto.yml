@@ -18,9 +18,6 @@ website:
       - href: slides-index.qmd
         text: Slides
     right:
-      - icon: github
-        href: https://github.com/robbrotherton/quarto-test-website
-        aria-label: GitHub
       - icon: moon
         href: _
 
