@@ -1,0 +1,51 @@
+---
+format: html
+title: "OJS Utilities"
+---
+
+```{ojs}
+
+nhstDiagram = function(selection) {
+ return false
+}
+
+```
+
+
+::: {#likert-container style="width: 70%"}
+:::
+
+```{ojs}
+likert = { 
+
+  d3.select("#likert-container").text("")
+  
+  const container = d3.select("#likert-container")
+    .style("border", "1px solid var(--text-color)")
+    .style("border-radius", "10px")
+    .style("padding", "1em")
+  
+  
+  const itemData = [{name: "1. A lot less than usual"},
+                 {name: "2. A little less than usual"},
+                 {checked: "checked", name: "3. About average"},
+                 {name: "4. A little more than usual"},
+                 {name: "5. A lot more than usual"}]
+  
+  container.append("p").text("What is your current level of happiness?").style("font-weight", "bold")
+  
+  const items = container.selectAll("span")
+    .data(itemData)
+    .enter().append("span")
+    .html(d => '<label class="likert-label"><input class="likert-button" type="radio" name="flexRadioDefault"' + d.checked + '>' + d.name + '</label><br>')
+    
+    container.selectAll(".likert-button")
+      .style("margin-left", "1em")
+      .style("margin-right", "0.5em")
+      .style("width", "1em")
+      .style("height", "1em")
+      
+    items.style("line-height", "1.5em")
+}
+```
+

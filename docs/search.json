@@ -165,7 +165,7 @@
     "href": "slides/02_variables.html#likert-scales",
     "title": "BC1101",
     "section": "Likert scales",
-    "text": "Likert scales\n\n\n\n\nWhat is your current level of happiness?\n\n\n\n  \n    \n    \n    1. A lot less than usual\n    \n\n\n  \n    \n    \n    2. A little less than usual\n    \n\n\n  \n    \n    \n    3. About average\n    \n\n\n  \n    \n    \n    4. A little more than usual\n    \n\n\n  \n    \n    \n    5. A lot more than usual"
+    "text": "Likert scales\n\nWhat is your current level of happiness?\n\nA lot less than usual\nA little less than usual\nAbout average\nA little more than usual\nA lot more than usual"
   },
   {
     "objectID": "slides/02_variables.html#draw-sample-make-inference",
@@ -1145,7 +1145,7 @@
     "href": "slides/12_the-t-test-pt-2.html#research-designs-1",
     "title": "BC1101",
     "section": "Research designs",
-    "text": "Research designs\n\nE.g. measure of happiness\n\n\n\n\n\nWhat is your current level of happiness?\n\n\n\n  \n    \n    \n    1. A lot less than usual\n    \n\n\n  \n    \n    \n    2. A little less than usual\n    \n\n\n  \n    \n    \n    3. About average\n    \n\n\n  \n    \n    \n    4. A little more than usual\n    \n\n\n  \n    \n    \n    5. A lot more than usual"
+    "text": "Research designs\n\nE.g. measure of happiness\n\n\nWhat is your current level of happiness?\n\nA lot less than usual\nA little less than usual\nAbout average\nA little more than usual\nA lot more than usual"
   },
   {
     "objectID": "slides/12_the-t-test-pt-2.html#r2",
@@ -1384,5 +1384,19 @@
     "title": "BC1101",
     "section": "Spiderman \\(z\\)-test",
     "text": "Spiderman \\(z\\)-test\n\nFormal Spidermen z-test\n\n1: State Hypotheses\n\nNull: Radioactive spiderbites do not alter reaction times\nAlternative: Radioactive spiderbites alter reaction times\n\n2: Decision criteria\n\n\\(\\alpha = .05\\) two-tailed; Critical regions are -1.96 and 1.96\n\n3: Collect data; compute statistics & probabilities\n\n\\(\\mu = 284\\); \\(\\sigma = 50\\); so if \\(n = 5\\), \\(\\sigma_M = 50/\\sqrt{5} = 22.36\\)\n\\(M = 159\\); \\(z = (159 - 284) / 22.36 = -5.59\\)\n\n4: Decision\n\nObserved sample mean is in the critical region\n\\(p < .05\\)\nReject the null"
+  },
+  {
+    "objectID": "ojs/utils.html",
+    "href": "ojs/utils.html",
+    "title": "OJS Utilities",
+    "section": "",
+    "text": "likert = { \n\n  d3.select(\"#likert-container\").text(\"\")\n  \n  const container = d3.select(\"#likert-container\")\n    .style(\"border\", \"1px solid var(--text-color)\")\n    .style(\"border-radius\", \"10px\")\n    .style(\"padding\", \"1em\")\n  \n  \n  const itemData = [{name: \"1. A lot less than usual\"},\n                 {name: \"2. A little less than usual\"},\n                 {checked: \"checked\", name: \"3. About average\"},\n                 {name: \"4. A little more than usual\"},\n                 {name: \"5. A lot more than usual\"}]\n  \n  container.append(\"p\").text(\"What is your current level of happiness?\").style(\"font-weight\", \"bold\")\n  \n  const items = container.selectAll(\"span\")\n    .data(itemData)\n    .enter().append(\"span\")\n    .html(d => '<label class=\"likert-label\"><input class=\"likert-button\" type=\"radio\" name=\"flexRadioDefault\"' + d.checked + '>' + d.name + '</label><br>')\n    \n    container.selectAll(\".likert-button\")\n      .style(\"margin-left\", \"1em\")\n      .style(\"margin-right\", \"0.5em\")\n      .style(\"width\", \"1em\")\n      .style(\"height\", \"1em\")\n      \n    items.style(\"line-height\", \"1.5em\")\n}"
+  },
+  {
+    "objectID": "slides/02_variables.html#likert-scales-1",
+    "href": "slides/02_variables.html#likert-scales-1",
+    "title": "BC1101",
+    "section": "Likert scales",
+    "text": "Likert scales\n\n\n\n\nWhat is your current level of happiness?\n\n\n\n  \n    \n    \n    1. A lot less than usual\n    \n\n\n  \n    \n    \n    2. A little less than usual\n    \n\n\n  \n    \n    \n    3. About average\n    \n\n\n  \n    \n    \n    4. A little more than usual\n    \n\n\n  \n    \n    \n    5. A lot more than usual"
   }
 ]

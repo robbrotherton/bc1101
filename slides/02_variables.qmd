@@ -280,68 +280,24 @@ knitr::kable(tab, 'html', escape = F)
 ```
 
 
-## Likert scales
+## Likert scales {.smaller}
 
-```{css}
+::: {#likert-container style="width: 50%; margin-left: 22%; margin-top: 2em;"}
 
-.form-check-input {
-  width: 2em;
-  height: 2em;
-}
-
-.likert {
-  border: 1px black solid;
-  margin-top: 1em;
-  padding: 0.5em;
-}
-
-.likert > p {
-  margin-top: 0;
-  font-style: normal;
-}
-
-.likert .likert-options {
-  display: flex; 
-  justify-content: center;
-}
-
-```
-
-::: {.likert}
 What is your current level of happiness?
 
-::: {.likert-options}
-```{r}
-make_html_likert <- function(label, checked = FALSE) {
-  htmltools::HTML(
-    glue::glue('
-      
-        <label class="form-check-label">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" {ifelse(checked, "checked", "")}>
-        {label}
-        </label>
-    ')
-  )
-}
-make_html_likert("1. A lot less than usual")
-make_html_likert("2. A little less than usual")
-make_html_likert("3. About average", TRUE)
-make_html_likert("4. A little more than usual")
-make_html_likert("5. A lot more than usual")
+1. A lot less than usual
+2. A little less than usual
+3. About average
+4. A little more than usual
+5. A lot more than usual
 
-```
 :::
-:::
-<!-- ::: {.center} -->
-<!-- * [] 1. A lot less than usual -->
-<!-- 2. A little less than usual -->
-<!-- 3. About average -->
-<!-- 4. A little more than usual -->
-<!-- 5. A lot more than usual -->
-<!-- ::: -->
+
+
+
 
 # Populations & samples
-
 
 
 ## Draw sample, make inference
@@ -669,4 +625,10 @@ color = d3.scaleOrdinal().
 <!--   return arr; -->
 <!-- } -->
 
+```
+
+
+
+```{ojs}
+import { likert } from "../ojs/utils.qmd";
 ```
