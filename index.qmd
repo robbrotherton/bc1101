@@ -24,11 +24,11 @@ Professor: Dr. Rob Brotherton
 Email: rbrother@barnard.edu  
 Office Hours: TBD
 
-Lecture hours: TBD  
+Lecture hours: T/Th 10:10-11:25AM  
 Lecture venue: TBD
 
-Section 001 recitation hours: TBD  
-Section 002 recitation hours: TBD  
+Section 001 recitation hours: Th 12:10-2PM  
+Section 002 recitation hours: Th 2:10-4:00PM  
 Recitation venue:TBD
 
 
@@ -50,23 +50,35 @@ The course is designed to fulfill these goals:
 
 
 ```{r}
-#| classes: table-no-border
+#| eval: false
+
+dates <- paste(seq.Date(from = as.Date("2022-01-17"), to = as.Date("2022-05-01"), by = "week"),
+      seq.Date(from = as.Date("2022-01-19"), to = as.Date("2022-05-01"), by = "week"), sep = "!") |>
+  stringr::str_split(pattern = "!") |>
+  unlist()
+
+schedule <- data.frame(date = dates,
+                       lecture = "")
+
+readr::write_csv(schedule, "schedule.csv")
+
+```
 
 
-# paste(seq.Date(from = as.Date("2022-01-01"), to = as.Date("2022-05-01"), by = "week"),
-#       seq.Date(from = as.Date("2022-01-03"), to = as.Date("2022-05-03"), by = "week"), sep = "!") |>
-#   stringr::str_split(pattern = "!") |>
-#   unlist()
+```{r}
+#| message: false
 
+# details <- tibble::tribble(
+#   ~Topic, ~Date,        ~Recitation,
+#   "One",  "01/01/2022", "",
+#   "Two",  "01/02/2022", "",
+# )
 
-details <- tibble::tribble(
-  ~Topic, ~Date,        ~Recitation,
-  "One",  "01/01/2022", "",
-  "Two",  "01/02/2022", "",
-)
-
-kableExtra::kbl(details, booktabs = TRUE)
-
+schedule <- readr::read_csv("schedule.csv")
+kableExtra::kbl(schedule, booktabs = TRUE) |> 
+  kableExtra::column_spec(1, width = "5em") |> 
+  kableExtra::column_spec(2, width = "20em") |> 
+  kableExtra::column_spec(3, width = "10em")
 
 ```
 
