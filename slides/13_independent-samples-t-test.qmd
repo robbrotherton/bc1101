@@ -21,63 +21,95 @@ format:
 ## Single-sample $t$-test design
 
 - Compare sample against expected population mean based on logic/theory/scale design
-- E.g. Happiness
-  - Give everyone $10
-  - "What is your current level of happiness?"
+- E.g. give everyone $10
 
-## Independent-samples design
+:::: {.columns}
 
-What if...  
+::: {.column width="60%"}
+
+::: {#likert-container .smallest style="width: 80%; display: block;"}
+
+What is your current level of happiness?
+
+1. A lot less than usual
+2. A little less than usual
+3. About average
+4. A little more than usual
+5. A lot more than usual
+
+:::
+
+:::
+
+::: {.column width="40%" .center-element}
+
+$\mu = 3$
+
+![](media/theoretical-distribution.svg){.invertable style="margin-top: 0;"}
+:::
+
+::::
+
+```{ojs}
+import {likert} from "../ojs/utils.qmd";
+```
+
+
+## Independent-samples design {.small}
+
+What if... give everyone $10
 
 
 :::: {.columns .c}
 
 ::: {.column width="50%"}
 Group A:  
-Spend this on yourself
+Spend this on [yourself]{.emph}
+
+::: {#likert-container .smallest style="width: 80%; display: block; text-align: left;"}
+
+What is your current level of happiness?
+
+1. A lot less than usual
+2. A little less than usual
+3. About average
+4. A little more than usual
+5. A lot more than usual
+
+:::
 :::
 
 ::: {.column width="50%"}
 Group B:  
-Spend this on someone else
+Spend this on [someone else]{.emph}
+
+::: {#likert-container .smallest style="width: 80%; display: block; text-align: left;"}
+
+What is your current level of happiness?
+
+1. A lot less than usual
+2. A little less than usual
+3. About average
+4. A little more than usual
+5. A lot more than usual
+
+:::
 :::
 
 ::::
 
-- Later... "What is your current level of happiness?"
-
-
-::: {.footer .reference}
-Dunn, E. W., Aknin, L. B., & Norton, M. I. (2014). Prosocial spending and happiness: Using money to benefit others pays off. *Current Directions in Psychological Science, 23*(1), 41-47. https://doi.org/10.1177/0963721413512503
+::: {.reference}
+Dunn, E. W., Aknin, L. B., & Norton, M. I. (2014). Prosocial spending and happiness: Using money to benefit others pays off. *Current Directions in Psychological Science, 23(1)*, 41-47. [https://doi.org/10.1177/0963721413512503](https://doi.org/10.1177/0963721413512503)
 :::
 
 
 ## Independent-samples
 
-```{r}
-#| eval: false
+![](media/nhst-diagram-single-sample-t.svg){.invertable-blue}
 
+## Independent-samples
 
-bc1101tools::plot_nhst_diagram(text.size = 5,
-                               pop1lab = "Partially\nknown\noriginal\npopulation\n(\U03BC)",
-                               pop2lab = "Unknown\ntreated\npopulation",
-                               sample2lab = "Treated\nSample\n(M, s, n)")
-
-```
-
-
-```{r}
-#| eval: false
-
-bc1101tools::plot_nhst_diagram(text.size = 5,
-                               pop1lab = "Unknown\ntreated\npopulation\nA",
-                               pop1line = 2, pop2fill = "white",
-                               pop2lab = "Unknown\ntreated\npopulation\nB",
-                               sample1lab = "Sample A\n(M, s, n)",
-                               sample2lab = "Sample B\n(M, s, n)", sample2fill = "white",
-                               sample_line = "white")
-
-```
+![](media/nhst-diagram-independent-samples-t.svg){.invertable-blue}
 
 # Calculation {.small}
 
@@ -109,6 +141,168 @@ $t = \dfrac{(M_1-M_2)-(\mu_1-\mu_2)}{s_{M_1-M_2}}$
 ::::
 
 
+## Equations {.small}
+
+:::: {.columns}
+::: {.column width="50%"}
+- Denominator: $s_{M_1-M_2}$
+  - Estimated standard error of the mean difference<br><br>
+:::
+
+::: {.column width="50%"}
+$s_{M_1-M_2} = \sqrt{\dfrac{s_p^2}{n_1}+\dfrac{s_p^2}{n_2}}$
+:::
+::::
+
+:::: {.columns}
+::: {.column width="50%"}
+- $s_p^2$: Pooled variance
+  - Weighted average of two sample variances
+:::
+
+::: {.column width="50%" style="margin-left: -4em;"}
+$\begin{align} s_p^2 = &\dfrac{SS_1+SS_2}{df_1+df_2} \\ \\ \text{or... } &\dfrac{df_1*s_1^2 + df_2*s_2^2}{df_1+df_2} \\ \text{because... } s^2 = &\dfrac{SS}{df} \text{ so... } SS = df*s^2 \end{align}$
+:::
+::::
+
+## Calculating independent samples $t$
+
+1. Pooled variance: $s_p^2 = \dfrac{SS_1+SS_2}{df_1+df_2}$
+2. Estimated standard error of mean difference: $s_{M_1-M_2} = \sqrt{\dfrac{s_p^2}{n_1}+\dfrac{s_p^2}{n_2}}$
+3. $t$ statistic: $t = \dfrac{(M_1-M_2)-(\mu_1-\mu_2)}{s_{M_1-M_2}}$
+
+
+# Hypothesis test
+
+## Step 1: State hypotheses
+
+- Null: There is no difference between groups
+  - The treatment has no effect
+  - $μ_1 – μ_2 = 0$
+- Alternative: There is a difference
+  - The treatment has an effect
+  - Directional: $μ_1 – μ_2 < 0$ or $μ_1 – μ_2 > 0$
+  - Nondirectional: $μ_1 – μ_2 \ne 0$
+
+## Step 2: Define critical region
+
+- Depends on $\alpha$ and $df$
+
+$$
+\begin{align}
+df &= df_1 + df_2 \\
+&= (n_1 – 1) + (n_2 – 1) \\
+&= N - 2
+\end{align}
+$$
+
+## Step 3: Collect data, calculate $t$ statistic
+
+```{r data}
+conditionA <- c(1, 5, 2, 4, 3)
+conditionB <- c(5, 5, 2, 5, 3)
+r <- function(x) {round(x, 2)}
+# t.test(conditionA, conditionB, var.equal=T, paired=F)
+
+SS <- function(x) sum((x - mean(x))^2)
+
+m1 <- mean(conditionA)
+m2 <- mean(conditionB)
+n1 <- length(conditionA)
+n2 <- length(conditionB)
+N <- n1 + n2
+df1 <- n1 - 1
+df2 <- n2 - 1
+ss1 <- SS(conditionA)
+ss2 <- SS(conditionB)
+sd1 <- sd(conditionA)
+sd2 <- sd(conditionB)
+
+s2p <- (ss1 + ss2)/(df1 + df2)
+
+sm1m2 <- sqrt((s2p/n1)+(s2p/n2))
+
+t <- (m1-m2)/sm1m2
+```
+
+## Step 3 : Calculate $t$ statistic
+
+$s_p^2 = \dfrac{SS_1+SS_2}{df_1+df_2} = \dfrac{`r ss1` + `r ss2`}{`r df1` + `r df2`} = `r s2p`$
+
+
+$s_{M_1-M_2} = \sqrt{\dfrac{s_p^2}{n_1}+\dfrac{s_p^2}{n_2}} = \sqrt{\dfrac{`r s2p`}{`r n1`}+\dfrac{`r s2p`}{`r n2`}} = `r round(sm1m2, 2)`$
+
+$t = \dfrac{(M_1-M_2)-(\mu_1-\mu_2)}{s_{M_1-M_2}} = \dfrac{`r m1` - `r m2`}{`r round(sm1m2, 2)`} = `r round(t, 2)`$
+
+
+## Step 4: Make decision
+
+
+## Step 4b: Effect size
+  - Not required for nonsignificant differences
+
+## Step 5: Report results
+
+“A two-tailed independent-samples $t$ test suggested that the difference in average happiness between people in the "Spend on self group" $(M = `r m1`$; $SD = `r r(sd1)`)$ and the "Spend on other" group $(M = `r m2`$; $SD = `r r(sd2)`)$ was nonsignificant; $t(`r N-2`) =$ $`r r(t)`$, $p > .05$.”
+
+
+# Assumptions
+
+Assumptions for independent-samples $t$-tests
+
+1. The observations within each sample must be independent
+2. The two populations from which the samples are selected must be normal
+    - Can be ignored with large enough sample size
+3. The two populations from which the samples are selected must have equal variances
+    - Homogeneity of variance 
+    - Because pooled variance is a weighted average
+
+## Homogeneity of variance
+
+- Testing the homogeneity of variance assumption
+  - Hartley’s F-max test
+
+::: {.center-element}
+$F_{max} = \dfrac{s^2_{largest}}{s^2_{smallest}}$
+:::
+
+- Small value (near 1) indicates similar sample variances, larger values indicate larger difference
+- Look up associated critical value for $F$-max test
+- If value exceeds critical value, indicates homogeneity assumption has been violated
+
+## Homogeneity of variance
+
+- If sample information suggests violation of homogeneity of variance assumption:
+
+:::: {.columns}
+::: {.column width="50%"}
+- Calculate standard error without pooled variance
+- Adjust $df$ using:<br><br> 
+- …or let R do the work for you
+    - Automatically applies correction
+    - Default "var.equal = FALSE"
+    - Specify “var.equal = TRUE” to override
+:::
+
+::: {.column width="50%"}
+$$df = \dfrac{(\dfrac{s_1^2}{n_1}+\dfrac{s_2^2}{n_2})}
+{\dfrac{(\dfrac{s_1^2}{n_1})^2}{n_1-1} + \dfrac{(\dfrac{s_2^2}{n_2})^2}{n_2-1}
+}$$
+:::
+
+::::
+
+# Confidence interval
+
+- Quantifies precision of our statistic
+  - Distribution of differences between two samples drawn from a population with a given standard error of the mean difference
+
+::: {.center-element}
+$t = \dfrac{(M_1-M_2)-(\mu_1-\mu_2)}{s_{M_1-M_2}}$
+
+$(\mu_1-\mu_2) = (M_1-M_2) \pm t * s_{M_1-M_2}$
+:::
+
 # Learning checks
 
 1. What values of $t$ would you expect to see if the null hypothesis is true?
@@ -117,3 +311,35 @@ $t = \dfrac{(M_1-M_2)-(\mu_1-\mu_2)}{s_{M_1-M_2}}$
   - Small mean difference and small sample variances
   - Large mean difference and large sample variances
   - Large mean difference and small sample variances
+
+
+
+::: {.content-hidden}
+
+# Data and figures
+
+## NHST diagrams
+```{r}
+#| eval: false
+library(bc1101tools)
+
+bc1101tools::plot_nhst_diagram(text.size = 5,
+                               pop1lab = "Partially\nknown\noriginal\npopulation\n(\U03BC)",
+                               pop2lab = "Unknown\ntreated\npopulation",
+                               sample2lab = "Treated\nSample\n(M, s, n)")
+
+plot_save("nhst-diagram-single-sample-t.svg", width = 5, height = 4)
+
+bc1101tools::plot_nhst_diagram(text.size = 5,
+                               pop1lab = "Unknown\ntreated\npopulation\nA",
+                               pop1line = 2, pop2fill = NA,
+                               pop2lab = "Unknown\ntreated\npopulation\nB",
+                               sample1lab = "Sample A\n(M, s, n)",
+                               sample2lab = "Sample B\n(M, s, n)", sample2fill = NA,
+                               sample_line = NA)
+
+plot_save("nhst-diagram-independent-samples-t.svg", width = 5, height = 4)
+
+```
+
+:::

@@ -152,11 +152,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/robbrotherton/quarto-test-website"><i class="bi bi-github" role="img" aria-label="GitHub">
-</i> 
- </a>
-  </li>  
-  <li class="nav-item compact">
     <a class="nav-link" href="../_"><i class="bi bi-moon" role="img">
 </i> 
  </a>
@@ -209,9 +204,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code hidden" id="cb2" data-startfrom="18" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 17;"><span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>likert <span class="op">=</span> { </span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#likert-container"</span>)<span class="op">.</span><span class="fu">text</span>(<span class="st">""</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  d3<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"#likert-container"</span>)<span class="op">.</span><span class="fu">text</span>(<span class="st">""</span>)</span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> container <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#likert-container"</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> container <span class="op">=</span> d3<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"#likert-container"</span>)</span>
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"border"</span><span class="op">,</span> <span class="st">"1px solid var(--text-color)"</span>)</span>
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"border-radius"</span><span class="op">,</span> <span class="st">"10px"</span>)</span>
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"padding"</span><span class="op">,</span> <span class="st">"1em"</span>)</span>
@@ -272,7 +267,7 @@ toggle.click(function( event ) {
 });
 </script>
 <script type="ojs-module-contents">
-{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\r\nnhstDiagram = function(selection) {\r\n return false\r\n}\r\n\r\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"likert = { \r\n\r\n  d3.select(\"#likert-container\").text(\"\")\r\n  \r\n  const container = d3.select(\"#likert-container\")\r\n    .style(\"border\", \"1px solid var(--text-color)\")\r\n    .style(\"border-radius\", \"10px\")\r\n    .style(\"padding\", \"1em\")\r\n  \r\n  \r\n  const itemData = [{name: \"1. A lot less than usual\"},\r\n                 {name: \"2. A little less than usual\"},\r\n                 {checked: \"checked\", name: \"3. About average\"},\r\n                 {name: \"4. A little more than usual\"},\r\n                 {name: \"5. A lot more than usual\"}]\r\n  \r\n  container.append(\"p\").text(\"What is your current level of happiness?\").style(\"font-weight\", \"bold\")\r\n  \r\n  const items = container.selectAll(\"span\")\r\n    .data(itemData)\r\n    .enter().append(\"span\")\r\n    .html(d => '<label class=\"likert-label\"><input class=\"likert-button\" type=\"radio\" name=\"flexRadioDefault\"' + d.checked + '>' + d.name + '</label><br>')\r\n    \r\n    container.selectAll(\".likert-button\")\r\n      .style(\"margin-left\", \"1em\")\r\n      .style(\"margin-right\", \"0.5em\")\r\n      .style(\"width\", \"1em\")\r\n      .style(\"height\", \"1em\")\r\n      \r\n    items.style(\"line-height\", \"1.5em\")\r\n}\r\n"}]}
+{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\r\nnhstDiagram = function(selection) {\r\n return false\r\n}\r\n\r\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"likert = { \r\n\r\n  d3.selectAll(\"#likert-container\").text(\"\")\r\n  \r\n  const container = d3.selectAll(\"#likert-container\")\r\n    .style(\"border\", \"1px solid var(--text-color)\")\r\n    .style(\"border-radius\", \"10px\")\r\n    .style(\"padding\", \"1em\")\r\n  \r\n  \r\n  const itemData = [{name: \"1. A lot less than usual\"},\r\n                 {name: \"2. A little less than usual\"},\r\n                 {checked: \"checked\", name: \"3. About average\"},\r\n                 {name: \"4. A little more than usual\"},\r\n                 {name: \"5. A lot more than usual\"}]\r\n  \r\n  container.append(\"p\").text(\"What is your current level of happiness?\").style(\"font-weight\", \"bold\")\r\n  \r\n  const items = container.selectAll(\"span\")\r\n    .data(itemData)\r\n    .enter().append(\"span\")\r\n    .html(d => '<label class=\"likert-label\"><input class=\"likert-button\" type=\"radio\" name=\"flexRadioDefault\"' + d.checked + '>' + d.name + '</label><br>')\r\n    \r\n    container.selectAll(\".likert-button\")\r\n      .style(\"margin-left\", \"1em\")\r\n      .style(\"margin-right\", \"0.5em\")\r\n      .style(\"width\", \"1em\")\r\n      .style(\"height\", \"1em\")\r\n      \r\n    items.style(\"line-height\", \"1.5em\")\r\n}\r\n"}]}
 </script>
 <script type="module">
 window._ojs.paths.runtimeToDoc = "../../ojs";

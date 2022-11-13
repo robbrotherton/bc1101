@@ -1201,14 +1201,14 @@
     "href": "slides/13_independent-samples-t-test.html#single-sample-t-test-design",
     "title": "BC1101",
     "section": "Single-sample \\(t\\)-test design",
-    "text": "Single-sample \\(t\\)-test design\n\nCompare sample against expected population mean based on logic/theory/scale design\nE.g. Happiness\n\nGive everyone $10\n“What is your current level of happiness?”"
+    "text": "Single-sample \\(t\\)-test design\n\nCompare sample against expected population mean based on logic/theory/scale design\nE.g. give everyone $10\n\n\n\n\nWhat is your current level of happiness?\n\nA lot less than usual\nA little less than usual\nAbout average\nA little more than usual\nA lot more than usual\n\n\n\n\\(\\mu = 3\\)\n\n\n\n\nimport {likert} from \"../ojs/utils.qmd\";"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#independent-samples-design",
     "href": "slides/13_independent-samples-t-test.html#independent-samples-design",
     "title": "BC1101",
     "section": "Independent-samples design",
-    "text": "Independent-samples design\nWhat if…\n\n\nGroup A:\nSpend this on yourself\n\nGroup B:\nSpend this on someone else\n\n\n\nLater… “What is your current level of happiness?”\n\n\nDunn, E. W., Aknin, L. B., & Norton, M. I. (2014). Prosocial spending and happiness: Using money to benefit others pays off. Current Directions in Psychological Science, 23(1), 41-47. https://doi.org/10.1177/0963721413512503"
+    "text": "Independent-samples design\nWhat if… give everyone $10\n\n\nGroup A:\nSpend this on yourself\n\nWhat is your current level of happiness?\n\nA lot less than usual\nA little less than usual\nAbout average\nA little more than usual\nA lot more than usual\n\n\n\nGroup B:\nSpend this on someone else\n\nWhat is your current level of happiness?\n\nA lot less than usual\nA little less than usual\nAbout average\nA little more than usual\nA lot more than usual\n\n\n\n\n\nDunn, E. W., Aknin, L. B., & Norton, M. I. (2014). Prosocial spending and happiness: Using money to benefit others pays off. Current Directions in Psychological Science, 23(1), 41-47. https://doi.org/10.1177/0963721413512503"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#independent-samples",
@@ -1390,7 +1390,7 @@
     "href": "ojs/utils.html",
     "title": "OJS Utilities",
     "section": "",
-    "text": "likert = { \n\n  d3.select(\"#likert-container\").text(\"\")\n  \n  const container = d3.select(\"#likert-container\")\n    .style(\"border\", \"1px solid var(--text-color)\")\n    .style(\"border-radius\", \"10px\")\n    .style(\"padding\", \"1em\")\n  \n  \n  const itemData = [{name: \"1. A lot less than usual\"},\n                 {name: \"2. A little less than usual\"},\n                 {checked: \"checked\", name: \"3. About average\"},\n                 {name: \"4. A little more than usual\"},\n                 {name: \"5. A lot more than usual\"}]\n  \n  container.append(\"p\").text(\"What is your current level of happiness?\").style(\"font-weight\", \"bold\")\n  \n  const items = container.selectAll(\"span\")\n    .data(itemData)\n    .enter().append(\"span\")\n    .html(d => '<label class=\"likert-label\"><input class=\"likert-button\" type=\"radio\" name=\"flexRadioDefault\"' + d.checked + '>' + d.name + '</label><br>')\n    \n    container.selectAll(\".likert-button\")\n      .style(\"margin-left\", \"1em\")\n      .style(\"margin-right\", \"0.5em\")\n      .style(\"width\", \"1em\")\n      .style(\"height\", \"1em\")\n      \n    items.style(\"line-height\", \"1.5em\")\n}"
+    "text": "likert = { \n\n  d3.selectAll(\"#likert-container\").text(\"\")\n  \n  const container = d3.selectAll(\"#likert-container\")\n    .style(\"border\", \"1px solid var(--text-color)\")\n    .style(\"border-radius\", \"10px\")\n    .style(\"padding\", \"1em\")\n  \n  \n  const itemData = [{name: \"1. A lot less than usual\"},\n                 {name: \"2. A little less than usual\"},\n                 {checked: \"checked\", name: \"3. About average\"},\n                 {name: \"4. A little more than usual\"},\n                 {name: \"5. A lot more than usual\"}]\n  \n  container.append(\"p\").text(\"What is your current level of happiness?\").style(\"font-weight\", \"bold\")\n  \n  const items = container.selectAll(\"span\")\n    .data(itemData)\n    .enter().append(\"span\")\n    .html(d => '<label class=\"likert-label\"><input class=\"likert-button\" type=\"radio\" name=\"flexRadioDefault\"' + d.checked + '>' + d.name + '</label><br>')\n    \n    container.selectAll(\".likert-button\")\n      .style(\"margin-left\", \"1em\")\n      .style(\"margin-right\", \"0.5em\")\n      .style(\"width\", \"1em\")\n      .style(\"height\", \"1em\")\n      \n    items.style(\"line-height\", \"1.5em\")\n}"
   },
   {
     "objectID": "slides/02_variables.html#likert-scales-1",
@@ -1426,5 +1426,89 @@
     "title": "Confidence",
     "section": "",
     "text": "jStat = require(\"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js\")\n\n\n\n\n\n\n\nci = {\n\n  const w = 1050\n  const h = 600\n  const m = {t: 0, r: 0, l: 0, b: 100}\n  \n  const f = d3.format(\".2f\")\n  const x = d3.scaleLinear()\n    .range([0,w])\n  const y = d3.scaleLinear()\n    .range([h-m.b,m.t])\n  const line = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density))\n  const arrows = [{id: -1,points: [[0,0],[5,5],[5,-5]]},\n                  {id: 1, points: [[-5,5],[0,0],[-5,-5]]}]\n                  \n  const xAxis = d3.axisBottom(x)\n  \n  var confidence, n, mean, sd, std_err, critical, xlim;\n  \n  const confidenceInput = document.getElementById('confidence-input')\n  const nInput = document.getElementById('n-input')\n  const meanInput = document.getElementById('mean-input')\n  const sdInput = document.getElementById('sd-input')\n  \n  function updateCritical() {\n    var upper = 1 - (1 - confidence/100)*0.5\n    var lower = 1 - upper\n    critical = [jStat.normal.inv(lower, mean, std_err),\n                jStat.normal.inv(upper, mean, std_err)]\n  }\n  \n  function getParams() {\n    confidence = confidenceInput.value\n    n = nInput.value\n    mean = meanInput.value\n    sd = sdInput.value\n    std_err = sd / Math.sqrt(n)\n    updateCritical()\n    xlim = [mean-3*std_err,Number(mean+3*std_err)]\n    x.domain([xlim[0], xlim[1]])\n    y.domain([0, jStat.normal.pdf(0, mean, std_err)+0.01])\n    d3.select(\"#std-err-value\").text(f(std_err))\n  }\n  \n  \n  confidenceInput.oninput = function() {\n    confidence = confidenceInput.value\n    d3.select(\"#confidence-value\").text(confidence + \"%\")\n    updateCritical();\n    updateCurve();\n    updateClip();\n  };\n  \n  nInput.oninput = function() {\n    n = nInput.value\n    std_err = sd/Math.sqrt(n)\n    d3.select(\"#n-value\").text(n)\n    d3.select(\"#std-err-value\").text(f(std_err))\n    updateCritical();\n    updateCurve();\n    updateClip();\n  };\n    \n  meanInput.oninput = function() {\n    mean = Number(meanInput.value)\n    updateCritical();\n    updateCurve();\n    updateClip();\n  };\n  \n  sdInput.oninput = function() {\n    sd = sdInput.value\n    std_err = sd/Math.sqrt(n)\n    d3.select(\"#std-err-value\").text(f(std_err))\n    updateCritical();\n    updateCurve();\n    updateClip();\n  };\n  \n  function makeCurve(mean, std_err) {\n    var values = jStat(xlim[0], xlim[1], 210)[0],\n        arr = [];\n    for (var i in values) {\n      arr.push({\n          value: values[i], \n          density: jStat.normal.pdf(values[i], mean, std_err)\n      })\n    }\n    return arr;\n  }\n  \n  function updateCurve() {\n    xlim = [Number(mean-3*std_err),Number(mean+3*std_err)]\n    <!-- console.log(xlim) -->\n    x.domain([xlim[0], xlim[1]])\n    y.domain([0, jStat.normal.pdf(mean, mean, std_err)+0.01])\n    \n    axis.call(xAxis)\n    \n    curveLine.attr(\"d\", line(makeCurve(mean, std_err)))\n    curveFill.attr(\"d\", line(makeCurve(mean, std_err)))\n    \n    meanLine.select(\"line\")\n      .attr(\"x1\", x(mean)).attr(\"x2\", x(mean))\n      .attr(\"y1\", y(0)).attr(\"y2\", y(jStat.normal.pdf(mean, mean, std_err)))\n    meanLine.select(\"circle\")\n      .attr(\"cx\", x(mean)).attr(\"cy\", y(0)).attr(\"r\", 5)\n      \n    marginOfError.attr(\"transform\", `translate(0, ${y(jStat.normal.pdf(critical[0], mean, std_err)/2)})`)\n    marginOfError.select(\"line\")\n      .attr(\"x1\", x(critical[0])).attr(\"x2\", x(critical[1]))\n    marginOfError.select(\"#arrow-l\").attr(\"transform\", `translate(${x(critical[0])}, 0) scale(2)`)\n    marginOfError.select(\"#arrow-r\").attr(\"transform\", `translate(${x(critical[1])}, 0) scale(2)`)\n  }\n  \n  function updateClip() {\n    clip.attr(\"points\", [[x(critical[0]),0],[x(critical[0]),h],[x(critical[1]),h],[x(critical[1]),0]])\n  }\n  \n  const svg = d3.select(\"#confidence-interval\").append(\"svg\")\n    .attr(\"viewBox\", \"0 0 \" + w + \" \" + h)\n    .attr(\"preserveAspectRatio\", \"xMinYMin meet\")\n    .attr(\"class\", \"svg-content\")\n    \n  const axis = svg.append(\"g\").attr(\"transform\", `translate(0, ${y(0)})`)\n    .style(\"font-size\", \"2em\")\n  \n  const curveLine = svg.append(\"path\")\n    .style(\"fill\", \"none\")\n    .style(\"stroke\", \"black\")\n    .style(\"stroke-width\", 3)\n    .attr(\"class\", \"invertable\")\n    \n  const clip = svg.append(\"clipPath\").attr(\"id\", \"clip\").append(\"polygon\")\n\n  const curveFill = svg.append(\"path\")\n    .attr(\"clip-path\", \"url(#clip)\")\n    .style(\"fill\", \"lightblue\")\n    .style(\"stroke\", \"none\")\n    \n  const meanLine = svg.append(\"g\")\n  meanLine.append(\"line\")\n    .style(\"stroke\", \"black\")\n    .style(\"stroke-dasharray\", [10,10])\n  meanLine.append(\"circle\")\n    \n\n  const marginOfError = svg.append(\"g\")\n    .style(\"stroke\", \"black\")\n    <!-- .classed(\"invertable\", true) -->\n    \n  marginOfError.append(\"line\")\n    .style(\"stroke\", \"black\")\n\n  marginOfError.append(\"polygon\").attr(\"points\", arrows[0].points).attr(\"id\", \"arrow-l\")\n  marginOfError.append(\"polygon\").attr(\"points\", arrows[1].points).attr(\"id\", \"arrow-r\")\n\n\n\n  getParams();\n  updateClip();\n  updateCurve();\n  \n}"
+  },
+  {
+    "objectID": "slides/13_independent-samples-t-test.html#independent-samples-1",
+    "href": "slides/13_independent-samples-t-test.html#independent-samples-1",
+    "title": "BC1101",
+    "section": "Independent-samples",
+    "text": "Independent-samples"
+  },
+  {
+    "objectID": "slides/13_independent-samples-t-test.html#equations",
+    "href": "slides/13_independent-samples-t-test.html#equations",
+    "title": "BC1101",
+    "section": "Equations",
+    "text": "Equations\n\n\n\nDenominator: \\(s_{M_1-M_2}\\)\n\nEstimated standard error of the mean difference\n\n\n\n\\(s_{M_1-M_2} = \\sqrt{\\dfrac{s_p^2}{n_1}+\\dfrac{s_p^2}{n_2}}\\)\n\n\n\n\n\n\\(s_p^2\\): Pooled variance\n\nWeighted average of two sample variances\n\n\n\n\\(\\begin{align} s_p^2 = &\\dfrac{SS_1+SS_2}{df_1+df_2} \\\\ \\\\ \\text{or... } &\\dfrac{df_1*s_1^2 + df_2*s_2^2}{df_1+df_2} \\\\ \\text{because... } s^2 = &\\dfrac{SS}{df} \\text{ so... } SS = df*s^2 \\end{align}\\)"
+  },
+  {
+    "objectID": "slides/13_independent-samples-t-test.html#calculating-independent-samples-t",
+    "href": "slides/13_independent-samples-t-test.html#calculating-independent-samples-t",
+    "title": "BC1101",
+    "section": "Calculating independent samples \\(t\\)",
+    "text": "Calculating independent samples \\(t\\)\n\nPooled variance: \\(s_p^2 = \\dfrac{SS_1+SS_2}{df_1+df_2}\\)\nEstimated standard error of mean difference: \\(s_{M_1-M_2} = \\sqrt{\\dfrac{s_p^2}{n_1}+\\dfrac{s_p^2}{n_2}}\\)\n\\(t\\) statistic: \\(t = \\dfrac{(M_1-M_2)-(\\mu_1-\\mu_2)}{s_{M_1-M_2}}\\)"
+  },
+  {
+    "objectID": "slides/13_independent-samples-t-test.html#step-1-state-hypotheses",
+    "href": "slides/13_independent-samples-t-test.html#step-1-state-hypotheses",
+    "title": "BC1101",
+    "section": "Step 1: State hypotheses",
+    "text": "Step 1: State hypotheses\n\nNull: There is no difference between groups\n\nThe treatment has no effect\n\\(μ_1 – μ_2 = 0\\)\n\nAlternative: There is a difference\n\nThe treatment has an effect\nDirectional: \\(μ_1 – μ_2 < 0\\) or \\(μ_1 – μ_2 > 0\\)\nNondirectional: \\(μ_1 – μ_2 \\ne 0\\)"
+  },
+  {
+    "objectID": "slides/13_independent-samples-t-test.html#step-2-define-critical-region",
+    "href": "slides/13_independent-samples-t-test.html#step-2-define-critical-region",
+    "title": "BC1101",
+    "section": "Step 2: Define critical region",
+    "text": "Step 2: Define critical region\n\nDepends on \\(\\alpha\\) and \\(df\\)\n\n\\[\n\\begin{align}\ndf &= df_1 + df_2 \\\\\n&= (n_1 – 1) + (n_2 – 1) \\\\\n&= N - 2\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "slides/13_independent-samples-t-test.html#step-3-collect-data-calculate-t-statistic",
+    "href": "slides/13_independent-samples-t-test.html#step-3-collect-data-calculate-t-statistic",
+    "title": "BC1101",
+    "section": "Step 3: Collect data, calculate \\(t\\) statistic",
+    "text": "Step 3: Collect data, calculate \\(t\\) statistic"
+  },
+  {
+    "objectID": "slides/13_independent-samples-t-test.html#step-3-calculate-t-statistic",
+    "href": "slides/13_independent-samples-t-test.html#step-3-calculate-t-statistic",
+    "title": "BC1101",
+    "section": "Step 3 : Calculate \\(t\\) statistic",
+    "text": "Step 3 : Calculate \\(t\\) statistic\n\\(s_p^2 = \\dfrac{SS_1+SS_2}{df_1+df_2} = \\dfrac{10 + 8}{4 + 4} = 2.25\\)\n\\(s_{M_1-M_2} = \\sqrt{\\dfrac{s_p^2}{n_1}+\\dfrac{s_p^2}{n_2}} = \\sqrt{\\dfrac{2.25}{5}+\\dfrac{2.25}{5}} = 0.95\\)\n\\(t = \\dfrac{(M_1-M_2)-(\\mu_1-\\mu_2)}{s_{M_1-M_2}} = \\dfrac{3 - 4}{0.95} = -1.05\\)"
+  },
+  {
+    "objectID": "slides/13_independent-samples-t-test.html#step-4-make-decision",
+    "href": "slides/13_independent-samples-t-test.html#step-4-make-decision",
+    "title": "BC1101",
+    "section": "Step 4: Make decision",
+    "text": "Step 4: Make decision"
+  },
+  {
+    "objectID": "slides/13_independent-samples-t-test.html#step-4b-effect-size",
+    "href": "slides/13_independent-samples-t-test.html#step-4b-effect-size",
+    "title": "BC1101",
+    "section": "Step 4b: Effect size",
+    "text": "Step 4b: Effect size\n\nNot required for nonsignificant differences"
+  },
+  {
+    "objectID": "slides/13_independent-samples-t-test.html#step-5-report-results",
+    "href": "slides/13_independent-samples-t-test.html#step-5-report-results",
+    "title": "BC1101",
+    "section": "Step 5: Report results",
+    "text": "Step 5: Report results\n“A two-tailed independent-samples \\(t\\) test suggested that the difference in average happiness between people in the”Spend on self group” \\((M = 3\\); \\(SD = 1.58)\\) and the “Spend on other” group \\((M = 4\\); \\(SD = 1.41)\\) was nonsignificant; \\(t(8) =\\) \\(-1.05\\), \\(p > .05\\).”"
+  },
+  {
+    "objectID": "slides/13_independent-samples-t-test.html#homogeneity-of-variance",
+    "href": "slides/13_independent-samples-t-test.html#homogeneity-of-variance",
+    "title": "BC1101",
+    "section": "Homogeneity of variance",
+    "text": "Homogeneity of variance\n\nTesting the homogeneity of variance assumption\n\nHartley’s F-max test\n\n\n\n\\(F_{max} = \\dfrac{s^2_{largest}}{s^2_{smallest}}\\)\n\n\nSmall value (near 1) indicates similar sample variances, larger values indicate larger difference\nLook up associated critical value for \\(F\\)-max test\nIf value exceeds critical value, indicates homogeneity assumption has been violated"
+  },
+  {
+    "objectID": "slides/13_independent-samples-t-test.html#homogeneity-of-variance-1",
+    "href": "slides/13_independent-samples-t-test.html#homogeneity-of-variance-1",
+    "title": "BC1101",
+    "section": "Homogeneity of variance",
+    "text": "Homogeneity of variance\n\nIf sample information suggests violation of homogeneity of variance assumption:\n\n\n\n\nCalculate standard error without pooled variance\nAdjust \\(df\\) using:\n…or let R do the work for you\n\nAutomatically applies correction\nDefault “var.equal = FALSE”\nSpecify “var.equal = TRUE” to override\n\n\n\n\\[df = \\dfrac{(\\dfrac{s_1^2}{n_1}+\\dfrac{s_2^2}{n_2})}\n{\\dfrac{(\\dfrac{s_1^2}{n_1})^2}{n_1-1} + \\dfrac{(\\dfrac{s_2^2}{n_2})^2}{n_2-1}\n}\\]"
   }
 ]

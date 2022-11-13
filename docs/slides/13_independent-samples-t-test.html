@@ -27,6 +27,70 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -319,6 +383,8 @@
       margin-right: 0; 
     }
   </style>
+  <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+  <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -335,7 +401,7 @@
 <ul>
 <li><a href="#/research-design">Research design</a></li>
 <li><a href="#/calculation">Calculation</a></li>
-<li>[Hypothesis test]</li>
+<li><a href="#/hypothesis-test">Hypothesis test</a></li>
 <li><a href="#/learning-checks">Learning checks</a></li>
 </ul>
 </section>
@@ -349,41 +415,79 @@
 <h2>Single-sample <span class="math inline">\(t\)</span>-test design</h2>
 <ul>
 <li>Compare sample against expected population mean based on logic/theory/scale design</li>
-<li>E.g. Happiness
-<ul>
-<li>Give everyone $10</li>
-<li>“What is your current level of happiness?”</li>
-</ul></li>
+<li>E.g. give everyone $10</li>
 </ul>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div id="likert-container" class="smallest" style="width: 80%; display: block;">
+<p>What is your current level of happiness?</p>
+<ol type="1">
+<li>A lot less than usual</li>
+<li>A little less than usual</li>
+<li>About average</li>
+<li>A little more than usual</li>
+<li>A lot more than usual</li>
+</ol>
+</div>
+</div><div class="column center-element" style="width:40%;">
+<p><span class="math inline">\(\mu = 3\)</span></p>
+<p><img data-src="media/theoretical-distribution.svg" class="invertable" style="margin-top: 0;"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="53" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 52;"><span id="cb1-53"><a href="#cb1-53"></a><span class="im">import</span> {likert} <span class="im">from</span> <span class="st">"../ojs/utils.qmd"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
 </section>
-<section id="independent-samples-design" class="slide level2">
+<section id="independent-samples-design" class="slide level2 small">
 <h2>Independent-samples design</h2>
-<p>What if…</p>
+<p>What if… give everyone $10</p>
 <div class="columns c">
 <div class="column" style="width:50%;">
 <p>Group A:<br>
-Spend this on yourself</p>
+Spend this on <span class="emph">yourself</span></p>
+<div id="likert-container" class="smallest" style="width: 80%; display: block; text-align: left;">
+<p>What is your current level of happiness?</p>
+<ol type="1">
+<li>A lot less than usual</li>
+<li>A little less than usual</li>
+<li>About average</li>
+<li>A little more than usual</li>
+<li>A lot more than usual</li>
+</ol>
+</div>
 </div><div class="column" style="width:50%;">
 <p>Group B:<br>
-Spend this on someone else</p>
+Spend this on <span class="emph">someone else</span></p>
+<div id="likert-container" class="smallest" style="width: 80%; display: block; text-align: left;">
+<p>What is your current level of happiness?</p>
+<ol type="1">
+<li>A lot less than usual</li>
+<li>A little less than usual</li>
+<li>About average</li>
+<li>A little more than usual</li>
+<li>A lot more than usual</li>
+</ol>
 </div>
 </div>
-<ul>
-<li>Later… “What is your current level of happiness?”</li>
-</ul>
-<div class="footer reference">
-<p>Dunn, E. W., Aknin, L. B., &amp; Norton, M. I. (2014). Prosocial spending and happiness: Using money to benefit others pays off. <em>Current Directions in Psychological Science, 23</em>(1), 41-47. https://doi.org/10.1177/0963721413512503</p>
+</div>
+<div class="reference">
+<p>Dunn, E. W., Aknin, L. B., &amp; Norton, M. I. (2014). Prosocial spending and happiness: Using money to benefit others pays off. <em>Current Directions in Psychological Science, 23(1)</em>, 41-47. <a href="https://doi.org/10.1177/0963721413512503">https://doi.org/10.1177/0963721413512503</a></p>
 </div>
 </section>
 <section id="independent-samples" class="slide level2">
 <h2>Independent-samples</h2>
-<div class="cell">
 
-</div>
-<div class="cell">
+<img data-src="media/nhst-diagram-single-sample-t.svg" class="invertable-blue r-stretch"></section>
+<section id="independent-samples-1" class="slide level2">
+<h2>Independent-samples</h2>
 
-</div>
-</section></section>
+<img data-src="media/nhst-diagram-independent-samples-t.svg" class="invertable-blue r-stretch"></section></section>
+<section>
 <section id="calculation" class="title-slide slide level1 small center">
 <h1>Calculation</h1>
 <p>Basic structure of all <span class="math inline">\(t\)</span>-tests:</p>
@@ -398,6 +502,171 @@ Spend this on someone else</p>
 <p>Independent-samples <span class="math inline">\(t\)</span></p>
 <p><span class="math inline">\(t = \dfrac{(M_1-M_2)-(\mu_1-\mu_2)}{s_{M_1-M_2}}\)</span></p>
 </div>
+</div>
+</section>
+<section id="equations" class="slide level2 small">
+<h2>Equations</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Denominator: <span class="math inline">\(s_{M_1-M_2}\)</span>
+<ul>
+<li>Estimated standard error of the mean difference<br><br></li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><span class="math inline">\(s_{M_1-M_2} = \sqrt{\dfrac{s_p^2}{n_1}+\dfrac{s_p^2}{n_2}}\)</span></p>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><span class="math inline">\(s_p^2\)</span>: Pooled variance
+<ul>
+<li>Weighted average of two sample variances</li>
+</ul></li>
+</ul>
+</div><div class="column" style="margin-left: -4em;">
+<p><span class="math inline">\(\begin{align} s_p^2 = &amp;\dfrac{SS_1+SS_2}{df_1+df_2} \\ \\ \text{or... } &amp;\dfrac{df_1*s_1^2 + df_2*s_2^2}{df_1+df_2} \\ \text{because... } s^2 = &amp;\dfrac{SS}{df} \text{ so... } SS = df*s^2 \end{align}\)</span></p>
+</div>
+</div>
+</section>
+<section id="calculating-independent-samples-t" class="slide level2">
+<h2>Calculating independent samples <span class="math inline">\(t\)</span></h2>
+<ol type="1">
+<li>Pooled variance: <span class="math inline">\(s_p^2 = \dfrac{SS_1+SS_2}{df_1+df_2}\)</span></li>
+<li>Estimated standard error of mean difference: <span class="math inline">\(s_{M_1-M_2} = \sqrt{\dfrac{s_p^2}{n_1}+\dfrac{s_p^2}{n_2}}\)</span></li>
+<li><span class="math inline">\(t\)</span> statistic: <span class="math inline">\(t = \dfrac{(M_1-M_2)-(\mu_1-\mu_2)}{s_{M_1-M_2}}\)</span></li>
+</ol>
+</section></section>
+<section>
+<section id="hypothesis-test" class="title-slide slide level1 center">
+<h1>Hypothesis test</h1>
+
+</section>
+<section id="step-1-state-hypotheses" class="slide level2">
+<h2>Step 1: State hypotheses</h2>
+<ul>
+<li>Null: There is no difference between groups
+<ul>
+<li>The treatment has no effect</li>
+<li><span class="math inline">\(μ_1 – μ_2 = 0\)</span></li>
+</ul></li>
+<li>Alternative: There is a difference
+<ul>
+<li>The treatment has an effect</li>
+<li>Directional: <span class="math inline">\(μ_1 – μ_2 &lt; 0\)</span> or <span class="math inline">\(μ_1 – μ_2 &gt; 0\)</span></li>
+<li>Nondirectional: <span class="math inline">\(μ_1 – μ_2 \ne 0\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="step-2-define-critical-region" class="slide level2">
+<h2>Step 2: Define critical region</h2>
+<ul>
+<li>Depends on <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(df\)</span></li>
+</ul>
+<p><span class="math display">\[
+\begin{align}
+df &amp;= df_1 + df_2 \\
+&amp;= (n_1 – 1) + (n_2 – 1) \\
+&amp;= N - 2
+\end{align}
+\]</span></p>
+</section>
+<section id="step-3-collect-data-calculate-t-statistic" class="slide level2">
+<h2>Step 3: Collect data, calculate <span class="math inline">\(t\)</span> statistic</h2>
+<div class="cell">
+
+</div>
+</section>
+<section id="step-3-calculate-t-statistic" class="slide level2">
+<h2>Step 3 : Calculate <span class="math inline">\(t\)</span> statistic</h2>
+<p><span class="math inline">\(s_p^2 = \dfrac{SS_1+SS_2}{df_1+df_2} = \dfrac{10 + 8}{4 + 4} = 2.25\)</span></p>
+<p><span class="math inline">\(s_{M_1-M_2} = \sqrt{\dfrac{s_p^2}{n_1}+\dfrac{s_p^2}{n_2}} = \sqrt{\dfrac{2.25}{5}+\dfrac{2.25}{5}} = 0.95\)</span></p>
+<p><span class="math inline">\(t = \dfrac{(M_1-M_2)-(\mu_1-\mu_2)}{s_{M_1-M_2}} = \dfrac{3 - 4}{0.95} = -1.05\)</span></p>
+</section>
+<section id="step-4-make-decision" class="slide level2">
+<h2>Step 4: Make decision</h2>
+</section>
+<section id="step-4b-effect-size" class="slide level2">
+<h2>Step 4b: Effect size</h2>
+<ul>
+<li>Not required for nonsignificant differences</li>
+</ul>
+</section>
+<section id="step-5-report-results" class="slide level2">
+<h2>Step 5: Report results</h2>
+<p>“A two-tailed independent-samples <span class="math inline">\(t\)</span> test suggested that the difference in average happiness between people in the”Spend on self group” <span class="math inline">\((M = 3\)</span>; <span class="math inline">\(SD = 1.58)\)</span> and the “Spend on other” group <span class="math inline">\((M = 4\)</span>; <span class="math inline">\(SD = 1.41)\)</span> was nonsignificant; <span class="math inline">\(t(8) =\)</span> <span class="math inline">\(-1.05\)</span>, <span class="math inline">\(p &gt; .05\)</span>.”</p>
+</section></section>
+<section>
+<section id="assumptions" class="title-slide slide level1 center">
+<h1>Assumptions</h1>
+<p>Assumptions for independent-samples <span class="math inline">\(t\)</span>-tests</p>
+<ol type="1">
+<li>The observations within each sample must be independent</li>
+<li>The two populations from which the samples are selected must be normal
+<ul>
+<li>Can be ignored with large enough sample size</li>
+</ul></li>
+<li>The two populations from which the samples are selected must have equal variances
+<ul>
+<li>Homogeneity of variance</li>
+<li>Because pooled variance is a weighted average</li>
+</ul></li>
+</ol>
+</section>
+<section id="homogeneity-of-variance" class="slide level2">
+<h2>Homogeneity of variance</h2>
+<ul>
+<li>Testing the homogeneity of variance assumption
+<ul>
+<li>Hartley’s F-max test</li>
+</ul></li>
+</ul>
+<div class="center-element">
+<p><span class="math inline">\(F_{max} = \dfrac{s^2_{largest}}{s^2_{smallest}}\)</span></p>
+</div>
+<ul>
+<li>Small value (near 1) indicates similar sample variances, larger values indicate larger difference</li>
+<li>Look up associated critical value for <span class="math inline">\(F\)</span>-max test</li>
+<li>If value exceeds critical value, indicates homogeneity assumption has been violated</li>
+</ul>
+</section>
+<section id="homogeneity-of-variance-1" class="slide level2">
+<h2>Homogeneity of variance</h2>
+<ul>
+<li>If sample information suggests violation of homogeneity of variance assumption:</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Calculate standard error without pooled variance</li>
+<li>Adjust <span class="math inline">\(df\)</span> using:<br><br></li>
+<li>…or let R do the work for you
+<ul>
+<li>Automatically applies correction</li>
+<li>Default “var.equal = FALSE”</li>
+<li>Specify “var.equal = TRUE” to override</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><span class="math display">\[df = \dfrac{(\dfrac{s_1^2}{n_1}+\dfrac{s_2^2}{n_2})}
+{\dfrac{(\dfrac{s_1^2}{n_1})^2}{n_1-1} + \dfrac{(\dfrac{s_2^2}{n_2})^2}{n_2-1}
+}\]</span></p>
+</div>
+</div>
+</section></section>
+<section id="confidence-interval" class="title-slide slide level1 center">
+<h1>Confidence interval</h1>
+<ul>
+<li>Quantifies precision of our statistic
+<ul>
+<li>Distribution of differences between two samples drawn from a population with a given standard error of the mean difference</li>
+</ul></li>
+</ul>
+<div class="center-element">
+<p><span class="math inline">\(t = \dfrac{(M_1-M_2)-(\mu_1-\mu_2)}{s_{M_1-M_2}}\)</span></p>
+<p><span class="math inline">\((\mu_1-\mu_2) = (M_1-M_2) \pm t * s_{M_1-M_2}\)</span></p>
 </div>
 </section>
 
@@ -662,20 +931,36 @@ Spend this on someone else</p>
     </script>
     <script>
       git = document.querySelector('[data-panel="Custom1"]');
+
       function changeLink() {
         var link = document.getElementById('source-link');
         var href = link.getAttribute('href');
 
         var path = window.location.pathname;
         var html = path.split('/');
-        html = html[html.length - 1];
-        var qmd = html.replace('html', 'qmd');
+        var lecture = html[html.length - 1];
+        var qmd = lecture.replace('html', 'qmd');
         link.setAttribute('href', href.concat('/' + qmd));
 
+        var page = window.location.hash.replace('#/', ' : ');
+
         var issueLink = document.getElementById('issue-link');
-        issueLink.setAttribute('href', issueLink.getAttribute('href').concat('?title=').concat(html));
+        issueLink.setAttribute('href', issueLink.getAttribute('href').concat('?title=' + ' Issue with ' + lecture + page));
+
       }
+
       git.addEventListener("click", changeLink);
+
+    </script>
+    <script type="ojs-module-contents">
+    {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"import {likert} from \"../ojs/utils.qmd\";\n"}]}
+    </script>
+    <script type="module">
+    window._ojs.paths.runtimeToDoc = "../../slides";
+    window._ojs.paths.runtimeToRoot = "../..";
+    window._ojs.paths.docToRoot = "..";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
     </script>
     
     <script>

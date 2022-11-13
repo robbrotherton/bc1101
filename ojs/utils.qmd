@@ -18,9 +18,9 @@ nhstDiagram = function(selection) {
 ```{ojs}
 likert = { 
 
-  d3.select("#likert-container").text("")
+  d3.selectAll("#likert-container").text("")
   
-  const container = d3.select("#likert-container")
+  const container = d3.selectAll("#likert-container")
     .style("border", "1px solid var(--text-color)")
     .style("border-radius", "10px")
     .style("padding", "1em")
