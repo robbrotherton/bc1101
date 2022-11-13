@@ -1145,21 +1145,21 @@
     "href": "slides/12_the-t-test-pt-2.html#research-designs-1",
     "title": "BC1101",
     "section": "Research designs",
-    "text": "Research designs\n\nE.g. measure of happiness\n\n\nWhat is your current level of happiness?\n\nA lot less than usual\nA little less than usual\nAbout average\nA little more than usual\nA lot more than usual"
+    "text": "Research designs\n\nE.g. measure of happiness\n\n\n\n\nWhat is your current level of happiness?\n\nA lot less than usual\nA little less than usual\nAbout average\nA little more than usual\nA lot more than usual\n\n\n\n\\(\\mu = 3\\)"
   },
   {
     "objectID": "slides/12_the-t-test-pt-2.html#r2",
     "href": "slides/12_the-t-test-pt-2.html#r2",
     "title": "BC1101",
     "section": "\\(r^2\\)",
-    "text": "\\(r^2\\)\n\nProportion of all variability in the data attributable to treatment effect\nSimplifying assumption: Treatment adds or subtracts a constant to each score\nE.g. 1 point on a scale of 1 to 5\n\\(r^2\\) separates that variability due to treatment from natural variability between scores\n\n\n\\(r^2 = \\dfrac{SS_{treatment}}{SS_{total}}\\)"
+    "text": "\\(r^2\\)\n\n\n\nCalculate sum of squared deviations from sample \\(M\\)\n\nVariability excluding treatment effect\n\\(SS_{without \\ treatment}\\)\n\nCalculate \\(SS\\) from \\(H_0\\) \\(\\mu\\)\n\nThis is total variability\n\\(SS_{total}\\)\n\nSubstract \\(SS_{without \\ treatment}\\) from \\(SS_{total}\\) to find \\(SS_{treatment}\\)\n\nVariability attributable to treatment effect\n\n\n\n\n\n\n\n\n\\[\\begin{align}\nr^2 = \\dfrac{SS_{treatment}}{SS_{total}} &= \\dfrac{SS_{total} - SS_{without \\ treatment}}{SS_{total}} \\\\\n&= \\dfrac{10-6}{10} = 0.4\n\\end{align}\\]"
   },
   {
     "objectID": "slides/12_the-t-test-pt-2.html#r2-1",
     "href": "slides/12_the-t-test-pt-2.html#r2-1",
     "title": "BC1101",
     "section": "\\(r^2\\)",
-    "text": "\\(r^2\\)\n\n\n\nCalculate sum of squared deviations from sample \\(M\\)\n\nThis is variability excluding treatment effect\n\\(SS_{without \\ treatment}\\)\n\nCalculate \\(SS\\) from \\(H_0\\) \\(\\mu\\)\n\nThis is total variability\n\\(SS_{total}\\)\n\nSubstract \\(SS_{without \\ treatment}\\) from \\(SS_{total}\\) to find \\(SS_{treatment}\\)\n\nVariability attributable to treatment effect\n\n\n\nRight column\n\n\n\n\\[\\begin{align}\nr^2 = \\dfrac{SS_{treatment}}{SS_{total}} &= \\dfrac{SS_{total} - SS_{without \\ treatment}}{SS_{total}} \\\\\n&= \\dfrac{10-6}{10} = 0.4\n\\end{align}\\]"
+    "text": "\\(r^2\\)\n\nIf we already calculated \\(t\\)…\n\n\n\\(r^2 = \\dfrac{t^2}{t^2 + df}\\)\n\n\nWorks for any kind of \\(t\\)-test\n\nSingle / related / independent-samples\n\nInterpreting \\(r^2\\)\n\n\\(r^2 = 0.01\\): small effect\n\\(r^2 = 0.09\\): medium effect\n\\(r^2 = 0.25\\): large effect"
   },
   {
     "objectID": "slides/12_the-t-test-pt-2.html#r2-2",
@@ -1173,7 +1173,7 @@
     "href": "slides/12_the-t-test-pt-2.html#calculating-ci-boundaries",
     "title": "BC1101",
     "section": "Calculating CI boundaries",
-    "text": "Calculating CI boundaries\n\nSo far, we have been specifying \\(\\mu\\), calculating \\(M\\) and \\(s_M\\), solving for \\(t\\)\nFor CI, rearrange to solve for \\(\\mu\\)\n\nCalculate \\(M\\) and \\(s_M\\), specify \\(t\\) (based on desired width of CI —99%, 95%, 90%, 80% etc), solve for \\(\\mu\\)\n\n\n\n\\(t = \\dfrac{M - \\mu}{s_M}\\)\n\\(\\mu = M \\pm t * s_M\\)"
+    "text": "Calculating CI boundaries\n\n\n\nSo far, we have been specifying \\(\\mu\\), calculating \\(M\\) and \\(s_M\\), solving for \\(t\\)\nFor CI, rearrange to solve for \\(\\mu\\)\n\nCalculate \\(M\\) and \\(s_M\\), specify \\(t\\) (based on desired width of CI —99%, 95%, 90%, 80% etc), solve for \\(\\mu\\)\n\n\n\n\n\\(t = \\dfrac{M - \\mu}{s_M}\\)\n\\(\\mu = M \\pm t * s_M\\)"
   },
   {
     "objectID": "slides/12_the-t-test-pt-2.html#confidence-interval-interpretation",
@@ -1405,5 +1405,26 @@
     "title": "Slides",
     "section": "12. The \\(t\\) test part 2",
     "text": "12. The \\(t\\) test part 2\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nResearch designs\nAssumptions\nEffect size\nConfidence intervals\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+  },
+  {
+    "objectID": "slides/12_the-t-test-pt-2.html#effect-size-r2",
+    "href": "slides/12_the-t-test-pt-2.html#effect-size-r2",
+    "title": "BC1101",
+    "section": "Effect size: \\(r^2\\)",
+    "text": "Effect size: \\(r^2\\)\n\nProportion of all variability in the data attributable to treatment effect\nSimplifying assumption: Treatment adds or subtracts a constant to each score\nE.g. 1 point on a scale of 1 to 5\n\\(r^2\\) separates that variability due to treatment from natural variability between scores\n\n\n\\(r^2 = \\dfrac{SS_{treatment}}{SS_{total}}\\)"
+  },
+  {
+    "objectID": "ojs/confidence-interval.html",
+    "href": "ojs/confidence-interval.html",
+    "title": "OJS Confidence Interval",
+    "section": "",
+    "text": "jStat = require(\"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js\")\n\n\n\n\n\n\n\nci = {\n\n  const w = 1050\n  const h = 600\n  \n  var xlim = [-4,4]\n  \n  const x = d3.scaleLinear()\n    .domain([-4, 4])\n    .range([0,w])\n  const y = d3.scaleLinear()\n    .domain([0,0.5])\n    .range([h,0])\n  const line = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density))\n  \n  function makeCurve(mu, std_err) {\n    var values = jStat(xlim[0], xlim[1], 210)[0],\n        arr = [];\n    for (var i in values) {\n      arr.push({\n          value: values[i], \n          density: jStat.normal.pdf(values[i], mu, std_err)\n      })\n    }\n    return arr;\n  }\n  \n  const svg = d3.select(\"#confidence-interval\").append(\"svg\")\n    .attr(\"viewbox\", \"0 0 \" + w + \" \" + h)\n    .attr(\"preserveAspectRatio\", \"xMinYMin meet\")\n    .attr(\"class\", \"svg-content\")\n    \n  svg.append(\"path\")\n    .attr(\"d\", line(makeCurve(0, 1)))\n    .style(\"fill\", \"none\")\n    .style(\"stroke\", \"black\")\n    \n\n}"
+  },
+  {
+    "objectID": "ojs/confidence-interval-interactive.html",
+    "href": "ojs/confidence-interval-interactive.html",
+    "title": "Confidence",
+    "section": "",
+    "text": "jStat = require(\"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js\")\n\n\n\n\n\n\n\nci = {\n\n  const w = 1050\n  const h = 600\n  const m = {t: 0, r: 0, l: 0, b: 100}\n  \n  const f = d3.format(\".2f\")\n  const x = d3.scaleLinear()\n    .range([0,w])\n  const y = d3.scaleLinear()\n    .range([h-m.b,m.t])\n  const line = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density))\n  const arrows = [{id: -1,points: [[0,0],[5,5],[5,-5]]},\n                  {id: 1, points: [[-5,5],[0,0],[-5,-5]]}]\n                  \n  const xAxis = d3.axisBottom(x)\n  \n  var confidence, n, mean, sd, std_err, critical, xlim;\n  \n  const confidenceInput = document.getElementById('confidence-input')\n  const nInput = document.getElementById('n-input')\n  const meanInput = document.getElementById('mean-input')\n  const sdInput = document.getElementById('sd-input')\n  \n  function updateCritical() {\n    var upper = 1 - (1 - confidence/100)*0.5\n    var lower = 1 - upper\n    critical = [jStat.normal.inv(lower, mean, std_err),\n                jStat.normal.inv(upper, mean, std_err)]\n  }\n  \n  function getParams() {\n    confidence = confidenceInput.value\n    n = nInput.value\n    mean = meanInput.value\n    sd = sdInput.value\n    std_err = sd / Math.sqrt(n)\n    updateCritical()\n    xlim = [mean-3*std_err,Number(mean+3*std_err)]\n    x.domain([xlim[0], xlim[1]])\n    y.domain([0, jStat.normal.pdf(0, mean, std_err)+0.01])\n    d3.select(\"#std-err-value\").text(f(std_err))\n  }\n  \n  \n  confidenceInput.oninput = function() {\n    confidence = confidenceInput.value\n    d3.select(\"#confidence-value\").text(confidence + \"%\")\n    updateCritical();\n    updateCurve();\n    updateClip();\n  };\n  \n  nInput.oninput = function() {\n    n = nInput.value\n    std_err = sd/Math.sqrt(n)\n    d3.select(\"#n-value\").text(n)\n    d3.select(\"#std-err-value\").text(f(std_err))\n    updateCritical();\n    updateCurve();\n    updateClip();\n  };\n    \n  meanInput.oninput = function() {\n    mean = Number(meanInput.value)\n    updateCritical();\n    updateCurve();\n    updateClip();\n  };\n  \n  sdInput.oninput = function() {\n    sd = sdInput.value\n    std_err = sd/Math.sqrt(n)\n    d3.select(\"#std-err-value\").text(f(std_err))\n    updateCritical();\n    updateCurve();\n    updateClip();\n  };\n  \n  function makeCurve(mean, std_err) {\n    var values = jStat(xlim[0], xlim[1], 210)[0],\n        arr = [];\n    for (var i in values) {\n      arr.push({\n          value: values[i], \n          density: jStat.normal.pdf(values[i], mean, std_err)\n      })\n    }\n    return arr;\n  }\n  \n  function updateCurve() {\n    xlim = [Number(mean-3*std_err),Number(mean+3*std_err)]\n    <!-- console.log(xlim) -->\n    x.domain([xlim[0], xlim[1]])\n    y.domain([0, jStat.normal.pdf(mean, mean, std_err)+0.01])\n    \n    axis.call(xAxis)\n    \n    curveLine.attr(\"d\", line(makeCurve(mean, std_err)))\n    curveFill.attr(\"d\", line(makeCurve(mean, std_err)))\n    \n    meanLine.select(\"line\")\n      .attr(\"x1\", x(mean)).attr(\"x2\", x(mean))\n      .attr(\"y1\", y(0)).attr(\"y2\", y(jStat.normal.pdf(mean, mean, std_err)))\n    meanLine.select(\"circle\")\n      .attr(\"cx\", x(mean)).attr(\"cy\", y(0)).attr(\"r\", 5)\n      \n    marginOfError.attr(\"transform\", `translate(0, ${y(jStat.normal.pdf(critical[0], mean, std_err)/2)})`)\n    marginOfError.select(\"line\")\n      .attr(\"x1\", x(critical[0])).attr(\"x2\", x(critical[1]))\n    marginOfError.select(\"#arrow-l\").attr(\"transform\", `translate(${x(critical[0])}, 0) scale(2)`)\n    marginOfError.select(\"#arrow-r\").attr(\"transform\", `translate(${x(critical[1])}, 0) scale(2)`)\n  }\n  \n  function updateClip() {\n    clip.attr(\"points\", [[x(critical[0]),0],[x(critical[0]),h],[x(critical[1]),h],[x(critical[1]),0]])\n  }\n  \n  const svg = d3.select(\"#confidence-interval\").append(\"svg\")\n    .attr(\"viewBox\", \"0 0 \" + w + \" \" + h)\n    .attr(\"preserveAspectRatio\", \"xMinYMin meet\")\n    .attr(\"class\", \"svg-content\")\n    \n  const axis = svg.append(\"g\").attr(\"transform\", `translate(0, ${y(0)})`)\n    .style(\"font-size\", \"2em\")\n  \n  const curveLine = svg.append(\"path\")\n    .style(\"fill\", \"none\")\n    .style(\"stroke\", \"black\")\n    .style(\"stroke-width\", 3)\n    .attr(\"class\", \"invertable\")\n    \n  const clip = svg.append(\"clipPath\").attr(\"id\", \"clip\").append(\"polygon\")\n\n  const curveFill = svg.append(\"path\")\n    .attr(\"clip-path\", \"url(#clip)\")\n    .style(\"fill\", \"lightblue\")\n    .style(\"stroke\", \"none\")\n    \n  const meanLine = svg.append(\"g\")\n  meanLine.append(\"line\")\n    .style(\"stroke\", \"black\")\n    .style(\"stroke-dasharray\", [10,10])\n  meanLine.append(\"circle\")\n    \n\n  const marginOfError = svg.append(\"g\")\n    .style(\"stroke\", \"black\")\n    <!-- .classed(\"invertable\", true) -->\n    \n  marginOfError.append(\"line\")\n    .style(\"stroke\", \"black\")\n\n  marginOfError.append(\"polygon\").attr(\"points\", arrows[0].points).attr(\"id\", \"arrow-l\")\n  marginOfError.append(\"polygon\").attr(\"points\", arrows[1].points).attr(\"id\", \"arrow-r\")\n\n\n\n  getParams();\n  updateClip();\n  updateCurve();\n  \n}"
   }
 ]

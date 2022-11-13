@@ -22,16 +22,31 @@ format: revealjs
 - Single-sample $t$-test
   - Compare sample against expected population mean based on logic/theory/scale design
 
+:::: {.columns}
 
+::: {.column width="50%"}
 - E.g. 'common sense' theory
-  - Population average amount of sleep, $μ$ = 8 hours
+  - Population average amount of sleep
+:::
+
+::: {.column width="50%" .center-element}
+$\mu = 8$ hours
+  
+![](media/theoretical-distribution.svg){.invertable}
+:::
+
+::::
 
 
 ## Research designs
 
 - E.g. measure of happiness
 
-::: {#likert-container .smallest style="width: 50%; margin-left: 22%;"}
+:::: {.columns}
+
+::: {.column width="60%"}
+
+::: {#likert-container .smallest style="width: 80%; display: block;"}
 
 What is your current level of happiness?
 
@@ -42,6 +57,18 @@ What is your current level of happiness?
 5. A lot more than usual
 
 :::
+
+:::
+
+::: {.column width="40%" .center-element}
+
+$\mu = 3$
+
+![](media/theoretical-distribution.svg){.invertable style="margin-top: 0;"}
+:::
+
+::::
+
 
 
 # Assumptions {.smaller}
@@ -57,7 +84,7 @@ What is your current level of happiness?
       - Variability in the original and treated populations is the same
 
 
-# Effect size
+# Effect size {.small}
 
 ```{r}
 r <- function(x) sprintf("%.2f", x)
@@ -86,12 +113,12 @@ $\text{For class RT data, } d = \dfrac{`r r(M)` - `r round(mu, 2)`}{`r r(SD)`} =
 :::
 
 
-## $r^2$
+## Effect size: $r^2$
 
 - Proportion of all variability in the data attributable to treatment effect
 - Simplifying assumption: Treatment adds or subtracts a constant to each score
 - E.g. 1 point on a scale of 1 to 5
-- $r^2$ separates that variability due to treatment from natural variability between scores
+- $r^2$ separates that [variability due to treatment]{.emph} from [natural variability]{.emph} between scores
 
 ::: {.c}
 $r^2 = \dfrac{SS_{treatment}}{SS_{total}}$
@@ -105,7 +132,7 @@ $r^2 = \dfrac{SS_{treatment}}{SS_{total}}$
 
 ::: {.column width="50%"}
 1. Calculate sum of squared deviations from sample $M$
-    - This is variability [excluding]{.emph} treatment effect
+    - Variability [excluding]{.emph} treatment effect
     - $SS_{without \ treatment}$
 2. Calculate $SS$ from $H_0$ $\mu$
     - This is [total]{.emph} variability
@@ -115,12 +142,14 @@ $r^2 = \dfrac{SS_{treatment}}{SS_{total}}$
 :::
 
 ::: {.column width="50%"}
-Right column
+![](media/r-squared-diagram-1.svg){.invertable}
+
+![](media/r-squared-diagram-2.svg){.invertable}
 :::
 
 ::::
 
-::: {.c}
+::: {style="margin-top: -1em;"}
 $$\begin{align}
 r^2 = \dfrac{SS_{treatment}}{SS_{total}} &= \dfrac{SS_{total} - SS_{without \ treatment}}{SS_{total}} \\
 &= \dfrac{10-6}{10} = `r (10-6)/10`
@@ -128,7 +157,7 @@ r^2 = \dfrac{SS_{treatment}}{SS_{total}} &= \dfrac{SS_{total} - SS_{without \ tr
 :::
 
 
-## $r^2$
+## $r^2$ {.small}
 
 - If we already calculated $t$…
 
@@ -166,15 +195,25 @@ $r^2 = \dfrac{t^2}{t^2 + df}$
 
 ## Calculating CI boundaries
 
+:::: {.columns}
+
+::: {.column width="50%"}
 - So far, we have been specifying $\mu$, calculating $M$ and $s_M$, solving for $t$
 - For CI, rearrange to solve for $\mu$
   - Calculate $M$ and $s_M$, specify $t$ (based on desired width of CI —99%, 95%, 90%, 80% etc), solve for $\mu$
+:::
 
+::: {.column width="50%"}
 ::: {.c}
 $t = \dfrac{M - \mu}{s_M}$
 
 $\mu = M \pm t * s_M$
 :::
+:::
+
+::::
+
+
 
 
 ## Confidence interval interpretation {.small}
@@ -212,6 +251,67 @@ $\mu = M \pm t * s_M$
 ::: {.content-hidden}
 
 # Data and figures
+
+## Sleep
+
+```{r}
+#| eval: false
+
+library(bc1101tools)
+library(ggplot2)
+
+plot_distribution() +
+  geom_segment(aes(x = 0, y = 0, xend = 0, yend = dnorm(0)), linetype = 2) +
+  theme_void()
+
+plot_save("theoretical-distribution.svg")
+
+
+plot_distribution() +
+  geom_segment(aes(x = 0, y = 0, xend = 0, yend = dnorm(0)), linetype = 2) +
+  geom_text(aes(x = 0, y = dnorm(0)), label = expression(mu==3), vjust = -1) +
+  scale_y_continuous(limits = c(0, 0.5)) +
+  theme_void()
+
+plot_save("theoretical-happiness-distribution.svg")
+
+```
+
+
+## r^2 diagrams
+
+```{r}
+#| eval: false
+
+library(bc1101tools)
+library(ggplot2)
+
+scores <- c(2,4,5,5)
+mu <- 3
+mean <- mean(scores)
+devs <- scores - mean
+devs_mu <- scores - mu
+
+plot_histogram(c(2,4,5,5), block = TRUE) +
+  geom_segment(aes(x = mean, xend = mean, y = 0, yend = 2), color = "steelblue", linetype = 3) +
+  geom_text(aes(x = scores, y = c(1,1,1,2)-.5, label = devs), color = "lightblue", size = 6) +
+  geom_text(aes(x = mean, y = 2), label = expression(italic(M)==4), color = "steelblue", vjust = 0, size = 5) +
+  scale_y_continuous(breaks = 1:2, expand = expansion(c(0, 0.2))) +
+  theme_bc1101()
+
+plot_save("r-squared-diagram-1.svg", width = 4, height = 2)
+
+plot_histogram(c(2,4,5,5), block = TRUE) +
+  geom_segment(aes(x = mu, xend = mu, y = 0, yend = 2), color = "red", linetype = 3) +
+  geom_text(aes(x = scores, y = c(1,1,1,2)-.5, label = devs_mu), color = "red", size = 6) +
+  geom_text(aes(x = mu, y = 2), label = expression(italic(mu)==3), color = "red", vjust = 0, size = 5) +
+  scale_y_continuous(breaks = 1:2, expand = expansion(c(0, 0.2))) +
+  theme_bc1101()
+
+plot_save("r-squared-diagram-2.svg", width = 4, height = 2)
+
+```
+
 
 :::
 

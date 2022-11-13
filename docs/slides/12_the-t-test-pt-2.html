@@ -415,18 +415,29 @@
 <ul>
 <li>Compare sample against expected population mean based on logic/theory/scale design</li>
 </ul></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
 <li>E.g. ‘common sense’ theory
 <ul>
-<li>Population average amount of sleep, <span class="math inline">\(μ\)</span> = 8 hours</li>
+<li>Population average amount of sleep</li>
 </ul></li>
 </ul>
+</div><div class="column center-element" style="width:50%;">
+<p><span class="math inline">\(\mu = 8\)</span> hours</p>
+<p><img data-src="media/theoretical-distribution.svg" class="invertable"></p>
+</div>
+</div>
 </section>
 <section id="research-designs-1" class="slide level2">
 <h2>Research designs</h2>
 <ul>
 <li>E.g. measure of happiness</li>
 </ul>
-<div id="likert-container" class="smallest" style="width: 50%; margin-left: 22%;">
+<div class="columns">
+<div class="column" style="width:60%;">
+<div id="likert-container" class="smallest" style="width: 80%; display: block;">
 <p>What is your current level of happiness?</p>
 <ol type="1">
 <li>A lot less than usual</li>
@@ -435,6 +446,11 @@
 <li>A little more than usual</li>
 <li>A lot more than usual</li>
 </ol>
+</div>
+</div><div class="column center-element" style="width:40%;">
+<p><span class="math inline">\(\mu = 3\)</span></p>
+<p><img data-src="media/theoretical-distribution.svg" class="invertable" style="margin-top: 0;"></p>
+</div>
 </div>
 </section></section>
 <section id="assumptions" class="title-slide slide level1 smaller center">
@@ -461,7 +477,7 @@
 </section>
 
 <section>
-<section id="effect-size" class="title-slide slide level1 center">
+<section id="effect-size" class="title-slide slide level1 small center">
 <h1>Effect size</h1>
 <div class="cell">
 
@@ -480,26 +496,26 @@
 <p><span class="math inline">\(\text{For class RT data, } d = \dfrac{322.59 - 284}{45.31} = 0.85\)</span></p>
 </div>
 </section>
-<section id="r2" class="slide level2">
-<h2><span class="math inline">\(r^2\)</span></h2>
+<section id="effect-size-r2" class="slide level2">
+<h2>Effect size: <span class="math inline">\(r^2\)</span></h2>
 <ul>
 <li>Proportion of all variability in the data attributable to treatment effect</li>
 <li>Simplifying assumption: Treatment adds or subtracts a constant to each score</li>
 <li>E.g. 1 point on a scale of 1 to 5</li>
-<li><span class="math inline">\(r^2\)</span> separates that variability due to treatment from natural variability between scores</li>
+<li><span class="math inline">\(r^2\)</span> separates that <span class="emph">variability due to treatment</span> from <span class="emph">natural variability</span> between scores</li>
 </ul>
 <div class="c">
 <p><span class="math inline">\(r^2 = \dfrac{SS_{treatment}}{SS_{total}}\)</span></p>
 </div>
 </section>
-<section id="r2-1" class="slide level2 smallest">
+<section id="r2" class="slide level2 smallest">
 <h2><span class="math inline">\(r^2\)</span></h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ol type="1">
 <li>Calculate sum of squared deviations from sample <span class="math inline">\(M\)</span>
 <ul>
-<li>This is variability <span class="emph">excluding</span> treatment effect</li>
+<li>Variability <span class="emph">excluding</span> treatment effect</li>
 <li><span class="math inline">\(SS_{without \ treatment}\)</span></li>
 </ul></li>
 <li>Calculate <span class="math inline">\(SS\)</span> from <span class="math inline">\(H_0\)</span> <span class="math inline">\(\mu\)</span>
@@ -513,17 +529,18 @@
 </ul></li>
 </ol>
 </div><div class="column" style="width:50%;">
-<p>Right column</p>
+<p><img data-src="media/r-squared-diagram-1.svg" class="invertable"></p>
+<p><img data-src="media/r-squared-diagram-2.svg" class="invertable"></p>
 </div>
 </div>
-<div class="c">
+<div style="margin-top: -1em;">
 <p><span class="math display">\[\begin{align}
 r^2 = \dfrac{SS_{treatment}}{SS_{total}} &amp;= \dfrac{SS_{total} - SS_{without \ treatment}}{SS_{total}} \\
 &amp;= \dfrac{10-6}{10} = 0.4
 \end{align}\]</span></p>
 </div>
 </section>
-<section id="r2-2" class="slide level2">
+<section id="r2-1" class="slide level2 small">
 <h2><span class="math inline">\(r^2\)</span></h2>
 <ul>
 <li>If we already calculated <span class="math inline">\(t\)</span>…</li>
@@ -573,6 +590,8 @@ r^2 = \dfrac{SS_{treatment}}{SS_{total}} &amp;= \dfrac{SS_{total} - SS_{without 
 </section>
 <section id="calculating-ci-boundaries" class="slide level2">
 <h2>Calculating CI boundaries</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
 <li>So far, we have been specifying <span class="math inline">\(\mu\)</span>, calculating <span class="math inline">\(M\)</span> and <span class="math inline">\(s_M\)</span>, solving for <span class="math inline">\(t\)</span></li>
 <li>For CI, rearrange to solve for <span class="math inline">\(\mu\)</span>
@@ -580,9 +599,12 @@ r^2 = \dfrac{SS_{treatment}}{SS_{total}} &amp;= \dfrac{SS_{total} - SS_{without 
 <li>Calculate <span class="math inline">\(M\)</span> and <span class="math inline">\(s_M\)</span>, specify <span class="math inline">\(t\)</span> (based on desired width of CI —99%, 95%, 90%, 80% etc), solve for <span class="math inline">\(\mu\)</span></li>
 </ul></li>
 </ul>
+</div><div class="column" style="width:50%;">
 <div class="c">
 <p><span class="math inline">\(t = \dfrac{M - \mu}{s_M}\)</span></p>
 <p><span class="math inline">\(\mu = M \pm t * s_M\)</span></p>
+</div>
+</div>
 </div>
 </section>
 <section id="confidence-interval-interpretation" class="slide level2 small">
@@ -630,7 +652,7 @@ r^2 = \dfrac{SS_{treatment}}{SS_{total}} &amp;= \dfrac{SS_{total} - SS_{without 
 </ul></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="218" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 217;"><span id="cb1-218"><a href="#cb1-218"></a><span class="im">import</span> { likert } <span class="im">from</span> <span class="st">"../ojs/utils.qmd"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="318" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 317;"><span id="cb1-318"><a href="#cb1-318"></a><span class="im">import</span> { likert } <span class="im">from</span> <span class="st">"../ojs/utils.qmd"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
