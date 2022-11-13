@@ -1,0 +1,220 @@
+---
+format: html
+title: "Confidence"
+toc: false
+---
+
+::: {#controls style="align-content: baseline; position: relative; top: 4em; width: 60%;"}
+
+<label for="confidence-input" style="font-family: KaTeX_Main, Times; font-size: 1em; height: 1em;">Confidence:&nbsp;</label><span id="confidence-value" class="math" style="display: inline-block; width: 1em;">95%</span><input data-prevent-swipe type="range" id="confidence-input" name="confidence" value="95" min="0" max="100" style="border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; margin-left: 1em; width: 50%; vertical-align: unset;">
+
+<label for="n-input" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">n =&nbsp;</label><span id="n-value" class="math" style="display: inline-block; width: 1em;">30</span><input data-prevent-swipe type="range" id="n-input" name="n" value="30" min="1" max="50" style="border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; margin-left: 0.5em; width: 50%; vertical-align: unset;">
+
+<label for="mean-input" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">M = </label>
+<input type="text" id="mean-input" class="invertable" name="mean" value="0" style="background: none; border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; width: 2em; vertical-align: unset;">
+
+<label for="sd-input" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">SD = </label>
+<input type="text" id="sd-input" class="invertable" name="sigma" value="1" style="background: none; border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; width: 2em; vertical-align: unset;">
+
+<p><span id="std-err-label" class="math italic">σ<sub>M</sub> = </span><span id="std-err-value" class="math"></span></p>
+
+:::
+
+::: {#confidence-interval .svg-container}
+:::
+
+```{ojs}
+jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js")
+```
+
+```{ojs}
+
+
+ci = {
+
+  const w = 1050
+  const h = 600
+  const m = {t: 0, r: 0, l: 0, b: 100}
+  
+  const f = d3.format(".2f")
+  const x = d3.scaleLinear()
+    .range([0,w])
+  const y = d3.scaleLinear()
+    .range([h-m.b,m.t])
+  const line = d3.line()
+    .x(d => x(d.value))
+    .y(d => y(d.density))
+  const arrows = [{id: -1,points: [[0,0],[5,5],[5,-5]]},
+                  {id: 1, points: [[-5,5],[0,0],[-5,-5]]}]
+                  
+  const xAxis = d3.axisBottom(x)
+  
+  var confidence, n, mean, sd, std_err, critical, xlim;
+  
+  const confidenceInput = document.getElementById('confidence-input')
+  const nInput = document.getElementById('n-input')
+  const meanInput = document.getElementById('mean-input')
+  const sdInput = document.getElementById('sd-input')
+  
+  function updateCritical() {
+    var upper = 1 - (1 - confidence/100)*0.5
+    var lower = 1 - upper
+    critical = [jStat.normal.inv(lower, mean, std_err),
+                jStat.normal.inv(upper, mean, std_err)]
+  }
+  
+  function getParams() {
+    confidence = confidenceInput.value
+    n = nInput.value
+    mean = meanInput.value
+    sd = sdInput.value
+    std_err = sd / Math.sqrt(n)
+    updateCritical()
+    xlim = [mean-3*std_err,Number(mean+3*std_err)]
+    x.domain([xlim[0], xlim[1]])
+    y.domain([0, jStat.normal.pdf(0, mean, std_err)+0.01])
+    d3.select("#std-err-value").text(f(std_err))
+  }
+  
+  
+  confidenceInput.oninput = function() {
+    confidence = confidenceInput.value
+    d3.select("#confidence-value").text(confidence + "%")
+    updateCritical();
+    updateCurve();
+    updateClip();
+  };
+  
+  nInput.oninput = function() {
+    n = nInput.value
+    std_err = sd/Math.sqrt(n)
+    d3.select("#n-value").text(n)
+    d3.select("#std-err-value").text(f(std_err))
+    updateCritical();
+    updateCurve();
+    updateClip();
+  };
+    
+  meanInput.oninput = function() {
+    mean = Number(meanInput.value)
+    updateCritical();
+    updateCurve();
+    updateClip();
+  };
+  
+  sdInput.oninput = function() {
+    sd = sdInput.value
+    std_err = sd/Math.sqrt(n)
+    d3.select("#std-err-value").text(f(std_err))
+    updateCritical();
+    updateCurve();
+    updateClip();
+  };
+  
+  function makeCurve(mean, std_err) {
+    var values = jStat(xlim[0], xlim[1], 210)[0],
+        arr = [];
+    for (var i in values) {
+      arr.push({
+          value: values[i], 
+          density: jStat.normal.pdf(values[i], mean, std_err)
+      })
+    }
+    return arr;
+  }
+  
+  function updateCurve() {
+    xlim = [Number(mean-3*std_err),Number(mean+3*std_err)]
+    <!-- console.log(xlim) -->
+    x.domain([xlim[0], xlim[1]])
+    y.domain([0, jStat.normal.pdf(mean, mean, std_err)+0.01])
+    
+    axis.call(xAxis)
+    
+    curveLine.attr("d", line(makeCurve(mean, std_err)))
+    curveFill.attr("d", line(makeCurve(mean, std_err)))
+    
+    meanLine.select("line")
+      .attr("x1", x(mean)).attr("x2", x(mean))
+      .attr("y1", y(0)).attr("y2", y(jStat.normal.pdf(mean, mean, std_err)))
+    meanLine.select("circle")
+      .attr("cx", x(mean)).attr("cy", y(0)).attr("r", 5)
+      
+    marginOfError.attr("transform", `translate(0, ${y(jStat.normal.pdf(critical[0], mean, std_err)/2)})`)
+    marginOfError.select("line")
+      .attr("x1", x(critical[0])).attr("x2", x(critical[1]))
+    marginOfError.select("#arrow-l").attr("transform", `translate(${x(critical[0])}, 0) scale(2)`)
+    marginOfError.select("#arrow-r").attr("transform", `translate(${x(critical[1])}, 0) scale(2)`)
+  }
+  
+  function updateClip() {
+    clip.attr("points", [[x(critical[0]),0],[x(critical[0]),h],[x(critical[1]),h],[x(critical[1]),0]])
+  }
+  
+  const svg = d3.select("#confidence-interval").append("svg")
+    .attr("viewBox", "0 0 " + w + " " + h)
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("class", "svg-content")
+    
+  const axis = svg.append("g").attr("transform", `translate(0, ${y(0)})`)
+    .style("font-size", "2em")
+  
+  const curveLine = svg.append("path")
+    .style("fill", "none")
+    .style("stroke", "black")
+    .style("stroke-width", 3)
+    .attr("class", "invertable")
+    
+  const clip = svg.append("clipPath").attr("id", "clip").append("polygon")
+
+  const curveFill = svg.append("path")
+    .attr("clip-path", "url(#clip)")
+    .style("fill", "lightblue")
+    .style("stroke", "none")
+    
+  const meanLine = svg.append("g")
+  meanLine.append("line")
+    .style("stroke", "black")
+    .style("stroke-dasharray", [10,10])
+  meanLine.append("circle")
+    
+
+  const marginOfError = svg.append("g")
+    .style("stroke", "black")
+    <!-- .classed("invertable", true) -->
+    
+  marginOfError.append("line")
+    .style("stroke", "black")
+
+  marginOfError.append("polygon").attr("points", arrows[0].points).attr("id", "arrow-l")
+  marginOfError.append("polygon").attr("points", arrows[1].points).attr("id", "arrow-r")
+
+
+
+  getParams();
+  updateClip();
+  updateCurve();
+  
+}
+
+```
+
+
+<style>
+
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    vertical-align: top;
+    overflow: hidden;
+}
+.svg-content {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+</style>
