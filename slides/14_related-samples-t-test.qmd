@@ -1,0 +1,336 @@
+---
+format: revealjs
+---
+
+# [14|RELATED-SAMPLES $t$-TEST]{.r-fit-text}
+
+![](covers/11_the-t-test.svg)
+
+
+# Overview
+
+- [Research design]
+- [Equations]
+- [Hypothesis test]
+- [Assumptions]
+- [Confidence interval]
+- [Learning checks]
+
+# Research design
+
+## Independent-samples {.small}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- "Between-participants" design
+- Two treated samples containing different people
+- Individual differences contribute to variability
+:::
+
+::: {.column width="50%"}
+
+::: {#independent-samples-container}
+:::
+
+:::
+
+::::
+
+
+
+## Related-samples {.small}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Repeated-measures
+  - "Within-participants" design
+  - Two treatment conditions, but same individuals in both 
+  - Record two scores per individual (one per condition)
+  - Individual differences cannot contribute to difference between groups  
+:::
+
+::: {.column width="50%"}
+
+::: {#related-samples-container}
+:::
+
+:::
+::::
+
+
+## Related-samples {.small}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Matched-subjects
+  - Two samples of different people; each individual in sample A is “matched” on relevant variables with an individual in sample B
+  - Uses same statistical procedures as repeated-measures
+  - But requires twice as many participants as within-p's design
+:::
+
+::: {.column width="50%"}
+::: {#matched-samples-container}
+:::
+:::
+
+::::
+
+
+## Advantages & disadvantages {.smaller}
+
+- Advantages of related-samples design
+  - Requires fewer subjects (not true of matched subjects)
+  - Able to study changes over time
+  - Reduces or eliminates individual differences as a source of variability; therefore less variability in scores
+
+- Disadvantages of repeated-measures design
+  - Factors besides treatment may cause subject’s score to change during the time between measurements
+  - Participation in first treatment may influence score in the second treatment (order effects)
+  - Counterbalancing is a way to control time-related or order effects
+  - Participants can drop out
+
+
+# Equations
+
+$t = \dfrac{\text{sample statistic} - \text{population parameter}}{\text{estimated standard error}}$
+
+$t = \dfrac{M-\mu}{s_M}$
+
+$t = \dfrac{(M_1-M_2)-(\mu_1-\mu_2)}{s_{M_1-M_2}}$
+
+$t = \dfrac{M_D-\mu_D}{s_{M_D}}$
+
+
+
+## Calculating related-samples $t$
+
+$\text{Difference scores: } D = X_B - X_A$
+
+$\text{Mean of difference scores: } M_D = \dfrac{\Sigma D}{n}$
+
+$\text{Standard error of difference scores: } S_{M_D} = \dfrac{s_D}{\sqrt{n}}$
+ 
+$t \text{ statistic: } t = \dfrac{M_D - \mu_D}{s_{M_D}}$
+
+$df = n-1 \text{ (number of difference scores minus 1)}$
+
+
+# Hypothesis test
+
+- E.g. Norman Triplett (1898)
+  - Performing alone/in competition
+
+::: {.center-element width=50%}
+![](media/triplett.png){.invertable style="margin-bottom: 3em; margin-top: -0.5em;"}
+:::
+
+::: {.footnote .reference}
+Triplett, N. (1898). The dynamogenic factors in pacemaking and competition. *The American Journal of Psychology, 9*(4), 507-533. [https://doi.org/10.2307/1412188](https://doi.org/10.2307/1412188)
+:::
+
+## As independent samples
+
+
+
+
+
+## As related samples
+
+
+# Assumptions
+
+1. Observations within each treatment condition must be independent
+2. Population distribution of difference scores is normally distributed
+    - With relatively large samples (n > 30) this assumption can be ignored 
+
+
+# Confidence Interval
+
+
+
+# Learning checks
+
+
+1. Think of a research question which would require...
+    - A single-sample $t$-test
+    - An independent-samples $t$-test
+    - A related-samples $t$-test
+2. What does it mean if the value of the $t$ statistic is near $0$ for:
+    - A single-sample $t$-test?
+    - An independent-samples $t$-test?
+    - A related-samples $t$-test?
+  
+  
+
+::: {.content-hidden}
+
+# Data and figures
+
+## Cover
+
+## Independent vs related samples figures
+
+
+## OJS
+
+:::
+
+```{ojs}
+
+w = 500
+h = 550
+r = 20
+fill = d3.scaleOrdinal(d3.schemeSet3)
+
+<!-- makeSample = function () { -->
+<!--     var arr = []; -->
+<!--     for (var i = 0; i < 10; i++) { -->
+<!--       arr.push(Math.floor(Math.random()*10)) -->
+<!--     } -->
+<!--     return arr; -->
+<!-- } -->
+  
+independentSamplesFigure = {
+
+  function makeSample () {
+    var arr = [];
+    for (var i = 0; i < 10; i++) {
+      arr.push(Math.floor(Math.random()*10))
+    }
+    return arr;
+  }
+
+  const svg = d3.select("#independent-samples-container")
+    .append("svg")
+    .attr("viewBox", "0 0 " + w + " " + h)
+    .attr("preserveAspectRatio", "xMinYMin meet")
+
+  const labels = svg.append("g")
+    .style("font-size", "20px")
+    .style("font-weight", "bold")
+    .attr("class", "invertable")
+    
+  labels.selectAll("text")
+    .data(["A","B"]).enter().append("text")
+    .attr("x", (d,i) => w/4 + i * w/2).attr("y", 20)
+    .text(d => "SAMPLE " + d).attr("text-anchor", "middle")
+
+  const sampleDots = svg.append("g")
+  
+  const g = sampleDots.selectAll("g").data([0,1]).enter().append("g").attr("transform", (d,i) => `translate(${w/4 + i * w/2}, 0)`).style("stroke", "black")
+  
+  g.each(function(d,i){
+    d3.select(this)
+    .selectAll("circle")
+      .data(makeSample()).enter().append("circle")
+        .attr("cy", (d,i) => 60 + i*r*2.5)
+        .attr("r", r)
+        .style("fill", d => fill(d))
+  })
+      
+}
+
+
+relatedSamplesFigure = {
+
+  function makeSample () {
+    var arr = [];
+    for (var i = 0; i < 10; i++) {
+      arr.push(Math.floor(Math.random()*10))
+    }
+    return arr;
+  }
+
+  const svg = d3.selectAll("#related-samples-container")
+    .append("svg")
+    .attr("viewBox", "0 0 " + w + " " + h)
+    .attr("preserveAspectRatio", "xMinYMin meet")
+
+  const labels = svg.append("g")
+    .style("font-size", "20px")
+    .style("font-weight", "bold")
+    .attr("class", "invertable")
+    
+  labels.selectAll("text")
+    .data(["A","B"]).enter().append("text")
+    .attr("x", (d,i) => w/4 + i * w/2).attr("y", 20)
+    .text(d => "SAMPLE " + d).attr("text-anchor", "middle")
+    
+  const lines = svg.append("g").attr("transform", `translate(${w/4 + r * 1.5}, 60)`).style("stroke", "black")
+  .attr("class", "invertable")
+    .selectAll("line").data([0,1,2,3,4,5,6,7,8,9]).enter()
+    .append("line")
+      .attr("x2", w/2 - 2 * r * 1.5)
+      .attr("y1", (d,i) => i * r * 2.5)
+      .attr("y2", (d,i) => i * r * 2.5)
+
+  const sampleDots = svg.append("g")
+  const sample = makeSample()
+  
+  const g = sampleDots.selectAll("g").data([0,1]).enter().append("g").attr("transform", (d,i) => `translate(${w/4 + i * w/2}, 0)`).style("stroke", "black")
+  
+  g.each(function(d,i){
+    d3.select(this)
+    .selectAll("circle")
+      .data(sample).enter().append("circle")
+        .attr("cy", (d,i) => 60 + i*r*2.5)
+        .attr("r", r)
+        .style("fill", d => fill(d))
+  })
+      
+}
+
+matchedSamplesFigure = {
+
+   function makeSample () {
+    var arr = [];
+    for (var i = 0; i < 10; i++) {
+      arr.push(Math.floor(Math.random()*10))
+    }
+    return arr;
+  }
+
+  const svg = d3.selectAll("#matched-samples-container")
+    .append("svg")
+    .attr("viewBox", "0 0 " + w + " " + h)
+    .attr("preserveAspectRatio", "xMinYMin meet")
+
+  const labels = svg.append("g")
+    .style("font-size", "20px")
+    .style("font-weight", "bold")
+    .attr("class", "invertable")
+    
+  labels.selectAll("text")
+    .data(["A","B"]).enter().append("text")
+    .attr("x", (d,i) => w/4 + i * w/2).attr("y", 20)
+    .text(d => "SAMPLE " + d).attr("text-anchor", "middle")
+    
+  const lines = svg.append("g").attr("transform", `translate(${w/4 + r * 1.5}, 60)`)
+    .style("stroke", "black").style("stroke-dasharray", [10,10]).attr("class", "invertable")
+    .selectAll("line").data([0,1,2,3,4,5,6,7,8,9]).enter()
+    .append("line")
+      .attr("x2", w/2 - 2 * r * 1.5)
+      .attr("y1", (d,i) => i * r * 2.5)
+      .attr("y2", (d,i) => i * r * 2.5)
+
+  const sampleDots = svg.append("g")
+  const sample = makeSample()
+  
+  const g = sampleDots.selectAll("g").data([0,1]).enter().append("g").attr("transform", (d,i) => `translate(${w/4 + i * w/2}, 0)`).style("stroke", "black")
+  
+  g.each(function(d,i){
+    d3.select(this)
+    .selectAll("circle")
+      .data(sample).enter().append("circle")
+        .attr("cy", (d,i) => 60 + i*r*2.5)
+        .attr("r", r)
+        .style("fill", d => fill(d))
+  })
+
+}
+
+```
+

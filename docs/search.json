@@ -1510,5 +1510,54 @@
     "title": "BC1101",
     "section": "Homogeneity of variance",
     "text": "Homogeneity of variance\n\nIf sample information suggests violation of homogeneity of variance assumption:\n\n\n\n\nCalculate standard error without pooled variance\nAdjust \\(df\\) using:\n…or let R do the work for you\n\nAutomatically applies correction\nDefault “var.equal = FALSE”\nSpecify “var.equal = TRUE” to override\n\n\n\n\\[df = \\dfrac{(\\dfrac{s_1^2}{n_1}+\\dfrac{s_2^2}{n_2})}\n{\\dfrac{(\\dfrac{s_1^2}{n_1})^2}{n_1-1} + \\dfrac{(\\dfrac{s_2^2}{n_2})^2}{n_2-1}\n}\\]"
+  },
+  {
+    "objectID": "slides/14_related-samples-t-test.html#independent-samples",
+    "href": "slides/14_related-samples-t-test.html#independent-samples",
+    "title": "BC1101",
+    "section": "Independent-samples",
+    "text": "Independent-samples\n\n\n\n“Between-participants” design\nTwo treated samples containing different people\nIndividual differences contribute to variability"
+  },
+  {
+    "objectID": "slides/14_related-samples-t-test.html#related-samples",
+    "href": "slides/14_related-samples-t-test.html#related-samples",
+    "title": "BC1101",
+    "section": "Related-samples",
+    "text": "Related-samples\n\n\n\nRepeated-measures\n\n“Within-participants” design\nTwo treatment conditions, but same individuals in both\nRecord two scores per individual (one per condition)\nIndividual differences cannot contribute to difference between groups"
+  },
+  {
+    "objectID": "slides/14_related-samples-t-test.html#related-samples-1",
+    "href": "slides/14_related-samples-t-test.html#related-samples-1",
+    "title": "BC1101",
+    "section": "Related-samples",
+    "text": "Related-samples\n\n\n\nMatched-subjects\n\nTwo samples of different people; each individual in sample A is “matched” on relevant variables with an individual in sample B\nUses same statistical procedures as repeated-measures\nBut requires twice as many participants as within-p’s design"
+  },
+  {
+    "objectID": "slides/14_related-samples-t-test.html#advantages-disadvantages",
+    "href": "slides/14_related-samples-t-test.html#advantages-disadvantages",
+    "title": "BC1101",
+    "section": "Advantages & disadvantages",
+    "text": "Advantages & disadvantages\n\nAdvantages of related-samples design\n\nRequires fewer subjects (not true of matched subjects)\nAble to study changes over time\nReduces or eliminates individual differences as a source of variability; therefore less variability in scores\n\nDisadvantages of repeated-measures design\n\nFactors besides treatment may cause subject’s score to change during the time between measurements\nParticipation in first treatment may influence score in the second treatment (order effects)\nCounterbalancing is a way to control time-related or order effects\nParticipants can drop out"
+  },
+  {
+    "objectID": "slides/14_related-samples-t-test.html#calculating-related-samples-t",
+    "href": "slides/14_related-samples-t-test.html#calculating-related-samples-t",
+    "title": "BC1101",
+    "section": "Calculating related-samples \\(t\\)",
+    "text": "Calculating related-samples \\(t\\)\n\\(\\text{Difference scores: } D = X_B - X_A\\)\n\\(\\text{Mean of difference scores: } M_D = \\dfrac{\\Sigma D}{n}\\)\n\\(\\text{Standard error of difference scores: } S_{M_D} = \\dfrac{s_D}{\\sqrt{n}}\\)\n\\(t \\text{ statistic: } t = \\dfrac{M_D - \\mu_D}{s_{M_D}}\\)\n\\(df = n-1 \\text{ (number of difference scores minus 1)}\\)"
+  },
+  {
+    "objectID": "slides/14_related-samples-t-test.html#as-independent-samples",
+    "href": "slides/14_related-samples-t-test.html#as-independent-samples",
+    "title": "BC1101",
+    "section": "As independent samples",
+    "text": "As independent samples"
+  },
+  {
+    "objectID": "slides/14_related-samples-t-test.html#as-related-samples",
+    "href": "slides/14_related-samples-t-test.html#as-related-samples",
+    "title": "BC1101",
+    "section": "As related samples",
+    "text": "As related samples"
   }
 ]

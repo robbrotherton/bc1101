@@ -1,7 +1,5 @@
 ---
-format: 
-  revealjs:
-    chalkboard: true
+format: revealjs
 ---
 
 # [13|INDEPENDENT-SAMPLES $t$-TEST]{.r-fit-text}
