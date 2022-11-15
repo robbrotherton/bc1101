@@ -1544,20 +1544,146 @@
     "href": "slides/14_related-samples-t-test.html#calculating-related-samples-t",
     "title": "BC1101",
     "section": "Calculating related-samples \\(t\\)",
-    "text": "Calculating related-samples \\(t\\)\n\\(\\text{Difference scores: } D = X_B - X_A\\)\n\\(\\text{Mean of difference scores: } M_D = \\dfrac{\\Sigma D}{n}\\)\n\\(\\text{Standard error of difference scores: } S_{M_D} = \\dfrac{s_D}{\\sqrt{n}}\\)\n\\(t \\text{ statistic: } t = \\dfrac{M_D - \\mu_D}{s_{M_D}}\\)\n\\(df = n-1 \\text{ (number of difference scores minus 1)}\\)"
+    "text": "Calculating related-samples \\(t\\)\n\n\\(df = n-1\\) (number of difference scores minus \\(1\\))\n\n\n\nDifference scores:\n\n\\(D = X_B - X_A\\)\n\n\n\n\nMean of difference scores:\n\n\\(M_D = \\dfrac{\\Sigma D}{n}\\)\n\n\n\n\nStandard error of difference scores:\n\n\\(S_{M_D} = \\dfrac{s_D}{\\sqrt{n}}\\)\n\n\n\n\n\\(t\\) statistic:\n\n\\(t = \\dfrac{M_D - \\mu_D}{s_{M_D}}\\)"
   },
   {
     "objectID": "slides/14_related-samples-t-test.html#as-independent-samples",
     "href": "slides/14_related-samples-t-test.html#as-independent-samples",
     "title": "BC1101",
     "section": "As independent samples",
-    "text": "As independent samples"
+    "text": "As independent samples\n\n\n\n\n\n\n \n  \n    Alone \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    54 \n    4.6 \n    21.16 \n  \n  \n    67 \n    17.6 \n    309.76 \n  \n  \n    38 \n    -11.4 \n    129.96 \n  \n  \n    46 \n    -3.4 \n    11.56 \n  \n  \n    42 \n    -7.4 \n    54.76 \n  \n  \n    \\(M = 49.40\\) \n     \n    \\(SS = 527.20\\) \n  \n  \n     \n     \n    \\(s^2 = 131.80\\) \n  \n  \n     \n     \n    \\(s = 11.48\\) \n  \n\n\n\n\n\n\n\n\n\n\n \n  \n    Competition \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    43 \n    -0.2 \n    0.04 \n  \n  \n    57 \n    13.8 \n    190.44 \n  \n  \n    39 \n    -4.2 \n    17.64 \n  \n  \n    41 \n    -2.2 \n    4.84 \n  \n  \n    36 \n    -7.2 \n    51.84 \n  \n  \n    \\(M = 43.20\\) \n     \n    \\(SS = 264.80\\) \n  \n  \n     \n     \n    \\(s^2 = 66.20\\) \n  \n  \n     \n     \n    \\(s = 8.14\\)"
   },
   {
     "objectID": "slides/14_related-samples-t-test.html#as-related-samples",
     "href": "slides/14_related-samples-t-test.html#as-related-samples",
     "title": "BC1101",
     "section": "As related samples",
-    "text": "As related samples"
+    "text": "As related samples\n\n\n\n\n \n  \n    Participant \n    Alone \n    Comp \n    \\(D\\) \n    \\(D-M_D\\) \n    \\((D-M_D)^2\\) \n  \n \n\n  \n    Violet F. \n    54 \n    43 \n    -11 \n    -4.8 \n    23.04 \n  \n  \n    Anna P. \n    67 \n    57 \n    -10 \n    -3.8 \n    14.44 \n  \n  \n    Willie H. \n    38 \n    39 \n    1 \n    7.2 \n    51.84 \n  \n  \n    Bessie V. \n    46 \n    41 \n    -5 \n    1.2 \n    1.44 \n  \n  \n    Howard C. \n    42 \n    36 \n    -6 \n    0.2 \n    0.04 \n  \n\n\n\n\n\n\n\n\n\n\n\\(M_D = -6.2\\)\n\n\n\\(SS = 90.8\\)\n\\(s^2 = 22.7\\)\n\\(s = 4.76\\)"
+  },
+  {
+    "objectID": "slides-index.html#independent-samples-t-test",
+    "href": "slides-index.html#independent-samples-t-test",
+    "title": "Slides",
+    "section": "13. Independent-samples \\(t\\) test",
+    "text": "13. Independent-samples \\(t\\) test\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nResearch design\nCalculation\nHypothesis test\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+  },
+  {
+    "objectID": "slides-index.html#related-samples-t-test",
+    "href": "slides-index.html#related-samples-t-test",
+    "title": "Slides",
+    "section": "14. Related-samples \\(t\\) test",
+    "text": "14. Related-samples \\(t\\) test\n\n\n\n\n\n\n  \n    \n\n    \n\n    \n      \nResearch design\nEquations\nHypothesis test\nAssumptions\nConfidence interval\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+  },
+  {
+    "objectID": "slides/14_related-samples-t-test.html#triplett",
+    "href": "slides/14_related-samples-t-test.html#triplett",
+    "title": "BC1101",
+    "section": "Triplett",
+    "text": "Triplett\n\n\n\n\nE.g. Norman Triplett (1898)\n\nPerforming alone/in competition\n\n\n\n\n\n\nTriplett, N. (1898). The dynamogenic factors in pacemaking and competition. The American Journal of Psychology, 9(4), 507-533. https://doi.org/10.2307/1412188"
+  },
+  {
+    "objectID": "slides/14_related-samples-t-test.html#as-independent-samples-1",
+    "href": "slides/14_related-samples-t-test.html#as-independent-samples-1",
+    "title": "BC1101",
+    "section": "As independent samples",
+    "text": "As independent samples\n\nStep 2: Decision criteria\n\n\\(\\text{With } \\alpha = .05, t_{critical} (8) = \\pm 2.31\\)\n\nStep 3: Calculate\n\n\n\\(df = N - 2 = 10 - 2 = 8\\)\n\\(s^2_p = \\dfrac{SS_1 + SS_2}{df_1 + df_2} = \\dfrac{527.2 + 264.8}{4 + 4} = 99\\)\n\\(s_{M_1-M_2} = \\sqrt{\\dfrac{s_p^2}{n_1}+\\dfrac{s_p^2}{n_2}} = \\sqrt{\\dfrac{99}{5}+\\dfrac{99}{5}} = 6.29\\)\n\\(t = \\dfrac{(M_1-M_2)-(\\mu_1-\\mu_2)}{s_{M_1-M_2}} = \\dfrac{49.4 - 43.2}{6.29} = 0.99\\)"
+  },
+  {
+    "objectID": "slides/14_related-samples-t-test.html#as-related-samples-1",
+    "href": "slides/14_related-samples-t-test.html#as-related-samples-1",
+    "title": "BC1101",
+    "section": "As related samples",
+    "text": "As related samples\n\n\\(\\text{With } \\alpha = .05, t_{critical} (4) = \\pm 2.78\\)\n\\(df = n-1 = 5 - 1 = 4\\)\n\\(S_{M_D} = \\dfrac{s_D}{\\sqrt{n}} = \\dfrac{}{\\sqrt{5}} = 2.13\\)\n\\(t = \\dfrac{M_D - \\mu_D}{s_{M_D}} = \\dfrac{}{2.13} = -2.91\\)"
+  },
+  {
+    "objectID": "slides/14_related-samples-t-test.html#effect-size",
+    "href": "slides/14_related-samples-t-test.html#effect-size",
+    "title": "BC1101",
+    "section": "Effect size",
+    "text": "Effect size\n\nStep 4b: Effect size\n\nIf the result was significant\nCohen’s \\(d\\) for related-samples \\(t\\)-test:\n\n\n\\[\\begin{align}\n\\text{Estimated Cohen's } d &= \\dfrac{\\text{mean of difference scores}}{\\text{SD of difference scores}} \\\\\n&= \\dfrac{M_D}{s_D} \\\\\n&= \\dfrac{-6.2}{4.76} = -1.3\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/14_related-samples-t-test.html#report-results",
+    "href": "slides/14_related-samples-t-test.html#report-results",
+    "title": "BC1101",
+    "section": "Report results",
+    "text": "Report results\n“When performing in competition, children completed the race faster on average \\((M = 43.2\\); \\(SD = 8.14)\\) than when performing alone \\((M = 49.4\\); \\(SD = 11.48)\\). A related-samples found the difference to be statistically significant; \\(t(4) =\\) \\(-2.91\\), \\(p <.05\\), \\(d = 1.30\\).”"
+  },
+  {
+    "objectID": "slides/14_related-samples-t-test.html#triplett-data",
+    "href": "slides/14_related-samples-t-test.html#triplett-data",
+    "title": "BC1101",
+    "section": "Triplett data",
+    "text": "Triplett data"
+  },
+  {
+    "objectID": "slides/14_related-samples-t-test.html#logic",
+    "href": "slides/14_related-samples-t-test.html#logic",
+    "title": "BC1101",
+    "section": "Logic",
+    "text": "Logic\n\n\n\n\n\n\n\n\n\n\nSample A\nSample B\n\n\n\n\n54\n43\n\n\n67\n57\n\n\n38\n39\n\n\n46\n41\n\n\n42\n36\n\n\n\n\n\n\n\n\n\n\n\nSample A\nSample B\nD\n\n\n\n\n54\n43\n-11\n\n\n67\n57\n-10\n\n\n38\n39\n1\n\n\n46\n41\n-5\n\n\n42\n36\n-6"
+  },
+  {
+    "objectID": "slides/14_related-samples-t-test.html#equations-1",
+    "href": "slides/14_related-samples-t-test.html#equations-1",
+    "title": "BC1101",
+    "section": "Equations",
+    "text": "Equations\n\n\\(t = \\dfrac{\\text{sample statistic} - \\text{population parameter}}{\\text{estimated standard error}}\\)\n\n\n\n\nSingle sample:\n\n\\(t = \\dfrac{M-\\mu}{s_M}\\)\n\n\n\n\nIndependent samples:\n\n\\(t = \\dfrac{(M_1-M_2)-(\\mu_1-\\mu_2)}{s_{M_1-M_2}}\\)\n\n\n\n\nRelated samples:\n\n\\(t = \\dfrac{M_D-\\mu_D}{s_{M_D}}\\)"
+  },
+  {
+    "objectID": "slides/14_related-samples-t-test.html#balh",
+    "href": "slides/14_related-samples-t-test.html#balh",
+    "title": "BC1101",
+    "section": "balh",
+    "text": "balh\n\n\\(M_D = -6.2\\) \\(SS = 90.8\\)\n\\(s^2 = 22.7\\)\n\\(s = 4.76\\)"
+  },
+  {
+    "objectID": "ojs/nhst-diagram.html",
+    "href": "ojs/nhst-diagram.html",
+    "title": "NHST",
+    "section": "",
+    "text": "Treatment\n\n\nOriginal population\n\\(\\mu, \\sigma\\)\n\n\nTreated population\nUnknown \\(\\mu, \\sigma\\)\n\n\nSample\n\n\nTreated sample\n\\(M, SD\\)"
+  },
+  {
+    "objectID": "slides/13_independent-samples-t-test.html#diagram",
+    "href": "slides/13_independent-samples-t-test.html#diagram",
+    "title": "BC1101",
+    "section": "Diagram",
+    "text": "Diagram\n\n\n\n\n\n\n\n\n\nPartially known\noriginal population\n\\(\\mu\\)\n\n\nUnknown\ntreated\npopulation\n\n\nSample\n\n\nTreated sample \\(n, M, SD\\)"
+  },
+  {
+    "objectID": "slides/13_independent-samples-t-test.html#diagram-2",
+    "href": "slides/13_independent-samples-t-test.html#diagram-2",
+    "title": "BC1101",
+    "section": "Diagram 2",
+    "text": "Diagram 2\n\n\n\n\n\n\n\n\n\nUnknown\ntreated population\nA\n\n\nUnknown\ntreated population\nB\n\n\nSample A\n\\(n, M, SD\\)\n\n\nSample B\n\\(n, M, SD\\)"
+  },
+  {
+    "objectID": "slides/13_independent-samples-t-test.html#single-sample-t-test-logic",
+    "href": "slides/13_independent-samples-t-test.html#single-sample-t-test-logic",
+    "title": "BC1101",
+    "section": "Single-sample \\(t\\)-test logic",
+    "text": "Single-sample \\(t\\)-test logic\n\n\n\n\n\n\n\n\n\nPartially known\noriginal population\n\\(\\mu\\)\n\n\nUnknown\ntreated\npopulation\n\n\nSample\n\n\nTreated sample \\(n, M, SD\\)"
+  },
+  {
+    "objectID": "slides/13_independent-samples-t-test.html#independent-samples-t-test-logic",
+    "href": "slides/13_independent-samples-t-test.html#independent-samples-t-test-logic",
+    "title": "BC1101",
+    "section": "Independent-samples \\(t\\)-test logic",
+    "text": "Independent-samples \\(t\\)-test logic\n\n\n\n\n\n\n\n\n\nUnknown\ntreated population\nA\n\n\nUnknown\ntreated population\nB\n\n\nSample A\n\\(n, M, SD\\)\n\n\nSample B\n\\(n, M, SD\\)"
+  },
+  {
+    "objectID": "slides/13_independent-samples-t-test.html#homogeneity-of-variance-correction",
+    "href": "slides/13_independent-samples-t-test.html#homogeneity-of-variance-correction",
+    "title": "BC1101",
+    "section": "Homogeneity of variance correction",
+    "text": "Homogeneity of variance correction\n\nIf homogeneity of variance assumption is violated…\n\nCalculate standard error without pooled variance\nAdjust \\(df\\) using equation:\n\n\n\n\\[df = \\dfrac{(\\dfrac{s_1^2}{n_1}+\\dfrac{s_2^2}{n_2})}\n{\\dfrac{(\\dfrac{s_1^2}{n_1})^2}{n_1-1} + \\dfrac{(\\dfrac{s_2^2}{n_2})^2}{n_2-1}\n}\\]"
+  },
+  {
+    "objectID": "slides/13_independent-samples-t-test.html#homogeneity-of-variance-correction-1",
+    "href": "slides/13_independent-samples-t-test.html#homogeneity-of-variance-correction-1",
+    "title": "BC1101",
+    "section": "Homogeneity of variance correction",
+    "text": "Homogeneity of variance correction\n\n…or let R do the work for you\n\nt.test() function automatically applies correction\nSpecify var.equal = TRUE to override\n\n\n\n\n\nconditionA <- c(1, 5, 2, 4, 3)\nconditionB <- c(5, 5, 2, 5, 3)\n\nt.test(x = conditionA, y = conditionB)\n\n\n    Welch Two Sample t-test\n\ndata:  conditionA and conditionB\nt = -1.0541, df = 7.9024, p-value = 0.323\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -3.192378  1.192378\nsample estimates:\nmean of x mean of y \n        3         4 \n\n\n\n\nconditionA <- c(1, 5, 2, 4, 3)\nconditionB <- c(5, 5, 2, 5, 3)\n\nt.test(x = conditionA, y = conditionB, \n       var.equal = TRUE)\n\n\n    Two Sample t-test\n\ndata:  conditionA and conditionB\nt = -1.0541, df = 8, p-value = 0.3226\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -3.187668  1.187668\nsample estimates:\nmean of x mean of y \n        3         4"
   }
 ]

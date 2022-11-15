@@ -53,6 +53,39 @@ import {likert} from "../ojs/utils.qmd";
 ```
 
 
+## Single-sample $t$-test logic
+
+::: {style="width: 60%; position: relative; font-size: 0.7em; margin-top: 2em; margin-left: 50%; transform: translateX(-50%);"}
+
+:::: {#nhst-diagram}
+::: {#lines}
+:::
+::: {#treatment}
+:::
+::: {#circle style="border: 2px dashed"}
+Partially known  
+original population    
+$\mu$
+:::
+::: {#circle style="right: 0; background-color: lightblue; border: 2px dashed"}
+Unknown  
+treated  
+population
+:::
+::: {#rect}
+Sample
+:::
+::: {#rect style="right: 0; background-color: lightblue;"}
+Treated sample 
+$n, M, SD$
+:::
+::: {#population-comparison-line}
+:::
+::::
+:::
+
+
+
 ## Independent-samples design {.small}
 
 What if... give everyone $10
@@ -101,13 +134,39 @@ Dunn, E. W., Aknin, L. B., & Norton, M. I. (2014). Prosocial spending and happin
 :::
 
 
-## Independent-samples
 
-![](media/nhst-diagram-single-sample-t.svg){.invertable-blue}
+## Independent-samples $t$-test logic
 
-## Independent-samples
+::: {style="width: 60%; position: relative; font-size: 0.7em; margin-top: 2em; margin-left: 50%; transform: translateX(-50%);"}
 
-![](media/nhst-diagram-independent-samples-t.svg){.invertable-blue}
+:::: {#nhst-diagram}
+::: {#lines}
+:::
+::: {#treatment}
+:::
+::: {#circle style="border: 2px dashed"}
+Unknown  
+treated population  
+A
+:::
+::: {#circle style="right: 0; border: 2px dashed;"}
+Unknown  
+treated population  
+B
+:::
+::: {#rect style="background-color: lightblue; color: var(--text-color-light);"}
+Sample A  
+$n, M, SD$
+:::
+::: {#rect style="right: 0; background-color: lightblue; color: var(--text-color-light);"}
+Sample B  
+$n, M, SD$
+:::
+::: {#population-comparison-line}
+:::
+::::
+:::
+
 
 # Calculation {.small}
 
@@ -268,24 +327,50 @@ $F_{max} = \dfrac{s^2_{largest}}{s^2_{smallest}}$
 - Look up associated critical value for $F$-max test
 - If value exceeds critical value, indicates homogeneity assumption has been violated
 
-## Homogeneity of variance
+## Homogeneity of variance correction
 
-- If sample information suggests violation of homogeneity of variance assumption:
+- If homogeneity of variance assumption is violated...
+  - Calculate standard error without pooled variance
+  - Adjust $df$ using equation:
 
-:::: {.columns}
-::: {.column width="50%"}
-- Calculate standard error without pooled variance
-- Adjust $df$ using:<br><br> 
-- …or let R do the work for you
-    - Automatically applies correction
-    - Default "var.equal = FALSE"
-    - Specify “var.equal = TRUE” to override
-:::
-
-::: {.column width="50%"}
+::: {.center-element}
 $$df = \dfrac{(\dfrac{s_1^2}{n_1}+\dfrac{s_2^2}{n_2})}
 {\dfrac{(\dfrac{s_1^2}{n_1})^2}{n_1-1} + \dfrac{(\dfrac{s_2^2}{n_2})^2}{n_2-1}
 }$$
+:::
+
+## Homogeneity of variance correction
+
+- …or let R do the work for you
+    - `t.test()` function automatically applies correction
+    - Specify `var.equal = TRUE` to override
+
+
+:::: {.columns .small}
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+
+conditionA <- c(1, 5, 2, 4, 3)
+conditionB <- c(5, 5, 2, 5, 3)
+
+t.test(x = conditionA, y = conditionB)
+
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+
+conditionA <- c(1, 5, 2, 4, 3)
+conditionB <- c(5, 5, 2, 5, 3)
+
+t.test(x = conditionA, y = conditionB, 
+       var.equal = TRUE)
+
+```
 :::
 
 ::::

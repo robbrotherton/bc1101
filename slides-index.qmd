@@ -232,6 +232,22 @@ card("12_the-t-test-pt-2", "")
 ```
 ::::
 
+
+:::: {.box}
+## 13. Independent-samples $t$ test
+```{r}
+card("13_independent-samples-t-test", "")
+```
+::::
+
+
+:::: {.box}
+## 14. Related-samples $t$ test
+```{r}
+card("14_related-samples-t-test", "")
+```
+::::
+
 ```{r eval=FALSE, echo=FALSE}
 
 # simple card; title, image, buttons

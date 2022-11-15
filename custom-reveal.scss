@@ -9,7 +9,9 @@
     --background-color-dark: #333;
     --text-color-light: #121416d8;
     --text-color-dark: white;
-    --heading-color: #333
+    --text-muted-light: #666;
+    --text-muted-dark: #ddd;
+    --heading-color-light: #333
     --heading-color-dark: #ddd;
     --link-color-light: #5f93e5;
     --link-color-dark: lightblue;
@@ -18,13 +20,17 @@
 
 html[data-theme='light'] {
     --background-color: var(--background-color-light);
+    --heading-color: var(--heading-color-light);
     --text-color: var(--text-color-light);
+    --text-muted: var(--text-muted-light);
     --link-color: var(--link-color-light);
 }
 
 html[data-theme='dark'] {
     --background-color: var(--background-color-dark);
+    --heading-color: var(--heading-color-dark);
     --text-color: var(--text-color-dark);
+    --text-muted: var(--text-muted-dark);
     --link-color: var(--link-color-dark);
 }
 
@@ -41,8 +47,12 @@ a, .reveal a {
     color: var(--link-color);
 }
 
+.reveal h1, .reveal h2, .reveal h3 {
+    color: var(--heading-color);
+}
+
 .math {
-  font-family: KaTeX_Main;
+  font-family: KaTeX_Main, Times, Times New Roman;
 }
 
 .italic {
@@ -135,33 +145,8 @@ html.print-pdf #theme-toggle {display: none;}
     background-color: #eee;
 }
 
-/*
-body, .reveal {
-  transition-duration: 1s;
-}
-*/
 
-/*
-[data-theme='dark'] .reveal {
-    background-color: var(--background-color-dark);
-    color: white;
-}
-[data-theme='dark'] body {
-    background-color: var(--background-color-dark);
-    color: white;
-}
-*/
-[data-theme='dark'] {
-  .reveal h1 {
-    color: var(--heading-color-dark);
-  }
-  .reveal h2 {
-    color: var(--heading-color-dark);
-  }
-  .reveal h3 {
-    color: var(--heading-color-dark);
-  }
-}
+
 
 
 
@@ -214,6 +199,10 @@ body, .reveal {
 /* style the very first h1, i.e. the lecture title */
 .reveal .slides>section:first-of-type h1 {
   font-size: 6rem !important;
+}
+
+.reveal .slides>section:first-of-type {
+  height: 700px;
 }
 
 .reveal .subhead {
@@ -332,7 +321,7 @@ table thead {
 
 
 .reference {
-  color: #6f6f6f;
+  color: var(--text-muted);
   font-size: 0.7em;
   position: absolute;
   bottom: 20px;
@@ -388,4 +377,110 @@ table thead {
         -webkit-transform: rotate(360deg);
         transform:rotate(360deg);
     }
+}
+
+
+
+
+/* FOR HNST DIAGRAMS */
+
+#nhst-diagram {
+  position: relative;
+  width: 100%;
+  padding-bottom: 80%;
+  height: 0;
+  background-color: none;
+}
+
+#lines {
+  width: 60%;
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  height: 75%;
+  border-left: dashed;
+  border-bottom: solid;
+  border-right: dashed;
+}
+
+#population-comparison-line {
+  position: absolute;
+  width: 60%;
+  top: 5%;
+  left: 20%;
+  height: 75%;
+  border-radius: 50%;
+  border-top: 4px dashed red;
+  z-index: 10;
+}
+
+#treatment {
+  color: var(--text-color-light);
+  position: absolute;
+  background-color: lightblue;
+  left: 45%;
+  width: 10%;
+  height: 100%;
+  z-index: 9;
+}
+
+#circle {
+  position: absolute;
+  width: 40%;
+  height: 50%;
+  border-radius: 50%;
+  border: 1px solid;
+  background-color: var(--background-color);
+  z-index: 11;
+}
+
+#rect {
+  position: absolute;
+  top: 80%;
+  width: 40%;
+  height: 20%;
+  background: lightblue;
+  border: 1px solid var(--text-color);
+  background-color: var(--background-color);
+}
+
+
+#circle > p {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  bottom: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+#rect > p {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-60%);
+  -webkit-transform: translateY(-60%);
+  transform: translateY(-60%);
+}
+
+#treatment:before {
+  content: "Treatment";
+  position: absolute;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  -ms-transform: translate(-35%, 25%);
+  -webkit-transform: translate(-35%, 25%);
+  transform: translate(35%, 25%);
+}
+
+#treatment > p {
+  position: relative;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  margin-left: 50%;
+  text-align: center;
+  -ms-transform: translate(-50%, 25%);
+  -webkit-transform: translate(-50%, 25%);
+  transform: translate(-50%, 25%);
 }

@@ -95,30 +95,135 @@ format: revealjs
 
 # Equations
 
+## Logic {.small}
+
+```{r}
+data <- tibble::tibble(A = c(54, 67, 38, 46, 42),
+                       B = c(43, 57, 39, 41, 36),
+                       D = B - A)
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+knitr::kable(data[,1:2], col.names = c("Sample A", "Sample B"), align = "c")
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+knitr::kable(data, col.names = c("Sample A", "Sample B", "<span style='font-style: italic;'>D</span>"), align = "c")
+```
+:::
+
+::::
+
+
+
+
+## Equations
+
+::: {.center-element style="line-height: 10em;"}
 $t = \dfrac{\text{sample statistic} - \text{population parameter}}{\text{estimated standard error}}$
+:::
 
+<br>
+
+:::: {.columns .fragment}
+::: {.column width="50%" style="text-align: right;"}
+Single sample:
+:::
+
+::: {.column width="50%"}
 $t = \dfrac{M-\mu}{s_M}$
+:::
+::::
 
+:::: {.columns .fragment}
+::: {.column width="50%" style="text-align: right;"}
+Independent samples:
+:::
+
+::: {.column width="50%"}
 $t = \dfrac{(M_1-M_2)-(\mu_1-\mu_2)}{s_{M_1-M_2}}$
+:::
+::::
 
+:::: {.columns .fragment}
+::: {.column width="50%" style="text-align: right;"}
+Related samples:
+:::
+
+::: {.column width="50%"}
 $t = \dfrac{M_D-\mu_D}{s_{M_D}}$
-
+:::
+::::
 
 
 ## Calculating related-samples $t$
 
-$\text{Difference scores: } D = X_B - X_A$
 
-$\text{Mean of difference scores: } M_D = \dfrac{\Sigma D}{n}$
+::: {.center-element}
+$df = n-1$ (number of [difference scores]{.emph} minus $1$)
+:::
 
-$\text{Standard error of difference scores: } S_{M_D} = \dfrac{s_D}{\sqrt{n}}$
- 
-$t \text{ statistic: } t = \dfrac{M_D - \mu_D}{s_{M_D}}$
+:::: {.columns .fragment}
+::: {.column width="50%" style="text-align: right;"}
+Difference scores:
+:::
 
-$df = n-1 \text{ (number of difference scores minus 1)}$
+::: {.column width="50%"}
+$D = X_B - X_A$
+:::
+::::
+
+
+:::: {.columns .fragment}
+::: {.column width="50%" style="text-align: right;"}
+Mean of difference scores:
+:::
+
+::: {.column width="50%"}
+$M_D = \dfrac{\Sigma D}{n}$
+:::
+::::
+
+
+
+:::: {.columns .fragment}
+::: {.column width="50%" style="text-align: right;"}
+Standard error of difference scores:
+:::
+
+::: {.column width="50%"}
+$S_{M_D} = \dfrac{s_D}{\sqrt{n}}$
+:::
+::::
+
+
+
+:::: {.columns .fragment}
+::: {.column width="50%" style="text-align: right;"}
+$t$ statistic:
+:::
+
+::: {.column width="50%"}
+$t = \dfrac{M_D - \mu_D}{s_{M_D}}$
+:::
+::::
+
 
 
 # Hypothesis test
+
+## Triplett
+
+```{r}
+t <- bc1101tools::triplett
+
+options(digits = 2)
+```
 
 - E.g. Norman Triplett (1898)
   - Performing alone/in competition
@@ -127,17 +232,139 @@ $df = n-1 \text{ (number of difference scores minus 1)}$
 ![](media/triplett.png){.invertable style="margin-bottom: 3em; margin-top: -0.5em;"}
 :::
 
-::: {.footnote .reference}
+
+::: {.reference}
 Triplett, N. (1898). The dynamogenic factors in pacemaking and competition. *The American Journal of Psychology, 9*(4), 507-533. [https://doi.org/10.2307/1412188](https://doi.org/10.2307/1412188)
 :::
 
+## Triplett data
+
+![](media/triplett-data.png){.invertable}
+
+## As independent samples {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+bc1101tools::SD_table(t$scores_alone, x_var_name = "Alone")
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+bc1101tools::SD_table(t$scores_competition, x_var_name = "Competition")
+```
+:::
+
+::::
+
 ## As independent samples
+
+- Step 2: Decision criteria
+
+$\text{With } \alpha = .05, t_{critical} (`r t$dfa + t$dfc`) = \pm `r qt(.975, df = t$dfa + t$dfc)`$
+
+- Step 3: Calculate
+
+::: {.center-element .smallest}
+[$df = N - 2 = 10 - 2 = 8$]{.fragment}
+
+[$s^2_p = \dfrac{SS_1 + SS_2}{df_1 + df_2} = \dfrac{`r t$SSa` + `r t$SSc`}{`r t$dfa` + `r t$dfc`} = `r t$s2p`$]{.fragment}
+
+[$s_{M_1-M_2} = \sqrt{\dfrac{s_p^2}{n_1}+\dfrac{s_p^2}{n_2}} = \sqrt{\dfrac{`r t$s2p`}{`r t$na`}+\dfrac{`r t$s2p`}{`r t$nc`}} = `r round(t$sm1m2, 2)`$]{.fragment}
+
+[$t = \dfrac{(M_1-M_2)-(\mu_1-\mu_2)}{s_{M_1-M_2}} = \dfrac{`r t$ma` - `r t$mc`}{`r round(t$sm1m2, 2)`} = `r round(t$t, 2)`$]{.fragment}
+:::
+
+
+
+## As related samples {.smaller}
+
+```{r}
+# bc1101tools::SD_table(t$scores_alone - t$scores_competition, x_var_name = "Difference scores")
+
+
+df <- tibble::tibble(
+  Participant = c("Violet F.", "Anna P.", "Willie H.", "Bessie V.", "Howard C."),
+  Alone = t$scores_alone,
+  Comp = t$scores_competition,
+  D = t$diff_scores,
+  dev = D - mean(D),
+  devSq = dev^2
+)
+
+col.names = c("Participant", "Alone", "Comp",
+                               "\\(D\\)", 
+                               "\\(D-M_D\\)", 
+                               "\\((D-M_D)^2\\)")
+
+knitr::kable(df, col.names = col.names) |>
+  kableExtra::column_spec(1, width = "200px") |>
+  kableExtra::column_spec(2:3, width = "100px") |>
+  # kableExtra::column_spec(4, width = "150px") |>
+  kableExtra::column_spec(4:6, width = "150px")
+
+sd <- t$sd_diff
+var <- t$sd_diff^2
+SS <- var * t$dfa
+
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+:::
+
+::: {.column width="50%"}
+
+::: {style="float: left;"}
+$M_D = `r t$mean_diff`$
+:::
+
+::: {style="float: right; text-align: right; margin-right: 1em;"}
+$SS = `r SS`$
+
+$s^2 = `r var`$
+
+$s = `r sd`$
+:::
+:::
+
+:::: 
 
 
 
 
 
 ## As related samples
+::: {.center-element}
+$\text{With } \alpha = .05, t_{critical} (`r t$dfa`) = \pm `r qt(.975, df = t$dfa)`$
+
+$df = n-1 = `r t$na` - 1 = `r t$nc - 1`$
+
+$S_{M_D} = \dfrac{s_D}{\sqrt{n}} = \dfrac{`r t$sdd`}{\sqrt{`r t$na`}} = `r t$smd`$
+ 
+$t = \dfrac{M_D - \mu_D}{s_{M_D}} = \dfrac{`r t$md`}{`r t$smd`} = `r t$td`$
+:::
+
+
+## Effect size
+
+- Step 4b: Effect size
+  - If the result was significant
+  - Cohen’s $d$ for related-samples $t$-test:
+
+$$\begin{align}
+\text{Estimated Cohen's } d &= \dfrac{\text{mean of difference scores}}{\text{SD of difference scores}} \\
+&= \dfrac{M_D}{s_D} \\
+&= \dfrac{`r t$mean_diff`}{`r t$sd_diff`} = `r t$mean_diff/t$sd_diff`
+\end{align}$$
+
+## Report results
+
+"When performing in competition, children completed the race faster on average  $(M = 43.2$; $SD = 8.14)$ than when performing alone $(M = 49.4$; $SD = 11.48)$. A related-samples found the difference to be statistically significant; $t(4) =$ $-2.91$, $p <.05$, $d = 1.30$."
 
 
 # Assumptions
@@ -149,6 +376,18 @@ Triplett, N. (1898). The dynamogenic factors in pacemaking and competition. *The
 
 # Confidence Interval
 
+
+$$\begin{align}
+(\mu_1-\mu_2) &= (M_1-M_2) \pm t * s_{M_1-M_2} \\
+&= (`r t$mc` - `r t$ma`) \pm `r qt(.975, df = t$dfa + t$dfc)` * `r t$sm1m2` \\
+&= `r (t$mc-t$ma) + qt(c(.025, .975), df = t$dfa+t$dfc) * t$sm1m2`
+\end{align}$$
+
+$$\begin{align}
+\mu_D &= M_D \pm t * s_{M_D} \\
+&= `r t$mean_diff` \pm `r qt(.975, df = t$dfa)` * `r t$smd` \\
+&= `r (t$mean_diff) + qt(c(.025, .975), df = t$dfa) * t$smd`
+\end{align}$$
 
 
 # Learning checks

@@ -443,6 +443,38 @@
 </div>
 </div>
 </section>
+<section id="single-sample-t-test-logic" class="slide level2">
+<h2>Single-sample <span class="math inline">\(t\)</span>-test logic</h2>
+<div style="width: 60%; position: relative; font-size: 0.7em; margin-top: 2em; margin-left: 50%; transform: translateX(-50%);">
+<div id="nhst-diagram">
+<div id="lines">
+
+</div>
+<div id="treatment">
+
+</div>
+<div id="circle" style="border: 2px dashed">
+<p>Partially known<br>
+original population<br>
+<span class="math inline">\(\mu\)</span></p>
+</div>
+<div id="circle" style="right: 0; background-color: lightblue; border: 2px dashed">
+<p>Unknown<br>
+treated<br>
+population</p>
+</div>
+<div id="rect">
+<p>Sample</p>
+</div>
+<div id="rect" style="right: 0; background-color: lightblue;">
+<p>Treated sample <span class="math inline">\(n, M, SD\)</span></p>
+</div>
+<div id="population-comparison-line">
+
+</div>
+</div>
+</div>
+</section>
 <section id="independent-samples-design" class="slide level2 small">
 <h2>Independent-samples design</h2>
 <p>What if… give everyone $10</p>
@@ -479,14 +511,40 @@ Spend this on <span class="emph">someone else</span></p>
 <p>Dunn, E. W., Aknin, L. B., &amp; Norton, M. I. (2014). Prosocial spending and happiness: Using money to benefit others pays off. <em>Current Directions in Psychological Science, 23(1)</em>, 41-47. <a href="https://doi.org/10.1177/0963721413512503">https://doi.org/10.1177/0963721413512503</a></p>
 </div>
 </section>
-<section id="independent-samples" class="slide level2">
-<h2>Independent-samples</h2>
+<section id="independent-samples-t-test-logic" class="slide level2">
+<h2>Independent-samples <span class="math inline">\(t\)</span>-test logic</h2>
+<div style="width: 60%; position: relative; font-size: 0.7em; margin-top: 2em; margin-left: 50%; transform: translateX(-50%);">
+<div id="nhst-diagram">
+<div id="lines">
 
-<img data-src="media/nhst-diagram-single-sample-t.svg" class="invertable-blue r-stretch"></section>
-<section id="independent-samples-1" class="slide level2">
-<h2>Independent-samples</h2>
+</div>
+<div id="treatment">
 
-<img data-src="media/nhst-diagram-independent-samples-t.svg" class="invertable-blue r-stretch"></section></section>
+</div>
+<div id="circle" style="border: 2px dashed">
+<p>Unknown<br>
+treated population<br>
+A</p>
+</div>
+<div id="circle" style="right: 0; border: 2px dashed;">
+<p>Unknown<br>
+treated population<br>
+B</p>
+</div>
+<div id="rect" style="background-color: lightblue; color: var(--text-color-light);">
+<p>Sample A<br>
+<span class="math inline">\(n, M, SD\)</span></p>
+</div>
+<div id="rect" style="right: 0; background-color: lightblue; color: var(--text-color-light);">
+<p>Sample B<br>
+<span class="math inline">\(n, M, SD\)</span></p>
+</div>
+<div id="population-comparison-line">
+
+</div>
+</div>
+</div>
+</section></section>
 <section>
 <section id="calculation" class="title-slide slide level1 small center">
 <h1>Calculation</h1>
@@ -632,27 +690,72 @@ df &amp;= df_1 + df_2 \\
 <li>If value exceeds critical value, indicates homogeneity assumption has been violated</li>
 </ul>
 </section>
-<section id="homogeneity-of-variance-1" class="slide level2">
-<h2>Homogeneity of variance</h2>
+<section id="homogeneity-of-variance-correction" class="slide level2">
+<h2>Homogeneity of variance correction</h2>
 <ul>
-<li>If sample information suggests violation of homogeneity of variance assumption:</li>
-</ul>
-<div class="columns">
-<div class="column" style="width:50%;">
+<li>If homogeneity of variance assumption is violated…
 <ul>
 <li>Calculate standard error without pooled variance</li>
-<li>Adjust <span class="math inline">\(df\)</span> using:<br><br></li>
-<li>…or let R do the work for you
-<ul>
-<li>Automatically applies correction</li>
-<li>Default “var.equal = FALSE”</li>
-<li>Specify “var.equal = TRUE” to override</li>
+<li>Adjust <span class="math inline">\(df\)</span> using equation:</li>
 </ul></li>
 </ul>
-</div><div class="column" style="width:50%;">
+<div class="center-element">
 <p><span class="math display">\[df = \dfrac{(\dfrac{s_1^2}{n_1}+\dfrac{s_2^2}{n_2})}
 {\dfrac{(\dfrac{s_1^2}{n_1})^2}{n_1-1} + \dfrac{(\dfrac{s_2^2}{n_2})^2}{n_2-1}
 }\]</span></p>
+</div>
+</section>
+<section id="homogeneity-of-variance-correction-1" class="slide level2">
+<h2>Homogeneity of variance correction</h2>
+<ul>
+<li>…or let R do the work for you
+<ul>
+<li><code>t.test()</code> function automatically applies correction</li>
+<li>Specify <code>var.equal = TRUE</code> to override</li>
+</ul></li>
+</ul>
+<div class="columns small">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>conditionA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>conditionB <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="fu">t.test</span>(<span class="at">x =</span> conditionA, <span class="at">y =</span> conditionB)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  conditionA and conditionB
+t = -1.0541, df = 7.9024, p-value = 0.323
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -3.192378  1.192378
+sample estimates:
+mean of x mean of y 
+        3         4 </code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>conditionA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a>conditionB <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="fu">t.test</span>(<span class="at">x =</span> conditionA, <span class="at">y =</span> conditionB, </span>
+<span id="cb4-5"><a href="#cb4-5"></a>       <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Two Sample t-test
+
+data:  conditionA and conditionB
+t = -1.0541, df = 8, p-value = 0.3226
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -3.187668  1.187668
+sample estimates:
+mean of x mean of y 
+        3         4 </code></pre>
+</div>
+</div>
 </div>
 </div>
 </section></section>
