@@ -8,21 +8,6 @@ format:
 
 [part 2]{.subhead}
 
-
-```{r cover}
-#| eval: false
-
-library(bc1101tools)
-
-plot_distribution(xlim = c(-3, 4)) +
-  stat_function(fun = dnorm, args = list(mean = 1), xlim = c(-3, 4), linetype = 2, color = "blue") +
-  scale_x_continuous(expand = c(0,0)) +
-  theme_void()
-
-plot_save("10_hypothesis-testing-pt-2.svg", subdir = "covers", width = 10, height = 5)
-
-```
-
 ![](covers/10_hypothesis-testing-pt-2.svg){.invertable}
 
 
@@ -37,58 +22,82 @@ plot_save("10_hypothesis-testing-pt-2.svg", subdir = "covers", width = 10, heigh
 
 # Inferential errors
 
-# Effect size {.small}
+- Hypothesis testing is an [inferential]{.emph} process
+- Incorrect inferences are possible
+
+
+<table id="inf-tab">
+  <thead>
+     <tr><th colspan=2 style="border-bottom: none;"></th><th colspan=2 style="text-align: center;">Actual situation</th></tr>
+     <tr><th colspan=2></th><th style="text-align: center;">$H_0$ true</th><th style="text-align: center;">$H_0$ false</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan=2 style="writing-mode: vertical-rl; transform: rotate(180deg); text-align: center;">Reseracher's<br>Decision</td>
+      <td style="text-align: right;" >Reject $H_0$</td>
+      <td style="text-align: center; color: red; border-color: var(--text-color);">Type 1 error<br>$\alpha$</td>
+      <td style="text-align: center; color: green; border-color: var(--text-color);">Correct</td>
+    </tr>
+    <tr>
+      <td style="text-align: right;" >Fail to reject $H_0$</td>
+      <td style="text-align: center; color: green; border-color: var(--text-color);">Correct</td>
+      <td style="text-align: center; color: red; border-color: var(--text-color);">Type 2 error<br>$\beta$</td>  
+    </tr>
+  </tbody>
+</table>
+
+
+## Inferential errors
 
 :::: {.columns}
 
 ::: {.column width="50%"}
-- *Significant* effects are not always *substantial*
+- Boy who cried wolf
+  - Villagers make Type 1 error (false positive) 
+  - Type 2 error (false negative) 
+  - In that order
+:::
+
+::: {.column width="50%"}
+![](media/wolf.jpg)
+:::
+
+::::
+
+
+
+
+
+# Effect size {.small}
+
+:::: {.columns}
+
+::: {.column width="60%"}
+- [Significant]{.emph} effects are not always [substantial]{.emph}
   - As sample size increases, standard error of the mean decreases
-  - Even a tiny treatment effect might come out as “statistically significant”
-- Need to consider *effect size*
+  - Tiny treatment effect might come out as “statistically significant”
+- Need to consider [effect size]{.emph}
   - How big is the treatment effect?
   - Quantifies the absolute magnitude of a treatment effect, independent of sample size
 :::
 
-::: {.column width="50%"}
-```{r effect-size-distributions}
-#| eval: false
+::: {.column width="40%"}
 
-library(bc1101tools)
 
-norm <- plot_distribution(xlim = c(-3.5, 3.5)) + theme_void()
+![](media/effect-size-1.svg){.invertable}
 
-second_dist <- function(mean) {
-  ggplot2::stat_function(fun = dnorm, args = list(mean = mean), xlim = c(-3.5, 3.5),
-                linetype = 2,
-                color = "blue")
-}
+![](media/effect-size-2.svg){.invertable}
 
-norm + second_dist(0.2)
-plot_save("effect-size-1.svg", height = 2)
-
-norm + second_dist(0.5)
-plot_save("effect-size-2.svg", height = 2)
-
-norm + second_dist(0.8)
-plot_save("effect-size-3.svg", height = 2)
-```
-
-![](media/effect-size-1.svg)
-
-![](media/effect-size-2.svg)
-
-![](media/effect-size-3.svg)
+![](media/effect-size-3.svg){.invertable}
 
 :::
 
 ::::
 
 
-## Effect size
+## Quantifying effect size {.small}
 
-- Quantifying effect size
-  - One measure: Cohen’s $d$
+- One measure: [Cohen’s $d$]{.emph}
   - Quantifies the absolute magnitude of a treatment effect, independent of sample size
   - Measures effect size in terms of standard deviation
   - $d = 1.00$: treatment changed $\mu$ by 1 SD
@@ -99,7 +108,7 @@ $$\text{Cohen's } d = \dfrac{\text{mean difference}}{\text{standard deviation}}
 For $z$-tests:
 
 $$\text{Estimated Cohen's }d = \dfrac{\text{mean difference}}{\text{standard deviation}} 
-= \dfrac{M_{treatment} - \mu_{no \ treatment}}{\sigma}$$
+= \dfrac{M - \mu}{\sigma}$$
 
 
 ## Interpreting Cohen's $d$
@@ -108,25 +117,28 @@ $$\text{Estimated Cohen's }d = \dfrac{\text{mean difference}}{\text{standard dev
 :::: {.columns}
 
 ::: {.column width="50%"}
+
+- Cohen's rules of thumb
+
 ```{r effect_size_table}
 tab <- data.frame(d = c(0.2, 0.5, 0.8),
                   Interpretation = c("Small","Medium","Large"))
 
-knitr::kable(tab, format='html', escape=F, col.names = c("<i>d</i>","Interpretation"), align = 'rc')
+knitr::kable(tab, format='html', escape=F, col.names = c("\\(d\\)","Interpretation"), align = 'rc')
 ```
 :::
 
 ::: {.column width="50%"}
-![](media/effect-size-1.svg)
+![](media/effect-size-1.svg){.invertable width="80%" style="margin-top: -2em;"}
 
-![](media/effect-size-2.svg)
+![](media/effect-size-2.svg){.invertable width="80%"}
 
-![](media/effect-size-3.svg)
+![](media/effect-size-3.svg){.invertable width="80%"}
 :::
 
 ::::
 
-## Effect size & sample size
+## Effect size & sample size {.small}
 
 - SAT scores: $\mu = 500; \sigma = 100$
   - Administer treatment (banana); $M = 501$
@@ -135,14 +147,14 @@ knitr::kable(tab, format='html', escape=F, col.names = c("<i>d</i>","Interpretat
 
 :::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="50%" .fragment}
 With 50 participants...
 
 $$z = \dfrac{501 - 500}{100 / \sqrt{50}} = 0.06\\
 d = \dfrac{501 - 500}{100} = 0.01$$
 :::
 
-::: {.column width="50%"}
+::: {.column width="50%" .fragment}
 With 50,000 participants...
 
 $$z = \dfrac{501 - 500}{100 / \sqrt{50000}} = 2.22\\
@@ -154,145 +166,205 @@ d = \dfrac{501 - 500}{100} = 0.01$$
 # Statistical power
 
 - Power: Probability of correctly rejecting a false null hypothesis
-  - Depends on size of treatment effect, sample size, alpha, directional / nondirectional hypotheses
   - Power = 1 – $\beta$
 
+<table id="inf-tab">
+  <thead>
+     <tr><th colspan=2 style="border-bottom: none;"></th><th colspan=2 style="text-align: center;">Actual situation</th></tr>
+     <tr><th colspan=2></th><th style="text-align: center;">$H_0$ true</th><th style="text-align: center; background-color: #f5ea95;">$H_0$ false</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan=2 style="writing-mode: vertical-rl; transform: rotate(180deg); text-align: center;">Reseracher's<br>Decision</td>
+      <td style="text-align: right;" >Reject $H_0$</td>
+      <td style="text-align: center; color: red; border-color: var(--text-color);">Type 1 error<br>$\alpha$</td>
+      <td style="text-align: center; color: #50C878; border-color: var(--text-color); background-color: #f5ea95;">Correct<br>$1-\beta$</td>
+    </tr>
+    <tr>
+      <td style="text-align: right;" >Fail to reject $H_0$</td>
+      <td style="text-align: center; color: #50C878; border-color: var(--text-color);">Correct</td>
+      <td style="text-align: center; color: red; border-color: var(--text-color); background-color: #f5ea95; background-opacity: 0.5;">Type 2 error<br>$\beta$</td>  
+    </tr>
+  </tbody>
+</table>
 
 ## Power interactive
 
-```{r}
-# h0 <- tibble::tibble(
-#   value = seq(-4, 4, .01),
-#   density = dnorm(value)
-# ) |> 
-#   purrr::transpose()
-# 
-# ojs_define(h0)
+::: {#power-controls style="align-content: baseline; position: absolute; top: 4em; width: 50%;"}
 
-```
+<label for="d-input" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">d = </label><span id="d-value" class="math" style="display: inline-block; width: 1em;">1</span><input data-prevent-swipe type="range" id="d-input" name="d" value="1" min="-3" max="3" step=0.1 style="border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; margin-left: 0.5em; width: 50%; vertical-align: unset;">
 
+<label for="n-input" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">n = </label><span id="n-value" class="math" style="display: inline-block; width: 1em;">10</span><input data-prevent-swipe type="range" id="n-input" name="n" value="10" min="1" max="50" style="border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; margin-left: 0.5em; width: 50%; vertical-align: unset;">
 
-```{ojs setup}
-#| echo: false
+<label for="alpha-input" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">a = </label><span id="alpha-value" class="math" style="display: inline-block; width: 1em;"></span><input data-prevent-swipe type="range" id="alpha-input" name="alpha" value="0.05" min="0" max="1" step=0.01 style="border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; margin-left: 0.5em; width: 50%; vertical-align: unset;">
 
-d3 = require("https://d3js.org/d3.v5.min.js")
-jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js")
+<p><span id="std-err-label" class="math italic">σ<sub>M</sub> = </span><span id="std-err-value" class="math"></span></p>
 
-width = 1000
-height = 400
+<label for="tails-input" >Two-tailed</label><input type="checkbox" id="tails-input" name="tails" checked>
 
-xlim = [-5, 5]
+<label for="alt-input" >Show $H_1$</label><input type="checkbox" id="alt-input" name="alt" checked>
 
-
-h0 = {
-  var values = jStat(xlim[0], [xlim[1]], 210)[0],
-      arr = [];
-  for (var i in values) {
-    arr.push(
-      {
-        value: values[i], 
-        density: jStat.normal.pdf(values[i], 0, sd)
-      }
-    )
-  }
-  return arr;
-}
-
-
-ha = {
-  var arr = [];
-  
-  for (var i in h0) {
-    arr.push({
-      value: h0[i].value + mean_diff,
-      density: h0[i].density
-    })
-  }
-  return arr;
-}
-
-alpha_x = {
-  if(tails) {
-    return jStat.normal.inv(1 - alpha/2, 0, sd)
-  } else {
-    return jStat.normal.inv(1 - alpha, 0, sd)
-  }
-}
-
-alpha_x2 = {
-  if(tails) {
-    return -alpha_x
-  } else {
-    return -100
-  }
-}
-
-beta = jStat.normal.cdf(alpha_x, mean_diff, sd) - jStat.normal.cdf(alpha_x2, mean_diff, sd)
-
-power = 1 - beta
-
-```
-
-::: {style="position: absolute; top: 50%; right: 0;"}
-```{ojs}
-tex`\beta = ${beta.toLocaleString()}`
-
-tex`\text{power} = ${power.toLocaleString()}`
-```
 :::
 
-```{css}
-.ojs-controls {
-  width: 100%;
-  font-size: 0.5em;
-}
-
-.ojs-controls label {
-  width: 5em !important;
-}
-
-.ojs-controls input[type="text"] {
-  width: 3em !important;
-}
-
-.ojs-controls input[type="range] {
-  width: 10em !important;
-}
-
-
-
-.axis path,
-.grid path {
-  display: none;
-}
-
-
-```
-
-::: {.ojs-controls}
-```{ojs controls}
-#| echo: false
-
-viewof mean_diff = Inputs.range([-3, 3], {value: 1, step: 0.1, label: "Mean difference"})
-
-viewof n = Inputs.range([1, 100], {value: 1, step: 1, label: "n"})
-
-sd = 1/Math.sqrt(n)
-
-
-
-viewof alpha = Inputs.range([0.01, 0.10], {value: 0.05, step: 0.001, label: "Alpha"})
-
-viewof tails = Inputs.toggle({label: "Two-tailed", value: true})
-
-viewof show_alt = Inputs.toggle({label: "Show H1", value: true})
-```
+:::{#power-interactive}
 :::
+
+
+:::{#power-values style="position: absolute; right: 0; top: 4em; text-align: right;"}
+$\beta =$ []{#beta-value}  
+Power: []{#power-value}%
+:::
+
 
 ```{ojs chart}
-#| echo: false
+
 chart = {
-  const svg = d3.select(DOM.svg(width, height));
+
+  const w = 1050
+  const h = 600
+  const margin = ({top: 20, right: 0, bottom: 30, left: 0})
+  const f = d3.format(".2f")
+  
+  const mu = 0
+  const sigma = 1
+  const max_std_err = sigma / Math.sqrt(50)
+  const xlim = [-2, 3]
+  
+  var d, n, alpha, beta, power, std_err, alpha_x, alpha_x2, showAlt, tails;
+  
+  const x = d3.scaleLinear()
+    .domain([xlim[0], xlim[1]])
+    .range([margin.left, w - margin.right])
+  const y = d3.scaleLinear()
+    .domain([0, jStat.normal.pdf(mu, mu, max_std_err)])
+    .range([h - margin.bottom, margin.top])
+  const line = d3.line()
+    .x(d => x(d.value))
+    .y(d => y(d.density))
+  const xAxis = d3.axisBottom(x).ticks(10)
+    
+  function curveData(mu, sm) {
+    var values = jStat(xlim[0], xlim[1], 210)[0],
+        arr = [];
+    for (var i in values) {
+      arr.push({
+          value: values[i], 
+          density: jStat.normal.pdf(values[i], mu, sm)
+      })
+    }
+    return arr;
+  }
+  
+  const dInput = document.getElementById('d-input')
+  const nInput = document.getElementById('n-input')
+  const aInput = document.getElementById('alpha-input')
+  const altInput = document.getElementById('alt-input')
+  const tailsInput = document.getElementById('tails-input')
+  
+  function getParams() {
+    d = dInput.value
+    n = nInput.value
+    alpha = aInput.value
+    std_err = sigma / Math.sqrt(n);
+    tails = true;
+    updateCriticalValues()
+  }
+  
+  function updateCriticalValues() {
+    if(tails) {
+        alpha_x = jStat.normal.inv(1 - alpha/2, mu, std_err)
+    } else {
+        alpha_x = jStat.normal.inv(1 - alpha, mu, std_err)
+    }
+
+    if(tails) {
+        alpha_x2 = -alpha_x
+    } else {
+        alpha_x2 =-100
+    }
+  }
+  
+  getParams();
+  
+  function updateValues() {
+    updateCriticalValues()
+    
+      beta = jStat.normal.cdf(alpha_x, d, std_err) - jStat.normal.cdf(alpha_x2, d, std_err)
+    power = 1 - beta
+    
+    d3.select("#d-value").text(d)
+    d3.select("#n-value").text(n)
+    d3.select("#alpha-value").text(alpha)
+    d3.select("#std-err-value").text(f(std_err))
+    d3.select("#beta-value").text(f(beta))
+    d3.select("#power-value").text(f(power))
+    
+
+  }
+  
+  function redrawCurves() {
+    redrawNull()
+    redrawAlt()
+  }
+  
+  function redrawNull() {
+    nullCurve.attr("d", line(curveData(mu, std_err)))
+    nullFill.attr("d", line(curveData(mu, std_err)))
+    nullClip.attr("points", [[0,0], [0,h], [x(alpha_x2),h],[x(alpha_x2),0],
+                     [x(alpha_x),0], [x(alpha_x),h], [w,h],[w,0]])
+    nullClipInterior.attr("points", [[x(alpha_x2),0],[x(alpha_x2),h],
+                     [x(alpha_x),h], [x(alpha_x),0]]);
+                     
+  }
+  function redrawAlt() {
+    var dat = curveData(Number(mu + Number(d)), std_err)
+    altCurve.attr("d", line(dat))
+    altFillPower.attr("d", line(dat))
+    altFillBeta.attr("d", line(dat))
+    altLabel.attr("transform", `translate(${x(d)}, ${y(0.1)})`)
+  }
+  
+  nInput.oninput = function() {
+    n = nInput.value
+    std_err = sigma/Math.sqrt(n)
+    updateValues();
+    redrawCurves();
+  };
+  
+  dInput.oninput = function() {
+    d = dInput.value
+    updateValues();
+    redrawAlt();
+  };
+  
+  aInput.oninput = function() {
+    alpha = aInput.value
+    updateValues();
+    redrawNull();
+  };
+  
+  tailsInput.oninput = function() {
+    tails = document.getElementById("tails-input").checked
+    updateValues()
+    redrawNull()
+  }
+  
+  altInput.oninput = function() {
+    showAlt = document.getElementById("alt-input").checked
+    if(showAlt) {var opacity = 1} else {var opacity = 0}
+    altCurve.style("opacity", opacity)
+    altLabel.style("opacity", opacity)
+    if(showAlt) {var opacity = 0.7} else {var opacity = 0}
+    altFillPower.style("opacity", opacity)
+    if(showAlt) {var opacity = 0.3} else {var opacity = 0}
+    altFillBeta.style("opacity", opacity)
+  }
+  
+
+  
+  const svg = d3.select("#power-interactive")
+    .append("svg")
+    .attr("width", w).attr("height", h)
 
   svg.append("g")
       .call(xAxis)
@@ -300,26 +372,20 @@ chart = {
       .attr("class", "axis")
       .style("font-size", "0.5em");
   
-  const null_dist = svg.append("g").attr("id", "null-dist")
+  const nullDist = svg.append("g").attr("id", "null-dist")
 
-  null_dist.append("path").attr("id", "critical-region-fill")
-      .datum(h0)
+  const nullFill = nullDist.append("path").attr("id", "critical-region-fill")
       .attr("fill", "red")
       .attr("stroke", "none")
-      .attr("d", line)
       .attr('clip-path', "url(#clip-area)")
-      
-  null_dist.append("path").attr("id", "h0-curve")
-      .datum(h0)
+
+  const nullCurve = nullDist.append("path").attr("id", "h0-curve")
       .attr("fill", "none")
       .attr("stroke", "black")
       .attr("stroke-width", 2)
-      .attr("stroke-linejoin", "round")
-      .attr("stroke-linecap", "round")
-      .attr("d", line)
       .attr("class", "invertable");
-      
-  null_dist.append("text").attr("id", "h0-text")         
+
+  nullDist.append("text").attr("id", "h0-text")
       .attr("transform", `translate(${x(0)} ,${y(0.1)})`)
       .attr("class", "invertable")
       .style("text-anchor", "middle")
@@ -329,34 +395,27 @@ chart = {
         .html('H')
         .append('tspan')
         .html('0').attr('baseline-shift', 'sub').style('font-size', '0.5em');
-    
-  svg.append("clipPath")
+
+  const nullClip = svg.append("clipPath")
     .attr("id", "clip-area")
     .append("polygon")
-    .attr("points", [[0,0], [0,height], [x(alpha_x2),height],[x(alpha_x2),0],
-                     [x(alpha_x),0], [x(alpha_x),height], [width,height],[width,0]]);
-    
 
-  svg.append("clipPath").attr("id", "clip-area-interior")
+  const nullClipInterior = svg.append("clipPath").attr("id", "clip-area-interior")
     .append("polygon")
-    .attr("points", [[x(alpha_x2),0],[x(alpha_x2),height],
-                     [x(alpha_x),height], [x(alpha_x),0]]);
-      
-      
-<!-- alternative distribution -->
-{ if(show_alt) {
-    svg.append("path")
-      .datum(ha)
+
+
+<!-- <!-- alternative distribution --> -->
+
+  const altDist = svg.append("g").attr("id", "null-dist")
+
+  const altCurve = altDist.append("path").attr("id", "h1-curve")
       .attr("fill", "none")
-      .attr("stroke", "steelblue")
+      .attr("stroke", "black")
       .attr("stroke-width", 2)
-      .attr("stroke-linejoin", "round")
-      .attr("stroke-linecap", "round")
-      .attr("stroke-dasharray", "5, 5")
-      .attr("d", line);
-      
-    svg.append("text")             
-      .attr("transform", `translate(${x(mean_diff)} ,${y(0.1)})`)
+      .attr("class", "invertable");
+
+  const altLabel = altDist.append("g")
+  altLabel.append("text")
       .style("text-anchor", "middle")
       .style('fill', 'steelblue')
       .style('font-size', '1em')
@@ -366,78 +425,56 @@ chart = {
         .append('tspan')
         .html('1').attr('baseline-shift', 'sub').style('font-size', '0.5em');
 
-  svg.append("path")
-      .datum(ha)
+  const altFillPower = altDist.append("path")
       .attr('clip-path', "url(#clip-area)")
       .attr("fill", "steelblue")
       .attr("opacity", 0.7)
       .attr("stroke", "steelblue")
       .attr("stroke-width", 2.5)
-      .attr("d", line);
-      
-  svg.append("path")
-      .datum(ha)
+
+  const altFillBeta = altDist.append("path")
       .attr('clip-path', "url(#clip-area-interior)")
       .attr("fill", "grey")
       .attr("opacity", 0.3)
-      .attr("d", line);
-}}
-      
-<!-- label alpha -->
 
-    null_dist.append('line')
-      .attr('x1', x(alpha_x))
-      .attr('x2', x(alpha_x))
-      .attr('y1', margin.top + 10)
-      .attr('y2', height - margin.bottom)
-      .style('stroke', 'red')
-      .style('stroke-width', '1.5px')
+<!-- <!-- label alpha --> -->
 
-    <!-- label alpha two-tailed -->
-    null_dist.append('line')
-      .attr('x1', x(alpha_x2))
-      .attr('x2', x(alpha_x2))
-      .attr('y1', margin.top + 10)
-      .attr('y2', height - margin.bottom)
-      .style('stroke', 'red')
-      .style('stroke-width', '1.5px')
-    
-    svg.append("text")             
-      .attr("transform", `translate(${x(alpha_x)} ,${margin.top})`)
-      .style("text-anchor", "middle")
-      .style('font-family', 'sans-serif')
-      .style('font-size', '0.4em')
-      .style('fill', 'red')
-      .text("critical region z " + alpha_x.toLocaleString(undefined, {maximumSignificantDigits: 3, minimumSignificantDigits: 3}));
+<!--     null_dist.append('line') -->
+<!--       .attr('x1', x(alpha_x)) -->
+<!--       .attr('x2', x(alpha_x)) -->
+<!--       .attr('y1', margin.top + 10) -->
+<!--       .attr('y2', height - margin.bottom) -->
+<!--       .style('stroke', 'red') -->
+<!--       .style('stroke-width', '1.5px') -->
+
+<!--     <!-- label alpha two-tailed --> -->
+<!--     null_dist.append('line') -->
+<!--       .attr('x1', x(alpha_x2)) -->
+<!--       .attr('x2', x(alpha_x2)) -->
+<!--       .attr('y1', margin.top + 10) -->
+<!--       .attr('y2', height - margin.bottom) -->
+<!--       .style('stroke', 'red') -->
+<!--       .style('stroke-width', '1.5px') -->
+
+<!--     svg.append("text")              -->
+<!--       .attr("transform", `translate(${x(alpha_x)} ,${margin.top})`) -->
+<!--       .style("text-anchor", "middle") -->
+<!--       .style('font-family', 'sans-serif') -->
+<!--       .style('font-size', '0.4em') -->
+<!--       .style('fill', 'red') -->
+<!--       .text("critical region z " + alpha_x.toLocaleString(undefined, {maximumSignificantDigits: 3, minimumSignificantDigits: 3})); -->
+
+<!--   return svg.node(); -->
+
   
-  return svg.node();
+  updateValues();
+  redrawCurves();
+  
 }
 
-margin = ({top: 20, right: 0, bottom: 30, left: 0})
-
-
-line = d3.line()
-    .x(d => x(d.value))
-    .y(d => y(d.density))
-
-x = d3.scaleLinear()
-  .domain([xlim[0], xlim[1]])
-  .range([margin.left, width - margin.right])
-
-
-y = d3.scaleLinear()
-  .domain([0, d3.max([0.6, jStat.normal.pdf(0, 0, sd)])])
-  .range([height - margin.bottom, margin.top])
-  
-xAxis = d3.axisBottom(x).ticks(8)
-
-
-
-<!-- xAxis = g => g -->
-<!--     .attr("transform", `translate(0,${height - margin.bottom})`) -->
-<!--     .call(d3.axisBottom(x).ticks(10).tickSizeOuter(5)) -->
   
 ```
+
 
 
 ## Influences
@@ -497,3 +534,150 @@ Stuart Ritchie, *Science Fictions*
   - An effect that exists is less likely to be detected if $\sigma$ is large
   - A Type I error is like convicting an innocent person in a jury trial
   - A Type II error is like convicting a guilty person in a jury trial
+
+
+
+::: {.content-hidden}
+
+# Data and figures
+
+## Cover
+
+
+```{r cover}
+#| eval: false
+
+library(bc1101tools)
+
+plot_distribution(xlim = c(-3, 4)) +
+  stat_function(fun = dnorm, args = list(mean = 1), xlim = c(-3, 4), linetype = 2, color = "blue") +
+  scale_x_continuous(expand = c(0,0)) +
+  theme_void()
+
+plot_save("10_hypothesis-testing-pt-2.svg", subdir = "covers", width = 10, height = 5)
+
+```
+
+
+## Effect size diagrams
+
+```{r effect-size-distributions}
+#| eval: false
+
+library(bc1101tools)
+
+norm <- plot_distribution(xlim = c(-3.5, 3.5)) + theme_void()
+
+second_dist <- function(mean) {
+  ggplot2::stat_function(fun = dnorm, args = list(mean = mean), xlim = c(-3.5, 3.5),
+                linetype = 2,
+                color = "blue")
+}
+
+norm + second_dist(0.2)
+plot_save("effect-size-1.svg", height = 2)
+
+norm + second_dist(0.5)
+plot_save("effect-size-2.svg", height = 2)
+
+norm + second_dist(0.8)
+plot_save("effect-size-3.svg", height = 2)
+```
+
+
+## OJS power interactive
+:::
+
+```{ojs setup}
+#| echo: false
+
+<!-- d3 = require("https://d3js.org/d3.v5.min.js") -->
+jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js")
+
+<!-- width = 1000 -->
+<!-- height = 400 -->
+
+
+
+
+h0 = {
+  var values = jStat(xlim[0], [xlim[1]], 210)[0],
+      arr = [];
+  for (var i in values) {
+    arr.push(
+      {
+        value: values[i], 
+        density: jStat.normal.pdf(values[i], 0, sd)
+      }
+    )
+  }
+  return arr;
+}
+
+
+ha = {
+  var arr = [];
+  
+  for (var i in h0) {
+    arr.push({
+      value: h0[i].value + mean_diff,
+      density: h0[i].density
+    })
+  }
+  return arr;
+}
+
+alpha_x = {
+  if(tails) {
+    return jStat.normal.inv(1 - alpha/2, 0, sd)
+  } else {
+    return jStat.normal.inv(1 - alpha, 0, sd)
+  }
+}
+
+alpha_x2 = {
+  if(tails) {
+    return -alpha_x
+  } else {
+    return -100
+  }
+}
+
+beta = jStat.normal.cdf(alpha_x, mean_diff, sd) - jStat.normal.cdf(alpha_x2, mean_diff, sd)
+
+power = 1 - beta
+
+```
+
+
+::: {style="position: absolute; top: 50%; right: 0;"}
+```{ojs}
+tex`\beta = ${beta.toLocaleString()}`
+
+tex`\text{power} = ${power.toLocaleString()}`
+```
+:::
+
+
+
+::: {.ojs-controls}
+```{ojs controls}
+#| echo: false
+
+viewof mean_diff = Inputs.range([-3, 3], {value: 1, step: 0.1, label: "Mean difference"})
+
+viewof n = Inputs.range([1, 100], {value: 1, step: 1, label: "n"})
+
+sd = 1/Math.sqrt(n)
+
+
+
+viewof alpha = Inputs.range([0.01, 0.10], {value: 0.05, step: 0.001, label: "Alpha"})
+
+viewof tails = Inputs.toggle({label: "Two-tailed", value: true})
+
+viewof show_alt = Inputs.toggle({label: "Show H1", value: true})
+```
+:::
+
+
