@@ -2,6 +2,7 @@ project:
   type: website
   output-dir: docs
   resources:
+    - js/
     - reveal-menu-github.html
     - slides/icons/
 
