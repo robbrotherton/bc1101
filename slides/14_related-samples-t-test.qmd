@@ -4,7 +4,10 @@ format: revealjs
 
 # [14|RELATED-SAMPLES $t$-TEST]{.r-fit-text}
 
-![](covers/11_the-t-test.svg)
+::: {#cover}
+:::
+
+<!-- ![](covers/14_related-samples-t-test.svg) -->
 
 
 # Overview
@@ -409,6 +412,80 @@ $$\begin{align}
 # Data and figures
 
 ## Cover
+
+:::
+
+```{r cover-data}
+
+# library(ggplot2)
+library(dplyr)
+n <- 5000
+set.seed(2)
+data <- tibble::tibble(group = sample(c("A","B"), n, replace = T),
+                       x = rnorm(n, mean = 100, sd = 19) %>% round(0),
+                       y = 1) |> 
+  mutate(x = ifelse(group=="B", x+15, x),
+         n = 1:n()) |> 
+  group_by(x, group) |> 
+  mutate(y_cum = cumsum(y)) |> 
+  ungroup() %>%
+  arrange(group) |> 
+  group_by(x, y_cum) |> 
+  mutate(g = n(),
+         g = ifelse(g==2, "AB", group))
+
+ojs_data <- purrr::transpose(rename(data, value = x))
+ojs_define(data = ojs_data)
+```
+
+
+```{r cover-ggplot}
+#| eval: false
+
+ggplot(data, aes(x = x, y = y_cum, fill = group)) +
+  ggforce::geom_regon(aes(x0 = x + .1, y0 = y_cum-.5, sides = 4, r = sqrt((.5^2)*2)*.85, angle = 0), color = NA, alpha = .4) +
+#  geom_bar(stat = "identity", fill = NA, color = "green") +
+  coord_fixed() +
+  scale_x_continuous(limits = c(40,180), expand = c(0,0)) +
+  scale_fill_manual(values = c("dodgerblue","dodgerblue3")) +
+#  transition_reveal(n) +
+  theme_void() +
+  theme(legend.position = 'none',
+        panel.background = element_blank()) +
+  NULL
+
+bc1101tools::plot_save("independent-samples-t-test.svg", subdir = "covers", width = 10, height = 5)
+
+```
+
+```{ojs}
+data
+cover = {
+  const w = 1050
+  const h = 500
+  const x = d3.scaleLinear()
+    .domain([40,180])
+    .range([0,w])
+  const y = d3.scaleLinear()
+    .domain([0,70])
+    .range([h,0])
+  const fill = d3.scaleOrdinal()
+    .domain(["A","B","AB"])
+    .range(["#abd3ff", "#a6c7ec", "#75adec"])
+    
+  const svg = d3.select("#cover").append("svg").attr("width", w).attr("height", h)
+  
+  svg.selectAll("rect").data(data).enter().append("rect")
+    .attr("x", d => x(d.value))
+    .attr("y", d => y(d.y_cum))
+    .attr("width", 6)
+    .attr("height", 6)
+    .style("fill", d => fill(d.g))
+}
+```
+
+
+::: {.content-hidden}
 
 ## Independent vs related samples figures
 

@@ -4,7 +4,10 @@ format: revealjs
 
 # [13|INDEPENDENT-SAMPLES $t$-TEST]{.r-fit-text}
 
-![](covers/11_the-t-test.svg)
+::: {#cover}
+:::
+
+<!-- ![](covers/13_independent-samples-t-test.svg) -->
 
 # Overview
 
@@ -401,6 +404,83 @@ $(\mu_1-\mu_2) = (M_1-M_2) \pm t * s_{M_1-M_2}$
 
 # Data and figures
 
+## Cover
+
+```{r cover-data}
+
+# library(ggplot2)
+library(dplyr)
+n <- 5000
+set.seed(1)
+data <- tibble::tibble(group = sample(c("A","B"), n, replace = T),
+                       x = rnorm(n, mean = 100, sd = 19) %>% round(0),
+                       y = 1) |> 
+  mutate(x = ifelse(group=="B", x+15, x),
+         n = 1:n()) |> 
+  group_by(x, group) |> 
+  mutate(y_cum = cumsum(y)) |> 
+  ungroup() %>%
+  arrange(group)  |> 
+  group_by(x, y_cum) |> 
+  mutate(g = n(),
+         group = ifelse(g==2, "AB", group))
+
+data <- purrr::transpose(rename(data, value = x))
+ojs_define(data)
+```
+
+
+```{r cover-ggplot}
+#| eval: false
+
+p <- ggplot(data, aes(x = x, y = y_cum, fill = group)) +
+  ggforce::geom_regon(aes(x0 = x + .1, y0 = y_cum-.5, sides = 4, r = sqrt((.5^2)*2)*.85, angle = 0), color = "red", alpha = .4) +
+#  geom_bar(stat = "identity", fill = NA, color = "green") +
+  coord_fixed() +
+  scale_x_continuous(limits = c(40,180), expand = c(0,0)) +
+  scale_fill_manual(values = c("firebrick","dodgerblue")) +
+#  transition_reveal(n) +
+  theme_void() +
+  theme(legend.position = 'none',
+        panel.background = element_blank()) +
+  NULL
+p
+bc1101tools::plot_save("independent-samples-t-test.svg", subdir = "covers", width = 10, height = 5)
+
+related <- p + scale_fill_manual(values = c("dodgerblue","dodgerblue3"))
+related
+```
+
+:::
+
+```{ojs}
+data
+cover = {
+  const w = 1050
+  const h = 500
+  const x = d3.scaleLinear()
+    .domain([40,180])
+    .range([0,w])
+  const y = d3.scaleLinear()
+    .domain([0,70])
+    .range([h,0])
+  const fill = d3.scaleOrdinal()
+    .domain(["A","B", "AB"])
+    .range(["#dda6a6", "#b0d3ff", "#9c9ecb"])
+    
+  const svg = d3.select("#cover").append("svg").attr("width", w).attr("height", h)
+  
+  svg.selectAll("rect").data(data).enter().append("rect")
+    .attr("x", d => x(d.value))
+    .attr("y", d => y(d.y_cum))
+    .attr("width", 6)
+    .attr("height", 6)
+    .style("fill", d => fill(d.group))
+}
+```
+
+
+::: {.content-hidden}
 ## NHST diagrams
 ```{r}
 #| eval: false

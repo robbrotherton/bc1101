@@ -4,7 +4,7 @@ format: revealjs
 
 # 12|THE $t$-TEST [part 2]{style="color: #777; float: right;"}
 
-![](covers/11_the-t-test.svg)
+![](covers/12_the-t-test-pt-2.svg){.invertable-blue}
 
 
 # Overview
@@ -251,6 +251,24 @@ $\mu = M \pm t * s_M$
 ::: {.content-hidden}
 
 # Data and figures
+
+## Cover
+
+```{r}
+#| eval: false
+
+library(ggplot2)
+
+ggplot() +
+  stat_function(fun = dnorm, xlim = c(-3,3)) +
+  stat_function(fun = dnorm, geom = "area", xlim = c(-2,2), fill = "dodgerblue", alpha = 0.4) +
+  theme_void()
+
+bc1101tools::plot_save("12_the-t-test-pt-2.svg", subdir = "covers", width = 10, height = 5)
+
+
+```
+
 
 ## Sleep
 

@@ -89,7 +89,7 @@ color: #ccc
 
 ```{r card-creation}
 
-card <- function(file, date, invertable_image = FALSE) {
+card <- function(file, date, image_class = "") {
   
   overview <- try(rvest::read_html(here::here("docs", "slides", paste0(file, ".html"))) |>  
   rvest::html_nodes("#overview") |> 
@@ -115,7 +115,7 @@ card <- function(file, date, invertable_image = FALSE) {
 
   <div class="card-body">
     <div class="lecture-image">
-<p><a href="slides/{file}.html" target="_blank"><img src="slides/covers/{image}" class="box-image {ifelse(invertable_image, "invertable", "")}"></a></p>
+<p><a href="slides/{file}.html" target="_blank"><img src="slides/covers/{image}" class="box-image {image_class}"></a></p>
     </div>
 
     <div class="lecture-overview">
@@ -146,7 +146,7 @@ card("01_course-info", "")
 :::: {.box}
 ## 2. Variables
 ```{r}
-card("02_variables", "")
+card("02_variables", "", "invertable-bw")
 ```
 ::::
 
@@ -154,7 +154,7 @@ card("02_variables", "")
 :::: {.box}
 ## 3. Frequency
 ```{r}
-card("03_frequency", "", TRUE)
+card("03_frequency", "", "invertable")
 ```
 ::::
 
@@ -162,7 +162,7 @@ card("03_frequency", "", TRUE)
 :::: {.box}
 ## 4. Central Tendency
 ```{r}
-card("04_central-tendency", "", invertable_image = TRUE)
+card("04_central-tendency", "", "invertable")
 ```
 ::::
 
@@ -170,7 +170,7 @@ card("04_central-tendency", "", invertable_image = TRUE)
 :::: {.box}
 ## 5. Variability
 ```{r}
-card("05_variability", "", TRUE)
+card("05_variability", "", "invertable")
 ```
 ::::
 
@@ -193,7 +193,7 @@ card("07_probability", "")
 :::: {.box}
 ## 8. Sampling
 ```{r}
-card("08_sampling", "", TRUE)
+card("08_sampling", "", "invertable")
 ```
 ::::
 
@@ -204,7 +204,7 @@ card("08_sampling", "", TRUE)
 :::: {.box}
 ## 9. Hypothesis testing
 ```{r}
-card("09_hypothesis-testing", "", TRUE)
+card("09_hypothesis-testing", "", "invertable")
 ```
 ::::
 
@@ -212,7 +212,7 @@ card("09_hypothesis-testing", "", TRUE)
 :::: {.box}
 ## 10. Hypothesis testing pt. 2
 ```{r}
-card("10_hypothesis-testing-pt-2", "", TRUE)
+card("10_hypothesis-testing-pt-2", "", "invertable-blue")
 ```
 ::::
 
@@ -228,7 +228,7 @@ card("11_the-t-test", "")
 :::: {.box}
 ## 12. The $t$ test part 2
 ```{r}
-card("12_the-t-test-pt-2", "")
+card("12_the-t-test-pt-2", "", "invertable-bw")
 ```
 ::::
 
