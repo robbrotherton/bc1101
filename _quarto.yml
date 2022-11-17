@@ -4,6 +4,7 @@ project:
   resources:
     - js/
     - slides/icons/
+    - slides/media
 
 website:
   title: "BC1101"

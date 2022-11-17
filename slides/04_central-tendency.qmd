@@ -629,6 +629,7 @@ monopoly_man = {
       .attr('x', 100)
       .attr('y', 30)
       .attr('width', 200)
+      <!-- .attr('height', 210) -->
       .attr("xlink:href", "media/monopoly-man.svg")
       
   svg.append("text")
@@ -650,5 +651,3 @@ monopoly_man = {
 }
 
 ```
-
-<!-- ![](media/monopoly-man.svg) -->
