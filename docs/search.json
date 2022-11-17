@@ -1145,7 +1145,7 @@
     "href": "slides/12_the-t-test-pt-2.html#research-designs-1",
     "title": "BC1101",
     "section": "Research designs",
-    "text": "Research designs\n\nE.g. measure of happiness\n\n\n\n\nWhat is your current level of happiness?\n\nA lot less than usual\nA little less than usual\nAbout average\nA little more than usual\nA lot more than usual\n\n\n\n\\(\\mu = 3\\)"
+    "text": "Research designs\n\nE.g. measure of happiness\n\n\n\n\n\n\nWhat is your current level of happiness?\n  \n    \n    1. A lot less than usual\n    \n    \n    2. A little less than usual\n    \n    \n    3. About average\n    \n    \n    4. A little more than usual\n    \n    \n    5. A lot more than usual\n  \n\n\n\n\n\\(\\mu = 3\\)"
   },
   {
     "objectID": "slides/12_the-t-test-pt-2.html#r2",
@@ -1713,5 +1713,12 @@
     "title": "BC1101",
     "section": "Cover",
     "text": "Cover"
+  },
+  {
+    "objectID": "slides/12_the-t-test-pt-2.html#likert",
+    "href": "slides/12_the-t-test-pt-2.html#likert",
+    "title": "BC1101",
+    "section": "Likert",
+    "text": "Likert\n\n\n\nWhat is your current level of happiness?\n  \n    \n    1. A lot less than usual\n    \n    \n    2. A little less than usual\n    \n    \n    3. About average\n    \n    \n    4. A little more than usual\n    \n    \n    5. A lot more than usual"
   }
 ]

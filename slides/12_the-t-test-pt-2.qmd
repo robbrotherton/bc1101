@@ -46,17 +46,17 @@ $\mu = 8$ hours
 
 ::: {.column width="60%"}
 
-::: {#likert-container .smallest style="width: 80%; display: block;"}
+```{r}
 
-What is your current level of happiness?
+bc1101tools::likert("What is your current level of happiness?", 
+                    c("1. A lot less than usual",
+                      "2. A little less than usual",
+                      "3. About average",
+                      "4. A little more than usual",
+                      "5. A lot more than usual"), 
+                    extra_css = "width: 85%; font-size: 0.75em")
 
-1. A lot less than usual
-2. A little less than usual
-3. About average
-4. A little more than usual
-5. A lot more than usual
-
-:::
+```
 
 :::
 
@@ -332,7 +332,3 @@ plot_save("r-squared-diagram-2.svg", width = 4, height = 2)
 
 
 :::
-
-```{ojs}
-import { likert } from "../ojs/utils.qmd";
-```
