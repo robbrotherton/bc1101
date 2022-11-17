@@ -383,9 +383,90 @@ table thead {
 }
 
 
+/* ----------------- LECTURE CARDS ---------------------- */
+
+.box {
+  border: 1px solid #c3c3c3;
+  border-radius: 5px;
+  float: left;
+  margin-bottom: 1em;
+  margin-top: 0em;
+  position: relative;
+  width: 100%;
+}
+
+.box:before {
+  content: none !important;
+  display: none !important;
+  height: 0px !important;
+}
+
+.box:hover {
+  border: 1px solid black;
+}
 
 
-/* FOR HNST DIAGRAMS */
+.box h2 {
+  border-bottom: none;
+  font-size: min(max(1em, 5vw), 2em);
+  margin-top: 0.2em !important;
+  margin-left: 0.2em;
+  margin-bottom: 0;
+  padding-top: 0;
+  width: 90%;
+}
+
+
+.box .card-body {
+  margin-top: -1em;
+}
+
+.box .box-image {
+  height: 100%;
+  width: 100%;
+}
+
+
+.lecture-image {
+  float: left;
+  width: 50%;
+}
+
+.lecture-overview {
+  float: right;
+  font-size: min(max(0.6em, 2vw), 1em);
+  position: relative;
+  width: 50%;
+}
+
+.footer {
+  float: left;
+  margin-top: -1em;
+  padding: 0;
+  width: 100%;
+}
+
+.date {
+  color: #555;
+  font-size: min(max(0.5em, 3vw), 1em);
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 0.4rem;
+  top: 0.6em;
+}
+
+
+[data-theme='dark'] .box {
+    border-color: #555
+} .box:hover {
+border-color: #aaa
+} .date {
+color: #ccc
+}
+
+
+/* ----------------- FOR HNST DIAGRAMS ---------------------- */
 
 #nhst-diagram {
   position: relative;

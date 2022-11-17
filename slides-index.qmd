@@ -3,89 +3,6 @@ format: html
 title: "Lectures"
 ---
 
-```{css styling}
-
-.box {
-  border: 1px solid #c3c3c3;
-  border-radius: 5px;
-  float: left;
-  margin-bottom: 1em;
-  margin-top: 0em;
-  position: relative;
-  width: 100%;
-}
-
-.box:before {
-  content: none !important;
-  display: none !important;
-  height: 0px !important;
-}
-
-.box:hover {
-  border: 1px solid black;
-}
-
-
-.box h2 {
-  border-bottom: none;
-  font-size: min(max(1em, 5vw), 2em);
-  margin-top: 0.2em !important;
-  margin-left: 0.2em;
-  margin-bottom: 0;
-  padding-top: 0;
-  width: 90%;
-}
-
-
-.box .card-body {
-  margin-top: -1em;
-}
-
-.box .box-image {
-  height: 100%;
-  width: 100%;
-}
-
-
-.lecture-image {
-  float: left;
-  width: 50%;
-}
-
-.lecture-overview {
-  float: right;
-  font-size: min(max(0.6em, 2vw), 1em);
-  position: relative;
-  width: 50%;
-}
-
-.footer {
-  float: left;
-  margin-top: -1em;
-  padding: 0;
-  width: 100%;
-}
-
-.date {
-  color: #555;
-  font-size: min(max(0.5em, 3vw), 1em);
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  right: 0.4rem;
-  top: 0.6em;
-}
-
-
-[data-theme='dark'] .box {
-    border-color: #555
-} .box:hover {
-border-color: #aaa
-} .date {
-color: #ccc
-}
-
-```
 
 ```{r card-creation}
 
@@ -133,12 +50,18 @@ card <- function(file, date, image_class = "") {
 }
 ```
 
+```{r}
+#| message: false
+info <- readr::read_csv("schedule.csv")
+dates <- info$Date
+```
+
 <!-- # Part 1. Fundamentals -->
 
 :::: {.box}
 ## 1. Course Overview
 ```{r}
-card("01_course-info", "")
+card("01_course-info", dates[1])
 ```
 ::::
 
@@ -146,7 +69,7 @@ card("01_course-info", "")
 :::: {.box}
 ## 2. Variables
 ```{r}
-card("02_variables", "", "invertable-bw")
+card("02_variables", dates[2], "invertable-bw")
 ```
 ::::
 
@@ -154,7 +77,7 @@ card("02_variables", "", "invertable-bw")
 :::: {.box}
 ## 3. Frequency
 ```{r}
-card("03_frequency", "", "invertable")
+card("03_frequency", dates[3], "invertable")
 ```
 ::::
 
@@ -162,7 +85,7 @@ card("03_frequency", "", "invertable")
 :::: {.box}
 ## 4. Central Tendency
 ```{r}
-card("04_central-tendency", "", "invertable")
+card("04_central-tendency", dates[4], "invertable")
 ```
 ::::
 
@@ -170,7 +93,7 @@ card("04_central-tendency", "", "invertable")
 :::: {.box}
 ## 5. Variability
 ```{r}
-card("05_variability", "", "invertable")
+card("05_variability", dates[5], "invertable")
 ```
 ::::
 
@@ -179,21 +102,21 @@ title insets content: "" ::before, messing things up -->
 :::: {.box}
 ## 6. $z$-Scores
 ```{r}
-card("06_z-scores", "")
+card("06_z-scores", dates[6])
 ```
 ::::
 
 :::: {.box}
 ## 7. Probability
 ```{r}
-card("07_probability", "")
+card("07_probability", dates[7])
 ```
 ::::
 
 :::: {.box}
 ## 8. Sampling
 ```{r}
-card("08_sampling", "", "invertable")
+card("08_sampling", dates[8], "invertable")
 ```
 ::::
 
@@ -204,7 +127,7 @@ card("08_sampling", "", "invertable")
 :::: {.box}
 ## 9. Hypothesis testing
 ```{r}
-card("09_hypothesis-testing", "", "invertable")
+card("09_hypothesis-testing", dates[11], "invertable")
 ```
 ::::
 
@@ -212,14 +135,14 @@ card("09_hypothesis-testing", "", "invertable")
 :::: {.box}
 ## 10. Hypothesis testing pt. 2
 ```{r}
-card("10_hypothesis-testing-pt-2", "", "invertable-blue")
+card("10_hypothesis-testing-pt-2", dates[12], "invertable-blue")
 ```
 ::::
 
 :::: {.box}
 ## 11. The $t$ test
 ```{r}
-card("11_the-t-test", "")
+card("11_the-t-test", dates[13])
 ```
 ::::
 
@@ -228,7 +151,7 @@ card("11_the-t-test", "")
 :::: {.box}
 ## 12. The $t$ test part 2
 ```{r}
-card("12_the-t-test-pt-2", "", "invertable-bw")
+card("12_the-t-test-pt-2", dates[14], "invertable-bw")
 ```
 ::::
 
@@ -236,7 +159,7 @@ card("12_the-t-test-pt-2", "", "invertable-bw")
 :::: {.box}
 ## 13. Independent-samples $t$ test
 ```{r}
-card("13_independent-samples-t-test", "")
+card("13_independent-samples-t-test", dates[15])
 ```
 ::::
 
@@ -244,8 +167,6 @@ card("13_independent-samples-t-test", "")
 :::: {.box}
 ## 14. Related-samples $t$ test
 ```{r}
-card("14_related-samples-t-test", "")
+card("14_related-samples-t-test", dates[16])
 ```
 ::::
-
-

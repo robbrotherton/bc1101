@@ -933,20 +933,26 @@
     </script>
     <script>
       git = document.querySelector('[data-panel="Custom1"]');
+
       function changeLink() {
         var link = document.getElementById('source-link');
         var href = link.getAttribute('href');
 
         var path = window.location.pathname;
         var html = path.split('/');
-        html = html[html.length - 1];
-        var qmd = html.replace('html', 'qmd');
+        var lecture = html[html.length - 1];
+        var qmd = lecture.replace('html', 'qmd');
         link.setAttribute('href', href.concat('/' + qmd));
 
+        var page = window.location.hash.replace('#/', ' : ');
+
         var issueLink = document.getElementById('issue-link');
-        issueLink.setAttribute('href', issueLink.getAttribute('href').concat('?title=').concat(html));
+        issueLink.setAttribute('href', issueLink.getAttribute('href').concat('?title=' + ' Issue with ' + lecture + page));
+
       }
+
       git.addEventListener("click", changeLink);
+
     </script>
     <script type="ojs-module-contents">
     {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"w = 1050\nh = w/2\n\ncover = {\n\n  const svg = d3.select(\"#cover-image\")\n    .append(\"svg\")\n    .attr(\"width\", w)\n    .attr(\"height\", h)\n    .style(\"transform\", \"scaleY(-1)\")\n    \n  const g = svg.append(\"g\")\n  \n  g\n    .selectAll(\"rect\")\n    .data(data)\n    .enter()\n      .append(\"rect\")\n      .attr(\"fill\", \"black\")\n        .attr(\"x\", function(d, i){return 5 + i*(w/10)})\n        .attr(\"y\", 0)\n        .attr(\"height\", 0)\n        .attr(\"width\", w/10 - 10)\n        .attr(\"fill\", d => d.color)\n          .transition()\n          .duration(d => d.duration)\n          .delay(d => d.delay)\n          .attr(\"height\", d => d.value * 26)\n  \n\n \n return svg.node()\n}\n\n"}]}
