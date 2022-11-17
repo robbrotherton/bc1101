@@ -629,6 +629,7 @@ sampling_chart = {
 ## Stick people
 
 ```{r data}
+
 library(bc1101tools)
 library(dplyr)
 
