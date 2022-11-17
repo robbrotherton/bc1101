@@ -383,6 +383,7 @@ plot_save("09_hypothesis-testing.svg", width = 10, height = 5, subdir = "covers"
 ## NHST diagram generic
 
 ```{r}
+#| eval: false
 bc1101tools::plot_nhst_diagram(pop1lab = "Original\npopulation",
                                pop2lab = "Treated\npopulation")
 
