@@ -504,7 +504,9 @@ color: #ccc
   background-color: var(--background-color);
   border: 1px solid;
   border-radius: 50%;
-  display: table;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 50%;
   position: absolute;
   width: 40%;
@@ -527,7 +529,9 @@ color: #ccc
 #rect {
   background-color: var(--background-color);
   border: 2px solid;
-  display: table;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 80%;
   width: 40%;
@@ -536,17 +540,13 @@ color: #ccc
 
 
 #circle p {
-  display: table-cell;
-  vertical-align: middle;
   text-align: center;
 }
 
 #rect p {
-  display: table-cell;
   text-align: center;
-  vertical-align: middle;
-  position: relative;
 }
+
 
 #treatment {
   color: var(--text-color-light);
@@ -556,12 +556,11 @@ color: #ccc
   width: 10%;
   height: 100%;
   z-index: 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #treatment p {
-  /*text-align: center;
-  vertical-align: middle;*/
   writing-mode: vertical-lr;
   text-orientation: upright;
-  margin: 0 auto;
-  transform: translateY(25%);
 }
