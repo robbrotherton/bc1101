@@ -6,7 +6,7 @@ title: "Lectures"
 
 ```{r card-creation}
 
-card <- function(file, date, image_class = "") {
+card <- function(file, date, image_class = "", panopto_link = "") {
   
   overview <- try(rvest::read_html(here::here("docs", "slides", paste0(file, ".html"))) |>  
   rvest::html_nodes("#overview") |> 
@@ -41,7 +41,7 @@ card <- function(file, date, image_class = "") {
   </div>
 
   <div class="footer">
-<a class="btn btn-outline-dark" href="slides/{file}.html" target="_blank" role="button" style="width: 50%">Slides</a><a class="btn btn-outline-dark" href="slides/{file}.html" target="_blank" role="button" style="width: 50%">Panopto</a>
+<a class="btn btn-outline-dark" href="slides/{file}.html" target="_blank" role="button" style="width: 50%">Slides</a><a class="btn btn-outline-dark {ifelse(panopto_link=="", "no-panopto", "")}" href="{panopto_link}" target="_blank" role="button" style="width: 50%"><span>Panopto</span></a>
   </div>
 
 </div>
@@ -69,7 +69,7 @@ card("01_course-info", dates[1])
 :::: {.box}
 ## 2. Variables
 ```{r}
-card("02_variables", dates[2], "invertable-bw")
+card("02_variables", dates[2], "invertable-bw", "https://columbia.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=80b80313-9436-4692-bdc5-af1601538882")
 ```
 ::::
 
