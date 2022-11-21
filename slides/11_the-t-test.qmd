@@ -76,7 +76,7 @@ $t = \dfrac{M-\mu}{s_M}$
 ::::
 
 
-## The $t$ statistic {.smallest}
+## The $t$ statistic {.smaller}
 
 - Estimated standard error $s_M$ used in place of (unknown) population standard error $\sigma_M$
 
@@ -103,7 +103,7 @@ $$
 :::
 
 
-## Degrees of freedom {.smallest}
+## Degrees of freedom {.small}
 
 - $df$ depends on kind of $t$-test you're doing
 - Single sample $t$-test: $df = n - 1$
@@ -457,12 +457,11 @@ knitr::kable(df, col.names = c("\\(df\\)", "\\(\\alpha = .05\\)"), align = "r")
  
   
   
-## 3. State hypotheses {.small}
+## 3. Calculate statistic {.small}
 
 
-- Step 3: Collect data; compute the test statistic
-  - Calculate $t$-statistic for the sample mean
-  - Quantifies the difference between the observed sample mean and the hypothesized population mean divided by the estimated standard error
+- Calculate $t$-statistic for the sample mean
+- Quantifies the difference between the observed sample mean and the hypothesized population mean divided by the estimated standard error
 
 
 :::: {.columns}
@@ -482,12 +481,16 @@ t = \dfrac{M - \mu}{s_M} &= \dfrac{`r round(M, 2)` - `r mu`}{`r round(SD, 2)`/\s
 ::::
 
 
-## 4. State hypotheses
+## 4. Make decision
 
 - Step 4a: Make a decision about $H_0$
   - $t = `r round(t, 2)`$  exceeds critical values $[`r round(qt(c(.025, .975), df = n - 1), 2)`]$
   - $p < \alpha$
   - "Statistically significant" difference
+
+![](media/nondirectional-test-labelled.svg){.invertable}
+
+
 
 ## Conclusion
 

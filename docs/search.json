@@ -1559,5 +1559,19 @@
     "title": "Lectures",
     "section": "14. Related-samples \\(t\\) test",
     "text": "14. Related-samples \\(t\\) test\n\n\n3/9\n\n\n\n  \n    \n\n    \n\n    \n      \nResearch design\nEquations\nHypothesis test\nAssumptions\nConfidence interval\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+  },
+  {
+    "objectID": "slides/11_the-t-test.html#calculate-statistic",
+    "href": "slides/11_the-t-test.html#calculate-statistic",
+    "title": "BC1101",
+    "section": "3. Calculate statistic",
+    "text": "3. Calculate statistic\n\nCalculate \\(t\\)-statistic for the sample mean\nQuantifies the difference between the observed sample mean and the hypothesized population mean divided by the estimated standard error\n\n\n\n\\(\\mu = 284 \\\\ M = 322.59 \\\\ SD = 45.31 \\\\ n = 23\\)\n\n\\[\\begin{align}\nt = \\dfrac{M - \\mu}{s_M} &= \\dfrac{322.59 - 284}{45.31/\\sqrt{23}} \\\\\n&= \\dfrac{38.59}{9.45} \\\\\n&= 4.08\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/11_the-t-test.html#make-decision",
+    "href": "slides/11_the-t-test.html#make-decision",
+    "title": "BC1101",
+    "section": "4. Make decision",
+    "text": "4. Make decision\n\nStep 4a: Make a decision about \\(H_0\\)\n\n\\(t = 4.08\\) exceeds critical values \\([-2.07, 2.07]\\)\n\\(p < \\alpha\\)\n“Statistically significant” difference"
   }
 ]
