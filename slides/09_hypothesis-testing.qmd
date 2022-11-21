@@ -40,8 +40,46 @@ zM <- (rt$x - rt$m)/sM
 
 ## Recap
 
+:::: {.columns}
+
+::: {.column width="30%"}
+![](media/stick-histogram.svg){.invertable}
+
+```{r stick-table}
+#| style: "font-size: 0.5em;line-height: 0.9em;"
+
+library(dplyr)
+
+stick_heights <- c(60, 62, 64, 66)
+
+sampling_dist_df <- expand.grid(stick_heights, stick_heights) |> 
+  rowwise() |>
+  mutate(M = mean(c(Var1, Var2))) |> 
+  ungroup() |> 
+  mutate(Sample = row_number()) |> 
+  select(Sample, X1 = Var1, X2 = Var2, M)
+
+knitr::kable(sampling_dist_df)
+  
+```
+
+:::
+
+::: {.column width="70%"}
 - Sampling distribution
   - Lets us find probabilities of [sample means]{.emph}
+
+![](media/stick-sampling-distribution.svg){.invertable width="60%"}
+
+::: {.center-element style="font-size: 0.8em; margin-top: -1em;"}
+$p(M < 61) =\ ?$
+:::
+:::
+
+::::
+
+
+
 
 ## Central Limit Theorem
 
@@ -89,7 +127,34 @@ $z = \dfrac{M-\mu_M}{\sigma_M}$
 :::
 
 ::: {.column width="50%"}
-![](media/nhst-diagram-generic.svg){.invertable}
+
+::: {style="position: relative; font-size: 0.7em; margin-top: 2em; margin-left: 2em;"}
+
+:::: {#nhst-diagram}
+::: {#lines}
+:::
+::: {#treatment}
+Treatment
+:::
+::: {#circle style="border: 2px dashed"}
+Original  
+population
+:::
+::: {#circle style="right: 0; background-color: lightblue; border: 2px dashed"}
+Treated  
+population
+:::
+::: {#rect}
+Sample
+:::
+::: {#rect style="right: 0; background-color: lightblue;"}
+Treated sample 
+:::
+::: {#population-comparison-line}
+:::
+::::
+:::
+
 :::
 
 ::::
@@ -179,7 +244,38 @@ pnorm(-5.59)
 
 ## Making inferences
 
-![](media/nhst-diagram.svg){.invertable-blue}
+
+::: {style="width: 60%; position: relative; font-size: 0.7em; margin-left: 20%;"}
+:::: {#nhst-diagram}
+
+::: {#lines}
+:::
+::: {#treatment}
+Treatment
+:::
+::: {#circle .solid}
+Known  
+original  
+population
+:::
+::: {#circle .fill .dashed style="right: 0"}
+Unknown  
+treated  
+population
+:::
+::: {#rect}
+Sample
+:::
+::: {#rect .fill style="right: 0"}
+Treated  
+sample 
+:::
+::: {#population-comparison-line}
+:::
+
+::::
+:::
+
 
 # Hypothesis testing {.smaller}
 
@@ -207,7 +303,7 @@ pnorm(-5.59)
   - Compare outcome with predicted probabilities
   - Accept or reject the null hypothesis
 
-## 1: State hypotheses {.smaller}
+## 1. State hypotheses {.smaller}
 
 - Null hypothesis: $H_0$
   - States that “treatment” has no effect
@@ -313,9 +409,41 @@ pnorm(-5.59)
   - Original population $\mu$ and $\sigma$ are both known
   - Sampling distribution is normally distributed
 
-![](media/nhst-z-diagram.svg){.invertable}
+<!-- ![](media/nhst-z-diagram.svg){.invertable} -->
 
-## Spiderman $z$-test {.smaller}
+::: {style="width: 50%; position: relative; font-size: 0.7em; margin-left: 25%;"}
+:::: {#nhst-diagram}
+
+::: {#lines}
+:::
+::: {#treatment}
+Treatment
+:::
+::: {#circle .solid}
+Known  
+original  
+population  
+$\mu, \sigma$
+:::
+::: {#circle .fill .dashed style="right: 0"}
+Unknown  
+treated  
+population
+:::
+::: {#rect}
+Sample
+:::
+::: {#rect .fill style="right: 0"}
+Treated sample  
+$M, s, n$
+:::
+::: {#population-comparison-line}
+:::
+
+::::
+:::
+
+## Spiderman $z$-test {.smallest}
 
 - Formal Spidermen z-test
   - 1: State Hypotheses

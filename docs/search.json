@@ -893,7 +893,7 @@
     "href": "slides/09_hypothesis-testing.html#recap-1",
     "title": "BC1101",
     "section": "Recap",
-    "text": "Recap\n\nSampling distribution\n\nLets us find probabilities of sample means"
+    "text": "Recap\n\n\n\n\n\n\n\n\nSample\nX1\nX2\nM\n\n\n\n\n1\n60\n60\n60\n\n\n2\n62\n60\n61\n\n\n3\n64\n60\n62\n\n\n4\n66\n60\n63\n\n\n5\n60\n62\n61\n\n\n6\n62\n62\n62\n\n\n7\n64\n62\n63\n\n\n8\n66\n62\n64\n\n\n9\n60\n64\n62\n\n\n10\n62\n64\n63\n\n\n11\n64\n64\n64\n\n\n12\n66\n64\n65\n\n\n13\n60\n66\n63\n\n\n14\n62\n66\n64\n\n\n15\n64\n66\n65\n\n\n16\n66\n66\n66\n\n\n\n\n\n\n\nSampling distribution\n\nLets us find probabilities of sample means\n\n\n\n\n\\(p(M < 61) =\\ ?\\)"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#central-limit-theorem",
@@ -914,7 +914,7 @@
     "href": "slides/09_hypothesis-testing.html#making-inferences",
     "title": "BC1101",
     "section": "Making inferences",
-    "text": "Making inferences\n\n\n\nSampling error\n\nStatistics obtained for a sample will be different from the corresponding parameters for the population and the statistics will differ from one sample to another\n\nProblem:\n\nIs difference between sample & population due to treatment effect or sampling error?\n\nAddressed by inferential statistics"
+    "text": "Making inferences\n\n\n\nSampling error\n\nStatistics obtained for a sample will be different from the corresponding parameters for the population and the statistics will differ from one sample to another\n\nProblem:\n\nIs difference between sample & population due to treatment effect or sampling error?\n\nAddressed by inferential statistics\n\n\n\n\n\n\n\n\nTreatment\n\n\nOriginal\npopulation\n\n\nTreated\npopulation\n\n\nSample\n\n\nTreated sample"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#making-inferences-spiderman",
@@ -956,7 +956,7 @@
     "href": "slides/09_hypothesis-testing.html#making-inferences-4",
     "title": "BC1101",
     "section": "Making inferences",
-    "text": "Making inferences"
+    "text": "Making inferences\n\n\n\n\n\n\nTreatment\n\n\nKnown\noriginal\npopulation\n\n\nUnknown\ntreated\npopulation\n\n\nSample\n\n\nTreated\nsample"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#hypothesis-testing-2",
@@ -969,8 +969,8 @@
     "objectID": "slides/09_hypothesis-testing.html#state-hypotheses",
     "href": "slides/09_hypothesis-testing.html#state-hypotheses",
     "title": "BC1101",
-    "section": "1: State hypotheses",
-    "text": "1: State hypotheses\n\nNull hypothesis: \\(H_0\\)\n\nStates that “treatment” has no effect\nTreated population is indistinguishable from original population\nNo change, no difference, or no relationship\n\nAlternative hypothesis: \\(H_1\\)\n\nStates that treated population differs from nontreated population\nThere is a change, a difference, or there is a relationship in the general population\n\nLogical complements\n\nCan’t both be true\nEnsures falsifiability"
+    "section": "1. State hypotheses",
+    "text": "1. State hypotheses\n\nNull hypothesis: \\(H_0\\)\n\nStates that “treatment” has no effect\nTreated population is indistinguishable from original population\nNo change, no difference, or no relationship\n\nAlternative hypothesis: \\(H_1\\)\n\nStates that treated population differs from nontreated population\nThere is a change, a difference, or there is a relationship in the general population\n\nLogical complements\n\nCan’t both be true\nEnsures falsifiability"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#state-hypotheses-1",

@@ -425,12 +425,134 @@
 </section>
 <section id="recap-1" class="slide level2">
 <h2>Recap</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img data-src="media/stick-histogram.svg" class="invertable"></p>
+<div class="cell" style="font-size: 0.5em;line-height: 0.9em;">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Sample</th>
+<th style="text-align: right;">X1</th>
+<th style="text-align: right;">X2</th>
+<th style="text-align: right;">M</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">60</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">61</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">61</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">64</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">64</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">65</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">64</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">65</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">66</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><div class="column" style="width:70%;">
 <ul>
 <li>Sampling distribution
 <ul>
 <li>Lets us find probabilities of <span class="emph">sample means</span></li>
 </ul></li>
 </ul>
+<p><img data-src="media/stick-sampling-distribution.svg" class="invertable" style="width:60.0%"></p>
+<div class="center-element" style="font-size: 0.8em; margin-top: -1em;">
+<p><span class="math inline">\(p(M &lt; 61) =\ ?\)</span></p>
+</div>
+</div>
+</div>
 </section>
 <section id="central-limit-theorem" class="slide level2">
 <h2>Central Limit Theorem</h2>
@@ -479,7 +601,33 @@
 <li>Addressed by <span class="emph">inferential statistics</span></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<p><img data-src="media/nhst-diagram-generic.svg" class="invertable"></p>
+<div style="position: relative; font-size: 0.7em; margin-top: 2em; margin-left: 2em;">
+<div id="nhst-diagram">
+<div id="lines">
+
+</div>
+<div id="treatment">
+<p>Treatment</p>
+</div>
+<div id="circle" style="border: 2px dashed">
+<p>Original<br>
+population</p>
+</div>
+<div id="circle" style="right: 0; background-color: lightblue; border: 2px dashed">
+<p>Treated<br>
+population</p>
+</div>
+<div id="rect">
+<p>Sample</p>
+</div>
+<div id="rect" style="right: 0; background-color: lightblue;">
+<p>Treated sample</p>
+</div>
+<div id="population-comparison-line">
+
+</div>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -568,8 +716,37 @@
 <img data-src="media/spiderman-sampling-distribution.svg" class="invertable r-stretch"></section>
 <section id="making-inferences-4" class="slide level2">
 <h2>Making inferences</h2>
+<div style="width: 60%; position: relative; font-size: 0.7em; margin-left: 20%;">
+<div id="nhst-diagram">
+<div id="lines">
 
-<img data-src="media/nhst-diagram.svg" class="invertable-blue r-stretch"></section></section>
+</div>
+<div id="treatment">
+<p>Treatment</p>
+</div>
+<div id="circle" class="solid">
+<p>Known<br>
+original<br>
+population</p>
+</div>
+<div id="circle" class="fill dashed" style="right: 0">
+<p>Unknown<br>
+treated<br>
+population</p>
+</div>
+<div id="rect">
+<p>Sample</p>
+</div>
+<div id="rect" class="fill" style="right: 0">
+<p>Treated<br>
+sample</p>
+</div>
+<div id="population-comparison-line">
+
+</div>
+</div>
+</div>
+</section></section>
 <section>
 <section id="hypothesis-testing-1" class="title-slide slide level1 smaller center">
 <h1>Hypothesis testing</h1>
@@ -618,7 +795,7 @@
 </ul>
 </section>
 <section id="state-hypotheses" class="slide level2 smaller">
-<h2>1: State hypotheses</h2>
+<h2>1. State hypotheses</h2>
 <ul>
 <li>Null hypothesis: <span class="math inline">\(H_0\)</span>
 <ul>
@@ -759,8 +936,40 @@
 </ul></li>
 </ul>
 
-<img data-src="media/nhst-z-diagram.svg" class="invertable r-stretch"></section>
-<section id="spiderman-z-test" class="slide level2 smaller">
+<!-- ![](media/nhst-z-diagram.svg){.invertable} -->
+<div style="width: 50%; position: relative; font-size: 0.7em; margin-left: 25%;">
+<div id="nhst-diagram">
+<div id="lines">
+
+</div>
+<div id="treatment">
+<p>Treatment</p>
+</div>
+<div id="circle" class="solid">
+<p>Known<br>
+original<br>
+population<br>
+<span class="math inline">\(\mu, \sigma\)</span></p>
+</div>
+<div id="circle" class="fill dashed" style="right: 0">
+<p>Unknown<br>
+treated<br>
+population</p>
+</div>
+<div id="rect">
+<p>Sample</p>
+</div>
+<div id="rect" class="fill" style="right: 0">
+<p>Treated sample<br>
+<span class="math inline">\(M, s, n\)</span></p>
+</div>
+<div id="population-comparison-line">
+
+</div>
+</div>
+</div>
+</section>
+<section id="spiderman-z-test" class="slide level2 smallest">
 <h2>Spiderman <span class="math inline">\(z\)</span>-test</h2>
 <ul>
 <li>Formal Spidermen z-test

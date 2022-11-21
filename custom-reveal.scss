@@ -509,62 +509,61 @@ color: #ccc
 }
 
 #circle {
+  background-color: var(--background-color);
+  /*border: 1px solid;*/
+  border-radius: 50%;
+  display: table;
+  height: 50%;
   position: absolute;
   width: 40%;
-  height: 50%;
-  border-radius: 50%;
-  border: 1px solid;
-  background-color: var(--background-color);
   z-index: 11;
 }
 
+.fill {
+  background-color: lightblue !important;
+  border-color: var(--text-color) !important;
+  color: var(--text-color-light);
+}
+
+.dashed {
+  border: 2px dashed;
+}
+.solid {
+  border: 2px solid var(--text-color);
+}
+
 #rect {
+  background-color: var(--background-color);
+  border: 2px solid;
+  display: table;
   position: absolute;
   top: 80%;
   width: 40%;
   height: 20%;
-  background: lightblue;
-  border: 1px solid var(--text-color);
-  background-color: var(--background-color);
 }
 
 
-#circle > p {
+#circle p {
+  display: table-cell;
+  vertical-align: middle;
   text-align: center;
-  position: relative;
-  top: 50%;
-  bottom: 50%;
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
 }
 
-#rect > p {
+#rect p {
+  display: table-cell;
   text-align: center;
+  vertical-align: middle;
   position: relative;
-  top: 50%;
-  -ms-transform: translateY(-60%);
-  -webkit-transform: translateY(-60%);
-  transform: translateY(-60%);
 }
 
-#treatment:before {
-  content: "Treatment";
-  position: absolute;
+
+#treatment {
+  display: table;
+}
+#treatment p {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
   writing-mode: vertical-lr;
   text-orientation: upright;
-  -ms-transform: translate(-35%, 25%);
-  -webkit-transform: translate(-35%, 25%);
-  transform: translate(35%, 25%);
-}
-
-#treatment > p {
-  position: relative;
-  writing-mode: vertical-lr;
-  text-orientation: upright;
-  margin-left: 50%;
-  text-align: center;
-  -ms-transform: translate(-50%, 25%);
-  -webkit-transform: translate(-50%, 25%);
-  transform: translate(-50%, 25%);
 }
