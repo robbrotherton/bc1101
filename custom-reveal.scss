@@ -141,10 +141,6 @@ html.print-pdf #theme-toggle {display: none;}
 }
 
 
-.btn-outline-dark {
-    background-color: #eee;
-}
-
 
 
 
@@ -183,13 +179,7 @@ html.print-pdf #theme-toggle {display: none;}
     background-color: #444;
 }
 
-[data-theme='dark'] .btn-outline-dark {
-    color: #eee;
-    background-color: #555;
-} .btn-outline-dark:hover {
-    color: #555;
-    background-color: #eee;
-}
+
 /* for lecture slides */
 
 /* doesn't work; changes every h1, because each slide is its own section?
@@ -465,6 +455,41 @@ border-color: #aaa
 color: #ccc
 }
 
+.btn-outline-dark {
+    color: #555;
+    background-color: #eee;
+} .btn-outline-dark:hover {
+    color: #eee !important;
+    background-color: #555 !important;
+}
+
+[data-theme='dark'] .btn-outline-dark {
+    color: #eee;
+    background-color: #555;
+} .btn-outline-dark:hover {
+    color: #555;
+    background-color: #eee;
+}
+
+
+.btn-outline-dark {
+    background-color: #eee;
+}
+
+
+.no-panopto {
+  pointer-events: none;
+}
+/*
+.no-panopto:after {
+  content: "[no Panopto]";
+}
+
+.no-panopto span {
+  display: none;
+}
+*/
+
 
 /* ----------------- FOR HNST DIAGRAMS ---------------------- */
 
@@ -520,7 +545,7 @@ color: #ccc
 }
 
 .dashed {
-  border: 2px dashed;
+  border: 2px dashed !important;
 }
 .solid {
   border: 2px solid var(--text-color);
@@ -564,3 +589,5 @@ color: #ccc
   writing-mode: vertical-lr;
   text-orientation: upright;
 }
+
+
