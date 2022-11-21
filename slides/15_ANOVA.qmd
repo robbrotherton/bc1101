@@ -1,0 +1,29 @@
+---
+format: revealjs
+---
+
+# ANOVA part 1
+
+# Overview
+
+- [Intro to ANOVA]
+- [Purpose & logic]
+- [Research designs]
+- [Calculating $F$ statistic]
+
+
+# Intro to ANOVA
+
+## Comparing groups: $t$ statistic
+
+## Comparing groups: sources of variance
+
+
+# Using ANOVA
+
+- Limitations of $t$-tests
+  - Can only compare two populations
+  - $H_0$: $\mu_1 - \mu_2 = 0$
+- ANOVA is a tool for the general case
+  - Comparing any number of populations
+  - $H_0$: $\mu_1 = \mu_2 = \mu_3 = \dots = \mu_n$
