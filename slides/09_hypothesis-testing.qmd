@@ -1,7 +1,5 @@
 ---
-format: 
-  revealjs:
-    chalkboard: true
+format: revealjs
 ---
 
 # 9|HYPOTHESIS TESTING
@@ -258,7 +256,7 @@ Known
 original  
 population
 :::
-::: {#circle style="right: 0"}
+::: {#circle .dashed .fill style="right: 0"}
 Unknown  
 treated  
 population
@@ -266,7 +264,7 @@ population
 ::: {#rect}
 Sample
 :::
-::: {#rect style="right: 0"}
+::: {#rect .fill style="right: 0"}
 Treated  
 sample 
 :::

@@ -1299,7 +1299,7 @@
     "href": "slides/13_independent-samples-t-test.html#step-2-define-critical-region",
     "title": "BC1101",
     "section": "Step 2: Define critical region",
-    "text": "Step 2: Define critical region\n\nDepends on \\(\\alpha\\) and \\(df\\)\n\n\\[\n\\begin{align}\ndf &= df_1 + df_2 \\\\\n&= (n_1 – 1) + (n_2 – 1) \\\\\n&= N - 2\n\\end{align}\n\\]"
+    "text": "Step 2: Define critical region\n\n\n\nDepends on \\(\\alpha\\) and \\(df\\)\n\n\\[\n\\begin{align}\ndf &= df_1 + df_2 \\\\\n&= (n_1 – 1) + (n_2 – 1) \\\\\n&= N - 2\n\\end{align}\n\\] \n\n\n\n\n\n \n\nProportionin 1 tail\n\n0.05\n\n  \n    Proportionin 2 tails \n    0.1 \n  \n \n\n  \n    1 \n    6.314 \n  \n  \n    2 \n    2.920 \n  \n  \n    3 \n    2.353 \n  \n  \n    4 \n    2.132 \n  \n  \n    5 \n    2.015 \n  \n  \n    6 \n    1.943 \n  \n  \n    7 \n    1.895 \n  \n  \n    \\(df\\)       8 \n    1.860 \n  \n  \n    9 \n    1.833 \n  \n  \n    10 \n    1.812 \n  \n  \n    11 \n    1.796 \n  \n  \n    12 \n    1.782 \n  \n  \n    13 \n    1.771 \n  \n  \n    14 \n    1.761 \n  \n  \n    15 \n    1.753 \n  \n  \n    ... \n    ..."
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#step-3-collect-data-calculate-t-statistic",
@@ -1312,8 +1312,8 @@
     "objectID": "slides/13_independent-samples-t-test.html#step-3-calculate-t-statistic",
     "href": "slides/13_independent-samples-t-test.html#step-3-calculate-t-statistic",
     "title": "BC1101",
-    "section": "Step 3 : Calculate \\(t\\) statistic",
-    "text": "Step 3 : Calculate \\(t\\) statistic\n\\(s_p^2 = \\dfrac{SS_1+SS_2}{df_1+df_2} = \\dfrac{10 + 8}{4 + 4} = 2.25\\)\n\\(s_{M_1-M_2} = \\sqrt{\\dfrac{s_p^2}{n_1}+\\dfrac{s_p^2}{n_2}} = \\sqrt{\\dfrac{2.25}{5}+\\dfrac{2.25}{5}} = 0.95\\)\n\\(t = \\dfrac{(M_1-M_2)-(\\mu_1-\\mu_2)}{s_{M_1-M_2}} = \\dfrac{3 - 4}{0.95} = -1.05\\)"
+    "section": "Step 3: Calculate \\(t\\) statistic",
+    "text": "Step 3: Calculate \\(t\\) statistic\n\n\n\n\n\nSpend $10 on self\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    1 \n    -2 \n    4 \n  \n  \n    5 \n    2 \n    4 \n  \n  \n    2 \n    -1 \n    1 \n  \n  \n    4 \n    1 \n    1 \n  \n  \n    3 \n    0 \n    0 \n  \n  \n    \\(M = 3.00\\) \n     \n    \\(SS = 10.00\\) \n  \n  \n     \n     \n    \\(s^2 = 2.50\\) \n  \n  \n     \n     \n    \\(s = 1.58\\) \n  \n\n\n\n\n\n\nSpend $10 on other\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    5 \n    1 \n    1 \n  \n  \n    5 \n    1 \n    1 \n  \n  \n    2 \n    -2 \n    4 \n  \n  \n    5 \n    1 \n    1 \n  \n  \n    3 \n    -1 \n    1 \n  \n  \n    \\(M = 4.00\\) \n     \n    \\(SS = 8.00\\) \n  \n  \n     \n     \n    \\(s^2 = 2.00\\) \n  \n  \n     \n     \n    \\(s = 1.41\\)"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#step-4-make-decision",
@@ -1573,5 +1573,12 @@
     "title": "BC1101",
     "section": "4. Make decision",
     "text": "4. Make decision\n\nStep 4a: Make a decision about \\(H_0\\)\n\n\\(t = 4.08\\) exceeds critical values \\([-2.07, 2.07]\\)\n\\(p < \\alpha\\)\n“Statistically significant” difference"
+  },
+  {
+    "objectID": "slides/13_independent-samples-t-test.html#step-3-calculate-t-statistic-1",
+    "href": "slides/13_independent-samples-t-test.html#step-3-calculate-t-statistic-1",
+    "title": "BC1101",
+    "section": "Step 3 : Calculate \\(t\\) statistic",
+    "text": "Step 3 : Calculate \\(t\\) statistic\n\n\\(s_p^2 = \\dfrac{SS_1+SS_2}{df_1+df_2} = \\dfrac{10 + 8}{4 + 4} = 2.25\\)\n\n\\(s_{M_1-M_2} = \\sqrt{\\dfrac{s_p^2}{n_1}+\\dfrac{s_p^2}{n_2}} = \\sqrt{\\dfrac{2.25}{5}+\\dfrac{2.25}{5}} = 0.95\\)\n\n\\(t = \\dfrac{(M_1-M_2)-(\\mu_1-\\mu_2)}{s_{M_1-M_2}} = \\dfrac{3 - 4}{0.95} = -1.05\\)"
   }
 ]

@@ -246,6 +246,9 @@ $\begin{align} s_p^2 = &\dfrac{SS_1+SS_2}{df_1+df_2} \\ \\ \text{or... } &\dfrac
 
 ## Step 2: Define critical region
 
+:::: {.columns}
+
+::: {.column width="50%"}
 - Depends on $\alpha$ and $df$
 
 $$
@@ -255,8 +258,23 @@ df &= df_1 + df_2 \\
 &= N - 2
 \end{align}
 $$
+![](media/nondirectional-test-labelled.svg)
 
-## Step 3: Collect data, calculate $t$ statistic
+:::
+
+::: {.column width="50%"}
+```{r}
+#| style: "font-size: 0.4em;"
+bc1101tools::t_table(alphas = .05, two_tailed_only = TRUE)
+```
+
+:::
+
+::::
+
+
+
+## Step 3: Calculate $t$ statistic
 
 ```{r data}
 conditionA <- c(1, 5, 2, 4, 3)
@@ -285,14 +303,41 @@ sm1m2 <- sqrt((s2p/n1)+(s2p/n2))
 t <- (m1-m2)/sm1m2
 ```
 
+:::: {.columns .center-element style="font-size: 0.7em;"}
+
+::: {.column width="50%"}
+Spend $10 on self
+
+```{r}
+bc1101tools::SD_table(conditionA)
+```
+:::
+
+::: {.column width="50%"}
+Spend $10 on other
+
+```{r}
+bc1101tools::SD_table(conditionB)
+```
+:::
+
+::::
+
+
+
 ## Step 3 : Calculate $t$ statistic
 
+::: {.center-element}
 $s_p^2 = \dfrac{SS_1+SS_2}{df_1+df_2} = \dfrac{`r ss1` + `r ss2`}{`r df1` + `r df2`} = `r s2p`$
 
+<br>
 
 $s_{M_1-M_2} = \sqrt{\dfrac{s_p^2}{n_1}+\dfrac{s_p^2}{n_2}} = \sqrt{\dfrac{`r s2p`}{`r n1`}+\dfrac{`r s2p`}{`r n2`}} = `r round(sm1m2, 2)`$
 
+<br>
+
 $t = \dfrac{(M_1-M_2)-(\mu_1-\mu_2)}{s_{M_1-M_2}} = \dfrac{`r m1` - `r m2`}{`r round(sm1m2, 2)`} = `r round(t, 2)`$
+:::
 
 
 ## Step 4: Make decision
