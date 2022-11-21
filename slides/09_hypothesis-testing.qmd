@@ -403,9 +403,9 @@ sample
 ![](media/nondirectional-test-labelled.svg){.invertable}
 
 
-# $z$-test
+# $z$-test {.small}
 
-- $z$-test is appropriate if:
+- Appropriate if:
   - Original population $\mu$ and $\sigma$ are both known
   - Sampling distribution is normally distributed
 
