@@ -253,12 +253,12 @@ pnorm(-5.59)
 ::: {#treatment}
 Treatment
 :::
-::: {#circle .solid}
+::: {#circle}
 Known  
 original  
 population
 :::
-::: {#circle .fill .dashed style="right: 0"}
+::: {#circle style="right: 0"}
 Unknown  
 treated  
 population
@@ -266,7 +266,7 @@ population
 ::: {#rect}
 Sample
 :::
-::: {#rect .fill style="right: 0"}
+::: {#rect style="right: 0"}
 Treated  
 sample 
 :::
