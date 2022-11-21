@@ -477,7 +477,7 @@ Does CBT affect OCD? ([Abramowitz et al., 2010](http://dx.doi.org/10.1037/a00182
 3. Collect data; compute statistics & probabilities
     - Pre-treatment $\mu = `r cbt$m`$; $\sigma = `r cbt$sd`$
     
-    - Treated sample $M = `r cbt$x`; $n = `r cbt$n`$
+    - Treated sample $M = `r cbt$x`$; $n = `r cbt$n`$
 
 4. Make decision
   
