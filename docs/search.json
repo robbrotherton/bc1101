@@ -1580,5 +1580,145 @@
     "title": "BC1101",
     "section": "Step 3 : Calculate \\(t\\) statistic",
     "text": "Step 3 : Calculate \\(t\\) statistic\n\n\\(s_p^2 = \\dfrac{SS_1+SS_2}{df_1+df_2} = \\dfrac{10 + 8}{4 + 4} = 2.25\\)\n\n\\(s_{M_1-M_2} = \\sqrt{\\dfrac{s_p^2}{n_1}+\\dfrac{s_p^2}{n_2}} = \\sqrt{\\dfrac{2.25}{5}+\\dfrac{2.25}{5}} = 0.95\\)\n\n\\(t = \\dfrac{(M_1-M_2)-(\\mu_1-\\mu_2)}{s_{M_1-M_2}} = \\dfrac{3 - 4}{0.95} = -1.05\\)"
+  },
+  {
+    "objectID": "slides/15_ANOVA.html#comparing-groups-t-statistic",
+    "href": "slides/15_ANOVA.html#comparing-groups-t-statistic",
+    "title": "BC1101",
+    "section": "Comparing groups: \\(t\\) statistic",
+    "text": "Comparing groups: \\(t\\) statistic\n\n\n\n\n\n\n\n\n\n\n\n\n \nManipulation\n  \n    🍌Banana \n    🍬Candy \n  \n \n\n  \n    9 \n    3 \n  \n  \n    11 \n    5 \n  \n  \n    13 \n    4 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n  \n\n\n\n\n\n\n\\(t = \\dfrac{ \\textrm{difference between groups}} {\\textrm{difference expected due to chance}}\\)\n\\[\\begin{align}\nt &= \\dfrac{(M_1-M_2)-(\\mu_1-\\mu_2)}{s_{(M_1-M_2)}} \\\\\n&= \\dfrac{11 - 4}{1.29} \\\\\n&= 5.42\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/15_ANOVA.html#comparing-groups-sources-of-variance",
+    "href": "slides/15_ANOVA.html#comparing-groups-sources-of-variance",
+    "title": "BC1101",
+    "section": "Comparing groups: sources of variance",
+    "text": "Comparing groups: sources of variance\n\n\n\n\n\nLeft column\n\n\n\nTotal variability in data\n\n\nVariability between groups\n\n\nVariability within groups"
+  },
+  {
+    "objectID": "slides/15_ANOVA.html#comparing-groups-t-statistic-1",
+    "href": "slides/15_ANOVA.html#comparing-groups-t-statistic-1",
+    "title": "BC1101",
+    "section": "Comparing groups: \\(t\\) statistic",
+    "text": "Comparing groups: \\(t\\) statistic\n\n\n\n\n\n\n \nManipulation\n  \n    🍌Banana \n    🍬Candy \n  \n \n\n  \n    9 \n    3 \n  \n  \n    11 \n    5 \n  \n  \n    13 \n    4 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n  \n\n\n\n\n\n\\(t = 5.42\\)\n\n\n\\(t = \\dfrac{\\text{difference between groups}}{\\text{difference expected due to chance}}\\)\nis analogous to…\n\\(\\dfrac{treatment \\cdot chance}{chance}\\)"
+  },
+  {
+    "objectID": "slides/15_ANOVA.html#f-diagrams",
+    "href": "slides/15_ANOVA.html#f-diagrams",
+    "title": "BC1101",
+    "section": "F diagrams",
+    "text": "F diagrams"
+  },
+  {
+    "objectID": "slides/15_ANOVA.html#svg",
+    "href": "slides/15_ANOVA.html#svg",
+    "title": "BC1101",
+    "section": "SVG",
+    "text": "SVG"
+  },
+  {
+    "objectID": "slides/15_ANOVA.html#ojs",
+    "href": "slides/15_ANOVA.html#ojs",
+    "title": "BC1101",
+    "section": "OJS",
+    "text": "OJS\n\ndiagram = {\n\n  const w = 500\n  const h = 300\n  const m = 20\n  const box_width = 100\n  const box_height = 30\n  \n  const svg = d3.select(\"#variability-diagram\").append(\"svg\")\n    .attr(\"width\", 500).attr(\"height\", 300)\n    .style(\"background\", \"pink\")\n  \n  const total = svg.append(\"g\")\n    .attr(\"transform\", `translate(${w/2}, ${m})`)\n    \n  total.append(\"text\")\n    .text(\"Total variability in data\")\n    .attr(\"text-anchor\", \"middle\")\n  total.append(\"rect\")\n    .text(\"Total variability in data\")\n    .attr(\"x\", -box_width/2)\n    .attr(\"width\", box_width)\n    .attr(\"height\", box_height)\n}"
+  },
+  {
+    "objectID": "slides/15_ANOVA.html#div",
+    "href": "slides/15_ANOVA.html#div",
+    "title": "BC1101",
+    "section": "DIV",
+    "text": "DIV"
+  },
+  {
+    "objectID": "slides/15_ANOVA.html#comparing-groups-variances",
+    "href": "slides/15_ANOVA.html#comparing-groups-variances",
+    "title": "BC1101",
+    "section": "Comparing groups: Variances",
+    "text": "Comparing groups: Variances\n\n\n\n\n\n\n \nManipulation\n  \n    🍌Banana \n    🍬Candy \n  \n \n\n  \n    9 \n    3 \n  \n  \n    11 \n    5 \n  \n  \n    13 \n    4 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n  \n\n\n\n\n\n\\(t = 5.42\\)\n\n\n\nTotal\nvariability in data\n\n\nVariability\nbetween groups\n\n\n\nChance\nTreatment effect\n\n\n\nVariability\nwithin groups\n\n\n\nChance\n\n\n\n\n\\(\\dfrac{\\text{variability between groups}}{\\text{variability within groups}}\\)\nis analogous to…\n\\(\\dfrac{treatment \\cdot chance}{chance}\\)"
+  },
+  {
+    "objectID": "slides/15_ANOVA.html#comparing-groups-variances-1",
+    "href": "slides/15_ANOVA.html#comparing-groups-variances-1",
+    "title": "BC1101",
+    "section": "Comparing groups: Variances",
+    "text": "Comparing groups: Variances\n\n\n\n\n\n\n \nManipulation\n  \n    Banana \n    Candy \n  \n \n\n  \n    9 \n    3 \n  \n  \n    11 \n    5 \n  \n  \n    13 \n    4 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n  \n\n\n\n\n\n\n\nTotal variance\n\n\\(SS_{total}\\)\nFind sum of squared deviations of all scores (ignoring different groups) from grand mean (mean of all scores)\n\\(df_{total} = N - 1\\)\n\n\n\\[\\begin{align}\n\\text{Variance}_{total} &= \\dfrac{SS_{total}}{df_{total}} \\\\\n&= \\dfrac{83.5}{5} \\\\\n&= 16.7\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/15_ANOVA.html#comparing-groups-variances-2",
+    "href": "slides/15_ANOVA.html#comparing-groups-variances-2",
+    "title": "BC1101",
+    "section": "Comparing groups: Variances",
+    "text": "Comparing groups: Variances\n\n\n\n\n\n\n \nManipulation\n  \n    Banana \n    Candy \n  \n \n\n  \n    9 \n    3 \n  \n  \n    11 \n    5 \n  \n  \n    13 \n    4 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n  \n\n\n\n\n\n\n\nVariance within groups\n\n\\(SS_{within} = \\Sigma SS_{each \\ treatment}\\)\nFind \\(SS\\) for each individual group from respective group mean\nThen add \\(SS\\) values\n\\(df_{within} = \\Sigma df_{each \\ treatment}\\)\n\n\n\\[\\begin{align}\n\\text{Variance}_{within} &= \\dfrac{SS_{within}}{df_{within}} \\\\\n&= \\dfrac{8 + 2}{ + } \\\\\n&= 2.5\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/15_ANOVA.html#comparing-groups-variances-3",
+    "href": "slides/15_ANOVA.html#comparing-groups-variances-3",
+    "title": "BC1101",
+    "section": "Comparing groups: Variances",
+    "text": "Comparing groups: Variances\n\n\n\n\n\n\n \nManipulation\n  \n    Banana \n    Candy \n  \n \n\n  \n    9 \n    3 \n  \n  \n    11 \n    5 \n  \n  \n    13 \n    4 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n  \n\n\n\n\n\n\n\nTotal variability in data = Var between groups + Var within groups\nTherefore…\n\n\n\\(SS_{between} = SS_{total} – SS_{within}\\)\n\\(df_{between} = df_{total} – df_{within}\\)\n\\[\\begin{align}\n\\text{Variance}_{between} &= \\dfrac{SS_{between}}{df_{between}} \\\\\n&= \\dfrac{83.5 - 10}{5-4} \\\\\n&= 73.5\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/15_ANOVA.html#comparing-groups-variances-4",
+    "href": "slides/15_ANOVA.html#comparing-groups-variances-4",
+    "title": "BC1101",
+    "section": "Comparing groups: Variances",
+    "text": "Comparing groups: Variances\n\n\n\n\n\n\n \nManipulation\n  \n    Banana \n    Candy \n  \n \n\n  \n    9 \n    3 \n  \n  \n    11 \n    5 \n  \n  \n    13 \n    4 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n  \n\n\n\n\n\n\n\\(\\dfrac{\\text{variance between groups}}{\\text{variance within groups}}\\)\n\\(\\dfrac{73.5}{2.5} = 29.4\\)"
+  },
+  {
+    "objectID": "slides/15_ANOVA.html#total-variance",
+    "href": "slides/15_ANOVA.html#total-variance",
+    "title": "BC1101",
+    "section": "Total variance",
+    "text": "Total variance\n\n\n\n\n\n\n \nManipulation\n  \n    🍌Banana \n    🍬Candy \n  \n \n\n  \n    9 \n    3 \n  \n  \n    11 \n    5 \n  \n  \n    13 \n    4 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n  \n\n\n\n\n\n\\(t = 5.42\\)\n\n\nTotal variance\n\n\\(SS_{total}\\)\nFind sum of squared deviations of all scores (ignoring different groups) from grand mean (mean of all scores)\n\\(df_{total} = N - 1\\)\n\n\n\\[\\begin{align}\n\\text{Variance}_{total} &= \\dfrac{SS_{total}}{df_{total}} \\\\\n&= \\dfrac{83.5}{5} \\\\\n&= 16.7\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/15_ANOVA.html#within-groups-variance",
+    "href": "slides/15_ANOVA.html#within-groups-variance",
+    "title": "BC1101",
+    "section": "Within groups variance",
+    "text": "Within groups variance\n\n\n\n\n\n\n \nManipulation\n  \n    🍌Banana \n    🍬Candy \n  \n \n\n  \n    9 \n    3 \n  \n  \n    11 \n    5 \n  \n  \n    13 \n    4 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n  \n\n\n\n\n\n\\(t = 5.42\\)\n\\(\\text{Variance}_{total} = 16.7\\)\n\n\nVariance within groups\n\n\\(SS_{within} = \\Sigma SS_{each \\ treatment}\\)\nFind \\(SS\\) for each individual group from respective group mean\nThen add \\(SS\\) values\n\\(df_{within} = \\Sigma df_{each \\ treatment}\\)\n\n\n\\[\\begin{align}\n\\text{Variance}_{within} &= \\dfrac{SS_{within}}{df_{within}} \\\\\n&= \\dfrac{8 + 2}{ + } \\\\\n&= 2.5\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/15_ANOVA.html#between-groups-variance",
+    "href": "slides/15_ANOVA.html#between-groups-variance",
+    "title": "BC1101",
+    "section": "Between groups variance",
+    "text": "Between groups variance\n\n\n\n\n\n\n \nManipulation\n  \n    🍌Banana \n    🍬Candy \n  \n \n\n  \n    9 \n    3 \n  \n  \n    11 \n    5 \n  \n  \n    13 \n    4 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n  \n\n\n\n\n\n\\(t = 5.42\\)\n\\(\\text{Variance}_{total} = 16.7\\)\n\\(\\text{Variance}_{within} = 2.5\\)\n\n\nTotal variability in data = Var between groups + Var within groups\nTherefore…\n\n\n\\(SS_{between} = SS_{total} – SS_{within}\\)\n\\(df_{between} = df_{total} – df_{within}\\)\n\\[\\begin{align}\n\\text{Variance}_{between} &= \\dfrac{SS_{between}}{df_{between}} \\\\\n&= \\dfrac{83.5 - 10}{5-4} \\\\\n&= 73.5\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/15_ANOVA.html#ratio-of-variances",
+    "href": "slides/15_ANOVA.html#ratio-of-variances",
+    "title": "BC1101",
+    "section": "Ratio of variances",
+    "text": "Ratio of variances\n\n\n\n\n\n\n \nManipulation\n  \n    🍌Banana \n    🍬Candy \n  \n \n\n  \n    9 \n    3 \n  \n  \n    11 \n    5 \n  \n  \n    13 \n    4 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n  \n\n\n\n\n\n\\(t = 5.42\\)\n\\(\\text{Variance}_{total} = 16.7\\)\n\\(\\text{Variance}_{within} = 2.5\\) \\(\\text{Variance}_{between} = 73.5\\)\n\n\n\nTotal\nvariability in data\n\n\nVariability\nbetween groups\n\n\n\nChance\nTreatment effect\n\n\n\nVariability\nwithin groups\n\n\n\nChance\n\n\n\n\\(\\dfrac{\\text{variance between groups}}{\\text{variance within groups}}\\)\n\\(\\dfrac{73.5}{2.5} = 29.4\\)"
+  },
+  {
+    "objectID": "slides/15_ANOVA.html#more-complicated-design",
+    "href": "slides/15_ANOVA.html#more-complicated-design",
+    "title": "BC1101",
+    "section": "More complicated design",
+    "text": "More complicated design\n\n\n\n\n \nManipulation\n  \n    🍌Banana \n    🍬Candy \n    😐Control \n  \n \n\n  \n    9 \n    3 \n    5 \n  \n  \n    11 \n    5 \n    6 \n  \n  \n    13 \n    4 \n    7 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n    \\(M = 6\\) \n  \n\n\n\n\n\n\nDifferences among 3 means\n\nDid banana improve scores? Candy bar harm scores? Both? Neither?"
+  },
+  {
+    "objectID": "slides/15_ANOVA.html#limitation-of-t-test",
+    "href": "slides/15_ANOVA.html#limitation-of-t-test",
+    "title": "BC1101",
+    "section": "Limitation of \\(t\\) test",
+    "text": "Limitation of \\(t\\) test\n\nCan only compare two populations\n\n\\(H_0\\): \\(\\mu_1 - \\mu_2 = 0\\)"
+  },
+  {
+    "objectID": "slides/15_ANOVA.html#advantage-of-anova",
+    "href": "slides/15_ANOVA.html#advantage-of-anova",
+    "title": "BC1101",
+    "section": "Advantage of ANOVA",
+    "text": "Advantage of ANOVA\n\nANOVA is a tool for the general case\n\nComparing any number of populations\n\\(H_0\\): \\(\\mu_1 = \\mu_2 = \\mu_3 = \\dots = \\mu_n\\)"
+  },
+  {
+    "objectID": "slides/15_ANOVA.html#the-f-ratio",
+    "href": "slides/15_ANOVA.html#the-f-ratio",
+    "title": "BC1101",
+    "section": "The \\(F\\) ratio",
+    "text": "The \\(F\\) ratio\n\n\n\n\n\n\n \nManipulation\n  \n    🍌Banana \n    🍬Candy \n  \n \n\n  \n    9 \n    3 \n  \n  \n    11 \n    5 \n  \n  \n    13 \n    4 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n  \n\n\n\n\n\n\\(t = 5.42\\)\n\\(F = 29.4\\)\n\n\n\nTotal\nvariability in data\n\n\nVariability\nbetween groups\n\n\n\nChance\nTreatment effect\n\n\n\nVariability\nwithin groups\n\n\n\nChance\n\n\n\n\n\\(\\dfrac{\\text{variance between groups}}{\\text{variance within groups}}\\)\nis analogous to…\n\\(\\dfrac{treatment \\cdot chance}{chance}\\)"
   }
 ]
