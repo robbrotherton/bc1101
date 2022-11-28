@@ -475,10 +475,42 @@ $$\begin{align}
 
 # Post-hoc tests
 
+```{r}
+q <- qtukey(p = .95, nmeans = 3, df = a2$df_error)
+
+q_df <- data.frame(df = 2:8)
+for (i in 2:7) {
+  q_df <- tibble::add_column(q_df, data.frame(x = qtukey(.95, i, q_df$df)))
+}
+```
+
 - Step 4c: Post-hoc tests
   - Tukey’s Honestly Significant Difference
   - Minimum difference between pairs of treatment means so that $p < \alpha_{experimentwise}$
 
+:::: {.columns}
+
+::: {.column width="50%"}
+$$\begin{align}
+HSD &= q \sqrt{\dfrac{MS_{denominator}}{n}} \\
+&=`r q` \sqrt{\dfrac{`r a2$MS_error`}{`r n`}} \\
+&= `r q * sqrt(a2$MS_error/n)`
+\end{align}$$
+:::
+
+::: {.column width="50%"}
+```{r}
+#| style: "font-size: 0.5em;"
+options(digits = 3)
+knitr::kable(q_df, col.names = c("\\(df\\)", 2:7)) |> 
+  kableExtra::column_spec(1, bold = TRUE) |> 
+  kableExtra::add_header_above(c(" " = 1, "Number of conditions" = 6))
+options(digits = 2)
+```
+
+:::
+
+::::
 
 
 ## Report results
