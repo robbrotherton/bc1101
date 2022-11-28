@@ -1818,5 +1818,152 @@
     "title": "BC1101",
     "section": "OJS",
     "text": "OJS\n\nout = jStat.centralF.pdf(0.1, 1, 10)\n\nout"
+  },
+  {
+    "objectID": "slides/17_related-samples-ANOVA.html#independent-samples",
+    "href": "slides/17_related-samples-ANOVA.html#independent-samples",
+    "title": "BC1101",
+    "section": "Independent-samples",
+    "text": "Independent-samples\n\n\n\nIndependent-measures ANOVA\n\n“Between-participants”\nDifferent participants in each treatment\nBetween-groups variability could be due to treatment effect and/or individual differences"
+  },
+  {
+    "objectID": "slides/17_related-samples-ANOVA.html#related-samples",
+    "href": "slides/17_related-samples-ANOVA.html#related-samples",
+    "title": "BC1101",
+    "section": "Related-samples",
+    "text": "Related-samples\n\n\n\nRepeated-measures (within-participants)\n\nSame participants in each treatment\n\nOr matched-samples\n\nMatched participants in each treatment"
+  },
+  {
+    "objectID": "slides/17_related-samples-ANOVA.html#partitioning-variance",
+    "href": "slides/17_related-samples-ANOVA.html#partitioning-variance",
+    "title": "BC1101",
+    "section": "Partitioning variance",
+    "text": "Partitioning variance\n\n\nTotal variance\n\n\nVariance between groups\n\\(MS_{between}\\)\n\n\n\nTreatment effect\nSampling error\nIndividual differences\n\n\n\nVariance within groups\n\\(MS_{within}\\)\n\n\n\nSampling error\nIndividual differences\n\n\n\n\n\\(F = \\dfrac{{MS_{between}}}{{MS_{within}}} = \\dfrac{treatment, \\ error, \\ ind. \\ diff.}{error, \\ ind. \\ diff.}\\)"
+  },
+  {
+    "objectID": "slides/17_related-samples-ANOVA.html#partitioning-variance-1",
+    "href": "slides/17_related-samples-ANOVA.html#partitioning-variance-1",
+    "title": "BC1101",
+    "section": "Partitioning variance",
+    "text": "Partitioning variance\n\n\nTotal variance\n\n\nVariance between treatments\n\\(MS_{between \\ treatments}\\)\n\n\n\nTreatment effect\nSampling error\n\n\n\nVariance within groups\n\\(MS_{within}\\)\n\n\n\nSampling error\nIndividual differences\n\n\n\n\n\\(F = \\dfrac{{MS_{between \\ treatments}}}{{MS_{within}}} = \\dfrac{treatment, \\ error}{error, \\ ind. \\ diff.}\\)"
+  },
+  {
+    "objectID": "slides/17_related-samples-ANOVA.html#partitioning-variance-2",
+    "href": "slides/17_related-samples-ANOVA.html#partitioning-variance-2",
+    "title": "BC1101",
+    "section": "Partitioning variance",
+    "text": "Partitioning variance\n\n\nTotal variance\n\n\nVariance between treatments\n\\(MS_{between \\ treatments}\\)\n\n\n\nTreatment effect\nSampling error\n\n\n\nVariance within groups\n\\(MS_{within}\\)\n\n\nError\n\\(MS_{error}\\)\n\n\nBetween subjects\n\\(MS_{between \\ S's}\\)\n\n\n\nSampling error\n\n\n\n\nIndividual differences\n\n\n\n\n\\(F = \\dfrac{{MS_{between \\ treatments}}}{{MS_{error}}} = \\dfrac{treatment, \\ error}{error}\\)"
+  },
+  {
+    "objectID": "slides/17_related-samples-ANOVA.html#ss-and-df-values",
+    "href": "slides/17_related-samples-ANOVA.html#ss-and-df-values",
+    "title": "BC1101",
+    "section": "1. \\(SS\\) and \\(df\\) values",
+    "text": "1. \\(SS\\) and \\(df\\) values"
+  },
+  {
+    "objectID": "slides/17_related-samples-ANOVA.html#ss-and-df-values-1",
+    "href": "slides/17_related-samples-ANOVA.html#ss-and-df-values-1",
+    "title": "BC1101",
+    "section": "1. \\(SS\\) and \\(df\\) values",
+    "text": "1. \\(SS\\) and \\(df\\) values\n\\[\\begin{align}\nSS_{total} &= \\Sigma X^2 - \\dfrac{G^2}{N} \\\\\nSS_{within} &= \\Sigma SS_{within \\ each \\ treatment} \\\\\nSS_{between \\ treatments} &= \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N} \\\\\nSS_{between \\ subjects} &= \\Sigma \\dfrac{P^2}{k} - \\dfrac{G^2}{N} \\\\\nSS_{error} &= SS_{within}-SS_{between \\ subjects}\n\\end{align}\\]\n\\[\\begin{align}\ndf_{total} &= N-1  \\\\\ndf_{within} &= N-k \\\\\ndf_{between \\ treatments} &= k-1 \\\\\ndf_{between \\ subjects} &= n-1 \\\\\ndf_{error} &= df_{within}-df_{between \\ subjects}\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/17_related-samples-ANOVA.html#section",
+    "href": "slides/17_related-samples-ANOVA.html#section",
+    "title": "BC1101",
+    "section": "2.",
+    "text": "2."
+  },
+  {
+    "objectID": "slides/17_related-samples-ANOVA.html#ms-values",
+    "href": "slides/17_related-samples-ANOVA.html#ms-values",
+    "title": "BC1101",
+    "section": "2. \\(MS\\) values",
+    "text": "2. \\(MS\\) values\n\nStep 2. \\(MS\\) values\n\n\\[\\begin{align}\nMS_{between \\ treatments} &= \\dfrac{SS_{between \\ treatments}}{df_{between \\ treatments}} \\\\\n\\ \\\\\nMS_{error} &= \\dfrac{SS_{error}}{df_{error}}\n\\end{align}\\]\n\nStep 3. \\(F\\)-ratio\n\n\\(F = \\dfrac{MS_{between \\ treatments}}{MS_{error}}\\)"
+  },
+  {
+    "objectID": "slides/17_related-samples-ANOVA.html#calculations-ss-and-df-values",
+    "href": "slides/17_related-samples-ANOVA.html#calculations-ss-and-df-values",
+    "title": "BC1101",
+    "section": "Calculations: \\(SS\\) and \\(df\\) values",
+    "text": "Calculations: \\(SS\\) and \\(df\\) values"
+  },
+  {
+    "objectID": "slides/17_related-samples-ANOVA.html#calculations-ss-and-df",
+    "href": "slides/17_related-samples-ANOVA.html#calculations-ss-and-df",
+    "title": "BC1101",
+    "section": "Calculations: \\(SS\\) and \\(df\\)",
+    "text": "Calculations: \\(SS\\) and \\(df\\)\n\\[\\begin{align}\nSS_{total} &= \\Sigma X^2 - \\dfrac{G^2}{N} \\\\\nSS_{within} &= \\Sigma SS_{within \\ each \\ treatment} \\\\\nSS_{between \\ treatments} &= \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N} \\\\\nSS_{between \\ subjects} &= \\Sigma \\dfrac{P^2}{k} - \\dfrac{G^2}{N} \\\\\nSS_{error} &= SS_{within}-SS_{between \\ subjects}\n\\end{align}\\]\n\\[\\begin{align}\ndf_{total} &= N-1  \\\\\ndf_{within} &= N-k \\\\\ndf_{between \\ treatments} &= k-1 \\\\\ndf_{between \\ subjects} &= n-1 \\\\\ndf_{error} &= df_{within}-df_{between \\ subjects}\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/17_related-samples-ANOVA.html#calculations-ms-and-f",
+    "href": "slides/17_related-samples-ANOVA.html#calculations-ms-and-f",
+    "title": "BC1101",
+    "section": "Calculations: \\(MS\\) and \\(F\\)",
+    "text": "Calculations: \\(MS\\) and \\(F\\)\n\nStep 2. \\(MS\\) values\n\n\\[\\begin{align}\nMS_{between \\ treatments} &= \\dfrac{SS_{between \\ treatments}}{df_{between \\ treatments}} \\\\\n\\ \\\\\nMS_{error} &= \\dfrac{SS_{error}}{df_{error}}\n\\end{align}\\]\n\nStep 3. \\(F\\)-ratio\n\n\n\\(F = \\dfrac{MS_{between \\ treatments}}{MS_{error}}\\)"
+  },
+  {
+    "objectID": "slides/17_related-samples-ANOVA.html#summary-table",
+    "href": "slides/17_related-samples-ANOVA.html#summary-table",
+    "title": "BC1101",
+    "section": "Summary table",
+    "text": "Summary table"
+  },
+  {
+    "objectID": "slides/17_related-samples-ANOVA.html#step-1.-state-hypotheses",
+    "href": "slides/17_related-samples-ANOVA.html#step-1.-state-hypotheses",
+    "title": "BC1101",
+    "section": "Step 1. State hypotheses",
+    "text": "Step 1. State hypotheses\n\n\n\n\n\n\n\n \n\n\nManipulation\n\n  \n    Person \n    🍌Banana \n    🍬Candy \n    😐Control \n  \n \n\n  \n    A \n    9 \n    3 \n    5 \n  \n  \n    B \n    11 \n    5 \n    6 \n  \n  \n    C \n    13 \n    4 \n    7 \n  \n\n\n\n\n\n\n\\(H_0: \\mu_1 = \\mu_2 = \\mu_3\\)\n\\(H_1\\) : At least one population mean differs from another"
+  },
+  {
+    "objectID": "slides/17_related-samples-ANOVA.html#step-2.-critical-region",
+    "href": "slides/17_related-samples-ANOVA.html#step-2.-critical-region",
+    "title": "BC1101",
+    "section": "Step 2. Critical region",
+    "text": "Step 2. Critical region\n\nNumerator: \\(df_{between \\ treatments} = k-1\\)\nDenominator: \\(df_{error} = df_{within}-df_{between \\ S's} = (N-k)-(n-1)\\)\n\n\n\n\n\n \n\n\\(\\alpha = .05\\)\n\\(df_{numerator}\\)\n\n  \n    \\(df_{denominator}\\) \n    1 \n    2 \n    3 \n    4 \n    5 \n    6 \n    7 \n    8 \n    9 \n    10 \n  \n \n\n  \n    1 \n    161.45 \n    199.50 \n    215.71 \n    224.58 \n    230.16 \n    233.99 \n    236.77 \n    238.88 \n    240.54 \n    241.88 \n  \n  \n    2 \n    18.51 \n    19.00 \n    19.16 \n    19.25 \n    19.30 \n    19.33 \n    19.35 \n    19.37 \n    19.39 \n    19.40 \n  \n  \n    3 \n    10.13 \n    9.55 \n    9.28 \n    9.12 \n    9.01 \n    8.94 \n    8.89 \n    8.85 \n    8.81 \n    8.79 \n  \n  \n    4 \n    7.71 \n    6.94 \n    6.59 \n    6.39 \n    6.26 \n    6.16 \n    6.09 \n    6.04 \n    6.00 \n    5.96 \n  \n  \n    5 \n    6.61 \n    5.79 \n    5.41 \n    5.19 \n    5.05 \n    4.95 \n    4.88 \n    4.82 \n    4.77 \n    4.74 \n  \n  \n    6 \n    5.99 \n    5.14 \n    4.76 \n    4.53 \n    4.39 \n    4.28 \n    4.21 \n    4.15 \n    4.10 \n    4.06 \n  \n  \n    7 \n    5.59 \n    4.74 \n    4.35 \n    4.12 \n    3.97 \n    3.87 \n    3.79 \n    3.73 \n    3.68 \n    3.64 \n  \n  \n    8 \n    5.32 \n    4.46 \n    4.07 \n    3.84 \n    3.69 \n    3.58 \n    3.50 \n    3.44 \n    3.39 \n    3.35 \n  \n  \n    9 \n    5.12 \n    4.26 \n    3.86 \n    3.63 \n    3.48 \n    3.37 \n    3.29 \n    3.23 \n    3.18 \n    3.14 \n  \n  \n    10 \n    4.96 \n    4.10 \n    3.71 \n    3.48 \n    3.33 \n    3.22 \n    3.13 \n    3.07 \n    3.02 \n    2.98"
+  },
+  {
+    "objectID": "slides/17_related-samples-ANOVA.html#calculate-f-ratio",
+    "href": "slides/17_related-samples-ANOVA.html#calculate-f-ratio",
+    "title": "BC1101",
+    "section": "3. Calculate \\(F\\)-ratio",
+    "text": "3. Calculate \\(F\\)-ratio\n\n\n\n\n\n\n \n\n\nManipulation\n\n\n  \n    Person \n    🍌Banana \n    🍬Candy \n    😐Control \n    P \n  \n \n\n  \n    A \n    9 \n    3 \n    5 \n    17 \n  \n  \n    B \n    11 \n    5 \n    6 \n    22 \n  \n  \n    C \n    13 \n    4 \n    7 \n    24 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M\\) \n    11 \n    4 \n    6 \n     \n  \n  \n    \\(T\\) \n    33 \n    12 \n    18 \n     \n  \n  \n    \\(SS\\) \n    8 \n    2 \n    2 \n     \n  \n\n\n\n\n\n\n\\(n = 3\\)\n\\(k = 3\\)\n\\(N = 9\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)\n\n\n\n\\[\\begin{align}\ndf_{total} &= N-1 = 8 \\\\\ndf_{within} &= N-k  = 6 \\\\\ndf_{between \\ treatments} &= k-1  = 2 \\\\\ndf_{between \\ subjects} &= n-1  = 2\\\\\ndf_{error} &= df_{within}-df_{between \\ subjects}  = 4\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-1",
+    "href": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-1",
+    "title": "BC1101",
+    "section": "3. Calculate \\(F\\)-ratio",
+    "text": "3. Calculate \\(F\\)-ratio\n\n\n\n\n\n\n \n\n\nManipulation\n\n\n  \n    Person \n    🍌Banana \n    🍬Candy \n    😐Control \n    P \n  \n \n\n  \n    A \n    9 \n    3 \n    5 \n    17 \n  \n  \n    B \n    11 \n    5 \n    6 \n    22 \n  \n  \n    C \n    13 \n    4 \n    7 \n    24 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M\\) \n    11 \n    4 \n    6 \n     \n  \n  \n    \\(T\\) \n    33 \n    12 \n    18 \n     \n  \n  \n    \\(SS\\) \n    8 \n    2 \n    2 \n     \n  \n\n\n\n\n\n\n\\(n = 3\\)\n\\(k = 3\\)\n\\(N = 9\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)\n\n\n\n\n\n\\(SS_{total} = \\Sigma X^2 - \\dfrac{G^2}{N} = 90\\)\n\\(SS_{within} = \\Sigma SS_{within \\ each \\ treatment} = 12\\)\n\\(SS_{between \\ treatments} = \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N} = 78\\)\n\n\\(SS_{between \\ subjects} = \\Sigma \\dfrac{P^2}{k} - \\dfrac{G^2}{N} = 8.67\\)\n\\(SS_{error} = \\Sigma SS_{within}-SS_{between \\ subjects} = 3.33\\)"
+  },
+  {
+    "objectID": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-2",
+    "href": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-2",
+    "title": "BC1101",
+    "section": "3. Calculate \\(F\\)-ratio",
+    "text": "3. Calculate \\(F\\)-ratio\n\n\n\n\n\n\n \n\n\nManipulation\n\n\n  \n    Person \n    🍌Banana \n    🍬Candy \n    😐Control \n    P \n  \n \n\n  \n    A \n    9 \n    3 \n    5 \n    17 \n  \n  \n    B \n    11 \n    5 \n    6 \n    22 \n  \n  \n    C \n    13 \n    4 \n    7 \n    24 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M\\) \n    11 \n    4 \n    6 \n     \n  \n  \n    \\(T\\) \n    33 \n    12 \n    18 \n     \n  \n  \n    \\(SS\\) \n    8 \n    2 \n    2 \n     \n  \n\n\n\n\n\n\n\\(n = 3\\)\n\\(k = 3\\)\n\\(N = 9\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)\n\n\n\n\\(MS_{between \\ treatments} = \\dfrac{SS_{between \\ treatments}}{df_{between \\ treatments}} = 39\\)\n\\(MS_{error} = \\dfrac{SS_{error}}{df_{error}} = 0.83\\)"
+  },
+  {
+    "objectID": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-3",
+    "href": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-3",
+    "title": "BC1101",
+    "section": "3. Calculate \\(F\\)-ratio",
+    "text": "3. Calculate \\(F\\)-ratio\n\n\n\n\n\n\n \n\n\nManipulation\n\n\n  \n    Person \n    🍌Banana \n    🍬Candy \n    😐Control \n    P \n  \n \n\n  \n    A \n    9 \n    3 \n    5 \n    17 \n  \n  \n    B \n    11 \n    5 \n    6 \n    22 \n  \n  \n    C \n    13 \n    4 \n    7 \n    24 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M\\) \n    11 \n    4 \n    6 \n     \n  \n  \n    \\(T\\) \n    33 \n    12 \n    18 \n     \n  \n  \n    \\(SS\\) \n    8 \n    2 \n    2 \n     \n  \n\n\n\n\n\n\n\\(n = 3\\)\n\\(k = 3\\)\n\\(N = 9\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)\n\n\n\n\\(F = \\dfrac{MS_{between \\ treatments}}{MS_{error}} = 46.8\\)"
+  },
+  {
+    "objectID": "slides/17_related-samples-ANOVA.html#report-results",
+    "href": "slides/17_related-samples-ANOVA.html#report-results",
+    "title": "BC1101",
+    "section": "Report results",
+    "text": "Report results\n\nA single-factor, related-samples ANOVA revealed a significant difference in people’s test scores when the test was preceded by consumption of a banana (\\(M = 11.00\\); \\(SD = 2.00\\)), a candy bar (\\(M = 4.00\\); \\(SD = 1.00\\)), and no snack (\\(M = 6.00\\); \\(SD = 1.00\\)); \\(F(2,4) = 46.8\\), \\(p < .05\\), \\(\\eta^2 = 0.96\\). Post-hoc tests using Tukey’s HSD revealed that test scores were significantly better following banana consumption than following no snack or candy consumption; the candy did not differ significantly from the control condition."
+  },
+  {
+    "objectID": "slides/17_related-samples-ANOVA.html#pros-and-cons",
+    "href": "slides/17_related-samples-ANOVA.html#pros-and-cons",
+    "title": "BC1101",
+    "section": "Pros and cons",
+    "text": "Pros and cons\n\n\n\nAdvantages\n\nEliminates individual differences as a source of variability between treatments\nSmaller number of participants needed\n\nDisadvantages\n\nSomething other than the treatment may cause participant’s scores to change\nE.g. practice, world events, natural improvement"
   }
 ]

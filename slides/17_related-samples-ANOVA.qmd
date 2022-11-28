@@ -1,0 +1,671 @@
+---
+format: revealjs
+---
+
+# [17|RELATED-SAMPLES ANOVA]{.r-fit-text}
+
+![](covers/17_related-samples-ANOVA.svg)
+
+
+# Overview
+
+- [Logic]
+- [Calculations]
+- [Post-hoc tests]
+- [Learning checks]
+
+
+# Logic
+
+## Independent-samples
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Independent-measures ANOVA
+  - "Between-participants"
+  - Different participants in each treatment
+  - Between-groups variability could be due to treatment effect and/or individual differences
+:::
+
+::: {.column width="50%"}
+
+::: {#independent-samples-container}
+:::
+
+:::
+
+::::
+
+
+## Related-samples
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Repeated-measures (within-participants)
+  - Same participants in each treatment
+- Or matched-samples
+  - Matched participants in each treatment
+:::
+
+::: {.column width="50%"}
+
+::: {#related-samples-container}
+:::
+
+:::
+
+::::
+
+
+## Pros and cons
+
+
+:::: {.columns}
+
+::: {.column width="50%" style="font-size: 0.8em;"}
+- Advantages
+  - Eliminates individual differences as a source of variability between treatments
+  - Smaller number of participants needed 
+- Disadvantages
+  - Something other than the treatment may cause participant’s scores to change
+  - E.g. practice, world events, natural improvement
+:::
+
+::: {.column width="50%"}
+
+::: {#related-samples-container}
+:::
+
+:::
+
+::::
+
+
+## Partitioning variance
+
+:::: {#diagram-container style="position: relative; width: 80%; height: 300px; font-size: 0.6em; margin: 0 auto;"}
+
+::: {.node .top .total}
+Total variance
+:::
+::: {.node .between style="top: 50%; left: 0"}
+Variance between groups  
+$MS_{between}$
+:::
+::: {.node .text style="top: 75%; left: 0; z-index: -1;"}
+- Treatment effect
+- Sampling error
+- Individual differences
+:::
+::: {.node .within style="top: 50%; right: 0;"}
+Variance within groups  
+$MS_{within}$
+:::
+::: {.node .text style="top: 75%; right: 0; z-index: -1;"}
+- Sampling error
+- Individual differences
+:::
+
+::::
+
+
+::: {.center-element style="margin-top: 3em;"}
+$F = \dfrac{{MS_{between}}}{{MS_{within}}} = \dfrac{treatment, \ error, \ ind. \ diff.}{error, \ ind. \ diff.}$
+:::
+
+
+## Partitioning variance
+
+:::: {#diagram-container style="position: relative; width: 80%; height: 300px; font-size: 0.6em; margin: 0 auto;"}
+
+::: {.node .top .total}
+Total variance
+:::
+::: {.node .between style="top: 50%; left: 0"}
+Variance between treatments   
+$MS_{between \ treatments}$
+:::
+::: {.node .text style="top: 75%; left: 0; z-index: -1;"}
+- Treatment effect
+- Sampling error
+:::
+::: {.node .within style="top: 50%; right: 0;"}
+Variance within groups  
+$MS_{within}$
+:::
+::: {.node .text style="top: 75%; right: 0; z-index: -1;"}
+- Sampling error
+- Individual differences
+:::
+
+::::
+
+
+::: {.center-element style="margin-top: 3em;"}
+$F = \dfrac{{MS_{between \ treatments}}}{{MS_{within}}} = \dfrac{treatment, \ error}{error, \ ind. \ diff.}$
+:::
+
+
+## Partitioning variance
+
+:::: {#diagram-container style="position: relative; width: 80%; height: 300px; font-size: 0.6em; margin: 0 auto;"}
+
+::: {.node .top .total}
+Total variance
+:::
+::: {.node .between style="top: 50%; left: 8%"}
+Variance between treatments   
+$MS_{between \ treatments}$
+:::
+::: {.node .text style="top: 75%; left: 8%; z-index: -1;"}
+- Treatment effect
+- Sampling error
+:::
+::: {.node .within style="top: 50%; right: 8%;"}
+Variance within groups  
+$MS_{within}$
+:::
+::: {.node .error style="top: 85%; right: 30%; width: 25%;"}
+Error  
+$MS_{error}$
+:::
+::: {.node .btwn-ss style="top: 85%; right: 0; width: 25%"}
+Between subjects  
+$MS_{between \ S's}$
+:::
+::: {.node .text style="top: 110%; right: 30%; z-index: -1; width: 25%;"}
+- Sampling error
+:::
+::: {.node .text style="top: 110%; right: 0; z-index: -1; width: 25%;"}
+- Individual differences
+:::
+
+::::
+
+
+::: {.center-element style="margin-top: 3em;"}
+$F = \dfrac{{MS_{between \ treatments}}}{{MS_{error}}} = \dfrac{treatment, \ error}{error}$
+:::
+
+# Calculations
+
+## Calculations: $SS$ and $df$ values
+
+## Calculations: $SS$ and $df$ {.smaller}
+
+$$\begin{align}
+SS_{total} &= \Sigma X^2 - \dfrac{G^2}{N} \\
+SS_{within} &= \Sigma SS_{within \ each \ treatment} \\
+SS_{between \ treatments} &= \Sigma \dfrac{T^2}{n} - \dfrac{G^2}{N} \\
+SS_{between \ subjects} &= \Sigma \dfrac{P^2}{k} - \dfrac{G^2}{N} \\
+SS_{error} &= SS_{within}-SS_{between \ subjects}
+\end{align}$$
+
+
+$$\begin{align}
+df_{total} &= N-1  \\
+df_{within} &= N-k \\
+df_{between \ treatments} &= k-1 \\
+df_{between \ subjects} &= n-1 \\
+df_{error} &= df_{within}-df_{between \ subjects}
+\end{align}$$
+
+## Calculations: $MS$ and $F$ {.small}
+
+- Step 2. $MS$ values
+
+$$\begin{align}
+MS_{between \ treatments} &= \dfrac{SS_{between \ treatments}}{df_{between \ treatments}} \\
+\ \\
+MS_{error} &= \dfrac{SS_{error}}{df_{error}}
+\end{align}$$
+
+- Step 3. $F$-ratio
+
+::: {.center-element}
+$F = \dfrac{MS_{between \ treatments}}{MS_{error}}$
+:::
+
+## Summary table
+
+
+# Hypothesis test
+
+## Step 1. State hypotheses
+
+```{r data-setup}
+options(digits = 2)
+
+x <- c(9,11,13)
+y <- c(3,5,4)
+z <- c(5,6,7)
+
+a2 <- bc1101tools::example_ANOVA(x, y, z)
+
+N <- length(c(x, y, z))
+n <- length(x)
+k <- 3
+G <- sum(c(x, y, z)) 
+T1 <- sum(x)
+T2 <- sum(y)
+T3 <- sum(z)
+P <- rowSums(data.frame(x, y, z))
+sigma_x_sq <- sum(c(x,y,z)^2)
+eta_sq <- a2$SS_between / a2$SS_total
+
+```
+
+```{r}
+#| style: "font-size: 0.8em"
+
+table2 <- knitr::kable(data.frame(person = c("A","B","C"), x, y, z), col.names = c("<br>Person", "🍌<br>Banana", "🍬<br>Candy", "😐<br>Control"), align = "c", format = "html", escape = FALSE) |> 
+  kableExtra::add_header_above(c(" " = 1, "Manipulation" = 3)) |> 
+  kableExtra::column_spec(1:4, width = "5em")
+
+footer <- data.frame(quantity = c("\\(M\\)","\\(T\\)","\\(SS\\)"),
+                    x = c(mean(x), sum(x), bc1101tools:::SS(x)),
+                    y = c(mean(y), sum(y), bc1101tools:::SS(y)),
+                    z = c(mean(z), sum(z), bc1101tools:::SS(z)),
+                    P = "")
+
+table3 <- knitr::kable(data.frame(person = c("A","B","C"), x, y, z, P), col.names = c("<br>Person", "🍌<br>Banana", "🍬<br>Candy", "😐<br>Control", "<br>P"), align = "c", format = "html", escape = FALSE) |> 
+  kableExtra::add_header_above(c(" " = 1, "Manipulation" = 3, " " = 1)) |> 
+  kableExtra::column_spec(1:4, width = "5em") |> 
+  kableExtra::column_spec(5, width = "2em")
+
+table_footer <- knitr::kable(footer, col.names = NULL, align = "c") |> 
+  kableExtra::column_spec(1:4, width = "5em") |> 
+  kableExtra::column_spec(5, width = "2em")
+
+
+table2
+```
+
+- $H_0: \mu_1 = \mu_2 = \mu_3$
+- $H_1$ : At least one population mean differs from another
+
+
+## Step 2. Critical region {.small}
+
+- Numerator: $df_{between \ treatments} = k-1$
+- Denominator: $df_{error} = df_{within}-df_{between \ S's} = (N-k)-(n-1)$
+
+```{r}
+#| style: "font-size: 0.5em;"
+options(digits = 3)
+
+dfs <- setNames(1:10, 1:10)
+
+aov_tab <- purrr::map_df(.x = dfs, ~qf(.95, df1 = 1:10, df2 = .x)) |> 
+  t() |>
+  as.data.frame() |>
+  setNames(1:10) |>
+  tibble::rownames_to_column(var = "df_denominator")
+
+
+knitr::kable(aov_tab, format = "html", escape=FALSE, align = "c", digits = 3,
+               col.names = c("\\(df_{denominator}\\)", 1:10)) |>
+  kableExtra::add_header_above(c("\\(\\alpha = .05\\)", "\\(df_{numerator}\\)" = 10), escape=FALSE, align = "left")
+
+options(digits = 2)
+```
+
+
+## 3. Calculate $F$-ratio
+
+
+:::: {.columns}
+
+::: {.column width="70%"}
+```{r}
+#| style: "font-size: 0.6em;"
+table3
+table_footer
+```
+
+:::
+
+::: {.column width="30%"}
+$n = `r n`$  
+$k = `r k`$  
+$N = `r N`$  
+$G = `r G`$  
+$\Sigma X^2 = `r sigma_x_sq`$
+:::
+
+::::
+
+::: {.smallest}
+$$\begin{align}
+df_{total} &= N-1 = `r N - 1` \\
+df_{within} &= N-k  = `r N - k` \\
+df_{between \ treatments} &= k-1  = `r k - 1` \\
+df_{between \ subjects} &= n-1  = `r n - 1`\\
+df_{error} &= df_{within}-df_{between \ subjects}  = `r (N - k) - (n - 1)`
+\end{align}$$
+:::
+
+
+
+## 3. Calculate $F$-ratio
+
+
+:::: {.columns}
+
+::: {.column width="70%"}
+```{r}
+#| style: "font-size: 0.6em;"
+table3
+table_footer
+```
+
+:::
+
+::: {.column width="30%"}
+$n = `r n`$  
+$k = `r k`$  
+$N = `r N`$  
+$G = `r G`$  
+$\Sigma X^2 = `r sigma_x_sq`$
+:::
+
+::::
+
+::: {.smallest}
+:::: {.columns}
+
+::: {.column width="50%"}
+
+$SS_{total} = \Sigma X^2 - \dfrac{G^2}{N} = `r a2$SS_total`$
+
+$SS_{within} = \Sigma SS_{within \ each \ treatment} = `r a2$SS_within`$
+
+$SS_{between \ treatments} = \Sigma \dfrac{T^2}{n} - \dfrac{G^2}{N} = `r a2$SS_between`$
+:::
+
+::: {.column width="50%"}
+
+$SS_{between \ subjects} = \Sigma \dfrac{P^2}{k} - \dfrac{G^2}{N} = `r a2$SS_between_subjects`$
+
+$SS_{error} = \Sigma SS_{within}-SS_{between \ subjects} = `r a2$SS_error`$
+
+:::
+
+::::
+
+:::
+
+
+## 3. Calculate $F$-ratio
+
+
+:::: {.columns}
+
+::: {.column width="70%"}
+```{r}
+#| style: "font-size: 0.6em;"
+table3
+table_footer
+```
+
+:::
+
+::: {.column width="30%"}
+$n = `r n`$  
+$k = `r k`$  
+$N = `r N`$  
+$G = `r G`$  
+$\Sigma X^2 = `r sigma_x_sq`$
+:::
+
+::::
+
+::: {.smaller .center-element}
+$MS_{between \ treatments} = \dfrac{SS_{between \ treatments}}{df_{between \ treatments}} = `r a2$MS_between`$
+
+$MS_{error} = \dfrac{SS_{error}}{df_{error}} = `r a2$MS_error`$
+:::
+
+
+
+## 3. Calculate $F$-ratio
+
+
+:::: {.columns}
+
+::: {.column width="70%"}
+```{r}
+#| style: "font-size: 0.6em;"
+table3
+table_footer
+```
+
+:::
+
+::: {.column width="30%"}
+$n = `r n`$  
+$k = `r k`$  
+$N = `r N`$  
+$G = `r G`$  
+$\Sigma X^2 = `r sigma_x_sq`$
+:::
+
+::::
+
+::: {.center-element}
+$F = \dfrac{MS_{between \ treatments}}{MS_{error}} = `r a2$f_related`$
+:::
+
+# Step 4. Decision
+
+- Step 4a. Significance
+  - $F > F_{critical}$?
+
+- Step 4b. Effect size
+
+$$\begin{align}
+\eta^2_{partial} &= \dfrac{SS_{between \ treatments}}{SS_{total} - SS_{between \ subjects}} \\
+&= \dfrac{SS_{between \ treatments}}{SS_{between \ treatments} + SS_{error}} \\
+&= `r a2$eta_sq_partial`
+\end{align}$$
+
+
+# Post-hoc tests
+
+- Step 4c: Post-hoc tests
+  - Tukey’s Honestly Significant Difference
+  - Minimum difference between pairs of treatment means so that $p < \alpha_{experimentwise}$
+
+
+
+## Report results
+
+> A single-factor, related-samples ANOVA revealed a significant difference in people's test scores when the test was preceded by consumption of a banana `r bc1101tools::descriptives(x)`, a candy bar `r bc1101tools::descriptives(y)`, and no snack `r bc1101tools::descriptives(z)`; $F(`r a2$df_between`,`r a2$df_error`) = `r a2$f_related`$, $p < .05$, $\eta^2 = `r a2$eta_sq_partial`$.
+> Post-hoc tests using Tukey's HSD revealed that test scores were significantly better following banana consumption than following no snack or candy consumption; the candy did not differ significantly from the control condition.
+
+
+# Learning checks
+
+
+1. A researcher obtains an $F$-ratio with $df = 2, 12$ in an independent-samples study ANOVA
+    - How many levels of the IV were there?
+    - How many subjects participated in the study?<br><br>
+2. A researcher obtains an $F$-ratio with $df = 2, 12$ in a repeated-measures study ANOVA
+    - How many levels of the IV were there?
+    - How many subjects participated in the study?
+  
+
+::: {.content-hidden}
+
+# Data and figures
+
+## Cover
+
+```{r cover-ggplot}
+#| eval: false
+library(ggplot2)
+x_seq <- seq(-5,5,.1)
+means <- seq(-2, 2, 1)
+
+dat <- purrr::map_df(means, ~data.frame(x = x_seq, y = dnorm(x_seq, mean = .), group = .))
+
+cover <- ggplot(dat, aes(x = x, y = y, fill = group, group = group)) +
+  geom_area(position = "dodge", alpha = .5) +
+  scale_x_continuous(expand = c(0,0)) +
+  theme_void() + 
+  theme(legend.position = "none")
+cover
+bc1101tools::plot_save("17_related-samples-ANOVA.svg", subdir = "covers", plot = cover,
+       width = 10, height = 5)
+
+```
+
+## OJS
+
+:::
+
+```{ojs}
+
+w = 500
+h = 550
+r = 20
+fill = d3.scaleOrdinal(d3.schemeSet3)
+
+makeSample = function () {
+    var arr = [];
+    for (var i = 0; i < 10; i++) {
+      arr.push(Math.floor(Math.random()*10))
+    }
+    return arr;
+}
+
+data = ["A","B","C"]
+  
+independentSamplesFigure = {
+
+  const svg = d3.select("#independent-samples-container")
+    .append("svg")
+    .attr("viewBox", "0 0 " + w + " " + h)
+    .attr("preserveAspectRatio", "xMinYMin meet")
+
+  const labels = svg.append("g")
+    .style("font-size", "20px")
+    .style("font-weight", "bold")
+    .attr("class", "invertable")
+    
+  labels.selectAll("text")
+    .data(data).enter().append("text")
+    .attr("x", (d,i) => w/4 + i * w/data.length).attr("y", 20)
+    .text(d => "SAMPLE " + d).attr("text-anchor", "middle")
+
+  const sampleDots = svg.append("g")
+  
+  const g = sampleDots.selectAll("g").data(data).enter().append("g").attr("transform", (d,i) => `translate(${w/4 + i * w/data.length}, 0)`).style("stroke", "black")
+  
+  g.each(function(d,i){
+    d3.select(this)
+    .selectAll("circle")
+      .data(makeSample()).enter().append("circle")
+        .attr("cy", (d,i) => 60 + i*r*2.5)
+        .attr("r", r)
+        .style("fill", d => fill(d))
+  })
+      
+}
+
+
+relatedSamplesFigure = {
+
+  const svg = d3.selectAll("#related-samples-container")
+    .append("svg")
+    .attr("viewBox", "0 0 " + w + " " + h)
+    .attr("preserveAspectRatio", "xMinYMin meet")
+
+  const labels = svg.append("g")
+    .style("font-size", "20px")
+    .style("font-weight", "bold")
+    .attr("class", "invertable")
+    
+  labels.selectAll("text")
+    .data(data).enter().append("text")
+    .attr("x", (d,i) => w/4 + i * w/data.length).attr("y", 20)
+    .text(d => "SAMPLE " + d).attr("text-anchor", "middle")
+    
+  const lines = svg.append("g").attr("transform", `translate(0, 60)`).style("stroke", "black")
+  .attr("class", "invertable")
+    .selectAll("line").data([0,1,2,3,4,5,6,7,8,9]).enter()
+    .append("line")
+      .attr("x1", w/4 + r * 1.5)
+      .attr("x2", w/4 + 2 * w/data.length - r*1.5)
+      .attr("y1", (d,i) => i * r * 2.5)
+      .attr("y2", (d,i) => i * r * 2.5)
+
+  const sampleDots = svg.append("g")
+  const sample = makeSample()
+  
+  const g = sampleDots.selectAll("g").data(data).enter().append("g").attr("transform", (d,i) => `translate(${w/4 + i * w/data.length}, 0)`).style("stroke", "black")
+  
+  g.each(function(d,i){
+    d3.select(this)
+    .selectAll("circle")
+      .data(sample).enter().append("circle")
+        .attr("cy", (d,i) => 60 + i*r*2.5)
+        .attr("r", r)
+        .style("fill", d => fill(d))
+  })
+      
+}
+
+matchedSamplesFigure = {
+
+   function makeSample () {
+    var arr = [];
+    for (var i = 0; i < 10; i++) {
+      arr.push(Math.floor(Math.random()*10))
+    }
+    return arr;
+  }
+
+  const svg = d3.selectAll("#matched-samples-container")
+    .append("svg")
+    .attr("viewBox", "0 0 " + w + " " + h)
+    .attr("preserveAspectRatio", "xMinYMin meet")
+
+  const labels = svg.append("g")
+    .style("font-size", "20px")
+    .style("font-weight", "bold")
+    .attr("class", "invertable")
+    
+  labels.selectAll("text")
+    .data(["A","B"]).enter().append("text")
+    .attr("x", (d,i) => w/4 + i * w/2).attr("y", 20)
+    .text(d => "SAMPLE " + d).attr("text-anchor", "middle")
+    
+  const lines = svg.append("g").attr("transform", `translate(${w/4 + r * 1.5}, 60)`)
+    .style("stroke", "black").style("stroke-dasharray", [10,10]).attr("class", "invertable")
+    .selectAll("line").data([0,1,2,3,4,5,6,7,8,9]).enter()
+    .append("line")
+      .attr("x2", w/2 - 2 * r * 1.5)
+      .attr("y1", (d,i) => i * r * 2.5)
+      .attr("y2", (d,i) => i * r * 2.5)
+
+  const sampleDots = svg.append("g")
+  const sample = makeSample()
+  
+  const g = sampleDots.selectAll("g").data([0,1]).enter().append("g").attr("transform", (d,i) => `translate(${w/4 + i * w/2}, 0)`).style("stroke", "black")
+  
+  g.each(function(d,i){
+    d3.select(this)
+    .selectAll("circle")
+      .data(sample).enter().append("circle")
+        .attr("cy", (d,i) => 60 + i*r*2.5)
+        .attr("r", r)
+        .style("fill", d => fill(d))
+  })
+
+}
+
+```

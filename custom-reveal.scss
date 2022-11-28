@@ -623,10 +623,10 @@ color: #ccc
 }
 
 .node.between:after {
-  content: ""; width: 80%; height: 0px; border: solid 1px lightblue; background: lightblue; position: absolute; transform: rotate(135deg) translate(-80%, 0); z-index: -1;
+  content: ""; width: 5em; height: 0px; border: solid 1px lightblue; background: lightblue; position: absolute; transform: rotate(135deg) translate(-80%, 0); z-index: -1;
 }
 .node.within:after {
-  content: ""; width: 80%; height: 0px; border: solid 1px thistle; background: thistle; position: absolute; transform: rotate(45deg) translate(-80%, 0); z-index: -1;
+  content: ""; width: 5em; height: 0px; border: solid 1px thistle; background: thistle; position: absolute; transform: rotate(45deg) translate(-80%, 0); z-index: -1;
 }
 .node.text {
   border: none;
