@@ -1,0 +1,425 @@
+---
+format: revealjs
+---
+
+# 16|ANOVA [part 2]{style="float: right; opacity: 0.8;"}
+
+![](covers/15_ANOVA.svg)
+
+# Overview
+
+- [Calculating ANOVA]
+- [Hypothesis test]
+- [Post-hoc tests]
+- [Assumptions]
+- [Learning checks]
+
+
+# Calculating ANOVA {.smaller}
+
+- Step 1: Calculate $SS$ and $df$ (total, within, between)
+
+<style>
+  .xx-total {
+    display: table;
+    margin: 0 auto;
+    margin-bottom: 2em;
+  }
+  .xx-total:before {
+    content: "";
+    position: absolute;
+    width: 4em;
+    height: 0;
+    border: 3px dashed var(--text-color);
+    transform: translate(-50%, 2.3em) rotate(135deg) scale(0.5);
+  }
+  .xx-total:after {
+    content: "";
+    position: absolute;
+    width: 4em;
+    height: 0;
+    border: 3px dashed var(--text-color);
+    transform: translate(-50%, 2.3em) rotate(45deg) scale(0.5);
+  }
+  .xx-between {
+    float: right;
+    margin-right: 20%;
+    margin-bottom: 1em;
+  }
+  .xx-within {
+    float: left;
+    margin-left: 20%;
+  }
+</style>
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+[$SS_{total}$]{.xx-total}
+
+[$SS_{within}$]{.xx-within} [$SS_{between}$]{.xx-between}
+
+:::
+
+::: {.column width="50%"}
+[$df_{total}$]{.xx-total}
+
+[$df_{within}$]{.xx-within} [$df_{between}$]{.xx-between}
+:::
+
+::::
+
+- Step 2: Calculate variances (Mean Squares)
+
+:::: {.columns .center-element}
+
+::: {.column width="50%"}
+$MS_{between} = \dfrac{SS_{between}}{df_{between}}$
+:::
+
+::: {.column width="50%"}
+$MS_{within} = \dfrac{SS_{within}}{df_{within}}$
+:::
+
+::::
+
+- Step 3: Calculate $F$-ratio
+
+::: {.center-element}
+$F = \dfrac{MS_{between}}{MS_{within}}$
+:::
+
+## $SS$ and $df$
+
+:::: {.columns}
+
+::: {.column width="50%"}
+$SS_{total} = \Sigma X^2 - \dfrac{G^2}{N}$
+$df_{total} = N-1$
+
+$SS_{within} = \Sigma SS_{each \ treamtent}$
+$df_{within} = N-k$
+
+$SS_{between} = \Sigma \dfrac{T^2}{n} - \dfrac{G^2}{N}$
+$df_{between} = k-1$
+:::
+
+::: {.column width="50%"}
+```{r}
+#| style: "font-size: 0.8em;"
+
+anova_terms <- data.frame(Symbol = c("\\(k\\)", 
+                                     "\\(n_1, n_2...\\)",
+                                     "\\(N\\)",
+                                     "\\(T_1, T_2...\\)",
+                                     "\\(G\\)"),
+                          Meaning = c("Number of treatment conditions",
+                                      "Number of scores in each treatment",
+                                      "Total number of scores",
+                                      "Sum of scores \\((\\Sigma X)\\) for each treatment",
+                                      "Grand total of all scores in the study"))
+
+knitr::kable(anova_terms, format = 'html', escape=F)
+```
+
+:::
+
+::::
+
+
+## Summary table
+
+```{r}
+s_tab <- data.frame(Source = c("Between treatments","Within treatments","Total"),
+                    SS = c("","",""),
+                    df = c("","",""),
+                    MS = c("","",""),
+                    F = c("","",""))
+
+knitr::kable(s_tab, format = 'html')
+```
+
+
+# Hypothesis test
+
+## Step 1. State hypotheses
+
+- $H_0: \mu_1 = \mu_2 = \mu_3$
+  - No treatment effect
+  - Numerator & denominator should be about the same
+  - $F$ should be near $1.00$
+- $H_1$ : At least one population mean differs from another
+  - There is some treatment effect
+  - Numerator bigger than denominator
+  - $F$ should be noticeably larger than $1.00$
+
+## Step 2. Critical region
+
+- Like $t$ distributions, there is a different $F$ distribution for each value of $df$
+  - Now we have two different $df$ values
+  - $df$ numerator $(df_{between})$ 
+  - $df$ denominator $(df_{within})$
+  - Note, distribution isn’t symmetrical
+  - $F$ values are always positive
+
+## $F$ table
+
+::: {#tbl}
+```{r}
+#| style: "font-size: 0.5em;"
+options(digits = 3)
+
+dfs <- setNames(1:10, 1:10)
+
+aov_tab <- purrr::map_df(.x = dfs, ~qf(.95, df1 = 1:10, df2 = .x)) |> 
+  t() |>
+  as.data.frame() |>
+  setNames(1:10) |>
+  tibble::rownames_to_column(var = "df_denominator")
+
+
+knitr::kable(aov_tab, format = "html", escape=FALSE, align = "c", digits = 3,
+               col.names = c("\\(df_{denominator}\\)", 1:10)) |>
+  kableExtra::add_header_above(c("\\(\\alpha = .05\\)", "\\(df_{numerator}\\)" = 10), escape=FALSE, align = "left")
+
+```
+:::
+
+
+```{ojs}
+
+jStat = require("../js/jstat.js")
+
+aov_table = {
+
+  var df1, df2, critical
+  
+  function getDf2() {
+    try {
+      df2 = d3.select(this).select("td")._groups[0][0].innerHTML;
+    } catch {} finally {update();}
+  }
+  
+    function getDf1() {
+    try {
+      df1 = d3.select(this)._groups[0][0].cellIndex
+      if (df1 < 1) {df1 = 1}
+    } catch {} finally {update();}
+  }
+  
+  d3.select("#tbl").selectAll("tr").on("click", getDf2)
+  d3.select("#tbl").selectAll("td").on("click", getDf1)
+
+
+  const w = 1050
+  const h = 200
+  const margin = {right: 100, left: 100, bottom: 20}
+  
+  const svg = d3.select("#tbl").append("svg")
+    .attr("width", w).attr("height", h)
+    
+
+  const x = d3.scaleLinear()
+    .domain([0,4])
+    .range([margin.left, w - margin.right])
+  const y = d3.scaleLinear()
+    .domain([0,1])
+    .range([h - margin.bottom, 0])
+  const xAxis = d3.axisBottom(x)
+  const line = d3.line()
+    .x(d => x(d.value))
+    .y(d => y(d.density))
+  
+  function makeCurve(df1, df2) {
+    var arr = []
+    var values = jStat(0.01, 4, 210)[0]
+    for (var i = 0; i < values.length; i++) {
+      arr.push({value: values[i],
+                density: jStat.centralF.pdf(values[i], Number(df1), Number(df2))})
+    }
+    return arr
+  }
+  
+  svg.append("g").attr("transform", `translate(0, ${h - margin.bottom})`)
+    .call(xAxis)
+    
+  const curve = svg.append("path")
+    .attr("d", line(makeCurve(10, 10)))
+    .style("fill", "none")
+    .style("stroke", "black")
+  
+  const df1Input = document.getElementById('df1-input')
+  df1Input.oninput = function() {
+    df1 = df1Input.value
+    update();
+  }
+  
+  const df2Input = document.getElementById('df2-input')
+  df2Input.oninput = function() {
+    df2 = df2Input.value
+    update();
+  }
+  
+  function update() {
+    d3.select("#df1-value").text(df1)
+    d3.select("#df2-value").text(df2)
+    critical = jStat.centralF.inv(0.95, Number(df1), Number(df2))
+    curve.attr("d", line(makeCurve(Number(df1), Number(df2))))
+  }
+  
+
+
+  
+}
+
+
+```
+
+::: {#controls style="position: absolute; top: 75%; left: 50%; font-size: 0.8em; float: right;"}
+<label for="df1-input">\\(df_{numerator} = \\)</label><span id="df1-value" class="math" style="display: inline-block; width: 1em;">1</span><input data-prevent-swipe type="range" id="df1-input" name="df1" value="1" min="1" max="10" style="border: none; height: 1em; margin-left: 0.5em; width: fit-content; vertical-align: unset;">
+
+<label for="df2-input">\\(df_{denominator} = \\)</label><span id="df2-value" class="math" style="display: inline-block; width: 1em;">1</span><input data-prevent-swipe type="range" id="df2-input" name="df2" value="1" min="1" max="100" style="border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; margin-left: 0.5em; width: fit-content; vertical-align: unset;">
+:::
+
+## Step 3. Calculate test statistic
+
+```{r data-setup}
+options(digits = 2)
+
+x <- c(9,11,13)
+y <- c(3,5,4)
+z <- c(5,6,7)
+
+a2 <- bc1101tools::example_ANOVA(x, y, z)
+
+N <- length(c(x, y, z))
+n <- length(x)
+k <- 3
+G <- sum(c(x, y, z)) 
+T1 <- sum(x)
+T2 <- sum(y)
+T3 <- sum(z)
+sigma_x_sq <- sum(c(x,y,z)^2)
+eta_sq <- a2$SS_between / a2$SS_total
+
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| style: "font-size: 0.8em"
+
+table2 <- knitr::kable(data.frame(x, y, z), col.names = c("🍌<br>Banana", "🍬<br>Candy", "😐<br>Control"), align = "c", format = "html", escape = FALSE) |> 
+  kableExtra::add_header_above(c("Manipulation" = 3)) |> 
+  kableExtra::column_spec(1:3, width = "5em")
+
+means <- data.frame(glue::glue('\\(M = {mean(x)}\\)'),
+                    glue::glue('\\(M = {mean(y)}\\)'),
+                    glue::glue('\\(M = {mean(z)}\\)'))
+
+table2_footer <- knitr::kable(means, col.names = NULL, align = "c") |> 
+  kableExtra::column_spec(1:3, width = "5em")
+
+
+table2
+table2_footer
+```
+
+:::
+
+::: {.column width="50%"}
+$N = `r N`$  
+$n = `r n`$  
+$k = `r k`$  
+$G = `r G`$  
+$\Sigma X^2 = `r sigma_x_sq`$
+:::
+
+::::
+
+
+## Step 3. $SS$ and $df$s
+
+$SS_{total} = \Sigma X^2 - \dfrac{G^2}{N} = `r sigma_x_sq` - \dfrac{`r G`^2}{`r N`} = `r a2$SS_total`$
+
+$SS_{within} = \Sigma SS_{each \ treamtent} = 8+2+2 = `r a2$SS_within`$
+
+$SS_{between} = \Sigma \dfrac{T^2}{n} - \dfrac{G^2}{N} = \dfrac{`r T1`^2}{`r n`}+\dfrac{`r T2`^2}{`r n`}+\dfrac{`r T3`^2}{`r n`} - \dfrac{`r G`^2}{`r N`}  = `r a2$SS_between`$
+
+$df_{total} = N-1 = `r a2$df_total`$
+
+$df_{within} = N-k = `r a2$df_within`$
+
+$df_{between} = k-1 = `r a2$df_between`$
+
+
+## Step 3. $MS$ and $F$
+
+$MS_{between} = \dfrac{SS_{between}}{df_{between}} = `r a2$MS_between`$
+
+$MS_{within} = \dfrac{SS_{within}}{df_{within}} = `r a2$MS_within`$
+
+
+$F = \dfrac{MS_{between}}{MS_{within}} = \dfrac{`r a2$MS_between`}{`r a2$MS_within`} = `r a2$f_ratio`$
+
+## Step 4. Make decision
+
+- $F > F_{critical}$?
+  - Reject or fail to reject $H_0$
+
+- Step 4b. Effect size
+  - Compute percentage of variance accounted for by treatment
+  - $r^2$ concept (proportion of variance explained)
+  - For ANOVA called $\eta^2$ (“eta squared”)
+
+::: {.center-element}
+$\eta^2 = \dfrac{SS_{between}}{SS_{total}} = `r eta_sq`$
+:::
+
+## Report results {.small}
+
+- Descriptives
+  - Treatment means and standard deviations are presented in text, table and/or graph
+- Hypothesis test outcome
+  - Results of ANOVA are summarized, including
+  - $F$ and $df$ values, $p$, $\eta^2$ (if significant)
+
+> A single-factor, independent-samples ANOVA revealed a significant difference between people who consumed a banana ($M = `r a2$mean_x`$; $SD = `r sd(x)`$), a candy bar ($M = `r a2$mean_y`$; $SD = `r sd(y)`$), and the control condition ($M = `r a2$mean_z`$; $SD = `r sd(z)`$); $F(`r a2$df_between`,`r a2$df_within`) = `r a2$f_ratio`$, $p < .05$, $\eta^2 = `r eta_sq`$.
+
+# Post-hoc tests
+
+- Post hoc tests compare two means at a time 
+  - [Pairwise]{.emph} comparisons
+  - Each comparison includes risk of a Type I error
+  - Risk of Type I error accumulates 
+  - Experimentwise alpha level, $\alpha_{experimentwise}$
+- Post-hoc tests use special methods to control experimentwise Type I error rate
+
+## Tukey's $HSD$
+
+- Tukey’s Honestly Significant Difference
+  - Minimum difference between pairs of treatment means so that $p < \alpha_{experimentwise}$
+  - $q$ is the Studentized Range statistic
+  - Depends on $\alpha$, $k$, and $df$ for denominator
+  - Find $q$ in table or R
+
+# Assumptions
+
+1. Observations within each sample must be independent
+2. Population from which the samples are selected must be normal
+3. Populations from which the samples are selected must have equal variances (homogeneity of variance)
+
+# Learning checks
+
+- For independent-samples (between-participants) ANOVA, what do the following represent?
+  - $N$
+  - $n_1 ,n_2 , n_3$ , etc
+  - $G$
+  - $T$
+  - $MS_{between}$
+  - $MS_{within}$
+
+
+
