@@ -1,0 +1,258 @@
+---
+format: revealjs
+---
+
+# 18|FACTORIAL ANOVA
+
+![](covers/15_ANOVA.svg)
+
+```{r data}
+
+banana_math <- c(7,9,8,9)
+banana_vocab <- c(5,4,6,5)
+snickers_math <- c(5,3,4,4)
+snickers_vocab <- c(6,6,5,5)
+
+dat <- data.frame(values = c(banana_math, banana_vocab, snickers_math, snickers_vocab),
+                  IV1 = rep(c("Banana", "Candy Bar"), each = 8),
+                  IV2 = rep(c("Math", "Reaction Time"), each = 4))
+
+analysis <- aov(values ~ IV1 * IV2, data = dat)
+# summary(analysis)
+
+N <- nrow(dat)
+n <- length(banana_math)
+nA <- dplyr::filter(dat, IV1=="Banana") |>  nrow()
+nB <- dplyr::filter(dat, IV2=="Math") |>  nrow()
+k <- 4
+kA <- 2
+kB <- 2
+
+dfbetween <- k-1
+dfwithin <- N-k
+dfA <- kA-1
+dfB <- kB-1
+dfAB <- dfbetween - dfA - dfB
+
+```
+
+
+# Overview
+
+- [Logic]
+- [Interpretation]
+- [Calculations]
+- [Learning checks]
+
+
+# Logic
+
+## Terminology
+
+- Terminology
+  - Factor
+      - The variable that designates the groups being compared
+      - Between-participants / within-participants
+  - Levels
+      - Individual conditions or values that make up a factor
+  - Factorial design
+      - A study that combines two (or more) factors, each with two (or more) levels
+      - Can be manipulated between-participants or within-participants (or mixed-factorial design)
+      - E.g. 2x2 between-participants ANOVA
+
+## Logic
+
+- Three hypotheses tested by three $F$-ratios
+  1. Main effect of Factor A
+  2. Main effect of Factor B
+  3. Interaction between A and B
+
+- Each tested with same basic $F$-ratio structure
+
+$F = \dfrac{\textrm{variance between treatments}}{\textrm{variance expected with no treatment effect}}$
+
+
+## Partitioning variance
+
+:::: {#diagram-container style="position: relative; width: 80%; height: 300px; font-size: 0.6em; margin: 0 auto;"}
+
+::: {.node .top .total}
+Total variance
+:::
+::: {.node .between style="top: 50%; left: 8%"}
+Variance between treatments   
+$MS_{between \ treatments}$
+:::
+
+::: {.node .within style="top: 50%; right: 8%;"}
+Variance within groups  
+$MS_{within}$
+:::
+::: {.node style="top: 85%; left: 0; width: 18%;"}
+Factor A  
+$MS_{A}$
+:::
+::: {.node style="top: 85%; left: 20%; width: 18%"}
+Factor B  
+$MS_{B}$
+:::
+::: {.node style="top: 85%; left: 40%; width: 18%"}
+Interaction  
+$MS_{A*B}$
+:::
+
+::::
+
+
+# Calculations {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+$SS_{total} = \Sigma X^2 - \dfrac{G^2}{N}$  
+$SS_{within} = \Sigma SS_{within \ each \ treatment}$  
+$SS_{between} = \Sigma \dfrac{T^2}{n} - \dfrac{G^2}{N}$  
+$SS_{A} = \Sigma \dfrac{T^2_{col}}{n_{col}} - \dfrac{G^2}{N}$  
+$SS_{B} = \Sigma \dfrac{T^2_{row}}{n_{row}} - \dfrac{G^2}{N}$  
+$SS_{A*B} = SS_{between}-SS_{A}-SS_{B}$
+:::
+
+::: {.column width="50%"}
+$df_{total} = N-1$  
+$df_{within} = N-k$  
+$df_{between} = k-1$  
+$df_{A} = k_A-1$  
+$df_{B} = k_B-1$  
+$df_{A*B} = df_{between}-df_A-df_B$
+:::
+
+::::
+
+## Summary table
+
+# Hypothesis test
+
+## Step 1. Hypotheses
+
+```{r}
+# table
+```
+
+- Main effect of Snack Type
+    - $H_0$: $\mu_{banana} = \mu_{candy}$
+    - $H_1$: $\mu_{banana} \ne \mu_{candy}$
+- Main effect of Test Type
+    - $H_0$: $\mu_{math} = \mu_{RT}$
+    - $H_1$: $\mu_{math} \ne \mu_{RT}$
+- Snack * Test interaction
+    - $H_0$: No interaction
+    - $H_1$: There is an interaction
+
+
+## Step 2. Critical region
+
+- Step 2. Critical region
+  - Numerators: $df_{A} = k_A-1 = 1 \\ df_{B} = k_B-1 = 1 \\ df_{A*B} = k-1 - df_A - df_B = 10 = 1$
+  - Denominator: $df_{within} = N-k  = `r N - k`$
+
+
+# Interpretation
+
+## Interpreting interaction graphs
+
+![](media/anova-2x2-generic-1.svg){.invertable}
+
+- Slope indicates main effect of factor on x-axis
+- Distance between lines indicates main effect of other factor
+- Parallel lines indicate no interaction
+
+
+## Interpreting interaction graphs
+
+![](media/anova-2x2-generic-2.svg){.invertable}
+
+## Interpreting interaction graphs
+
+![](media/anova-2x2-generic-3.svg){.invertable}
+
+## Interpreting interaction graphs
+
+![](media/anova-2x2-generic-4.svg){.invertable}
+
+## Interpreting interaction graphs
+
+![](media/anova-2x2-generic-5.svg){.invertable}
+
+## Interpreting interaction graphs
+
+![](media/anova-2x2-generic-6.svg){.invertable}
+
+## Your turn
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Come up with your own example
+  - 2 IVs with 2 levels each
+  - 1 DV (the thing you measure, e.g. test performance)
+  - Sketch graph of expected results
+:::
+
+::: {.column width="50%"}
+![](media/anova-2x2-generic-blank.svg){.invertable}
+:::
+
+::::
+
+
+
+
+
+# Learning checks
+
+- True or False?
+  - Two separate single-factor ANOVAs provide exactly the same information that is obtained from a two-factor analysis of variance
+  - A disadvantage of combining 2 factors in an experiment is that you cannot determine how either factor would affect participants’ scores if it were examined in an experiment by itself
+  - If a two-factor analysis of variance produces a statistically significant interaction, then you can conclude that either/both main effects for factor A or factor B are also significant
+
+
+
+
+::: {.content-hidden}
+
+# Data and figures
+
+## Cover
+
+## Generic 2x2 graphs
+
+```{r}
+#| eval: false
+library(bc1101tools)
+
+width <- 5
+height <- 4
+
+plot_2x2_generic(1, 2, 1, 2)
+plot_save("anova-2x2-generic-1.svg", width = width, height = height)
+
+plot_2x2_generic(.5, 1.5, 1.5, 2.5)
+plot_save("anova-2x2-generic-2.svg", width = width, height = height)
+
+plot_2x2_generic(2.5, 1.5, 1.5, 0.5)
+plot_save("anova-2x2-generic-3.svg", width = width, height = height)
+
+plot_2x2_generic(1.6, 1.4, 1.6, 1.4)
+plot_save("anova-2x2-generic-4.svg", width = width, height = height)
+
+plot_2x2_generic(1, 2, 2, 1)
+plot_save("anova-2x2-generic-5.svg", width = width, height = height)
+
+plot_2x2_generic(1.5, 2, 1.5, 1)
+plot_save("anova-2x2-generic-6.svg", width = width, height = height)
+
+plot_2x2_generic(0, 0, 0, 0)
+plot_save("anova-2x2-generic-blank.svg", width = width, height = height)
+```
+
+:::

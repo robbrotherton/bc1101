@@ -1965,5 +1965,131 @@
     "title": "BC1101",
     "section": "Pros and cons",
     "text": "Pros and cons\n\n\n\nAdvantages\n\nEliminates individual differences as a source of variability between treatments\nSmaller number of participants needed\n\nDisadvantages\n\nSomething other than the treatment may cause participant’s scores to change\nE.g. practice, world events, natural improvement"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#terminology",
+    "href": "slides/18_factorial-ANOVA.html#terminology",
+    "title": "BC1101",
+    "section": "Terminology",
+    "text": "Terminology\n\nTerminology\n\nFactor\n\nThe variable that designates the groups being compared\nBetween-participants / within-participants\n\nLevels\n\nIndividual conditions or values that make up a factor\n\nFactorial design\n\nA study that combines two (or more) factors, each with two (or more) levels\nCan be manipulated between-participants or within-participants (or mixed-factorial design)\nE.g. 2x2 between-participants ANOVA"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#logic-1",
+    "href": "slides/18_factorial-ANOVA.html#logic-1",
+    "title": "BC1101",
+    "section": "Logic",
+    "text": "Logic\n\nThree hypotheses tested by three \\(F\\)-ratios\n\nMain effect of Factor A\nMain effect of Factor B\nInteraction between A and B\n\nEach tested with same basic \\(F\\)-ratio structure\n\n\\(F = \\dfrac{\\textrm{variance between treatments}}{\\textrm{variance expected with no treatment effect}}\\)"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#partitioning-variance",
+    "href": "slides/18_factorial-ANOVA.html#partitioning-variance",
+    "title": "BC1101",
+    "section": "Partitioning variance",
+    "text": "Partitioning variance\n\n\nTotal variance\n\n\nVariance between treatments\n\\(MS_{between \\ treatments}\\)\n\n\nVariance within groups\n\\(MS_{within}\\)\n\n\nFactor A\n\\(MS_{A}\\)\n\n\nFactor B\n\\(MS_{B}\\)\n\n\nInteraction\n\\(MS_{A*B}\\)"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#summary-table",
+    "href": "slides/18_factorial-ANOVA.html#summary-table",
+    "title": "BC1101",
+    "section": "Summary table",
+    "text": "Summary table"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#step-1.-hypotheses",
+    "href": "slides/18_factorial-ANOVA.html#step-1.-hypotheses",
+    "title": "BC1101",
+    "section": "Step 1. Hypotheses",
+    "text": "Step 1. Hypotheses\n\n\n\n\nMain effect of Snack Type\n\n\\(H_0\\): \\(\\mu_{banana} = \\mu_{candy}\\)\n\\(H_1\\): \\(\\mu_{banana} \\ne \\mu_{candy}\\)\n\nMain effect of Test Type\n\n\\(H_0\\): \\(\\mu_{math} = \\mu_{RT}\\)\n\\(H_1\\): \\(\\mu_{math} \\ne \\mu_{RT}\\)\n\nSnack * Test interaction\n\n\\(H_0\\): No interaction\n\\(H_1\\): There is an interaction"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#step-2.-critical-region",
+    "href": "slides/18_factorial-ANOVA.html#step-2.-critical-region",
+    "title": "BC1101",
+    "section": "Step 2. Critical region",
+    "text": "Step 2. Critical region\n\nStep 2. Critical region\n\nNumerators: \\(df_{A} = k_A-1 = 1 \\\\ df_{B} = k_B-1 = 1 \\\\ df_{A*B} = k-1 - df_A - df_B = 10 = 1\\)\nDenominator: \\(df_{within} = N-k = 12\\)"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs",
+    "href": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs",
+    "title": "BC1101",
+    "section": "Interpreting interaction graphs",
+    "text": "Interpreting interaction graphs\n\n\nSlope indicates main effect of factor on x-axis\nDistance between lines indicates main effect of other factor\nParallel lines indicate no interaction"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-1",
+    "href": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-1",
+    "title": "BC1101",
+    "section": "Interpreting interaction graphs",
+    "text": "Interpreting interaction graphs"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-2",
+    "href": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-2",
+    "title": "BC1101",
+    "section": "Interpreting interaction graphs",
+    "text": "Interpreting interaction graphs"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-3",
+    "href": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-3",
+    "title": "BC1101",
+    "section": "Interpreting interaction graphs",
+    "text": "Interpreting interaction graphs"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-4",
+    "href": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-4",
+    "title": "BC1101",
+    "section": "Interpreting interaction graphs",
+    "text": "Interpreting interaction graphs"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-5",
+    "href": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-5",
+    "title": "BC1101",
+    "section": "Interpreting interaction graphs",
+    "text": "Interpreting interaction graphs"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-6",
+    "href": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-6",
+    "title": "BC1101",
+    "section": "Interpreting interaction graphs",
+    "text": "Interpreting interaction graphs"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-7",
+    "href": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-7",
+    "title": "BC1101",
+    "section": "Interpreting interaction graphs",
+    "text": "Interpreting interaction graphs"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-8",
+    "href": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-8",
+    "title": "BC1101",
+    "section": "Interpreting interaction graphs",
+    "text": "Interpreting interaction graphs"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#your-turn",
+    "href": "slides/18_factorial-ANOVA.html#your-turn",
+    "title": "BC1101",
+    "section": "Your turn",
+    "text": "Your turn\n\n\n\nCome up with your own example\n\n2 IVs with 2 levels each\n1 DV (the thing you measure, e.g. test performance)\nSketch graph of expected results"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#cover",
+    "href": "slides/18_factorial-ANOVA.html#cover",
+    "title": "BC1101",
+    "section": "Cover",
+    "text": "Cover"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#generic-2x2-graphs",
+    "href": "slides/18_factorial-ANOVA.html#generic-2x2-graphs",
+    "title": "BC1101",
+    "section": "Generic 2x2 graphs",
+    "text": "Generic 2x2 graphs"
   }
 ]
