@@ -337,8 +337,9 @@
 <h1>Overview</h1>
 <ul>
 <li><a href="#/logic-1">Logic</a></li>
-<li><a href="#/interpretation">Interpretation</a></li>
 <li><a href="#/calculations">Calculations</a></li>
+<li><a href="#/hypothesis-test">Hypothesis test</a></li>
+<li><a href="#/interpretation">Interpretation</a></li>
 <li><a href="#/learning-checks">Learning checks</a></li>
 </ul>
 </section>
@@ -348,10 +349,8 @@
 <h1>Logic</h1>
 
 </section>
-<section id="terminology" class="slide level2">
+<section id="terminology" class="slide level2 small">
 <h2>Terminology</h2>
-<ul>
-<li>Terminology
 <ul>
 <li>Factor
 <ul>
@@ -368,11 +367,39 @@
 <li>Can be manipulated between-participants or within-participants (or mixed-factorial design)</li>
 <li>E.g. 2x2 between-participants ANOVA</li>
 </ul></li>
-</ul></li>
 </ul>
 </section>
 <section id="logic-1" class="slide level2">
 <h2>Logic</h2>
+<div class="cell">
+<div class="cell-output-display">
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="2" rowspan="2"></th>
+            <th colspan="2" style="text-align: center;">Factor A</th>
+        </tr>
+        <tr>
+
+            <th style="text-align: center;">\(A_1\)</th><th style="text-align: center;">\(A_2\)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="2" style="vertical-align : middle;text-align:center;">Factor B</td>
+            <td>\(B_1\)</td>
+            <td>\(A_1 B_1\)</td><td>\(A_2 B_1\)</td>
+        </tr>
+        <tr>
+            <td>\(B_2\)</td>
+            <td>\(A_2 B_1\)</td><td>\(A_2 B_2\)</td>
+        </tr>
+    </tbody>
+</table>
+
+</div>
+</div>
 <ul>
 <li>Three hypotheses tested by three <span class="math inline">\(F\)</span>-ratios
 <ol type="1">
@@ -415,6 +442,42 @@
 <section>
 <section id="calculations" class="title-slide slide level1 smaller center">
 <h1>Calculations</h1>
+
+</section>
+<section id="example-data" class="slide level2">
+<h2>Example data</h2>
+<div class="cell">
+<div class="cell-output-display">
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="2" rowspan="2"></th>
+            <th colspan="2" style="text-align: center;">Snack</th>
+        </tr>
+        <tr>
+
+            <th style="text-align: center;">Banana</th><th style="text-align: center;">Candy</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="2" style="vertical-align : middle;text-align:center;">Test</td>
+            <td>Math</td>
+            <td>7, 9, 8, 9</td><td>5, 4, 6, 5</td>
+        </tr>
+        <tr>
+            <td>Reaction time</td>
+            <td>5, 3, 4, 4</td><td>6, 6, 5, 5</td>
+        </tr>
+    </tbody>
+</table>
+
+</div>
+</div>
+</section>
+<section id="equations" class="slide level2">
+<h2>Equations</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="math inline">\(SS_{total} = \Sigma X^2 - \dfrac{G^2}{N}\)</span><br>
@@ -444,7 +507,33 @@
 <section id="step-1.-hypotheses" class="slide level2">
 <h2>Step 1. Hypotheses</h2>
 <div class="cell">
+<div class="cell-output-display">
 
+<table>
+    <thead>
+        <tr>
+            <th colspan="2" rowspan="2"></th>
+            <th colspan="2" style="text-align: center;">Snack</th>
+        </tr>
+        <tr>
+
+            <th style="text-align: center;">Banana</th><th style="text-align: center;">Candy</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="2" style="vertical-align : middle;text-align:center;">Test</td>
+            <td>Math</td>
+            <td>7, 9, 8, 9</td><td>5, 4, 6, 5</td>
+        </tr>
+        <tr>
+            <td>Reaction time</td>
+            <td>5, 3, 4, 4</td><td>6, 6, 5, 5</td>
+        </tr>
+    </tbody>
+</table>
+
+</div>
 </div>
 <ul>
 <li>Main effect of Snack Type
@@ -469,10 +558,258 @@
 <ul>
 <li>Step 2. Critical region
 <ul>
-<li>Numerators: <span class="math inline">\(df_{A} = k_A-1 = 1 \\ df_{B} = k_B-1 = 1 \\ df_{A*B} = k-1 - df_A - df_B = 10 = 1\)</span></li>
+<li>Numerators: <span class="math inline">\(df_{A} = k_A-1 = 1 \\ df_{B} = k_B-1 = 1 \\ df_{A*B} = k-1 - df_A - df_B = 1\)</span></li>
 <li>Denominator: <span class="math inline">\(df_{within} = N-k = 12\)</span></li>
 </ul></li>
 </ul>
+</section>
+<section id="step-3.-calculations" class="slide level2">
+<h2>Step 3. Calculations</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="cell" style="font-size: 0.6em; margin-top: 1em;">
+<div class="cell-output-display">
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="2" rowspan="2"></th>
+            <th colspan="2" style="text-align: center;">Snack</th>
+        </tr>
+        <tr>
+
+            <th style="text-align: center;">Banana</th><th style="text-align: center;">Candy</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="2" style="vertical-align : middle;text-align:center;">Test</td>
+            <td>Math</td>
+            <td>\(T = 33\)<br>\(SS = 2.75\)</td><td>\(T = 16\)<br>\(SS = 2\)</td>
+        </tr>
+        <tr>
+            <td>Reaction time</td>
+            <td>\(T = 20\)<br>\(SS = 2\)</td><td>\(T = 22\)<br>\(SS = 1\)</td>
+        </tr>
+    </tbody>
+</table>
+
+</div>
+</div>
+</div><div class="column" style="width: 30%; font-size: 0.8em;">
+<p><span class="math inline">\(N = 16\)</span><br>
+<span class="math inline">\(n = 4\)</span><br>
+<span class="math inline">\(k = 4\)</span><br>
+<span class="math inline">\(k_A = 2\)</span><br>
+<span class="math inline">\(k_B = 2\)</span><br>
+<span class="math inline">\(G = 91\)</span><br>
+<span class="math inline">\(\Sigma X^2 = 565\)</span></p>
+</div>
+</div>
+<p><span class="math display">\[\begin{align}
+df_{total} &amp;= N-1 = 15 \\
+df_{within} &amp;= N-k  = 12 \\
+df_{between} &amp;= k-1  = 3\\
+df_{A} &amp;= k_A-1  = 1\\
+df_{B} &amp;= k_B-1  = 1\\
+df_{A*B} &amp;= df_{between} - df_A - df_B  = 1\\
+\end{align}\]</span></p>
+</section>
+<section id="step-3.-calculations-1" class="slide level2">
+<h2>Step 3. Calculations</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="cell" style="font-size: 0.6em; margin-top: 1em;">
+<div class="cell-output-display">
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="2" rowspan="2"></th>
+            <th colspan="2" style="text-align: center;">Snack</th>
+        </tr>
+        <tr>
+
+            <th style="text-align: center;">Banana</th><th style="text-align: center;">Candy</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="2" style="vertical-align : middle;text-align:center;">Test</td>
+            <td>Math</td>
+            <td>\(T = 33\)<br>\(SS = 2.75\)</td><td>\(T = 16\)<br>\(SS = 2\)</td>
+        </tr>
+        <tr>
+            <td>Reaction time</td>
+            <td>\(T = 20\)<br>\(SS = 2\)</td><td>\(T = 22\)<br>\(SS = 1\)</td>
+        </tr>
+    </tbody>
+</table>
+
+</div>
+</div>
+</div><div class="column" style="width: 30%; font-size: 0.8em;">
+<p><span class="math inline">\(N = 16\)</span><br>
+<span class="math inline">\(n = 4\)</span><br>
+<span class="math inline">\(k = 4\)</span><br>
+<span class="math inline">\(k_A = 2\)</span><br>
+<span class="math inline">\(k_B = 2\)</span><br>
+<span class="math inline">\(G = 91\)</span><br>
+<span class="math inline">\(\Sigma X^2 = 565\)</span></p>
+</div>
+</div>
+<p><span class="math display">\[\begin{align}
+SS_{total} &amp;= \Sigma X^2 - \dfrac{G^2}{N} = 47.44\\
+SS_{within} &amp;= \Sigma SS_{within \ each \ treatment} = 7.75\\
+SS_{between} &amp;= \Sigma \dfrac{T^2}{n} - \dfrac{G^2}{N} = 39.69 \\
+\end{align}\]</span></p>
+</section>
+<section id="step-3.-calculations-2" class="slide level2">
+<h2>Step 3. Calculations</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="cell" style="font-size: 0.6em; margin-top: 1em;">
+<div class="cell-output-display">
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="2" rowspan="2"></th>
+            <th colspan="2" style="text-align: center;">Snack</th>
+        </tr>
+        <tr>
+
+            <th style="text-align: center;">Banana</th><th style="text-align: center;">Candy</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="2" style="vertical-align : middle;text-align:center;">Test</td>
+            <td>Math</td>
+            <td>\(T = 33\)<br>\(SS = 2.75\)</td><td>\(T = 16\)<br>\(SS = 2\)</td>
+        </tr>
+        <tr>
+            <td>Reaction time</td>
+            <td>\(T = 20\)<br>\(SS = 2\)</td><td>\(T = 22\)<br>\(SS = 1\)</td>
+        </tr>
+    </tbody>
+</table>
+
+</div>
+</div>
+</div><div class="column" style="width: 30%; font-size: 0.8em;">
+<p><span class="math inline">\(N = 16\)</span><br>
+<span class="math inline">\(n = 4\)</span><br>
+<span class="math inline">\(k = 4\)</span><br>
+<span class="math inline">\(k_A = 2\)</span><br>
+<span class="math inline">\(k_B = 2\)</span><br>
+<span class="math inline">\(G = 91\)</span><br>
+<span class="math inline">\(\Sigma X^2 = 565\)</span></p>
+</div>
+</div>
+<p><span class="math display">\[\begin{align}
+SS_{A} &amp;= \Sigma \dfrac{T^2_{col}}{n_{col}} - \dfrac{G^2}{N} = 14.06\\
+SS_{B} &amp;= \Sigma \dfrac{T^2_{row}}{n_{row}} - \dfrac{G^2}{N} = 3.06\\
+SS_{A*B} &amp;= \Sigma SS_{between}-SS_A - SS_B = 22.56
+\end{align}\]</span></p>
+</section>
+<section id="step-3.-calculations-3" class="slide level2">
+<h2>Step 3. Calculations</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="cell" style="font-size: 0.6em; margin-top: 1em;">
+<div class="cell-output-display">
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="2" rowspan="2"></th>
+            <th colspan="2" style="text-align: center;">Snack</th>
+        </tr>
+        <tr>
+
+            <th style="text-align: center;">Banana</th><th style="text-align: center;">Candy</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="2" style="vertical-align : middle;text-align:center;">Test</td>
+            <td>Math</td>
+            <td>\(T = 33\)<br>\(SS = 2.75\)</td><td>\(T = 16\)<br>\(SS = 2\)</td>
+        </tr>
+        <tr>
+            <td>Reaction time</td>
+            <td>\(T = 20\)<br>\(SS = 2\)</td><td>\(T = 22\)<br>\(SS = 1\)</td>
+        </tr>
+    </tbody>
+</table>
+
+</div>
+</div>
+</div><div class="column" style="width: 30%; font-size: 0.8em;">
+<p><span class="math inline">\(N = 16\)</span><br>
+<span class="math inline">\(n = 4\)</span><br>
+<span class="math inline">\(k = 4\)</span><br>
+<span class="math inline">\(k_A = 2\)</span><br>
+<span class="math inline">\(k_B = 2\)</span><br>
+<span class="math inline">\(G = 91\)</span><br>
+<span class="math inline">\(\Sigma X^2 = 565\)</span></p>
+</div>
+</div>
+<div class="center-element">
+<p><span class="math inline">\(MS_{A} = \dfrac{SS_{A}}{df_{A}} = 14.06 \ \ \ \ \ \ \ \ MS_{B} = \dfrac{SS_{B}}{df_{B}} = 3.06\)</span></p>
+<p><span class="math inline">\(MS_{A*B} = \dfrac{SS_{A*B}}{df_{A*B}} = 22.56\)</span></p>
+<p><span class="math inline">\(MS_{within} = \dfrac{SS_{within}}{df_{within}} = 0.65\)</span></p>
+</div>
+</section>
+<section id="step-3.-calculations-4" class="slide level2">
+<h2>Step 3. Calculations</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="cell" style="font-size: 0.6em; margin-top: 1em;">
+<div class="cell-output-display">
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="2" rowspan="2"></th>
+            <th colspan="2" style="text-align: center;">Snack</th>
+        </tr>
+        <tr>
+
+            <th style="text-align: center;">Banana</th><th style="text-align: center;">Candy</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="2" style="vertical-align : middle;text-align:center;">Test</td>
+            <td>Math</td>
+            <td>\(T = 33\)<br>\(SS = 2.75\)</td><td>\(T = 16\)<br>\(SS = 2\)</td>
+        </tr>
+        <tr>
+            <td>Reaction time</td>
+            <td>\(T = 20\)<br>\(SS = 2\)</td><td>\(T = 22\)<br>\(SS = 1\)</td>
+        </tr>
+    </tbody>
+</table>
+
+</div>
+</div>
+</div><div class="column" style="width: 30%; font-size: 0.8em;">
+<p><span class="math inline">\(N = 16\)</span><br>
+<span class="math inline">\(n = 4\)</span><br>
+<span class="math inline">\(k = 4\)</span><br>
+<span class="math inline">\(k_A = 2\)</span><br>
+<span class="math inline">\(k_B = 2\)</span><br>
+<span class="math inline">\(G = 91\)</span><br>
+<span class="math inline">\(\Sigma X^2 = 565\)</span></p>
+</div>
+</div>
+<div class="center-element">
+<p><span class="math inline">\(F_A = \dfrac{MS_{A}}{MS_{within}} = 21.77\)</span></p>
+<p><span class="math inline">\(F_B = \dfrac{MS_{B}}{MS_{within}} = 4.74\)</span></p>
+<p><span class="math inline">\(F_{A*B} = \dfrac{MS_{A*B}}{MS_{within}} = 34.94\)</span></p>
+</div>
 </section></section>
 <section>
 <section id="interpretation" class="title-slide slide level1 center">
@@ -525,7 +862,7 @@
 </div>
 </div>
 </section></section>
-<section id="learning-checks" class="title-slide slide level1 center">
+<section id="learning-checks" class="title-slide slide level1 small center">
 <h1>Learning checks</h1>
 <ul>
 <li>True or False?

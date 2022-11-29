@@ -7,32 +7,45 @@ format: revealjs
 ![](covers/15_ANOVA.svg)
 
 ```{r data}
+options(digits = 2)
 
 banana_math <- c(7,9,8,9)
-banana_vocab <- c(5,4,6,5)
-snickers_math <- c(5,3,4,4)
-snickers_vocab <- c(6,6,5,5)
+banana_rt <- c(5,4,6,5)
+candy_math <- c(5,3,4,4)
+candy_rt <- c(6,6,5,5)
 
-dat <- data.frame(values = c(banana_math, banana_vocab, snickers_math, snickers_vocab),
-                  IV1 = rep(c("Banana", "Candy Bar"), each = 8),
-                  IV2 = rep(c("Math", "Reaction Time"), each = 4))
+df <- data.frame(A = rep(c(1,2), each = 8),
+                 B = rep(c(1,2), each = 4),
+                 DV = c(banana_math, banana_rt, candy_math, candy_rt))
 
-analysis <- aov(values ~ IV1 * IV2, data = dat)
-# summary(analysis)
+a <- bc1101tools::example_ANOVA_factorial(df)
 
-N <- nrow(dat)
-n <- length(banana_math)
-nA <- dplyr::filter(dat, IV1=="Banana") |>  nrow()
-nB <- dplyr::filter(dat, IV2=="Math") |>  nrow()
-k <- 4
-kA <- 2
-kB <- 2
+table_scores <- bc1101tools::anova_2x2_table(
+  factor_a_name = "Snack", 
+  factor_a_levels = c("Banana", "Candy"),
+  factor_b_name = "Test",
+  factor_b_levels = c("Math", "Reaction time"),
+  cell_values = c(paste(banana_math, collapse = ", "),  
+                  paste(banana_rt, collapse = ", "), 
+                  paste(candy_math, collapse = ", "), 
+                  paste(candy_rt, collapse = ", "))
+  
+)
 
-dfbetween <- k-1
-dfwithin <- N-k
-dfA <- kA-1
-dfB <- kB-1
-dfAB <- dfbetween - dfA - dfB
+cell_values <- c(
+  glue::glue("\\(T = {a$T1}\\)<br>\\(SS = {a$SS1}\\)"),
+  glue::glue("\\(T = {a$T2}\\)<br>\\(SS = {a$SS2}\\)"),
+  glue::glue("\\(T = {a$T3}\\)<br>\\(SS = {a$SS3}\\)"),
+  glue::glue("\\(T = {a$T4}\\)<br>\\(SS = {a$SS4}\\)")
+)
+
+table_summary <- bc1101tools::anova_2x2_table(
+  factor_a_name = "Snack", 
+  factor_a_levels = c("Banana", "Candy"),
+  factor_b_name = "Test",
+  factor_b_levels = c("Math", "Reaction time"),
+  cell_values = cell_values
+)
 
 ```
 
@@ -40,28 +53,33 @@ dfAB <- dfbetween - dfA - dfB
 # Overview
 
 - [Logic]
-- [Interpretation]
 - [Calculations]
+- [Hypothesis test]
+- [Interpretation]
 - [Learning checks]
 
 
 # Logic
 
-## Terminology
+## Terminology {.small}
 
-- Terminology
-  - Factor
-      - The variable that designates the groups being compared
-      - Between-participants / within-participants
-  - Levels
-      - Individual conditions or values that make up a factor
-  - Factorial design
-      - A study that combines two (or more) factors, each with two (or more) levels
-      - Can be manipulated between-participants or within-participants (or mixed-factorial design)
-      - E.g. 2x2 between-participants ANOVA
+- Factor
+  - The variable that designates the groups being compared
+  - Between-participants / within-participants
+- Levels
+  - Individual conditions or values that make up a factor
+- Factorial design
+  - A study that combines two (or more) factors, each with two (or more) levels
+  - Can be manipulated between-participants or within-participants (or mixed-factorial design)
+  - E.g. 2x2 between-participants ANOVA
 
 ## Logic
 
+```{r}
+bc1101tools::anova_2x2_table()
+```
+
+  
 - Three hypotheses tested by three $F$-ratios
   1. Main effect of Factor A
   2. Main effect of Factor B
@@ -104,7 +122,18 @@ $MS_{A*B}$
 ::::
 
 
+
 # Calculations {.smaller}
+
+## Example data
+
+```{r}
+table_scores
+```
+
+
+
+## Equations
 
 :::: {.columns}
 
@@ -135,7 +164,7 @@ $df_{A*B} = df_{between}-df_A-df_B$
 ## Step 1. Hypotheses
 
 ```{r}
-# table
+table_scores
 ```
 
 - Main effect of Snack Type
@@ -152,8 +181,159 @@ $df_{A*B} = df_{between}-df_A-df_B$
 ## Step 2. Critical region
 
 - Step 2. Critical region
-  - Numerators: $df_{A} = k_A-1 = 1 \\ df_{B} = k_B-1 = 1 \\ df_{A*B} = k-1 - df_A - df_B = 10 = 1$
-  - Denominator: $df_{within} = N-k  = `r N - k`$
+  - Numerators: $df_{A} = k_A-1 = 1 \\ df_{B} = k_B-1 = 1 \\ df_{A*B} = k-1 - df_A - df_B = 1$
+  - Denominator: $df_{within} = N-k  = `r a$N - a$k`$
+
+
+## Step 3. Calculations
+
+:::: {.columns}
+::: {.column width="70%"}
+```{r}
+#| style: "font-size: 0.6em; margin-top: 1em;"
+
+table_summary
+```
+:::
+
+::: {.column style="width: 30%; font-size: 0.8em;"}
+$N = `r a$N`$  
+$n = `r a$n`$  
+$k = `r a$k`$  
+$k_A = `r a$k_a`$  
+$k_B = `r a$k_b`$  
+$G = `r a$G`$  
+$\Sigma X^2 = `r a$sigma_x_sq`$
+:::
+::::
+
+$$\begin{align}
+df_{total} &= N-1 = `r a$N - 1` \\
+df_{within} &= N-k  = `r a$N - a$k` \\
+df_{between} &= k-1  = `r a$k - 1`\\
+df_{A} &= k_A-1  = `r a$df_a`\\
+df_{B} &= k_B-1  = `r a$df_b`\\
+df_{A*B} &= df_{between} - df_A - df_B  = `r a$df_ab`\\
+\end{align}$$
+
+
+## Step 3. Calculations
+
+:::: {.columns}
+::: {.column width="70%"}
+```{r}
+#| style: "font-size: 0.6em; margin-top: 1em;"
+
+table_summary
+```
+:::
+
+::: {.column style="width: 30%; font-size: 0.8em;"}
+$N = `r a$N`$  
+$n = `r a$n`$  
+$k = `r a$k`$  
+$k_A = `r a$k_a`$  
+$k_B = `r a$k_b`$  
+$G = `r a$G`$  
+$\Sigma X^2 = `r a$sigma_x_sq`$
+:::
+::::
+
+$$\begin{align}
+SS_{total} &= \Sigma X^2 - \dfrac{G^2}{N} = `r a$ss_total`\\
+SS_{within} &= \Sigma SS_{within \ each \ treatment} = `r a$ss_within`\\
+SS_{between} &= \Sigma \dfrac{T^2}{n} - \dfrac{G^2}{N} = `r a$ss_between` \\
+\end{align}$$
+
+
+## Step 3. Calculations
+
+:::: {.columns}
+::: {.column width="70%"}
+```{r}
+#| style: "font-size: 0.6em; margin-top: 1em;"
+
+table_summary
+```
+:::
+
+::: {.column style="width: 30%; font-size: 0.8em;"}
+$N = `r a$N`$  
+$n = `r a$n`$  
+$k = `r a$k`$  
+$k_A = `r a$k_a`$  
+$k_B = `r a$k_b`$  
+$G = `r a$G`$  
+$\Sigma X^2 = `r a$sigma_x_sq`$
+:::
+::::
+
+$$\begin{align}
+SS_{A} &= \Sigma \dfrac{T^2_{col}}{n_{col}} - \dfrac{G^2}{N} = `r a$ss_a`\\
+SS_{B} &= \Sigma \dfrac{T^2_{row}}{n_{row}} - \dfrac{G^2}{N} = `r a$ss_b`\\
+SS_{A*B} &= \Sigma SS_{between}-SS_A - SS_B = `r a$ss_ab`
+\end{align}$$
+
+
+## Step 3. Calculations
+
+:::: {.columns}
+::: {.column width="70%"}
+```{r}
+#| style: "font-size: 0.6em; margin-top: 1em;"
+
+table_summary
+```
+:::
+
+::: {.column style="width: 30%; font-size: 0.8em;"}
+$N = `r a$N`$  
+$n = `r a$n`$  
+$k = `r a$k`$  
+$k_A = `r a$k_a`$  
+$k_B = `r a$k_b`$  
+$G = `r a$G`$  
+$\Sigma X^2 = `r a$sigma_x_sq`$
+:::
+::::
+
+::: {.center-element}
+$MS_{A} = \dfrac{SS_{A}}{df_{A}} = `r a$ms_a` \ \ \ \ \ \ \ \ MS_{B} = \dfrac{SS_{B}}{df_{B}} = `r a$ms_b`$
+
+$MS_{A*B} = \dfrac{SS_{A*B}}{df_{A*B}} = `r a$ms_ab`$
+
+$MS_{within} = \dfrac{SS_{within}}{df_{within}} = `r a$ms_within`$
+:::
+
+## Step 3. Calculations
+
+:::: {.columns}
+::: {.column width="70%"}
+```{r}
+#| style: "font-size: 0.6em; margin-top: 1em;"
+
+table_summary
+```
+:::
+
+::: {.column style="width: 30%; font-size: 0.8em;"}
+$N = `r a$N`$  
+$n = `r a$n`$  
+$k = `r a$k`$  
+$k_A = `r a$k_a`$  
+$k_B = `r a$k_b`$  
+$G = `r a$G`$  
+$\Sigma X^2 = `r a$sigma_x_sq`$
+:::
+::::
+
+::: {.center-element}
+$F_A = \dfrac{MS_{A}}{MS_{within}} = `r a$f_a`$
+
+$F_B = \dfrac{MS_{B}}{MS_{within}} = `r a$f_b`$
+
+$F_{A*B} = \dfrac{MS_{A*B}}{MS_{within}} = `r a$f_ab`$
+:::
 
 
 # Interpretation
@@ -208,7 +388,7 @@ $df_{A*B} = df_{between}-df_A-df_B$
 
 
 
-# Learning checks
+# Learning checks {.small}
 
 - True or False?
   - Two separate single-factor ANOVAs provide exactly the same information that is obtained from a two-factor analysis of variance
