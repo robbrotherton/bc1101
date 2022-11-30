@@ -170,3 +170,43 @@ card("13_independent-samples-t-test", dates[15])
 card("14_related-samples-t-test", dates[16])
 ```
 ::::
+
+
+:::: {.box}
+## 15. ANOVA
+```{r}
+card("15_ANOVA", dates[21])
+```
+::::
+
+
+:::: {.box}
+## 16. ANOVA pt. 2
+```{r}
+card("16_ANOVA-pt-2", dates[22])
+```
+::::
+
+
+:::: {.box}
+## 17. Related-samples ANOVA
+```{r}
+card("17_related-samples-ANOVA", dates[23])
+```
+::::
+
+
+:::: {.box}
+## 18. Factorial ANOVA
+```{r}
+card("18_factorial-ANOVA", dates[24])
+```
+::::
+
+
+:::: {.box}
+## 19. Correlation
+```{r}
+card("19_correlation", dates[25], image_class = "invertable")
+```
+::::
