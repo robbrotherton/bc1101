@@ -2140,5 +2140,124 @@
     "title": "BC1101",
     "section": "Step 3. Calculations",
     "text": "Step 3. Calculations\n\n\n\n\n\n\n    \n        \n            \n            Snack\n        \n        \n\n            BananaCandy\n        \n    \n    \n        \n            Test\n            Math\n            \\(T = 33\\)\\(SS = 2.75\\)\\(T = 16\\)\\(SS = 2\\)\n        \n        \n            Reaction time\n            \\(T = 20\\)\\(SS = 2\\)\\(T = 22\\)\\(SS = 1\\)\n        \n    \n\n\n\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\n\\(F_A = \\dfrac{MS_{A}}{MS_{within}} = 21.77\\)\n\\(F_B = \\dfrac{MS_{B}}{MS_{within}} = 4.74\\)\n\\(F_{A*B} = \\dfrac{MS_{A*B}}{MS_{within}} = 34.94\\)"
+  },
+  {
+    "objectID": "slides/19_correlation.html#limitations-of-correlation",
+    "href": "slides/19_correlation.html#limitations-of-correlation",
+    "title": "BC1101",
+    "section": "Limitations of correlation",
+    "text": "Limitations of correlation\n\nCorrelations are not usually useful for:\n\nDemonstrating causation\n\nPerhaps…\n\nA causes B\nB causes A\nSomething else (C) causes A and B\n\nEstablishing causation requires experiments in which one variable is manipulated\n\n\nCorley, J., et al. (2010). Caffeine consumption and cognitive function at age 70: The Lothian Birth Cohort 1936 study. Psychosomatic medicine 72(2), 206-214. https://doi.org/10.1097/PSY.0b013e3181c92a9c"
+  },
+  {
+    "objectID": "slides/19_correlation.html#correlation-statistic",
+    "href": "slides/19_correlation.html#correlation-statistic",
+    "title": "BC1101",
+    "section": "Correlation statistic",
+    "text": "Correlation statistic\n\nCorrelation statistic\n\nA number quantifying the association between two variables\n\nThree characteristics\n\nStrength or consistency (varies from 0 to 1)\nDirection (negative or positive)\nForm (e.g. linear)\n\nCharacteristics are independent\n\nCan be positive & weak, negative & strong, etc"
+  },
+  {
+    "objectID": "slides/19_correlation.html#pearsons-r",
+    "href": "slides/19_correlation.html#pearsons-r",
+    "title": "BC1101",
+    "section": "Pearson’s \\(r\\)",
+    "text": "Pearson’s \\(r\\)\n\nMost widely used correlation statistic\n\nMeasures the degree and the direction of the linear relationship between two variables\n\nVariability & covariability\n\nVariability: How much each variable varies\nCovariability: How much \\(X\\) and \\(Y\\) vary in tandem\nAre changes in \\(X\\) associated with corresponding changes in \\(Y\\)?\nE.g. as \\(X\\) increases, \\(Y\\) tends to increase (positive)\nOr, as \\(X\\) increases, \\(Y\\) tends to decrease (negative)"
+  },
+  {
+    "objectID": "slides/19_correlation.html#persons-r",
+    "href": "slides/19_correlation.html#persons-r",
+    "title": "BC1101",
+    "section": "Person’s \\(r\\)",
+    "text": "Person’s \\(r\\)\n\nCalculating the numerator\n\nSum of products (\\(SP\\)) and sum of squares (\\(SS\\))\n\\(SS\\): multiplying deviations by themselves (squaring)\n\\(SP\\): multiplying deviations by one another\n\n\n\n\nDefinitional formula\n\\(SP = \\Sigma(X - M_X)(Y - M_Y)\\)\n\nComputational formula\n\\(SP = \\Sigma XY - \\dfrac{\\Sigma X \\Sigma Y}{n}\\)"
+  },
+  {
+    "objectID": "slides/19_correlation.html#pearsons-r-1",
+    "href": "slides/19_correlation.html#pearsons-r-1",
+    "title": "BC1101",
+    "section": "Pearson’s \\(r\\)",
+    "text": "Pearson’s \\(r\\)\n\nNumerator: \\(SP\\)\n\nSum of products (\\(SP\\)) related to sum of squares (\\(SS\\))\n\\(SS\\): multiplying deviations by themselves (squaring)\n\\(SP\\): multiplying deviations by one another\n\n\n\n\nDefinitional formula\n\\(SP = \\Sigma(X - M_X)(Y - M_Y)\\)\n\nComputational formula\n\\(SP = \\Sigma XY - \\dfrac{\\Sigma X \\Sigma Y}{n}\\)"
+  },
+  {
+    "objectID": "slides/19_correlation.html#calculating",
+    "href": "slides/19_correlation.html#calculating",
+    "title": "BC1101",
+    "section": "Calculating",
+    "text": "Calculating"
+  },
+  {
+    "objectID": "slides/19_correlation.html#step-1.-state-hypotheses",
+    "href": "slides/19_correlation.html#step-1.-state-hypotheses",
+    "title": "BC1101",
+    "section": "Step 1. State hypotheses",
+    "text": "Step 1. State hypotheses\n\nCorrelation is computed for sample data\nHypotheses concerns relationship in the population\nGreek letter \\(\\rho\\) (rho) represents population correlation\nNon-directional:\n\n\\(H_0: \\rho = 0\\)\n\\(H_1: \\rho \\ne 0\\)\n\nDirectional:\n\n\\(H_0: \\rho \\le 0\\); \\(H_1: ρ > 0\\)\nOr…\n\\(H_0: \\rho \\ge 0\\); \\(H_1: \\rho < 0\\)"
+  },
+  {
+    "objectID": "slides/19_correlation.html#step-2.-critical-region",
+    "href": "slides/19_correlation.html#step-2.-critical-region",
+    "title": "BC1101",
+    "section": "Step 2. Critical region",
+    "text": "Step 2. Critical region\n\n\n\nCritical value for \\(r\\) is a type of \\(t\\) statistic\n\n\\(df = n - 2\\)\n\n\n\n\n\n\n\n \n\nProportionin 1 tail\n\n0.1\n\n0.05\n\n0.025\n\n0.01\n\n0.005\n\n  \n    Proportionin 2 tails \n    0.2 \n    0.1 \n    0.05 \n    0.02 \n    0.01 \n  \n \n\n  \n    1 \n    3.078 \n    6.314 \n    12.706 \n    31.821 \n    63.657 \n  \n  \n    2 \n    1.886 \n    2.920 \n    4.303 \n    6.965 \n    9.925 \n  \n  \n    3 \n    1.638 \n    2.353 \n    3.182 \n    4.541 \n    5.841 \n  \n  \n    4 \n    1.533 \n    2.132 \n    2.776 \n    3.747 \n    4.604 \n  \n  \n    5 \n    1.476 \n    2.015 \n    2.571 \n    3.365 \n    4.032 \n  \n  \n    6 \n    1.440 \n    1.943 \n    2.447 \n    3.143 \n    3.707 \n  \n  \n    7 \n    1.415 \n    1.895 \n    2.365 \n    2.998 \n    3.499 \n  \n  \n    \\(df\\)       8 \n    1.397 \n    1.860 \n    2.306 \n    2.896 \n    3.355 \n  \n  \n    9 \n    1.383 \n    1.833 \n    2.262 \n    2.821 \n    3.250 \n  \n  \n    10 \n    1.372 \n    1.812 \n    2.228 \n    2.764 \n    3.169 \n  \n  \n    11 \n    1.363 \n    1.796 \n    2.201 \n    2.718 \n    3.106 \n  \n  \n    12 \n    1.356 \n    1.782 \n    2.179 \n    2.681 \n    3.055 \n  \n  \n    13 \n    1.350 \n    1.771 \n    2.160 \n    2.650 \n    3.012 \n  \n  \n    14 \n    1.345 \n    1.761 \n    2.145 \n    2.624 \n    2.977 \n  \n  \n    15 \n    1.341 \n    1.753 \n    2.131 \n    2.602 \n    2.947 \n  \n  \n    ... \n    ... \n    ... \n    ... \n    ... \n    ..."
+  },
+  {
+    "objectID": "slides/19_correlation.html#step-3.-calculate-statistic",
+    "href": "slides/19_correlation.html#step-3.-calculate-statistic",
+    "title": "BC1101",
+    "section": "Step 3. Calculate statistic",
+    "text": "Step 3. Calculate statistic\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}}\\)\n\n\n\n\nNumerator: Sum of Products, \\(SP\\)\n\nMultiply deviations by one another\n\n\nDefinitional formula\n\\(SP = \\Sigma(X - M_X)(Y - M_Y)\\)\n\n\nDenominator: Sum of Squares, \\(SS\\)\n\nMultiply deviations by themselves\n\n\nDefinitional formula\n\\[\\begin{align}\nSS &= \\Sigma(X - M_X)^2 \\\\\n   &= \\Sigma(X - M_X)(X - M_X)\n\\end{align}\\]\n\n\n\n\nComputational formula\n\\(SP = \\Sigma XY - \\dfrac{\\Sigma X \\Sigma Y}{n}\\)\n\nComputational formula\n\\[\\begin{align}\nSS &= \\Sigma X^2 - \\dfrac{(\\Sigma X)^2}{n}\\\\\n   &= \\Sigma X X - \\dfrac{(\\Sigma X)(\\Sigma X)}{n}\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/19_correlation.html#calculating-r",
+    "href": "slides/19_correlation.html#calculating-r",
+    "title": "BC1101",
+    "section": "Calculating \\(r\\)",
+    "text": "Calculating \\(r\\)\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M_X\\) \n    \\((X-M_X)^2\\) \n    \\(Y\\) \n    \\(Y-M_Y\\) \n    \\((Y-M_Y)^2\\) \n    \\(P\\) \n  \n \n\n  \n    4 \n    -3 \n    9 \n    5 \n    -3 \n    9 \n    9 \n  \n  \n    5 \n    -2 \n    4 \n    8 \n    0 \n    4 \n    0 \n  \n  \n    7 \n    0 \n    0 \n    8 \n    0 \n    0 \n    0 \n  \n  \n    8 \n    1 \n    1 \n    10 \n    2 \n    1 \n    2 \n  \n  \n    11 \n    4 \n    16 \n    9 \n    1 \n    16 \n    4 \n  \n  \n    \\(M_X = 7.00\\) \n     \n    \\(SS_X = 30.00\\) \n    \\(M_Y = 8.00\\) \n     \n    \\(SS_Y = 30.00\\) \n    \\(SP = 15.00\\) \n  \n  \n     \n     \n    \\(s^2_X = 7.50\\) \n     \n     \n    \\(s^2_Y = 7.50\\) \n     \n  \n  \n     \n     \n    \\(s_X = 2.74\\) \n     \n     \n    \\(s_Y = 2.74\\) \n     \n  \n\n\n\n\n\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}}\\)"
+  },
+  {
+    "objectID": "slides/19_correlation.html#calculating-r-1",
+    "href": "slides/19_correlation.html#calculating-r-1",
+    "title": "BC1101",
+    "section": "Calculating \\(r\\)",
+    "text": "Calculating \\(r\\)\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M_X\\) \n    \\((X-M_X)^2\\) \n    \\(Y\\) \n    \\(Y-M_Y\\) \n    \\((Y-M_Y)^2\\) \n    \\(P\\) \n  \n \n\n  \n    4 \n    -3 \n    9 \n    5 \n    -3 \n    9 \n    9 \n  \n  \n    5 \n    -2 \n    4 \n    8 \n    0 \n    4 \n    0 \n  \n  \n    7 \n    0 \n    0 \n    8 \n    0 \n    0 \n    0 \n  \n  \n    8 \n    1 \n    1 \n    10 \n    2 \n    1 \n    2 \n  \n  \n    11 \n    4 \n    16 \n    9 \n    1 \n    16 \n    4 \n  \n  \n    \\(M_X = 7.00\\) \n     \n    \\(SS_X = 30.00\\) \n    \\(M_Y = 8.00\\) \n     \n    \\(SS_Y = 30.00\\) \n    \\(SP = 15.00\\) \n  \n  \n     \n     \n    \\(s^2_X = 7.50\\) \n     \n     \n    \\(s^2_Y = 7.50\\) \n     \n  \n  \n     \n     \n    \\(s_X = 2.74\\) \n     \n     \n    \\(s_Y = 2.74\\) \n     \n  \n\n\n\n\n\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}}\\)"
+  },
+  {
+    "objectID": "slides/19_correlation.html#calculating-r-2",
+    "href": "slides/19_correlation.html#calculating-r-2",
+    "title": "BC1101",
+    "section": "Calculating \\(r\\)",
+    "text": "Calculating \\(r\\)\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M_X\\) \n    \\((X-M_X)^2\\) \n    \\(Y\\) \n    \\(Y-M_Y\\) \n    \\((Y-M_Y)^2\\) \n    \\(P\\) \n  \n \n\n  \n    4 \n    -3 \n    9 \n    5 \n    -3 \n    9 \n    9 \n  \n  \n    5 \n    -2 \n    4 \n    8 \n    0 \n    4 \n    0 \n  \n  \n    7 \n    0 \n    0 \n    8 \n    0 \n    0 \n    0 \n  \n  \n    8 \n    1 \n    1 \n    10 \n    2 \n    1 \n    2 \n  \n  \n    11 \n    4 \n    16 \n    9 \n    1 \n    16 \n    4 \n  \n  \n    \\(M_X = 7.00\\) \n     \n    \\(SS_X = 30.00\\) \n    \\(M_Y = 8.00\\) \n     \n    \\(SS_Y = 30.00\\) \n    \\(SP = 15.00\\) \n  \n  \n     \n     \n    \\(s^2_X = 7.50\\) \n     \n     \n    \\(s^2_Y = 7.50\\) \n     \n  \n  \n     \n     \n    \\(s_X = 2.74\\) \n     \n     \n    \\(s_Y = 2.74\\) \n     \n  \n\n\n\n\n\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}} = \\dfrac{15}{\\sqrt{30*14}} = 0.73\\)"
+  },
+  {
+    "objectID": "slides/19_correlation.html#calculating-r-computation-approach",
+    "href": "slides/19_correlation.html#calculating-r-computation-approach",
+    "title": "BC1101",
+    "section": "Calculating \\(r\\): computation approach",
+    "text": "Calculating \\(r\\): computation approach"
+  },
+  {
+    "objectID": "slides/19_correlation.html#step-4.-make-decision",
+    "href": "slides/19_correlation.html#step-4.-make-decision",
+    "title": "BC1101",
+    "section": "Step 4. Make decision",
+    "text": "Step 4. Make decision\n\nHypothesis test for \\(r\\) is a type of \\(t\\) test"
+  },
+  {
+    "objectID": "slides/19_correlation.html#report-results",
+    "href": "slides/19_correlation.html#report-results",
+    "title": "BC1101",
+    "section": "Report results",
+    "text": "Report results\n\nValue of correlation, \\(r\\)\n\\(df\\) / Sample size\n\\(p\\)-value or \\(\\alpha\\) level\n\n\n“More sleep was associated with higher test scores; however, the correlation did not reach statistical significance; \\(r (3) = .73, p > .05\\).”"
+  },
+  {
+    "objectID": "slides/19_correlation.html#correlation-effect-size",
+    "href": "slides/19_correlation.html#correlation-effect-size",
+    "title": "BC1101",
+    "section": "Correlation & effect size",
+    "text": "Correlation & effect size\n\nCorrelation & effect size\n\nPearson’s \\(r\\) correlation coefficient is a standardized measure of effect size\nQuantifies degree of association on a scale from \\(0\\) to \\(1\\)\nIndependent of sample size\nRelated to \\(r^2\\)\nRelated to \\(t\\)\nEven related to Cohen’s \\(d\\)\n\n\n\n\\(d = \\dfrac{2r}{\\sqrt{1-r^2}}\\)"
+  },
+  {
+    "objectID": "slides/19_correlation.html#interpreting-effect-size",
+    "href": "slides/19_correlation.html#interpreting-effect-size",
+    "title": "BC1101",
+    "section": "Interpreting effect size",
+    "text": "Interpreting effect size\n\n\nCohen (1977)\n\n\n\n\n \n  \n    \\(d\\) \n    \\(r\\) \n    Description \n  \n \n\n  \n    0.3 \n    0.1 \n    Small \n  \n  \n    0.5 \n    0.3 \n    Medium \n  \n  \n    0.8 \n    0.5 \n    Large \n  \n\n\n\n\n\n\nFunder & Ozer (2019)\n\n\n\n\n \n  \n    \\(d\\) \n    \\(r\\) \n    Description \n  \n \n\n  \n    0.5 \n    0.6 \n    Very small \n  \n\n\n\n\n\n\n\n\nFunder, D. C., & Ozer, D. J. (2019). Evaluating Effect Size in Psychological Research: Sense and Nonsense. Advances in Methods and Practices in Psychological Science, 2(2), 156–168. https://doi.org/10.1177/2515245919847202"
   }
 ]

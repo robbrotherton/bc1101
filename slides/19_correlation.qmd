@@ -1,0 +1,448 @@
+---
+format: revealjs
+---
+
+# 19|CORRELATION
+
+![](covers/19_correlation.svg){.invertable}
+
+
+# Overview
+
+- [Correlational research designs]
+- [Calculating Pearson's $r$]
+- [Hypothesis testing]
+- [Learning checks]
+
+
+
+# Correlational research designs
+
+- Correlational designs versus experimental designs
+  - No independent variable
+  - Measure two (or more) variables per participant
+  - Examine relationship between variables
+- Example research questions
+  - Is income related to happiness?
+  - Does practice make perfect?
+  - Class attendance & final grades
+
+## Limitations of correlation
+
+- Correlations are not usually useful for:
+  - Demonstrating [causation]{.emph}
+- Perhaps...
+  - A causes B
+  - B causes A
+  - Something else (C) causes A and B
+- Establishing causation requires experiments in which one variable is manipulated
+
+::: {.reference}
+Corley, J., et al. (2010). Caffeine consumption and cognitive function at age 70: The Lothian Birth Cohort 1936 study. *Psychosomatic medicine 72*(2), 206-214. <https://doi.org/10.1097/PSY.0b013e3181c92a9c>
+:::
+
+  
+## Correlation statistic {.smaller}
+
+- Correlation statistic
+  - A number quantifying the association between two variables
+- Three characteristics
+  - Strength or consistency (varies from 0 to 1)
+  - Direction (negative or positive)
+  - Form (e.g. linear)
+- Characteristics are independent
+  - Can be positive & weak, negative & strong, etc
+  
+::: {.r-hstack}
+![](media/correlation-weak.svg){.invertable}
+
+![](media/correlation-moderate.svg){.invertable}
+
+![](media/correlation-strong.svg){.invertable}
+
+![](media/correlation-perfect.svg){.invertable}
+:::
+
+
+## Pearson's $r$
+
+- Most widely used correlation statistic
+  - Measures the degree and the direction of the linear relationship between two variables
+- Variability & covariability
+  - Variability: How much each variable varies
+  - Covariability: How much $X$ and $Y$ vary in tandem
+  - Are changes in $X$ associated with corresponding changes in $Y$?
+  - E.g. as $X$ increases, $Y$ tends to increase (positive)
+  - Or, as $X$ increases, $Y$ tends to decrease (negative)
+
+
+# Calculating Pearson's $r$
+
+$r = \dfrac{SP}{\sqrt{SS_X SS_Y}} = \dfrac{\textrm{covariability of X and Y}}{\textrm{variability of X and Y separately}}$
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Perfect linear relationship…
+  - If every change in $X$ has a corresponding change in $Y$, variability separately = covariability
+  - Correlation will be $–1.00$ or $+1.00$
+:::
+
+::: {.column width="50%"}
+![](media/correlation-perfect.svg){.invertable}
+:::
+
+::::
+
+
+## Pearson's $r$
+
+- Numerator: $SP$
+  - Sum of products ($SP$) related to sum of squares ($SS$)
+  - $SS$: multiplying deviations by themselves (squaring)
+  - $SP$: multiplying deviations by [one another]{.emph}
+  
+:::: {.columns .center-element}
+
+::: {.column width="50%"}
+Definitional formula
+
+$SP = \Sigma(X - M_X)(Y - M_Y)$
+
+:::
+
+::: {.column width="50%"}
+Computational formula
+
+$SP = \Sigma XY - \dfrac{\Sigma X \Sigma Y}{n}$
+:::
+
+::::
+
+
+## Calculating
+
+# Hypothesis test
+
+## Step 1. State hypotheses
+
+- Correlation is computed for sample data
+- Hypotheses concerns relationship in the population
+- Greek letter $\rho$ (rho) represents population correlation
+
+- Non-directional:  
+    - $H_0: \rho = 0$ 
+    - $H_1: \rho \ne 0$
+- Directional:  
+    - $H_0: \rho \le 0$; $H_1: ρ > 0$ 
+    - Or...
+    - $H_0: \rho \ge 0$; $H_1: \rho < 0$
+
+## Step 2. Critical region
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Critical value for $r$ is a type of $t$ statistic
+  - $df = n - 2$
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| style: "font-size: 0.4em;"
+bc1101tools::t_table()
+```
+:::
+
+::::
+
+
+## Step 3. Calculate statistic {.smaller}
+
+::: {.center-element}
+$r = \dfrac{SP}{\sqrt{SS_X SS_Y}}$
+:::
+
+:::: {.columns .center-element}
+
+::: {.column width="50%"}
+- Numerator: Sum of Products, $SP$
+  - Multiply deviations by one another
+
+Definitional formula
+
+$SP = \Sigma(X - M_X)(Y - M_Y)$
+
+:::
+
+::: {.column width="50%"}
+- Denominator: Sum of Squares, $SS$
+  - Multiply deviations by themselves
+
+Definitional formula
+
+$$\begin{align}
+SS &= \Sigma(X - M_X)^2 \\
+   &= \Sigma(X - M_X)(X - M_X)
+\end{align}$$
+
+:::
+
+::::
+
+
+:::: {.columns .center-element}
+
+::: {.column width="50%"}
+Computational formula
+
+$SP = \Sigma XY - \dfrac{\Sigma X \Sigma Y}{n}$
+:::
+
+::: {.column width="50%"}
+Computational formula
+
+$$\begin{align}
+SS &= \Sigma X^2 - \dfrac{(\Sigma X)^2}{n}\\
+   &= \Sigma X X - \dfrac{(\Sigma X)(\Sigma X)}{n}
+\end{align}$$
+:::
+
+::::
+
+
+
+## Calculating $r$
+
+```{r ref.label=I('sp-table')}
+```
+
+```{r}
+#| class: "sp-table scores-only"
+sp_table
+```
+
+::: {.center-element}
+$r = \dfrac{SP}{\sqrt{SS_X SS_Y}}$
+:::
+
+
+## Calculating $r$
+
+```{r}
+#| class: "sp-table with-devs"
+sp_table
+```
+
+::: {.center-element}
+$r = \dfrac{SP}{\sqrt{SS_X SS_Y}}$
+:::
+
+## Calculating $r$
+
+```{r}
+#| class: "sp-table"
+sp_table
+```
+
+::: {.center-element}
+$r = \dfrac{SP}{\sqrt{SS_X SS_Y}} = \dfrac{`r sp`}{\sqrt{`r ss_x`*`r ss_y`}} = `r r`$
+:::
+
+
+```{css}
+.sp-table {
+  font-size: 0.6em;
+}
+.sp-table.scores-only td:nth-child(n+2):nth-child(-n+3), .sp-table.scores-only th:nth-child(n+2):nth-child(-n+3) {
+  visibility: hidden;
+}
+.sp-table.scores-only td:nth-child(n+5):nth-child(-n+7), .sp-table.scores-only th:nth-child(n+5):nth-child(-n+7) {
+  visibility: hidden;
+}
+.sp-table.with-devs td:nth-child(3), .sp-table.with-devs th:nth-child(3),
+.sp-table.with-devs td:nth-child(6), .sp-table.with-devs th:nth-child(6){
+  visibility: hidden;
+}
+
+```
+
+
+
+## Calculating $r$: computation approach
+
+
+## Step 4. Make decision
+
+- Hypothesis test for $r$ is a type of $t$ test
+
+::: {.center-element}
+
+:::
+
+
+## Report results
+
+- Value of correlation, $r$
+- $df$ / Sample size
+- $p$-value or $\alpha$ level
+
+> “More sleep was associated with higher test scores; however, the correlation did not reach statistical significance; $r (3)  = .73, p > .05$.”
+
+
+## Correlation & effect size
+
+- Correlation & effect size
+  - Pearson's $r$ correlation coefficient *is* a standardized measure of effect size
+  - Quantifies degree of association on a scale from $0$ to $1$
+  - Independent of sample size
+  - Related to $r^2$
+  - Related to $t$
+  - Even related to Cohen's $d$
+
+::: {.center-element}
+$d = \dfrac{2r}{\sqrt{1-r^2}}$
+:::
+
+
+## Interpreting effect size
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+Cohen (1977)
+
+```{r}
+cohen <- tibble::tribble(
+  ~"\\(d\\)", ~"\\(r\\)", ~"Description",
+  "0.3", "0.1", "Small",
+  "0.5", "0.3", "Medium",
+  "0.8", "0.5", "Large"
+)
+
+knitr::kable(cohen, format = "html")
+```
+
+
+:::
+
+::: {.column width="50%"}
+
+Funder & Ozer (2019)
+
+```{r}
+funder <- tibble::tribble(
+  ~"\\(d\\)", ~"\\(r\\)", ~"Description",
+  "0.5", "0.6", "Very small"
+)
+
+# - .05: Very small for the explanation of single events but potentially consequential in longer run
+# - .10: Still small at the level of single events but potentially more ultimately consequential
+# - .20: Medium effect of some explanatory and practical use even in the short run
+# - .30: Large effect that is potentially powerful in both the short and the long run
+# - .40: A very large effect in the context of psychological research; likely to be a gross overestimate
+
+knitr::kable(funder, format = "html")
+```
+
+:::
+
+::::
+
+::: {.reference}
+Funder, D. C., & Ozer, D. J. (2019). Evaluating Effect Size in Psychological Research: Sense and Nonsense. *Advances in Methods and Practices in Psychological Science, 2*(2), 156–168. <https://doi.org/10.1177/2515245919847202>
+:::
+
+
+# See also...
+
+- <https://www.rpsychologist.com/d3/correlation>
+  - Interactive correlation visualization
+  
+# Learning checks
+
+
+- True/False
+    - 1. The numerator of Pearson's $r$ cannot be negative
+    - 2. The denominator of Pearson's $r$ cannot be negative
+    - 3. In a non-directional significance test of a correlation, the null hypothesis states that the population correlation is zero
+    - 4. The graph to the right shows no correlation between “difficulty” and “rating”
+
+
+::: {.content-hidden}
+
+# Data and figures
+
+## Cover
+
+```{r cover-ggplot}
+#| eval: false
+
+library(ggplot2)
+library(dplyr)
+set.seed(42)
+
+data <- faux::rnorm_multi(n = 300, vars = 2, r = .6)
+
+SSx <- sum( (data$X1 - mean(data$X1))^2 )
+SSy <- sum( (data$X2 - mean(data$X2))^2 )
+SP <- sum( (data$X1 - mean(data$X1)) * (data$X2 - mean(data$X2)))
+b <- SP/SSx
+a <- mean(data$X2) - b * mean(data$X1)
+
+data |> 
+  mutate(yhat = b * X1 + a) |> 
+  ggplot(aes(x = X1, y = X2, color = abs(X2 - yhat))) +
+  scale_color_gradient(low = "black", high = "grey") +
+  geom_point() +
+  theme_void() +
+  theme(legend.position = "none")
+
+bc1101tools::plot_save("19_correlation.svg", subdir = "covers", width = 10, height = 5)
+
+```
+
+
+## Example data 
+
+```{r sp-table}
+options(digits = 2)
+x <-  c(4,5,7,8,11)
+y <-  c(5,8,8,10,9)
+
+p <- (x-mean(x)) * (y-mean(y))
+sp <- sum(p)
+ss_x <- sum((x-mean(x))^2)
+ss_y <- sum((y-mean(y))^2)
+r <- sp/sqrt(ss_x * ss_y)
+
+sp_table <- bc1101tools::SP_table(x = c(4,5,7,8,11), y = c(5,8,8,10,9), align = "c")
+```
+
+## Generic correlation plots
+
+```{r}
+#| eval: false
+
+library(bc1101tools)
+
+set.seed(42)
+
+plot_correlation_generic(df = faux::rnorm_multi(n = 15, vars = 2, r = .2), ellipse = TRUE)
+plot_save("correlation-weak.svg", width = 2, height = 2)
+
+plot_correlation_generic(df = faux::rnorm_multi(n = 15, vars = 2, r = .5), ellipse = TRUE)
+plot_save("correlation-moderate.svg", width = 2, height = 2)
+
+plot_correlation_generic(df = faux::rnorm_multi(n = 15, vars = 2, r = .8), ellipse = TRUE)
+plot_save("correlation-strong.svg", width = 2, height = 2)
+
+plot_correlation_generic(df = data.frame(1:15, 1:15), line = TRUE, color = "black")
+plot_save("correlation-perfect.svg", width = 2, height = 2)
+
+```
+
+
+:::
