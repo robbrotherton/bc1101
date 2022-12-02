@@ -485,6 +485,7 @@ temp = {
   const yAxis = d3.axisLeft(y)
     
   const svg = d3.select("#temp-plot").append("svg").attr("width", w).attr("height", h)
+    .attr("id", "temp-svg")
   
   const points = [0,10,20,30,40,50]
   
