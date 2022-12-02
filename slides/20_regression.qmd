@@ -537,13 +537,13 @@ const labels = svg.append("g").style("font-size", "0.6em").style("fill", "var(--
 const label_c = labels.append("text")
 const label_f = labels.append("text")
 
-  const overlayRect = svg.append('rect')
-    .style("fill", "none")
-    .style("pointer-events", "all")
-    .attr("x", x(-30)).attr("y", y(150))
-    .attr('width', w - margin.left - margin.right)
-    .attr('height', h - margin.top)
-    .on('mousemove', mousemove)
+  <!-- const overlayRect = svg.append('rect') -->
+  <!--   .style("fill", "none") -->
+  <!--   .style("pointer-events", "all") -->
+  <!--   .attr("x", x(-30)).attr("y", y(150)) -->
+  <!--   .attr('width', w - margin.left - margin.right) -->
+  <!--   .attr('height', h - margin.top) -->
+  <!--   .on('mousemove', mousemove) -->
 
 const round = d3.format(".1f")
 
@@ -575,10 +575,10 @@ function updateOverlay(xCoord) {
   plotParams.xRange = plotParams.xMax - plotParams.xMin;
   plotParams.yRange = plotParams.yMax - plotParams.yMin;
   
-overlayRect.on('mousemove', mousemove)
+svg.on('mousemove', mousemove)
 function mousemove(e) {
     // recover coordinate we need
-    var pixel = d3.pointer(e, overlayRect.node())[0];
+    var pixel = d3.pointer(e)[0];
     console.log(pixel);
     var celcius = pixel_to_x(pixel);
     celcius = Math.round(celcius * 10)/10;
