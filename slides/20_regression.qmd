@@ -575,10 +575,10 @@ function updateOverlay(xCoord) {
   plotParams.xRange = plotParams.xMax - plotParams.xMin;
   plotParams.yRange = plotParams.yMax - plotParams.yMin;
   
-overlayRect.on('mousemove', mousemove)
+svg.on('mousemove', mousemove)
 function mousemove(e) {
     // recover coordinate we need
-    var pixel = d3.pointer(e, overlayRect.node())[0];
+    var pixel = d3.pointer(e)[0];
     console.log(pixel);
     var celcius = pixel_to_x(pixel);
     celcius = Math.round(celcius * 10)/10;
