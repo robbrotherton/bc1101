@@ -210,3 +210,11 @@ card("18_factorial-ANOVA", dates[24])
 card("19_correlation", dates[25], image_class = "invertable")
 ```
 ::::
+
+
+:::: {.box}
+## 20. Regression
+```{r}
+card("20_regression", dates[26], image_class = "invertable")
+```
+::::
