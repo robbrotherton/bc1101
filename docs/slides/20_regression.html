@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.1.251">
+
+  <title>BC1101 – regression</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+  <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+  <script type="ojs-define">
+  {"contents":[{"name":"ojs_point_data","value":[{"xVal":1.2283,"yVal":1.2242,"yhat":0.7238},{"xVal":-0.8451,"yVal":-0.1651,"yhat":-0.5442},{"xVal":0.3074,"yVal":0.3422,"yhat":0.1606},{"xVal":0.2373,"yVal":0.8948,"yhat":0.1177},{"xVal":0.4271,"yVal":0.2961,"yhat":0.2338},{"xVal":-0.069,"yVal":-0.1208,"yhat":-0.0696},{"xVal":1.1362,"yVal":1.5677,"yhat":0.6675},{"xVal":-0.5287,"yVal":0.3594,"yhat":-0.3507},{"xVal":2.3627,"yVal":1.2479,"yhat":1.4176},{"xVal":-0.0411,"yVal":-0.0711,"yhat":-0.0525},{"xVal":1.1988,"yVal":1.1354,"yhat":0.7058},{"xVal":2.3846,"yVal":1.7058,"yhat":1.431},{"xVal":-0.7797,"yVal":-1.7048,"yhat":-0.5042},{"xVal":0.0327,"yVal":-0.5314,"yhat":-0.0074},{"xVal":-0.3817,"yVal":0.1432,"yhat":-0.2608},{"xVal":0.755,"yVal":0.3826,"yhat":0.4343},{"xVal":0.0968,"yVal":-0.6053,"yhat":0.0318},{"xVal":-2.4491,"yVal":-2.3029,"yhat":-1.5252},{"xVal":-1.6297,"yVal":-2.7359,"yhat":-1.0241},{"xVal":0.713,"yVal":1.6485,"yhat":0.4087},{"xVal":-0.0575,"yVal":-0.491,"yhat":-0.0626},{"xVal":-1.6778,"yVal":-1.5087,"yhat":-1.0535},{"xVal":-0.1766,"yVal":-0.131,"yhat":-0.1354},{"xVal":1.0865,"yVal":1.0863,"yhat":0.6371},{"xVal":0.8859,"yVal":2.5043,"yhat":0.5144},{"xVal":-0.0159,"yVal":-0.7541,"yhat":-0.0371},{"xVal":-0.7424,"yVal":0.2822,"yhat":-0.4814},{"xVal":-1.5911,"yVal":-1.5629,"yhat":-1.0005},{"xVal":0.785,"yVal":0.038,"yhat":0.4527},{"xVal":-0.5417,"yVal":-0.6032,"yhat":-0.3587},{"xVal":0.0734,"yVal":0.7413,"yhat":0.0175},{"xVal":0.8207,"yVal":0.4401,"yhat":0.4745},{"xVal":1.2711,"yVal":0.5805,"yhat":0.75},{"xVal":-0.613,"yVal":-0.4763,"yhat":-0.4023},{"xVal":0.0095,"yVal":0.8938,"yhat":-0.0216},{"xVal":-1.5029,"yVal":-1.5686,"yhat":-0.9465},{"xVal":-0.0813,"yVal":-1.3219,"yhat":-0.0771},{"xVal":-0.1767,"yVal":-1.3454,"yhat":-0.1355},{"xVal":-1.8157,"yVal":-2.503,"yhat":-1.1378},{"xVal":0.268,"yVal":-0.2034,"yhat":0.1365},{"xVal":0.1938,"yVal":0.1747,"yhat":0.0911},{"xVal":-0.6228,"yVal":-0.0231,"yhat":-0.4083},{"xVal":0.8725,"yVal":0.4838,"yhat":0.5062},{"xVal":-0.1518,"yVal":-1.1481,"yhat":-0.1203},{"xVal":-1.4953,"yVal":-0.9523,"yhat":-0.9419},{"xVal":0.2639,"yVal":0.5103,"yhat":0.134},{"xVal":-1.2433,"yVal":-0.2082,"yhat":-0.7878},{"xVal":2.0441,"yVal":0.5392,"yhat":1.2227},{"xVal":-0.4249,"yVal":-0.3468,"yhat":-0.2873},{"xVal":-0.0188,"yVal":1.1917,"yhat":-0.0389},{"xVal":-0.0359,"yVal":0.6118,"yhat":-0.0494},{"xVal":-0.3288,"yVal":-1.0734,"yhat":-0.2285},{"xVal":1.0818,"yVal":1.737,"yhat":0.6342},{"xVal":0.965,"yVal":0.1851,"yhat":0.5627},{"xVal":0.283,"yVal":-0.1225,"yhat":0.1457},{"xVal":-0.2837,"yVal":0.7784,"yhat":-0.2009},{"xVal":0.7373,"yVal":0.4778,"yhat":0.4235},{"xVal":-0.2902,"yVal":0.4509,"yhat":-0.2049},{"xVal":-2.5469,"yVal":-2.8073,"yhat":-1.585},{"xVal":0.9598,"yVal":-0.4502,"yhat":0.5596},{"xVal":0.0511,"yVal":-0.7081,"yhat":0.0039},{"xVal":0.6525,"yVal":-0.3211,"yhat":0.3716},{"xVal":0.737,"yVal":0.3038,"yhat":0.4233},{"xVal":1.4024,"yVal":1.1016,"yhat":0.8303},{"xVal":-0.5819,"yVal":-0.7191,"yhat":-0.3833},{"xVal":1.2738,"yVal":1.0562,"yhat":0.7516},{"xVal":-0.5458,"yVal":1.1466,"yhat":-0.3612},{"xVal":1.5487,"yVal":0.309,"yhat":0.9197},{"xVal":1.009,"yVal":0.638,"yhat":0.5897},{"xVal":0.4887,"yVal":0.8009,"yhat":0.2715},{"xVal":-1.6613,"yVal":-0.2047,"yhat":-1.0434},{"xVal":-0.1203,"yVal":-0.0411,"yhat":-0.1009},{"xVal":0.0035,"yVal":1.1119,"yhat":-0.0252},{"xVal":-0.1174,"yVal":-1.5883,"yhat":-0.0992},{"xVal":-1.1324,"yVal":0.1613,"yhat":-0.7199},{"xVal":0.8285,"yVal":0.2108,"yhat":0.4793},{"xVal":0.8107,"yVal":0.5635,"yhat":0.4684},{"xVal":0.911,"yVal":-0.0813,"yhat":0.5297},{"xVal":-0.8521,"yVal":-0.7324,"yhat":-0.5485},{"xVal":-1.7821,"yVal":-0.1852,"yhat":-1.1173},{"xVal":0.2698,"yVal":2.4362,"yhat":0.1376},{"xVal":0.7123,"yVal":-0.2509,"yhat":0.4082},{"xVal":-0.1382,"yVal":0.2964,"yhat":-0.1119},{"xVal":-0.7291,"yVal":0.5128,"yhat":-0.4733},{"xVal":-0.9807,"yVal":-1.1557,"yhat":-0.6272},{"xVal":0.645,"yVal":0.4498,"yhat":0.367},{"xVal":-0.0579,"yVal":-0.3305,"yhat":-0.0628},{"xVal":-0.4308,"yVal":0.1039,"yhat":-0.2909},{"xVal":0.2099,"yVal":1.4598,"yhat":0.101},{"xVal":0.4275,"yVal":1.0425,"yhat":0.2341},{"xVal":1.102,"yVal":1.3883,"yhat":0.6465},{"xVal":-0.2909,"yVal":-0.5609,"yhat":-0.2053},{"xVal":0.3588,"yVal":0.8046,"yhat":0.1921},{"xVal":1.49,"yVal":0.9985,"yhat":0.8838},{"xVal":-0.8686,"yVal":-1.1184,"yhat":-0.5586},{"xVal":-1.2603,"yVal":-0.2795,"yhat":-0.7981},{"xVal":-1.2099,"yVal":-0.8146,"yhat":-0.7674},{"xVal":-1.4129,"yVal":-1.1974,"yhat":-0.8915},{"xVal":0.1858,"yVal":-0.0428,"yhat":0.0863},{"xVal":0.1679,"yVal":1.0006,"yhat":0.0753},{"xVal":0.4772,"yVal":1.6712,"yhat":0.2644},{"xVal":1.3232,"yVal":0.5457,"yhat":0.7818},{"xVal":-0.9221,"yVal":-0.8725,"yhat":-0.5913},{"xVal":1.6314,"yVal":1.6753,"yhat":0.9703},{"xVal":-0.3377,"yVal":-0.855,"yhat":-0.2339},{"xVal":0.541,"yVal":-0.3523,"yhat":0.3035},{"xVal":-0.3766,"yVal":-0.3788,"yhat":-0.2577},{"xVal":-0.4026,"yVal":0.1837,"yhat":-0.2736},{"xVal":-0.4921,"yVal":0.8288,"yhat":-0.3284},{"xVal":0.9604,"yVal":-0.7472,"yhat":0.5599},{"xVal":0.2917,"yVal":-0.3366,"yhat":0.151},{"xVal":0.2359,"yVal":-0.0426,"yhat":0.1169},{"xVal":0.3096,"yVal":-1.178,"yhat":0.1619},{"xVal":-0.1153,"yVal":-0.7866,"yhat":-0.0979},{"xVal":-1.1381,"yVal":-1.8334,"yhat":-0.7234},{"xVal":-0.0188,"yVal":-0.6651,"yhat":-0.0389},{"xVal":0.5203,"yVal":-1.4374,"yhat":0.2908},{"xVal":2.3212,"yVal":2.5121,"yhat":1.3922},{"xVal":-0.9357,"yVal":-1.5009,"yhat":-0.5996},{"xVal":-0.5572,"yVal":0.8028,"yhat":-0.3682},{"xVal":-1.6919,"yVal":-0.98,"yhat":-1.0621},{"xVal":-0.6652,"yVal":-1.9652,"yhat":-0.4342},{"xVal":0.0675,"yVal":0.1555,"yhat":0.0139},{"xVal":-0.6259,"yVal":-1.157,"yhat":-0.4102},{"xVal":-0.3989,"yVal":0.3956,"yhat":-0.2713},{"xVal":-0.4068,"yVal":-0.3593,"yhat":-0.2762},{"xVal":-0.2998,"yVal":-0.798,"yhat":-0.2107},{"xVal":-2.007,"yVal":-1.6149,"yhat":-1.2548},{"xVal":-1.1637,"yVal":-1.0272,"yhat":-0.7391},{"xVal":0.2342,"yVal":0.0869,"yhat":0.1158},{"xVal":-0.3956,"yVal":1.411,"yhat":-0.2693},{"xVal":-0.2041,"yVal":-0.6776,"yhat":-0.1522},{"xVal":0.2106,"yVal":-0.2105,"yhat":0.1014},{"xVal":1.6957,"yVal":0.313,"yhat":1.0096},{"xVal":1.306,"yVal":1.2697,"yhat":0.7713},{"xVal":-1.3795,"yVal":-0.5831,"yhat":-0.871},{"xVal":0.8214,"yVal":-1.0313,"yhat":0.475},{"xVal":1.1865,"yVal":0.9628,"yhat":0.6982},{"xVal":0.1083,"yVal":-0.9486,"yhat":0.0388},{"xVal":-0.6918,"yVal":0.5979,"yhat":-0.4505},{"xVal":-0.6843,"yVal":0.5303,"yhat":-0.4459},{"xVal":-0.9436,"yVal":-0.6444,"yhat":-0.6044},{"xVal":-1.037,"yVal":0.2415,"yhat":-0.6616},{"xVal":0.3615,"yVal":-0.4142,"yhat":0.1937},{"xVal":-0.7953,"yVal":0.055,"yhat":-0.5138},{"xVal":1.2575,"yVal":0.7342,"yhat":0.7416},{"xVal":-0.5737,"yVal":-0.2867,"yhat":-0.3783},{"xVal":-0.2535,"yVal":-0.5213,"yhat":-0.1825},{"xVal":0.7479,"yVal":0.4987,"yhat":0.43},{"xVal":-1.1891,"yVal":-0.7006,"yhat":-0.7546},{"xVal":0.5467,"yVal":-0.6195,"yhat":0.3069},{"xVal":-1.2755,"yVal":-1.5,"yhat":-0.8075},{"xVal":0.9675,"yVal":1.1204,"yhat":0.5643},{"xVal":-0.0643,"yVal":-0.4252,"yhat":-0.0667},{"xVal":-0.4653,"yVal":-0.3716,"yhat":-0.3119},{"xVal":-0.9649,"yVal":-1.2501,"yhat":-0.6175},{"xVal":-0.7307,"yVal":0.7168,"yhat":-0.4743},{"xVal":-1.0352,"yVal":-0.3964,"yhat":-0.6605},{"xVal":-1.8035,"yVal":0.8492,"yhat":-1.1304},{"xVal":1.5073,"yVal":0.7962,"yhat":0.8944},{"xVal":-0.5212,"yVal":0.2072,"yhat":-0.3461},{"xVal":-1.8969,"yVal":-0.0204,"yhat":-1.1875},{"xVal":0.0114,"yVal":0.2806,"yhat":-0.0204},{"xVal":0.1599,"yVal":-0.8088,"yhat":0.0704},{"xVal":0.9778,"yVal":0.0777,"yhat":0.5706},{"xVal":1.297,"yVal":1.2654,"yhat":0.7658},{"xVal":-1.4733,"yVal":-0.3024,"yhat":-0.9284},{"xVal":0.0711,"yVal":0.7422,"yhat":0.0161},{"xVal":1.0322,"yVal":-0.8804,"yhat":0.6039},{"xVal":1.1142,"yVal":0.4878,"yhat":0.654},{"xVal":-0.2015,"yVal":-0.2096,"yhat":-0.1506},{"xVal":1.4004,"yVal":0.0962,"yhat":0.829},{"xVal":-1.8714,"yVal":-1.2502,"yhat":-1.1719},{"xVal":2.6118,"yVal":0.4104,"yhat":1.5699},{"xVal":0.7094,"yVal":0.8376,"yhat":0.4065},{"xVal":0.0401,"yVal":-0.3098,"yhat":-0.0029},{"xVal":-1.0764,"yVal":-1.5157,"yhat":-0.6857},{"xVal":0.702,"yVal":0.4483,"yhat":0.4019},{"xVal":0.2914,"yVal":0.573,"yhat":0.1508},{"xVal":-0.1829,"yVal":0.1716,"yhat":-0.1393},{"xVal":0.2364,"yVal":0.0346,"yhat":0.1172},{"xVal":0.3384,"yVal":-1.3833,"yhat":0.1796},{"xVal":0.9735,"yVal":-0.3138,"yhat":0.568},{"xVal":0.9208,"yVal":-0.3937,"yhat":0.5357},{"xVal":-0.5905,"yVal":0.0909,"yhat":-0.3885},{"xVal":-1.0862,"yVal":-1.3041,"yhat":-0.6917},{"xVal":0.5062,"yVal":0.7474,"yhat":0.2822},{"xVal":1.1929,"yVal":-0.2015,"yhat":0.7021},{"xVal":-0.5085,"yVal":-0.9875,"yhat":-0.3384},{"xVal":-1.6778,"yVal":-1.1747,"yhat":-1.0535},{"xVal":0.2631,"yVal":0.1036,"yhat":0.1335},{"xVal":-0.2572,"yVal":-0.3601,"yhat":-0.1847},{"xVal":0.2582,"yVal":0.1937,"yhat":0.1305},{"xVal":-1.6989,"yVal":-0.6159,"yhat":-1.0664},{"xVal":-0.5829,"yVal":-1.1329,"yhat":-0.3839},{"xVal":0.6688,"yVal":1.2735,"yhat":0.3816},{"xVal":-0.0407,"yVal":0.763,"yhat":-0.0523},{"xVal":1.0564,"yVal":-0.0073,"yhat":0.6187},{"xVal":1.5694,"yVal":1.6778,"yhat":0.9324},{"xVal":0.1202,"yVal":0.1102,"yhat":0.0461},{"xVal":-2.2499,"yVal":-1.3294,"yhat":-1.4034},{"xVal":-0.1106,"yVal":0.7076,"yhat":-0.095},{"xVal":1.0488,"yVal":1.0466,"yhat":0.614},{"xVal":1.7813,"yVal":1.9029,"yhat":1.062},{"xVal":-0.9094,"yVal":-1.5536,"yhat":-0.5836},{"xVal":-0.9408,"yVal":-1.118,"yhat":-0.6027},{"xVal":-0.171,"yVal":-1.0916,"yhat":-0.132},{"xVal":-0.5103,"yVal":-1.3752,"yhat":-0.3395},{"xVal":-0.0316,"yVal":-1.1235,"yhat":-0.0467},{"xVal":-0.5398,"yVal":0.2082,"yhat":-0.3575},{"xVal":-1.573,"yVal":-0.5758,"yhat":-0.9894},{"xVal":2.0066,"yVal":1.6372,"yhat":1.1998},{"xVal":0.6013,"yVal":-0.4085,"yhat":0.3403},{"xVal":-0.0359,"yVal":-0.1146,"yhat":-0.0494},{"xVal":-0.5593,"yVal":1.4459,"yhat":-0.3695},{"xVal":-0.8794,"yVal":0.9464,"yhat":-0.5652},{"xVal":0.651,"yVal":-0.8873,"yhat":0.3707},{"xVal":1.4805,"yVal":1.1613,"yhat":0.878},{"xVal":-0.8798,"yVal":0.4916,"yhat":-0.5655},{"xVal":-1.131,"yVal":-1.1652,"yhat":-0.7191},{"xVal":-0.3694,"yVal":1.0593,"yhat":-0.2533},{"xVal":-0.1652,"yVal":-0.4636,"yhat":-0.1284},{"xVal":-0.7373,"yVal":-0.1962,"yhat":-0.4783},{"xVal":-1.0556,"yVal":-0.8551,"yhat":-0.673},{"xVal":-1.0609,"yVal":1.8272,"yhat":-0.6762},{"xVal":-0.5673,"yVal":0.256,"yhat":-0.3743},{"xVal":1.0008,"yVal":-0.0784,"yhat":0.5847},{"xVal":0.0604,"yVal":-0.4797,"yhat":0.0096},{"xVal":-0.7546,"yVal":-0.4234,"yhat":-0.4889},{"xVal":1.9684,"yVal":0.2681,"yhat":1.1764},{"xVal":0.5639,"yVal":-1.05,"yhat":0.3175},{"xVal":1.3496,"yVal":0.3462,"yhat":0.798},{"xVal":-0.9191,"yVal":-1.2303,"yhat":-0.5895},{"xVal":-0.971,"yVal":0.1371,"yhat":-0.6212},{"xVal":-0.1183,"yVal":-0.3635,"yhat":-0.0997},{"xVal":-0.4223,"yVal":-0.2771,"yhat":-0.2857},{"xVal":1.2352,"yVal":1.1774,"yhat":0.728},{"xVal":0.295,"yVal":-0.3358,"yhat":0.153},{"xVal":-0.3908,"yVal":0.8276,"yhat":-0.2664},{"xVal":-0.3525,"yVal":-1.3333,"yhat":-0.243},{"xVal":-0.5501,"yVal":-0.7544,"yhat":-0.3638},{"xVal":1.0483,"yVal":0.7371,"yhat":0.6137},{"xVal":0.8876,"yVal":1.3636,"yhat":0.5155},{"xVal":0.3982,"yVal":1.8358,"yhat":0.2162},{"xVal":-1.4647,"yVal":-1.0051,"yhat":-0.9231},{"xVal":1.2153,"yVal":2.4518,"yhat":0.7159},{"xVal":0.5683,"yVal":1.2508,"yhat":0.3201},{"xVal":0.2554,"yVal":-0.3032,"yhat":0.1288},{"xVal":0.5929,"yVal":0.6658,"yhat":0.3352},{"xVal":-1.4842,"yVal":-0.2534,"yhat":-0.9351},{"xVal":-0.2822,"yVal":-1.6787,"yhat":-0.2},{"xVal":-0.1014,"yVal":0.1891,"yhat":-0.0894},{"xVal":-1.0018,"yVal":-1.1421,"yhat":-0.6401},{"xVal":-0.2226,"yVal":0.5625,"yhat":-0.1635},{"xVal":0.8252,"yVal":1.4962,"yhat":0.4773},{"xVal":-1.0594,"yVal":-0.7901,"yhat":-0.6753},{"xVal":-1.3281,"yVal":0.0071,"yhat":-0.8396},{"xVal":0.7239,"yVal":-0.6406,"yhat":0.4153},{"xVal":-1.3175,"yVal":-0.5029,"yhat":-0.8331},{"xVal":0.3636,"yVal":-1.0492,"yhat":0.195},{"xVal":0.5178,"yVal":1.0435,"yhat":0.2893},{"xVal":0.8271,"yVal":0.9073,"yhat":0.4784},{"xVal":-0.0892,"yVal":0.7759,"yhat":-0.082},{"xVal":-1.6913,"yVal":-1.6208,"yhat":-1.0618},{"xVal":0.6532,"yVal":-0.7498,"yhat":0.3721},{"xVal":1.8503,"yVal":0.0544,"yhat":1.1042},{"xVal":0.4854,"yVal":0.9693,"yhat":0.2695},{"xVal":-0.1379,"yVal":-0.2035,"yhat":-0.1117},{"xVal":-2.1595,"yVal":-2.6703,"yhat":-1.3481},{"xVal":0.1936,"yVal":-0.0846,"yhat":0.091},{"xVal":0.8134,"yVal":0.2129,"yhat":0.4701},{"xVal":0.1113,"yVal":-0.0294,"yhat":0.0407},{"xVal":0.5573,"yVal":-0.2757,"yhat":0.3134},{"xVal":1.2728,"yVal":-0.5008,"yhat":0.751},{"xVal":-0.2565,"yVal":-0.4529,"yhat":-0.1842},{"xVal":0.7042,"yVal":1.6391,"yhat":0.4033},{"xVal":-0.4188,"yVal":1.2603,"yhat":-0.2835},{"xVal":-1.1126,"yVal":-1.1103,"yhat":-0.7079},{"xVal":1.2718,"yVal":1.1996,"yhat":0.7504},{"xVal":0.6466,"yVal":1.508,"yhat":0.3681},{"xVal":0.7131,"yVal":0.761,"yhat":0.4087},{"xVal":-1.2926,"yVal":-1.6816,"yhat":-0.8179},{"xVal":0.2677,"yVal":-1.2861,"yhat":0.1363},{"xVal":1.1336,"yVal":0.0033,"yhat":0.6659},{"xVal":-0.1426,"yVal":0.2208,"yhat":-0.1146},{"xVal":0.964,"yVal":-0.3415,"yhat":0.5622},{"xVal":1.731,"yVal":2.6688,"yhat":1.0313},{"xVal":-0.1298,"yVal":-1.3341,"yhat":-0.1068},{"xVal":-1.8035,"yVal":-1.9767,"yhat":-1.1304},{"xVal":0.2458,"yVal":0.2438,"yhat":0.123},{"xVal":-0.6093,"yVal":-0.6207,"yhat":-0.4},{"xVal":0.331,"yVal":0.4669,"yhat":0.175},{"xVal":-0.9943,"yVal":-0.459,"yhat":-0.6355},{"xVal":2.035,"yVal":1.9221,"yhat":1.2171},{"xVal":0.0005,"yVal":-0.2218,"yhat":-0.0271},{"xVal":-0.4986,"yVal":-0.3552,"yhat":-0.3323},{"xVal":0.0452,"yVal":-0.3426,"yhat":0.0003},{"xVal":0.0839,"yVal":1.4591,"yhat":0.0239},{"xVal":1.0576,"yVal":-0.8835,"yhat":0.6194},{"xVal":-1.9133,"yVal":-0.9947,"yhat":-1.1975}]}]}
+  </script>
+  <script type="ojs-define">
+  {"contents":[{"name":"ojs_line_data","value":[-2.5469,2.6118,-1.585,1.5699]}]}
+  </script>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+
+<section id="regression" class="title-slide slide level1 center">
+<h1>20|REGRESSION</h1>
+
+<!-- ![](covers/19_correlation.svg){.invertable} -->
+<div id="cover">
+
+</div>
+<div class="cell" data-opts.label="data">
+
+</div>
+<div class="cell">
+
+</div>
+</section>
+
+<section id="overview" class="title-slide slide level1 center">
+<h1>Overview</h1>
+<ul>
+<li><a href="#/purpose">Purpose</a></li>
+<li><a href="#/equations">Equations</a></li>
+<li><a href="#/hypothesis-test">Hypothesis test</a></li>
+<li><a href="#/learning-checks">Learning checks</a></li>
+</ul>
+</section>
+
+<section>
+<section id="purpose" class="title-slide slide level1 center">
+<h1>Purpose</h1>
+
+</section>
+<section id="correlation" class="slide level2">
+<h2>Correlation</h2>
+<ul>
+<li>Pearson’s <span class="math inline">\(r\)</span>, bivariate correlation coefficient</li>
+<li>Quantifies the strength of linear relationship between two variables</li>
+</ul>
+<div class="r-hstack">
+<p><img data-src="media/correlation-weak.svg" class="invertable"></p>
+<p><img data-src="media/correlation-moderate.svg" class="invertable"></p>
+<p><img data-src="media/correlation-strong.svg" class="invertable"></p>
+<p><img data-src="media/correlation-perfect.svg" class="invertable"></p>
+</div>
+</section>
+<section id="correlation-example" class="slide level2">
+<h2>Correlation example</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="cell" style="font-size: 0.7em;">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Participant </th>
+   <th style="text-align:right;"> Sleep duration </th>
+   <th style="text-align:right;"> Test score </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> E </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 9 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div><div class="column invertable" style="width:50%;">
+<div class="r-stack" width="100%">
+<p><img data-src="media/sleep-scatterplot.svg" class="fragment fade-out" style="width:100.0%" data-fragment-index="1"></p>
+<p><img data-src="media/sleep-scatterplot-ellipse.svg" class="fragment" style="width:100.0%" data-fragment-index="1"></p>
+</div>
+</div>
+</div>
+<div class="center-element">
+<p><span class="math inline">\(r = \dfrac{SP}{\sqrt{SS_X SS_Y}} = \dfrac{15}{30*14} = 0.73\)</span></p>
+</div>
+</section>
+<section id="regression-1" class="slide level2">
+<h2>Regression</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Regression defines the line of best fit
+<ul>
+<li>Makes relationship easier to see</li>
+<li>Shows “central tendency” of the relationship</li>
+<li>Emphasizes <span class="emph">prediction</span></li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="media/sleep-scatterplot-line.svg" class="invertable"></p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="equations" class="title-slide slide level1 center">
+<h1>Equations</h1>
+
+</section>
+<section id="straight-line-equation" class="slide level2">
+<h2>Straight line equation</h2>
+<ul>
+<li><span class="math inline">\(Y = bX + a\)</span>
+<ul>
+<li><span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are variables</li>
+<li><span class="math inline">\(a\)</span> (the intercept) and <span class="math inline">\(b\)</span> (the slope) are constants</li>
+</ul></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-opts.label="temp-data">
+
+</div>
+<div class="cell temp-table" style="font-size: 0.7em;">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> Celcius </th>
+   <th style="text-align:right;"> Fahrenheit </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 32 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 50 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 68 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 30 </td>
+   <td style="text-align:right;"> 86 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 40 </td>
+   <td style="text-align:right;"> 104 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 50 </td>
+   <td style="text-align:right;"> 122 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div id="temp-plot">
+
+</div>
+</div>
+</div>
+</section>
+<section id="regression-2" class="slide level2">
+<h2>Regression</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Regression line equation
+<ul>
+<li><span class="math inline">\(\hat{Y} = bX + a\)</span></li>
+<li><span class="math inline">\(\hat{Y}\)</span>: value of <span class="math inline">\(Y\)</span> predicted by the regression equation for each value of <span class="math inline">\(X\)</span></li>
+<li><span class="math inline">\((Y - \hat{Y})\)</span>: residual (deviation of each data point from the regression line)</li>
+<li>Regression defines line that minimizes the sum of squared residuals</li>
+<li><span class="math inline">\(SS_{residual} = \Sigma(Y - \hat{Y})^2\)</span></li>
+<li>“Least-squared-error solution”</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p>Right column</p>
+</div>
+</div>
+</section>
+<section id="regression-3" class="slide level2">
+<h2>Regression</h2>
+<ul>
+<li>Regression line equation: <span class="math inline">\(\hat{Y} = bX + a\)</span>
+<ul>
+<li>The slope of the line, <span class="math inline">\(b\)</span>:</li>
+</ul></li>
+</ul>
+<div class="center-element">
+
+</div>
+</section>
+<section id="regression-4" class="slide level2">
+<h2>Regression</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>The intercept of the line, <span class="math inline">\(a\)</span>
+<ul>
+<li>The value of <span class="math inline">\(Y\)</span> when <span class="math inline">\(X = 0\)</span></li>
+<li>The line goes through <span class="math inline">\((M_X, M_Y)\)</span> therefore:</li>
+</ul></li>
+</ul>
+<div class="center-element">
+
+</div>
+</div><div class="column" style="width:50%;">
+<p>Right column</p>
+</div>
+</div>
+</section>
+<section id="standard-error" class="slide level2">
+<h2>Standard error</h2>
+<ul>
+<li>Standard error of estimate
+<ul>
+<li>Quantifies precision of regression estimate</li>
+<li>Average distance of points from the regression line</li>
+<li>Remember… <span class="math inline">\(s = \sqrt{\dfrac{SS}{df}}\)</span></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="hypothesis-test" class="title-slide slide level1 center">
+<h1>Hypothesis test</h1>
+
+</section>
+<section id="analysis-of-regression" class="slide level2">
+<h2>Analysis of regression</h2>
+<ul>
+<li>Analysis of Regression
+<ul>
+<li>Similar to Analysis of Variance</li>
+</ul></li>
+</ul>
+</section>
+<section id="partitioning-variance" class="slide level2">
+<h2>Partitioning variance</h2>
+<div class="columns">
+<div class="column" style="position: relative; height: 350px;">
+<div class="xx split" style="left: 50%">
+<p><span class="math inline">\(SS_{Y}\)</span></p>
+</div>
+<div class="xx" style="left: 25%; margin-top: 4.5em;">
+<p><span class="math inline">\(SS_{regression}\)</span></p>
+</div>
+<div class="xx" style="left: 75%; margin-top: 4.5em;">
+<p><span class="math inline">\(SS_{residual}\)</span></p>
+</div>
+</div><div class="column" style="position: relative;">
+<div class="xx split" style="left: 50%">
+<p><span class="math inline">\(df_{Y}\)</span></p>
+</div>
+<div class="xx" style="left: 25%; margin-top: 4.5em;">
+<p><span class="math inline">\(df_{regression}\)</span></p>
+</div>
+<div class="xx" style="left: 75%; margin-top: 4.5em;">
+<p><span class="math inline">\(df_{residual}\)</span></p>
+</div>
+</div>
+</div>
+<div class="center-element">
+<p><span class="math inline">\(MS_{regression}=\dfrac{SS_{regression}}{df_{regression}} \ \ \ \ \ \ \ \ \ \ MS_{residual}=\dfrac{SS_{residual}}{df_{residual}}\)</span></p>
+<p><span class="math inline">\(F = \dfrac{MS_{regression}}{MS_{residual}}\)</span></p>
+</div>
+</section>
+<section id="step-1-hypotheses" class="slide level2">
+<h2>Step 1: Hypotheses</h2>
+<ul>
+<li><span class="math inline">\(H_0\)</span>: the slope of the regression line <span class="math inline">\(\beta = 0\)</span>
+<ul>
+<li>i.e., there is no association between variables</li>
+<li>Knowing <span class="math inline">\(X\)</span> does not help to predict <span class="math inline">\(Y\)</span></li>
+</ul></li>
+<li><span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta \ne 0\)</span></li>
+</ul>
+</section>
+<section id="step-2.-critical-region" class="slide level2">
+<h2>Step 2. Critical region</h2>
+<ul>
+<li>Numerator: <span class="math inline">\(df_{regression} = 1\)</span></li>
+<li>Denominator: <span class="math inline">\(df_{residual} = n-2\)</span></li>
+</ul>
+<div class="cell">
+
+</div>
+</section>
+<section id="step-3.-calculate" class="slide level2">
+<h2>Step 3. Calculate</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math inline">\(SS_{Y} = \Sigma (Y - M_Y)^2\)</span></p>
+<p><span class="math inline">\(SS_{residual} = \Sigma (Y - \hat{Y})^2\)</span></p>
+<p><span class="math inline">\(SS_{regression} = SS_Y - SS_{residual}\)</span></p>
+</div><div class="column" style="width:50%;">
+<p><span class="math inline">\(df_Y = n - 1\)</span></p>
+<p><span class="math inline">\(df_{residual} = n - 2\)</span></p>
+<p><span class="math inline">\(df_{regression} = 1\)</span></p>
+</div>
+</div>
+</section></section>
+<section id="learning-checks" class="title-slide slide level1 center">
+<h1>Learning checks</h1>
+<div class="center-element">
+<p><span class="emph">CONCEPT</span> <span class="small">is most closely related to</span> <span class="emph">CONCEPT</span></p>
+</div>
+<div class="columns center-element">
+<div class="column" style="width:50%;">
+<p>Residuals</p>
+<p>Sum of squared residuals</p>
+<p><span class="math inline">\(s_{error}\)</span></p>
+<p><span class="math inline">\(MS_{regression}\)</span></p>
+</div><div class="column" style="width:50%;">
+<p><span class="math inline">\(SS\)</span></p>
+<p><span class="math inline">\(SP\)</span></p>
+<p><span class="math inline">\(s^2\)</span></p>
+<p><span class="math inline">\(s\)</span></p>
+<p><span class="math inline">\((X-M)\)</span></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="430" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 429;"><span id="cb1-430"><a href="#cb1-430"></a>cover <span class="op">=</span> {</span>
+<span id="cb1-431"><a href="#cb1-431"></a></span>
+<span id="cb1-432"><a href="#cb1-432"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">1050</span></span>
+<span id="cb1-433"><a href="#cb1-433"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">525</span></span>
+<span id="cb1-434"><a href="#cb1-434"></a>  </span>
+<span id="cb1-435"><a href="#cb1-435"></a>  <span class="kw">const</span> x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb1-436"><a href="#cb1-436"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="op">-</span><span class="fl">2.7</span><span class="op">,</span> <span class="fl">2.7</span>])</span>
+<span id="cb1-437"><a href="#cb1-437"></a>    <span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> w])</span>
+<span id="cb1-438"><a href="#cb1-438"></a>  <span class="kw">const</span> y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb1-439"><a href="#cb1-439"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="op">-</span><span class="fl">2.9</span><span class="op">,</span> <span class="fl">2.8</span>])</span>
+<span id="cb1-440"><a href="#cb1-440"></a>    <span class="op">.</span><span class="fu">range</span>([h<span class="op">,</span> <span class="dv">0</span>])</span>
+<span id="cb1-441"><a href="#cb1-441"></a>    </span>
+<span id="cb1-442"><a href="#cb1-442"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#cover"</span>)<span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
+<span id="cb1-443"><a href="#cb1-443"></a>  </span>
+<span id="cb1-444"><a href="#cb1-444"></a>  svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"circle"</span>)<span class="op">.</span><span class="fu">data</span>(ojs_point_data)<span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-445"><a href="#cb1-445"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"circle"</span>)</span>
+<span id="cb1-446"><a href="#cb1-446"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cx"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">xVal</span>))</span>
+<span id="cb1-447"><a href="#cb1-447"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cy"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">y</span>(d<span class="op">.</span><span class="at">yVal</span>))</span>
+<span id="cb1-448"><a href="#cb1-448"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"r"</span><span class="op">,</span> <span class="dv">5</span>)</span>
+<span id="cb1-449"><a href="#cb1-449"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"var(--text-color"</span>)</span>
+<span id="cb1-450"><a href="#cb1-450"></a>      </span>
+<span id="cb1-451"><a href="#cb1-451"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
+<span id="cb1-452"><a href="#cb1-452"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> <span class="fu">x</span>(ojs_line_data[<span class="dv">0</span>]))</span>
+<span id="cb1-453"><a href="#cb1-453"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> <span class="fu">x</span>(ojs_line_data[<span class="dv">1</span>]))</span>
+<span id="cb1-454"><a href="#cb1-454"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> <span class="fu">y</span>(ojs_line_data[<span class="dv">2</span>]))</span>
+<span id="cb1-455"><a href="#cb1-455"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> <span class="fu">y</span>(ojs_line_data[<span class="dv">3</span>]))</span>
+<span id="cb1-456"><a href="#cb1-456"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"lightblue"</span>)</span>
+<span id="cb1-457"><a href="#cb1-457"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">3</span>)</span>
+<span id="cb1-458"><a href="#cb1-458"></a>  </span>
+<span id="cb1-459"><a href="#cb1-459"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</section>
+
+<section id="blah" class="title-slide slide level1 center">
+<h1>blah</h1>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="466" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 465;"><span id="cb2-466"><a href="#cb2-466"></a>temp <span class="op">=</span> {</span>
+<span id="cb2-467"><a href="#cb2-467"></a></span>
+<span id="cb2-468"><a href="#cb2-468"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb2-469"><a href="#cb2-469"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">350</span></span>
+<span id="cb2-470"><a href="#cb2-470"></a>  <span class="kw">const</span> margin <span class="op">=</span> {<span class="dt">top</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">right</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">bottom</span><span class="op">:</span> <span class="dv">30</span><span class="op">,</span> <span class="dt">left</span><span class="op">:</span> <span class="dv">50</span>}</span>
+<span id="cb2-471"><a href="#cb2-471"></a>  </span>
+<span id="cb2-472"><a href="#cb2-472"></a>  <span class="kw">function</span> <span class="fu">f</span>(c) {</span>
+<span id="cb2-473"><a href="#cb2-473"></a>    <span class="cf">return</span> c <span class="op">*</span> <span class="fl">1.8</span> <span class="op">+</span> <span class="dv">32</span></span>
+<span id="cb2-474"><a href="#cb2-474"></a>  }</span>
+<span id="cb2-475"><a href="#cb2-475"></a>  </span>
+<span id="cb2-476"><a href="#cb2-476"></a>  <span class="kw">const</span> x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb2-477"><a href="#cb2-477"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="op">-</span><span class="dv">30</span><span class="op">,</span> <span class="dv">60</span>])</span>
+<span id="cb2-478"><a href="#cb2-478"></a>    <span class="op">.</span><span class="fu">range</span>([margin<span class="op">.</span><span class="at">left</span><span class="op">,</span> w<span class="op">-</span>margin<span class="op">.</span><span class="at">right</span>])</span>
+<span id="cb2-479"><a href="#cb2-479"></a>  <span class="kw">const</span> y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb2-480"><a href="#cb2-480"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">150</span>])</span>
+<span id="cb2-481"><a href="#cb2-481"></a>    <span class="op">.</span><span class="fu">range</span>([h<span class="op">-</span>margin<span class="op">.</span><span class="at">bottom</span><span class="op">,</span> margin<span class="op">.</span><span class="at">top</span>])</span>
+<span id="cb2-482"><a href="#cb2-482"></a>  <span class="kw">const</span> xAxis <span class="op">=</span> d3<span class="op">.</span><span class="fu">axisBottom</span>(x)</span>
+<span id="cb2-483"><a href="#cb2-483"></a>  <span class="kw">const</span> yAxis <span class="op">=</span> d3<span class="op">.</span><span class="fu">axisLeft</span>(y)</span>
+<span id="cb2-484"><a href="#cb2-484"></a>    </span>
+<span id="cb2-485"><a href="#cb2-485"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#temp-plot"</span>)<span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
+<span id="cb2-486"><a href="#cb2-486"></a>  </span>
+<span id="cb2-487"><a href="#cb2-487"></a>  <span class="kw">const</span> points <span class="op">=</span> [<span class="dv">0</span><span class="op">,</span><span class="dv">10</span><span class="op">,</span><span class="dv">20</span><span class="op">,</span><span class="dv">30</span><span class="op">,</span><span class="dv">40</span><span class="op">,</span><span class="dv">50</span>]</span>
+<span id="cb2-488"><a href="#cb2-488"></a>  </span>
+<span id="cb2-489"><a href="#cb2-489"></a>  <span class="kw">const</span> gx <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb2-490"><a href="#cb2-490"></a>  <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(0, </span><span class="sc">${</span><span class="fu">y</span>(<span class="dv">0</span>)<span class="sc">}</span><span class="vs">)`</span>)</span>
+<span id="cb2-491"><a href="#cb2-491"></a>  gx<span class="op">.</span><span class="fu">call</span>(xAxis)</span>
+<span id="cb2-492"><a href="#cb2-492"></a>  <span class="kw">const</span> gy <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb2-493"><a href="#cb2-493"></a>  <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(</span><span class="sc">${</span><span class="fu">x</span>(<span class="op">-</span><span class="dv">30</span>)<span class="sc">}</span><span class="vs">, 0)`</span>)</span>
+<span id="cb2-494"><a href="#cb2-494"></a>  gy<span class="op">.</span><span class="fu">call</span>(yAxis)</span>
+<span id="cb2-495"><a href="#cb2-495"></a>  <span class="kw">const</span> axisTitles <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb2-496"><a href="#cb2-496"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"var(--text-color)"</span>)</span>
+<span id="cb2-497"><a href="#cb2-497"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"0.5em"</span>)</span>
+<span id="cb2-498"><a href="#cb2-498"></a>  axisTitles<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)<span class="op">.</span><span class="fu">text</span>(<span class="st">"°C"</span>)</span>
+<span id="cb2-499"><a href="#cb2-499"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(</span><span class="sc">${</span>w <span class="op">/</span> <span class="dv">2</span><span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>h<span class="sc">}</span><span class="vs">)`</span>)</span>
+<span id="cb2-500"><a href="#cb2-500"></a>  axisTitles<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)<span class="op">.</span><span class="fu">text</span>(<span class="st">"°F"</span>)</span>
+<span id="cb2-501"><a href="#cb2-501"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(0, </span><span class="sc">${</span>h<span class="op">/</span><span class="dv">2</span><span class="sc">}</span><span class="vs">)`</span>)</span>
+<span id="cb2-502"><a href="#cb2-502"></a>    </span>
+<span id="cb2-503"><a href="#cb2-503"></a>    </span>
+<span id="cb2-504"><a href="#cb2-504"></a>      </span>
+<span id="cb2-505"><a href="#cb2-505"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
+<span id="cb2-506"><a href="#cb2-506"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> <span class="fu">x</span>(<span class="op">-</span><span class="dv">18</span>))</span>
+<span id="cb2-507"><a href="#cb2-507"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> <span class="fu">x</span>(<span class="dv">60</span>))</span>
+<span id="cb2-508"><a href="#cb2-508"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> <span class="fu">y</span>(<span class="fu">f</span>(<span class="op">-</span><span class="dv">18</span>)))</span>
+<span id="cb2-509"><a href="#cb2-509"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> <span class="fu">y</span>(<span class="fu">f</span>(<span class="dv">60</span>)))</span>
+<span id="cb2-510"><a href="#cb2-510"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"var(--link-color)"</span>)</span>
+<span id="cb2-511"><a href="#cb2-511"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">3</span>)</span>
+<span id="cb2-512"><a href="#cb2-512"></a>  </span>
+<span id="cb2-513"><a href="#cb2-513"></a>  svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"circle"</span>)<span class="op">.</span><span class="fu">data</span>(points)<span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb2-514"><a href="#cb2-514"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"circle"</span>)</span>
+<span id="cb2-515"><a href="#cb2-515"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cx"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">x</span>(d))</span>
+<span id="cb2-516"><a href="#cb2-516"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cy"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">y</span>(d <span class="op">*</span> <span class="fl">1.8</span> <span class="op">+</span> <span class="dv">32</span>))</span>
+<span id="cb2-517"><a href="#cb2-517"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"r"</span><span class="op">,</span> <span class="dv">5</span>)</span>
+<span id="cb2-518"><a href="#cb2-518"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"var(--text-color)"</span>)</span>
+<span id="cb2-519"><a href="#cb2-519"></a></span>
+<span id="cb2-520"><a href="#cb2-520"></a>    </span>
+<span id="cb2-521"><a href="#cb2-521"></a><span class="kw">const</span> circle <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)<span class="op">.</span><span class="fu">append</span>(<span class="st">"circle"</span>)</span>
+<span id="cb2-522"><a href="#cb2-522"></a>  <span class="op">.</span><span class="fu">attr</span>(<span class="st">"r"</span><span class="op">,</span> <span class="dv">8</span>)</span>
+<span id="cb2-523"><a href="#cb2-523"></a>  <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
+<span id="cb2-524"><a href="#cb2-524"></a>  <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"red"</span>)</span>
+<span id="cb2-525"><a href="#cb2-525"></a>  <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">2</span>)</span>
+<span id="cb2-526"><a href="#cb2-526"></a>  <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-dasharray"</span><span class="op">,</span> [<span class="dv">3</span><span class="op">,</span><span class="dv">3</span>])</span>
+<span id="cb2-527"><a href="#cb2-527"></a>  </span>
+<span id="cb2-528"><a href="#cb2-528"></a><span class="kw">const</span> path <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
+<span id="cb2-529"><a href="#cb2-529"></a>  <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"red"</span>)</span>
+<span id="cb2-530"><a href="#cb2-530"></a>  <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">2</span>)</span>
+<span id="cb2-531"><a href="#cb2-531"></a>  <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-dasharray"</span><span class="op">,</span> [<span class="dv">5</span><span class="op">,</span> <span class="dv">5</span>])</span>
+<span id="cb2-532"><a href="#cb2-532"></a>  <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
+<span id="cb2-533"><a href="#cb2-533"></a>  </span>
+<span id="cb2-534"><a href="#cb2-534"></a><span class="kw">const</span> labels <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)<span class="op">.</span><span class="fu">style</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"0.6em"</span>)<span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"var(--text-color)"</span>)</span>
+<span id="cb2-535"><a href="#cb2-535"></a><span class="kw">const</span> label_c <span class="op">=</span> labels<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb2-536"><a href="#cb2-536"></a><span class="kw">const</span> label_f <span class="op">=</span> labels<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb2-537"><a href="#cb2-537"></a></span>
+<span id="cb2-538"><a href="#cb2-538"></a>  <span class="kw">const</span> overlayRect <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">'rect'</span>)</span>
+<span id="cb2-539"><a href="#cb2-539"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
+<span id="cb2-540"><a href="#cb2-540"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"pointer-events"</span><span class="op">,</span> <span class="st">"all"</span>)</span>
+<span id="cb2-541"><a href="#cb2-541"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> <span class="fu">x</span>(<span class="op">-</span><span class="dv">30</span>))<span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> <span class="fu">y</span>(<span class="dv">150</span>))</span>
+<span id="cb2-542"><a href="#cb2-542"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">'width'</span><span class="op">,</span> w <span class="op">-</span> margin<span class="op">.</span><span class="at">left</span> <span class="op">-</span> margin<span class="op">.</span><span class="at">right</span>)</span>
+<span id="cb2-543"><a href="#cb2-543"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">'height'</span><span class="op">,</span> h <span class="op">-</span> margin<span class="op">.</span><span class="at">top</span>)</span>
+<span id="cb2-544"><a href="#cb2-544"></a>    <span class="op">.</span><span class="fu">on</span>(<span class="st">'mousemove'</span><span class="op">,</span> mousemove)</span>
+<span id="cb2-545"><a href="#cb2-545"></a></span>
+<span id="cb2-546"><a href="#cb2-546"></a><span class="kw">const</span> round <span class="op">=</span> d3<span class="op">.</span><span class="fu">format</span>(<span class="st">".1f"</span>)</span>
+<span id="cb2-547"><a href="#cb2-547"></a></span>
+<span id="cb2-548"><a href="#cb2-548"></a>d3<span class="op">.</span><span class="fu">select</span>(<span class="st">".temp-table"</span>)<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"tr"</span>)<span class="op">.</span><span class="fu">on</span>(<span class="st">"mouseover"</span><span class="op">,</span> getNumberFromTable)</span>
+<span id="cb2-549"><a href="#cb2-549"></a></span>
+<span id="cb2-550"><a href="#cb2-550"></a><span class="kw">function</span> <span class="fu">getNumberFromTable</span>() {</span>
+<span id="cb2-551"><a href="#cb2-551"></a>    <span class="cf">try</span> {</span>
+<span id="cb2-552"><a href="#cb2-552"></a>      <span class="kw">var</span> num <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)<span class="op">.</span><span class="fu">select</span>(<span class="st">"td"</span>)<span class="op">.</span><span class="at">_groups</span>[<span class="dv">0</span>][<span class="dv">0</span>]<span class="op">.</span><span class="at">innerHTML</span><span class="op">;</span></span>
+<span id="cb2-553"><a href="#cb2-553"></a>    } <span class="cf">catch</span> {} <span class="cf">finally</span> {<span class="fu">updateOverlay</span>(num)<span class="op">;</span>}</span>
+<span id="cb2-554"><a href="#cb2-554"></a>  }</span>
+<span id="cb2-555"><a href="#cb2-555"></a></span>
+<span id="cb2-556"><a href="#cb2-556"></a><span class="kw">function</span> <span class="fu">updateOverlay</span>(xCoord) {</span>
+<span id="cb2-557"><a href="#cb2-557"></a>    <span class="cf">if</span>(<span class="pp">isNaN</span>(xCoord)) <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb2-558"><a href="#cb2-558"></a>    <span class="kw">var</span> x0 <span class="op">=</span> <span class="fu">x</span>(xCoord)<span class="op">;</span></span>
+<span id="cb2-559"><a href="#cb2-559"></a>    <span class="kw">var</span> y0 <span class="op">=</span> <span class="fu">y</span>(<span class="fu">f</span>(xCoord))<span class="op">;</span></span>
+<span id="cb2-560"><a href="#cb2-560"></a>    </span>
+<span id="cb2-561"><a href="#cb2-561"></a>    circle</span>
+<span id="cb2-562"><a href="#cb2-562"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cx"</span><span class="op">,</span> x0)</span>
+<span id="cb2-563"><a href="#cb2-563"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cy"</span><span class="op">,</span> y0)</span>
+<span id="cb2-564"><a href="#cb2-564"></a>      </span>
+<span id="cb2-565"><a href="#cb2-565"></a>    <span class="kw">var</span> line <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()</span>
+<span id="cb2-566"><a href="#cb2-566"></a>    path<span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>([[<span class="fu">x</span>(<span class="op">-</span><span class="dv">30</span>)<span class="op">,</span>y0]<span class="op">,</span>[x0<span class="op">,</span>y0]<span class="op">,</span>[x0<span class="op">,</span><span class="fu">y</span>(<span class="dv">0</span>)]]))</span>
+<span id="cb2-567"><a href="#cb2-567"></a>    </span>
+<span id="cb2-568"><a href="#cb2-568"></a>    label_c<span class="op">.</span><span class="fu">text</span>(<span class="fu">round</span>(xCoord) <span class="op">+</span> <span class="st">"°C"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> <span class="fu">x</span>(xCoord))<span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> <span class="fu">y</span>(<span class="dv">0</span>))</span>
+<span id="cb2-569"><a href="#cb2-569"></a>    label_f<span class="op">.</span><span class="fu">text</span>(<span class="fu">round</span>(<span class="fu">f</span>(xCoord)) <span class="op">+</span> <span class="st">"°F"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> <span class="fu">x</span>(<span class="op">-</span><span class="dv">30</span>))<span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> y0)</span>
+<span id="cb2-570"><a href="#cb2-570"></a>}</span>
+<span id="cb2-571"><a href="#cb2-571"></a>    </span>
+<span id="cb2-572"><a href="#cb2-572"></a><span class="kw">function</span> <span class="fu">mousemove</span>(e) {</span>
+<span id="cb2-573"><a href="#cb2-573"></a>    <span class="co">// recover coordinate we need</span></span>
+<span id="cb2-574"><a href="#cb2-574"></a>    <span class="kw">var</span> xPosition <span class="op">=</span> d3<span class="op">.</span><span class="fu">pointer</span>(e<span class="op">,</span> overlayRect<span class="op">.</span><span class="fu">node</span>())[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb2-575"><a href="#cb2-575"></a>    <span class="kw">var</span> xCoord <span class="op">=</span> <span class="op">-</span><span class="dv">30</span> <span class="op">+</span> (xPosition <span class="op">-</span> margin<span class="op">.</span><span class="at">left</span>)<span class="op">/</span>((w<span class="op">-</span>margin<span class="op">.</span><span class="at">left</span><span class="op">-</span>margin<span class="op">.</span><span class="at">right</span>)<span class="op">/</span><span class="dv">90</span>)<span class="op">;</span></span>
+<span id="cb2-576"><a href="#cb2-576"></a>    xCoord <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">round</span>(xCoord <span class="op">*</span> <span class="dv">10</span>)<span class="op">/</span><span class="dv">10</span><span class="op">;</span></span>
+<span id="cb2-577"><a href="#cb2-577"></a>    xCoord <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="op">-</span><span class="dv">18</span><span class="op">,</span> xCoord)<span class="op">;</span></span>
+<span id="cb2-578"><a href="#cb2-578"></a>    <span class="fu">updateOverlay</span>(xCoord)<span class="op">;</span></span>
+<span id="cb2-579"><a href="#cb2-579"></a>    }</span>
+<span id="cb2-580"><a href="#cb2-580"></a></span>
+<span id="cb2-581"><a href="#cb2-581"></a>  <span class="fu">updateOverlay</span>(<span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb2-582"><a href="#cb2-582"></a>  </span>
+<span id="cb2-583"><a href="#cb2-583"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+
+<div class="footer footer-default">
+<button id="theme-toggle">
+<svg id="moon" class="d-block d-block-light d-none" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 384 512">
+<!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+<path d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
+</svg>
+<svg id="sun" class="d-block d-block-dark d-none" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512">
+<!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+<path d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM352 256c0 53-43 96-96 96s-96-43-96-96s43-96 96-96s96 43 96 96zm32 0c0-70.7-57.3-128-128-128s-128 57.3-128 128s57.3 128 128 128s128-57.3 128-128z"></path>
+</svg>
+</button>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"},{"title":"Source","icon":"<i class=\"fas fa-github-source\">","src":"../js/reveal-menu-github.html"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script>
+    var toggle = document.getElementById("theme-toggle");
+
+    var storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    if (storedTheme)
+        document.documentElement.setAttribute('data-theme', storedTheme)
+
+
+    toggle.onclick = function() {
+        var currentTheme = document.documentElement.getAttribute("data-theme");
+        var targetTheme = "light";
+
+        if (currentTheme === "light") {
+            targetTheme = "dark";
+        }
+
+        document.documentElement.setAttribute('data-theme', targetTheme)
+        localStorage.setItem('theme', targetTheme);
+    };
+    </script>
+    <script>
+      git = document.querySelector('[data-panel="Custom1"]');
+
+      function changeLink() {
+        var link = document.getElementById('source-link');
+        var href = link.getAttribute('href');
+
+        var path = window.location.pathname;
+        var html = path.split('/');
+        var lecture = html[html.length - 1];
+        var qmd = lecture.replace('html', 'qmd');
+        link.setAttribute('href', href.concat('/' + qmd));
+
+        var page = window.location.hash.replace('#/', ' : ');
+
+        var issueLink = document.getElementById('issue-link');
+        issueLink.setAttribute('href', issueLink.getAttribute('href').concat('?title=' + ' Issue with ' + lecture + page));
+
+      }
+
+      git.addEventListener("click", changeLink);
+
+    </script>
+    
+    <script type="ojs-module-contents">
+    {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\ncover = {\n\n  const w = 1050\n  const h = 525\n  \n  const x = d3.scaleLinear()\n    .domain([-2.7, 2.7])\n    .range([0, w])\n  const y = d3.scaleLinear()\n    .domain([-2.9, 2.8])\n    .range([h, 0])\n    \n  const svg = d3.select(\"#cover\").append(\"svg\").attr(\"width\", w).attr(\"height\", h)\n  \n  svg.selectAll(\"circle\").data(ojs_point_data).enter()\n    .append(\"circle\")\n      .attr(\"cx\", d => x(d.xVal))\n      .attr(\"cy\", d => y(d.yVal))\n      .attr(\"r\", 5)\n      .style(\"fill\", \"var(--text-color\")\n      \n  svg.append(\"line\")\n      .attr(\"x1\", x(ojs_line_data[0]))\n      .attr(\"x2\", x(ojs_line_data[1]))\n      .attr(\"y1\", y(ojs_line_data[2]))\n      .attr(\"y2\", y(ojs_line_data[3]))\n      .style(\"stroke\", \"lightblue\")\n      .style(\"stroke-width\", 3)\n  \n}\n\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"\ntemp = {\n\n  const w = 500\n  const h = 350\n  const margin = {top: 10, right: 10, bottom: 30, left: 50}\n  \n  function f(c) {\n    return c * 1.8 + 32\n  }\n  \n  const x = d3.scaleLinear()\n    .domain([-30, 60])\n    .range([margin.left, w-margin.right])\n  const y = d3.scaleLinear()\n    .domain([0, 150])\n    .range([h-margin.bottom, margin.top])\n  const xAxis = d3.axisBottom(x)\n  const yAxis = d3.axisLeft(y)\n    \n  const svg = d3.select(\"#temp-plot\").append(\"svg\").attr(\"width\", w).attr(\"height\", h)\n  \n  const points = [0,10,20,30,40,50]\n  \n  const gx = svg.append(\"g\")\n  .attr(\"transform\", `translate(0, ${y(0)})`)\n  gx.call(xAxis)\n  const gy = svg.append(\"g\")\n  .attr(\"transform\", `translate(${x(-30)}, 0)`)\n  gy.call(yAxis)\n  const axisTitles = svg.append(\"g\")\n    .style(\"fill\", \"var(--text-color)\")\n    .style(\"font-size\", \"0.5em\")\n  axisTitles.append(\"text\").text(\"°C\")\n    .attr(\"transform\", `translate(${w / 2}, ${h})`)\n  axisTitles.append(\"text\").text(\"°F\")\n    .attr(\"transform\", `translate(0, ${h/2})`)\n    \n    \n      \n  svg.append(\"line\")\n      .attr(\"x1\", x(-18))\n      .attr(\"x2\", x(60))\n      .attr(\"y1\", y(f(-18)))\n      .attr(\"y2\", y(f(60)))\n      .style(\"stroke\", \"var(--link-color)\")\n      .style(\"stroke-width\", 3)\n  \n  svg.selectAll(\"circle\").data(points).enter()\n    .append(\"circle\")\n      .attr(\"cx\", d => x(d))\n      .attr(\"cy\", d => y(d * 1.8 + 32))\n      .attr(\"r\", 5)\n      .style(\"fill\", \"var(--text-color)\")\n\n    \nconst circle = svg.append(\"g\").append(\"circle\")\n  .attr(\"r\", 8)\n  .style(\"fill\", \"none\")\n  .style(\"stroke\", \"red\")\n  .style(\"stroke-width\", 2)\n  .style(\"stroke-dasharray\", [3,3])\n  \nconst path = svg.append(\"path\")\n  .style(\"stroke\", \"red\")\n  .style(\"stroke-width\", 2)\n  .style(\"stroke-dasharray\", [5, 5])\n  .style(\"fill\", \"none\")\n  \nconst labels = svg.append(\"g\").style(\"font-size\", \"0.6em\").style(\"fill\", \"var(--text-color)\")\nconst label_c = labels.append(\"text\")\nconst label_f = labels.append(\"text\")\n\n  const overlayRect = svg.append('rect')\n    .style(\"fill\", \"none\")\n    .style(\"pointer-events\", \"all\")\n    .attr(\"x\", x(-30)).attr(\"y\", y(150))\n    .attr('width', w - margin.left - margin.right)\n    .attr('height', h - margin.top)\n    .on('mousemove', mousemove)\n\nconst round = d3.format(\".1f\")\n\nd3.select(\".temp-table\").selectAll(\"tr\").on(\"mouseover\", getNumberFromTable)\n\nfunction getNumberFromTable() {\n    try {\n      var num = d3.select(this).select(\"td\")._groups[0][0].innerHTML;\n    } catch {} finally {updateOverlay(num);}\n  }\n\nfunction updateOverlay(xCoord) {\n    if(isNaN(xCoord)) return false;\n    var x0 = x(xCoord);\n    var y0 = y(f(xCoord));\n    \n    circle\n      .attr(\"cx\", x0)\n      .attr(\"cy\", y0)\n      \n    var line = d3.line()\n    path.attr(\"d\", line([[x(-30),y0],[x0,y0],[x0,y(0)]]))\n    \n    label_c.text(round(xCoord) + \"°C\").attr(\"x\", x(xCoord)).attr(\"y\", y(0))\n    label_f.text(round(f(xCoord)) + \"°F\").attr(\"x\", x(-30)).attr(\"y\", y0)\n}\n    \nfunction mousemove(e) {\n    // recover coordinate we need\n    var xPosition = d3.pointer(e, overlayRect.node())[0];\n    var xCoord = -30 + (xPosition - margin.left)/((w-margin.left-margin.right)/90);\n    xCoord = Math.round(xCoord * 10)/10;\n    xCoord = Math.max(-18, xCoord);\n    updateOverlay(xCoord);\n    }\n\n  updateOverlay(0);\n  \n}\n\n"}]}
+    </script>
+    <script type="module">
+    window._ojs.paths.runtimeToDoc = "../../slides";
+    window._ojs.paths.runtimeToRoot = "../..";
+    window._ojs.paths.docToRoot = "..";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        target: function(trigger) {
+          return trigger.previousElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        setTimeout(function() {
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+        tippyHover(ref, function() {
+          var popup = window.document.createElement('div');
+          cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+        var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+              // target, if specified
+              link.setAttribute("target", "_blank");
+          }
+        }
+    });
+    </script>
+    
+
+</body></html>

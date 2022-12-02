@@ -633,3 +633,47 @@ color: #ccc
   display: inline;
   text-align: left;
 }
+
+
+.xx {
+    position: absolute;
+    transform: translateX(-50%);
+}
+
+.xx.split:after {
+    content: "";
+    position: absolute;
+    left: -1em;
+    top: 2.5em;
+    width: 4em;
+    height: 4em;
+    border-left: 3px dashed var(--text-color);
+    border-top: 3px dashed var(--text-color);
+    transform: rotate(45deg);
+}
+
+.xx-total:before {
+    content: "";
+    position: absolute;
+    width: 4em;
+    height: 0;
+    border: 3px dashed var(--text-color);
+    transform: translate(-50%, 2.3em) rotate(135deg) scale(0.5);
+}
+.xx-total:after {
+    content: "";
+    position: absolute;
+    width: 4em;
+    height: 0;
+    border: 3px dashed var(--text-color);
+    transform: translate(-50%, 50%) rotate(45deg) scale(0.5);
+}
+.xx-between {
+    float: right;
+    margin-right: 20%;
+    margin-bottom: 1em;
+}
+.xx-within {
+    float: left;
+    margin-left: 20%;
+}

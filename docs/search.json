@@ -2294,5 +2294,103 @@
     "title": "Lectures",
     "section": "19. Correlation",
     "text": "19. Correlation\n\n\n\n4/11\n\n\n\n  \n    \n\n    \n\n    \n      \nCorrelational research designs\nCalculating Pearson’s \\(r\\)\n[Hypothesis testing]\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+  },
+  {
+    "objectID": "slides/20_regression.html#correlation",
+    "href": "slides/20_regression.html#correlation",
+    "title": "BC1101",
+    "section": "Correlation",
+    "text": "Correlation\n\nPearson’s \\(r\\), bivariate correlation coefficient\nQuantifies the strength of linear relationship between two variables"
+  },
+  {
+    "objectID": "slides/20_regression.html#regression-1",
+    "href": "slides/20_regression.html#regression-1",
+    "title": "BC1101",
+    "section": "Regression",
+    "text": "Regression\n\n\n\nRegression defines the line of best fit\n\nMakes relationship easier to see\nShows “central tendency” of the relationship\nEmphasizes prediction"
+  },
+  {
+    "objectID": "slides/20_regression.html#line",
+    "href": "slides/20_regression.html#line",
+    "title": "BC1101",
+    "section": "Line",
+    "text": "Line\n\nGeneral equation for a line\n\n\\(Y = bX + a\\)\n\\(X\\) and \\(Y\\) are variables\n\\(a\\) (the intercept) and \\(b\\) (the slope) are constants\n\n\n\n\n\n\n\n\n\n\n\n \n  \n    Celcius \n    Fahrenheit \n  \n \n\n  \n    0 \n    32 \n  \n  \n    10 \n    50 \n  \n  \n    20 \n    68 \n  \n  \n    30 \n    86 \n  \n  \n    40 \n    104 \n  \n  \n    50 \n    122"
+  },
+  {
+    "objectID": "slides/20_regression.html#regression-2",
+    "href": "slides/20_regression.html#regression-2",
+    "title": "BC1101",
+    "section": "Regression",
+    "text": "Regression\n\n\n\nRegression line equation\n\n\\(\\hat{Y} = bX + a\\)\n\\(\\hat{Y}\\): value of \\(Y\\) predicted by the regression equation for each value of \\(X\\)\n\\((Y - \\hat{Y})\\): residual (deviation of each data point from the regression line)\nRegression defines line that minimizes the sum of squared residuals\n\\(SS_{residual} = \\Sigma(Y - \\hat{Y})^2\\)\n“Least-squared-error solution”\n\n\n\nRight column"
+  },
+  {
+    "objectID": "slides/20_regression.html#regression-3",
+    "href": "slides/20_regression.html#regression-3",
+    "title": "BC1101",
+    "section": "Regression",
+    "text": "Regression\n\nRegression line equation: \\(\\hat{Y} = bX + a\\)\n\nThe slope of the line, \\(b\\):"
+  },
+  {
+    "objectID": "slides/20_regression.html#regression-4",
+    "href": "slides/20_regression.html#regression-4",
+    "title": "BC1101",
+    "section": "Regression",
+    "text": "Regression\n\n\n\nThe intercept of the line, \\(a\\)\n\nThe value of \\(Y\\) when \\(X = 0\\)\nThe line goes through \\((M_X, M_Y)\\) therefore:\n\n\n\n\n\n\nRight column"
+  },
+  {
+    "objectID": "slides/20_regression.html#standard-error",
+    "href": "slides/20_regression.html#standard-error",
+    "title": "BC1101",
+    "section": "Standard error",
+    "text": "Standard error\n\nStandard error of estimate\n\nQuantifies precision of regression estimate\nAverage distance of points from the regression line\nRemember… \\(s = \\sqrt{\\dfrac{SS}{df}}\\)"
+  },
+  {
+    "objectID": "slides/20_regression.html#analysis-of-regression",
+    "href": "slides/20_regression.html#analysis-of-regression",
+    "title": "BC1101",
+    "section": "Analysis of regression",
+    "text": "Analysis of regression\n\nAnalysis of Regression\n\nSimilar to Analysis of Variance"
+  },
+  {
+    "objectID": "slides/20_regression.html#partitioning-variance",
+    "href": "slides/20_regression.html#partitioning-variance",
+    "title": "BC1101",
+    "section": "Partitioning variance",
+    "text": "Partitioning variance\n\n\n\n\\(SS_{Y}\\)\n\n\n\\(SS_{regression}\\)\n\n\n\\(SS_{residual}\\)\n\n\n\n\\(df_{Y}\\)\n\n\n\\(df_{regression}\\)\n\n\n\\(df_{residual}\\)\n\n\n\n\n\\(MS_{regression}=\\dfrac{SS_{regression}}{df_{regression}} \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ MS_{residual}=\\dfrac{SS_{residual}}{df_{residual}}\\)\n\\(F = \\dfrac{MS_{regression}}{MS_{residual}}\\)"
+  },
+  {
+    "objectID": "slides/20_regression.html#step-1-hypotheses",
+    "href": "slides/20_regression.html#step-1-hypotheses",
+    "title": "BC1101",
+    "section": "Step 1: Hypotheses",
+    "text": "Step 1: Hypotheses\n\n\\(H_0\\): the slope of the regression line \\(\\beta = 0\\)\n\ni.e., there is no association between variables\nKnowing \\(X\\) does not help to predict \\(Y\\)\n\n\\(H_1\\): \\(\\beta \\ne 0\\)"
+  },
+  {
+    "objectID": "slides/20_regression.html#step-2.-critical-region",
+    "href": "slides/20_regression.html#step-2.-critical-region",
+    "title": "BC1101",
+    "section": "Step 2. Critical region",
+    "text": "Step 2. Critical region\n\nNumerator: \\(df_{regression} = 1\\)\nDenominator: \\(df_{residual} = n-2\\)"
+  },
+  {
+    "objectID": "slides/20_regression.html#step-3.-calculate",
+    "href": "slides/20_regression.html#step-3.-calculate",
+    "title": "BC1101",
+    "section": "Step 3. Calculate",
+    "text": "Step 3. Calculate\n\n\n\\(SS_{Y} = \\Sigma (Y - M_Y)^2\\)\n\\(SS_{residual} = \\Sigma (Y - \\hat{Y})^2\\)\n\\(SS_{regression} = SS_Y - SS_{residual}\\)\n\n\\(df_Y = n - 1\\)\n\\(df_{residual} = n - 2\\)\n\\(df_{regression} = 1\\)"
+  },
+  {
+    "objectID": "slides/20_regression.html#correlation-example",
+    "href": "slides/20_regression.html#correlation-example",
+    "title": "BC1101",
+    "section": "Correlation example",
+    "text": "Correlation example\n\n\n\n\n\n\n \n  \n    Participant \n    Sleep duration \n    Test score \n  \n \n\n  \n    A \n    4 \n    5 \n  \n  \n    B \n    5 \n    8 \n  \n  \n    C \n    7 \n    8 \n  \n  \n    D \n    8 \n    10 \n  \n  \n    E \n    11 \n    9 \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}} = \\dfrac{15}{30*14} = 0.73\\)"
+  },
+  {
+    "objectID": "slides/20_regression.html#straight-line-equation",
+    "href": "slides/20_regression.html#straight-line-equation",
+    "title": "BC1101",
+    "section": "Straight line equation",
+    "text": "Straight line equation\n\n\\(Y = bX + a\\)\n\n\\(X\\) and \\(Y\\) are variables\n\\(a\\) (the intercept) and \\(b\\) (the slope) are constants\n\n\n\n\n\n\n\n\n\n\n\n \n  \n    Celcius \n    Fahrenheit \n  \n \n\n  \n    0 \n    32 \n  \n  \n    10 \n    50 \n  \n  \n    20 \n    68 \n  \n  \n    30 \n    86 \n  \n  \n    40 \n    104 \n  \n  \n    50 \n    122"
   }
 ]

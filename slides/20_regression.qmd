@@ -1,0 +1,587 @@
+---
+format: revealjs
+---
+
+# 20|REGRESSION
+
+<!-- ![](covers/19_correlation.svg){.invertable} -->
+
+::: {#cover}
+:::
+
+```{r ref.label=I('data')}
+```
+
+```{r}
+options(digits=2)
+```
+
+# Overview
+
+- [Purpose]
+- [Equations]
+- [Hypothesis test]
+- [Learning checks]
+
+
+# Purpose
+
+
+## Correlation
+
+- Pearson's $r$, bivariate correlation coefficient
+- Quantifies the strength of linear relationship between two variables
+
+::: {.r-hstack}
+![](media/correlation-weak.svg){.invertable}
+
+![](media/correlation-moderate.svg){.invertable}
+
+![](media/correlation-strong.svg){.invertable}
+
+![](media/correlation-perfect.svg){.invertable}
+:::
+
+
+## Correlation example
+
+:::: {.columns}
+
+::: {.column width="40%"}
+```{r}
+#| style: "font-size: 0.7em;"
+table
+```
+
+:::
+
+::: {.column width="50%" .invertable}
+
+::: {.r-stack width="100%"}
+![](media/sleep-scatterplot.svg){width="100%" .fragment .fade-out data-fragment-index=1}
+
+![](media/sleep-scatterplot-ellipse.svg){width="100%" .fragment data-fragment-index=1}
+:::
+:::
+
+::::
+
+::: {.center-element}
+$r = \dfrac{SP}{\sqrt{SS_X SS_Y}} = \dfrac{`r d$sp`}{`r d$ss_x`*`r d$ss_y`} = `r d$r`$
+:::
+
+## Regression
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Regression defines the line of best fit
+  - Makes relationship easier to see
+  - Shows "central tendency" of the relationship
+  - Emphasizes [prediction]{.emph}
+:::
+
+::: {.column width="50%"}
+![](media/sleep-scatterplot-line.svg){.invertable}
+:::
+
+::::
+
+  
+  
+  
+# Equations
+
+## Straight line equation
+
+- $Y = bX + a$
+  - $X$ and $Y$ are variables
+  - $a$ (the intercept) and $b$ (the slope) are constants
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r ref.label=I('temp-data')}
+```
+
+```{r}
+#| style: "font-size: 0.7em;"
+#| class: "temp-table"
+temp_table
+```
+
+:::
+
+::: {.column width="50%"}
+::: {#temp-plot}
+:::
+:::
+
+::::
+
+## Regression
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Regression line equation
+  - $\hat{Y} = bX + a$
+  - $\hat{Y}$: value of $Y$ predicted by the regression equation for each value of $X$
+  - $(Y - \hat{Y})$: residual (deviation of each data point from the regression line) 
+  - Regression defines line that minimizes the sum of squared residuals
+  - $SS_{residual} = \Sigma(Y - \hat{Y})^2$
+  - “Least-squared-error solution”
+:::
+
+::: {.column width="50%"}
+Right column
+:::
+
+::::
+
+
+## Regression
+
+- Regression line equation:  $\hat{Y} = bX + a$ 
+  - The slope of the line, $b$:
+
+::: {.center-element}
+
+:::
+
+
+
+## Regression
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- The intercept of the line, $a$
+  - The value of $Y$ when $X = 0$
+  - The line goes through $(M_X, M_Y)$ therefore:
+
+::: {.center-element}
+
+:::
+:::
+
+::: {.column width="50%"}
+Right column
+:::
+
+::::
+
+
+## Standard error
+
+- Standard error of estimate
+  - Quantifies precision of regression estimate
+  - Average distance of points from the regression line
+  - Remember... $s = \sqrt{\dfrac{SS}{df}}$
+
+
+# Hypothesis test
+
+## Analysis of regression
+
+- Analysis of Regression
+  - Similar to Analysis of Variance 
+
+## Partitioning variance
+
+:::: {.columns}
+
+::: {.column width="50%" style="position: relative; height: 350px;"}
+
+::: {.xx .split style="left: 50%"}
+$SS_{Y}$
+:::
+::: {.xx style="left: 25%; margin-top: 4.5em;"}
+$SS_{regression}$
+:::
+::: {.xx style="left: 75%; margin-top: 4.5em;"}
+$SS_{residual}$
+:::
+
+:::
+
+::: {.column width="50%" style="position: relative;"}
+
+::: {.xx .split style="left: 50%"}
+$df_{Y}$
+:::
+::: {.xx style="left: 25%; margin-top: 4.5em;"}
+$df_{regression}$
+:::
+::: {.xx style="left: 75%; margin-top: 4.5em;"}
+$df_{residual}$
+:::
+
+:::
+
+::::
+
+::: {.center-element}
+$MS_{regression}=\dfrac{SS_{regression}}{df_{regression}} \ \ \ \ \ \ \ \ \ \ MS_{residual}=\dfrac{SS_{residual}}{df_{residual}}$
+
+$F = \dfrac{MS_{regression}}{MS_{residual}}$
+:::
+
+
+## Step 1: Hypotheses
+
+- $H_0$: the slope of the regression line $\beta = 0$
+  - i.e., there is no association between variables
+  - Knowing $X$ does not help to predict $Y$
+- $H_1$: $\beta \ne 0$
+
+## Step 2. Critical region
+
+- Numerator: $df_{regression} = 1$
+- Denominator: $df_{residual} = n-2$
+
+```{r}
+
+```
+
+
+## Step 3. Calculate
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+$SS_{Y} = \Sigma (Y - M_Y)^2$
+
+$SS_{residual} = \Sigma (Y - \hat{Y})^2$
+
+$SS_{regression} = SS_Y - SS_{residual}$
+
+:::
+
+::: {.column width="50%"}
+$df_Y = n - 1$
+
+$df_{residual} = n - 2$
+
+$df_{regression} = 1$
+:::
+
+::::
+
+
+
+# Learning checks
+
+::: {.center-element}
+[CONCEPT]{.emph} [is most closely related to]{.small} [CONCEPT]{.emph}
+:::
+
+:::: {.columns .center-element}
+
+::: {.column width="50%"}
+Residuals
+
+Sum of squared residuals
+
+$s_{error}$
+
+$MS_{regression}$
+:::
+
+::: {.column width="50%"}
+$SS$
+
+$SP$
+
+$s^2$
+
+$s$
+
+$(X-M)$
+:::
+
+::::
+
+
+
+
+
+
+
+::: {.content-hidden}
+
+# Data and figures
+
+## Data for sleep example
+
+```{r data}
+x <-  c(4,5,7,8,11)
+y <-  c(5,8,8,10,9)
+
+d <- bc1101tools::example_correlation(x, y)
+
+table <- knitr::kable(data.frame(LETTERS[1:5], x, y), format = "html", col.names = c("Participant", "Sleep duration", "Test score"))
+```
+
+```{r}
+#| eval: false
+
+library(ggplot2)
+library(bc1101tools)
+
+plot <- ggplot(data = data.frame(x, y), aes(x, y)) +
+  geom_point(size = 3) +
+  scale_x_continuous(limits = c(0, 12), breaks = 0:12,) +
+  scale_y_continuous(limits = c(0, 12), breaks = 0:10) +
+  labs(x = "Sleep duration", y = "Test score") +
+  theme_bc1101() +
+  theme(axis.title = element_text(size = 20),
+        axis.text = element_text(size = 15))
+
+plot
+plot_save("sleep-scatterplot.svg", width = 5, height = 4)
+
+
+plot+ stat_ellipse(level = 0.8)
+plot_save("sleep-scatterplot-ellipse.svg", width = 5, height = 4)
+
+
+plot+ geom_smooth(method = "lm", se = FALSE, fullrange = TRUE)
+plot_save("sleep-scatterplot-line.svg", width = 5, height = 4)
+
+
+```
+
+## Temperature
+
+```{r temp-data}
+temp_df <- tibble::tibble(
+  celcius = c(seq(0, 50, 10)),
+  fahrenheit = celcius * 1.8 + 32
+)
+
+
+temp_table <- knitr::kable(temp_df, format = "html", col.names = c("Celcius", "Fahrenheit"))
+```
+
+
+```{r}
+#| eval: false
+
+temp_plot <- ggplot(temp_df, aes(x = celcius, y = fahrenheit)) +
+  geom_point() +
+  theme_bc1101()
+
+# temp_plot
+```
+
+
+## Cover
+
+```{r cover-data}
+
+library(ggplot2)
+library(dplyr)
+set.seed(42)
+
+data <- faux::rnorm_multi(n = 300, vars = 2, r = .6)
+
+SSx <- sum( (data$X1 - mean(data$X1))^2 )
+SSy <- sum( (data$X2 - mean(data$X2))^2 )
+SP <- sum( (data$X1 - mean(data$X1)) * (data$X2 - mean(data$X2)))
+b <- SP/SSx
+a <- mean(data$X2) - b * mean(data$X1)
+
+data <- data |> 
+  mutate(yhat = b * X1 + a)
+
+ojs_point_data <- data |> 
+  select(xVal = X1, yVal = X2, yhat) |> 
+  purrr::transpose()
+
+ojs_line_data <- data |> arrange(X1) |> slice(c(1, n())) |> 
+  select(xVal = X1, yVal = yhat) |> 
+  unlist()
+
+ojs_define(ojs_point_data)
+ojs_define(ojs_line_data)
+```
+
+
+```{r cover-ggplot}
+#| eval: false
+
+data |> 
+  # mutate(yhat = b * X1 + a) |> 
+  ggplot(aes(x = X1, y = X2, color = abs(X2 - yhat))) +
+  scale_color_gradient(low = "black", high = "grey") +
+  geom_point() +
+  theme_void() +
+  theme(legend.position = "none")
+
+bc1101tools::plot_save("19_correlation.svg", subdir = "covers", width = 10, height = 5)
+
+```
+
+:::
+
+```{ojs}
+
+cover = {
+
+  const w = 1050
+  const h = 525
+  
+  const x = d3.scaleLinear()
+    .domain([-2.7, 2.7])
+    .range([0, w])
+  const y = d3.scaleLinear()
+    .domain([-2.9, 2.8])
+    .range([h, 0])
+    
+  const svg = d3.select("#cover").append("svg").attr("width", w).attr("height", h)
+  
+  svg.selectAll("circle").data(ojs_point_data).enter()
+    .append("circle")
+      .attr("cx", d => x(d.xVal))
+      .attr("cy", d => y(d.yVal))
+      .attr("r", 5)
+      .style("fill", "var(--text-color")
+      
+  svg.append("line")
+      .attr("x1", x(ojs_line_data[0]))
+      .attr("x2", x(ojs_line_data[1]))
+      .attr("y1", y(ojs_line_data[2]))
+      .attr("y2", y(ojs_line_data[3]))
+      .style("stroke", "lightblue")
+      .style("stroke-width", 3)
+  
+}
+
+```
+
+# blah 
+```{ojs}
+
+temp = {
+
+  const w = 500
+  const h = 350
+  const margin = {top: 10, right: 10, bottom: 30, left: 50}
+  
+  function f(c) {
+    return c * 1.8 + 32
+  }
+  
+  const x = d3.scaleLinear()
+    .domain([-30, 60])
+    .range([margin.left, w-margin.right])
+  const y = d3.scaleLinear()
+    .domain([0, 150])
+    .range([h-margin.bottom, margin.top])
+  const xAxis = d3.axisBottom(x)
+  const yAxis = d3.axisLeft(y)
+    
+  const svg = d3.select("#temp-plot").append("svg").attr("width", w).attr("height", h)
+  
+  const points = [0,10,20,30,40,50]
+  
+  const gx = svg.append("g")
+  .attr("transform", `translate(0, ${y(0)})`)
+  gx.call(xAxis)
+  const gy = svg.append("g")
+  .attr("transform", `translate(${x(-30)}, 0)`)
+  gy.call(yAxis)
+  const axisTitles = svg.append("g")
+    .style("fill", "var(--text-color)")
+    .style("font-size", "0.5em")
+  axisTitles.append("text").text("°C")
+    .attr("transform", `translate(${w / 2}, ${h})`)
+  axisTitles.append("text").text("°F")
+    .attr("transform", `translate(0, ${h/2})`)
+    
+    
+      
+  svg.append("line")
+      .attr("x1", x(-18))
+      .attr("x2", x(60))
+      .attr("y1", y(f(-18)))
+      .attr("y2", y(f(60)))
+      .style("stroke", "var(--link-color)")
+      .style("stroke-width", 3)
+  
+  svg.selectAll("circle").data(points).enter()
+    .append("circle")
+      .attr("cx", d => x(d))
+      .attr("cy", d => y(d * 1.8 + 32))
+      .attr("r", 5)
+      .style("fill", "var(--text-color)")
+
+    
+const circle = svg.append("g").append("circle")
+  .attr("r", 8)
+  .style("fill", "none")
+  .style("stroke", "red")
+  .style("stroke-width", 2)
+  .style("stroke-dasharray", [3,3])
+  
+const path = svg.append("path")
+  .style("stroke", "red")
+  .style("stroke-width", 2)
+  .style("stroke-dasharray", [5, 5])
+  .style("fill", "none")
+  
+const labels = svg.append("g").style("font-size", "0.6em").style("fill", "var(--text-color)")
+const label_c = labels.append("text")
+const label_f = labels.append("text")
+
+  const overlayRect = svg.append('rect')
+    .style("fill", "none")
+    .style("pointer-events", "all")
+    .attr("x", x(-30)).attr("y", y(150))
+    .attr('width', w - margin.left - margin.right)
+    .attr('height', h - margin.top)
+    .on('mousemove', mousemove)
+
+const round = d3.format(".1f")
+
+d3.select(".temp-table").selectAll("tr").on("mouseover", getNumberFromTable)
+
+function getNumberFromTable() {
+    try {
+      var num = d3.select(this).select("td")._groups[0][0].innerHTML;
+    } catch {} finally {updateOverlay(num);}
+  }
+
+function updateOverlay(xCoord) {
+    if(isNaN(xCoord)) return false;
+    var x0 = x(xCoord);
+    var y0 = y(f(xCoord));
+    
+    circle
+      .attr("cx", x0)
+      .attr("cy", y0)
+      
+    var line = d3.line()
+    path.attr("d", line([[x(-30),y0],[x0,y0],[x0,y(0)]]))
+    
+    label_c.text(round(xCoord) + "°C").attr("x", x(xCoord)).attr("y", y(0))
+    label_f.text(round(f(xCoord)) + "°F").attr("x", x(-30)).attr("y", y0)
+}
+    
+function mousemove(e) {
+    // recover coordinate we need
+    var xPosition = d3.pointer(e, overlayRect.node())[0];
+    var xCoord = -30 + (xPosition - margin.left)/((w-margin.left-margin.right)/90);
+    xCoord = Math.round(xCoord * 10)/10;
+    xCoord = Math.max(-18, xCoord);
+    updateOverlay(xCoord);
+    }
+
+  updateOverlay(0);
+  
+}
+
+```
