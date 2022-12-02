@@ -570,15 +570,28 @@ function updateOverlay(xCoord) {
     label_c.text(round(xCoord) + "°C").attr("x", x(xCoord)).attr("y", y(0))
     label_f.text(round(f(xCoord)) + "°F").attr("x", x(-30)).attr("y", y0)
 }
-    
+  const plotParams = {xMin: -30, xMax: 60,
+                      yMin: 0, yMax: 150}
+  plotParams.xRange = plotParams.xMax - plotParams.xMin;
+  plotParams.yRange = plotParams.yMax - plotParams.yMin;
+  
+overlayRect.on('mousemove', mousemove)
 function mousemove(e) {
     // recover coordinate we need
-    var xPosition = d3.pointer(e, overlayRect.node())[0];
-    var xCoord = -30 + (xPosition - margin.left)/((w-margin.left-margin.right)/90);
-    xCoord = Math.round(xCoord * 10)/10;
-    xCoord = Math.max(-18, xCoord);
-    updateOverlay(xCoord);
+    var pixel = d3.pointer(e, overlayRect.node())[0];
+    console.log(pixel);
+    var celcius = pixel_to_x(pixel);
+    celcius = Math.round(celcius * 10)/10;
+    celcius = Math.max(-18, celcius);
+    updateOverlay(celcius);
     }
+    
+  function pixel_to_x(pixel) {
+    var panelWidth = w - margin.left - margin.right;
+    var b = plotParams.xRange / panelWidth;
+    var a = plotParams.xMin - b * margin.left;
+    return (pixel * b + a);
+  }
 
   updateOverlay(0);
   
