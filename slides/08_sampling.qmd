@@ -492,36 +492,16 @@ sampling_chart = {
     .range([h - margin.bottom, margin.top])
 
   const xAxis = d3.axisBottom(x).ticks(8)
-  const yAxis = d3.axisLeft(y).ticks(3)
-
 
   d3.select("#sampling-chart").select("svg").remove()
   
   const svg =  d3.select("#sampling-chart")
     .append("svg").attr("width", w).attr("height", h)
-    <!-- .style("background", "pink") -->
     
   const controls = svg.append("g").attr("transform", `translate(0,${h-margin.bottom/2})`)
   
-  var quantity = 0;
-  const slider = d3
-    .sliderBottom()
-    .min(0)
-    .max(500)
-    .width(w - margin.left - margin.right)
-    .displayValue(false)
-    .step(1)
-    .ticks(0)
-    .default(0)
-    .on("onchange", q => {
-      quantity = q; 
-      drawBoxes();
-      describeSample();
-    })
-    
-  controls.append("g").attr("transform", `translate(${margin.left}, 40)`)
-    .call(slider).attr("data-prevent-swipe", true)
-  
+  var quantity = 500;
+
   const buttonData = [{id: "reset", text: "↻"},
                       {id: "next", text: "ᐳ"},
                       {id: "play", text: "►"}]
@@ -539,10 +519,30 @@ sampling_chart = {
     .attr("x", (d,i) => 400 + i * 75)
   
   var playing = false;
+  d3.select("#button-reset").on("click", reset)
   d3.select("#button-next").on("click", drawOne)
   d3.select("#button-play").on("click", playClicked)
   
   const g = svg.append("g").attr("id", "boxes")
+  
+  function playButtonText() {
+    d3.select("#button-play").text(function(){
+      if(playing & quantity < samples.length) {
+        return "◼"
+      } else {
+        return "▶"
+      }
+    })
+  }
+  
+  function reset() {
+    playing = false;
+    playButtonText();
+    quantity = 0;
+    drawBoxes();
+    d3.select("#sampling-info")
+      .html("Observations: " + '<br/>' + "<i>M</i> = ")
+  }
   
   function drawOne() {
   if (quantity >= samples.length) {
@@ -554,9 +554,13 @@ sampling_chart = {
     describeSample();
   }
   
+
+  
   function playClicked() {
     playing = !playing
-    console.log(playing)
+    
+    playButtonText();
+  
     if(playing) {
       drawContinuously();
     }
@@ -598,12 +602,6 @@ sampling_chart = {
       .attr("transform", `translate(0,${y(0)})`)
       .attr("class", "axis")
       .style("font-size", "0.5em");
-      
-  <!-- svg.append("g").attr("id", "yaxis") -->
-  <!--     .call(yAxis) -->
-  <!--     .attr("transform", `translate(${x(xlims[0])}, 0)`) -->
-  <!--     .attr("class", "axis") -->
-  <!--     .style("font-size", "0.5em"); -->
   
   d3.select("#sampling-info")
       .style("font-family", "KaTeX_Main")
@@ -616,6 +614,9 @@ sampling_chart = {
       .style("font-size", "0.9em")
       .html("Observations: " + samples[quantity-1].sample.join(", ") + '<br/>' + "<i>M</i> = " + samples[quantity-1].mean)
   }
+  
+  drawBoxes();
+  describeSample();
 }
 
 ```
@@ -746,16 +747,16 @@ bc1101tools::plot_save("standard-error-curve.svg", width = 6, height = 3)
 :::
 
 ```{ojs ojs-data}
-d3 = require.alias({
-  "d3-array": "d3@5",
-  "d3-axis": "d3@5",
-  "d3-dispatch": "d3@5",
-  "d3-drag": "d3@5",
-  "d3-ease": "d3@5",
-  "d3-scale": "d3@5",
-  "d3-selection": "d3@5",
-  "d3-transition": "d3@5"
-})("d3@5", "d3-simple-slider@1")
+<!-- d3 = require.alias({ -->
+<!--   "d3-array": "d3@5", -->
+<!--   "d3-axis": "d3@5", -->
+<!--   "d3-dispatch": "d3@5", -->
+<!--   "d3-drag": "d3@5", -->
+<!--   "d3-ease": "d3@5", -->
+<!--   "d3-scale": "d3@5", -->
+<!--   "d3-selection": "d3@5", -->
+<!--   "d3-transition": "d3@5" -->
+<!-- })("d3@5", "d3-simple-slider@1") -->
 
 jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js")
 
