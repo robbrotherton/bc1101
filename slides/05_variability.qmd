@@ -498,46 +498,29 @@ sw_table
 ```{r example-score-distributions}
 #| eval: false
 
+library(ggplot2)
+library(bc1101tools)
 
-plot_histogram <- function(x, x_lab, y_lab = "Count", binwidth = 1) {
-  require(ggplot2)
-  
-  ggplot() +
-    geom_histogram(data = data.frame(x = x), aes(x), binwidth = binwidth, color = "black", fill = "grey60") +
-    scale_x_continuous(breaks = min(x):max(x)) +
-    scale_y_continuous(expand = c(0,0)) +
-    labs(x = x_lab, y = y_lab) +
-    papaja::theme_apa() +
-    theme(panel.background = element_blank(),
-          plot.background = element_blank())
-}
+scale_x <- ggplot2::scale_x_continuous(breaks = 0:10)
+scale_y <- ggplot2::scale_y_continuous(expand = ggplot2::expansion(c(0,0.1)), breaks = 0:2)
+plot_histogram(you, xlab = "Your scores", block = TRUE) + scale_x + scale_y + theme_bc1101()
+plot_save("you-dist.svg", width = 5, height = 1.5)
 
-plot_norm <- function(xlim = c(-3, 3), ylim = c(0, .4), sd = 1) {
-  require(ggplot2)
-  
-  ggplot() +
-    stat_function(fun = dnorm, xlim = xlim, args = list(sd = sd)) +
-    # scale_x_continuous(breaks = min(x):max(x)) +
-    scale_y_continuous(expand = c(0,0), limits = ylim) +
-    # labs(x = x_lab, y = y_lab) +
-    theme_void() +
-    theme(axis.line = element_line(),
-          plot.margin = margin(l = 50, r = 10))
-}
+plot_histogram(friend, xlab = "Friend's scores", block = TRUE) + scale_x + scale_y + theme_bc1101()
+plot_save("friend-dist.svg", width = 5, height = 1.5)
 
-plot_save <- function(filename, width = 5, height = 2) {
-  ggsave(here::here("slides", "media", filename), width = width, height = height, bg = "transparent")
-}
-
-plot_histogram(you, x_lab = "Your scores")
-plot_save("you.dist.svg")
-plot_histogram(friend, x_lab = "Friend")
-plot_save("friend-dist.svg")
-
-plot_norm(sd = 1)
+plot_distribution() + theme_bc1101() +
+  theme(axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        axis.title = element_blank())
 plot_save("you-curve.svg", height = 1)
 
-plot_norm(sd = 1.8)
+plot_distribution(args = list(sd = 1.8), xlim = c(-3, 3)) +
+  scale_y_continuous(limits = c(0, 0.4), expand = expansion(c(0,0.1))) + theme_bc1101() +
+  theme(axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        axis.title = element_blank())
+
 plot_save("friend-curve.svg", height = 1)
 
 ```
