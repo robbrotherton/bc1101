@@ -202,19 +202,21 @@ $\sigma = \sqrt{\sigma^2} = \sqrt{\dfrac{SS}N}$
 :::
 :::
 
-## Calculating by hand {.small}
+## Calculating by hand
 
 :::: {.columns}
 
 ::: {.column}
 ```{r}
-bc1101tools::SD_table(you)
+#| style: "font-size: 0.8em;"
+bc1101tools::SD_table(you, population_sd = TRUE)
 ```
 :::
 
 ::: {.column}
 ```{r}
-bc1101tools::SD_table(friend)
+#| style: "font-size: 0.8em;"
+bc1101tools::SD_table(friend, population_sd = TRUE)
 ```
 :::
 
