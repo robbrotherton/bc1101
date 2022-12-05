@@ -263,31 +263,17 @@ $SS = \Sigma X^2 - \dfrac{(\Sigma X)^2}N$
     - Unbiased estimate: Average value of statistic is equal to population parameter
     - Variance & SD for samples [underestimate]{.emph} population parameters
 
-## Underestimation
-
-- Why samples underestimate variability
-    - Soup
+## Underestimation: Soup
 
 ![](media/soup.jpg)
 
-## Underestimation
-
-- Why samples underestimate variability
-    - Height
+## Underestimation: height
 
 ![](media/height.svg){.invertable}
 
-## Height
+## Underestimation: Height
 
 ::: {#height-container .center-element}
-:::
-
-::: {.refresh-sample-button style="position: absolute; left: 50%; transform: translate(-50%, -50%);"}
-```{ojs}
-//| style: "width: 1.2em; overflow: hidden;"
-
-viewof s = Inputs.button(html`&#x21bb;`)
-```
 :::
 
 ## Calculating variability of samples
@@ -564,23 +550,8 @@ plot_save("height.svg", height = 3)
 :::
 
 ::: {.content-hidden}
-## Height
+## Height OJS
 :::
-
-
-```{ojs}
-jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js")
-
-sample = {
-  s;
-  let arr = [];
-  for (var i = 0; i < 10; i++) {
-    arr.push(jStat.normal.sample(0, 1))
-  }
-  return arr;
-}
-```
-
 
 ```{r}
 data <- tibble::tibble(value = seq(-4, 4, length.out = 201),
@@ -592,6 +563,9 @@ ojs_define(data)
 
 ```{ojs}
 
+jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js")
+
+
 w = 800
 h = 500
   
@@ -600,15 +574,14 @@ x = d3.scaleLinear()
     .range([0, w])
 y = d3.scaleLinear()
     .domain([0, 0.41])
-    .range([h-100, 0])
+    .range([h-100, 100])
 line = d3.line()
     .x(d => x(d.value))
     .y(d => y(d.density))
     
-
 update_svg = {
     
-  d3.select("#heights-svg").remove()
+  var sample = [];
   
   const svg = d3.select("#height-container")
     .append("svg").attr("id", "heights-svg")
@@ -621,18 +594,61 @@ update_svg = {
       .attr("fill", "none")
       .attr("class", "invertable")
       
-  const g = svg.append("g")
+  const lines = svg.append("g")
+    .style("stroke", "var(--text-color)")
+    .style("stroke-width", 2)
+    .style("stroke-dasharray", [5,5])
+    
+  const labels = svg.append("g")
+    .style("font-size", "0.8em")
+    .style("text-anchor", "middle")
+    .style("fill", "var(--text-color)")
+    
+  lines.append("line").attr("x1", x(-4)).attr("x2", x(4))
+    .attr("y1", 90).attr("y2", 90)
+  labels.append("text").attr("x", x(0)).attr("y", 80).text("POPULATION VARIABILITY")
+    
+  const sampleLine = lines.append("line")
+    .attr("y1", h - 65).attr("y2", h - 65)
+  const sampleLabel = labels.append("text").attr("y", h - 75).text("SAMPLE VARIABILITY")
+      
+  const sampleCircles = svg.append("g")
 
-  const circles = g.selectAll("circle")
+  function newSample() {
+    
+    <!-- create new sample data -->
+      for (var i = 0; i < 10; i++) {
+        sample[i] = jStat.normal.sample(0, 1)
+      }
+      
+    <!-- update circles on svg -->
+    sampleCircles.selectAll("circle")
     .data(sample)
     .enter()
     .append("circle")
       .attr("fill", "lightblue")
-      .attr("r", 10)
+      .attr("stroke", "white")
+      .attr("r", 7)
       .attr("cx", d => x(d))
       .attr("cy", h - 50)
       .attr("opacity", 0)
       .transition().duration(0).delay(function(d, i){return i*50}).attr("opacity", 1)
+      
+      var sampleMin = Math.min(...sample);
+      var sampleMax = Math.max(...sample);
+      console.log(sampleMin)
+      console.log(sampleMax)
+      
+      sampleLine
+        .attr("x1", x(sampleMin))
+        .attr("x2", x(sampleMax))
+        
+      sampleLabel
+        .attr("x", x(sampleMin + (sampleMax - sampleMin)/2))
+
+  }
+  
+  newSample();
 }
 
 ```
