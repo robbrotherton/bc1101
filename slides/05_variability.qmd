@@ -591,7 +591,8 @@ update_svg = {
       .attr("d", line(data))
       .attr("stroke", "var(--text-color")
       .attr("stroke-width", 3)
-      .attr("fill", "none")
+      .attr("fill", "lightblue")
+      .attr("fill-opacity", 0.5)
       
   const lines = svg.append("g")
     .style("stroke", "var(--text-color)")
