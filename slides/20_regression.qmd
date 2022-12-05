@@ -114,8 +114,7 @@ temp_table
 :::
 
 ::: {.column width="50%"}
-::: {#temp-plot}
-:::
+<div id="temp-plot" data-prevent-swipe></div>
 :::
 
 ::::
@@ -540,13 +539,13 @@ const labels = svg.append("g").style("font-size", "0.6em").style("fill", "var(--
 const label_c = labels.append("text")
 const label_f = labels.append("text")
 
-  const overlayRect = svg.append('rect')
-    .style("fill", "none")
-    .style("pointer-events", "all")
-    .attr("x", x(-30)).attr("y", y(150))
-    .attr('width', w - margin.left - margin.right)
-    .attr('height', h - margin.top)
-    .on('mousemove', mousemove)
+  <!-- const overlayRect = svg.append('rect') -->
+  <!--   .style("fill", "none") -->
+  <!--   .style("pointer-events", "all") -->
+  <!--   .attr("x", x(-30)).attr("y", y(150)) -->
+  <!--   .attr('width', w - margin.left - margin.right) -->
+  <!--   .attr('height', h - margin.top) -->
+  <!--   .on('mousemove', mousemove) -->
 
 const round = d3.format(".1f")
 
@@ -578,27 +577,31 @@ function updateOverlay(xCoord) {
   plotParams.xRange = plotParams.xMax - plotParams.xMin;
   plotParams.yRange = plotParams.yMax - plotParams.yMin;
   
-svg.on('mousemove', mousemove)
+  svg.on("mousemove", mousemove)
 function mousemove(e) {
-    // recover coordinate we need
     var elem = document.getElementById("temp-svg");
     var svgX = Math.round(elem.getBoundingClientRect().x);
-    var svgW = Math.round(elem.getBoundingClientRect().width);
-    console.log(svgX);
-    
-    var pixel = d3.pointer(e, d3.select("#temp-plot"))[0];
-    console.log(pixel);
-    var celcius = pixel_to_x(pixel - svgX, svgW);
+    var svgW = elem.getBoundingClientRect().width;
+    <!-- console.log(svgX); -->
+
+    var pixel = d3.pointer(e)[0];
+    <!-- console.log(pixel); -->
+    <!-- var celcius = pixel_to_x(pixel - svgX, svgW); -->
+    var celcius = x.invert(pixel);
+    console.log("svgX: " + svgX + "; pixel: " + pixel + "; adjusted pixel: " + (pixel - svgX));
     celcius = Math.round(celcius * 10)/10;
     celcius = Math.max(-18, celcius);
     updateOverlay(celcius);
     }
     
-  function pixel_to_x(pixel, width) {
-    var panelWidth = width - margin.left - margin.right;
+  function pixel_to_x(pixel, screenWidth) {
+    var displayRatio = screenWidth / w;
+    var panelWidth = screenWidth - margin.left*displayRatio - margin.right*displayRatio;
     var b = plotParams.xRange / panelWidth;
-    var a = plotParams.xMin - b * margin.left;
-    return (pixel * b + a);
+    var a = plotParams.xMin - b * margin.left*displayRatio;
+    var x = pixel * b + a;
+    console.log("pixel: " + pixel + "; celcius: " + x);
+    return (x);
   }
 
   updateOverlay(0);
