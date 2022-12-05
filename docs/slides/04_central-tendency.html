@@ -399,7 +399,7 @@
 <section id="overview" class="title-slide slide level1 center">
 <h1>Overview</h1>
 <ul>
-<li><a href="#/mode">Mode</a></li>
+<li><a href="#/mode-1">Mode</a></li>
 <li><a href="#/median-1">Median</a></li>
 <li><a href="#/mean-1">Mean</a></li>
 <li><a href="#/distributions">Distributions</a></li>
@@ -411,7 +411,7 @@
 <section id="central-tendency-1" class="title-slide slide level1 center">
 <h1>Central tendency</h1>
 <ul>
-<li><p>A number to describe the center of a distribution</p></li>
+<li><p>A <span class="emph">number</span> to describe the <span class="emph">center</span> of a distribution</p></li>
 <li><p>Purpose:</p>
 <ul>
 <li>To organize &amp; summarize scores</li>
@@ -561,8 +561,8 @@
 </div>
 </div>
 </section>
-<section id="mode-2" class="slide level2">
-<h2>Mode</h2>
+<section id="mode-generic-examples" class="slide level2">
+<h2>Mode: generic examples</h2>
 <div class="quarto-layout-panel" style="margin-top: 2em;">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
@@ -575,8 +575,8 @@
 </div>
 <p><img data-src="media/central-tendency-bimodal.svg" class="invertable" style="margin-top: -1em;"></p>
 </section>
-<section id="mode-3" class="slide level2">
-<h2>Mode</h2>
+<section id="mode-realistic-example" class="slide level2">
+<h2>Mode realistic example</h2>
 
 <img data-src="media/central-tendency-bimodal-real.svg" class="invertable r-stretch"></section></section>
 <section>
@@ -745,8 +745,8 @@
 </div>
 </div>
 </section>
-<section id="distributions-people" class="slide level2">
-<h2>Distributions: people</h2>
+<section id="distributions-income" class="slide level2">
+<h2>Distributions: income</h2>
 <ul>
 <li>Sensitivity to outliers
 <ul>
@@ -762,7 +762,11 @@
 
 </div>
 </div>
-</section></section>
+</section>
+<section id="distributions-income-1" class="slide level2">
+<h2>Distributions: income</h2>
+
+<img data-src="media/income-distribution-large.png" style="width:100.0%" class="r-stretch"></section></section>
 <section id="summary" class="title-slide slide level1 smaller center">
 <h1>Summary</h1>
 <ul>
@@ -810,88 +814,88 @@
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="570" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 569;"><span id="cb1-570"><a href="#cb1-570"></a>people_illustration <span class="op">=</span> {</span>
-<span id="cb1-571"><a href="#cb1-571"></a></span>
-<span id="cb1-572"><a href="#cb1-572"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">650</span></span>
-<span id="cb1-573"><a href="#cb1-573"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">400</span></span>
-<span id="cb1-574"><a href="#cb1-574"></a>  <span class="kw">const</span> personWidth <span class="op">=</span> <span class="dv">80</span></span>
-<span id="cb1-575"><a href="#cb1-575"></a>  </span>
-<span id="cb1-576"><a href="#cb1-576"></a>  <span class="kw">const</span> data <span class="op">=</span> [</span>
-<span id="cb1-577"><a href="#cb1-577"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$33,000"</span>}<span class="op">,</span></span>
-<span id="cb1-578"><a href="#cb1-578"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$34,000"</span>}<span class="op">,</span></span>
-<span id="cb1-579"><a href="#cb1-579"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$35,000"</span>}<span class="op">,</span></span>
-<span id="cb1-580"><a href="#cb1-580"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$35,000"</span>}<span class="op">,</span></span>
-<span id="cb1-581"><a href="#cb1-581"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$35,000"</span>}<span class="op">,</span></span>
-<span id="cb1-582"><a href="#cb1-582"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$36,000"</span>}<span class="op">,</span></span>
-<span id="cb1-583"><a href="#cb1-583"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">6</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$37,000"</span>}<span class="op">,</span></span>
-<span id="cb1-584"><a href="#cb1-584"></a>  ]</span>
-<span id="cb1-585"><a href="#cb1-585"></a>      </span>
-<span id="cb1-586"><a href="#cb1-586"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#distributions-people-container"</span>)</span>
-<span id="cb1-587"><a href="#cb1-587"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)</span>
-<span id="cb1-588"><a href="#cb1-588"></a>  </span>
-<span id="cb1-589"><a href="#cb1-589"></a>  <span class="kw">const</span> imgs <span class="op">=</span> svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"image"</span>)</span>
-<span id="cb1-590"><a href="#cb1-590"></a>    <span class="op">.</span><span class="fu">data</span>(data)</span>
-<span id="cb1-591"><a href="#cb1-591"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb1-592"><a href="#cb1-592"></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg:image"</span>)</span>
-<span id="cb1-593"><a href="#cb1-593"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="dv">50</span> <span class="op">+</span> d<span class="op">.</span><span class="at">id</span> <span class="op">*</span> personWidth)</span>
-<span id="cb1-594"><a href="#cb1-594"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="dv">50</span>)</span>
-<span id="cb1-595"><a href="#cb1-595"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'width'</span><span class="op">,</span> personWidth)</span>
-<span id="cb1-596"><a href="#cb1-596"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"xlink:href"</span><span class="op">,</span> <span class="st">"media/person.svg"</span>)</span>
-<span id="cb1-597"><a href="#cb1-597"></a>      </span>
-<span id="cb1-598"><a href="#cb1-598"></a>  <span class="kw">const</span> incomes <span class="op">=</span> svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)</span>
-<span id="cb1-599"><a href="#cb1-599"></a>    <span class="op">.</span><span class="fu">data</span>(data)</span>
-<span id="cb1-600"><a href="#cb1-600"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb1-601"><a href="#cb1-601"></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
-<span id="cb1-602"><a href="#cb1-602"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'text-anchor'</span><span class="op">,</span> <span class="st">'middle'</span>)</span>
-<span id="cb1-603"><a href="#cb1-603"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="dv">50</span> <span class="op">+</span> personWidth<span class="op">/</span><span class="dv">2</span> <span class="op">+</span> d<span class="op">.</span><span class="at">id</span> <span class="op">*</span> personWidth)</span>
-<span id="cb1-604"><a href="#cb1-604"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="dv">30</span>)</span>
-<span id="cb1-605"><a href="#cb1-605"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.5em'</span>)</span>
-<span id="cb1-606"><a href="#cb1-606"></a>      <span class="op">.</span><span class="fu">text</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">income</span>)</span>
-<span id="cb1-607"><a href="#cb1-607"></a></span>
-<span id="cb1-608"><a href="#cb1-608"></a>  <span class="kw">const</span> mean1 <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)</span>
-<span id="cb1-609"><a href="#cb1-609"></a>    <span class="op">.</span><span class="fu">data</span>([<span class="st">'median: $35,000'</span><span class="op">,</span> <span class="st">'&lt;tspan style="font-family: Times; font-style: italic"&gt;M&lt;/tspan&gt; = $35,000'</span>])</span>
-<span id="cb1-610"><a href="#cb1-610"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb1-611"><a href="#cb1-611"></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
-<span id="cb1-612"><a href="#cb1-612"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'text-anchor'</span><span class="op">,</span> <span class="st">'middle'</span>)</span>
-<span id="cb1-613"><a href="#cb1-613"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> personWidth <span class="op">*</span> <span class="dv">7</span><span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb1-614"><a href="#cb1-614"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="kw">function</span>(d<span class="op">,</span>i){<span class="cf">return</span> <span class="dv">250</span> <span class="op">+</span> i<span class="op">*</span><span class="dv">50</span>})</span>
-<span id="cb1-615"><a href="#cb1-615"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.8em'</span>)</span>
-<span id="cb1-616"><a href="#cb1-616"></a>      <span class="op">.</span><span class="fu">html</span>(d <span class="kw">=&gt;</span> d)</span>
-<span id="cb1-617"><a href="#cb1-617"></a>}</span>
-<span id="cb1-618"><a href="#cb1-618"></a></span>
-<span id="cb1-619"><a href="#cb1-619"></a>monopoly_man <span class="op">=</span> {</span>
-<span id="cb1-620"><a href="#cb1-620"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">400</span></span>
-<span id="cb1-621"><a href="#cb1-621"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">400</span></span>
-<span id="cb1-622"><a href="#cb1-622"></a>  <span class="kw">const</span> personWidth <span class="op">=</span> <span class="dv">80</span></span>
-<span id="cb1-623"><a href="#cb1-623"></a>  </span>
-<span id="cb1-624"><a href="#cb1-624"></a>  </span>
-<span id="cb1-625"><a href="#cb1-625"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#distributions-monopoly-man-container"</span>)</span>
-<span id="cb1-626"><a href="#cb1-626"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)</span>
-<span id="cb1-627"><a href="#cb1-627"></a>    </span>
-<span id="cb1-628"><a href="#cb1-628"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"svg:image"</span>)</span>
-<span id="cb1-629"><a href="#cb1-629"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> <span class="dv">100</span>)</span>
-<span id="cb1-630"><a href="#cb1-630"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="dv">30</span>)</span>
-<span id="cb1-631"><a href="#cb1-631"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'width'</span><span class="op">,</span> <span class="dv">200</span>)</span>
-<span id="cb1-632"><a href="#cb1-632"></a>      <span class="op">&lt;!--</span> <span class="op">.</span><span class="fu">attr</span>(<span class="st">'height'</span><span class="op">,</span> <span class="dv">210</span>) <span class="op">--&gt;</span></span>
-<span id="cb1-633"><a href="#cb1-633"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"xlink:href"</span><span class="op">,</span> <span class="st">"media/monopoly-man.svg"</span>)</span>
-<span id="cb1-634"><a href="#cb1-634"></a>      </span>
-<span id="cb1-635"><a href="#cb1-635"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
-<span id="cb1-636"><a href="#cb1-636"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'text-anchor'</span><span class="op">,</span> <span class="st">'middle'</span>)</span>
-<span id="cb1-637"><a href="#cb1-637"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.5em'</span>)</span>
-<span id="cb1-638"><a href="#cb1-638"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> w<span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb1-639"><a href="#cb1-639"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="dv">30</span>)</span>
-<span id="cb1-640"><a href="#cb1-640"></a>      <span class="op">.</span><span class="fu">text</span>(<span class="st">"$1 billion"</span>)</span>
-<span id="cb1-641"><a href="#cb1-641"></a>      </span>
-<span id="cb1-642"><a href="#cb1-642"></a>  <span class="kw">const</span> new_mean <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)</span>
-<span id="cb1-643"><a href="#cb1-643"></a>    <span class="op">.</span><span class="fu">data</span>([<span class="st">'new median: $35,000'</span><span class="op">,</span> <span class="st">'new &lt;tspan style="font-family: Times; font-style: italic"&gt;M&lt;/tspan&gt; = $125 million'</span>])</span>
-<span id="cb1-644"><a href="#cb1-644"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb1-645"><a href="#cb1-645"></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
-<span id="cb1-646"><a href="#cb1-646"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'text-anchor'</span><span class="op">,</span> <span class="st">'middle'</span>)</span>
-<span id="cb1-647"><a href="#cb1-647"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> w<span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb1-648"><a href="#cb1-648"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="kw">function</span>(d<span class="op">,</span>i){<span class="cf">return</span> <span class="dv">250</span> <span class="op">+</span> i<span class="op">*</span><span class="dv">50</span>})</span>
-<span id="cb1-649"><a href="#cb1-649"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.8em'</span>)</span>
-<span id="cb1-650"><a href="#cb1-650"></a>      <span class="op">.</span><span class="fu">html</span>(d <span class="kw">=&gt;</span> d)</span>
-<span id="cb1-651"><a href="#cb1-651"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="556" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 555;"><span id="cb1-556"><a href="#cb1-556"></a>people_illustration <span class="op">=</span> {</span>
+<span id="cb1-557"><a href="#cb1-557"></a></span>
+<span id="cb1-558"><a href="#cb1-558"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">650</span></span>
+<span id="cb1-559"><a href="#cb1-559"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">400</span></span>
+<span id="cb1-560"><a href="#cb1-560"></a>  <span class="kw">const</span> personWidth <span class="op">=</span> <span class="dv">80</span></span>
+<span id="cb1-561"><a href="#cb1-561"></a>  </span>
+<span id="cb1-562"><a href="#cb1-562"></a>  <span class="kw">const</span> data <span class="op">=</span> [</span>
+<span id="cb1-563"><a href="#cb1-563"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$33,000"</span>}<span class="op">,</span></span>
+<span id="cb1-564"><a href="#cb1-564"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$34,000"</span>}<span class="op">,</span></span>
+<span id="cb1-565"><a href="#cb1-565"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$35,000"</span>}<span class="op">,</span></span>
+<span id="cb1-566"><a href="#cb1-566"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$35,000"</span>}<span class="op">,</span></span>
+<span id="cb1-567"><a href="#cb1-567"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$35,000"</span>}<span class="op">,</span></span>
+<span id="cb1-568"><a href="#cb1-568"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$36,000"</span>}<span class="op">,</span></span>
+<span id="cb1-569"><a href="#cb1-569"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">6</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$37,000"</span>}<span class="op">,</span></span>
+<span id="cb1-570"><a href="#cb1-570"></a>  ]</span>
+<span id="cb1-571"><a href="#cb1-571"></a>      </span>
+<span id="cb1-572"><a href="#cb1-572"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#distributions-people-container"</span>)</span>
+<span id="cb1-573"><a href="#cb1-573"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)</span>
+<span id="cb1-574"><a href="#cb1-574"></a>  </span>
+<span id="cb1-575"><a href="#cb1-575"></a>  <span class="kw">const</span> imgs <span class="op">=</span> svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"image"</span>)</span>
+<span id="cb1-576"><a href="#cb1-576"></a>    <span class="op">.</span><span class="fu">data</span>(data)</span>
+<span id="cb1-577"><a href="#cb1-577"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-578"><a href="#cb1-578"></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg:image"</span>)</span>
+<span id="cb1-579"><a href="#cb1-579"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="dv">50</span> <span class="op">+</span> d<span class="op">.</span><span class="at">id</span> <span class="op">*</span> personWidth)</span>
+<span id="cb1-580"><a href="#cb1-580"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="dv">50</span>)</span>
+<span id="cb1-581"><a href="#cb1-581"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'width'</span><span class="op">,</span> personWidth)</span>
+<span id="cb1-582"><a href="#cb1-582"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"xlink:href"</span><span class="op">,</span> <span class="st">"media/person.svg"</span>)</span>
+<span id="cb1-583"><a href="#cb1-583"></a>      </span>
+<span id="cb1-584"><a href="#cb1-584"></a>  <span class="kw">const</span> incomes <span class="op">=</span> svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-585"><a href="#cb1-585"></a>    <span class="op">.</span><span class="fu">data</span>(data)</span>
+<span id="cb1-586"><a href="#cb1-586"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-587"><a href="#cb1-587"></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-588"><a href="#cb1-588"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'text-anchor'</span><span class="op">,</span> <span class="st">'middle'</span>)</span>
+<span id="cb1-589"><a href="#cb1-589"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="dv">50</span> <span class="op">+</span> personWidth<span class="op">/</span><span class="dv">2</span> <span class="op">+</span> d<span class="op">.</span><span class="at">id</span> <span class="op">*</span> personWidth)</span>
+<span id="cb1-590"><a href="#cb1-590"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="dv">30</span>)</span>
+<span id="cb1-591"><a href="#cb1-591"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.5em'</span>)</span>
+<span id="cb1-592"><a href="#cb1-592"></a>      <span class="op">.</span><span class="fu">text</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">income</span>)</span>
+<span id="cb1-593"><a href="#cb1-593"></a></span>
+<span id="cb1-594"><a href="#cb1-594"></a>  <span class="kw">const</span> mean1 <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-595"><a href="#cb1-595"></a>    <span class="op">.</span><span class="fu">data</span>([<span class="st">'median: $35,000'</span><span class="op">,</span> <span class="st">'&lt;tspan style="font-family: Times; font-style: italic"&gt;M&lt;/tspan&gt; = $35,000'</span>])</span>
+<span id="cb1-596"><a href="#cb1-596"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-597"><a href="#cb1-597"></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-598"><a href="#cb1-598"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'text-anchor'</span><span class="op">,</span> <span class="st">'middle'</span>)</span>
+<span id="cb1-599"><a href="#cb1-599"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> personWidth <span class="op">*</span> <span class="dv">7</span><span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb1-600"><a href="#cb1-600"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="kw">function</span>(d<span class="op">,</span>i){<span class="cf">return</span> <span class="dv">250</span> <span class="op">+</span> i<span class="op">*</span><span class="dv">50</span>})</span>
+<span id="cb1-601"><a href="#cb1-601"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.8em'</span>)</span>
+<span id="cb1-602"><a href="#cb1-602"></a>      <span class="op">.</span><span class="fu">html</span>(d <span class="kw">=&gt;</span> d)</span>
+<span id="cb1-603"><a href="#cb1-603"></a>}</span>
+<span id="cb1-604"><a href="#cb1-604"></a></span>
+<span id="cb1-605"><a href="#cb1-605"></a>monopoly_man <span class="op">=</span> {</span>
+<span id="cb1-606"><a href="#cb1-606"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">400</span></span>
+<span id="cb1-607"><a href="#cb1-607"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">400</span></span>
+<span id="cb1-608"><a href="#cb1-608"></a>  <span class="kw">const</span> personWidth <span class="op">=</span> <span class="dv">80</span></span>
+<span id="cb1-609"><a href="#cb1-609"></a>  </span>
+<span id="cb1-610"><a href="#cb1-610"></a>  </span>
+<span id="cb1-611"><a href="#cb1-611"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#distributions-monopoly-man-container"</span>)</span>
+<span id="cb1-612"><a href="#cb1-612"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)</span>
+<span id="cb1-613"><a href="#cb1-613"></a>    </span>
+<span id="cb1-614"><a href="#cb1-614"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"svg:image"</span>)</span>
+<span id="cb1-615"><a href="#cb1-615"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> <span class="dv">100</span>)</span>
+<span id="cb1-616"><a href="#cb1-616"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="dv">30</span>)</span>
+<span id="cb1-617"><a href="#cb1-617"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'width'</span><span class="op">,</span> <span class="dv">200</span>)</span>
+<span id="cb1-618"><a href="#cb1-618"></a>      <span class="op">&lt;!--</span> <span class="op">.</span><span class="fu">attr</span>(<span class="st">'height'</span><span class="op">,</span> <span class="dv">210</span>) <span class="op">--&gt;</span></span>
+<span id="cb1-619"><a href="#cb1-619"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"xlink:href"</span><span class="op">,</span> <span class="st">"media/monopoly-man.svg"</span>)</span>
+<span id="cb1-620"><a href="#cb1-620"></a>      </span>
+<span id="cb1-621"><a href="#cb1-621"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-622"><a href="#cb1-622"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'text-anchor'</span><span class="op">,</span> <span class="st">'middle'</span>)</span>
+<span id="cb1-623"><a href="#cb1-623"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.5em'</span>)</span>
+<span id="cb1-624"><a href="#cb1-624"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> w<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb1-625"><a href="#cb1-625"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="dv">30</span>)</span>
+<span id="cb1-626"><a href="#cb1-626"></a>      <span class="op">.</span><span class="fu">text</span>(<span class="st">"$1 billion"</span>)</span>
+<span id="cb1-627"><a href="#cb1-627"></a>      </span>
+<span id="cb1-628"><a href="#cb1-628"></a>  <span class="kw">const</span> new_mean <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-629"><a href="#cb1-629"></a>    <span class="op">.</span><span class="fu">data</span>([<span class="st">'new median: $35,000'</span><span class="op">,</span> <span class="st">'new &lt;tspan style="font-family: Times; font-style: italic"&gt;M&lt;/tspan&gt; = $125 million'</span>])</span>
+<span id="cb1-630"><a href="#cb1-630"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-631"><a href="#cb1-631"></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-632"><a href="#cb1-632"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'text-anchor'</span><span class="op">,</span> <span class="st">'middle'</span>)</span>
+<span id="cb1-633"><a href="#cb1-633"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> w<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb1-634"><a href="#cb1-634"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="kw">function</span>(d<span class="op">,</span>i){<span class="cf">return</span> <span class="dv">250</span> <span class="op">+</span> i<span class="op">*</span><span class="dv">50</span>})</span>
+<span id="cb1-635"><a href="#cb1-635"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.8em'</span>)</span>
+<span id="cb1-636"><a href="#cb1-636"></a>      <span class="op">.</span><span class="fu">html</span>(d <span class="kw">=&gt;</span> d)</span>
+<span id="cb1-637"><a href="#cb1-637"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">

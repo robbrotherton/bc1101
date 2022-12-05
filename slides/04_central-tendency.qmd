@@ -11,7 +11,7 @@ format: revealjs
 
 # Overview
 
-- [Mode](#mode)
+- [Mode]
 - [Median]
 - [Mean]
 - [Distributions]
@@ -19,7 +19,7 @@ format: revealjs
 
 # Central tendency
 
-- A number to describe the center of a distribution
+- A [number]{.emph} to describe the [center]{.emph} of a distribution
 
 - Purpose: 
     - To organize & summarize scores
@@ -94,7 +94,7 @@ bc1101tools::frequency_table(x =                     c("90-99","80-89","70-79","
 
 ::::
 
-## Mode
+## Mode: generic examples
 
 
 ::: {layout-ncol=2 style="margin-top: 2em;"}
@@ -108,7 +108,7 @@ bc1101tools::frequency_table(x =                     c("90-99","80-89","70-79","
 
 
 
-## Mode
+## Mode realistic example
 
 ![](media/central-tendency-bimodal-real.svg){.invertable}
 
@@ -295,7 +295,7 @@ mode_color <- "#FFC107"
 :::
 
 
-## Distributions: people
+## Distributions: income
 
 - Sensitivity to outliers
   - Extreme values; observations far from the center
@@ -310,6 +310,11 @@ mode_color <- "#FFC107"
 :::
 
 ::::
+
+
+## Distributions: income
+
+![](media/income-distribution-large.png){width="100%"}
 
 
 # Summary {.smaller}
@@ -366,7 +371,7 @@ set.seed(726)
 data <- as.integer(rnorm(30, mean = 50, sd = 3))
 bc1101tools::balance_beam(data, size = 0)
 
-ggplot2::ggsave(here::here("slides", "covers", "04_central-tendency.svg          "), width = 10, height = 5)
+bc1101tools::plot_save("04_central-tendency.svg", subdir = "covers", width = 10, height = 5)
 
 ```
 
@@ -376,55 +381,36 @@ ggplot2::ggsave(here::here("slides", "covers", "04_central-tendency.svg         
 #| eval: false
 
 library(ggplot2)
-
-distPlot <- function(x, y = NULL) {
-  ggplot(NULL, aes(x = x)) + 
-    geom_histogram(binwidth = 1, color = 'black', fill = 'grey') +
-    scale_x_continuous(limits = c(.5,9.5), breaks = 1:9) +
-    scale_y_continuous(expand = c(0,0)) +
-    labs(x = "X", y = "Frequency") +
-    papaja::theme_apa()
-}
-
-transparent_bg <- theme(
-    panel.background = element_rect(fill='transparent'), #transparent panel bg
-    plot.background = element_rect(fill='transparent', color=NA), #transparent plot bg
-    panel.grid.major = element_blank(), #remove major gridlines
-    panel.grid.minor = element_blank(), #remove minor gridlines
-    legend.background = element_rect(fill='transparent'), #transparent legend bg
-    legend.box.background = element_rect(fill='transparent') #transparent legend panel
-  )
+library(bc1101tools)
 
 sym <- c(2,3,3,4,4,4,5,5,5,5,6,6,6,7,7,8)
 skew <- c(1,2,3,4,5,6,6,7,7,7,8,8,8,8,9,9)
 bi <- c(1,1,2,2,2,2,3,3,7,7,8,8,8,8,9,9)
 
-symPlot <- distPlot(sym) + transparent_bg
-ggsave(here::here("slides", "media", "central-tendency-symmetrical.svg"), symPlot, 
-       width=4, height = 2, bg = "transparent")
-skewPlot <- distPlot(skew) + transparent_bg
-ggsave(here::here("slides", "media", "central-tendency-skew.svg"), skewPlot, 
-       width=4, height = 2, bg = "transparent")
-biPlot <- distPlot(bi) + transparent_bg
-ggsave(here::here("slides", "media", "central-tendency-bimodal.svg"), biPlot,
-       width=4, height = 2, bg = "transparent")
+scale_x <- ggplot2::scale_x_continuous(limits = c(0.5,9.5), breaks = 1:10)
 
-realBi <- c(2,5,8,6,3,1,2,2,4,6,7)
-realBiPlot <- distPlot(rep(0:10, realBi)) +
-  scale_x_continuous(limits = c(-.5,10.5), breaks = 0:10) +
-  xlab("Tone Identification Score\n(number correct out of 10)") +  transparent_bg
+plot_histogram(sym) + scale_x + theme_bc1101()
+plot_save("central-tendency-symmetrical.svg", width=4, height = 2)
 
-ggsave(here::here("slides", "media", "central-tendency-bimodal-real.svg"), realBiPlot,
-       width=4, height = 2, bg = "transparent")
-```
+plot_histogram(skew) + scale_x + theme_bc1101()
+plot_save("central-tendency-skew.svg", width=4, height = 2)
 
-```{r eval=FALSE}
-gridExtra::grid.arrange(symPlot + labs(x = NULL, y = NULL), 
-             skewPlot + labs(x = NULL, y = NULL), 
-             biPlot + labs(x = NULL, y = NULL),
-               widths = c(1, 1, 1, 1),
-  layout_matrix = rbind(c(1, 1, 2, 2),
-                        c(NA, 3, 3, NA)))
+plot_histogram(bi) + scale_x + theme_bc1101()
+plot_save("central-tendency-bimodal.svg", width=4, height = 2)
+
+
+real_bi <- data.frame(x = 0:10,
+                      f = c(2,5,8,6,3,1,2,2,4,6,7))
+
+ggplot(real_bi, aes(x = x, y = f)) +
+  geom_col(width = 1, color = "black", fill = "#7f7f7f") +
+  scale_y_continuous(expand = expansion(c(0,0.1))) +
+  scale_x_continuous(breaks = 0:10) +
+  labs(x = "Tone Identification Score\n(number correct out of 10)",
+       y = "Frequency") +
+  theme_bc1101()
+
+plot_save("central-tendency-bimodal-real.svg", width = 4, height = 2)
 ```
 
 ```{r distributions-ggplot}
