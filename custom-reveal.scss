@@ -14,7 +14,9 @@
     --heading-color-light: #333
     --heading-color-dark: #ddd;
     --link-color-light: #5f93e5;
+    --link-hover-light: #4f73b3;
     --link-color-dark: lightblue;
+    --link-hover-dark: #5f93e5;
     --menu-color: #5f93e5;
 }
 
@@ -24,6 +26,7 @@ html[data-theme='light'] {
     --text-color: var(--text-color-light);
     --text-muted: var(--text-muted-light);
     --link-color: var(--link-color-light);
+    --link-hover: var(--link-hover-light);
 }
 
 html[data-theme='dark'] {
@@ -32,6 +35,7 @@ html[data-theme='dark'] {
     --text-color: var(--text-color-dark);
     --text-muted: var(--text-muted-dark);
     --link-color: var(--link-color-dark);
+    --link-hover: var(--link-hover-dark);
 }
 
 .reveal {
@@ -45,6 +49,9 @@ body {
 
 a, .reveal a {
     color: var(--link-color);
+}
+a:hover, .reveal a:hover{
+    color: var(--link-hover);
 }
 
 .reveal h1, .reveal h2, .reveal h3 {
