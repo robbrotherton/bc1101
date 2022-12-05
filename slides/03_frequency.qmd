@@ -30,19 +30,7 @@ format: revealjs
 
 # Frequency
 
-## Frequency distributions
-
-- A frequency distribution...
-    - Organizes and displays data
-    - Conveys how scores are distributed
-    - Can be either a table or a graph
-- Shows:
-    - Categories that make up the scale
-    - Frequency, or number of observations, in each category
-    - And/or proportion/percentage/cumulative percent of scores in each category
-
-
-## Opinion polling
+## E.g. opinion polling
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -58,6 +46,17 @@ format: revealjs
 ::::
 
 
+## Frequency distributions
+
+- A frequency distribution...
+    - Organizes and displays data
+    - Conveys how scores are distributed
+    - Can be either a table or a graph
+- Shows:
+    - Categories that make up the scale
+    - Frequency, or number of observations, in each category
+    - And/or proportion/percentage/cumulative percent of scores in each category
+    
 
 
 ## Simple example
