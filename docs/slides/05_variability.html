@@ -815,10 +815,6 @@
 
 <img data-src="media/soup.jpg" class="r-stretch"></section>
 <section id="underestimation-height" class="slide level2">
-<h2>Underestimation: height</h2>
-
-<img data-src="media/height.svg" class="invertable r-stretch"></section>
-<section id="underestimation-height-1" class="slide level2">
 <h2>Underestimation: Height</h2>
 <div id="height-container" class="center-element">
 
@@ -1238,109 +1234,110 @@
 
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="566" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 565;"><span id="cb1-566"><a href="#cb1-566"></a>jStat <span class="op">=</span> <span class="pp">require</span>(<span class="st">"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js"</span>)</span>
-<span id="cb1-567"><a href="#cb1-567"></a></span>
-<span id="cb1-568"><a href="#cb1-568"></a></span>
-<span id="cb1-569"><a href="#cb1-569"></a>w <span class="op">=</span> <span class="dv">800</span></span>
-<span id="cb1-570"><a href="#cb1-570"></a>h <span class="op">=</span> <span class="dv">500</span></span>
-<span id="cb1-571"><a href="#cb1-571"></a>  </span>
-<span id="cb1-572"><a href="#cb1-572"></a>x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb1-573"><a href="#cb1-573"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="op">-</span><span class="dv">4</span><span class="op">,</span> <span class="dv">4</span>])</span>
-<span id="cb1-574"><a href="#cb1-574"></a>    <span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> w])</span>
-<span id="cb1-575"><a href="#cb1-575"></a>y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb1-576"><a href="#cb1-576"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span> <span class="fl">0.41</span>])</span>
-<span id="cb1-577"><a href="#cb1-577"></a>    <span class="op">.</span><span class="fu">range</span>([h<span class="op">-</span><span class="dv">100</span><span class="op">,</span> <span class="dv">100</span>])</span>
-<span id="cb1-578"><a href="#cb1-578"></a>line <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()</span>
-<span id="cb1-579"><a href="#cb1-579"></a>    <span class="op">.</span><span class="fu">x</span>(d <span class="kw">=&gt;</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">value</span>))</span>
-<span id="cb1-580"><a href="#cb1-580"></a>    <span class="op">.</span><span class="fu">y</span>(d <span class="kw">=&gt;</span> <span class="fu">y</span>(d<span class="op">.</span><span class="at">density</span>))</span>
-<span id="cb1-581"><a href="#cb1-581"></a>    </span>
-<span id="cb1-582"><a href="#cb1-582"></a>update_svg <span class="op">=</span> {</span>
-<span id="cb1-583"><a href="#cb1-583"></a>    </span>
-<span id="cb1-584"><a href="#cb1-584"></a>  <span class="kw">var</span> sample <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb1-585"><a href="#cb1-585"></a>  </span>
-<span id="cb1-586"><a href="#cb1-586"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#height-container"</span>)</span>
-<span id="cb1-587"><a href="#cb1-587"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"heights-svg"</span>)</span>
-<span id="cb1-588"><a href="#cb1-588"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
-<span id="cb1-589"><a href="#cb1-589"></a>  </span>
-<span id="cb1-590"><a href="#cb1-590"></a>  <span class="kw">const</span> curve <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
-<span id="cb1-591"><a href="#cb1-591"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(data))</span>
-<span id="cb1-592"><a href="#cb1-592"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"var(--text-color"</span>)</span>
-<span id="cb1-593"><a href="#cb1-593"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">3</span>)</span>
-<span id="cb1-594"><a href="#cb1-594"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
-<span id="cb1-595"><a href="#cb1-595"></a>      </span>
-<span id="cb1-596"><a href="#cb1-596"></a>  <span class="kw">const</span> lines <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb1-597"><a href="#cb1-597"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"var(--text-color)"</span>)</span>
-<span id="cb1-598"><a href="#cb1-598"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">2</span>)</span>
-<span id="cb1-599"><a href="#cb1-599"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-dasharray"</span><span class="op">,</span> [<span class="dv">5</span><span class="op">,</span><span class="dv">5</span>])</span>
-<span id="cb1-600"><a href="#cb1-600"></a>    </span>
-<span id="cb1-601"><a href="#cb1-601"></a>  <span class="kw">const</span> labels <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb1-602"><a href="#cb1-602"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"0.8em"</span>)</span>
-<span id="cb1-603"><a href="#cb1-603"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
-<span id="cb1-604"><a href="#cb1-604"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"var(--text-color)"</span>)</span>
-<span id="cb1-605"><a href="#cb1-605"></a>    </span>
-<span id="cb1-606"><a href="#cb1-606"></a>  lines<span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> <span class="fu">x</span>(<span class="op">-</span><span class="fl">3.5</span>))<span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> <span class="fu">x</span>(<span class="fl">3.5</span>))</span>
-<span id="cb1-607"><a href="#cb1-607"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> <span class="dv">90</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> <span class="dv">90</span>)</span>
-<span id="cb1-608"><a href="#cb1-608"></a>  labels<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> <span class="fu">x</span>(<span class="dv">0</span>))<span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> <span class="dv">80</span>)<span class="op">.</span><span class="fu">text</span>(<span class="st">"POPULATION VARIABILITY"</span>)</span>
-<span id="cb1-609"><a href="#cb1-609"></a>    </span>
-<span id="cb1-610"><a href="#cb1-610"></a>    </span>
-<span id="cb1-611"><a href="#cb1-611"></a>  <span class="kw">const</span> sampleLine <span class="op">=</span> lines<span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
-<span id="cb1-612"><a href="#cb1-612"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(0, </span><span class="sc">${</span>h<span class="op">-</span><span class="dv">75</span><span class="sc">}</span><span class="vs">)`</span>)</span>
-<span id="cb1-613"><a href="#cb1-613"></a>  <span class="kw">const</span> sampleLabel <span class="op">=</span> labels<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> h <span class="op">-</span> <span class="dv">45</span>)<span class="op">.</span><span class="fu">text</span>(<span class="st">"SAMPLE VARIABILITY"</span>)</span>
-<span id="cb1-614"><a href="#cb1-614"></a>      </span>
-<span id="cb1-615"><a href="#cb1-615"></a>  </span>
-<span id="cb1-616"><a href="#cb1-616"></a>  <span class="kw">const</span> resetButton <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb1-617"><a href="#cb1-617"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(0, 20)`</span>)</span>
-<span id="cb1-618"><a href="#cb1-618"></a>  </span>
-<span id="cb1-619"><a href="#cb1-619"></a>  <span class="kw">const</span> sampleCircles <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb1-620"><a href="#cb1-620"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(0, </span><span class="sc">${</span>h <span class="op">-</span> <span class="dv">90</span><span class="sc">}</span><span class="vs">)`</span>)</span>
-<span id="cb1-621"><a href="#cb1-621"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"lightblue"</span>)</span>
-<span id="cb1-622"><a href="#cb1-622"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"white"</span>)</span>
-<span id="cb1-623"><a href="#cb1-623"></a>  </span>
-<span id="cb1-624"><a href="#cb1-624"></a>  </span>
-<span id="cb1-625"><a href="#cb1-625"></a>  resetButton</span>
-<span id="cb1-626"><a href="#cb1-626"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
-<span id="cb1-627"><a href="#cb1-627"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"button-reset"</span>)</span>
-<span id="cb1-628"><a href="#cb1-628"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"button"</span>)</span>
-<span id="cb1-629"><a href="#cb1-629"></a>    <span class="op">.</span><span class="fu">text</span>(<span class="st">"↻"</span>)</span>
-<span id="cb1-630"><a href="#cb1-630"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> w<span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb1-631"><a href="#cb1-631"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> h <span class="op">-</span> <span class="dv">25</span>)</span>
-<span id="cb1-632"><a href="#cb1-632"></a>  </span>
-<span id="cb1-633"><a href="#cb1-633"></a>  d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#button-reset"</span>)<span class="op">.</span><span class="fu">on</span>(<span class="st">"click"</span><span class="op">,</span> newSample)</span>
-<span id="cb1-634"><a href="#cb1-634"></a></span>
-<span id="cb1-635"><a href="#cb1-635"></a>  <span class="kw">function</span> <span class="fu">newSample</span>() {</span>
-<span id="cb1-636"><a href="#cb1-636"></a>    </span>
-<span id="cb1-637"><a href="#cb1-637"></a>    <span class="op">&lt;!--</span> create <span class="kw">new</span> sample data <span class="op">--&gt;</span></span>
-<span id="cb1-638"><a href="#cb1-638"></a>      <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">10</span><span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb1-639"><a href="#cb1-639"></a>        sample[i] <span class="op">=</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">sample</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>)</span>
-<span id="cb1-640"><a href="#cb1-640"></a>      }</span>
-<span id="cb1-641"><a href="#cb1-641"></a>      </span>
-<span id="cb1-642"><a href="#cb1-642"></a>    <span class="op">&lt;!--</span> update circles on svg <span class="op">--&gt;</span></span>
-<span id="cb1-643"><a href="#cb1-643"></a>    sampleCircles<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"circle"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
-<span id="cb1-644"><a href="#cb1-644"></a>    sampleCircles<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"circle"</span>)</span>
-<span id="cb1-645"><a href="#cb1-645"></a>    <span class="op">.</span><span class="fu">data</span>(sample)</span>
-<span id="cb1-646"><a href="#cb1-646"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb1-647"><a href="#cb1-647"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"circle"</span>)</span>
-<span id="cb1-648"><a href="#cb1-648"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"r"</span><span class="op">,</span> <span class="dv">7</span>)</span>
-<span id="cb1-649"><a href="#cb1-649"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cx"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">x</span>(d))</span>
-<span id="cb1-650"><a href="#cb1-650"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"opacity"</span><span class="op">,</span> <span class="dv">0</span>)</span>
-<span id="cb1-651"><a href="#cb1-651"></a>      <span class="op">.</span><span class="fu">transition</span>()<span class="op">.</span><span class="fu">duration</span>(<span class="dv">0</span>)<span class="op">.</span><span class="fu">delay</span>(<span class="kw">function</span>(d<span class="op">,</span> i){<span class="cf">return</span> i<span class="op">*</span><span class="dv">50</span>})<span class="op">.</span><span class="fu">attr</span>(<span class="st">"opacity"</span><span class="op">,</span> <span class="dv">1</span>)</span>
-<span id="cb1-652"><a href="#cb1-652"></a>      </span>
-<span id="cb1-653"><a href="#cb1-653"></a>      <span class="kw">var</span> sampleMin <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="op">...</span>sample)<span class="op">;</span></span>
-<span id="cb1-654"><a href="#cb1-654"></a>      <span class="kw">var</span> sampleMax <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="op">...</span>sample)<span class="op">;</span></span>
-<span id="cb1-655"><a href="#cb1-655"></a>      <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(sampleMin)</span>
-<span id="cb1-656"><a href="#cb1-656"></a>      <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(sampleMax)</span>
-<span id="cb1-657"><a href="#cb1-657"></a>      </span>
-<span id="cb1-658"><a href="#cb1-658"></a>      sampleLine</span>
-<span id="cb1-659"><a href="#cb1-659"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> <span class="fu">x</span>(sampleMin))</span>
-<span id="cb1-660"><a href="#cb1-660"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> <span class="fu">x</span>(sampleMax))</span>
-<span id="cb1-661"><a href="#cb1-661"></a>        </span>
-<span id="cb1-662"><a href="#cb1-662"></a>      sampleLabel</span>
-<span id="cb1-663"><a href="#cb1-663"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> <span class="fu">x</span>(sampleMin <span class="op">+</span> (sampleMax <span class="op">-</span> sampleMin)<span class="op">/</span><span class="dv">2</span>))</span>
-<span id="cb1-664"><a href="#cb1-664"></a></span>
-<span id="cb1-665"><a href="#cb1-665"></a>  }</span>
-<span id="cb1-666"><a href="#cb1-666"></a>  </span>
-<span id="cb1-667"><a href="#cb1-667"></a>  <span class="fu">newSample</span>()<span class="op">;</span></span>
-<span id="cb1-668"><a href="#cb1-668"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="563" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 562;"><span id="cb1-563"><a href="#cb1-563"></a>jStat <span class="op">=</span> <span class="pp">require</span>(<span class="st">"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js"</span>)</span>
+<span id="cb1-564"><a href="#cb1-564"></a></span>
+<span id="cb1-565"><a href="#cb1-565"></a></span>
+<span id="cb1-566"><a href="#cb1-566"></a>w <span class="op">=</span> <span class="dv">800</span></span>
+<span id="cb1-567"><a href="#cb1-567"></a>h <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb1-568"><a href="#cb1-568"></a>  </span>
+<span id="cb1-569"><a href="#cb1-569"></a>x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb1-570"><a href="#cb1-570"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="op">-</span><span class="dv">4</span><span class="op">,</span> <span class="dv">4</span>])</span>
+<span id="cb1-571"><a href="#cb1-571"></a>    <span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> w])</span>
+<span id="cb1-572"><a href="#cb1-572"></a>y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb1-573"><a href="#cb1-573"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span> <span class="fl">0.41</span>])</span>
+<span id="cb1-574"><a href="#cb1-574"></a>    <span class="op">.</span><span class="fu">range</span>([h<span class="op">-</span><span class="dv">100</span><span class="op">,</span> <span class="dv">100</span>])</span>
+<span id="cb1-575"><a href="#cb1-575"></a>line <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()</span>
+<span id="cb1-576"><a href="#cb1-576"></a>    <span class="op">.</span><span class="fu">x</span>(d <span class="kw">=&gt;</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">value</span>))</span>
+<span id="cb1-577"><a href="#cb1-577"></a>    <span class="op">.</span><span class="fu">y</span>(d <span class="kw">=&gt;</span> <span class="fu">y</span>(d<span class="op">.</span><span class="at">density</span>))</span>
+<span id="cb1-578"><a href="#cb1-578"></a>    </span>
+<span id="cb1-579"><a href="#cb1-579"></a>update_svg <span class="op">=</span> {</span>
+<span id="cb1-580"><a href="#cb1-580"></a>    </span>
+<span id="cb1-581"><a href="#cb1-581"></a>  <span class="kw">var</span> sample <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb1-582"><a href="#cb1-582"></a>  </span>
+<span id="cb1-583"><a href="#cb1-583"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#height-container"</span>)</span>
+<span id="cb1-584"><a href="#cb1-584"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"heights-svg"</span>)</span>
+<span id="cb1-585"><a href="#cb1-585"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
+<span id="cb1-586"><a href="#cb1-586"></a>  </span>
+<span id="cb1-587"><a href="#cb1-587"></a>  <span class="kw">const</span> curve <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
+<span id="cb1-588"><a href="#cb1-588"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(data))</span>
+<span id="cb1-589"><a href="#cb1-589"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"var(--text-color"</span>)</span>
+<span id="cb1-590"><a href="#cb1-590"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">3</span>)</span>
+<span id="cb1-591"><a href="#cb1-591"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"lightblue"</span>)</span>
+<span id="cb1-592"><a href="#cb1-592"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill-opacity"</span><span class="op">,</span> <span class="fl">0.5</span>)</span>
+<span id="cb1-593"><a href="#cb1-593"></a>      </span>
+<span id="cb1-594"><a href="#cb1-594"></a>  <span class="kw">const</span> lines <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-595"><a href="#cb1-595"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"var(--text-color)"</span>)</span>
+<span id="cb1-596"><a href="#cb1-596"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">2</span>)</span>
+<span id="cb1-597"><a href="#cb1-597"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-dasharray"</span><span class="op">,</span> [<span class="dv">5</span><span class="op">,</span><span class="dv">5</span>])</span>
+<span id="cb1-598"><a href="#cb1-598"></a>    </span>
+<span id="cb1-599"><a href="#cb1-599"></a>  <span class="kw">const</span> labels <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-600"><a href="#cb1-600"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"0.8em"</span>)</span>
+<span id="cb1-601"><a href="#cb1-601"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
+<span id="cb1-602"><a href="#cb1-602"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"var(--text-color)"</span>)</span>
+<span id="cb1-603"><a href="#cb1-603"></a>    </span>
+<span id="cb1-604"><a href="#cb1-604"></a>  lines<span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> <span class="fu">x</span>(<span class="op">-</span><span class="fl">3.5</span>))<span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> <span class="fu">x</span>(<span class="fl">3.5</span>))</span>
+<span id="cb1-605"><a href="#cb1-605"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> <span class="dv">90</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> <span class="dv">90</span>)</span>
+<span id="cb1-606"><a href="#cb1-606"></a>  labels<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> <span class="fu">x</span>(<span class="dv">0</span>))<span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> <span class="dv">80</span>)<span class="op">.</span><span class="fu">text</span>(<span class="st">"POPULATION VARIABILITY"</span>)</span>
+<span id="cb1-607"><a href="#cb1-607"></a>    </span>
+<span id="cb1-608"><a href="#cb1-608"></a>    </span>
+<span id="cb1-609"><a href="#cb1-609"></a>  <span class="kw">const</span> sampleLine <span class="op">=</span> lines<span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
+<span id="cb1-610"><a href="#cb1-610"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(0, </span><span class="sc">${</span>h<span class="op">-</span><span class="dv">75</span><span class="sc">}</span><span class="vs">)`</span>)</span>
+<span id="cb1-611"><a href="#cb1-611"></a>  <span class="kw">const</span> sampleLabel <span class="op">=</span> labels<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> h <span class="op">-</span> <span class="dv">45</span>)<span class="op">.</span><span class="fu">text</span>(<span class="st">"SAMPLE VARIABILITY"</span>)</span>
+<span id="cb1-612"><a href="#cb1-612"></a>      </span>
+<span id="cb1-613"><a href="#cb1-613"></a>  </span>
+<span id="cb1-614"><a href="#cb1-614"></a>  <span class="kw">const</span> resetButton <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-615"><a href="#cb1-615"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(0, 20)`</span>)</span>
+<span id="cb1-616"><a href="#cb1-616"></a>  </span>
+<span id="cb1-617"><a href="#cb1-617"></a>  <span class="kw">const</span> sampleCircles <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-618"><a href="#cb1-618"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(0, </span><span class="sc">${</span>h <span class="op">-</span> <span class="dv">90</span><span class="sc">}</span><span class="vs">)`</span>)</span>
+<span id="cb1-619"><a href="#cb1-619"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"lightblue"</span>)</span>
+<span id="cb1-620"><a href="#cb1-620"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"white"</span>)</span>
+<span id="cb1-621"><a href="#cb1-621"></a>  </span>
+<span id="cb1-622"><a href="#cb1-622"></a>  </span>
+<span id="cb1-623"><a href="#cb1-623"></a>  resetButton</span>
+<span id="cb1-624"><a href="#cb1-624"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-625"><a href="#cb1-625"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"button-reset"</span>)</span>
+<span id="cb1-626"><a href="#cb1-626"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"button"</span>)</span>
+<span id="cb1-627"><a href="#cb1-627"></a>    <span class="op">.</span><span class="fu">text</span>(<span class="st">"↻"</span>)</span>
+<span id="cb1-628"><a href="#cb1-628"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> w<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb1-629"><a href="#cb1-629"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> h <span class="op">-</span> <span class="dv">25</span>)</span>
+<span id="cb1-630"><a href="#cb1-630"></a>  </span>
+<span id="cb1-631"><a href="#cb1-631"></a>  d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#button-reset"</span>)<span class="op">.</span><span class="fu">on</span>(<span class="st">"click"</span><span class="op">,</span> newSample)</span>
+<span id="cb1-632"><a href="#cb1-632"></a></span>
+<span id="cb1-633"><a href="#cb1-633"></a>  <span class="kw">function</span> <span class="fu">newSample</span>() {</span>
+<span id="cb1-634"><a href="#cb1-634"></a>    </span>
+<span id="cb1-635"><a href="#cb1-635"></a>    <span class="op">&lt;!--</span> create <span class="kw">new</span> sample data <span class="op">--&gt;</span></span>
+<span id="cb1-636"><a href="#cb1-636"></a>      <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">10</span><span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb1-637"><a href="#cb1-637"></a>        sample[i] <span class="op">=</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">sample</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>)</span>
+<span id="cb1-638"><a href="#cb1-638"></a>      }</span>
+<span id="cb1-639"><a href="#cb1-639"></a>      </span>
+<span id="cb1-640"><a href="#cb1-640"></a>    <span class="op">&lt;!--</span> update circles on svg <span class="op">--&gt;</span></span>
+<span id="cb1-641"><a href="#cb1-641"></a>    sampleCircles<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"circle"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
+<span id="cb1-642"><a href="#cb1-642"></a>    sampleCircles<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"circle"</span>)</span>
+<span id="cb1-643"><a href="#cb1-643"></a>    <span class="op">.</span><span class="fu">data</span>(sample)</span>
+<span id="cb1-644"><a href="#cb1-644"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-645"><a href="#cb1-645"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"circle"</span>)</span>
+<span id="cb1-646"><a href="#cb1-646"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"r"</span><span class="op">,</span> <span class="dv">7</span>)</span>
+<span id="cb1-647"><a href="#cb1-647"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cx"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">x</span>(d))</span>
+<span id="cb1-648"><a href="#cb1-648"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"opacity"</span><span class="op">,</span> <span class="dv">0</span>)</span>
+<span id="cb1-649"><a href="#cb1-649"></a>      <span class="op">.</span><span class="fu">transition</span>()<span class="op">.</span><span class="fu">duration</span>(<span class="dv">0</span>)<span class="op">.</span><span class="fu">delay</span>(<span class="kw">function</span>(d<span class="op">,</span> i){<span class="cf">return</span> i<span class="op">*</span><span class="dv">50</span>})<span class="op">.</span><span class="fu">attr</span>(<span class="st">"opacity"</span><span class="op">,</span> <span class="dv">1</span>)</span>
+<span id="cb1-650"><a href="#cb1-650"></a>      </span>
+<span id="cb1-651"><a href="#cb1-651"></a>      <span class="kw">var</span> sampleMin <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="op">...</span>sample)<span class="op">;</span></span>
+<span id="cb1-652"><a href="#cb1-652"></a>      <span class="kw">var</span> sampleMax <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="op">...</span>sample)<span class="op">;</span></span>
+<span id="cb1-653"><a href="#cb1-653"></a>      <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(sampleMin)</span>
+<span id="cb1-654"><a href="#cb1-654"></a>      <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(sampleMax)</span>
+<span id="cb1-655"><a href="#cb1-655"></a>      </span>
+<span id="cb1-656"><a href="#cb1-656"></a>      sampleLine</span>
+<span id="cb1-657"><a href="#cb1-657"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> <span class="fu">x</span>(sampleMin))</span>
+<span id="cb1-658"><a href="#cb1-658"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> <span class="fu">x</span>(sampleMax))</span>
+<span id="cb1-659"><a href="#cb1-659"></a>        </span>
+<span id="cb1-660"><a href="#cb1-660"></a>      sampleLabel</span>
+<span id="cb1-661"><a href="#cb1-661"></a>        <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> <span class="fu">x</span>(sampleMin <span class="op">+</span> (sampleMax <span class="op">-</span> sampleMin)<span class="op">/</span><span class="dv">2</span>))</span>
+<span id="cb1-662"><a href="#cb1-662"></a></span>
+<span id="cb1-663"><a href="#cb1-663"></a>  }</span>
+<span id="cb1-664"><a href="#cb1-664"></a>  </span>
+<span id="cb1-665"><a href="#cb1-665"></a>  <span class="fu">newSample</span>()<span class="op">;</span></span>
+<span id="cb1-666"><a href="#cb1-666"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -1662,7 +1659,7 @@
 
     </script>
     <script type="ojs-module-contents">
-    {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\njStat = require(\"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js\")\n\n\nw = 800\nh = 500\n  \nx = d3.scaleLinear()\n    .domain([-4, 4])\n    .range([0, w])\ny = d3.scaleLinear()\n    .domain([0, 0.41])\n    .range([h-100, 100])\nline = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density))\n    \nupdate_svg = {\n    \n  var sample = [];\n  \n  const svg = d3.select(\"#height-container\")\n    .append(\"svg\").attr(\"id\", \"heights-svg\")\n    .attr(\"width\", w).attr(\"height\", h)\n  \n  const curve = svg.append(\"path\")\n      .attr(\"d\", line(data))\n      .attr(\"stroke\", \"var(--text-color\")\n      .attr(\"stroke-width\", 3)\n      .attr(\"fill\", \"none\")\n      \n  const lines = svg.append(\"g\")\n    .style(\"stroke\", \"var(--text-color)\")\n    .style(\"stroke-width\", 2)\n    .style(\"stroke-dasharray\", [5,5])\n    \n  const labels = svg.append(\"g\")\n    .style(\"font-size\", \"0.8em\")\n    .style(\"text-anchor\", \"middle\")\n    .style(\"fill\", \"var(--text-color)\")\n    \n  lines.append(\"line\").attr(\"x1\", x(-3.5)).attr(\"x2\", x(3.5))\n    .attr(\"y1\", 90).attr(\"y2\", 90)\n  labels.append(\"text\").attr(\"x\", x(0)).attr(\"y\", 80).text(\"POPULATION VARIABILITY\")\n    \n    \n  const sampleLine = lines.append(\"line\")\n    .attr(\"transform\", `translate(0, ${h-75})`)\n  const sampleLabel = labels.append(\"text\").attr(\"y\", h - 45).text(\"SAMPLE VARIABILITY\")\n      \n  \n  const resetButton = svg.append(\"g\")\n    .attr(\"transform\", `translate(0, 20)`)\n  \n  const sampleCircles = svg.append(\"g\")\n    .attr(\"transform\", `translate(0, ${h - 90})`)\n    .style(\"fill\", \"lightblue\")\n    .style(\"stroke\", \"white\")\n  \n  \n  resetButton\n    .append(\"text\")\n    .attr(\"id\", \"button-reset\")\n    .attr(\"class\", \"button\")\n    .text(\"↻\")\n    .attr(\"x\", w/2)\n    .attr(\"y\", h - 25)\n  \n  d3.select(\"#button-reset\").on(\"click\", newSample)\n\n  function newSample() {\n    \n    <!-- create new sample data -->\n      for (var i = 0; i < 10; i++) {\n        sample[i] = jStat.normal.sample(0, 1)\n      }\n      \n    <!-- update circles on svg -->\n    sampleCircles.selectAll(\"circle\").remove()\n    sampleCircles.selectAll(\"circle\")\n    .data(sample)\n    .enter()\n    .append(\"circle\")\n      .attr(\"r\", 7)\n      .attr(\"cx\", d => x(d))\n      .attr(\"opacity\", 0)\n      .transition().duration(0).delay(function(d, i){return i*50}).attr(\"opacity\", 1)\n      \n      var sampleMin = Math.min(...sample);\n      var sampleMax = Math.max(...sample);\n      console.log(sampleMin)\n      console.log(sampleMax)\n      \n      sampleLine\n        .attr(\"x1\", x(sampleMin))\n        .attr(\"x2\", x(sampleMax))\n        \n      sampleLabel\n        .attr(\"x\", x(sampleMin + (sampleMax - sampleMin)/2))\n\n  }\n  \n  newSample();\n}\n\n"}]}
+    {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\njStat = require(\"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js\")\n\n\nw = 800\nh = 500\n  \nx = d3.scaleLinear()\n    .domain([-4, 4])\n    .range([0, w])\ny = d3.scaleLinear()\n    .domain([0, 0.41])\n    .range([h-100, 100])\nline = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density))\n    \nupdate_svg = {\n    \n  var sample = [];\n  \n  const svg = d3.select(\"#height-container\")\n    .append(\"svg\").attr(\"id\", \"heights-svg\")\n    .attr(\"width\", w).attr(\"height\", h)\n  \n  const curve = svg.append(\"path\")\n      .attr(\"d\", line(data))\n      .attr(\"stroke\", \"var(--text-color\")\n      .attr(\"stroke-width\", 3)\n      .attr(\"fill\", \"lightblue\")\n      .attr(\"fill-opacity\", 0.5)\n      \n  const lines = svg.append(\"g\")\n    .style(\"stroke\", \"var(--text-color)\")\n    .style(\"stroke-width\", 2)\n    .style(\"stroke-dasharray\", [5,5])\n    \n  const labels = svg.append(\"g\")\n    .style(\"font-size\", \"0.8em\")\n    .style(\"text-anchor\", \"middle\")\n    .style(\"fill\", \"var(--text-color)\")\n    \n  lines.append(\"line\").attr(\"x1\", x(-3.5)).attr(\"x2\", x(3.5))\n    .attr(\"y1\", 90).attr(\"y2\", 90)\n  labels.append(\"text\").attr(\"x\", x(0)).attr(\"y\", 80).text(\"POPULATION VARIABILITY\")\n    \n    \n  const sampleLine = lines.append(\"line\")\n    .attr(\"transform\", `translate(0, ${h-75})`)\n  const sampleLabel = labels.append(\"text\").attr(\"y\", h - 45).text(\"SAMPLE VARIABILITY\")\n      \n  \n  const resetButton = svg.append(\"g\")\n    .attr(\"transform\", `translate(0, 20)`)\n  \n  const sampleCircles = svg.append(\"g\")\n    .attr(\"transform\", `translate(0, ${h - 90})`)\n    .style(\"fill\", \"lightblue\")\n    .style(\"stroke\", \"white\")\n  \n  \n  resetButton\n    .append(\"text\")\n    .attr(\"id\", \"button-reset\")\n    .attr(\"class\", \"button\")\n    .text(\"↻\")\n    .attr(\"x\", w/2)\n    .attr(\"y\", h - 25)\n  \n  d3.select(\"#button-reset\").on(\"click\", newSample)\n\n  function newSample() {\n    \n    <!-- create new sample data -->\n      for (var i = 0; i < 10; i++) {\n        sample[i] = jStat.normal.sample(0, 1)\n      }\n      \n    <!-- update circles on svg -->\n    sampleCircles.selectAll(\"circle\").remove()\n    sampleCircles.selectAll(\"circle\")\n    .data(sample)\n    .enter()\n    .append(\"circle\")\n      .attr(\"r\", 7)\n      .attr(\"cx\", d => x(d))\n      .attr(\"opacity\", 0)\n      .transition().duration(0).delay(function(d, i){return i*50}).attr(\"opacity\", 1)\n      \n      var sampleMin = Math.min(...sample);\n      var sampleMax = Math.max(...sample);\n      console.log(sampleMin)\n      console.log(sampleMax)\n      \n      sampleLine\n        .attr(\"x1\", x(sampleMin))\n        .attr(\"x2\", x(sampleMax))\n        \n      sampleLabel\n        .attr(\"x\", x(sampleMin + (sampleMax - sampleMin)/2))\n\n  }\n  \n  newSample();\n}\n\n"}]}
     </script>
     <script type="module">
     window._ojs.paths.runtimeToDoc = "../../slides";
