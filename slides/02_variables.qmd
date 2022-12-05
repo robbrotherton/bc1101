@@ -586,6 +586,7 @@ pop = {
       .attr("transform", d => "translate(" + (width/2 + 315*d.id) + " ," + (path.cy+margin.top+ymax*0.5 - 10) +") scale(1.5)")
       
   svg.select("#arrow0")
+    .style("touch-action", "manipulation")
     .on("mouseover", animateArrow)
     .on("click", drawNewSample)
   
