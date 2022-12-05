@@ -589,10 +589,9 @@ update_svg = {
   
   const curve = svg.append("path")
       .attr("d", line(data))
-      .attr("stroke", "black")
+      .attr("stroke", "var(--text-color")
       .attr("stroke-width", 3)
       .attr("fill", "none")
-      .attr("class", "invertable")
       
   const lines = svg.append("g")
     .style("stroke", "var(--text-color)")
@@ -604,15 +603,34 @@ update_svg = {
     .style("text-anchor", "middle")
     .style("fill", "var(--text-color)")
     
-  lines.append("line").attr("x1", x(-4)).attr("x2", x(4))
+  lines.append("line").attr("x1", x(-3.5)).attr("x2", x(3.5))
     .attr("y1", 90).attr("y2", 90)
   labels.append("text").attr("x", x(0)).attr("y", 80).text("POPULATION VARIABILITY")
     
+    
   const sampleLine = lines.append("line")
-    .attr("y1", h - 65).attr("y2", h - 65)
-  const sampleLabel = labels.append("text").attr("y", h - 75).text("SAMPLE VARIABILITY")
+    .attr("transform", `translate(0, ${h-75})`)
+  const sampleLabel = labels.append("text").attr("y", h - 45).text("SAMPLE VARIABILITY")
       
+  
+  const resetButton = svg.append("g")
+    .attr("transform", `translate(0, 20)`)
+  
   const sampleCircles = svg.append("g")
+    .attr("transform", `translate(0, ${h - 90})`)
+    .style("fill", "lightblue")
+    .style("stroke", "white")
+  
+  
+  resetButton
+    .append("text")
+    .attr("id", "button-reset")
+    .attr("class", "button")
+    .text("↻")
+    .attr("x", w/2)
+    .attr("y", h - 25)
+  
+  d3.select("#button-reset").on("click", newSample)
 
   function newSample() {
     
@@ -622,15 +640,13 @@ update_svg = {
       }
       
     <!-- update circles on svg -->
+    sampleCircles.selectAll("circle").remove()
     sampleCircles.selectAll("circle")
     .data(sample)
     .enter()
     .append("circle")
-      .attr("fill", "lightblue")
-      .attr("stroke", "white")
       .attr("r", 7)
       .attr("cx", d => x(d))
-      .attr("cy", h - 50)
       .attr("opacity", 0)
       .transition().duration(0).delay(function(d, i){return i*50}).attr("opacity", 1)
       
