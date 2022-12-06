@@ -774,7 +774,7 @@
     "href": "slides/08_sampling.html#roadmap",
     "title": "BC1101",
     "section": "Roadmap",
-    "text": "Roadmap\n\nSo far…\n\n\\(z\\)-scores describe the location of a single score in a sample or in a population\nNormal distributions: precisely quantify probability of obtaining certain scores\n\nMoving forward…"
+    "text": "Roadmap\n\nSo far…\n\n\\(z\\)-scores describe the location of a single score in a sample or in a population\nNormal distributions: precisely quantify probability of obtaining certain scores\n\nMoving forward…\n\nQuantifying probability of obtaining certain sample statistics"
   },
   {
     "objectID": "slides/08_sampling.html#sampling-error-1",
@@ -872,7 +872,7 @@
     "href": "slides/08_sampling.html#variability-3",
     "title": "BC1101",
     "section": "Variability",
-    "text": "Variability\n\nμ =  \nσ =  \nn = 1\n\nσM ="
+    "text": "Variability\n\nμ =  \nσ =  \nn = 30\n\nσM ="
   },
   {
     "objectID": "slides/08_sampling.html#variability-heights-sampling-dist",
