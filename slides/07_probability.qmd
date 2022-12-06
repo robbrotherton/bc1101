@@ -15,14 +15,16 @@ rt$z <- (rt$x  -rt$m) / rt$sd
 
 # Overview
 
-- [Probability basics](#probability-and-games)
+- [Probability basics]
 - [Sampling]
 - [Probability and distributions]
 - [Probability and $z$-scores](#probability-and-z-scores)
 - [Learning checks]
 
 
-# Probability and games
+# Probability basics
+
+## Probability and games
 
 :::: {.columns}
 ::: {.column .small}
@@ -38,15 +40,16 @@ rt$z <- (rt$x  -rt$m) / rt$sd
 :::
 ::::
 
-## Definition and notation
 
-- Definition & notation
-    - Several different outcomes are possible
+## Definition & notation
+
+- Several different outcomes are possible
     - The probability of any specific outcome is a fraction of all possible outcomes
     - $p$ is the symbol for “probability”
     - Probability of some specific outcome is specified by $p(event)$
     
 $p(A) = \dfrac{number \ of \ outcomes \ classified \ as \ A}{total \ number \ of \ possible \ outcomes}$
+
 
 ## Example: coin flip
 
@@ -107,18 +110,17 @@ $p(7) = 6/36 = .17$
 ```{r}
 #| style: "font-size: 0.8em; margin-top: 1em; width: 100%;"
 
-
 library(kableExtra)
 
 d <- as.data.frame(outer(1:6 ,1:6,FUN="+"))
 d$blue <- 1:6
 d <- d[c(7,1:6)]
 
-colnames(d) <- c("",1:6)
+colnames(d) <- c("<span style='color: var(--text-color)'>Roll</span>",1:6)
 
 dice_tab <- knitr::kable(d, 'html', escape = F, align ='c') |>  
-  row_spec(0, color = 'red', background = "rgba(255, 0, 0, 0.2)") |> 
-  column_spec(1, color = "blue", background = "rgba(0, 0, 255, 0.2)", border_right = "1px solid", bold = T) |> 
+  row_spec(0, color = 'red') |>
+  column_spec(1, color = "blue", border_right = "2px solid", bold = T, extra_css = "border-color: var(--text-color);") |>
   column_spec(1:7, width = "2em")
 
 dice_tab
