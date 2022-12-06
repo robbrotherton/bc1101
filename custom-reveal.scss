@@ -38,6 +38,17 @@ html[data-theme='dark'] {
     --link-hover: var(--link-hover-dark);
 }
 
+
+[data-theme='dark'] {
+  .sourceCode {
+    filter: invert(1);
+  }
+  .reveal code {
+    background: var(--background-color);
+    color: var(--text-color);
+  }
+}
+
 .reveal {
     background-color: var(--background-color);
     color: var(--text-color);
