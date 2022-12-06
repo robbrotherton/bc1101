@@ -54,6 +54,7 @@ card <- function(file, date, image_class = "", panopto_link = "") {
 #| message: false
 info <- readr::read_csv("schedule.csv")
 dates <- info$Date
+links <- info$Panopto
 ```
 
 <!-- # Part 1. Fundamentals -->
@@ -70,7 +71,7 @@ card("01_course-info", dates[1])
 ## 2. Variables
 ```{r}
 card("02_variables", dates[2], "invertable-bw", 
-     panopto_link = "https://columbia.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=80b80313-9436-4692-bdc5-af1601538882")
+     panopto_link = links[2])
 ```
 ::::
 
@@ -79,7 +80,7 @@ card("02_variables", dates[2], "invertable-bw",
 ## 3. Frequency
 ```{r}
 card("03_frequency", dates[3], "invertable", 
-     panopto_link = "https://columbia.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=caeeacfb-6d34-427e-85e7-af54013e8a64")
+     panopto_link = links[3])
 ```
 ::::
 
@@ -88,7 +89,7 @@ card("03_frequency", dates[3], "invertable",
 ## 4. Central Tendency
 ```{r}
 card("04_central-tendency", dates[4], "invertable", 
-     panopto_link = "https://columbia.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=f5b6b646-0d64-4545-8326-af54013eb205")
+     panopto_link = links[4])
 ```
 ::::
 
@@ -96,7 +97,8 @@ card("04_central-tendency", dates[4], "invertable",
 :::: {.box}
 ## 5. Variability
 ```{r}
-card("05_variability", dates[5], "invertable")
+card("05_variability", dates[5], "invertable",
+     panopto_link = links[5])
 ```
 ::::
 
@@ -105,21 +107,24 @@ title insets content: "" ::before, messing things up -->
 :::: {.box}
 ## 6. $z$-Scores
 ```{r}
-card("06_z-scores", dates[6])
+card("06_z-scores", dates[6],
+     panopto_link = links[6])
 ```
 ::::
 
 :::: {.box}
 ## 7. Probability
 ```{r}
-card("07_probability", dates[7])
+card("07_probability", dates[7],
+     panopto_link = links[7])
 ```
 ::::
 
 :::: {.box}
 ## 8. Sampling
 ```{r}
-card("08_sampling", dates[8], "invertable")
+card("08_sampling", dates[8], "invertable",
+     panopto_link = links[8])
 ```
 ::::
 
@@ -130,7 +135,8 @@ card("08_sampling", dates[8], "invertable")
 :::: {.box}
 ## 9. Hypothesis testing
 ```{r}
-card("09_hypothesis-testing", dates[11], "invertable")
+card("09_hypothesis-testing", dates[11], "invertable",
+     panopto_link = links[11])
 ```
 ::::
 
@@ -138,14 +144,16 @@ card("09_hypothesis-testing", dates[11], "invertable")
 :::: {.box}
 ## 10. Hypothesis testing pt. 2
 ```{r}
-card("10_hypothesis-testing-pt-2", dates[12], "invertable-blue")
+card("10_hypothesis-testing-pt-2", dates[12], "invertable-blue",
+     panopto_link = links[12])
 ```
 ::::
 
 :::: {.box}
 ## 11. The $t$ test
 ```{r}
-card("11_the-t-test", dates[13])
+card("11_the-t-test", dates[13],
+     panopto_link = links[13])
 ```
 ::::
 
@@ -154,7 +162,8 @@ card("11_the-t-test", dates[13])
 :::: {.box}
 ## 12. The $t$ test part 2
 ```{r}
-card("12_the-t-test-pt-2", dates[14], "invertable-bw")
+card("12_the-t-test-pt-2", dates[14], "invertable-bw",
+     panopto_link = links[14])
 ```
 ::::
 
@@ -162,7 +171,8 @@ card("12_the-t-test-pt-2", dates[14], "invertable-bw")
 :::: {.box}
 ## 13. Independent-samples $t$ test
 ```{r}
-card("13_independent-samples-t-test", dates[15])
+card("13_independent-samples-t-test", dates[15],
+     panopto_link = links[15])
 ```
 ::::
 
@@ -170,7 +180,8 @@ card("13_independent-samples-t-test", dates[15])
 :::: {.box}
 ## 14. Related-samples $t$ test
 ```{r}
-card("14_related-samples-t-test", dates[16])
+card("14_related-samples-t-test", dates[16],
+     panopto_link = links[16])
 ```
 ::::
 
