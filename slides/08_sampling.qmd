@@ -26,8 +26,9 @@ format: revealjs
 
 - So far...  
   - $z$-scores describe the location of a single score in a sample or in a population
-  - Normal distributions: precisely quantify probability of obtaining certain *scores*
+  - Normal distributions: precisely quantify probability of obtaining certain [scores]{.emph}
 - Moving forward...
+  - Quantifying probability of obtaining certain [sample statistics]{.emph}
 
 
 # Sampling error
@@ -105,7 +106,7 @@ import { pop } from "./02_variables.qmd";
       - Most means will be close to $\mu$; means far from $\mu$ are rare
   - Center
       - The center/average of the distribution will be close to $\mu$
-      - $M$ is a *unbiased* statistic
+      - $M$ is a [unbiased]{.emph} statistic
       - *On average*, $M = \mu$
   - Variability
       - Related to sample size, $n$
