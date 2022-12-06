@@ -63,14 +63,8 @@ readr::write_csv(schedule, "schedule.csv")
 ```{r}
 #| message: false
 
-# details <- tibble::tribble(
-#   ~Topic, ~Date,        ~Recitation,
-#   "One",  "01/01/2022", "",
-#   "Two",  "01/02/2022", "",
-# )
-
 schedule <- readr::read_csv("schedule.csv")
-kableExtra::kbl(schedule, booktabs = TRUE) |> 
+kableExtra::kbl(schedule[c("Date", "Topic", "Recitation")], booktabs = TRUE) |> 
   kableExtra::column_spec(1, width = "5em") |> 
   kableExtra::column_spec(2, width = "20em") |> 
   kableExtra::column_spec(3, width = "10em")
