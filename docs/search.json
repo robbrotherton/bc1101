@@ -2525,5 +2525,12 @@
     "title": "BC1101",
     "section": "Inferential diagram",
     "text": "Inferential diagram\n\n\n\n\n\n\nTreatment\n\n\nKnown\noriginal\npopulation\n\n\nUnknown\ntreated\npopulation\n\n\nSample\n\n\nTreated\nsample"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#ojs-cover",
+    "href": "slides/09_hypothesis-testing.html#ojs-cover",
+    "title": "BC1101",
+    "section": "OJS cover",
+    "text": "OJS cover\n\njStat = require(\"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js\")\n\ncover = {\n  const w = 1050\n  const h = 525\n  \n  const x = d3.scaleLinear()\n    .domain([-3, 3])\n    .range([0, w])\n  const y = d3.scaleLinear()\n    .domain([0, 0.41])\n    .range([h, 0])\n  const line = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density))\n  \n  function makeCurve(mu, sm) {\n    var values = jStat(-3, 3, 210)[0],\n        arr = [];\n    for (var i in values) {\n      arr.push({\n          value: values[i], \n          density: jStat.normal.pdf(values[i], mu, sm)\n      })\n    }\n    return arr;\n  }\n  \n  \n  const svg = d3.select(\"#cover\")\n    .append(\"svg\").attr(\"width\", w).attr(\"height\", h)\n  \n  const fill = svg.append(\"g\")\n    .style(\"fill\", \"red\")\n    .style(\"fill-opacity\", 0.5)\n    .style(\"stroke\", \"none\")\n    \n  const curve = svg.append(\"path\").attr(\"id\", \"curve\")\n    .attr(\"d\", line(makeCurve(0, 1)))\n    .style(\"fill\", \"none\")\n    .style(\"stroke\", \"var(--text-color)\")\n    .style(\"stroke-width\", 4)\n  \n  var len = curve.node().getTotalLength()\n  curve\n    .style(\"stroke-dasharray\", [len, len])\n    .style(\"stroke-dashoffset\", len)\n    .transition().duration(2000)\n    .style(\"stroke-dashoffset\", 0)\n    \n  const defs = svg.append(\"defs\")\n  const mask = defs.append(\"mask\").attr(\"id\", \"mask\")\n    \n  mask.append(\"rect\")\n    .attr(\"width\", w)\n    .attr(\"height\", h)\n    .style(\"fill\", \"white\")\n  mask.append(\"rect\")\n    .attr(\"x\", x(-3))\n    .attr(\"width\", x(3) - x(-3))\n    .attr(\"height\", h)\n    .style(\"fill\", \"black\")\n    .transition().duration(2000).delay(2000)\n      .attr(\"x\", x(-2))\n      .attr(\"width\", x(2) - x(-2))\n  \n  \n    \n  fill.append(\"path\")\n    .attr(\"d\", line(makeCurve(0, 1)))\n    .attr(\"mask\", \"url(#mask)\")\n}"
   }
 ]

@@ -383,6 +383,8 @@
       margin-right: 0; 
     }
   </style>
+  <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+  <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -391,8 +393,12 @@
 
 <section id="hypothesis-testing" class="title-slide slide level1 center">
 <h1>9|HYPOTHESIS TESTING</h1>
+<div id="cover">
 
-<img data-src="covers/09_hypothesis-testing.svg" class="invertable r-stretch"><div class="cell">
+</div>
+
+<!-- ![](covers/09_hypothesis-testing.svg){.invertable} -->
+<div class="cell">
 
 </div>
 </section>
@@ -1021,6 +1027,7 @@ population</p>
 </ul></li>
 </ul>
 </section></section>
+<section>
 <section id="learning-check" class="title-slide slide level1 smaller center">
 <h1>Learning check</h1>
 <div class="cell">
@@ -1040,6 +1047,97 @@ population</p>
 </ul></li>
 <li><p>Make decision</p></li>
 </ol>
+</section>
+<section id="ojs-cover" class="slide level2">
+<h2>OJS cover</h2>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="545" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 544;"><span id="cb9-545"><a href="#cb9-545"></a>jStat <span class="op">=</span> <span class="pp">require</span>(<span class="st">"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js"</span>)</span>
+<span id="cb9-546"><a href="#cb9-546"></a></span>
+<span id="cb9-547"><a href="#cb9-547"></a>cover <span class="op">=</span> {</span>
+<span id="cb9-548"><a href="#cb9-548"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">1050</span></span>
+<span id="cb9-549"><a href="#cb9-549"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">525</span></span>
+<span id="cb9-550"><a href="#cb9-550"></a>  </span>
+<span id="cb9-551"><a href="#cb9-551"></a>  <span class="kw">const</span> x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb9-552"><a href="#cb9-552"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="op">-</span><span class="dv">3</span><span class="op">,</span> <span class="dv">3</span>])</span>
+<span id="cb9-553"><a href="#cb9-553"></a>    <span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> w])</span>
+<span id="cb9-554"><a href="#cb9-554"></a>  <span class="kw">const</span> y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb9-555"><a href="#cb9-555"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span> <span class="fl">0.41</span>])</span>
+<span id="cb9-556"><a href="#cb9-556"></a>    <span class="op">.</span><span class="fu">range</span>([h<span class="op">,</span> <span class="dv">0</span>])</span>
+<span id="cb9-557"><a href="#cb9-557"></a>  <span class="kw">const</span> line <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()</span>
+<span id="cb9-558"><a href="#cb9-558"></a>    <span class="op">.</span><span class="fu">x</span>(d <span class="kw">=&gt;</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">value</span>))</span>
+<span id="cb9-559"><a href="#cb9-559"></a>    <span class="op">.</span><span class="fu">y</span>(d <span class="kw">=&gt;</span> <span class="fu">y</span>(d<span class="op">.</span><span class="at">density</span>))</span>
+<span id="cb9-560"><a href="#cb9-560"></a>  </span>
+<span id="cb9-561"><a href="#cb9-561"></a>  <span class="kw">function</span> <span class="fu">makeCurve</span>(mu<span class="op">,</span> sm) {</span>
+<span id="cb9-562"><a href="#cb9-562"></a>    <span class="kw">var</span> values <span class="op">=</span> <span class="fu">jStat</span>(<span class="op">-</span><span class="dv">3</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">210</span>)[<span class="dv">0</span>]<span class="op">,</span></span>
+<span id="cb9-563"><a href="#cb9-563"></a>        arr <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb9-564"><a href="#cb9-564"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> values) {</span>
+<span id="cb9-565"><a href="#cb9-565"></a>      arr<span class="op">.</span><span class="fu">push</span>({</span>
+<span id="cb9-566"><a href="#cb9-566"></a>          <span class="dt">value</span><span class="op">:</span> values[i]<span class="op">,</span> </span>
+<span id="cb9-567"><a href="#cb9-567"></a>          <span class="dt">density</span><span class="op">:</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">pdf</span>(values[i]<span class="op">,</span> mu<span class="op">,</span> sm)</span>
+<span id="cb9-568"><a href="#cb9-568"></a>      })</span>
+<span id="cb9-569"><a href="#cb9-569"></a>    }</span>
+<span id="cb9-570"><a href="#cb9-570"></a>    <span class="cf">return</span> arr<span class="op">;</span></span>
+<span id="cb9-571"><a href="#cb9-571"></a>  }</span>
+<span id="cb9-572"><a href="#cb9-572"></a>  </span>
+<span id="cb9-573"><a href="#cb9-573"></a>  </span>
+<span id="cb9-574"><a href="#cb9-574"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#cover"</span>)</span>
+<span id="cb9-575"><a href="#cb9-575"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
+<span id="cb9-576"><a href="#cb9-576"></a>  </span>
+<span id="cb9-577"><a href="#cb9-577"></a>  <span class="kw">const</span> fill <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb9-578"><a href="#cb9-578"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"red"</span>)</span>
+<span id="cb9-579"><a href="#cb9-579"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill-opacity"</span><span class="op">,</span> <span class="fl">0.5</span>)</span>
+<span id="cb9-580"><a href="#cb9-580"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
+<span id="cb9-581"><a href="#cb9-581"></a>    </span>
+<span id="cb9-582"><a href="#cb9-582"></a>  <span class="kw">const</span> curve <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"curve"</span>)</span>
+<span id="cb9-583"><a href="#cb9-583"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(<span class="fu">makeCurve</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>)))</span>
+<span id="cb9-584"><a href="#cb9-584"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
+<span id="cb9-585"><a href="#cb9-585"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"var(--text-color)"</span>)</span>
+<span id="cb9-586"><a href="#cb9-586"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">4</span>)</span>
+<span id="cb9-587"><a href="#cb9-587"></a>  </span>
+<span id="cb9-588"><a href="#cb9-588"></a>  <span class="kw">var</span> len <span class="op">=</span> curve<span class="op">.</span><span class="fu">node</span>()<span class="op">.</span><span class="fu">getTotalLength</span>()</span>
+<span id="cb9-589"><a href="#cb9-589"></a>  curve</span>
+<span id="cb9-590"><a href="#cb9-590"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-dasharray"</span><span class="op">,</span> [len<span class="op">,</span> len])</span>
+<span id="cb9-591"><a href="#cb9-591"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> len)</span>
+<span id="cb9-592"><a href="#cb9-592"></a>    <span class="op">.</span><span class="fu">transition</span>()<span class="op">.</span><span class="fu">duration</span>(<span class="dv">2000</span>)</span>
+<span id="cb9-593"><a href="#cb9-593"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> <span class="dv">0</span>)</span>
+<span id="cb9-594"><a href="#cb9-594"></a>    </span>
+<span id="cb9-595"><a href="#cb9-595"></a>  <span class="kw">const</span> defs <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"defs"</span>)</span>
+<span id="cb9-596"><a href="#cb9-596"></a>  <span class="kw">const</span> mask <span class="op">=</span> defs<span class="op">.</span><span class="fu">append</span>(<span class="st">"mask"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"mask"</span>)</span>
+<span id="cb9-597"><a href="#cb9-597"></a>    </span>
+<span id="cb9-598"><a href="#cb9-598"></a>  mask<span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
+<span id="cb9-599"><a href="#cb9-599"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)</span>
+<span id="cb9-600"><a href="#cb9-600"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
+<span id="cb9-601"><a href="#cb9-601"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"white"</span>)</span>
+<span id="cb9-602"><a href="#cb9-602"></a>  mask<span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
+<span id="cb9-603"><a href="#cb9-603"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> <span class="fu">x</span>(<span class="op">-</span><span class="dv">3</span>))</span>
+<span id="cb9-604"><a href="#cb9-604"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> <span class="fu">x</span>(<span class="dv">3</span>) <span class="op">-</span> <span class="fu">x</span>(<span class="op">-</span><span class="dv">3</span>))</span>
+<span id="cb9-605"><a href="#cb9-605"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
+<span id="cb9-606"><a href="#cb9-606"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"black"</span>)</span>
+<span id="cb9-607"><a href="#cb9-607"></a>    <span class="op">.</span><span class="fu">transition</span>()<span class="op">.</span><span class="fu">duration</span>(<span class="dv">2000</span>)<span class="op">.</span><span class="fu">delay</span>(<span class="dv">2000</span>)</span>
+<span id="cb9-608"><a href="#cb9-608"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> <span class="fu">x</span>(<span class="op">-</span><span class="dv">2</span>))</span>
+<span id="cb9-609"><a href="#cb9-609"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> <span class="fu">x</span>(<span class="dv">2</span>) <span class="op">-</span> <span class="fu">x</span>(<span class="op">-</span><span class="dv">2</span>))</span>
+<span id="cb9-610"><a href="#cb9-610"></a>  </span>
+<span id="cb9-611"><a href="#cb9-611"></a>  </span>
+<span id="cb9-612"><a href="#cb9-612"></a>    </span>
+<span id="cb9-613"><a href="#cb9-613"></a>  fill<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
+<span id="cb9-614"><a href="#cb9-614"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(<span class="fu">makeCurve</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>)))</span>
+<span id="cb9-615"><a href="#cb9-615"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"mask"</span><span class="op">,</span> <span class="st">"url(#mask)"</span>)</span>
+<span id="cb9-616"><a href="#cb9-616"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
 
 <div class="footer footer-default">
 <button id="theme-toggle">
@@ -1053,7 +1151,7 @@ population</p>
 </svg>
 </button>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -1309,6 +1407,16 @@ population</p>
 
       git.addEventListener("click", changeLink);
 
+    </script>
+    <script type="ojs-module-contents">
+    {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\njStat = require(\"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js\")\n\ncover = {\n  const w = 1050\n  const h = 525\n  \n  const x = d3.scaleLinear()\n    .domain([-3, 3])\n    .range([0, w])\n  const y = d3.scaleLinear()\n    .domain([0, 0.41])\n    .range([h, 0])\n  const line = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density))\n  \n  function makeCurve(mu, sm) {\n    var values = jStat(-3, 3, 210)[0],\n        arr = [];\n    for (var i in values) {\n      arr.push({\n          value: values[i], \n          density: jStat.normal.pdf(values[i], mu, sm)\n      })\n    }\n    return arr;\n  }\n  \n  \n  const svg = d3.select(\"#cover\")\n    .append(\"svg\").attr(\"width\", w).attr(\"height\", h)\n  \n  const fill = svg.append(\"g\")\n    .style(\"fill\", \"red\")\n    .style(\"fill-opacity\", 0.5)\n    .style(\"stroke\", \"none\")\n    \n  const curve = svg.append(\"path\").attr(\"id\", \"curve\")\n    .attr(\"d\", line(makeCurve(0, 1)))\n    .style(\"fill\", \"none\")\n    .style(\"stroke\", \"var(--text-color)\")\n    .style(\"stroke-width\", 4)\n  \n  var len = curve.node().getTotalLength()\n  curve\n    .style(\"stroke-dasharray\", [len, len])\n    .style(\"stroke-dashoffset\", len)\n    .transition().duration(2000)\n    .style(\"stroke-dashoffset\", 0)\n    \n  const defs = svg.append(\"defs\")\n  const mask = defs.append(\"mask\").attr(\"id\", \"mask\")\n    \n  mask.append(\"rect\")\n    .attr(\"width\", w)\n    .attr(\"height\", h)\n    .style(\"fill\", \"white\")\n  mask.append(\"rect\")\n    .attr(\"x\", x(-3))\n    .attr(\"width\", x(3) - x(-3))\n    .attr(\"height\", h)\n    .style(\"fill\", \"black\")\n    .transition().duration(2000).delay(2000)\n      .attr(\"x\", x(-2))\n      .attr(\"width\", x(2) - x(-2))\n  \n  \n    \n  fill.append(\"path\")\n    .attr(\"d\", line(makeCurve(0, 1)))\n    .attr(\"mask\", \"url(#mask)\")\n}\n\n"}]}
+    </script>
+    <script type="module">
+    window._ojs.paths.runtimeToDoc = "../../slides";
+    window._ojs.paths.runtimeToRoot = "../..";
+    window._ojs.paths.docToRoot = "..";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
     </script>
     
     <script>

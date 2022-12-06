@@ -4,7 +4,10 @@ format: revealjs
 
 # 9|HYPOTHESIS TESTING
 
-![](covers/09_hypothesis-testing.svg){.invertable}
+::: {#cover}
+:::
+
+<!-- ![](covers/09_hypothesis-testing.svg){.invertable} -->
 
 ```{r data}
 library(bc1101tools)
@@ -532,6 +535,90 @@ plot_save("09_hypothesis-testing.svg", width = 10, height = 5, subdir = "covers"
 
 
 ```
+
+:::
+## OJS cover
+
+
+```{ojs}
+
+jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js")
+
+cover = {
+  const w = 1050
+  const h = 525
+  
+  const x = d3.scaleLinear()
+    .domain([-3, 3])
+    .range([0, w])
+  const y = d3.scaleLinear()
+    .domain([0, 0.41])
+    .range([h, 0])
+  const line = d3.line()
+    .x(d => x(d.value))
+    .y(d => y(d.density))
+  
+  function makeCurve(mu, sm) {
+    var values = jStat(-3, 3, 210)[0],
+        arr = [];
+    for (var i in values) {
+      arr.push({
+          value: values[i], 
+          density: jStat.normal.pdf(values[i], mu, sm)
+      })
+    }
+    return arr;
+  }
+  
+  
+  const svg = d3.select("#cover")
+    .append("svg").attr("width", w).attr("height", h)
+  
+  const fill = svg.append("g")
+    .style("fill", "red")
+    .style("fill-opacity", 0.5)
+    .style("stroke", "none")
+    
+  const curve = svg.append("path").attr("id", "curve")
+    .attr("d", line(makeCurve(0, 1)))
+    .style("fill", "none")
+    .style("stroke", "var(--text-color)")
+    .style("stroke-width", 4)
+  
+  var len = curve.node().getTotalLength()
+  curve
+    .style("stroke-dasharray", [len, len])
+    .style("stroke-dashoffset", len)
+    .transition().duration(2000)
+    .style("stroke-dashoffset", 0)
+    
+  const defs = svg.append("defs")
+  const mask = defs.append("mask").attr("id", "mask")
+    
+  mask.append("rect")
+    .attr("width", w)
+    .attr("height", h)
+    .style("fill", "white")
+  mask.append("rect")
+    .attr("x", x(-3))
+    .attr("width", x(3) - x(-3))
+    .attr("height", h)
+    .style("fill", "black")
+    .transition().duration(2000).delay(2000)
+      .attr("x", x(-2))
+      .attr("width", x(2) - x(-2))
+  
+  
+    
+  fill.append("path")
+    .attr("d", line(makeCurve(0, 1)))
+    .attr("mask", "url(#mask)")
+}
+
+```
+
+
+::: {.content-hidden}
 
 ## NHST diagram generic
 
