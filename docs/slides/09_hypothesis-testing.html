@@ -401,8 +401,9 @@
 <h1>Overview</h1>
 <ul>
 <li><a href="#/recap-1">Recap</a></li>
-<li><a href="#/making-inferences-4">Making inferences</a></li>
-<li><a href="#/hypothesis-testing-2">Hypothesis testing</a></li>
+<li><a href="#/making-inferences">Making inferences</a></li>
+<li><a href="#/hypothesis-testing-1">Hypothesis testing</a></li>
+<li><a href="#/z-test"><span class="math inline">\(z\)</span>-test</a></li>
 <li><a href="#/learning-check">Learning check</a></li>
 </ul>
 </section>
@@ -415,7 +416,7 @@
 <ul>
 <li><span class="math inline">\(z = \dfrac{X - \mu}{\sigma}\)</span></li>
 <li><span class="math inline">\(z\)</span>-scores reflect position in population distribution</li>
-<li>Find probabilities using Unit Normal Table / pnorm()</li>
+<li>Find probabilities using Unit Normal Table / <code>pnorm()</code></li>
 </ul></li>
 </ul>
 <div class="r-stack">
@@ -544,7 +545,7 @@
 <ul>
 <li>Sampling distribution
 <ul>
-<li>Lets us find probabilities of <span class="emph">sample means</span></li>
+<li>Find probabilities of <span class="emph">sample means</span></li>
 </ul></li>
 </ul>
 <p><img data-src="media/stick-sampling-distribution.svg" class="invertable" style="width:60.0%"></p>
@@ -574,7 +575,7 @@
 <li>We can find <span class="math inline">\(z\)</span>-score for any sample mean</li>
 <li>Using characteristics of sampling distribution of the mean <span class="math inline">\((\mu_M\)</span> and <span class="math inline">\(\sigma_M)\)</span></li>
 <li>Position of given sample mean in the population of all possible sample means</li>
-<li>Then find probability (using Unit Normal Table / pnorm(), just like for regular <span class="math inline">\(z\)</span>-scores)</li>
+<li>Then find probability (using Unit Normal Table / <code>pnorm()</code>, just like for regular <span class="math inline">\(z\)</span>-scores)</li>
 </ul></li>
 </ul>
 </div><div class="column" style="width:50%;">
@@ -584,15 +585,17 @@
 <p><img data-src="media/z-distribution-filled.svg" class="invertable-blue"></p>
 </div>
 </div>
-</section>
-<section id="making-inferences" class="slide level2 smaller">
-<h2>Making inferences</h2>
+</section></section>
+<section>
+<section id="making-inferences" class="title-slide slide level1 smaller center">
+<h1>Making inferences</h1>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
 <li>Sampling error
 <ul>
-<li>Statistics obtained for a sample will be different from the corresponding parameters for the population and the statistics will differ from one sample to another</li>
+<li>Statistics obtained for a sample will be different from the corresponding parameters for the population</li>
+<li>Differ from one sample to another</li>
 </ul></li>
 <li>Problem:
 <ul>
@@ -631,21 +634,20 @@ population</p>
 </div>
 </div>
 </section>
-<section id="making-inferences-spiderman" class="slide level2">
-<h2>Making inferences: Spiderman</h2>
+<section id="spiderman" class="slide level2">
+<h2>Spiderman</h2>
 
 <img data-src="media/spiderman-comic.jpg" class="r-stretch"></section>
-<section id="spiderman" class="slide level2 small">
-<h2>Spiderman</h2>
+<section id="inferences-spiderman" class="slide level2 small">
+<h2>Inferences: Spiderman</h2>
 <ul>
-<li>Spiderman
+<li>Are Peter Parker’s RTs “noticeably different?”
 <ul>
-<li>Are Peter Parker’s RTs “noticeably different?”</li>
 <li><span class="math inline">\(z = -2.5\)</span></li>
 <li>Can state <span class="emph">precise</span> probability of observing a <span class="math inline">\(z\)</span>-score that (or more) extreme</li>
 </ul></li>
 </ul>
-<p><img data-src="media/spiderman-small-bw.png" style="position: absolute; top: 80%; left: -45%;width:10.0%"></p>
+<p><img data-src="media/spiderman-small-bw.png" style="position: absolute; top: 70%; left: -45%;width:10.0%"></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><img data-src="media/spiderman-distribution.svg" class="invertable-blue"></p>
@@ -663,12 +665,12 @@ population</p>
 </div>
 </div>
 </section>
-<section id="making-inferences-1" class="slide level2">
-<h2>Making inferences</h2>
+<section id="spidermen" class="slide level2">
+<h2>Spidermen</h2>
 
 <img data-src="media/spidermen.png" class="r-stretch"></section>
-<section id="making-inferences-2" class="slide level2 smaller">
-<h2>Making inferences</h2>
+<section id="inferences-spidermen" class="slide level2 smaller">
+<h2>Inferences: spidermen</h2>
 <ul>
 <li>A sample of spidermen (spidermans?)
 <ul>
@@ -704,8 +706,8 @@ population</p>
 </div>
 </div>
 </section>
-<section id="making-inferences-3" class="slide level2">
-<h2>Making inferences</h2>
+<section id="making-inferences-spidermen" class="slide level2">
+<h2>Making inferences: spidermen</h2>
 <ul>
 <li>For sample size <span class="math inline">\(n = 5\)</span>, approximately 0.00000001 of sample means are this (or more) extreme
 <ul>
@@ -714,8 +716,8 @@ population</p>
 </ul>
 
 <img data-src="media/spiderman-sampling-distribution.svg" class="invertable r-stretch"></section>
-<section id="making-inferences-4" class="slide level2">
-<h2>Making inferences</h2>
+<section id="inferential-diagram" class="slide level2">
+<h2>Inferential diagram</h2>
 <div style="width: 60%; position: relative; font-size: 0.7em; margin-left: 20%;">
 <div id="nhst-diagram">
 <div id="lines">
@@ -772,8 +774,8 @@ sample</p>
 </ul></li>
 </ul>
 </section>
-<section id="hypothesis-testing-2" class="slide level2 smaller">
-<h2>Hypothesis testing</h2>
+<section id="null-hypothesis-significance-testing" class="slide level2 smaller">
+<h2>Null Hypothesis Significance Testing</h2>
 <ul>
 <li>Step 1: State hypotheses
 <ul>
@@ -817,23 +819,45 @@ sample</p>
 </section>
 <section id="state-hypotheses-1" class="slide level2 smaller">
 <h2>1. State hypotheses</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
 <ul>
 <li>Claim: This pill makes you smarter
 <ul>
 <li><span class="math inline">\(H_0\)</span>: The pill doesn’t effect intelligence</li>
 <li><span class="math inline">\(H_1\)</span>: The pill affects intelligence</li>
 </ul></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><span style="font-size: 4em;">💊🧠</span></p>
+</div>
+</div>
+<div class="columns fragment">
+<div class="column" style="width:60%;">
+<ul>
 <li>Claim: Standing like superman makes you feel more confident
 <ul>
 <li><span class="math inline">\(H_0\)</span>: Posture does not affect confidence</li>
 <li><span class="math inline">\(H_1\)</span>: Posture does affect confidence</li>
 </ul></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><span style="font-size: 4em;">🦸‍♀ 😎️</span></p>
+</div>
+</div>
+<div class="columns fragment">
+<div class="column" style="width:60%;">
+<ul>
 <li>Claim: The more education people complete, the more they earn
 <ul>
 <li><span class="math inline">\(H_0\)</span>: Education is not associated with income</li>
 <li><span class="math inline">\(H_1\)</span>: There is a relationship between education and income</li>
 </ul></li>
 </ul>
+</div><div class="column" style="width:40%;">
+<p><span style="font-size: 4em;">🎓🤑</span></p>
+</div>
+</div>
 </section>
 <section id="decision-criterion" class="slide level2 smaller">
 <h2>2. Decision criterion</h2>
@@ -961,7 +985,7 @@ population</p>
 </div>
 <div id="rect" class="fill" style="right: 0">
 <p>Treated sample<br>
-<span class="math inline">\(M, s, n\)</span></p>
+<span class="math inline">\(M, n\)</span></p>
 </div>
 <div id="population-comparison-line">
 
@@ -976,8 +1000,8 @@ population</p>
 <ul>
 <li>1: State Hypotheses
 <ul>
-<li>Null: Radioactive spiderbites do not alter reaction times</li>
-<li>Alternative: Radioactive spiderbites alter reaction times</li>
+<li><span class="math inline">\(H_0\)</span>: Radioactive spiderbites do not alter reaction times</li>
+<li><span class="math inline">\(H_1\)</span>: Radioactive spiderbites alter reaction times</li>
 </ul></li>
 <li>2: Decision criteria
 <ul>

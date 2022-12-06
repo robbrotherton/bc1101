@@ -893,7 +893,7 @@
     "href": "slides/09_hypothesis-testing.html#recap-1",
     "title": "BC1101",
     "section": "Recap",
-    "text": "Recap\n\n\n\n\n\n\n\n\nSample\nX1\nX2\nM\n\n\n\n\n1\n60\n60\n60\n\n\n2\n62\n60\n61\n\n\n3\n64\n60\n62\n\n\n4\n66\n60\n63\n\n\n5\n60\n62\n61\n\n\n6\n62\n62\n62\n\n\n7\n64\n62\n63\n\n\n8\n66\n62\n64\n\n\n9\n60\n64\n62\n\n\n10\n62\n64\n63\n\n\n11\n64\n64\n64\n\n\n12\n66\n64\n65\n\n\n13\n60\n66\n63\n\n\n14\n62\n66\n64\n\n\n15\n64\n66\n65\n\n\n16\n66\n66\n66\n\n\n\n\n\n\n\nSampling distribution\n\nLets us find probabilities of sample means\n\n\n\n\n\\(p(M < 61) =\\ ?\\)"
+    "text": "Recap\n\n\n\n\n\n\n\n\nSample\nX1\nX2\nM\n\n\n\n\n1\n60\n60\n60\n\n\n2\n62\n60\n61\n\n\n3\n64\n60\n62\n\n\n4\n66\n60\n63\n\n\n5\n60\n62\n61\n\n\n6\n62\n62\n62\n\n\n7\n64\n62\n63\n\n\n8\n66\n62\n64\n\n\n9\n60\n64\n62\n\n\n10\n62\n64\n63\n\n\n11\n64\n64\n64\n\n\n12\n66\n64\n65\n\n\n13\n60\n66\n63\n\n\n14\n62\n66\n64\n\n\n15\n64\n66\n65\n\n\n16\n66\n66\n66\n\n\n\n\n\n\n\nSampling distribution\n\nFind probabilities of sample means\n\n\n\n\n\\(p(M < 61) =\\ ?\\)"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#central-limit-theorem",
@@ -914,7 +914,7 @@
     "href": "slides/09_hypothesis-testing.html#making-inferences",
     "title": "BC1101",
     "section": "Making inferences",
-    "text": "Making inferences\n\n\n\nSampling error\n\nStatistics obtained for a sample will be different from the corresponding parameters for the population and the statistics will differ from one sample to another\n\nProblem:\n\nIs difference between sample & population due to treatment effect or sampling error?\n\nAddressed by inferential statistics\n\n\n\n\n\n\n\n\nTreatment\n\n\nOriginal\npopulation\n\n\nTreated\npopulation\n\n\nSample\n\n\nTreated sample"
+    "text": "Making inferences\n\n\n\nSampling error\n\nStatistics obtained for a sample will be different from the corresponding parameters for the population\nDiffer from one sample to another\n\nProblem:\n\nIs difference between sample & population due to treatment effect or sampling error?\n\nAddressed by inferential statistics\n\n\n\n\n\n\n\n\nTreatment\n\n\nOriginal\npopulation\n\n\nTreated\npopulation\n\n\nSample\n\n\nTreated sample"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#making-inferences-spiderman",
@@ -928,14 +928,14 @@
     "href": "slides/09_hypothesis-testing.html#spiderman",
     "title": "BC1101",
     "section": "Spiderman",
-    "text": "Spiderman\n\nSpiderman\n\nAre Peter Parker’s RTs “noticeably different?”\n\\(z = -2.5\\)\nCan state precise probability of observing a \\(z\\)-score that (or more) extreme\n\n\n\n\n\n\n\n\npnorm(-2.5)\n\n[1] 0.006209665\n\npnorm(159, mean = 284, sd = 50)\n\n[1] 0.006209665"
+    "text": "Spiderman"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#making-inferences-1",
     "href": "slides/09_hypothesis-testing.html#making-inferences-1",
     "title": "BC1101",
     "section": "Making inferences",
-    "text": "Making inferences"
+    "text": "Making inferences\n\n\n\n\n\n\nTreatment\n\n\nKnown\noriginal\npopulation\n\n\nUnknown\ntreated\npopulation\n\n\nSample\n\n\nTreated\nsample"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#making-inferences-2",
@@ -977,7 +977,7 @@
     "href": "slides/09_hypothesis-testing.html#state-hypotheses-1",
     "title": "BC1101",
     "section": "1. State hypotheses",
-    "text": "1. State hypotheses\n\nClaim: This pill makes you smarter\n\n\\(H_0\\): The pill doesn’t effect intelligence\n\\(H_1\\): The pill affects intelligence\n\nClaim: Standing like superman makes you feel more confident\n\n\\(H_0\\): Posture does not affect confidence\n\\(H_1\\): Posture does affect confidence\n\nClaim: The more education people complete, the more they earn\n\n\\(H_0\\): Education is not associated with income\n\\(H_1\\): There is a relationship between education and income"
+    "text": "1. State hypotheses\n\n\n\nClaim: This pill makes you smarter\n\n\\(H_0\\): The pill doesn’t effect intelligence\n\\(H_1\\): The pill affects intelligence\n\n\n\n💊🧠\n\n\n\n\n\nClaim: Standing like superman makes you feel more confident\n\n\\(H_0\\): Posture does not affect confidence\n\\(H_1\\): Posture does affect confidence\n\n\n\n🦸‍♀ 😎️\n\n\n\n\n\nClaim: The more education people complete, the more they earn\n\n\\(H_0\\): Education is not associated with income\n\\(H_1\\): There is a relationship between education and income\n\n\n\n🎓🤑"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#decision-criterion",
@@ -1019,7 +1019,7 @@
     "href": "slides/09_hypothesis-testing.html#spiderman-z-test",
     "title": "BC1101",
     "section": "Spiderman \\(z\\)-test",
-    "text": "Spiderman \\(z\\)-test\n\nFormal Spidermen z-test\n\n1: State Hypotheses\n\nNull: Radioactive spiderbites do not alter reaction times\nAlternative: Radioactive spiderbites alter reaction times\n\n2: Decision criteria\n\n\\(\\alpha = .05\\) two-tailed; Critical regions are -1.96 and 1.96\n\n3: Collect data; compute statistics & probabilities\n\n\\(\\mu = 284\\); \\(\\sigma = 50\\); so if \\(n = 5\\), \\(\\sigma_M = 50/\\sqrt{5} = 22.36\\)\n\\(M = 159\\); \\(z = (159 - 284) / 22.36 = -5.59\\)\n\n4: Decision\n\nObserved sample mean is in the critical region\n\\(p < .05\\)\nReject the null"
+    "text": "Spiderman \\(z\\)-test\n\nFormal Spidermen z-test\n\n1: State Hypotheses\n\n\\(H_0\\): Radioactive spiderbites do not alter reaction times\n\\(H_1\\): Radioactive spiderbites alter reaction times\n\n2: Decision criteria\n\n\\(\\alpha = .05\\) two-tailed; Critical regions are -1.96 and 1.96\n\n3: Collect data; compute statistics & probabilities\n\n\\(\\mu = 284\\); \\(\\sigma = 50\\); so if \\(n = 5\\), \\(\\sigma_M = 50/\\sqrt{5} = 22.36\\)\n\\(M = 159\\); \\(z = (159 - 284) / 22.36 = -5.59\\)\n\n4: Decision\n\nObserved sample mean is in the critical region\n\\(p < .05\\)\nReject the null"
   },
   {
     "objectID": "slides/10_hypothesis-testing-pt-2.html#inferential-errors-1",
@@ -2469,5 +2469,61 @@
     "title": "BC1101",
     "section": "Definition & notation",
     "text": "Definition & notation\n\nSeveral different outcomes are possible\n\nThe probability of any specific outcome is a fraction of all possible outcomes\n\\(p\\) is the symbol for “probability”\nProbability of some specific outcome is specified by \\(p(event)\\)\n\n\n\\(p(A) = \\dfrac{number \\ of \\ outcomes \\ classified \\ as \\ A}{total \\ number \\ of \\ possible \\ outcomes}\\)"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#making-inferences-spidermen",
+    "href": "slides/09_hypothesis-testing.html#making-inferences-spidermen",
+    "title": "BC1101",
+    "section": "Making inferences: spidermen",
+    "text": "Making inferences: spidermen\n\nFor sample size \\(n = 5\\), approximately 0.00000001 of sample means are this (or more) extreme\n\nGiven how unlikely the mean is, maybe spidermen aren’t from this population"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#making-inferences-samples",
+    "href": "slides/09_hypothesis-testing.html#making-inferences-samples",
+    "title": "BC1101",
+    "section": "Making inferences: samples",
+    "text": "Making inferences: samples\n\nA sample of spidermen (spidermans?)\n\nHow likely is a particular sample mean, given the population characteristics?\nPopulation \\(\\mu = 284; \\sigma = 50\\)\n\n\n\n\n\nSingle score of \\(X = 159\\)\nFind position of that score in population distribution and find probability\n\n\\(z = \\dfrac{X-\\mu}{\\sigma} = \\dfrac{159 - 284}{50} = -2.5\\)\n\npnorm(-2.5)\n\n[1] 0.006209665\n\n\n\n\nSample mean of \\(M = 159\\); \\(n = 5\\)\nFind position of that \\(M\\) in sampling distribution and find probability\n\n\\(z = \\dfrac{M-\\mu_M}{\\sigma_M} = \\dfrac{159 - 284}{50 / \\sqrt{5}} = -5.59\\)\n\npnorm(-5.59)\n\n[1] 1.135348e-08"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#making-inferences-samples-1",
+    "href": "slides/09_hypothesis-testing.html#making-inferences-samples-1",
+    "title": "BC1101",
+    "section": "Making inferences: samples",
+    "text": "Making inferences: samples\n\nFor sample size \\(n = 5\\), approximately 0.00000001 of sample means are this (or more) extreme\n\nGiven how unlikely the mean is, maybe spidermen aren’t from this population"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#null-hypothesis-significance-testing",
+    "href": "slides/09_hypothesis-testing.html#null-hypothesis-significance-testing",
+    "title": "BC1101",
+    "section": "Null Hypothesis Significance Testing",
+    "text": "Null Hypothesis Significance Testing\n\nStep 1: State hypotheses\n\n“Null” and “alternative”\n\nStep 2: Set decision criteria\n\n\\(\\alpha\\) and critical region(s)\n\nStep 3: Collect & analyze data\n\nCalculate required statistics\n\nStep 4: Make decision\n\nCompare outcome with predicted probabilities\nAccept or reject the null hypothesis"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#inferences-spiderman",
+    "href": "slides/09_hypothesis-testing.html#inferences-spiderman",
+    "title": "BC1101",
+    "section": "Inferences: Spiderman",
+    "text": "Inferences: Spiderman\n\nAre Peter Parker’s RTs “noticeably different?”\n\n\\(z = -2.5\\)\nCan state precise probability of observing a \\(z\\)-score that (or more) extreme\n\n\n\n\n\n\n\n\npnorm(-2.5)\n\n[1] 0.006209665\n\npnorm(159, mean = 284, sd = 50)\n\n[1] 0.006209665"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#spidermen",
+    "href": "slides/09_hypothesis-testing.html#spidermen",
+    "title": "BC1101",
+    "section": "Spidermen",
+    "text": "Spidermen"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#inferences-spidermen",
+    "href": "slides/09_hypothesis-testing.html#inferences-spidermen",
+    "title": "BC1101",
+    "section": "Inferences: spidermen",
+    "text": "Inferences: spidermen\n\nA sample of spidermen (spidermans?)\n\nHow likely is a particular sample mean, given the population characteristics?\nPopulation \\(\\mu = 284; \\sigma = 50\\)\n\n\n\n\n\nSingle score of \\(X = 159\\)\nFind position of that score in population distribution and find probability\n\n\\(z = \\dfrac{X-\\mu}{\\sigma} = \\dfrac{159 - 284}{50} = -2.5\\)\n\npnorm(-2.5)\n\n[1] 0.006209665\n\n\n\n\nSample mean of \\(M = 159\\); \\(n = 5\\)\nFind position of that \\(M\\) in sampling distribution and find probability\n\n\\(z = \\dfrac{M-\\mu_M}{\\sigma_M} = \\dfrac{159 - 284}{50 / \\sqrt{5}} = -5.59\\)\n\npnorm(-5.59)\n\n[1] 1.135348e-08"
+  },
+  {
+    "objectID": "slides/09_hypothesis-testing.html#inferential-diagram",
+    "href": "slides/09_hypothesis-testing.html#inferential-diagram",
+    "title": "BC1101",
+    "section": "Inferential diagram",
+    "text": "Inferential diagram\n\n\n\n\n\n\nTreatment\n\n\nKnown\noriginal\npopulation\n\n\nUnknown\ntreated\npopulation\n\n\nSample\n\n\nTreated\nsample"
   }
 ]
