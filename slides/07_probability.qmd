@@ -342,8 +342,6 @@ knitr::kable(data, digits = 4,
 
 ## Using R
 
-- Better: Let R figure it out
-
 ```{r echo=T, eval=T}
 pnorm(0.2)  # area to the left of z = 0.2
 
@@ -362,12 +360,11 @@ qnorm(.0228, mean=500, sd=100, lower.tail=FALSE)
 
 ## Spiderman {.small}
 
-- Spiderman
-    - Are Peter Parker’s RTs “noticeably different?”
+- Are Peter Parker’s RTs “noticeably different?”
     - $z = `r rt$z`$
     - Can state [precise]{.emph} probability of observing a $z$-score that (or more) extreme
 
-![](media/spiderman-small-bw.png){width=10% style="position: absolute; top: 72%; left: -40%"}
+![](media/spiderman-small-bw.png){width=10% style="position: absolute; top: 60%; left: -40%"}
 
 :::: {.columns}
 
@@ -394,8 +391,7 @@ pnorm(159, mean = 284, sd = 50)
 
 ## Warning
 
-- [Important:]{.emph}
-    - Probabilities given in the Unit Normal Table will be accurate only for normally distributed scores 
+- Probabilities given in the Unit Normal Table will be accurate only for [normally distributed scores]{.emph} 
     - Shape of the distribution must be verified
     - Important assumption of Central Limit Theorem
 
