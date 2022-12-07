@@ -47,6 +47,27 @@ format:
 </table>
 
 
+## Type 1 error
+
+- If $H_0$ is true...
+
+![](media/type-1-error-distribution.svg){.invertable}
+
+```{r}
+#| eval: false
+
+library(ggplot2)
+library(bc1101tools)
+bc1101tools::plot_distribution(xlim = c(-4, 4), segments = c(-1.96, 1.96), fill_colors = c("red", NA, "red"), linetype = 0) +
+  geom_text(aes(x = c(-3.2, 3.2), y = 0.03, label = rep("Type 1 error", 2))) +
+  geom_text(aes(x = 0, y = 0.2, label = "Correct decision")) +
+  theme_void()
+
+plot_save("type-1-error-distribution.svg", width = 5, height = 2.5)
+
+```
+
+
 ## Inferential errors
 
 :::: {.columns}
