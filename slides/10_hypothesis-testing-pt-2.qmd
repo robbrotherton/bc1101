@@ -33,13 +33,13 @@ format:
   </thead>
   <tbody>
     <tr>
-      <td rowspan=2 style="writing-mode: vertical-rl; transform: rotate(180deg); text-align: center;">Reseracher's<br>Decision</td>
-      <td style="text-align: right;" >Reject $H_0$</td>
+      <td rowspan=2 style="writing-mode: vertical-rl; transform: rotate(180deg); text-align: center; font-weight: bold;">Researcher's<br>Decision</td>
+      <td style="text-align: right; font-weight: bold;" >Reject $H_0$</td>
       <td style="text-align: center; color: red; border-color: var(--text-color);">Type 1 error<br>$\alpha$</td>
       <td style="text-align: center; color: green; border-color: var(--text-color);">Correct</td>
     </tr>
     <tr>
-      <td style="text-align: right;" >Fail to reject $H_0$</td>
+      <td style="text-align: right; font-weight: bold;" >Fail to reject $H_0$</td>
       <td style="text-align: center; color: green; border-color: var(--text-color);">Correct</td>
       <td style="text-align: center; color: red; border-color: var(--text-color);">Type 2 error<br>$\beta$</td>  
     </tr>
