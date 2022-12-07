@@ -213,6 +213,12 @@ d = \dfrac{501 - 500}{100} = 0.01$$
 
 ::: {#power-controls style="align-content: baseline; position: absolute; top: 4em; width: 50%; font-size: 0.7em;"}
 
+<label for="mu-input" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">μ = </label>
+<input type="text" id="mu-input" class="invertable" name="mu" value="0" style="background: none; border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; width: 2em; vertical-align: unset;">
+
+<label for="sigma-input" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">σ = </label>
+<input type="text" id="sigma-input" class="invertable" name="sigma" value="1" style="background: none; border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; width: 2em; vertical-align: unset;">
+
 <label for="d-input" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">d = </label><span id="d-value" class="math" style="display: inline-block; width: 1em;"></span><input data-prevent-swipe type="range" id="d-input" name="d" value="0.60" min="-2" max="2" step=0.01 style="border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; margin-left: 1em; width: 50%; vertical-align: unset;">
 
 <label for="n-input" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">n = </label><span id="n-value" class="math" style="display: inline-block; width: 1em;"></span><input data-prevent-swipe type="range" id="n-input" name="n" value="20" min="1" max="100" style="border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; margin-left: 1em; width: 50%; vertical-align: unset;">
@@ -369,27 +375,46 @@ chart = {
 
   const w = 1050
   const h = 600
-  const margin = ({top: 20, right: 0, bottom: 30, left: 0})
+  const margin = ({top: 20, right: 0, bottom: 80, left: 0})
   const f = d3.format(".2f")
+  const f2 = d3.format(".0f")
   
-  const mu = 0
-  const sigma = 1
-  const max_std_err = sigma / Math.sqrt(50)
+
+  var mu, sigma, d, n, alpha, beta, power, xlim, std_err, max_std_err, alpha_x, alpha_x2, showAlt, tails;
+  
+  const changeMu = function(e) {
+    mu = Number(e.target.value);
+    updateValues();
+    updateAxis();
+    updateZAxis();
+    redrawCurves();
+  }
   
   
-  var d, n, alpha, beta, power, std_err, alpha_x, alpha_x2, showAlt, tails;
+ 
+  const changeSigma = function(e) {
+    sigma = Number(e.target.value);
+    std_err = sigma/Math.sqrt(n);
+    max_std_err = sigma / Math.sqrt(50);
+    updateValues();
+    updateYScale();
+    updateAxis();
+    updateZAxis();
+    redrawCurves();
+  }
   
-  const xlim = [-3, 3]
-  const x = d3.scaleLinear()
-    .domain([xlim[0], xlim[1]])
+  
+  var x = d3.scaleLinear()
     .range([margin.left - 400, w + 400])
-  const y = d3.scaleLinear()
-    .domain([0, jStat.normal.pdf(mu, mu, max_std_err)])
+  var z = d3.scaleLinear()
+    .range([margin.left - 400, w + 400])
+  var y = d3.scaleLinear()
     .range([h - margin.bottom, margin.top])
   const line = d3.line()
     .x(d => x(d.value))
     .y(d => y(d.density))
-  const xAxis = d3.axisBottom(x).ticks(10)
+  var xAxis = d3.axisBottom(x).ticks(10)
+  var zAxis = d3.axisBottom(z)
   
   function curveData(mu, sm) {
     var values = jStat(xlim[0], xlim[1], 310)[0],
@@ -403,6 +428,10 @@ chart = {
     return arr;
   }
   
+  const muInput = document.getElementById('mu-input')
+  muInput.addEventListener('input', changeMu);
+  const sigmaInput = document.getElementById('sigma-input');
+  sigmaInput.addEventListener('input', changeSigma);
   const dInput = document.getElementById('d-input')
   const nInput = document.getElementById('n-input')
   const aInput = document.getElementById('alpha-input')
@@ -410,35 +439,38 @@ chart = {
   const tailsInput = document.getElementById('tails-input')
   
   function getParams() {
-    d = dInput.value
-    n = nInput.value
-    alpha = aInput.value
+    mu = Number(muInput.value);
+    sigma = Number(sigmaInput.value);
+    console.log("mu = " + mu + "; sigma = " + sigma)
+    d = Number(dInput.value)
+    n = Number(nInput.value)
+    alpha = Number(aInput.value)
     std_err = sigma / Math.sqrt(n);
+    max_std_err = sigma / Math.sqrt(50);
     tails = true;
     updateCriticalValues()
   }
   
   function updateCriticalValues() {
     if(tails) {
-        alpha_x = jStat.normal.inv(1 - alpha/2, mu, std_err)
+        alpha_x = mu + jStat.normal.inv(1 - alpha/2, 0, 1) * std_err
     } else {
-        alpha_x = jStat.normal.inv(1 - alpha, mu, std_err)
+        alpha_x = mu + jStat.normal.inv(1 - alpha, 0, 1) * std_err
     }
 
     if(tails) {
-        alpha_x2 = -alpha_x
+        alpha_x2 = mu - jStat.normal.inv(1 - alpha/2, 0, 1) * std_err
     } else {
-        alpha_x2 =-100
+        alpha_x2 =-1000
     }
+    console.log("crit high: " + alpha_x + "; crit low: " + alpha_x2)
   }
   
-  getParams();
-  
   function updateValues() {
-    updateCriticalValues()
+    updateCriticalValues();
     
-      beta = jStat.normal.cdf(alpha_x, d, std_err) - jStat.normal.cdf(alpha_x2, d, std_err)
-    power = 1 - beta
+      beta = jStat.normal.cdf(alpha_x, d, std_err) - jStat.normal.cdf(alpha_x2, d, std_err);
+    power = 1 - beta;
     
     d3.select("#d-value").text(d)
     d3.select("#n-value").text(n)
@@ -450,9 +482,35 @@ chart = {
 
   }
   
+  function updateAxis() {
+    xlim = [mu - 12 * std_err, mu + 12 * std_err];
+    x.domain([xlim[0], xlim[1]])
+    <!-- xAxis.tickFormat(x => x / std_err).ticks([-3,-2,-1,0,1,2,3]); -->
+    axis.call(xAxis);
+  }
+  
+  function updateYScale() {
+    y.domain([0, jStat.normal.pdf(mu, mu, max_std_err)]);
+  }
+  
+  function updateZAxis() {
+    var tickSeq = [-3,-2,-1,0,1,2,3]
+    for (var i = 0; i < tickSeq.length; i++) {
+      tickSeq[i] = mu + tickSeq[i] * std_err;
+    }
+    var zlim = [mu - 12 * std_err, mu + 12 * std_err];
+    z.domain([xlim[0], xlim[1]])
+    zAxis
+      .tickFormat(z => f2((z - mu)/std_err))
+      .tickValues(tickSeq)
+    svgZAxis.attr("transform", `translate(0,${y(0)})`)
+      .call(zAxis);
+  }
+  
   function redrawCurves() {
-    redrawNull()
-    redrawAlt()
+    <!-- updateAxis(); -->
+    redrawNull();
+    redrawAlt();
   }
   
   function redrawNull() {
@@ -475,6 +533,7 @@ chart = {
   nInput.oninput = function() {
     n = nInput.value
     std_err = sigma/Math.sqrt(n)
+    updateZAxis();
     updateValues();
     redrawCurves();
   };
@@ -482,6 +541,7 @@ chart = {
   dInput.oninput = function() {
     d = dInput.value
     updateValues();
+    updateZAxis();
     redrawAlt();
   };
   
@@ -514,9 +574,12 @@ chart = {
     .append("svg")
     .attr("width", w).attr("height", h)
 
-  svg.append("g")
-      .call(xAxis)
-      .attr("transform", `translate(0,${y(0)})`)
+  const axis = svg.append("g")
+      <!-- .call(xAxis) -->
+      .attr("class", "axis")
+      .style("font-size", "0.5em");
+      
+  const svgZAxis = svg.append("g")
       .attr("class", "axis")
       .style("font-size", "0.5em");
   
@@ -585,37 +648,11 @@ chart = {
       .attr("fill", "grey")
       .attr("opacity", 0.3)
 
-<!-- <!-- label alpha --> -->
-
-<!--     null_dist.append('line') -->
-<!--       .attr('x1', x(alpha_x)) -->
-<!--       .attr('x2', x(alpha_x)) -->
-<!--       .attr('y1', margin.top + 10) -->
-<!--       .attr('y2', height - margin.bottom) -->
-<!--       .style('stroke', 'red') -->
-<!--       .style('stroke-width', '1.5px') -->
-
-<!--     <!-- label alpha two-tailed --> -->
-<!--     null_dist.append('line') -->
-<!--       .attr('x1', x(alpha_x2)) -->
-<!--       .attr('x2', x(alpha_x2)) -->
-<!--       .attr('y1', margin.top + 10) -->
-<!--       .attr('y2', height - margin.bottom) -->
-<!--       .style('stroke', 'red') -->
-<!--       .style('stroke-width', '1.5px') -->
-
-<!--     svg.append("text")              -->
-<!--       .attr("transform", `translate(${x(alpha_x)} ,${margin.top})`) -->
-<!--       .style("text-anchor", "middle") -->
-<!--       .style('font-family', 'sans-serif') -->
-<!--       .style('font-size', '0.4em') -->
-<!--       .style('fill', 'red') -->
-<!--       .text("critical region z " + alpha_x.toLocaleString(undefined, {maximumSignificantDigits: 3, minimumSignificantDigits: 3})); -->
-
-<!--   return svg.node(); -->
-
-  
+  getParams();
   updateValues();
+  updateYScale();
+  updateAxis();
+  updateZAxis();
   redrawCurves();
   
 }
