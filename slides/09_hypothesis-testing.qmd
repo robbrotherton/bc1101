@@ -536,8 +536,9 @@ plot_save("09_hypothesis-testing.svg", width = 10, height = 5, subdir = "covers"
 
 ```
 
-:::
 ## OJS cover
+
+:::
 
 
 ```{ojs}
