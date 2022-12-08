@@ -1165,7 +1165,7 @@ t = \dfrac{M - \mu}{s_M}\]</span></p>
 <div class="cell">
 
 </div>
-<p><img data-src="media/class-reaction-times-histogram.svg" class="invertable"></p>
+<p><img data-src="media/class-reaction-times-histogram.svg" class="invertable" style="width:100.0%"></p>
 </div>
 </div>
 </section>
@@ -1342,92 +1342,92 @@ t = \dfrac{M - \mu}{s_M} &amp;= \dfrac{322.59 - 284}{45.31/\sqrt{23}} \\
 
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="543" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 542;"><span id="cb13-543"><a href="#cb13-543"></a><span class="op">&lt;!--</span> jStat <span class="op">=</span> <span class="pp">require</span>(<span class="st">"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js"</span>) <span class="op">--&gt;</span></span>
-<span id="cb13-544"><a href="#cb13-544"></a></span>
-<span id="cb13-545"><a href="#cb13-545"></a></span>
-<span id="cb13-546"><a href="#cb13-546"></a></span>
-<span id="cb13-547"><a href="#cb13-547"></a>cover <span class="op">=</span> {</span>
-<span id="cb13-548"><a href="#cb13-548"></a></span>
-<span id="cb13-549"><a href="#cb13-549"></a><span class="kw">const</span> w <span class="op">=</span> <span class="dv">1050</span></span>
-<span id="cb13-550"><a href="#cb13-550"></a><span class="kw">const</span> h <span class="op">=</span> <span class="dv">500</span></span>
-<span id="cb13-551"><a href="#cb13-551"></a><span class="kw">const</span> n <span class="op">=</span> test_data<span class="op">.</span><span class="at">length</span></span>
-<span id="cb13-552"><a href="#cb13-552"></a></span>
-<span id="cb13-553"><a href="#cb13-553"></a><span class="kw">const</span> tx <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb13-554"><a href="#cb13-554"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="op">-</span><span class="dv">3</span><span class="op">,</span> <span class="dv">3</span>])</span>
-<span id="cb13-555"><a href="#cb13-555"></a>    <span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> w])<span class="op">;</span></span>
-<span id="cb13-556"><a href="#cb13-556"></a></span>
-<span id="cb13-557"><a href="#cb13-557"></a><span class="kw">const</span> ty <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb13-558"><a href="#cb13-558"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span> jStat<span class="op">.</span><span class="at">studentt</span><span class="op">.</span><span class="fu">pdf</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">101</span>)])</span>
-<span id="cb13-559"><a href="#cb13-559"></a>    <span class="op">.</span><span class="fu">range</span>([h<span class="op">,</span> <span class="dv">0</span>])<span class="op">;</span></span>
-<span id="cb13-560"><a href="#cb13-560"></a></span>
-<span id="cb13-561"><a href="#cb13-561"></a><span class="kw">const</span> tline <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()</span>
-<span id="cb13-562"><a href="#cb13-562"></a>    <span class="op">.</span><span class="fu">x</span>(<span class="kw">function</span>(d) { <span class="cf">return</span> <span class="fu">tx</span>(d<span class="op">.</span><span class="at">value</span>)<span class="op">;</span> })</span>
-<span id="cb13-563"><a href="#cb13-563"></a>    <span class="op">.</span><span class="fu">y</span>(<span class="kw">function</span>(d) { <span class="cf">return</span> <span class="fu">ty</span>(d<span class="op">.</span><span class="at">density</span>)<span class="op">;</span> })<span class="op">;</span></span>
+<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="561" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 560;"><span id="cb13-561"><a href="#cb13-561"></a><span class="op">&lt;!--</span> jStat <span class="op">=</span> <span class="pp">require</span>(<span class="st">"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js"</span>) <span class="op">--&gt;</span></span>
+<span id="cb13-562"><a href="#cb13-562"></a></span>
+<span id="cb13-563"><a href="#cb13-563"></a></span>
 <span id="cb13-564"><a href="#cb13-564"></a></span>
-<span id="cb13-565"><a href="#cb13-565"></a></span>
-<span id="cb13-566"><a href="#cb13-566"></a><span class="kw">var</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#cover-image"</span>)</span>
-<span id="cb13-567"><a href="#cb13-567"></a>            <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)</span>
-<span id="cb13-568"><a href="#cb13-568"></a>            <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)</span>
-<span id="cb13-569"><a href="#cb13-569"></a>            <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
-<span id="cb13-570"><a href="#cb13-570"></a>            </span>
-<span id="cb13-571"><a href="#cb13-571"></a><span class="kw">var</span> container <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb13-572"><a href="#cb13-572"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">".container"</span>)</span>
-<span id="cb13-573"><a href="#cb13-573"></a></span>
-<span id="cb13-574"><a href="#cb13-574"></a><span class="kw">var</span> paths <span class="op">=</span> container<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"path"</span>)</span>
-<span id="cb13-575"><a href="#cb13-575"></a>  <span class="op">.</span><span class="fu">data</span>(test_data)</span>
-<span id="cb13-576"><a href="#cb13-576"></a>  <span class="op">.</span><span class="fu">enter</span>()<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"t-path"</span>)</span>
-<span id="cb13-577"><a href="#cb13-577"></a></span>
-<span id="cb13-578"><a href="#cb13-578"></a><span class="kw">var</span> path <span class="op">=</span> paths<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
-<span id="cb13-579"><a href="#cb13-579"></a>  <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">tline</span>(d<span class="op">.</span><span class="at">data</span>))</span>
-<span id="cb13-580"><a href="#cb13-580"></a>  <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">color</span>)</span>
-<span id="cb13-581"><a href="#cb13-581"></a>  <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
-<span id="cb13-582"><a href="#cb13-582"></a>  <span class="op">.</span><span class="fu">each</span>(<span class="kw">function</span>(d) { d<span class="op">.</span><span class="at">totalLength</span> <span class="op">=</span> <span class="kw">this</span><span class="op">.</span><span class="fu">getTotalLength</span>()<span class="op">;</span> })</span>
-<span id="cb13-583"><a href="#cb13-583"></a>  <span class="op">.</span><span class="fu">each</span>(<span class="kw">function</span>(d<span class="op">,</span> i) { d<span class="op">.</span><span class="at">duration</span> <span class="op">=</span> <span class="dv">300</span> <span class="op">+</span> (<span class="dv">1</span><span class="op">-</span>i<span class="op">/</span>(n<span class="op">-</span><span class="dv">1</span>))<span class="op">*</span>(<span class="dv">3000</span>)<span class="op">;</span> })</span>
-<span id="cb13-584"><a href="#cb13-584"></a>  <span class="op">&lt;!--</span> <span class="op">.</span><span class="fu">each</span>(<span class="kw">function</span>(d<span class="op">,</span> i) { d<span class="op">.</span><span class="at">delay</span> <span class="op">=</span> <span class="dv">200</span><span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(i<span class="op">*</span><span class="dv">8</span>)<span class="op">;</span> }) <span class="op">--&gt;</span></span>
-<span id="cb13-585"><a href="#cb13-585"></a>  <span class="op">.</span><span class="fu">each</span>(<span class="kw">function</span>(d<span class="op">,</span> i) { d<span class="op">.</span><span class="at">delay</span> <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(i<span class="op">*</span><span class="dv">20000</span>)<span class="op">;</span> })</span>
-<span id="cb13-586"><a href="#cb13-586"></a>  <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dasharray"</span><span class="op">,</span> <span class="kw">function</span>(d) { <span class="cf">return</span> d<span class="op">.</span><span class="at">totalLength</span> <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> d<span class="op">.</span><span class="at">totalLength</span><span class="op">;</span> })</span>
-<span id="cb13-587"><a href="#cb13-587"></a>  <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">totalLength</span>)</span>
-<span id="cb13-588"><a href="#cb13-588"></a>  </span>
-<span id="cb13-589"><a href="#cb13-589"></a>  <span class="kw">function</span> <span class="fu">animIn</span>() {</span>
-<span id="cb13-590"><a href="#cb13-590"></a>    path</span>
-<span id="cb13-591"><a href="#cb13-591"></a>    <span class="co">// .transition().duration(0).delay(0).attr("stroke-dashoffset", d =&gt; d.totalLength)</span></span>
-<span id="cb13-592"><a href="#cb13-592"></a>    <span class="co">// // transition back on screen moving right</span></span>
-<span id="cb13-593"><a href="#cb13-593"></a>    <span class="op">.</span><span class="fu">transition</span>()</span>
-<span id="cb13-594"><a href="#cb13-594"></a>    <span class="op">.</span><span class="fu">duration</span>(<span class="dv">1500</span>)</span>
-<span id="cb13-595"><a href="#cb13-595"></a>    <span class="op">.</span><span class="fu">delay</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">delay</span>)</span>
-<span id="cb13-596"><a href="#cb13-596"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> <span class="dv">0</span>)</span>
-<span id="cb13-597"><a href="#cb13-597"></a>  }<span class="op">;</span></span>
-<span id="cb13-598"><a href="#cb13-598"></a>  </span>
-<span id="cb13-599"><a href="#cb13-599"></a>  <span class="fu">animIn</span>()<span class="op">;</span></span>
-<span id="cb13-600"><a href="#cb13-600"></a></span>
-<span id="cb13-601"><a href="#cb13-601"></a><span class="kw">const</span> sleep <span class="op">=</span> (milliseconds) <span class="kw">=&gt;</span> {</span>
-<span id="cb13-602"><a href="#cb13-602"></a>  <span class="cf">return</span> <span class="kw">new</span> <span class="bu">Promise</span>(resolve <span class="kw">=&gt;</span> <span class="pp">setTimeout</span>(resolve<span class="op">,</span> milliseconds))</span>
-<span id="cb13-603"><a href="#cb13-603"></a>}</span>
-<span id="cb13-604"><a href="#cb13-604"></a></span>
-<span id="cb13-605"><a href="#cb13-605"></a><span class="kw">function</span> <span class="fu">animOut</span>() {</span>
-<span id="cb13-606"><a href="#cb13-606"></a>    path</span>
-<span id="cb13-607"><a href="#cb13-607"></a>    <span class="co">// reset to on-screen</span></span>
-<span id="cb13-608"><a href="#cb13-608"></a>    <span class="op">.</span><span class="fu">transition</span>()<span class="op">.</span><span class="fu">duration</span>(<span class="dv">0</span>)<span class="op">.</span><span class="fu">delay</span>(<span class="dv">0</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> <span class="dv">0</span>)</span>
-<span id="cb13-609"><a href="#cb13-609"></a>    <span class="co">// transtion off to the right</span></span>
-<span id="cb13-610"><a href="#cb13-610"></a>    <span class="op">.</span><span class="fu">transition</span>()</span>
-<span id="cb13-611"><a href="#cb13-611"></a>    <span class="op">.</span><span class="fu">duration</span>(<span class="dv">1500</span>)</span>
-<span id="cb13-612"><a href="#cb13-612"></a>    <span class="op">.</span><span class="fu">delay</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">delay</span>)</span>
-<span id="cb13-613"><a href="#cb13-613"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> d  <span class="kw">=&gt;</span> <span class="op">-</span>d<span class="op">.</span><span class="at">totalLength</span>)</span>
-<span id="cb13-614"><a href="#cb13-614"></a>    <span class="co">// reset to off screen left</span></span>
-<span id="cb13-615"><a href="#cb13-615"></a>    <span class="op">.</span><span class="fu">transition</span>()<span class="op">.</span><span class="fu">duration</span>(<span class="dv">0</span>)<span class="op">.</span><span class="fu">delay</span>(<span class="dv">0</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">totalLength</span>)</span>
-<span id="cb13-616"><a href="#cb13-616"></a>    <span class="co">// // transition back on screen moving right</span></span>
-<span id="cb13-617"><a href="#cb13-617"></a>    <span class="op">.</span><span class="fu">transition</span>()</span>
-<span id="cb13-618"><a href="#cb13-618"></a>    <span class="op">.</span><span class="fu">duration</span>(<span class="dv">1500</span>)</span>
-<span id="cb13-619"><a href="#cb13-619"></a>    <span class="op">.</span><span class="fu">delay</span>(<span class="dv">100</span>)</span>
-<span id="cb13-620"><a href="#cb13-620"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> <span class="dv">0</span>)</span>
-<span id="cb13-621"><a href="#cb13-621"></a>    <span class="op">.</span><span class="fu">on</span>(<span class="st">"end"</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="fu">sleep</span>(<span class="dv">2500</span>)<span class="op">.</span><span class="fu">then</span>(animOut))</span>
-<span id="cb13-622"><a href="#cb13-622"></a>}<span class="op">;</span></span>
-<span id="cb13-623"><a href="#cb13-623"></a></span>
-<span id="cb13-624"><a href="#cb13-624"></a>  svg<span class="op">.</span><span class="fu">on</span>(<span class="st">"click"</span><span class="op">,</span> animOut)</span>
-<span id="cb13-625"><a href="#cb13-625"></a></span>
-<span id="cb13-626"><a href="#cb13-626"></a></span>
-<span id="cb13-627"><a href="#cb13-627"></a></span>
-<span id="cb13-628"><a href="#cb13-628"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-565"><a href="#cb13-565"></a>cover <span class="op">=</span> {</span>
+<span id="cb13-566"><a href="#cb13-566"></a></span>
+<span id="cb13-567"><a href="#cb13-567"></a><span class="kw">const</span> w <span class="op">=</span> <span class="dv">1050</span></span>
+<span id="cb13-568"><a href="#cb13-568"></a><span class="kw">const</span> h <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb13-569"><a href="#cb13-569"></a><span class="kw">const</span> n <span class="op">=</span> test_data<span class="op">.</span><span class="at">length</span></span>
+<span id="cb13-570"><a href="#cb13-570"></a></span>
+<span id="cb13-571"><a href="#cb13-571"></a><span class="kw">const</span> tx <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb13-572"><a href="#cb13-572"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="op">-</span><span class="dv">3</span><span class="op">,</span> <span class="dv">3</span>])</span>
+<span id="cb13-573"><a href="#cb13-573"></a>    <span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> w])<span class="op">;</span></span>
+<span id="cb13-574"><a href="#cb13-574"></a></span>
+<span id="cb13-575"><a href="#cb13-575"></a><span class="kw">const</span> ty <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb13-576"><a href="#cb13-576"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span> jStat<span class="op">.</span><span class="at">studentt</span><span class="op">.</span><span class="fu">pdf</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">101</span>)])</span>
+<span id="cb13-577"><a href="#cb13-577"></a>    <span class="op">.</span><span class="fu">range</span>([h<span class="op">,</span> <span class="dv">0</span>])<span class="op">;</span></span>
+<span id="cb13-578"><a href="#cb13-578"></a></span>
+<span id="cb13-579"><a href="#cb13-579"></a><span class="kw">const</span> tline <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()</span>
+<span id="cb13-580"><a href="#cb13-580"></a>    <span class="op">.</span><span class="fu">x</span>(<span class="kw">function</span>(d) { <span class="cf">return</span> <span class="fu">tx</span>(d<span class="op">.</span><span class="at">value</span>)<span class="op">;</span> })</span>
+<span id="cb13-581"><a href="#cb13-581"></a>    <span class="op">.</span><span class="fu">y</span>(<span class="kw">function</span>(d) { <span class="cf">return</span> <span class="fu">ty</span>(d<span class="op">.</span><span class="at">density</span>)<span class="op">;</span> })<span class="op">;</span></span>
+<span id="cb13-582"><a href="#cb13-582"></a></span>
+<span id="cb13-583"><a href="#cb13-583"></a></span>
+<span id="cb13-584"><a href="#cb13-584"></a><span class="kw">var</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#cover-image"</span>)</span>
+<span id="cb13-585"><a href="#cb13-585"></a>            <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)</span>
+<span id="cb13-586"><a href="#cb13-586"></a>            <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)</span>
+<span id="cb13-587"><a href="#cb13-587"></a>            <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
+<span id="cb13-588"><a href="#cb13-588"></a>            </span>
+<span id="cb13-589"><a href="#cb13-589"></a><span class="kw">var</span> container <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb13-590"><a href="#cb13-590"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">".container"</span>)</span>
+<span id="cb13-591"><a href="#cb13-591"></a></span>
+<span id="cb13-592"><a href="#cb13-592"></a><span class="kw">var</span> paths <span class="op">=</span> container<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"path"</span>)</span>
+<span id="cb13-593"><a href="#cb13-593"></a>  <span class="op">.</span><span class="fu">data</span>(test_data)</span>
+<span id="cb13-594"><a href="#cb13-594"></a>  <span class="op">.</span><span class="fu">enter</span>()<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"t-path"</span>)</span>
+<span id="cb13-595"><a href="#cb13-595"></a></span>
+<span id="cb13-596"><a href="#cb13-596"></a><span class="kw">var</span> path <span class="op">=</span> paths<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
+<span id="cb13-597"><a href="#cb13-597"></a>  <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">tline</span>(d<span class="op">.</span><span class="at">data</span>))</span>
+<span id="cb13-598"><a href="#cb13-598"></a>  <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">color</span>)</span>
+<span id="cb13-599"><a href="#cb13-599"></a>  <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
+<span id="cb13-600"><a href="#cb13-600"></a>  <span class="op">.</span><span class="fu">each</span>(<span class="kw">function</span>(d) { d<span class="op">.</span><span class="at">totalLength</span> <span class="op">=</span> <span class="kw">this</span><span class="op">.</span><span class="fu">getTotalLength</span>()<span class="op">;</span> })</span>
+<span id="cb13-601"><a href="#cb13-601"></a>  <span class="op">.</span><span class="fu">each</span>(<span class="kw">function</span>(d<span class="op">,</span> i) { d<span class="op">.</span><span class="at">duration</span> <span class="op">=</span> <span class="dv">300</span> <span class="op">+</span> (<span class="dv">1</span><span class="op">-</span>i<span class="op">/</span>(n<span class="op">-</span><span class="dv">1</span>))<span class="op">*</span>(<span class="dv">3000</span>)<span class="op">;</span> })</span>
+<span id="cb13-602"><a href="#cb13-602"></a>  <span class="op">&lt;!--</span> <span class="op">.</span><span class="fu">each</span>(<span class="kw">function</span>(d<span class="op">,</span> i) { d<span class="op">.</span><span class="at">delay</span> <span class="op">=</span> <span class="dv">200</span><span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(i<span class="op">*</span><span class="dv">8</span>)<span class="op">;</span> }) <span class="op">--&gt;</span></span>
+<span id="cb13-603"><a href="#cb13-603"></a>  <span class="op">.</span><span class="fu">each</span>(<span class="kw">function</span>(d<span class="op">,</span> i) { d<span class="op">.</span><span class="at">delay</span> <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(i<span class="op">*</span><span class="dv">20000</span>)<span class="op">;</span> })</span>
+<span id="cb13-604"><a href="#cb13-604"></a>  <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dasharray"</span><span class="op">,</span> <span class="kw">function</span>(d) { <span class="cf">return</span> d<span class="op">.</span><span class="at">totalLength</span> <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> d<span class="op">.</span><span class="at">totalLength</span><span class="op">;</span> })</span>
+<span id="cb13-605"><a href="#cb13-605"></a>  <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">totalLength</span>)</span>
+<span id="cb13-606"><a href="#cb13-606"></a>  </span>
+<span id="cb13-607"><a href="#cb13-607"></a>  <span class="kw">function</span> <span class="fu">animIn</span>() {</span>
+<span id="cb13-608"><a href="#cb13-608"></a>    path</span>
+<span id="cb13-609"><a href="#cb13-609"></a>    <span class="co">// .transition().duration(0).delay(0).attr("stroke-dashoffset", d =&gt; d.totalLength)</span></span>
+<span id="cb13-610"><a href="#cb13-610"></a>    <span class="co">// // transition back on screen moving right</span></span>
+<span id="cb13-611"><a href="#cb13-611"></a>    <span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb13-612"><a href="#cb13-612"></a>    <span class="op">.</span><span class="fu">duration</span>(<span class="dv">1500</span>)</span>
+<span id="cb13-613"><a href="#cb13-613"></a>    <span class="op">.</span><span class="fu">delay</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">delay</span>)</span>
+<span id="cb13-614"><a href="#cb13-614"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> <span class="dv">0</span>)</span>
+<span id="cb13-615"><a href="#cb13-615"></a>  }<span class="op">;</span></span>
+<span id="cb13-616"><a href="#cb13-616"></a>  </span>
+<span id="cb13-617"><a href="#cb13-617"></a>  <span class="fu">animIn</span>()<span class="op">;</span></span>
+<span id="cb13-618"><a href="#cb13-618"></a></span>
+<span id="cb13-619"><a href="#cb13-619"></a><span class="kw">const</span> sleep <span class="op">=</span> (milliseconds) <span class="kw">=&gt;</span> {</span>
+<span id="cb13-620"><a href="#cb13-620"></a>  <span class="cf">return</span> <span class="kw">new</span> <span class="bu">Promise</span>(resolve <span class="kw">=&gt;</span> <span class="pp">setTimeout</span>(resolve<span class="op">,</span> milliseconds))</span>
+<span id="cb13-621"><a href="#cb13-621"></a>}</span>
+<span id="cb13-622"><a href="#cb13-622"></a></span>
+<span id="cb13-623"><a href="#cb13-623"></a><span class="kw">function</span> <span class="fu">animOut</span>() {</span>
+<span id="cb13-624"><a href="#cb13-624"></a>    path</span>
+<span id="cb13-625"><a href="#cb13-625"></a>    <span class="co">// reset to on-screen</span></span>
+<span id="cb13-626"><a href="#cb13-626"></a>    <span class="op">.</span><span class="fu">transition</span>()<span class="op">.</span><span class="fu">duration</span>(<span class="dv">0</span>)<span class="op">.</span><span class="fu">delay</span>(<span class="dv">0</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> <span class="dv">0</span>)</span>
+<span id="cb13-627"><a href="#cb13-627"></a>    <span class="co">// transtion off to the right</span></span>
+<span id="cb13-628"><a href="#cb13-628"></a>    <span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb13-629"><a href="#cb13-629"></a>    <span class="op">.</span><span class="fu">duration</span>(<span class="dv">1500</span>)</span>
+<span id="cb13-630"><a href="#cb13-630"></a>    <span class="op">.</span><span class="fu">delay</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">delay</span>)</span>
+<span id="cb13-631"><a href="#cb13-631"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> d  <span class="kw">=&gt;</span> <span class="op">-</span>d<span class="op">.</span><span class="at">totalLength</span>)</span>
+<span id="cb13-632"><a href="#cb13-632"></a>    <span class="co">// reset to off screen left</span></span>
+<span id="cb13-633"><a href="#cb13-633"></a>    <span class="op">.</span><span class="fu">transition</span>()<span class="op">.</span><span class="fu">duration</span>(<span class="dv">0</span>)<span class="op">.</span><span class="fu">delay</span>(<span class="dv">0</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">totalLength</span>)</span>
+<span id="cb13-634"><a href="#cb13-634"></a>    <span class="co">// // transition back on screen moving right</span></span>
+<span id="cb13-635"><a href="#cb13-635"></a>    <span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb13-636"><a href="#cb13-636"></a>    <span class="op">.</span><span class="fu">duration</span>(<span class="dv">1500</span>)</span>
+<span id="cb13-637"><a href="#cb13-637"></a>    <span class="op">.</span><span class="fu">delay</span>(<span class="dv">100</span>)</span>
+<span id="cb13-638"><a href="#cb13-638"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> <span class="dv">0</span>)</span>
+<span id="cb13-639"><a href="#cb13-639"></a>    <span class="op">.</span><span class="fu">on</span>(<span class="st">"end"</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="fu">sleep</span>(<span class="dv">2500</span>)<span class="op">.</span><span class="fu">then</span>(animOut))</span>
+<span id="cb13-640"><a href="#cb13-640"></a>}<span class="op">;</span></span>
+<span id="cb13-641"><a href="#cb13-641"></a></span>
+<span id="cb13-642"><a href="#cb13-642"></a>  svg<span class="op">.</span><span class="fu">on</span>(<span class="st">"click"</span><span class="op">,</span> animOut)</span>
+<span id="cb13-643"><a href="#cb13-643"></a></span>
+<span id="cb13-644"><a href="#cb13-644"></a></span>
+<span id="cb13-645"><a href="#cb13-645"></a></span>
+<span id="cb13-646"><a href="#cb13-646"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="declaration">
 

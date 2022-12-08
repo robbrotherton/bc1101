@@ -390,20 +390,38 @@ bc1101tools::frequency_table(data, binwidth = 20, values_name = "RT")
 ::: {.column width="70%"}
 ```{r}
 #| eval: false
+library(ggplot2)
+library(bc1101tools)
 
-plot_histogram(data, binwidth = 20, xlab = "Reaction Time (ms)") + bc1101tools::theme_bc1101() +
-  ggrepel::geom_label_repel(ggplot2::aes(x = rt$m, y = 0, label = glue::glue("mu = {rt$m}")),
+ggplot(data = NULL, aes(x = data)) +
+  geom_histogram(binwidth = 20, breaks = seq(240, 440, 20), 
+                 color = 'black', fill = "#7f7f7f") +
+  ggrepel::geom_label_repel(ggplot2::aes(x = rt$m, y = 0, label = glue::glue("μ = {rt$m}")),
                             nudge_y = 5,
                             color = "red",
                             fill = NA,
                             label.size = 0,
-                            segment.linetype = 2)
+                            segment.linetype = 2) +
+  scale_x_continuous(breaks = seq(240, 440, 20)) +
+  scale_y_continuous(breaks = 1:6, expand = expansion(c(0,0.02))) +
+  labs(x = "Reaction Time (ms)", y = "Frequency") +
+  theme_bc1101()
+
+# plot_histogram(bc1101tools::class_reaction_times, binwidth = 20, breaks = seq(240, 440, 20)) + theme_bc1101()
+
+# plot_histogram(data, binwidth = 20, xlab = "Reaction Time (ms)") + bc1101tools::theme_bc1101() +
+#   ggrepel::geom_label_repel(ggplot2::aes(x = rt$m, y = 0, label = glue::glue("mu = {rt$m}")),
+#                             nudge_y = 5,
+#                             color = "red",
+#                             fill = NA,
+#                             label.size = 0,
+#                             segment.linetype = 2)
 
 plot_save("class-reaction-times-histogram.svg",
           width = 6, height = 3)
 ```
 
-![](media/class-reaction-times-histogram.svg){.invertable}
+![](media/class-reaction-times-histogram.svg){.invertable width="100%"}
 :::
 
 ::::
