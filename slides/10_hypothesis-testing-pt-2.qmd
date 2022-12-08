@@ -211,33 +211,50 @@ d = \dfrac{501 - 500}{100} = 0.01$$
 
 ## Power interactive
 
-::: {#power-controls style="align-content: baseline; position: absolute; top: 4em; width: 50%; font-size: 0.7em;"}
+:::: {#power-controls style="align-content: baseline; position: absolute; top: 4em; width: 100%; font-size: 0.5em; display: flex;"}
+
+::: {#population-parameters style="width: 20%;"}
+Population characteristics
 
 <label for="mu-input" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">μ = </label>
-<input type="text" id="mu-input" class="invertable" name="mu" value="0" style="background: none; border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; width: 2em; vertical-align: unset;">
+<input type="text" id="mu-input" class="invertable" name="mu" value="50" style="background: none; border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; width: 2em; vertical-align: unset;">
 
 <label for="sigma-input" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">σ = </label>
-<input type="text" id="sigma-input" class="invertable" name="sigma" value="1" style="background: none; border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; width: 2em; vertical-align: unset;">
+<input type="text" id="sigma-input" class="invertable" name="sigma" value="10" style="background: none; border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; width: 2em; vertical-align: unset;">
+:::
+
+::: {#data-parameters style="width: 60%;"}
+Experiment parameters
 
 <label for="d-input" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">d = </label><span id="d-value" class="math" style="display: inline-block; width: 1em;"></span><input data-prevent-swipe type="range" id="d-input" name="d" value="0.60" min="-2" max="2" step=0.01 style="border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; margin-left: 1em; width: 50%; vertical-align: unset;">
 
 <label for="n-input" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">n = </label><span id="n-value" class="math" style="display: inline-block; width: 1em;"></span><input data-prevent-swipe type="range" id="n-input" name="n" value="20" min="1" max="100" style="border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; margin-left: 1em; width: 50%; vertical-align: unset;">
 
-<label for="alpha-input" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">$\alpha$ = </label><span id="alpha-value" class="math" style="display: inline-block; width: 1em;"></span><input data-prevent-swipe type="range" id="alpha-input" name="alpha" value="0.05" min="0.01" max="0.5" step=0.01 style="border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; margin-left: 1em; width: 50%; vertical-align: unset;">
+<label for="alpha-input" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">$\alpha$ = </label><span id="alpha-value" class="math" style="display: inline-block; width: 1em;"></span><input data-prevent-swipe type="range" id="alpha-input" name="alpha" value="0.05" min="0.01" max="0.5" step=0.01 style="border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; margin-left: 1em; width: 50%; vertical-align: unset;"><label for="tails-input" >Two-tailed</label><input type="checkbox" id="tails-input" name="tails" checked>
 
 <p><span id="std-err-label" class="math italic">σ<sub>M</sub> = </span><span id="std-err-value" class="math"></span></p>
+:::
 
-<label for="tails-input" >Two-tailed</label><input type="checkbox" id="tails-input" name="tails" checked>
+
+::: {#diagram-options style="width: 20%;"}
+Diagram options
 
 <label for="alt-input" >Show $H_1$</label><input type="checkbox" id="alt-input" name="alt" checked>
 
+$X$-axis:
+
+<input type="checkbox" id="axis-raw" name="axis" checked><label for="axis-raw" >Raw scores</label><br>
+<input type="checkbox" id="axis-z-null" name="axis"><label for="axis-z-null" >$H_0$ $z$-scores</label><br>
+<input type="checkbox" id="axis-z-alt" name="axis"><label for="axis-z-alt" >$H_1$ $z$-scores</label>
+
 :::
+::::
 
 :::{#power-interactive}
 :::
 
 
-:::{#power-values style="position: absolute; right: 0; top: 4em; text-align: right;"}
+:::{#power-values style="position: absolute; left: 0; top: 50%;"}
 $\beta =$ []{#beta-value .math style="color: grey;"}  
 Power: []{#power-value .math style="color: steelblue;"}
 :::
@@ -378,32 +395,12 @@ chart = {
   const margin = ({top: 20, right: 0, bottom: 80, left: 0})
   const f = d3.format(".2f")
   const f2 = d3.format(".0f")
+  const labelHeight = h/2
   
 
-  var mu, sigma, d, n, alpha, beta, power, xlim, std_err, max_std_err, alpha_x, alpha_x2, showAlt, tails;
+  var mu, sigma, d, mean_diff, n, alpha, beta, power, xlim, std_err, max_std_err, alpha_x, alpha_x2, showAlt, tails;
   
-  const changeMu = function(e) {
-    mu = Number(e.target.value);
-    updateValues();
-    updateAxis();
-    updateZAxis();
-    redrawCurves();
-  }
-  
-  
- 
-  const changeSigma = function(e) {
-    sigma = Number(e.target.value);
-    std_err = sigma/Math.sqrt(n);
-    max_std_err = sigma / Math.sqrt(50);
-    updateValues();
-    updateYScale();
-    updateAxis();
-    updateZAxis();
-    redrawCurves();
-  }
-  
-  
+
   var x = d3.scaleLinear()
     .range([margin.left - 400, w + 400])
   var z = d3.scaleLinear()
@@ -414,7 +411,8 @@ chart = {
     .x(d => x(d.value))
     .y(d => y(d.density))
   var xAxis = d3.axisBottom(x).ticks(10)
-  var zAxis = d3.axisBottom(z)
+  var zAxis = d3.axisBottom(z).tickSize(20)
+  var h1Axis = d3.axisBottom(z).tickSize(20)
   
   function curveData(mu, sm) {
     var values = jStat(xlim[0], xlim[1], 310)[0],
@@ -429,26 +427,64 @@ chart = {
   }
   
   const muInput = document.getElementById('mu-input')
-  muInput.addEventListener('input', changeMu);
   const sigmaInput = document.getElementById('sigma-input');
-  sigmaInput.addEventListener('input', changeSigma);
   const dInput = document.getElementById('d-input')
   const nInput = document.getElementById('n-input')
   const aInput = document.getElementById('alpha-input')
   const altInput = document.getElementById('alt-input')
   const tailsInput = document.getElementById('tails-input')
+  const axisRawInput = document.getElementById('axis-raw')
+  const axisZNullInput = document.getElementById('axis-z-null')
+  const axisZAltInput = document.getElementById('axis-z-alt')
+  
+  var hideAxisRaw = false;
+  var hideAxisZNull = true;
+  var hideAxisZAlt = true;
+  axisRawInput.oninput = function() {
+    hideAxisRaw = !hideAxisRaw;
+    axis.classed("hide-element", hideAxisRaw)
+  }
+  axisZNullInput.oninput = function() {
+    hideAxisZNull = !hideAxisZNull;
+    svgH0Axis.classed("hide-element", hideAxisZNull)
+  }
+  axisZAltInput.oninput = function() {
+    hideAxisZAlt = !hideAxisZAlt;
+    svgH1Axis.classed("hide-element", hideAxisZAlt)
+  }
+  
+  muInput.oninput = function() {
+    mu = Number(muInput.value);
+    updateValues();
+    updateAxis();
+    updateZAxis();
+    redrawCurves();
+  };
+  
+  sigmaInput.oninput = function() {
+    sigma = sigmaInput.value;
+    mean_diff = d * sigma;
+    std_err = sigma/Math.sqrt(n);
+    max_std_err = sigma / Math.sqrt(50);
+    updateValues();
+    updateYScale();
+    updateAxis();
+    updateZAxis();
+    redrawCurves();
+  }
   
   function getParams() {
     mu = Number(muInput.value);
     sigma = Number(sigmaInput.value);
     console.log("mu = " + mu + "; sigma = " + sigma)
-    d = Number(dInput.value)
-    n = Number(nInput.value)
-    alpha = Number(aInput.value)
+    d = Number(dInput.value);
+    mean_diff = d * sigma;
+    n = Number(nInput.value);
+    alpha = Number(aInput.value);
     std_err = sigma / Math.sqrt(n);
     max_std_err = sigma / Math.sqrt(50);
     tails = true;
-    updateCriticalValues()
+    updateCriticalValues();
   }
   
   function updateCriticalValues() {
@@ -469,7 +505,7 @@ chart = {
   function updateValues() {
     updateCriticalValues();
     
-      beta = jStat.normal.cdf(alpha_x, d, std_err) - jStat.normal.cdf(alpha_x2, d, std_err);
+      beta = jStat.normal.cdf(alpha_x, mu + mean_diff, std_err) - jStat.normal.cdf(alpha_x2, mu + mean_diff, std_err);
     power = 1 - beta;
     
     d3.select("#d-value").text(d)
@@ -498,13 +534,23 @@ chart = {
     for (var i = 0; i < tickSeq.length; i++) {
       tickSeq[i] = mu + tickSeq[i] * std_err;
     }
-    var zlim = [mu - 12 * std_err, mu + 12 * std_err];
+    var zlim = [mu - 3 * sigma, mu + 3 * sigma];
     z.domain([xlim[0], xlim[1]])
     zAxis
       .tickFormat(z => f2((z - mu)/std_err))
       .tickValues(tickSeq)
-    svgZAxis.attr("transform", `translate(0,${y(0)})`)
+    svgH0Axis
       .call(zAxis);
+      
+    tickSeq = [-3,-2,-1,0,1,2,3]
+    for (var i = 0; i < tickSeq.length; i++) {
+      tickSeq[i] = mu + mean_diff + tickSeq[i] * std_err;
+    }
+    h1Axis
+      .tickFormat(z => f2((z - mu - mean_diff)/std_err))
+      .tickValues(tickSeq)
+    svgH1Axis
+      .call(h1Axis);
   }
   
   function redrawCurves() {
@@ -514,24 +560,25 @@ chart = {
   }
   
   function redrawNull() {
-    nullCurve.attr("d", line(curveData(mu, std_err)))
-    nullFill.attr("d", line(curveData(mu, std_err)))
+    nullCurve.attr("d", line(curveData(mu, std_err)));
+    nullLabel.attr("transform", `translate(${x(mu)}, ${labelHeight})`);
+    nullFill.attr("d", line(curveData(mu, std_err)));
     nullClip.attr("points", [[0,0], [0,h], [x(alpha_x2),h],[x(alpha_x2),0],
-                     [x(alpha_x),0], [x(alpha_x),h], [w,h],[w,0]])
+                     [x(alpha_x),0], [x(alpha_x),h], [w,h],[w,0]]);
     nullClipInterior.attr("points", [[x(alpha_x2),0],[x(alpha_x2),h],
                      [x(alpha_x),h], [x(alpha_x),0]]);
                      
   }
   function redrawAlt() {
-    var dat = curveData(Number(mu + Number(d)), std_err)
+    var dat = curveData(Number(mu + mean_diff), std_err)
     altCurve.attr("d", line(dat))
     altFillPower.attr("d", line(dat))
     altFillBeta.attr("d", line(dat))
-    altLabel.attr("transform", `translate(${x(d)}, ${y(0.1)})`)
+    altLabel.attr("transform", `translate(${x(mu + mean_diff)}, ${labelHeight})`)
   }
   
   nInput.oninput = function() {
-    n = nInput.value
+    n = Number(nInput.value)
     std_err = sigma/Math.sqrt(n)
     updateZAxis();
     updateValues();
@@ -539,14 +586,15 @@ chart = {
   };
   
   dInput.oninput = function() {
-    d = dInput.value
+    d = Number(dInput.value);
+    mean_diff = d * sigma;
     updateValues();
     updateZAxis();
     redrawAlt();
   };
   
   aInput.oninput = function() {
-    alpha = aInput.value
+    alpha = Number(aInput.value)
     updateValues();
     redrawNull();
   };
@@ -559,6 +607,9 @@ chart = {
   
   altInput.oninput = function() {
     showAlt = document.getElementById("alt-input").checked
+    
+    d3.select("#power-values").classed("hide-element", !showAlt)
+    
     if(showAlt) {var opacity = 1} else {var opacity = 0}
     altCurve.style("opacity", opacity)
     altLabel.style("opacity", opacity)
@@ -574,13 +625,23 @@ chart = {
     .append("svg")
     .attr("width", w).attr("height", h)
 
-  const axis = svg.append("g")
-      <!-- .call(xAxis) -->
+  const svgH0Axis = svg.append("g")
       .attr("class", "axis")
-      .style("font-size", "0.5em");
+      .classed("hide-element", hideAxisZNull)
+      .attr("transform", `translate(0, ${y(0)})`)
+      .style("font-size", "0.5em")
+      .style("color", "red")
       
-  const svgZAxis = svg.append("g")
+  const svgH1Axis = svg.append("g")
       .attr("class", "axis")
+      .classed("hide-element", hideAxisZAlt)
+      .attr("transform", `translate(0, ${y(0)})`)
+      .style("font-size", "0.5em")
+      .style("color", "steelblue")
+      
+  const axis = svg.append("g")
+      .attr("class", "axis")
+      .attr("transform", `translate(0, ${y(0)})`)
       .style("font-size", "0.5em");
   
   const nullDist = svg.append("g").attr("id", "null-dist")
@@ -596,8 +657,8 @@ chart = {
       .attr("stroke-width", 2)
       .attr("class", "invertable");
 
-  nullDist.append("text").attr("id", "h0-text")
-      .attr("transform", `translate(${x(0)} ,${y(0.1)})`)
+  const nullLabel = nullDist.append("g")
+  nullLabel.append("text").attr("id", "h0-text")
       .attr("class", "invertable")
       .style("text-anchor", "middle")
       .style('font-size', '1em')
