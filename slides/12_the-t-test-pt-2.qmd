@@ -177,13 +177,13 @@ $r^2 = \dfrac{t^2}{t^2 + df}$
 
 # Reporting results
 
-“Given the average reaction time for the population of $\mu = `r mu` ms$, according to humanbenchmark.com, a two-tailed single-sample $t$-test suggests that BC1101 students have significantly different reaction times $(M = `r r(M)`$; $SD = `r r(SD)`)$ than the general population; $t(`r n-1`) =$ $`r r(t)`$, $p < .05$, $d = `r r(d)`$.”
+> Given the average reaction time for the population of $\mu = `r mu` ms$, according to humanbenchmark.com, a two-tailed single-sample $t$-test suggests that BC1101 students have significantly different reaction times $(M = `r r(M)`$; $SD = `r r(SD)`)$ than the general population; $t(`r n-1`) =$ $`r r(t)`$, $p < .05$, $d = `r r(d)`$.
 
 
 # Confidence intervals {.smallest}
 
 - Complementary to significance & effect size
-- Quantifies precision of sample estimate
+- Quantifies [precision]{.emph} of sample estimate
 - Comprised of: 
   - [The point estimate]{.emph} 
       - Our best guess of the population parameter 
@@ -226,6 +226,12 @@ $\mu = M \pm t * s_M$
 > "The parameter is an unknown constant and no probability statement concerning its value may be made."[^1]
 
 [^1]: Jerzy Neyman, original developer of confidence intervals
+
+## Factors that affect CI
+
+::: {#ci-container}
+:::
+
 
 ## CI & NHST {.small}
 
@@ -330,5 +336,21 @@ plot_save("r-squared-diagram-2.svg", width = 4, height = 2)
 
 ```
 
+## OJS confidence
 
 :::
+
+```{ojs}
+
+ci = {
+
+  const w = 1050, h = 500;
+  
+  const svg = d3.select("#ci-container").append("svg")
+    .attr("width", w).attr("height", h)
+    .style("background", "pink")
+
+}
+
+```
+
