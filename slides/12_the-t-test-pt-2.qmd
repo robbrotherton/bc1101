@@ -371,8 +371,6 @@ ci = {
   const margin = {bottom: 30};
   const f = d3.format(".2f");
   var mean, sd, confidence, n, std_err, xlim, ci_x_lim;
-  <!-- sd = 45.31; -->
-  <!-- mean = 322.59; -->
   
   const x = d3.scaleLinear()
     .domain([-xlim, xlim])
@@ -416,8 +414,6 @@ ci = {
     .style("stroke", "black")
     .style("fill", "none")
     .style("stroke-width", 4)
-    
-  <!-- var line_height = jStat.studentt.pdf(ci_x_lim, n-1) / 2; -->
   
   const ci_line = svg.append("line")
     .style("stroke", "black").style("stroke-dasharray", [5,5])
