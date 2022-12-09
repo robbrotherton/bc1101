@@ -227,7 +227,28 @@ $\mu = M \pm t * s_M$
 
 [^1]: Jerzy Neyman, original developer of confidence intervals
 
-## Factors that affect CI
+## Factors that affect CI width
+
+
+::: {#params style="position: absolute; width: 50%"}
+```{r}
+bc1101tools::input_text("mu", label = "Point estimate: ", value = 0,
+                        label_class = "text-input-label",
+                        value_class = "text-input-box math",
+                        value_style = "width: 3em;")
+bc1101tools::input_text("sigma", label = "Variability: ", value = 1,
+                        label_class = "text-input-label",
+                        value_class = "text-input-box math",
+                        value_style = "width: 3em;")
+
+bc1101tools::input_slider("n", label = "n = ", value = 30, min = 2, max = 100, width = "50%")
+
+bc1101tools::input_slider("ci", label = "CI: ", value = 95, min = 0, max = 100, width = "50%")
+
+```
+
+:::
+
 
 ::: {#ci-container}
 :::
@@ -342,14 +363,141 @@ plot_save("r-squared-diagram-2.svg", width = 4, height = 2)
 
 ```{ojs}
 
+jStat = require("../js/jstat.js")
+
 ci = {
 
-  const w = 1050, h = 500;
+  const w = 1050, h = 600;
+  const margin = {bottom: 30};
+  const f = d3.format(".2f");
+  var mean, sd, confidence, n, std_err, xlim, ci_x_lim;
+  <!-- sd = 45.31; -->
+  <!-- mean = 322.59; -->
+  
+  const x = d3.scaleLinear()
+    .domain([-xlim, xlim])
+    .range([0, w])
+  const y = d3.scaleLinear()
+    .domain([0, 0.43])
+    .range([h - margin.bottom, 0])
+  const line = d3.line()
+    .x(d => x(d.value))
+    .y(d => y(d.density));
+  const xAxis = d3.axisBottom(x);
+  
+  function makeCurve(xlim) {
+    var arr = [];
+    var x = jStat(-xlim, xlim, 210)[0];
+    for (var i = 0; i < x.length; i++) {
+      arr.push({value: x[i], density: jStat.studentt.pdf(x[i], n - 1)})
+    }
+    return arr
+  }
   
   const svg = d3.select("#ci-container").append("svg")
     .attr("width", w).attr("height", h)
-    .style("background", "pink")
+    
+  const axis = svg.append("g")
+    .attr("transform", `translate(0, ${y(0)})`)
+    .call(xAxis);
+    
+  const defs = svg.append("defs")
+  const mask = defs.append("mask").attr("id", "mask")
+  const mask_rect = mask.append("rect")
+  .attr("height", h)
+  .style("fill", "white")
+  
+  const ci_fill = svg.append("path")
+    .attr("mask", "url(#mask)")
+    .style("stroke", "none").style("fill", "lightblue")
+  
+  const ci_curve = svg.append("path")
+    .attr("class", "invertable")
+    .style("stroke", "black")
+    .style("fill", "none")
+    .style("stroke-width", 4)
+    
+  <!-- var line_height = jStat.studentt.pdf(ci_x_lim, n-1) / 2; -->
+  
+  const ci_line = svg.append("line")
+    .style("stroke", "black").style("stroke-dasharray", [5,5])
+    
+  const ci_limit_labels = svg.append("g")
+  const ci_limit_lower = ci_limit_labels.append("text")
+  const ci_limit_upper = ci_limit_labels.append("text").style("text-anchor", "end")
+  
+  const inputCI =  d3.select("#input-ci")
+  const inputN =  d3.select("#input-n")
+  const inputMu =  d3.select("#input-mu")
+  const inputSigma =  d3.select("#input-sigma")
+  
+  function initialize() {
+    mean = Number(inputMu.property("value"));
+    sd = inputSigma.property("value");
+    confidence = inputCI.property("value");
+    n = inputN.property("value");
+    std_err = sd / Math.sqrt(n);
+    updateCI();
+  }
+  
+  inputMu.on("input", function() {
+    mean = Number(this.value);
+    updateCI();
+  })
+  
+  inputSigma.on("input", function() {
+    sd = Number(this.value);
+    std_err = sd / Math.sqrt(n);
+    updateCI();
+  })
+  
+  inputCI.on("input", function() {
+    confidence = Number(this.value);
+    d3.select("#value-ci").text(confidence);
+    
+    updateCI();
+  })
+  
+  inputN.on("input", function() {
+    n = Number(this.value);
+    d3.select("#value-n").text(n);
+    std_err = sd / Math.sqrt(n);
 
+    updateCI();
+  })
+
+  function updateCI() {
+    xlim = sd / std_err;
+    x.domain([-xlim, xlim]);
+    axis.call(xAxis);
+    
+    ci_x_lim = jStat.studentt.inv((1 - (confidence/100)) / 2, n - 1);
+    var line_height = jStat.studentt.pdf(ci_x_lim, n-1) / 2;
+    
+    var ci_lims = [mean + ci_x_lim * std_err, mean - ci_x_lim * std_err];
+    
+    ci_limit_lower
+      .text(f(ci_lims[0]))
+      .attr("x", x(ci_x_lim))
+      .attr("y", y(line_height))
+    ci_limit_upper
+      .text(f(ci_lims[1]))
+      .attr("x", x(-ci_x_lim))
+      .attr("y", y(line_height))
+    
+    ci_fill.attr("d", line(makeCurve(15)))
+    ci_curve.attr("d", line(makeCurve(xlim)))
+    
+    mask_rect
+      .attr("x", x(ci_x_lim))
+      .attr("width", x(-ci_x_lim) - x(ci_x_lim));
+    
+    ci_line
+      .attr("transform", `translate(0, ${y(line_height)})`)
+      .attr("x1", x(-ci_x_lim)).attr("x2", x(ci_x_lim))
+  }
+  
+  initialize();
 }
 
 ```

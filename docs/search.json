@@ -2539,5 +2539,26 @@
     "title": "BC1101",
     "section": "Type 1 error",
     "text": "Type 1 error\n\nIf \\(H_0\\) is true…"
+  },
+  {
+    "objectID": "slides/12_the-t-test-pt-2.html#factors-that-affect-ci",
+    "href": "slides/12_the-t-test-pt-2.html#factors-that-affect-ci",
+    "title": "BC1101",
+    "section": "Factors that affect CI",
+    "text": "Factors that affect CI"
+  },
+  {
+    "objectID": "slides/12_the-t-test-pt-2.html#factors-that-affect-ci-width",
+    "href": "slides/12_the-t-test-pt-2.html#factors-that-affect-ci-width",
+    "title": "BC1101",
+    "section": "Factors that affect CI width",
+    "text": "Factors that affect CI width\n\n\n\n\nPoint estimate: \n\n\n\n\n\nVariability: \n\n\n\n\nn = \n30\n\n\n\n\nCI: \n95"
+  },
+  {
+    "objectID": "slides/12_the-t-test-pt-2.html#blah",
+    "href": "slides/12_the-t-test-pt-2.html#blah",
+    "title": "BC1101",
+    "section": "blah",
+    "text": "blah\n\njStat = require(\"../js/jstat.js\")\n\nci = {\n\n  const w = 1050, h = 500;\n  const margin = {bottom: 30};\n  const f = d3.format(\".2f\");\n  var mean, sd, confidence, n, std_err, xlim, ci_x_lim;\n  <!-- sd = 45.31; -->\n  <!-- mean = 322.59; -->\n  \n  const x = d3.scaleLinear()\n    .domain([-xlim, xlim])\n    .range([0, w])\n  const y = d3.scaleLinear()\n    .domain([0, 0.43])\n    .range([h - margin.bottom, 0])\n  const line = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density));\n  const xAxis = d3.axisBottom(x);\n  \n  function makeCurve(xlim) {\n    var arr = [];\n    var x = jStat(-xlim, xlim, 210)[0];\n    for (var i = 0; i < x.length; i++) {\n      arr.push({value: x[i], density: jStat.studentt.pdf(x[i], n - 1)})\n    }\n    return arr\n  }\n  \n  const svg = d3.select(\"#ci-container\").append(\"svg\")\n    .attr(\"width\", w).attr(\"height\", h)\n    \n  const axis = svg.append(\"g\")\n    .attr(\"transform\", `translate(0, ${y(0)})`)\n    .call(xAxis);\n    \n  const defs = svg.append(\"defs\")\n  const mask = defs.append(\"mask\").attr(\"id\", \"mask\")\n  const mask_rect = mask.append(\"rect\")\n  .attr(\"height\", h)\n  .style(\"fill\", \"white\")\n  \n  const ci_fill = svg.append(\"path\")\n    .attr(\"mask\", \"url(#mask)\")\n    .style(\"stroke\", \"none\").style(\"fill\", \"lightblue\")\n  \n  const ci_curve = svg.append(\"path\")\n    .attr(\"class\", \"invertable\")\n    .style(\"stroke\", \"black\")\n    .style(\"fill\", \"none\")\n    .style(\"stroke-width\", 4)\n    \n  var line_height = jStat.studentt.pdf(ci_x_lim, n-1) / 2;\n  \n  const ci_line = svg.append(\"line\")\n    .style(\"stroke\", \"black\").style(\"stroke-dasharray\", [5,5])\n    \n  const ci_limit_labels = svg.append(\"g\")\n  const ci_limit_lower = ci_limit_labels.append(\"text\")\n  const ci_limit_upper = ci_limit_labels.append(\"text\").style(\"text-anchor\", \"end\")\n  \n  const inputCI =  d3.select(\"#input-ci\")\n  const inputN =  d3.select(\"#input-n\")\n  const inputMu =  d3.select(\"#input-mu\")\n  const inputSigma =  d3.select(\"#input-sigma\")\n  \n  function initialize() {\n    mean = Number(inputMu.property(\"value\"));\n    sd = inputSigma.property(\"value\");\n    confidence = inputCI.property(\"value\");\n    n = inputN.property(\"value\");\n    std_err = sd / Math.sqrt(n);\n    updateCI();\n  }\n  \n  inputMu.on(\"input\", function() {\n    mean = Number(this.value);\n    updateCI();\n  })\n  \n  inputSigma.on(\"input\", function() {\n    sd = Number(this.value);\n    std_err = sd / Math.sqrt(n);\n    updateCI();\n  })\n  \n  inputCI.on(\"input\", function() {\n    confidence = Number(this.value);\n    d3.select(\"#value-ci\").text(confidence);\n    \n    updateCI();\n  })\n  \n  inputN.on(\"input\", function() {\n    n = Number(this.value);\n    d3.select(\"#value-n\").text(n);\n    std_err = sd / Math.sqrt(n);\n\n    updateCI();\n  })\n\n  function updateCI() {\n    xlim = sd / std_err;\n    x.domain([-xlim, xlim]);\n    axis.call(xAxis);\n    \n    ci_x_lim = jStat.studentt.inv((1 - (confidence/100)) / 2, n - 1);\n    line_height = jStat.studentt.pdf(ci_x_lim, n-1) / 2;\n    \n    var ci_lims = [mean + ci_x_lim * std_err, mean - ci_x_lim * std_err];\n    \n    ci_limit_lower\n      .text(f(ci_lims[0]))\n      .attr(\"x\", x(ci_x_lim))\n      .attr(\"y\", y(line_height))\n    ci_limit_upper\n      .text(f(ci_lims[1]))\n      .attr(\"x\", x(-ci_x_lim))\n      .attr(\"y\", y(line_height))\n    \n    ci_fill.attr(\"d\", line(makeCurve(15)))\n    ci_curve.attr(\"d\", line(makeCurve(xlim)))\n    \n    mask_rect\n      .attr(\"x\", x(ci_x_lim))\n      .attr(\"width\", x(-ci_x_lim) - x(ci_x_lim));\n    \n    ci_line\n      .attr(\"transform\", `translate(0, ${y(line_height)})`)\n      .attr(\"x1\", x(-ci_x_lim)).attr(\"x2\", x(ci_x_lim))\n  }\n  \n  initialize();\n}"
   }
 ]

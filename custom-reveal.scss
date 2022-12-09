@@ -699,3 +699,22 @@ color: #ccc
 .hide-element {
   display: none;
 }
+
+
+
+/* ----------------- INPUTS ---------------------- */
+
+.text-input-label {
+  border: none;
+  background: none;
+  color: var(--text-color);
+  font-size: 1em;
+}
+
+.text-input-box {
+  border: none;
+  background: none;
+  color: var(--text-color);
+  font-size: 1em;
+  vertical-align: unset;
+}
