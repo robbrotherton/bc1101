@@ -265,6 +265,24 @@ bc1101tools::input_slider("ci", label = "CI: ", value = 95, min = 0, max = 100, 
 
 ## CI & NHST
 
+::: {#params style="position: absolute; width: 50%; font-size: 0.8em;"}
+```{r}
+bc1101tools::input_slider("nhst-n", label = "n = ", value = 15, min = 10, max = 25, width = "50%")
+
+bc1101tools::input_slider("cohens-d", label = "d = ", value = 0.7, min = 0, max = 1, step = 0.01, width = "50%")
+
+```
+
+:::
+
+::: {#ci-nhst-container}
+:::
+
+::: {.center-element}
+<span class="math italic">p </span><span id="p-value" class="math"></span>
+:::
+
+
 # Learning checks
 
 1. What value of $t$ would you expect to see if the null hypothesis is true?
@@ -514,3 +532,176 @@ ci = {
 
 ```
 
+::: {.content-hidden}
+
+## CI & NHST OJS
+
+:::
+
+## blah
+
+```{ojs}
+
+ci_nhst = {
+
+  const w = 1050, h = 500;
+  const margin = {bottom: 5};
+  const xlim = [-1, 1.5];
+  const sigma = 1;
+  const confidence = 95;
+  var cohensD, n, std_err, ci_x_lim;
+  
+  const x = d3.scaleLinear()
+    .domain(xlim)
+    .range([0, w])
+  const y = d3.scaleLinear()
+    .domain([0, 2])
+    .range([h - margin.bottom, 0])
+  const line = d3.line()
+    .x(d => x(d.value))
+    .y(d => y(d.density));
+  const xAxis = d3.axisBottom(x);
+  
+  function makeCurve(mu, std_err) {
+    var arr = [];
+    var x = jStat(xlim[0], xlim[1], 210)[0];
+    for (var i = 0; i < x.length; i++) {
+      arr.push({value: x[i], density: jStat.normal.pdf(x[i], mu, std_err)})
+    }
+    return arr
+  }
+  function makeFill(mu, std_err) {
+    var arr = [];
+    var x = jStat(-5, 5, 310)[0];
+    for (var i = 0; i < x.length; i++) {
+      arr.push({value: x[i], density: jStat.normal.pdf(x[i], mu, std_err)})
+    }
+    return arr
+  }
+  
+  const svg = d3.select("#ci-nhst-container").append("svg")
+    .attr("width", w).attr("height", h)
+    
+  <!-- const axis = svg.append("g").attr("transform", `translate(0, ${y(0)})`).call(xAxis); -->
+  
+  const ci_dist = svg.append("g")
+  const null_dist = svg.append("g")
+  
+
+  const defs = svg.append("defs")
+  const mask = defs.append("mask").attr("id", "nhst-mask")
+  const mask_rect = mask.append("rect")
+  .attr("height", h)
+  .style("fill", "white")
+  const null_mask = defs.append("mask").attr("id", "null-mask")
+  null_mask.append("rect").attr("width", w).attr("height", h).style("fill", "white")
+  const null_rect = null_mask.append("rect")
+    .attr("height", h)
+    .style("fill", "black")
+  
+  const null_fill = null_dist.append("path")
+    .attr("mask", "url(#null-mask)")
+    .style("stroke", "none")
+    .style("fill", "red")
+    .style("opacity", 0.7)
+  const null_curve = null_dist.append("path")
+    .attr("class", "invertable")
+    .style("stroke", "red")
+    .style("fill", "none")
+    .style("stroke-width", 4)
+    .style("stroke-dasharray", [10, 10])
+  const null_mu = null_dist.append("line")
+    .attr("transform", `translate(${x(0)}, 0)`)
+    .attr("y1", y(0))
+    .style("stroke", "red").style("stroke-dasharray", [5,5])
+  const null_margin = null_dist.append("line")
+    .style("stroke", "red").style("stroke-dasharray", [5,5])
+  
+  const ci_fill = ci_dist.append("path")
+    .attr("mask", "url(#nhst-mask)")
+    .style("stroke", "none").style("fill", "lightblue")
+  
+  const ci_curve = ci_dist.append("path")
+    .attr("class", "invertable")
+    .style("stroke", "black")
+    .style("fill", "none")
+    .style("stroke-width", 4)
+  
+  const ci_line = ci_dist.append("line")
+    .style("stroke", "black").style("stroke-dasharray", [5,5])
+  const ci_point_estimate = ci_dist.append("line")
+    .style("stroke", "black").style("stroke-dasharray", [5,5])
+    
+  const p_value = svg.append("text")
+    .attr("transform", `translate(${w * 0.75}, ${h * 0.25})`)
+    .style("color", "var(--text-color)")
+    .attr("class", "math")
+
+  const inputCohensD =  d3.select("#input-cohens-d")
+  const inputN =  d3.select("#input-nhst-n")
+  
+  function initialize() {
+    cohensD = Number(inputCohensD.property("value"));
+    n = Number(inputN.property("value"));
+    std_err = sigma / Math.sqrt(n);
+    updateCI();
+  }
+  
+
+  inputCohensD.on("input", function() {
+    initialize();
+    d3.select("#value-cohens-d").text(cohensD);
+  })
+  inputN.on("input", function() {
+    initialize();
+    d3.select("#value-nhst-n").text(n);
+  })
+
+  function updateCI() {
+    null_fill.attr("d", line(makeFill(0, std_err)));
+    null_curve.attr("d", line(makeCurve(0, std_err)));
+    null_rect
+      .attr("x", x(jStat.normal.inv(0.025, 0, std_err)))
+      .attr("width", x(jStat.normal.inv(0.975, 0, std_err)) -
+                     x(jStat.normal.inv(0.025, 0, std_err)))
+    null_mu.attr("y2", y(jStat.normal.pdf(0, 0, std_err)))
+    null_margin
+      .attr("transform", `translate(0, ${y(jStat.normal.pdf(jStat.normal.inv(0.025, 0, std_err), 0, std_err))})`)
+      .attr("x1", x(jStat.normal.inv(0.025, 0, std_err)))
+      .attr("x2", x(jStat.normal.inv(0.975, 0, std_err)))
+                     
+    var ci_lim_lower = jStat.normal.inv(0.025, cohensD, std_err);
+    var ci_lim_upper = jStat.normal.inv(0.975, cohensD, std_err);
+    var ci_lims = [ci_lim_lower, ci_lim_upper];
+    
+    var line_height = jStat.normal.pdf(ci_lims[0], cohensD, std_err) / 2;
+
+    ci_fill.attr("d", line(makeFill(cohensD, std_err)))
+    ci_curve.attr("d", line(makeCurve(cohensD, std_err)))
+    mask_rect
+      .attr("x", x(ci_lims[0]))
+      .attr("width", x(ci_lims[1]) - x(ci_lims[0]));
+
+    ci_line
+      .attr("transform", `translate(0, ${y(line_height)})`)
+      .attr("x1", x(ci_lims[0])).attr("x2", x(ci_lims[1]));
+    ci_point_estimate
+      .attr("transform", `translate(${x(cohensD)}, 0)`)
+      .attr("y1", y(jStat.normal.pdf(cohensD, cohensD, std_err))).attr("y2", y(0))
+      
+      
+    var significant = ci_lims[0] > 0;
+    var p_value = d3.select("#p-value");
+    if (significant) {
+      ci_fill.style("filter", "grayscale(0)");
+      p_value.text("< .05 🥳");
+    } else {
+      ci_fill.style("filter", "grayscale(1)");
+      p_value.text("> .05");
+    }
+  }
+  
+  initialize();
+}
+
+```
