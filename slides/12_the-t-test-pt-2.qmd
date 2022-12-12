@@ -273,12 +273,19 @@ bc1101tools::input_slider("cohens-d", label = "d = ", value = 0.7, min = 0, max 
 
 ```
 
+::: {#viz-controls}
+Show: 
+<label for="h0"><input id="h0" type="radio" name="controls">$H_0$</label>
+<label for="h1"><input id="h1" type="radio" name="controls">$H_1$</label>
+<label for="both"><input id="both" type="radio" name="controls" checked>Both</label>
+:::
+
 :::
 
 ::: {#ci-nhst-container}
 :::
 
-::: {.center-element}
+::: {#p-value-container .center-element}
 <span class="math italic">p </span><span id="p-value" class="math"></span>
 :::
 
@@ -699,6 +706,22 @@ ci_nhst = {
       ci_fill.style("filter", "grayscale(1)");
       p_value.text("> .05");
     }
+  }
+  
+  d3.select("#h0").on("input", showSelected);
+  d3.select("#h1").on("input", showSelected);
+  d3.select("#both").on("input", showSelected);
+  
+  function showSelected() {
+    var h0 = d3.select("#h0").property("checked");
+    var h1 = d3.select("#h1").property("checked");
+    var both = d3.select("#both").property("checked");
+    var selected = [false, false];
+    if (h0 || both) { selected[0] = true; }
+    if (h1 || both) { selected[1] = true; }
+    null_dist.classed("hide-element", !selected[0]);
+    ci_dist.classed("hide-element", !selected[1]);
+    d3.select("#p-value-container").classed("hide-element", !both)
   }
   
   initialize();
