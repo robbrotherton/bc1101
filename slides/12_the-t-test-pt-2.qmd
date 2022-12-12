@@ -230,7 +230,7 @@ $\mu = M \pm t * s_M$
 ## Factors that affect CI width
 
 
-::: {#params style="position: absolute; width: 50%"}
+::: {#params style="position: absolute; width: 50%; font-size: 0.8em;"}
 ```{r}
 bc1101tools::input_text("mu", label = "Point estimate: ", value = 0,
                         label_class = "text-input-label",
@@ -373,7 +373,9 @@ ci = {
   var mean, sd, confidence, n, std_err, xlim, ci_x_lim;
   
   const x = d3.scaleLinear()
-    .domain([-xlim, xlim])
+    .range([0, w])
+  const xRaw = d3.scaleLinear()
+    .domain([-1, 1])
     .range([0, w])
   const y = d3.scaleLinear()
     .domain([0, 0.43])
@@ -382,6 +384,7 @@ ci = {
     .x(d => x(d.value))
     .y(d => y(d.density));
   const xAxis = d3.axisBottom(x);
+  const xAxisRaw = d3.axisBottom(xRaw).tickSize(10);
   
   function makeCurve(xlim) {
     var arr = [];
@@ -397,7 +400,12 @@ ci = {
     
   const axis = svg.append("g")
     .attr("transform", `translate(0, ${y(0)})`)
+    .style("color", "steelblue")
     .call(xAxis);
+    
+  const axisRaw = svg.append("g")
+    .attr("transform", `translate(0, ${y(0)})`)
+    .call(xAxisRaw);
     
   const defs = svg.append("defs")
   const mask = defs.append("mask").attr("id", "mask")
@@ -416,6 +424,9 @@ ci = {
     .style("stroke-width", 4)
   
   const ci_line = svg.append("line")
+    .style("stroke", "black").style("stroke-dasharray", [5,5])
+  
+  const ci_point_estimate = svg.append("line")
     .style("stroke", "black").style("stroke-dasharray", [5,5])
     
   const ci_limit_labels = svg.append("g")
@@ -466,6 +477,8 @@ ci = {
     xlim = sd / std_err;
     x.domain([-xlim, xlim]);
     axis.call(xAxis);
+    xRaw.domain([mean - sd, mean + sd]);
+    axisRaw.call(xAxisRaw);
     
     ci_x_lim = jStat.studentt.inv((1 - (confidence/100)) / 2, n - 1);
     var line_height = jStat.studentt.pdf(ci_x_lim, n-1) / 2;
@@ -491,6 +504,9 @@ ci = {
     ci_line
       .attr("transform", `translate(0, ${y(line_height)})`)
       .attr("x1", x(-ci_x_lim)).attr("x2", x(ci_x_lim))
+    ci_point_estimate
+      .attr("transform", `translate(${x(0)}, 0)`)
+      .attr("y1", y(jStat.studentt.pdf(0, n - 1))).attr("y2", y(0))
   }
   
   initialize();
