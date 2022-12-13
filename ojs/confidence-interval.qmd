@@ -1,0 +1,261 @@
+---
+format: html
+title: "Confidence Interval"
+toc: false
+---
+
+::: {#ci-container}
+:::
+
+
+
+```{ojs}
+d3.select("#ci-container")
+  .call(addCIPlot, {test_type: "single",
+                   point_estimate: 0,
+                   standard_deviation: 1,
+                   n: 30,
+                   ci: 95})
+```
+
+
+```{ojs}
+addCIPlot = function(selection, params) {
+  selection
+    .call(ciParams, params)
+    .call(ciPlot, params)
+}
+```
+
+
+```{ojs params}
+
+ciParams = function(selection, params) {
+    
+  selection.append("div").style("position", "absolute")
+    .call(inputDropdown)
+    .call(textInput, {id: 'point-estimate', label: 'Point estimate: ', value: params.point_estimate})
+    .call(textInput, {id: 'standard-deviation', label: 'Standard deviation: ', value: params.standard_deviation})
+    .call(stdErrSpan)
+    .call(slider, {id: 'n', label: 'n = ', value: params.n})
+    .call(slider, {id: 'ci', label: 'CI: ', value: params.ci})
+    
+     d3.select("#test").property("value", params.test_type)
+}
+```
+
+
+```{ojs}
+ciPlot = function(selection, params) {
+
+  const w = 1050, h = 600;
+  const margin = {bottom: 30};
+  const f = d3.format(".2f");
+  
+  var point_estimate = params.point_estimate
+  var sd = params.standard_deviation
+  var confidence = params.ci
+  var n = params.n
+  var df = computeDf(n, params.test_type)
+  var std_err = computeStdErr(sd, n, params.test_type)
+  var xlim
+  var ci_x_lim
+  
+  const x = d3.scaleLinear()
+    .range([0, w])
+  const xRaw = d3.scaleLinear()
+    .domain([-1, 1])
+    .range([0, w])
+  const y = d3.scaleLinear()
+    .domain([0, 0.43])
+    .range([h - margin.bottom, 0])
+  const line = d3.line()
+    .x(d => x(d.value))
+    .y(d => y(d.density));
+  const xAxis = d3.axisBottom(x);
+  const xAxisRaw = d3.axisBottom(xRaw).tickSize(10);
+  
+  function makeCurve(xlim) {
+    var arr = [];
+    var x = jStat(-xlim, xlim, 210)[0];
+    for (var i = 0; i < x.length; i++) {
+      arr.push({value: x[i], density: jStat.studentt.pdf(x[i], df)})
+    }
+    return arr
+  }
+  
+
+  const svg = selection.append("svg")
+    .attr("width", w).attr("height", h)
+    
+  const axis = svg.append("g")
+    .attr("transform", `translate(0, ${y(0)})`)
+    .style("color", "steelblue")
+    .call(xAxis);
+    
+  const axisRaw = svg.append("g")
+    .attr("transform", `translate(0, ${y(0)})`)
+    .call(xAxisRaw);
+    
+  const defs = svg.append("defs")
+  const mask = defs.append("mask").attr("id", "mask")
+  const mask_rect = mask.append("rect")
+  .attr("height", h)
+  .style("fill", "white")
+  
+  const ci_fill = svg.append("path")
+    .attr("mask", "url(#mask)")
+    .style("stroke", "none").style("fill", "lightblue")
+  
+  const ci_curve = svg.append("path")
+    .attr("class", "invertable")
+    .style("stroke", "black")
+    .style("fill", "none")
+    .style("stroke-width", 4)
+  
+  const ci_line = svg.append("line")
+    .style("stroke", "black").style("stroke-dasharray", [5,5])
+  
+  const ci_point_estimate = svg.append("line")
+    .style("stroke", "black").style("stroke-dasharray", [5,5])
+    
+  const ci_limit_labels = svg.append("g")
+  const ci_limit_lower = ci_limit_labels.append("text")
+  const ci_limit_upper = ci_limit_labels.append("text").style("text-anchor", "end")
+  
+  const inputCI =  d3.select("#input-ci")
+  const inputN =  d3.select("#input-n")
+  const inputPoint =  d3.select("#input-point-estimate")
+  const inputSd =  d3.select("#input-standard-deviation")
+  const inputTest =  d3.select("#test")
+  
+  function updatePlot() {
+    var test = inputTest.property("value");
+    point_estimate = Number(inputPoint.property("value"));
+    sd = Number(inputSd.property("value"));
+    n = Number(inputN.property("value"));
+    std_err = computeStdErr(sd, n, test);
+    df = computeDf(n, test);
+    confidence = Number(inputCI.property("value"));
+    updateSliderTextValues();
+    updateCI();
+  }
+  
+  function updateSliderTextValues() {
+    d3.select("#value-standard-error").text(f(std_err));
+    d3.select("#value-ci").text(confidence);
+    d3.select("#value-n").text(n);
+  }
+  
+  inputCI.on("input", updatePlot)
+  inputN.on("input", updatePlot)
+  inputPoint.on("input", updatePlot)
+  inputSd.on("input", updatePlot)
+  inputTest.on("change", updatePlot)
+  
+  function computeDf(n, test) {
+    if (test=="independent") return n - 2;
+    else return n - 1;
+  }
+  
+  function computeStdErr(sd, n, test) {
+    var variance = sd * sd;
+    console.log("var = " + variance)
+    if (test=="independent") return Math.sqrt(variance/(n/2) + variance/(n/2));
+    else return sd / Math.sqrt(n);
+  }
+  
+ 
+  function updateCI() {
+    var selectedTestType = inputTest.node().value;
+    if (selectedTestType=="independent") {
+      xlim = sd / (std_err / 2);
+      xRaw.domain([point_estimate - sd*2, point_estimate + sd*2]);
+    } else {
+      xlim = sd / std_err;
+      xRaw.domain([point_estimate - sd, point_estimate + sd]);
+    }
+    
+    x.domain([-xlim, xlim]);
+    axis.call(xAxis);
+    axisRaw.call(xAxisRaw);
+
+    ci_x_lim = jStat.studentt.inv((1 - (confidence/100)) / 2, df);
+    <!-- console.log(ci_x_lim); -->
+    var line_height = jStat.studentt.pdf(ci_x_lim, df) / 2;
+
+    var ci_lims = [point_estimate + ci_x_lim * std_err, point_estimate - ci_x_lim * std_err];
+
+    ci_limit_lower
+      .text(f(ci_lims[0]))
+      .attr("x", x(ci_x_lim))
+      .attr("y", y(line_height))
+    ci_limit_upper
+      .text(f(ci_lims[1]))
+      .attr("x", x(-ci_x_lim))
+      .attr("y", y(line_height))
+
+    ci_fill.attr("d", line(makeCurve(15)))
+    ci_curve.attr("d", line(makeCurve(xlim)))
+    
+    mask_rect
+      .attr("x", x(ci_x_lim))
+      .attr("width", x(-ci_x_lim) - x(ci_x_lim));
+
+    ci_line
+      .attr("transform", `translate(0, ${y(line_height)})`)
+      .attr("x1", x(-ci_x_lim)).attr("x2", x(ci_x_lim))
+    ci_point_estimate
+      .attr("transform", `translate(${x(0)}, 0)`)
+      .attr("y1", y(jStat.studentt.pdf(0, df))).attr("y2", y(0))
+  }
+  
+  updateCI();
+}
+```
+
+
+```{ojs controls}
+
+inputDropdown = function(selection, options) {
+  selection.append("div")
+    .attr("id", "test-dropdown")
+    .html(`
+  <label for="test">Test type:</label>
+  <select id="test" name="test">
+    <option value="single">Single-sample</option>
+    <option value="independent" selected>Independent-samples</option>
+    <option value="related">Related-samples</option>
+  </select>
+  `)
+}
+
+textInput = function(selection, options) {
+  selection.append("div").html(`
+  
+  <label for="input-${options.id}" class = "text-input-label" style="">${options.label}
+<input type="text" id="input-${options.id}" class="text-input-box math" name="${options.id}" value="${options.value}" style="width: 3em;">
+</label>`)
+}
+
+slider = function(selection, options) {
+  selection.append("div").html(`
+  
+  <label for="input-${options.id}" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">${options.label}</label>
+<span id="value-${options.id}" class="math" style="display: inline-block; width: 1em;">${options.value}</span>
+<input data-prevent-swipe type="range" id="input-${options.id}" name="scale" value="${options.value}" min="2" max="100" step="1" style="border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; margin-left: 0.5em; width: 50%; vertical-align: unset;">
+  `)
+}
+
+stdErrSpan = function(selection, options) {
+  selection.append("div").html(`
+    Standard error: <span id="value-standard-error"></span>
+  `)
+}
+
+```
+
+
+```{ojs setup}
+jStat = require("../js/jstat.js")
+```
