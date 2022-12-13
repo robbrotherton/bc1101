@@ -225,7 +225,9 @@ $\mu = M \pm t * s_M$
 
 > "The parameter is an unknown constant and no probability statement concerning its value may be made."[^1]
 
-[^1]: Jerzy Neyman, original developer of confidence intervals
+[^1]: [Jerzy Neyman, original developer of confidence intervals](https://royalsocietypublishing.org/doi/pdf/10.1098/rsta.1937.0005)
+
+
 
 ## Factors that affect CI width
 
@@ -263,7 +265,7 @@ bc1101tools::input_slider("ci", label = "CI: ", value = 95, min = 0, max = 100, 
 - Both significance level and confidence level define a distance from a mean to a limit
   - The distances in both cases are exactly the same
 
-## CI & NHST
+## CI & NHST demonstration
 
 ::: {#params style="position: absolute; width: 50%; font-size: 0.8em;"}
 ```{r}
@@ -544,8 +546,6 @@ ci = {
 ## CI & NHST OJS
 
 :::
-
-## blah
 
 ```{ojs}
 
