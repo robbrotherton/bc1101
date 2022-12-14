@@ -347,9 +347,9 @@ $\text{With } \alpha = .05, t_{critical} (`r t$dfa`) = \pm `r qt(.975, df = t$df
 
 $df = n-1 = `r t$na` - 1 = `r t$nc - 1`$
 
-$S_{M_D} = \dfrac{s_D}{\sqrt{n}} = \dfrac{`r t$sdd`}{\sqrt{`r t$na`}} = `r t$smd`$
+$S_{M_D} = \dfrac{s_D}{\sqrt{n}} = \dfrac{`r t$sd_diff`}{\sqrt{`r t$na`}} = `r t$smd`$
  
-$t = \dfrac{M_D - \mu_D}{s_{M_D}} = \dfrac{`r t$md`}{`r t$smd`} = `r t$td`$
+$t = \dfrac{M_D - \mu_D}{s_{M_D}} = \dfrac{`r t$mean_diff`}{`r t$smd`} = `r t$td`$
 :::
 
 
@@ -367,7 +367,7 @@ $$\begin{align}
 
 ## Report results
 
-"When performing in competition, children completed the race faster on average  $(M = 43.2$; $SD = 8.14)$ than when performing alone $(M = 49.4$; $SD = 11.48)$. A related-samples found the difference to be statistically significant; $t(4) =$ $-2.91$, $p <.05$, $d = 1.30$."
+> When performing in competition, children completed the race faster on average  $(M = 43.2$; $SD = 8.14)$ than when performing alone $(M = 49.4$; $SD = 11.48)$. A related-samples found the difference to be statistically significant; $t(4) =$ $-2.91$, $p <.05$, $d = 1.30$.
 
 
 # Assumptions
@@ -377,20 +377,81 @@ $$\begin{align}
     - With relatively large samples (n > 30) this assumption can be ignored 
 
 
-# Confidence Interval
 
+# Confidence interval
 
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- Independent-samples
+
+::: {#ci-independent}
+:::
+
+::: {style="font-size: 0.6em;"}
 $$\begin{align}
 (\mu_1-\mu_2) &= (M_1-M_2) \pm t * s_{M_1-M_2} \\
 &= (`r t$mc` - `r t$ma`) \pm `r qt(.975, df = t$dfa + t$dfc)` * `r t$sm1m2` \\
 &= `r (t$mc-t$ma) + qt(c(.025, .975), df = t$dfa+t$dfc) * t$sm1m2`
 \end{align}$$
+:::
+:::
 
+::: {.column width="50%"}
+
+- Related-samples
+
+::: {#ci-related}
+:::
+
+::: {style="font-size: 0.6em;"}
 $$\begin{align}
 \mu_D &= M_D \pm t * s_{M_D} \\
 &= `r t$mean_diff` \pm `r qt(.975, df = t$dfa)` * `r t$smd` \\
 &= `r (t$mean_diff) + qt(c(.025, .975), df = t$dfa) * t$smd`
 \end{align}$$
+:::
+:::
+
+::::
+
+```{css}
+#ci-controls {
+  font-size: 0.5em;
+  margin-bottom: -5em;
+}
+svg .axis {
+  font-size: 0.7em;
+}
+```
+
+
+```{ojs}
+import { addCIPlot } from "../ojs/confidence-interval.qmd"
+
+chart = {
+  d3.select("#ci-independent")
+    .call(addCIPlot, {test_type: "independent",
+                      point_estimate: -6.2,
+                      standard_deviation: Math.round(Math.sqrt(99)*100)/100,
+                      n: 10,
+                      ci: 95,
+                      disable_controls: true})
+}
+
+chart2 = {
+  d3.select("#ci-related")
+    .call(addCIPlot, {test_type: "related",
+                      point_estimate: -6.2,
+                      standard_deviation: 4.76,
+                      n: 5,
+                      ci: 95,
+                      disable_controls: true})
+}
+
+```
+
 
 
 # Learning checks
@@ -459,7 +520,7 @@ bc1101tools::plot_save("independent-samples-t-test.svg", subdir = "covers", widt
 ```
 
 ```{ojs}
-data
+
 cover = {
   const w = 1050
   const h = 500
@@ -538,14 +599,27 @@ independentSamplesFigure = {
   
   const g = sampleDots.selectAll("g").data([0,1]).enter().append("g").attr("transform", (d,i) => `translate(${w/4 + i * w/2}, 0)`).style("stroke", "black")
   
-  g.each(function(d,i){
+  
+  function refresh() {
+    var samples = [makeSample(), makeSample()];
+    console.log(samples)
+    g.each(function(d,i){
     d3.select(this)
     .selectAll("circle")
-      .data(makeSample()).enter().append("circle")
-        .attr("cy", (d,i) => 60 + i*r*2.5)
+    .remove()
+    d3.select(this)
+    .selectAll("circle")
+      .data(samples[i]).enter().append("circle")
         .attr("r", r)
+        .attr("cy", -500)
         .style("fill", d => fill(d))
-  })
+        .transition().duration(1000).delay((d,j) => i*1000 + j * 100).attr("cy", (d,i) => 60 + i*r*2.5)
+    })
+  }
+  
+  refresh();
+  
+  svg.on("click", refresh)
       
 }
 
@@ -575,33 +649,48 @@ relatedSamplesFigure = {
     .attr("x", (d,i) => w/4 + i * w/2).attr("y", 20)
     .text(d => "SAMPLE " + d).attr("text-anchor", "middle")
     
-  const lines = svg.append("g").attr("transform", `translate(${w/4 + r * 1.5}, 60)`).style("stroke", "black")
-  .attr("class", "invertable")
+  const lines = svg.append("g")
+    .attr("transform", (d,i) => `translate(${w/4 + r * 1.5}, 0)`).style("stroke", "black")
+    .attr("class", "invertable")
     .selectAll("line").data([0,1,2,3,4,5,6,7,8,9]).enter()
     .append("line")
+      .attr("transform", (d,i) => `translate(0, ${i * r * 2.5})`)
       .attr("x2", w/2 - 2 * r * 1.5)
-      .attr("y1", (d,i) => i * r * 2.5)
-      .attr("y2", (d,i) => i * r * 2.5)
 
   const sampleDots = svg.append("g")
-  const sample = makeSample()
   
   const g = sampleDots.selectAll("g").data([0,1]).enter().append("g").attr("transform", (d,i) => `translate(${w/4 + i * w/2}, 0)`).style("stroke", "black")
   
-  g.each(function(d,i){
+  
+  function refresh() {
+    var sample = makeSample();
+    g.each(function(d,i){
+    d3.select(this)
+    .selectAll("circle")
+    .remove()
     d3.select(this)
     .selectAll("circle")
       .data(sample).enter().append("circle")
-        .attr("cy", (d,i) => 60 + i*r*2.5)
         .attr("r", r)
+        .attr("cy", -100)
         .style("fill", d => fill(d))
-  })
+        .transition().duration(1000).delay((d,j) => j * 200).attr("cy", (d,i) => 60 + i*r*2.5)
+    
+   lines.attr("transform", (d,i) => `translate(0, -100)`)
+    .transition().duration(1000).delay((d,j) => j * 200)
+      .attr("transform", (d,i) => `translate(0, ${60 + i*r*2.5})`)
+    })
+  }
+  
+  refresh();
+  
+  svg.on("click", refresh)
       
 }
 
 matchedSamplesFigure = {
 
-   function makeSample () {
+  function makeSample () {
     var arr = [];
     for (var i = 0; i < 10; i++) {
       arr.push(Math.floor(Math.random()*10))
@@ -624,28 +713,45 @@ matchedSamplesFigure = {
     .attr("x", (d,i) => w/4 + i * w/2).attr("y", 20)
     .text(d => "SAMPLE " + d).attr("text-anchor", "middle")
     
-  const lines = svg.append("g").attr("transform", `translate(${w/4 + r * 1.5}, 60)`)
-    .style("stroke", "black").style("stroke-dasharray", [10,10]).attr("class", "invertable")
+  const lines = svg.append("g")
+    .attr("transform", (d,i) => `translate(${w/4 + r * 1.5}, 0)`)
+    .style("stroke", "black")
+    .style("stroke-dasharray", [10, 10])
+    .attr("class", "invertable")
     .selectAll("line").data([0,1,2,3,4,5,6,7,8,9]).enter()
     .append("line")
+      .attr("transform", (d,i) => `translate(0, ${i * r * 2.5})`)
       .attr("x2", w/2 - 2 * r * 1.5)
-      .attr("y1", (d,i) => i * r * 2.5)
-      .attr("y2", (d,i) => i * r * 2.5)
 
   const sampleDots = svg.append("g")
-  const sample = makeSample()
   
   const g = sampleDots.selectAll("g").data([0,1]).enter().append("g").attr("transform", (d,i) => `translate(${w/4 + i * w/2}, 0)`).style("stroke", "black")
   
-  g.each(function(d,i){
+  
+  function refresh() {
+    var sample = makeSample();
+    g.each(function(d,i){
+    d3.select(this)
+    .selectAll("circle")
+    .remove()
     d3.select(this)
     .selectAll("circle")
       .data(sample).enter().append("circle")
-        .attr("cy", (d,i) => 60 + i*r*2.5)
         .attr("r", r)
+        .attr("cy", -100)
         .style("fill", d => fill(d))
-  })
-
+        .transition().duration(1000).delay((d,j) => j * 200).attr("cy", (d,i) => 60 + i*r*2.5)
+    
+   lines.attr("transform", (d,i) => `translate(0, -100)`)
+    .transition().duration(1000).delay((d,j) => j * 200)
+      .attr("transform", (d,i) => `translate(0, ${60 + i*r*2.5})`)
+    })
+  }
+  
+  refresh();
+  
+  svg.on("click", refresh)
+      
 }
 
 ```
