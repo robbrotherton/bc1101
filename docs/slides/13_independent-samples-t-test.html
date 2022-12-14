@@ -1104,41 +1104,44 @@ svg .axis {
 </style>
 </div>
 </section></section>
-<section id="learning-checks" class="title-slide slide level1 center">
+<section id="learning-checks" class="title-slide slide level1 smaller center">
 <h1>Learning checks</h1>
 <ol type="1">
-<li>What values of <span class="math inline">\(t\)</span> would you expect to see if the null hypothesis is true?</li>
-<li>Which combination of factors is most likely to produce a significant value for an independent-measures <span class="math inline">\(t\)</span> statistic?</li>
-</ol>
+<li>A researcher performing an independent-samples <span class="math inline">\(t\)</span>-test finds a difference between groups of 2.3, and calculates a 95% confidence interval of [0.3, 4.3]. Can you predict whether the hypothesis test will reject the null hypothesis?
 <ul>
-<li>Small mean difference and large sample variances</li>
-<li>Small mean difference and small sample variances</li>
-<li>Large mean difference and large sample variances</li>
-<li>Large mean difference and small sample variances</li>
-</ul>
+<li>It will reject the null</li>
+<li>It will fail to reject the null</li>
+<li>Cannot make a prediction</li>
+</ul></li>
+<li>A confidence interval for an independent-samples test which includes a value of zero within its confidence range establishes that true population parameter is 95% certain to be zero.
+<ul>
+<li>True</li>
+<li>False</li>
+</ul></li>
+</ol>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="567" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 566;"><span id="cb7-567"><a href="#cb7-567"></a>cover <span class="op">=</span> {</span>
-<span id="cb7-568"><a href="#cb7-568"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">1050</span></span>
-<span id="cb7-569"><a href="#cb7-569"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">500</span></span>
-<span id="cb7-570"><a href="#cb7-570"></a>  <span class="kw">const</span> x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb7-571"><a href="#cb7-571"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">40</span><span class="op">,</span><span class="dv">180</span>])</span>
-<span id="cb7-572"><a href="#cb7-572"></a>    <span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span>w])</span>
-<span id="cb7-573"><a href="#cb7-573"></a>  <span class="kw">const</span> y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb7-574"><a href="#cb7-574"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span><span class="dv">70</span>])</span>
-<span id="cb7-575"><a href="#cb7-575"></a>    <span class="op">.</span><span class="fu">range</span>([h<span class="op">,</span><span class="dv">0</span>])</span>
-<span id="cb7-576"><a href="#cb7-576"></a>  <span class="kw">const</span> fill <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleOrdinal</span>()</span>
-<span id="cb7-577"><a href="#cb7-577"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="st">"A"</span><span class="op">,</span><span class="st">"B"</span><span class="op">,</span> <span class="st">"AB"</span>])</span>
-<span id="cb7-578"><a href="#cb7-578"></a>    <span class="op">.</span><span class="fu">range</span>([<span class="st">"#dda6a6"</span><span class="op">,</span> <span class="st">"#b0d3ff"</span><span class="op">,</span> <span class="st">"#9c9ecb"</span>])</span>
-<span id="cb7-579"><a href="#cb7-579"></a>    </span>
-<span id="cb7-580"><a href="#cb7-580"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#cover"</span>)<span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
-<span id="cb7-581"><a href="#cb7-581"></a>  </span>
-<span id="cb7-582"><a href="#cb7-582"></a>  svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"rect"</span>)<span class="op">.</span><span class="fu">data</span>(data)<span class="op">.</span><span class="fu">enter</span>()<span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
-<span id="cb7-583"><a href="#cb7-583"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">value</span>))</span>
-<span id="cb7-584"><a href="#cb7-584"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">y</span>(d<span class="op">.</span><span class="at">y_cum</span>))</span>
-<span id="cb7-585"><a href="#cb7-585"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> <span class="dv">6</span>)</span>
-<span id="cb7-586"><a href="#cb7-586"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> <span class="dv">6</span>)</span>
-<span id="cb7-587"><a href="#cb7-587"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">fill</span>(d<span class="op">.</span><span class="at">group</span>))</span>
-<span id="cb7-588"><a href="#cb7-588"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="568" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 567;"><span id="cb7-568"><a href="#cb7-568"></a>cover <span class="op">=</span> {</span>
+<span id="cb7-569"><a href="#cb7-569"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">1050</span></span>
+<span id="cb7-570"><a href="#cb7-570"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb7-571"><a href="#cb7-571"></a>  <span class="kw">const</span> x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb7-572"><a href="#cb7-572"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">40</span><span class="op">,</span><span class="dv">180</span>])</span>
+<span id="cb7-573"><a href="#cb7-573"></a>    <span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span>w])</span>
+<span id="cb7-574"><a href="#cb7-574"></a>  <span class="kw">const</span> y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb7-575"><a href="#cb7-575"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span><span class="dv">70</span>])</span>
+<span id="cb7-576"><a href="#cb7-576"></a>    <span class="op">.</span><span class="fu">range</span>([h<span class="op">,</span><span class="dv">0</span>])</span>
+<span id="cb7-577"><a href="#cb7-577"></a>  <span class="kw">const</span> fill <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleOrdinal</span>()</span>
+<span id="cb7-578"><a href="#cb7-578"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="st">"A"</span><span class="op">,</span><span class="st">"B"</span><span class="op">,</span> <span class="st">"AB"</span>])</span>
+<span id="cb7-579"><a href="#cb7-579"></a>    <span class="op">.</span><span class="fu">range</span>([<span class="st">"#dda6a6"</span><span class="op">,</span> <span class="st">"#b0d3ff"</span><span class="op">,</span> <span class="st">"#9c9ecb"</span>])</span>
+<span id="cb7-580"><a href="#cb7-580"></a>    </span>
+<span id="cb7-581"><a href="#cb7-581"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#cover"</span>)<span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
+<span id="cb7-582"><a href="#cb7-582"></a>  </span>
+<span id="cb7-583"><a href="#cb7-583"></a>  svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"rect"</span>)<span class="op">.</span><span class="fu">data</span>(data)<span class="op">.</span><span class="fu">enter</span>()<span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
+<span id="cb7-584"><a href="#cb7-584"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">value</span>))</span>
+<span id="cb7-585"><a href="#cb7-585"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">y</span>(d<span class="op">.</span><span class="at">y_cum</span>))</span>
+<span id="cb7-586"><a href="#cb7-586"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> <span class="dv">6</span>)</span>
+<span id="cb7-587"><a href="#cb7-587"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> <span class="dv">6</span>)</span>
+<span id="cb7-588"><a href="#cb7-588"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">fill</span>(d<span class="op">.</span><span class="at">group</span>))</span>
+<span id="cb7-589"><a href="#cb7-589"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="declaration">
 

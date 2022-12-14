@@ -500,14 +500,15 @@ svg .axis {
 }
 ```
 
-# Learning checks
+# Learning checks {.smaller}
 
-1. What values of $t$ would you expect to see if the null hypothesis is true?
-2. Which combination of factors is most likely to produce a significant value for an independent-measures $t$ statistic?
-  - Small mean difference and large sample variances
-  - Small mean difference and small sample variances
-  - Large mean difference and large sample variances
-  - Large mean difference and small sample variances
+1. A researcher performing an independent-samples $t$-test finds a difference between groups of 2.3, and calculates a 95% confidence interval of [0.3, 4.3]. Can you predict whether the hypothesis test will reject the null hypothesis?
+    - It will reject the null
+    - It will fail to reject the null
+    - Cannot make a prediction
+2. A confidence interval for an independent-samples test which includes a value of zero within its confidence range establishes that true population parameter is 95% certain to be zero.
+    - True
+    - False
 
 
 
