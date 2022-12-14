@@ -4,18 +4,27 @@ title: "Confidence Interval"
 toc: false
 ---
 
+
+
 ::: {#ci-container}
 :::
 
 
 
 ```{ojs}
-d3.select("#ci-container")
-  .call(addCIPlot, {test_type: "single",
-                   point_estimate: 0,
-                   standard_deviation: 1,
-                   n: 30,
-                   ci: 95})
+//| eval: false
+
+chart = { 
+
+  d3.select("#ci-container")
+    .call(addCIPlot, {test_type: "independent",
+                     point_estimate: -1,
+                     standard_deviation: 1.5,
+                     n: 10,
+                     ci: 95,
+                     disable_controls: false})
+                     
+}
 ```
 
 
@@ -32,15 +41,19 @@ addCIPlot = function(selection, params) {
 
 ciParams = function(selection, params) {
     
-  selection.append("div").style("position", "absolute")
-    .call(inputDropdown)
-    .call(textInput, {id: 'point-estimate', label: 'Point estimate: ', value: params.point_estimate})
+  selection.append("div")
+  .attr("id", "ci-controls")
+  .style("position", "absolute")
+    .call(inputDropdown, params)
+    .call(textInput, {id: 'point-estimate', label: 'Point estimate: ', value: params.point_estimate, disabled: params.disable_controls})
     .call(textInput, {id: 'standard-deviation', label: 'Standard deviation: ', value: params.standard_deviation})
     .call(stdErrSpan)
-    .call(slider, {id: 'n', label: 'n = ', value: params.n})
-    .call(slider, {id: 'ci', label: 'CI: ', value: params.ci})
-    
-     d3.select("#test").property("value", params.test_type)
+    .call(slider, {id: 'n', label: 'n = ', value: params.n, hide_slider: params.disable_controls})
+    .call(slider, {id: 'ci', label: 'CI: ', value: params.ci, hide_slider: params.disable_controls})
+  
+  d3.select("#test").property("value", params.test_type)
+  d3.selectAll("#input-point-estimate, #input-standard-deviation").property("disabled", params.disable_controls)
+     
 }
 ```
 
@@ -60,6 +73,7 @@ ciPlot = function(selection, params) {
   var std_err = computeStdErr(sd, n, params.test_type)
   var xlim
   var ci_x_lim
+  d3.select("#value-standard-error").text(f(std_err))
   
   const x = d3.scaleLinear()
     .range([0, w])
@@ -86,25 +100,31 @@ ciPlot = function(selection, params) {
   
 
   const svg = selection.append("svg")
-    .attr("width", w).attr("height", h)
+    .attr("viewBox", "0 0 " + w + " " + h)
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    <!-- .attr("width", w).attr("height", h) -->
     
   const axis = svg.append("g")
+    .attr("class", "axis")
     .attr("transform", `translate(0, ${y(0)})`)
     .style("color", "steelblue")
     .call(xAxis);
     
   const axisRaw = svg.append("g")
+    .attr("class", "axis")
     .attr("transform", `translate(0, ${y(0)})`)
     .call(xAxisRaw);
     
+  const randomId = Math.floor(Math.random() * 10000);
   const defs = svg.append("defs")
-  const mask = defs.append("mask").attr("id", "mask")
+  const mask = defs.append("mask").attr("id", "mask-" + randomId)
   const mask_rect = mask.append("rect")
   .attr("height", h)
   .style("fill", "white")
   
+  
   const ci_fill = svg.append("path")
-    .attr("mask", "url(#mask)")
+    .attr("mask", "url(#mask-" + randomId + ")")
     .style("stroke", "none").style("fill", "lightblue")
   
   const ci_curve = svg.append("path")
@@ -114,10 +134,12 @@ ciPlot = function(selection, params) {
     .style("stroke-width", 4)
   
   const ci_line = svg.append("line")
-    .style("stroke", "black").style("stroke-dasharray", [5,5])
+    .style("stroke", "black")
+    .style("stroke-dasharray", [5,5])
   
   const ci_point_estimate = svg.append("line")
-    .style("stroke", "black").style("stroke-dasharray", [5,5])
+    .style("stroke", "black")
+    .style("stroke-dasharray", [5,5])
     
   const ci_limit_labels = svg.append("g")
   const ci_limit_lower = ci_limit_labels.append("text")
@@ -181,7 +203,6 @@ ciPlot = function(selection, params) {
     axisRaw.call(xAxisRaw);
 
     ci_x_lim = jStat.studentt.inv((1 - (confidence/100)) / 2, df);
-    <!-- console.log(ci_x_lim); -->
     var line_height = jStat.studentt.pdf(ci_x_lim, df) / 2;
 
     var ci_lims = [point_estimate + ci_x_lim * std_err, point_estimate - ci_x_lim * std_err];
@@ -211,15 +232,20 @@ ciPlot = function(selection, params) {
   }
   
   updateCI();
+  
+  return svg.node();
 }
 ```
 
 
+
+
 ```{ojs controls}
 
-inputDropdown = function(selection, options) {
+inputDropdown = function(selection, params) {
   selection.append("div")
     .attr("id", "test-dropdown")
+    .classed("hide-element", params.disable_controls)
     .html(`
   <label for="test">Test type:</label>
   <select id="test" name="test">
@@ -230,24 +256,28 @@ inputDropdown = function(selection, options) {
   `)
 }
 
-textInput = function(selection, options) {
+textInput = function(selection, params) {
   selection.append("div").html(`
   
-  <label for="input-${options.id}" class = "text-input-label" style="">${options.label}
-<input type="text" id="input-${options.id}" class="text-input-box math" name="${options.id}" value="${options.value}" style="width: 3em;">
+  <label for="input-${params.id}" class = "text-input-label" style="">${params.label}
+<input type="text" id="input-${params.id}" class="text-input-box math" name="${params.id}" value="${params.value}" style="width: 3em;">
 </label>`)
 }
 
-slider = function(selection, options) {
+slider = function(selection, params) {
+
+  if (params.hide_slider) var visibility = "hidden"
+  else var visbility = "visible"
+  
   selection.append("div").html(`
   
-  <label for="input-${options.id}" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">${options.label}</label>
-<span id="value-${options.id}" class="math" style="display: inline-block; width: 1em;">${options.value}</span>
-<input data-prevent-swipe type="range" id="input-${options.id}" name="scale" value="${options.value}" min="2" max="100" step="1" style="border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; margin-left: 0.5em; width: 50%; vertical-align: unset;">
+  <label for="input-${params.id}" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">${params.label}</label>
+<span id="value-${params.id}" class="math" style="display: inline-block; width: 1em;">${params.value}</span>
+<input data-prevent-swipe type="range" id="input-${params.id}" name="scale" value="${params.value}" min="2" max="100" step="1" style="border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; margin-left: 0.5em; width: 50%; vertical-align: unset; visibility: ${visibility};">
   `)
 }
 
-stdErrSpan = function(selection, options) {
+stdErrSpan = function(selection, params) {
   selection.append("div").html(`
     Standard error: <span id="value-standard-error"></span>
   `)
@@ -259,3 +289,4 @@ stdErrSpan = function(selection, options) {
 ```{ojs setup}
 jStat = require("../js/jstat.js")
 ```
+

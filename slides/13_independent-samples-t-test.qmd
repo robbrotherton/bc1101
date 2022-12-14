@@ -22,24 +22,23 @@ format: revealjs
 ## Single-sample $t$-test design
 
 - Compare sample against expected population mean based on logic/theory/scale design
-- E.g. give everyone $10
+- E.g. give everyone $10 💵
 
 :::: {.columns}
 
 ::: {.column width="60%"}
+```{r}
 
-::: {#likert-container .smallest style="width: 80%; display: block;"}
+bc1101tools::likert("What is your current level of happiness?", 
+                    c("1. A lot less than usual",
+                      "2. A little less than usual",
+                      "3. About average",
+                      "4. A little more than usual",
+                      "5. A lot more than usual"), 
+                    extra_css = "width: 85%; font-size: 0.75em", 
+                    scale_name = "example-1")
 
-What is your current level of happiness?
-
-1. A lot less than usual
-2. A little less than usual
-3. About average
-4. A little more than usual
-5. A lot more than usual
-
-:::
-
+```
 :::
 
 ::: {.column width="40%" .center-element}
@@ -98,36 +97,36 @@ What if... give everyone $10
 
 ::: {.column width="50%"}
 Group A:  
-Spend this on [yourself]{.emph}
+Spend this on [yourself]{.emph} 💵
 
-::: {#likert-container .smallest style="width: 80%; display: block; text-align: left;"}
+```{r}
 
-What is your current level of happiness?
-
-1. A lot less than usual
-2. A little less than usual
-3. About average
-4. A little more than usual
-5. A lot more than usual
-
-:::
+bc1101tools::likert("What is your current level of happiness?", 
+                    c("1. A lot less than usual",
+                      "2. A little less than usual",
+                      "3. About average",
+                      "4. A little more than usual",
+                      "5. A lot more than usual"), 
+                    extra_css = "width: 85%; font-size: 0.7em; text-align: left;", 
+                    scale_name = "example-2")
+```
 :::
 
 ::: {.column width="50%"}
 Group B:  
-Spend this on [someone else]{.emph}
+Spend this on [someone else]{.emph} 💵
 
-::: {#likert-container .smallest style="width: 80%; display: block; text-align: left;"}
+```{r}
 
-What is your current level of happiness?
-
-1. A lot less than usual
-2. A little less than usual
-3. About average
-4. A little more than usual
-5. A lot more than usual
-
-:::
+bc1101tools::likert("What is your current level of happiness?", 
+                    c("1. A lot less than usual",
+                      "2. A little less than usual",
+                      "3. About average",
+                      "4. A little more than usual",
+                      "5. A lot more than usual"), 
+                    extra_css = "width: 85%; font-size: 0.7em; text-align: left", 
+                    scale_name = "example-3")
+```
 :::
 
 ::::
@@ -265,7 +264,7 @@ $$
 ::: {.column width="50%"}
 ```{r}
 #| style: "font-size: 0.4em;"
-bc1101tools::t_table(alphas = .05, two_tailed_only = TRUE)
+bc1101tools::t_table(alphas = .025, two_tailed_only = TRUE)
 ```
 
 :::
@@ -342,13 +341,26 @@ $t = \dfrac{(M_1-M_2)-(\mu_1-\mu_2)}{s_{M_1-M_2}} = \dfrac{`r m1` - `r m2`}{`r r
 
 ## Step 4: Make decision
 
+![](media/nondirectional-test-labelled.svg)
+
 
 ## Step 4b: Effect size
-  - Not required for nonsignificant differences
+
+- Cohen's $d$ for independent samples
+
+$$\begin{align}
+d &= \dfrac{\text{difference between means}}{\text{pooled standard deviation}} \\
+  &= \dfrac{(M_1 - M_2) - (\mu_1 - \mu_2)}{\sqrt{s^2_p}} \\
+  &= \dfrac{`r m1` - `r m2`}{\sqrt{`r s2p`}} \\
+  &= `r round((m1 - m2) / sqrt(s2p), 2)`
+\end{align}$$
+
+- Note: not required for nonsignificant differences
+
 
 ## Step 5: Report results
 
-“A two-tailed independent-samples $t$ test suggested that the difference in average happiness between people in the "Spend on self group" $(M = `r m1`$; $SD = `r r(sd1)`)$ and the "Spend on other" group $(M = `r m2`$; $SD = `r r(sd2)`)$ was nonsignificant; $t(`r N-2`) =$ $`r r(t)`$, $p > .05$.”
+> A two-tailed independent-samples $t$ test suggested that the difference in average happiness between people in the "Spend on self group" $(M = `r m1`$; $SD = `r r(sd1)`)$ and the "Spend on other" group $(M = `r m2`$; $SD = `r r(sd2)`)$ was nonsignificant; $t(`r N-2`) =$ $`r r(t)`$, $p > .05$.
 
 
 # Assumptions
@@ -425,14 +437,78 @@ t.test(x = conditionA, y = conditionB,
 
 # Confidence interval
 
-- Quantifies precision of our statistic
-  - Distribution of differences between two samples drawn from a population with a given standard error of the mean difference
+- Quantifies precision of point estimate
+  - Distribution of differences between two samples drawn from identical populations
+
+Rearrange $t$ equation:
 
 ::: {.center-element}
 $t = \dfrac{(M_1-M_2)-(\mu_1-\mu_2)}{s_{M_1-M_2}}$
+:::
 
+To solve for parameter $(\mu_1 - \mu_2)$:
+
+::: {.center-element}
 $(\mu_1-\mu_2) = (M_1-M_2) \pm t * s_{M_1-M_2}$
 :::
+
+
+## Confidence interval
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {#ci-independent}
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {#ci-related}
+:::
+
+:::
+
+::::
+
+```{css}
+#ci-controls {
+  font-size: 0.6em;
+}
+.axis {
+  font-size: 0.7em;
+}
+```
+
+
+```{ojs}
+import { addCIPlot } from "../ojs/confidence-interval.qmd"
+
+chart = {
+  d3.select("#ci-independent")
+    .call(addCIPlot, {test_type: "independent",
+                      point_estimate: -6.2,
+                      standard_deviation: Math.sqrt(99),
+                      n: 10,
+                      ci: 95,
+                      disable_controls: true})
+}
+
+chart2 = {
+  d3.select("#ci-related")
+    .call(addCIPlot, {test_type: "related",
+                      point_estimate: -6.2,
+                      standard_deviation: 4.76,
+                      n: 5,
+                      ci: 95,
+                      disable_controls: true})
+}
+
+```
+
+
 
 # Learning checks
 
@@ -499,7 +575,7 @@ related
 :::
 
 ```{ojs}
-data
+
 cover = {
   const w = 1050
   const h = 500

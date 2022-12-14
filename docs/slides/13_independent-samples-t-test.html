@@ -424,19 +424,32 @@
 <h2>Single-sample <span class="math inline">\(t\)</span>-test design</h2>
 <ul>
 <li>Compare sample against expected population mean based on logic/theory/scale design</li>
-<li>E.g. give everyone $10</li>
+<li>E.g. give everyone $10 💵</li>
 </ul>
 <div class="columns">
 <div class="column" style="width:60%;">
-<div id="likert-container" class="smallest" style="width: 80%; display: block;">
-<p>What is your current level of happiness?</p>
-<ol type="1">
-<li>A lot less than usual</li>
-<li>A little less than usual</li>
-<li>About average</li>
-<li>A little more than usual</li>
-<li>A lot more than usual</li>
-</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div style="border: 1px solid; border-radius: 5px; padding: 1em; width: 85%; font-size: 0.75em">
+<p style="font-weight: bold;">What is your current level of happiness?</p>
+  <label>
+    <input class="form-check-input" type="radio" name="example-1" style="margin-left: 1em;">
+    1. A lot less than usual
+  </label><br>  <label>
+    <input class="form-check-input" type="radio" name="example-1" style="margin-left: 1em;">
+    2. A little less than usual
+  </label><br>  <label>
+    <input class="form-check-input" type="radio" name="example-1" style="margin-left: 1em;" checked="">
+    3. About average
+  </label><br>  <label>
+    <input class="form-check-input" type="radio" name="example-1" style="margin-left: 1em;">
+    4. A little more than usual
+  </label><br>  <label>
+    <input class="form-check-input" type="radio" name="example-1" style="margin-left: 1em;">
+    5. A lot more than usual
+  </label><br>
+</div>
+</div>
 </div>
 </div><div class="column center-element" style="width:40%;">
 <p><span class="math inline">\(\mu = 3\)</span></p>
@@ -444,7 +457,7 @@
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="54" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 53;"><span id="cb1-54"><a href="#cb1-54"></a><span class="im">import</span> {likert} <span class="im">from</span> <span class="st">"../ojs/utils.qmd"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="53" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 52;"><span id="cb1-53"><a href="#cb1-53"></a><span class="im">import</span> {likert} <span class="im">from</span> <span class="st">"../ojs/utils.qmd"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -490,29 +503,55 @@ population</p>
 <div class="columns c">
 <div class="column" style="width:50%;">
 <p>Group A:<br>
-Spend this on <span class="emph">yourself</span></p>
-<div id="likert-container" class="smallest" style="width: 80%; display: block; text-align: left;">
-<p>What is your current level of happiness?</p>
-<ol type="1">
-<li>A lot less than usual</li>
-<li>A little less than usual</li>
-<li>About average</li>
-<li>A little more than usual</li>
-<li>A lot more than usual</li>
-</ol>
+Spend this on <span class="emph">yourself</span> 💵</p>
+<div class="cell">
+<div class="cell-output-display">
+<div style="border: 1px solid; border-radius: 5px; padding: 1em; width: 85%; font-size: 0.7em; text-align: left;">
+<p style="font-weight: bold;">What is your current level of happiness?</p>
+  <label>
+    <input class="form-check-input" type="radio" name="example-2" style="margin-left: 1em;">
+    1. A lot less than usual
+  </label><br>  <label>
+    <input class="form-check-input" type="radio" name="example-2" style="margin-left: 1em;">
+    2. A little less than usual
+  </label><br>  <label>
+    <input class="form-check-input" type="radio" name="example-2" style="margin-left: 1em;" checked="">
+    3. About average
+  </label><br>  <label>
+    <input class="form-check-input" type="radio" name="example-2" style="margin-left: 1em;">
+    4. A little more than usual
+  </label><br>  <label>
+    <input class="form-check-input" type="radio" name="example-2" style="margin-left: 1em;">
+    5. A lot more than usual
+  </label><br>
+</div>
+</div>
 </div>
 </div><div class="column" style="width:50%;">
 <p>Group B:<br>
-Spend this on <span class="emph">someone else</span></p>
-<div id="likert-container" class="smallest" style="width: 80%; display: block; text-align: left;">
-<p>What is your current level of happiness?</p>
-<ol type="1">
-<li>A lot less than usual</li>
-<li>A little less than usual</li>
-<li>About average</li>
-<li>A little more than usual</li>
-<li>A lot more than usual</li>
-</ol>
+Spend this on <span class="emph">someone else</span> 💵</p>
+<div class="cell">
+<div class="cell-output-display">
+<div style="border: 1px solid; border-radius: 5px; padding: 1em; width: 85%; font-size: 0.7em; text-align: left">
+<p style="font-weight: bold;">What is your current level of happiness?</p>
+  <label>
+    <input class="form-check-input" type="radio" name="example-3" style="margin-left: 1em;">
+    1. A lot less than usual
+  </label><br>  <label>
+    <input class="form-check-input" type="radio" name="example-3" style="margin-left: 1em;">
+    2. A little less than usual
+  </label><br>  <label>
+    <input class="form-check-input" type="radio" name="example-3" style="margin-left: 1em;" checked="">
+    3. About average
+  </label><br>  <label>
+    <input class="form-check-input" type="radio" name="example-3" style="margin-left: 1em;">
+    4. A little more than usual
+  </label><br>  <label>
+    <input class="form-check-input" type="radio" name="example-3" style="margin-left: 1em;">
+    5. A lot more than usual
+  </label><br>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -650,73 +689,73 @@ df &amp;= df_1 + df_2 \\
 <tr>
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: right; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Proportion<br>in 1 tail</div></th>
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: right; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
-<br>0.05</div></th>
+<br>0.025</div></th>
 </tr>
   <tr>
    <th style="text-align:right;"> Proportion<br>in 2 tails </th>
-   <th style="text-align:right;"> 0.1 </th>
+   <th style="text-align:right;"> 0.05 </th>
   </tr>
  </thead>
 <tbody>
   <tr>
    <td style="text-align:right;font-weight: bold;"> 1 </td>
-   <td style="text-align:right;"> 6.314 </td>
+   <td style="text-align:right;"> 12.706 </td>
   </tr>
   <tr>
    <td style="text-align:right;font-weight: bold;"> 2 </td>
-   <td style="text-align:right;"> 2.920 </td>
+   <td style="text-align:right;"> 4.303 </td>
   </tr>
   <tr>
    <td style="text-align:right;font-weight: bold;"> 3 </td>
-   <td style="text-align:right;"> 2.353 </td>
+   <td style="text-align:right;"> 3.182 </td>
   </tr>
   <tr>
    <td style="text-align:right;font-weight: bold;"> 4 </td>
-   <td style="text-align:right;"> 2.132 </td>
+   <td style="text-align:right;"> 2.776 </td>
   </tr>
   <tr>
    <td style="text-align:right;font-weight: bold;"> 5 </td>
-   <td style="text-align:right;"> 2.015 </td>
+   <td style="text-align:right;"> 2.571 </td>
   </tr>
   <tr>
    <td style="text-align:right;font-weight: bold;"> 6 </td>
-   <td style="text-align:right;"> 1.943 </td>
+   <td style="text-align:right;"> 2.447 </td>
   </tr>
   <tr>
    <td style="text-align:right;font-weight: bold;"> 7 </td>
-   <td style="text-align:right;"> 1.895 </td>
+   <td style="text-align:right;"> 2.365 </td>
   </tr>
   <tr>
    <td style="text-align:right;font-weight: bold;"> \(df\) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8 </td>
-   <td style="text-align:right;"> 1.860 </td>
+   <td style="text-align:right;"> 2.306 </td>
   </tr>
   <tr>
    <td style="text-align:right;font-weight: bold;"> 9 </td>
-   <td style="text-align:right;"> 1.833 </td>
+   <td style="text-align:right;"> 2.262 </td>
   </tr>
   <tr>
    <td style="text-align:right;font-weight: bold;"> 10 </td>
-   <td style="text-align:right;"> 1.812 </td>
+   <td style="text-align:right;"> 2.228 </td>
   </tr>
   <tr>
    <td style="text-align:right;font-weight: bold;"> 11 </td>
-   <td style="text-align:right;"> 1.796 </td>
+   <td style="text-align:right;"> 2.201 </td>
   </tr>
   <tr>
    <td style="text-align:right;font-weight: bold;"> 12 </td>
-   <td style="text-align:right;"> 1.782 </td>
+   <td style="text-align:right;"> 2.179 </td>
   </tr>
   <tr>
    <td style="text-align:right;font-weight: bold;"> 13 </td>
-   <td style="text-align:right;"> 1.771 </td>
+   <td style="text-align:right;"> 2.160 </td>
   </tr>
   <tr>
    <td style="text-align:right;font-weight: bold;"> 14 </td>
-   <td style="text-align:right;"> 1.761 </td>
+   <td style="text-align:right;"> 2.145 </td>
   </tr>
   <tr>
    <td style="text-align:right;font-weight: bold;"> 15 </td>
-   <td style="text-align:right;"> 1.753 </td>
+   <td style="text-align:right;"> 2.131 </td>
   </tr>
   <tr>
    <td style="text-align:right;font-weight: bold;"> ... </td>
@@ -869,16 +908,28 @@ df &amp;= df_1 + df_2 \\
 </section>
 <section id="step-4-make-decision" class="slide level2">
 <h2>Step 4: Make decision</h2>
-</section>
+
+<img data-src="media/nondirectional-test-labelled.svg" class="r-stretch"></section>
 <section id="step-4b-effect-size" class="slide level2">
 <h2>Step 4b: Effect size</h2>
 <ul>
-<li>Not required for nonsignificant differences</li>
+<li>Cohen’s <span class="math inline">\(d\)</span> for independent samples</li>
+</ul>
+<p><span class="math display">\[\begin{align}
+d &amp;= \dfrac{\text{difference between means}}{\text{pooled standard deviation}} \\
+  &amp;= \dfrac{(M_1 - M_2) - (\mu_1 - \mu_2)}{\sqrt{s^2_p}} \\
+  &amp;= \dfrac{3 - 4}{\sqrt{2.25}} \\
+  &amp;= -0.67
+\end{align}\]</span></p>
+<ul>
+<li>Note: not required for nonsignificant differences</li>
 </ul>
 </section>
 <section id="step-5-report-results" class="slide level2">
 <h2>Step 5: Report results</h2>
-<p>“A two-tailed independent-samples <span class="math inline">\(t\)</span> test suggested that the difference in average happiness between people in the”Spend on self group” <span class="math inline">\((M = 3\)</span>; <span class="math inline">\(SD = 1.58)\)</span> and the “Spend on other” group <span class="math inline">\((M = 4\)</span>; <span class="math inline">\(SD = 1.41)\)</span> was nonsignificant; <span class="math inline">\(t(8) =\)</span> <span class="math inline">\(-1.05\)</span>, <span class="math inline">\(p &gt; .05\)</span>.”</p>
+<blockquote>
+<p>A two-tailed independent-samples <span class="math inline">\(t\)</span> test suggested that the difference in average happiness between people in the “Spend on self group” <span class="math inline">\((M = 3\)</span>; <span class="math inline">\(SD = 1.58)\)</span> and the “Spend on other” group <span class="math inline">\((M = 4\)</span>; <span class="math inline">\(SD = 1.41)\)</span> was nonsignificant; <span class="math inline">\(t(8) =\)</span> <span class="math inline">\(-1.05\)</span>, <span class="math inline">\(p &gt; .05\)</span>.</p>
+</blockquote>
 </section></section>
 <section>
 <section id="assumptions" class="title-slide slide level1 center">
@@ -983,20 +1034,92 @@ mean of x mean of y
 </div>
 </div>
 </section></section>
+<section>
 <section id="confidence-interval" class="title-slide slide level1 center">
 <h1>Confidence interval</h1>
 <ul>
-<li>Quantifies precision of our statistic
+<li>Quantifies precision of point estimate
 <ul>
-<li>Distribution of differences between two samples drawn from a population with a given standard error of the mean difference</li>
+<li>Distribution of differences between two samples drawn from identical populations</li>
 </ul></li>
 </ul>
+<p>Rearrange <span class="math inline">\(t\)</span> equation:</p>
 <div class="center-element">
 <p><span class="math inline">\(t = \dfrac{(M_1-M_2)-(\mu_1-\mu_2)}{s_{M_1-M_2}}\)</span></p>
+</div>
+<p>To solve for parameter <span class="math inline">\((\mu_1 - \mu_2)\)</span>:</p>
+<div class="center-element">
 <p><span class="math inline">\((\mu_1-\mu_2) = (M_1-M_2) \pm t * s_{M_1-M_2}\)</span></p>
 </div>
 </section>
+<section id="confidence-interval-1" class="slide level2">
+<h2>Confidence interval</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div id="ci-independent">
 
+</div>
+</div><div class="column" style="width:50%;">
+<div id="ci-related">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<style type="text/css">
+#ci-controls {
+  font-size: 0.6em;
+}
+.axis {
+  font-size: 0.7em;
+}
+</style>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="487" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 486;"><span id="cb6-487"><a href="#cb6-487"></a><span class="im">import</span> { addCIPlot } <span class="im">from</span> <span class="st">"../ojs/confidence-interval.qmd"</span></span>
+<span id="cb6-488"><a href="#cb6-488"></a></span>
+<span id="cb6-489"><a href="#cb6-489"></a>chart <span class="op">=</span> {</span>
+<span id="cb6-490"><a href="#cb6-490"></a>  d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#ci-independent"</span>)</span>
+<span id="cb6-491"><a href="#cb6-491"></a>    <span class="op">.</span><span class="fu">call</span>(addCIPlot<span class="op">,</span> {<span class="dt">test_type</span><span class="op">:</span> <span class="st">"independent"</span><span class="op">,</span></span>
+<span id="cb6-492"><a href="#cb6-492"></a>                      <span class="dt">point_estimate</span><span class="op">:</span> <span class="op">-</span><span class="fl">6.2</span><span class="op">,</span></span>
+<span id="cb6-493"><a href="#cb6-493"></a>                      <span class="dt">standard_deviation</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">99</span>)<span class="op">,</span></span>
+<span id="cb6-494"><a href="#cb6-494"></a>                      <span class="dt">n</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></span>
+<span id="cb6-495"><a href="#cb6-495"></a>                      <span class="dt">ci</span><span class="op">:</span> <span class="dv">95</span><span class="op">,</span></span>
+<span id="cb6-496"><a href="#cb6-496"></a>                      <span class="dt">disable_controls</span><span class="op">:</span> <span class="kw">true</span>})</span>
+<span id="cb6-497"><a href="#cb6-497"></a>}</span>
+<span id="cb6-498"><a href="#cb6-498"></a></span>
+<span id="cb6-499"><a href="#cb6-499"></a>chart2 <span class="op">=</span> {</span>
+<span id="cb6-500"><a href="#cb6-500"></a>  d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#ci-related"</span>)</span>
+<span id="cb6-501"><a href="#cb6-501"></a>    <span class="op">.</span><span class="fu">call</span>(addCIPlot<span class="op">,</span> {<span class="dt">test_type</span><span class="op">:</span> <span class="st">"related"</span><span class="op">,</span></span>
+<span id="cb6-502"><a href="#cb6-502"></a>                      <span class="dt">point_estimate</span><span class="op">:</span> <span class="op">-</span><span class="fl">6.2</span><span class="op">,</span></span>
+<span id="cb6-503"><a href="#cb6-503"></a>                      <span class="dt">standard_deviation</span><span class="op">:</span> <span class="fl">4.76</span><span class="op">,</span></span>
+<span id="cb6-504"><a href="#cb6-504"></a>                      <span class="dt">n</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span></span>
+<span id="cb6-505"><a href="#cb6-505"></a>                      <span class="dt">ci</span><span class="op">:</span> <span class="dv">95</span><span class="op">,</span></span>
+<span id="cb6-506"><a href="#cb6-506"></a>                      <span class="dt">disable_controls</span><span class="op">:</span> <span class="kw">true</span>})</span>
+<span id="cb6-507"><a href="#cb6-507"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+</section></section>
 <section id="learning-checks" class="title-slide slide level1 center">
 <h1>Learning checks</h1>
 <ol type="1">
@@ -1010,41 +1133,31 @@ mean of x mean of y
 <li>Large mean difference and small sample variances</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="502" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 501;"><span id="cb6-502"><a href="#cb6-502"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="577" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 576;"><span id="cb7-577"><a href="#cb7-577"></a>cover <span class="op">=</span> {</span>
+<span id="cb7-578"><a href="#cb7-578"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">1050</span></span>
+<span id="cb7-579"><a href="#cb7-579"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb7-580"><a href="#cb7-580"></a>  <span class="kw">const</span> x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb7-581"><a href="#cb7-581"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">40</span><span class="op">,</span><span class="dv">180</span>])</span>
+<span id="cb7-582"><a href="#cb7-582"></a>    <span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span>w])</span>
+<span id="cb7-583"><a href="#cb7-583"></a>  <span class="kw">const</span> y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb7-584"><a href="#cb7-584"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span><span class="dv">70</span>])</span>
+<span id="cb7-585"><a href="#cb7-585"></a>    <span class="op">.</span><span class="fu">range</span>([h<span class="op">,</span><span class="dv">0</span>])</span>
+<span id="cb7-586"><a href="#cb7-586"></a>  <span class="kw">const</span> fill <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleOrdinal</span>()</span>
+<span id="cb7-587"><a href="#cb7-587"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="st">"A"</span><span class="op">,</span><span class="st">"B"</span><span class="op">,</span> <span class="st">"AB"</span>])</span>
+<span id="cb7-588"><a href="#cb7-588"></a>    <span class="op">.</span><span class="fu">range</span>([<span class="st">"#dda6a6"</span><span class="op">,</span> <span class="st">"#b0d3ff"</span><span class="op">,</span> <span class="st">"#9c9ecb"</span>])</span>
+<span id="cb7-589"><a href="#cb7-589"></a>    </span>
+<span id="cb7-590"><a href="#cb7-590"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#cover"</span>)<span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
+<span id="cb7-591"><a href="#cb7-591"></a>  </span>
+<span id="cb7-592"><a href="#cb7-592"></a>  svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"rect"</span>)<span class="op">.</span><span class="fu">data</span>(data)<span class="op">.</span><span class="fu">enter</span>()<span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
+<span id="cb7-593"><a href="#cb7-593"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">value</span>))</span>
+<span id="cb7-594"><a href="#cb7-594"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">y</span>(d<span class="op">.</span><span class="at">y_cum</span>))</span>
+<span id="cb7-595"><a href="#cb7-595"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> <span class="dv">6</span>)</span>
+<span id="cb7-596"><a href="#cb7-596"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> <span class="dv">6</span>)</span>
+<span id="cb7-597"><a href="#cb7-597"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">fill</span>(d<span class="op">.</span><span class="at">group</span>))</span>
+<span id="cb7-598"><a href="#cb7-598"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-2-1" data-nodetype="expression">
+<div id="ojs-cell-3" data-nodetype="declaration">
 
-</div>
-</div>
-</div>
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="503" data-source-offset="-5"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 502;"><span id="cb7-503"><a href="#cb7-503"></a>cover <span class="op">=</span> {</span>
-<span id="cb7-504"><a href="#cb7-504"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">1050</span></span>
-<span id="cb7-505"><a href="#cb7-505"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">500</span></span>
-<span id="cb7-506"><a href="#cb7-506"></a>  <span class="kw">const</span> x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb7-507"><a href="#cb7-507"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">40</span><span class="op">,</span><span class="dv">180</span>])</span>
-<span id="cb7-508"><a href="#cb7-508"></a>    <span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span>w])</span>
-<span id="cb7-509"><a href="#cb7-509"></a>  <span class="kw">const</span> y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb7-510"><a href="#cb7-510"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span><span class="dv">70</span>])</span>
-<span id="cb7-511"><a href="#cb7-511"></a>    <span class="op">.</span><span class="fu">range</span>([h<span class="op">,</span><span class="dv">0</span>])</span>
-<span id="cb7-512"><a href="#cb7-512"></a>  <span class="kw">const</span> fill <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleOrdinal</span>()</span>
-<span id="cb7-513"><a href="#cb7-513"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="st">"A"</span><span class="op">,</span><span class="st">"B"</span><span class="op">,</span> <span class="st">"AB"</span>])</span>
-<span id="cb7-514"><a href="#cb7-514"></a>    <span class="op">.</span><span class="fu">range</span>([<span class="st">"#dda6a6"</span><span class="op">,</span> <span class="st">"#b0d3ff"</span><span class="op">,</span> <span class="st">"#9c9ecb"</span>])</span>
-<span id="cb7-515"><a href="#cb7-515"></a>    </span>
-<span id="cb7-516"><a href="#cb7-516"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#cover"</span>)<span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
-<span id="cb7-517"><a href="#cb7-517"></a>  </span>
-<span id="cb7-518"><a href="#cb7-518"></a>  svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"rect"</span>)<span class="op">.</span><span class="fu">data</span>(data)<span class="op">.</span><span class="fu">enter</span>()<span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
-<span id="cb7-519"><a href="#cb7-519"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">value</span>))</span>
-<span id="cb7-520"><a href="#cb7-520"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">y</span>(d<span class="op">.</span><span class="at">y_cum</span>))</span>
-<span id="cb7-521"><a href="#cb7-521"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> <span class="dv">6</span>)</span>
-<span id="cb7-522"><a href="#cb7-522"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> <span class="dv">6</span>)</span>
-<span id="cb7-523"><a href="#cb7-523"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">fill</span>(d<span class="op">.</span><span class="at">group</span>))</span>
-<span id="cb7-524"><a href="#cb7-524"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-2-2" data-nodetype="declaration">
-
-</div>
 </div>
 </div>
 </div>
@@ -1319,7 +1432,7 @@ mean of x mean of y
 
     </script>
     <script type="ojs-module-contents">
-    {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"import {likert} from \"../ojs/utils.qmd\";\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"data\ncover = {\n  const w = 1050\n  const h = 500\n  const x = d3.scaleLinear()\n    .domain([40,180])\n    .range([0,w])\n  const y = d3.scaleLinear()\n    .domain([0,70])\n    .range([h,0])\n  const fill = d3.scaleOrdinal()\n    .domain([\"A\",\"B\", \"AB\"])\n    .range([\"#dda6a6\", \"#b0d3ff\", \"#9c9ecb\"])\n    \n  const svg = d3.select(\"#cover\").append(\"svg\").attr(\"width\", w).attr(\"height\", h)\n  \n  svg.selectAll(\"rect\").data(data).enter().append(\"rect\")\n    .attr(\"x\", d => x(d.value))\n    .attr(\"y\", d => y(d.y_cum))\n    .attr(\"width\", 6)\n    .attr(\"height\", 6)\n    .style(\"fill\", d => fill(d.group))\n}\n"}]}
+    {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"import {likert} from \"../ojs/utils.qmd\";\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"import { addCIPlot } from \"../ojs/confidence-interval.qmd\"\n\nchart = {\n  d3.select(\"#ci-independent\")\n    .call(addCIPlot, {test_type: \"independent\",\n                      point_estimate: -6.2,\n                      standard_deviation: Math.sqrt(99),\n                      n: 10,\n                      ci: 95,\n                      disable_controls: true})\n}\n\nchart2 = {\n  d3.select(\"#ci-related\")\n    .call(addCIPlot, {test_type: \"related\",\n                      point_estimate: -6.2,\n                      standard_deviation: 4.76,\n                      n: 5,\n                      ci: 95,\n                      disable_controls: true})\n}\n\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"\ncover = {\n  const w = 1050\n  const h = 500\n  const x = d3.scaleLinear()\n    .domain([40,180])\n    .range([0,w])\n  const y = d3.scaleLinear()\n    .domain([0,70])\n    .range([h,0])\n  const fill = d3.scaleOrdinal()\n    .domain([\"A\",\"B\", \"AB\"])\n    .range([\"#dda6a6\", \"#b0d3ff\", \"#9c9ecb\"])\n    \n  const svg = d3.select(\"#cover\").append(\"svg\").attr(\"width\", w).attr(\"height\", h)\n  \n  svg.selectAll(\"rect\").data(data).enter().append(\"rect\")\n    .attr(\"x\", d => x(d.value))\n    .attr(\"y\", d => y(d.y_cum))\n    .attr(\"width\", 6)\n    .attr(\"height\", 6)\n    .style(\"fill\", d => fill(d.group))\n}\n"}]}
     </script>
     <script type="module">
     window._ojs.paths.runtimeToDoc = "../../slides";
