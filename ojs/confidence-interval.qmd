@@ -12,15 +12,15 @@ toc: false
 
 
 ```{ojs}
-//| eval: false
+//| eval: true
 
 chart = { 
 
   d3.select("#ci-container")
-    .call(addCIPlot, {test_type: "independent",
-                     point_estimate: -1,
-                     standard_deviation: 1.5,
-                     n: 10,
+    .call(addCIPlot, {test_type: "single",
+                     point_estimate: 322.59,
+                     standard_deviation: 45.31,
+                     n: 23,
                      ci: 95,
                      disable_controls: false})
                      
@@ -43,13 +43,12 @@ ciParams = function(selection, params) {
     
   selection.append("div")
   .attr("id", "ci-controls")
-  .style("position", "absolute")
     .call(inputDropdown, params)
+    .call(slider, {id: 'ci', label: 'CI: ', value: params.ci, hide_slider: params.disable_controls})
     .call(textInput, {id: 'point-estimate', label: 'Point estimate: ', value: params.point_estimate, disabled: params.disable_controls})
     .call(textInput, {id: 'standard-deviation', label: 'Standard deviation: ', value: params.standard_deviation})
     .call(stdErrSpan)
     .call(slider, {id: 'n', label: 'n = ', value: params.n, hide_slider: params.disable_controls})
-    .call(slider, {id: 'ci', label: 'CI: ', value: params.ci, hide_slider: params.disable_controls})
   
   d3.select("#test").property("value", params.test_type)
   d3.selectAll("#input-point-estimate, #input-standard-deviation").property("disabled", params.disable_controls)
@@ -77,21 +76,20 @@ ciPlot = function(selection, params) {
   
   const x = d3.scaleLinear()
     .range([0, w])
-  const xRaw = d3.scaleLinear()
-    .domain([-1, 1])
+  const t = d3.scaleLinear()
     .range([0, w])
   const y = d3.scaleLinear()
     .domain([0, 0.43])
     .range([h - margin.bottom, 0])
   const line = d3.line()
-    .x(d => x(d.value))
+    .x(d => t(d.value))
     .y(d => y(d.density));
   const xAxis = d3.axisBottom(x);
-  const xAxisRaw = d3.axisBottom(xRaw).tickSize(10);
+  const tAxis = d3.axisBottom(t).tickSize(10);
   
-  function makeCurve(xlim) {
+  function makeCurve(limits) {
     var arr = [];
-    var x = jStat(-xlim, xlim, 210)[0];
+    var x = jStat(limits[0], limits[1], 210)[0];
     for (var i = 0; i < x.length; i++) {
       arr.push({value: x[i], density: jStat.studentt.pdf(x[i], df)})
     }
@@ -107,13 +105,13 @@ ciPlot = function(selection, params) {
   const axis = svg.append("g")
     .attr("class", "axis")
     .attr("transform", `translate(0, ${y(0)})`)
-    .style("color", "steelblue")
-    .call(xAxis);
+    <!-- .style("color", "steelblue") -->
+    <!-- .call(xAxis); -->
     
-  const axisRaw = svg.append("g")
+  const axis_t = svg.append("g")
     .attr("class", "axis")
     .attr("transform", `translate(0, ${y(0)})`)
-    .call(xAxisRaw);
+    <!-- .style("font-size", "1em"); -->
     
   const randomId = Math.floor(Math.random() * 10000);
   const defs = svg.append("defs")
@@ -136,10 +134,15 @@ ciPlot = function(selection, params) {
   const ci_line = svg.append("line")
     .style("stroke", "black")
     .style("stroke-dasharray", [5,5])
-  
   const ci_point_estimate = svg.append("line")
     .style("stroke", "black")
     .style("stroke-dasharray", [5,5])
+  const ci_point_estimate_dot = svg.append("circle")
+    .style("stroke", "none")
+    .style("fill", "black")
+    .attr("cx", w/2)
+    .attr("cy", y(0))
+    .attr("r", 5)
     
   const ci_limit_labels = svg.append("g")
   const ci_limit_lower = ci_limit_labels.append("text")
@@ -187,53 +190,48 @@ ciPlot = function(selection, params) {
     else return sd / Math.sqrt(n);
   }
   
- 
   function updateCI() {
-    var selectedTestType = inputTest.node().value;
-    if (selectedTestType=="independent") {
-      xlim = sd / (std_err / 2);
-      xRaw.domain([point_estimate - sd*2, point_estimate + sd*2]);
-    } else {
-      xlim = sd / std_err;
-      xRaw.domain([point_estimate - sd, point_estimate + sd]);
-    }
-    
-    x.domain([-xlim, xlim]);
+
+    var x_lim = [point_estimate - 3 * sd, point_estimate + 3 * sd];
+    var t_lim = [x_to_t(x_lim[0], point_estimate, std_err),
+                 x_to_t(x_lim[1], point_estimate, std_err)]
+    x.domain(x_lim);
     axis.call(xAxis);
-    axisRaw.call(xAxisRaw);
+    
+    t.domain(t_lim)
+    <!-- axis_t.call(tAxis); -->
 
-    ci_x_lim = jStat.studentt.inv((1 - (confidence/100)) / 2, df);
-    var line_height = jStat.studentt.pdf(ci_x_lim, df) / 2;
-
-    var ci_lims = [point_estimate + ci_x_lim * std_err, point_estimate - ci_x_lim * std_err];
+    var critical_t = [jStat.studentt.inv((1 - (confidence/100)) / 2, df),
+                      jStat.studentt.inv(1-(1 - (confidence/100)) / 2, df)]
+    var critical_x = [t_to_x(critical_t[0], point_estimate, std_err),
+                      t_to_x(critical_t[1], point_estimate, std_err)]
+    var line_height = jStat.studentt.pdf(critical_t[0], df) / 2
 
     ci_limit_lower
-      .text(f(ci_lims[0]))
-      .attr("x", x(ci_x_lim))
+      .text(f(critical_x[0]))
+      .attr("x", x(critical_x[0]))
       .attr("y", y(line_height))
     ci_limit_upper
-      .text(f(ci_lims[1]))
-      .attr("x", x(-ci_x_lim))
+      .text(f(critical_x[1]))
+      .attr("x", x(critical_x[1]))
       .attr("y", y(line_height))
 
-    ci_fill.attr("d", line(makeCurve(15)))
-    ci_curve.attr("d", line(makeCurve(xlim)))
-    
+    ci_fill.attr("d", line(makeCurve([-15, 15])))
+    ci_curve.attr("d", line(makeCurve(t_lim)))
+
     mask_rect
-      .attr("x", x(ci_x_lim))
-      .attr("width", x(-ci_x_lim) - x(ci_x_lim));
+      .attr("x", t(critical_t[0]))
+      .attr("width", t(critical_t[1]) - t(critical_t[0]));
 
     ci_line
       .attr("transform", `translate(0, ${y(line_height)})`)
-      .attr("x1", x(-ci_x_lim)).attr("x2", x(ci_x_lim))
+      .attr("x1", t(critical_t[0])).attr("x2", t(critical_t[1]))
     ci_point_estimate
-      .attr("transform", `translate(${x(0)}, 0)`)
+      .attr("transform", `translate(${t(0)}, 0)`)
       .attr("y1", y(jStat.studentt.pdf(0, df))).attr("y2", y(0))
   }
   
   updateCI();
-  
-  return svg.node();
 }
 ```
 
@@ -281,6 +279,18 @@ stdErrSpan = function(selection, params) {
   selection.append("div").html(`
     Standard error: <span id="value-standard-error"></span>
   `)
+}
+
+```
+
+```{ojs helpers}
+
+t_to_x = function(t, mu, std_err) {
+  return mu + t * std_err;
+}
+
+x_to_t = function(x, mu, std_err) {
+  return (x - mu) / std_err;
 }
 
 ```

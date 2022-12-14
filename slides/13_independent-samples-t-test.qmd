@@ -300,6 +300,9 @@ s2p <- (ss1 + ss2)/(df1 + df2)
 sm1m2 <- sqrt((s2p/n1)+(s2p/n2))
 
 t <- (m1-m2)/sm1m2
+
+ci_lower <- (m1 - m2) - qt(.975, N-2) * sm1m2
+ci_upper <- (m1 - m2) + qt(.975, N-2) * sm1m2
 ```
 
 :::: {.columns .center-element style="font-size: 0.7em;"}
@@ -453,34 +456,23 @@ $(\mu_1-\mu_2) = (M_1-M_2) \pm t * s_{M_1-M_2}$
 :::
 
 
-## Confidence interval
+## Confidence interval {.small}
 
-:::: {.columns}
-
-::: {.column width="50%"}
-
-::: {#ci-independent}
-:::
-
-:::
-
-::: {.column width="50%"}
-
-::: {#ci-related}
-:::
-
-:::
-
-::::
-
-```{css}
-#ci-controls {
-  font-size: 0.6em;
-}
-.axis {
-  font-size: 0.7em;
-}
+```{r}
+options(digits = 2)
 ```
+
+
+::: {#ci-independent style="width: 70%; margin: 0 auto;"}
+:::
+
+
+$$\begin{align}
+(\mu_1 - \mu_2) &= (M_1 - M_2) \pm t * s_{M_1 - M_2} \\
+                &= `r m1 - m2` \pm `r qt(.975, N-2)` * `r sm1m2` \\
+                &= `r ci_lower`, `r ci_upper`
+\end{align}$$
+
 
 
 ```{ojs}
@@ -489,26 +481,24 @@ import { addCIPlot } from "../ojs/confidence-interval.qmd"
 chart = {
   d3.select("#ci-independent")
     .call(addCIPlot, {test_type: "independent",
-                      point_estimate: -6.2,
-                      standard_deviation: Math.sqrt(99),
+                      point_estimate: -1,
+                      standard_deviation: 1.5,
                       n: 10,
-                      ci: 95,
-                      disable_controls: true})
-}
-
-chart2 = {
-  d3.select("#ci-related")
-    .call(addCIPlot, {test_type: "related",
-                      point_estimate: -6.2,
-                      standard_deviation: 4.76,
-                      n: 5,
                       ci: 95,
                       disable_controls: true})
 }
 
 ```
 
-
+```{css}
+#ci-controls {
+  position: absolute;
+  font-size: 0.7em;
+}
+svg .axis {
+  font-size: 0.7em;
+}
+```
 
 # Learning checks
 
