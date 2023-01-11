@@ -7,7 +7,7 @@
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.1.251">
+  <meta name="generator" content="quarto-1.3.78">
 
   <title>BC1101 – probability</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -1430,6 +1430,7 @@ p(both \ white) &amp; = .2 * .18  \approx .037 \end{align}\]</span></p>
     {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\ntable_selection = {\n  var num = 0\n  \n  function getNumberFromTable() {\n    try {\n      num = d3.select(this).select(\"td\")._groups[0][0].innerHTML;\n    } catch {} finally {update();}\n  }\n  \n  d3.select(\"#tbl\").selectAll(\"tr\").on(\"mouseover\", getNumberFromTable)\n  \n  const w = 500\n  const h = 400\n  \n  const margins = {t: 50, r: 10, b: 50, l: 10}\n  \n  const x = d3.scaleLinear()\n    .domain([-3,3])\n    .range([margins.l,w-margins.r])\n  const y = d3.scaleLinear()\n    .domain([0,0.41])\n    .range([h-margins.b,margins.t])\n  const line = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density))\n  const axis = d3.axisBottom(x)\n  \n  const svg = d3.select(\"#z-container\")\n    .append(\"svg\").attr(\"width\", w).attr(\"height\", h)\n  \n  svg.append(\"g\")\n    .call(axis)\n    .attr(\"transform\", \"translate(0,\" + y(0) +\")\")\n  \n  svg.append(\"path\").attr(\"d\", line(curve))\n    .style(\"stroke\", \"black\").style(\"fill\", \"none\")\n    .attr(\"class\", \"invertable\")\n    \n  svg.append(\"path\")\n    .style(\"fill\", \"thistle\").style(\"fill-opacity\", 0.5)\n    .attr(\"d\", line(curve))\n    \n  svg.append(\"path\")\n    .style(\"fill\", \"thistle\").style(\"fill-opacity\", 0.5)\n    .attr(\"d\", line(curve))\n    .attr(\"clip-path\", \"url(#clip)\")\n\n    \n  function update() {\n  \n  svg.selectAll(\"clipPath\").remove()\n  svg.append(\"clipPath\").attr(\"id\", \"clip\")\n    .append(\"rect\")\n    .attr(\"width\", x(num))\n    .attr(\"height\", h)\n  }\n  \n  update();\n}\n\n"}]}
     </script>
     <script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
     window._ojs.paths.runtimeToDoc = "../../slides";
     window._ojs.paths.runtimeToRoot = "../..";
     window._ojs.paths.docToRoot = "..";
@@ -1516,7 +1517,24 @@ p(both \ white) &amp; = .2 * .18  \approx .037 \end{align}\]</span></p>
         button.classList.add('code-copy-button-checked');
         var currentTitle = button.getAttribute("title");
         button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
         setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
           button.setAttribute("title", currentTitle);
           button.classList.remove('code-copy-button-checked');
         }, 1000);
@@ -1554,24 +1572,42 @@ p(both \ white) &amp; = .2 * .18  \approx .037 \end{align}\]</span></p>
           return note.innerHTML;
         });
       }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
       var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
       for (var i=0; i<bibliorefs.length; i++) {
         const ref = bibliorefs[i];
-        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-        tippyHover(ref, function() {
-          var popup = window.document.createElement('div');
-          cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
-            }
-            popup.appendChild(citeDiv);
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
           });
-          return popup.innerHTML;
-        });
+        }
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1579,7 +1615,7 @@ p(both \ white) &amp; = .2 * .18  \approx .037 \end{align}\]</span></p>
             return filterRegex.test(href) || localhostRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-        var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external)');
+     	var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

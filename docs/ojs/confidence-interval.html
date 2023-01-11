@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.251">
+<meta name="generator" content="quarto-1.3.78">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -144,17 +144,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html">Syllabus</a>
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../slides-index.html">Lectures</a>
+    <a class="nav-link" href="../slides-index.html" rel="" target="">
+ <span class="menu-text">Lectures</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../_"><i class="bi bi-moon" role="img">
+    <a class="nav-link" href="../_" rel="" target=""><i class="bi bi-moon" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -180,6 +182,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -556,6 +559,7 @@ toggle.click(function( event ) {
 {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\r\nchart = { \r\n\r\n  d3.select(\"#ci-container\")\r\n    .call(addCIPlot, {test_type: \"single\",\r\n                     point_estimate: 322.59,\r\n                     standard_deviation: 45.31,\r\n                     n: 23,\r\n                     ci: 95,\r\n                     disable_controls: false})\r\n                     \r\n}\r\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"addCIPlot = function(selection, params) {\r\n  selection\r\n    .call(ciParams, params)\r\n    .call(ciPlot, params)\r\n}\r\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"\r\nciParams = function(selection, params) {\r\n    \r\n  selection.append(\"div\")\r\n  .attr(\"id\", \"ci-controls\")\r\n    .call(inputDropdown, params)\r\n    .call(slider, {id: 'ci', label: 'CI: ', value: params.ci, hide_slider: params.disable_controls})\r\n    .call(textInput, {id: 'point-estimate', label: 'Point estimate: ', value: params.point_estimate, disabled: params.disable_controls})\r\n    .call(textInput, {id: 'standard-deviation', label: 'Standard deviation: ', value: params.standard_deviation})\r\n    .call(stdErrSpan)\r\n    .call(slider, {id: 'n', label: 'n = ', value: params.n, hide_slider: params.disable_controls})\r\n  \r\n  d3.select(\"#test\").property(\"value\", params.test_type)\r\n  d3.selectAll(\"#input-point-estimate, #input-standard-deviation\").property(\"disabled\", params.disable_controls)\r\n     \r\n}\r\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"ciPlot = function(selection, params) {\r\n\r\n  const w = 1050, h = 600;\r\n  const margin = {bottom: 30};\r\n  const f = d3.format(\".2f\");\r\n  \r\n  var point_estimate = params.point_estimate\r\n  var sd = params.standard_deviation\r\n  var confidence = params.ci\r\n  var n = params.n\r\n  var df = computeDf(n, params.test_type)\r\n  var std_err = computeStdErr(sd, n, params.test_type)\r\n  var xlim\r\n  var ci_x_lim\r\n  d3.select(\"#value-standard-error\").text(f(std_err))\r\n  \r\n  const x = d3.scaleLinear()\r\n    .range([0, w])\r\n  const t = d3.scaleLinear()\r\n    .range([0, w])\r\n  const y = d3.scaleLinear()\r\n    .domain([0, 0.43])\r\n    .range([h - margin.bottom, 0])\r\n  const line = d3.line()\r\n    .x(d => t(d.value))\r\n    .y(d => y(d.density));\r\n  const xAxis = d3.axisBottom(x);\r\n  const tAxis = d3.axisBottom(t).tickSize(10);\r\n  \r\n  function makeCurve(limits) {\r\n    var arr = [];\r\n    var x = jStat(limits[0], limits[1], 210)[0];\r\n    for (var i = 0; i < x.length; i++) {\r\n      arr.push({value: x[i], density: jStat.studentt.pdf(x[i], df)})\r\n    }\r\n    return arr\r\n  }\r\n  \r\n\r\n  const svg = selection.append(\"svg\")\r\n    .attr(\"viewBox\", \"0 0 \" + w + \" \" + h)\r\n    .attr(\"preserveAspectRatio\", \"xMinYMin meet\")\r\n    <!-- .attr(\"width\", w).attr(\"height\", h) -->\r\n    \r\n  const axis = svg.append(\"g\")\r\n    .attr(\"class\", \"axis\")\r\n    .attr(\"transform\", `translate(0, ${y(0)})`)\r\n    <!-- .style(\"color\", \"steelblue\") -->\r\n    <!-- .call(xAxis); -->\r\n    \r\n  const axis_t = svg.append(\"g\")\r\n    .attr(\"class\", \"axis\")\r\n    .attr(\"transform\", `translate(0, ${y(0)})`)\r\n    <!-- .style(\"font-size\", \"1em\"); -->\r\n    \r\n  const randomId = Math.floor(Math.random() * 10000);\r\n  const defs = svg.append(\"defs\")\r\n  const mask = defs.append(\"mask\").attr(\"id\", \"mask-\" + randomId)\r\n  const mask_rect = mask.append(\"rect\")\r\n  .attr(\"height\", h)\r\n  .style(\"fill\", \"white\")\r\n  \r\n  \r\n  const ci_fill = svg.append(\"path\")\r\n    .attr(\"mask\", \"url(#mask-\" + randomId + \")\")\r\n    .style(\"stroke\", \"none\").style(\"fill\", \"lightblue\")\r\n  \r\n  const ci_curve = svg.append(\"path\")\r\n    .attr(\"class\", \"invertable\")\r\n    .style(\"stroke\", \"black\")\r\n    .style(\"fill\", \"none\")\r\n    .style(\"stroke-width\", 4)\r\n  \r\n  const ci_line = svg.append(\"line\")\r\n    .style(\"stroke\", \"black\")\r\n    .style(\"stroke-dasharray\", [5,5])\r\n  const ci_point_estimate = svg.append(\"line\")\r\n    .style(\"stroke\", \"black\")\r\n    .style(\"stroke-dasharray\", [5,5])\r\n  const ci_point_estimate_dot = svg.append(\"circle\")\r\n    .style(\"stroke\", \"none\")\r\n    .style(\"fill\", \"black\")\r\n    .attr(\"cx\", w/2)\r\n    .attr(\"cy\", y(0))\r\n    .attr(\"r\", 5)\r\n    \r\n  const ci_limit_labels = svg.append(\"g\")\r\n  const ci_limit_lower = ci_limit_labels.append(\"text\")\r\n  const ci_limit_upper = ci_limit_labels.append(\"text\").style(\"text-anchor\", \"end\")\r\n  \r\n  const inputCI =  d3.select(\"#input-ci\")\r\n  const inputN =  d3.select(\"#input-n\")\r\n  const inputPoint =  d3.select(\"#input-point-estimate\")\r\n  const inputSd =  d3.select(\"#input-standard-deviation\")\r\n  const inputTest =  d3.select(\"#test\")\r\n  \r\n  function updatePlot() {\r\n    var test = inputTest.property(\"value\");\r\n    point_estimate = Number(inputPoint.property(\"value\"));\r\n    sd = Number(inputSd.property(\"value\"));\r\n    n = Number(inputN.property(\"value\"));\r\n    std_err = computeStdErr(sd, n, test);\r\n    df = computeDf(n, test);\r\n    confidence = Number(inputCI.property(\"value\"));\r\n    updateSliderTextValues();\r\n    updateCI();\r\n  }\r\n  \r\n  function updateSliderTextValues() {\r\n    d3.select(\"#value-standard-error\").text(f(std_err));\r\n    d3.select(\"#value-ci\").text(confidence);\r\n    d3.select(\"#value-n\").text(n);\r\n  }\r\n  \r\n  inputCI.on(\"input\", updatePlot)\r\n  inputN.on(\"input\", updatePlot)\r\n  inputPoint.on(\"input\", updatePlot)\r\n  inputSd.on(\"input\", updatePlot)\r\n  inputTest.on(\"change\", updatePlot)\r\n  \r\n  function computeDf(n, test) {\r\n    if (test==\"independent\") return n - 2;\r\n    else return n - 1;\r\n  }\r\n  \r\n  function computeStdErr(sd, n, test) {\r\n    var variance = sd * sd;\r\n    console.log(\"var = \" + variance)\r\n    if (test==\"independent\") return Math.sqrt(variance/(n/2) + variance/(n/2));\r\n    else return sd / Math.sqrt(n);\r\n  }\r\n  \r\n  function updateCI() {\r\n\r\n    var x_lim = [point_estimate - 3 * sd, point_estimate + 3 * sd];\r\n    var t_lim = [x_to_t(x_lim[0], point_estimate, std_err),\r\n                 x_to_t(x_lim[1], point_estimate, std_err)]\r\n    x.domain(x_lim);\r\n    axis.call(xAxis);\r\n    \r\n    t.domain(t_lim)\r\n    <!-- axis_t.call(tAxis); -->\r\n\r\n    var critical_t = [jStat.studentt.inv((1 - (confidence/100)) / 2, df),\r\n                      jStat.studentt.inv(1-(1 - (confidence/100)) / 2, df)]\r\n    var critical_x = [t_to_x(critical_t[0], point_estimate, std_err),\r\n                      t_to_x(critical_t[1], point_estimate, std_err)]\r\n    var line_height = jStat.studentt.pdf(critical_t[0], df) / 2\r\n\r\n    ci_limit_lower\r\n      .text(f(critical_x[0]))\r\n      .attr(\"x\", x(critical_x[0]))\r\n      .attr(\"y\", y(line_height))\r\n    ci_limit_upper\r\n      .text(f(critical_x[1]))\r\n      .attr(\"x\", x(critical_x[1]))\r\n      .attr(\"y\", y(line_height))\r\n\r\n    ci_fill.attr(\"d\", line(makeCurve([-15, 15])))\r\n    ci_curve.attr(\"d\", line(makeCurve(t_lim)))\r\n\r\n    mask_rect\r\n      .attr(\"x\", t(critical_t[0]))\r\n      .attr(\"width\", t(critical_t[1]) - t(critical_t[0]));\r\n\r\n    ci_line\r\n      .attr(\"transform\", `translate(0, ${y(line_height)})`)\r\n      .attr(\"x1\", t(critical_t[0])).attr(\"x2\", t(critical_t[1]))\r\n    ci_point_estimate\r\n      .attr(\"transform\", `translate(${t(0)}, 0)`)\r\n      .attr(\"y1\", y(jStat.studentt.pdf(0, df))).attr(\"y2\", y(0))\r\n  }\r\n  \r\n  updateCI();\r\n}\r\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"\r\ninputDropdown = function(selection, params) {\r\n  selection.append(\"div\")\r\n    .attr(\"id\", \"test-dropdown\")\r\n    .classed(\"hide-element\", params.disable_controls)\r\n    .html(`\r\n  <label for=\"test\">Test type:</label>\r\n  <select id=\"test\" name=\"test\">\r\n    <option value=\"single\">Single-sample</option>\r\n    <option value=\"independent\" selected>Independent-samples</option>\r\n    <option value=\"related\">Related-samples</option>\r\n  </select>\r\n  `)\r\n}\r\n\r\ntextInput = function(selection, params) {\r\n  selection.append(\"div\").html(`\r\n  \r\n  <label for=\"input-${params.id}\" class = \"text-input-label\" style=\"\">${params.label}\r\n<input type=\"text\" id=\"input-${params.id}\" class=\"text-input-box math\" name=\"${params.id}\" value=\"${params.value}\" style=\"width: 3em;\">\r\n</label>`)\r\n}\r\n\r\nslider = function(selection, params) {\r\n\r\n  if (params.hide_slider) var visibility = \"hidden\"\r\n  else var visbility = \"visible\"\r\n  \r\n  selection.append(\"div\").html(`\r\n  \r\n  <label for=\"input-${params.id}\" style=\"font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;\">${params.label}</label>\r\n<span id=\"value-${params.id}\" class=\"math\" style=\"display: inline-block; width: 1em;\">${params.value}</span>\r\n<input data-prevent-swipe type=\"range\" id=\"input-${params.id}\" name=\"scale\" value=\"${params.value}\" min=\"2\" max=\"100\" step=\"1\" style=\"border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; margin-left: 0.5em; width: 50%; vertical-align: unset; visibility: ${visibility};\">\r\n  `)\r\n}\r\n\r\nstdErrSpan = function(selection, params) {\r\n  selection.append(\"div\").html(`\r\n    Standard error: <span id=\"value-standard-error\"></span>\r\n  `)\r\n}\r\n\r\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"\r\nt_to_x = function(t, mu, std_err) {\r\n  return mu + t * std_err;\r\n}\r\n\r\nx_to_t = function(x, mu, std_err) {\r\n  return (x - mu) / std_err;\r\n}\r\n\r\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"jStat = require(\"../js/jstat.js\")\r\n"}]}
 </script>
 <script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
 window._ojs.paths.runtimeToDoc = "../../ojs";
 window._ojs.paths.runtimeToRoot = "../..";
 window._ojs.paths.docToRoot = "..";
@@ -603,7 +607,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -639,24 +660,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -664,7 +703,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
-    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external)');
+ 	var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

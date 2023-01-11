@@ -7,7 +7,7 @@
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.1.251">
+  <meta name="generator" content="quarto-1.3.78">
 
   <title>BC1101 – hypothesis-testing-pt-2</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -1431,6 +1431,7 @@ Power: <span id="power-value" class="math" style="color: steelblue;"></span></p>
     {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\njStat = require(\"../js/jstat.js\")\n\nchart = {\n\n  const w = 1050\n  const h = 600\n  const margin = ({top: 20, right: 0, bottom: 80, left: 0})\n  const f = d3.format(\".2f\")\n  const f2 = d3.format(\".0f\")\n  const labelHeight = h/2\n  \n\n  var mu, sigma, d, mean_diff, n, alpha, beta, power, xlim, std_err, max_std_err, alpha_x, alpha_x2, showAlt, tails;\n  \n\n  var x = d3.scaleLinear()\n    .range([margin.left - 400, w + 400])\n  var z = d3.scaleLinear()\n    .range([margin.left - 400, w + 400])\n  var y = d3.scaleLinear()\n    .range([h - margin.bottom, margin.top])\n  const line = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density))\n  var xAxis = d3.axisBottom(x).ticks(10)\n  var zAxis = d3.axisBottom(z).tickSize(20)\n  var h1Axis = d3.axisBottom(z).tickSize(20)\n  \n  function curveData(mu, sm) {\n    var values = jStat(xlim[0], xlim[1], 310)[0],\n        arr = [];\n    for (var i in values) {\n      arr.push({\n          value: values[i], \n          density: jStat.normal.pdf(values[i], mu, sm)\n      })\n    }\n    return arr;\n  }\n  \n  const muInput = document.getElementById('mu-input')\n  const sigmaInput = document.getElementById('sigma-input');\n  const dInput = document.getElementById('d-input')\n  const nInput = document.getElementById('n-input')\n  const aInput = document.getElementById('alpha-input')\n  const altInput = document.getElementById('alt-input')\n  const tailsInput = document.getElementById('tails-input')\n  const axisRawInput = document.getElementById('axis-raw')\n  const axisZNullInput = document.getElementById('axis-z-null')\n  const axisZAltInput = document.getElementById('axis-z-alt')\n  \n  var hideAxisRaw = false;\n  var hideAxisZNull = true;\n  var hideAxisZAlt = true;\n  axisRawInput.oninput = function() {\n    hideAxisRaw = !hideAxisRaw;\n    axis.classed(\"hide-element\", hideAxisRaw)\n  }\n  axisZNullInput.oninput = function() {\n    hideAxisZNull = !hideAxisZNull;\n    svgH0Axis.classed(\"hide-element\", hideAxisZNull)\n  }\n  axisZAltInput.oninput = function() {\n    hideAxisZAlt = !hideAxisZAlt;\n    svgH1Axis.classed(\"hide-element\", hideAxisZAlt)\n  }\n  \n  muInput.oninput = function() {\n    mu = Number(muInput.value);\n    updateValues();\n    updateAxis();\n    updateZAxis();\n    redrawCurves();\n  };\n  \n  sigmaInput.oninput = function() {\n    sigma = sigmaInput.value;\n    mean_diff = d * sigma;\n    std_err = sigma/Math.sqrt(n);\n    max_std_err = sigma / Math.sqrt(50);\n    updateValues();\n    updateYScale();\n    updateAxis();\n    updateZAxis();\n    redrawCurves();\n  }\n  \n  function getParams() {\n    mu = Number(muInput.value);\n    sigma = Number(sigmaInput.value);\n    console.log(\"mu = \" + mu + \"; sigma = \" + sigma)\n    d = Number(dInput.value);\n    mean_diff = d * sigma;\n    n = Number(nInput.value);\n    alpha = Number(aInput.value);\n    std_err = sigma / Math.sqrt(n);\n    max_std_err = sigma / Math.sqrt(50);\n    tails = true;\n    updateCriticalValues();\n  }\n  \n  function updateCriticalValues() {\n    if(tails) {\n        alpha_x = mu + jStat.normal.inv(1 - alpha/2, 0, 1) * std_err\n    } else {\n        alpha_x = mu + jStat.normal.inv(1 - alpha, 0, 1) * std_err\n    }\n\n    if(tails) {\n        alpha_x2 = mu - jStat.normal.inv(1 - alpha/2, 0, 1) * std_err\n    } else {\n        alpha_x2 =-1000\n    }\n    console.log(\"crit high: \" + alpha_x + \"; crit low: \" + alpha_x2)\n  }\n  \n  function updateValues() {\n    updateCriticalValues();\n    \n      beta = jStat.normal.cdf(alpha_x, mu + mean_diff, std_err) - jStat.normal.cdf(alpha_x2, mu + mean_diff, std_err);\n    power = 1 - beta;\n    \n    d3.select(\"#d-value\").text(d)\n    d3.select(\"#n-value\").text(n)\n    d3.select(\"#alpha-value\").text(alpha)\n    d3.select(\"#std-err-value\").text(f(std_err))\n    d3.select(\"#beta-value\").text(f(beta))\n    d3.select(\"#power-value\").text(f(power))\n    \n\n  }\n  \n  function updateAxis() {\n    xlim = [mu - 12 * std_err, mu + 12 * std_err];\n    x.domain([xlim[0], xlim[1]])\n    <!-- xAxis.tickFormat(x => x / std_err).ticks([-3,-2,-1,0,1,2,3]); -->\n    axis.call(xAxis);\n  }\n  \n  function updateYScale() {\n    y.domain([0, jStat.normal.pdf(mu, mu, max_std_err)]);\n  }\n  \n  function updateZAxis() {\n    var tickSeq = [-3,-2,-1,0,1,2,3]\n    for (var i = 0; i < tickSeq.length; i++) {\n      tickSeq[i] = mu + tickSeq[i] * std_err;\n    }\n    var zlim = [mu - 3 * sigma, mu + 3 * sigma];\n    z.domain([xlim[0], xlim[1]])\n    zAxis\n      .tickFormat(z => f2((z - mu)/std_err))\n      .tickValues(tickSeq)\n    svgH0Axis\n      .call(zAxis);\n      \n    tickSeq = [-3,-2,-1,0,1,2,3]\n    for (var i = 0; i < tickSeq.length; i++) {\n      tickSeq[i] = mu + mean_diff + tickSeq[i] * std_err;\n    }\n    h1Axis\n      .tickFormat(z => f2((z - mu - mean_diff)/std_err))\n      .tickValues(tickSeq)\n    svgH1Axis\n      .call(h1Axis);\n  }\n  \n  function redrawCurves() {\n    <!-- updateAxis(); -->\n    redrawNull();\n    redrawAlt();\n  }\n  \n  function redrawNull() {\n    nullCurve.attr(\"d\", line(curveData(mu, std_err)));\n    nullLabel.attr(\"transform\", `translate(${x(mu)}, ${labelHeight})`);\n    nullFill.attr(\"d\", line(curveData(mu, std_err)));\n    nullClip.attr(\"points\", [[0,0], [0,h], [x(alpha_x2),h],[x(alpha_x2),0],\n                     [x(alpha_x),0], [x(alpha_x),h], [w,h],[w,0]]);\n    nullClipInterior.attr(\"points\", [[x(alpha_x2),0],[x(alpha_x2),h],\n                     [x(alpha_x),h], [x(alpha_x),0]]);\n                     \n  }\n  function redrawAlt() {\n    var dat = curveData(Number(mu + mean_diff), std_err)\n    altCurve.attr(\"d\", line(dat))\n    altFillPower.attr(\"d\", line(dat))\n    altFillBeta.attr(\"d\", line(dat))\n    altLabel.attr(\"transform\", `translate(${x(mu + mean_diff)}, ${labelHeight})`)\n  }\n  \n  nInput.oninput = function() {\n    n = Number(nInput.value)\n    std_err = sigma/Math.sqrt(n)\n    updateZAxis();\n    updateValues();\n    redrawCurves();\n  };\n  \n  dInput.oninput = function() {\n    d = Number(dInput.value);\n    mean_diff = d * sigma;\n    updateValues();\n    updateZAxis();\n    redrawAlt();\n  };\n  \n  aInput.oninput = function() {\n    alpha = Number(aInput.value)\n    updateValues();\n    redrawNull();\n  };\n  \n  tailsInput.oninput = function() {\n    tails = document.getElementById(\"tails-input\").checked\n    updateValues()\n    redrawNull()\n  }\n  \n  altInput.oninput = function() {\n    showAlt = document.getElementById(\"alt-input\").checked\n    \n    d3.select(\"#power-values\").classed(\"hide-element\", !showAlt)\n    \n    if(showAlt) {var opacity = 1} else {var opacity = 0}\n    altCurve.style(\"opacity\", opacity)\n    altLabel.style(\"opacity\", opacity)\n    if(showAlt) {var opacity = 0.7} else {var opacity = 0}\n    altFillPower.style(\"opacity\", opacity)\n    if(showAlt) {var opacity = 0.3} else {var opacity = 0}\n    altFillBeta.style(\"opacity\", opacity)\n  }\n  \n\n  \n  const svg = d3.select(\"#power-interactive\")\n    .append(\"svg\")\n    .attr(\"width\", w).attr(\"height\", h)\n\n  const svgH0Axis = svg.append(\"g\")\n      .attr(\"class\", \"axis\")\n      .classed(\"hide-element\", hideAxisZNull)\n      .attr(\"transform\", `translate(0, ${y(0)})`)\n      .style(\"font-size\", \"0.5em\")\n      .style(\"color\", \"red\")\n      \n  const svgH1Axis = svg.append(\"g\")\n      .attr(\"class\", \"axis\")\n      .classed(\"hide-element\", hideAxisZAlt)\n      .attr(\"transform\", `translate(0, ${y(0)})`)\n      .style(\"font-size\", \"0.5em\")\n      .style(\"color\", \"steelblue\")\n      \n  const axis = svg.append(\"g\")\n      .attr(\"class\", \"axis\")\n      .attr(\"transform\", `translate(0, ${y(0)})`)\n      .style(\"font-size\", \"0.5em\");\n  \n  const nullDist = svg.append(\"g\").attr(\"id\", \"null-dist\")\n\n  const nullFill = nullDist.append(\"path\").attr(\"id\", \"critical-region-fill\")\n      .attr(\"fill\", \"red\")\n      .attr(\"stroke\", \"none\")\n      .attr('clip-path', \"url(#clip-area)\")\n\n  const nullCurve = nullDist.append(\"path\").attr(\"id\", \"h0-curve\")\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"black\")\n      .attr(\"stroke-width\", 2)\n      .attr(\"class\", \"invertable\");\n\n  const nullLabel = nullDist.append(\"g\")\n  nullLabel.append(\"text\").attr(\"id\", \"h0-text\")\n      .attr(\"class\", \"invertable\")\n      .style(\"text-anchor\", \"middle\")\n      .style('font-size', '1em')\n      .text('')\n      .append('tspan')\n        .html('H')\n        .append('tspan')\n        .html('0').attr('baseline-shift', 'sub').style('font-size', '0.5em');\n\n  const nullClip = svg.append(\"clipPath\")\n    .attr(\"id\", \"clip-area\")\n    .append(\"polygon\")\n\n  const nullClipInterior = svg.append(\"clipPath\").attr(\"id\", \"clip-area-interior\")\n    .append(\"polygon\")\n\n\n<!-- <!-- alternative distribution --> -->\n\n  const altDist = svg.append(\"g\").attr(\"id\", \"null-dist\")\n\n  const altCurve = altDist.append(\"path\").attr(\"id\", \"h1-curve\")\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"black\")\n      .attr(\"stroke-width\", 2)\n      .attr(\"class\", \"invertable\");\n\n  const altLabel = altDist.append(\"g\")\n  altLabel.append(\"text\")\n      .style(\"text-anchor\", \"middle\")\n      .style('fill', 'steelblue')\n      .style('font-size', '1em')\n      .text('')\n      .append('tspan')\n        .html('H')\n        .append('tspan')\n        .html('1').attr('baseline-shift', 'sub').style('font-size', '0.5em');\n\n  const altFillPower = altDist.append(\"path\")\n      .attr('clip-path', \"url(#clip-area)\")\n      .attr(\"fill\", \"steelblue\")\n      .attr(\"opacity\", 0.7)\n      .attr(\"stroke\", \"steelblue\")\n      .attr(\"stroke-width\", 2.5)\n\n  const altFillBeta = altDist.append(\"path\")\n      .attr('clip-path', \"url(#clip-area-interior)\")\n      .attr(\"fill\", \"grey\")\n      .attr(\"opacity\", 0.3)\n\n  getParams();\n  updateValues();\n  updateYScale();\n  updateAxis();\n  updateZAxis();\n  redrawCurves();\n  \n}\n\n  \n"}]}
     </script>
     <script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
     window._ojs.paths.runtimeToDoc = "../../slides";
     window._ojs.paths.runtimeToRoot = "../..";
     window._ojs.paths.docToRoot = "..";
@@ -1517,7 +1518,24 @@ Power: <span id="power-value" class="math" style="color: steelblue;"></span></p>
         button.classList.add('code-copy-button-checked');
         var currentTitle = button.getAttribute("title");
         button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
         setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
           button.setAttribute("title", currentTitle);
           button.classList.remove('code-copy-button-checked');
         }, 1000);
@@ -1555,24 +1573,42 @@ Power: <span id="power-value" class="math" style="color: steelblue;"></span></p>
           return note.innerHTML;
         });
       }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
       var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
       for (var i=0; i<bibliorefs.length; i++) {
         const ref = bibliorefs[i];
-        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-        tippyHover(ref, function() {
-          var popup = window.document.createElement('div');
-          cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
-            }
-            popup.appendChild(citeDiv);
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
           });
-          return popup.innerHTML;
-        });
+        }
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1580,7 +1616,7 @@ Power: <span id="power-value" class="math" style="color: steelblue;"></span></p>
             return filterRegex.test(href) || localhostRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-        var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external)');
+     	var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

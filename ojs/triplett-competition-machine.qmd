@@ -1,0 +1,316 @@
+---
+format: html
+title: "Competition Machine"
+toc: false
+---
+
+
+<div class="game-select" style="width: 100%; display: flex; justify-content: center; font-family: Permanent Marker;">
+        <button id="practice-button" class="nav" onclick="practice();">practice</button>
+        <button id="alone-button" class="nav" onclick="alone();">race alone</button>
+        <button id="competition-button" class="nav" onclick="competition();">race together</button>
+</div>
+
+```{r}
+#| eval: false
+htmltools::HTML('
+
+    
+    <div class="title">Competition Machine &mdash; </div>
+
+    <div class="machine">
+     <div id="track" class="track">
+        <button type="button" id="handle1" class="handle" onclick="clicked();"><span id="handle-text">┘</span></button>
+        <div id="finish" class="finish">🏁</div>
+        <div id="flag" class="flag">🚩</div>
+    </div>
+
+    <div id="track2" class="track">
+        <button id="handle2" class="handle"><span id="handle2-text">┘</span></button>
+        <div id="finish"class="finish">🏁</div>
+        <div id="flag2" class="flag" style="filter: invert(1);">🚩</div>
+    </div>
+    </div>
+    
+    <div id="time"><span>Your time: </span><span id="seconds">0.00</span></div>
+    <button class="reset-button nav" onclick="reset();">Reset</button>
+    
+
+    <div id="instructions">
+        <ul>
+            <li>Click the handle to the left of the track to start.</li>
+            <li>Keep clicking as fast as you can until your flag reaches the end.</li>
+            <li>Click Race Alone to do a timed race by yourself.</li>
+            <li>Click Race Together to race against a competitor.</li>
+        </ul>
+    </div>
+
+    <div id="records">
+        
+        <table id="records-table">
+            <colgroup>
+                <col span="1" style="width: 40%; text-align: right;">
+                <col span="1" style="width: 30%;">
+                <col span="1" style="width: 30%;">
+              </colgroup>
+            <thead><th>👑 Records 👑</th><th>Previous</th><th>Best</th></thead>
+            <tr><td>🚩 Alone</td><td>-</td><td>-</td></tr>
+            <tr><td>🚩<span style="filter: invert(1);">🚩</span>Competition</td><td>-</td><td>-</td></tr>
+        </table>
+    </div> 
+                
+                
+                
+                ')
+```
+
+
+
+```{ojs}
+
+game = {
+
+var start, myTimer, myTurner;
+var sec = d3.select("#seconds")
+var cli = d3.select("#clicks")
+var flag = d3.select("#flag")
+var flag2 = d3.select("#flag2")
+var clicks = 0;
+const target_clicks = 50;
+var mode = practice;
+
+var records = [{prev: 0, best: 0},{prev: 0, best: 0}]
+
+var handleState = 0;
+const handle = d3.select("#handle-text");
+const handle2 = d3.select("#handle2-text");
+const handleText = ["┘","└"]
+
+function handleClicked() {
+    handleState++;
+    handle.text(handleText[handleState % 2]);
+}
+
+function turnHandle2() {
+    var handle2State = 0;
+    myTurner = setInterval( function(){
+        handle2State++;
+        handle2.text(handleText[handle2State % 2]);
+        if (handle2State > target_clicks) clearInterval(myTurner);
+    }, 7000 / target_clicks);
+}
+
+function clicked() {
+    handleClicked();
+    
+    if (clicks==0) {startTimer(); turnHandle2();}
+    if (clicks < target_clicks) {
+        clicks++;
+    cli.text(clicks);
+    flag.transition().duration(300).style("left", `${clicks*(100/target_clicks)*1.00}%`);
+    } 
+    if (clicks == target_clicks) stopTimer();
+}
+
+function startTimer() {
+    start = Date.now();
+    myTimer= setInterval( function(){
+        var delta = Date.now() - start; // milliseconds elapsed since start
+        sec.html(delta / 1000);
+    }, 10);
+
+    flag2.transition().ease(d3.easeLinear).duration(7000).style("left", "100%")
+}
+
+function stopTimer() {
+    clearInterval(myTimer);
+}
+
+function practice() {
+    reset();
+    d3.selectAll(".nav").classed("selected", false);
+    d3.select("#practice-button").classed("selected", true);
+    // d3.select("#practice").style("display", "block");
+    d3.select("#instructions").style("display", "block");
+    d3.select("#track2").style("display", "none");
+    d3.select("#time").style("display", "none");
+}
+
+function alone() {
+    reset();
+    d3.selectAll(".nav").classed("selected", false);
+    d3.select("#alone-button").classed("selected", true);
+    d3.select("#time").style("display", "block");
+    d3.select("#track2").style("display", "none");
+    d3.select("#instructions").style("display", "none");
+}
+
+function competition() {
+    reset();
+    d3.selectAll(".nav").classed("selected", false);
+    d3.select("#competition-button").classed("selected", true);
+    d3.select("#time").style("display", "block");
+    d3.select("#track2").style("display", "block");
+    d3.select("#instructions").style("display", "none");
+}
+
+function reset() {
+    clearInterval(myTimer);
+    clearInterval(myTurner);
+    sec.text("0.00");
+    cli.text(0);
+    flag.transition().duration(1000).style("left", "0%");
+    flag2.transition().duration(1000).style("left", "0%");
+    clicks = 0;
+}
+
+practice();
+
+
+}
+
+```
+
+
+
+```{css}
+
+body {
+    max-width: 800px;
+    font-family: Permanent Marker;
+    font-size: 1.8em;
+    margin: 3em auto;
+}
+
+.title {
+    font-size: calc(min(1.5em, 5vw));
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+}
+#instructions {
+    font-family: Pangolin;
+    font-size: calc(max(min(3vw, 1em), 0.6em));
+}
+
+.machine {
+    /* content: ""; */
+    width: 90%;
+    margin: 0 auto;
+    padding: 1px;
+    border-radius: 10px;
+    background: #e1ccb2;
+}
+
+
+#time {
+    margin-left: 10em;
+}
+
+.nav {
+    font-family: Permanent Marker;
+    font-size: 1em;
+    background: none;
+    border-radius: 5px;
+    border: none;
+    margin: 0 1em;
+    color: #aaa;
+}
+.nav:hover {
+    background: lightblue;
+}
+
+.nav.selected {
+    color: black;
+}
+
+
+
+.reset-button {
+    margin-left: 50%;
+    transform: translateX(-50%);
+
+}
+
+.track {
+    position: relative; 
+    width: 80%; 
+    height: 20px; 
+    margin: 2em auto; 
+    background: #eee;
+}
+
+.flag {
+    position: absolute; 
+    font-size: 1em; 
+    top: -20px;
+    cursor: default;
+}
+.finish {
+    position: absolute; 
+    right: 0; 
+    font-size: 1em; 
+    transform: rotate(90deg) translate(-6px, -1em);
+    top: -5;
+    cursor: default;
+}
+
+.handle {
+    touch-action: manipulation;
+    position: relative;
+    left: -2em;
+    top: -0.4em;
+    border: none;
+    width: 2em;
+    height: 3em;
+    background: none;
+}
+
+.handle:after {
+    position: absolute;
+    top: 5%;
+    left: 10%;
+    content: "";
+    width: 80%;
+    height: 60%;
+    background: brown;
+    color: red;
+    border-radius: 3px;
+}
+
+.handle > span {
+    position: absolute;
+    font-size: 2em;
+    font-weight: 800;
+    transform: translate(-50%, -20%);
+}
+#handle1 {
+    cursor: grab;
+}
+#handle1:hover > span {
+    color: red;
+}
+
+/* #records {
+    border: 1px solid;
+    text-align: center;
+    margin: 0 auto;
+    width: 70%;
+} */
+#records-table {
+    border: 1px solid;
+    margin: 0 auto;
+    font-size: 0.8em;
+    width: 70%;
+    table-layout: fixed;
+}
+#records-table td {
+    /* border: 1px solid; */
+    text-align: center;
+    /* width: 1%; */
+}
+
+```
+

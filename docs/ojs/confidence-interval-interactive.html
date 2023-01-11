@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.251">
+<meta name="generator" content="quarto-1.3.78">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -144,17 +144,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html">Syllabus</a>
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../slides-index.html">Lectures</a>
+    <a class="nav-link" href="../slides-index.html" rel="" target="">
+ <span class="menu-text">Lectures</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../_"><i class="bi bi-moon" role="img">
+    <a class="nav-link" href="../_" rel="" target=""><i class="bi bi-moon" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -180,6 +182,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -429,6 +432,7 @@ toggle.click(function( event ) {
 {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"jStat = require(\"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js\")\r\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"\r\n\r\nci = {\r\n\r\n  const w = 1050\r\n  const h = 600\r\n  const m = {t: 0, r: 0, l: 0, b: 100}\r\n  \r\n  const f = d3.format(\".2f\")\r\n  const x = d3.scaleLinear()\r\n    .range([0,w])\r\n  const y = d3.scaleLinear()\r\n    .range([h-m.b,m.t])\r\n  const line = d3.line()\r\n    .x(d => x(d.value))\r\n    .y(d => y(d.density))\r\n  const arrows = [{id: -1,points: [[0,0],[5,5],[5,-5]]},\r\n                  {id: 1, points: [[-5,5],[0,0],[-5,-5]]}]\r\n                  \r\n  const xAxis = d3.axisBottom(x)\r\n  \r\n  var confidence, n, mean, sd, std_err, critical, xlim;\r\n  \r\n  const confidenceInput = document.getElementById('confidence-input')\r\n  const nInput = document.getElementById('n-input')\r\n  const meanInput = document.getElementById('mean-input')\r\n  const sdInput = document.getElementById('sd-input')\r\n  \r\n  function updateCritical() {\r\n    var upper = 1 - (1 - confidence/100)*0.5\r\n    var lower = 1 - upper\r\n    critical = [jStat.normal.inv(lower, mean, std_err),\r\n                jStat.normal.inv(upper, mean, std_err)]\r\n  }\r\n  \r\n  function getParams() {\r\n    confidence = confidenceInput.value\r\n    n = nInput.value\r\n    mean = meanInput.value\r\n    sd = sdInput.value\r\n    std_err = sd / Math.sqrt(n)\r\n    updateCritical()\r\n    xlim = [mean-3*std_err,Number(mean+3*std_err)]\r\n    x.domain([xlim[0], xlim[1]])\r\n    y.domain([0, jStat.normal.pdf(0, mean, std_err)+0.01])\r\n    d3.select(\"#std-err-value\").text(f(std_err))\r\n  }\r\n  \r\n  \r\n  confidenceInput.oninput = function() {\r\n    confidence = confidenceInput.value\r\n    d3.select(\"#confidence-value\").text(confidence + \"%\")\r\n    updateCritical();\r\n    updateCurve();\r\n    updateClip();\r\n  };\r\n  \r\n  nInput.oninput = function() {\r\n    n = nInput.value\r\n    std_err = sd/Math.sqrt(n)\r\n    d3.select(\"#n-value\").text(n)\r\n    d3.select(\"#std-err-value\").text(f(std_err))\r\n    updateCritical();\r\n    updateCurve();\r\n    updateClip();\r\n  };\r\n    \r\n  meanInput.oninput = function() {\r\n    mean = Number(meanInput.value)\r\n    updateCritical();\r\n    updateCurve();\r\n    updateClip();\r\n  };\r\n  \r\n  sdInput.oninput = function() {\r\n    sd = sdInput.value\r\n    std_err = sd/Math.sqrt(n)\r\n    d3.select(\"#std-err-value\").text(f(std_err))\r\n    updateCritical();\r\n    updateCurve();\r\n    updateClip();\r\n  };\r\n  \r\n  function makeCurve(mean, std_err) {\r\n    var values = jStat(xlim[0], xlim[1], 210)[0],\r\n        arr = [];\r\n    for (var i in values) {\r\n      arr.push({\r\n          value: values[i], \r\n          density: jStat.normal.pdf(values[i], mean, std_err)\r\n      })\r\n    }\r\n    return arr;\r\n  }\r\n  \r\n  function updateCurve() {\r\n    xlim = [Number(mean-3*std_err),Number(mean+3*std_err)]\r\n    <!-- console.log(xlim) -->\r\n    x.domain([xlim[0], xlim[1]])\r\n    y.domain([0, jStat.normal.pdf(mean, mean, std_err)+0.01])\r\n    \r\n    axis.call(xAxis)\r\n    \r\n    curveLine.attr(\"d\", line(makeCurve(mean, std_err)))\r\n    curveFill.attr(\"d\", line(makeCurve(mean, std_err)))\r\n    \r\n    meanLine.select(\"line\")\r\n      .attr(\"x1\", x(mean)).attr(\"x2\", x(mean))\r\n      .attr(\"y1\", y(0)).attr(\"y2\", y(jStat.normal.pdf(mean, mean, std_err)))\r\n    meanLine.select(\"circle\")\r\n      .attr(\"cx\", x(mean)).attr(\"cy\", y(0)).attr(\"r\", 5)\r\n      \r\n    marginOfError.attr(\"transform\", `translate(0, ${y(jStat.normal.pdf(critical[0], mean, std_err)/2)})`)\r\n    marginOfError.select(\"line\")\r\n      .attr(\"x1\", x(critical[0])).attr(\"x2\", x(critical[1]))\r\n    marginOfError.select(\"#arrow-l\").attr(\"transform\", `translate(${x(critical[0])}, 0) scale(2)`)\r\n    marginOfError.select(\"#arrow-r\").attr(\"transform\", `translate(${x(critical[1])}, 0) scale(2)`)\r\n  }\r\n  \r\n  function updateClip() {\r\n    clip.attr(\"points\", [[x(critical[0]),0],[x(critical[0]),h],[x(critical[1]),h],[x(critical[1]),0]])\r\n  }\r\n  \r\n  const svg = d3.select(\"#confidence-interval\").append(\"svg\")\r\n    .attr(\"viewBox\", \"0 0 \" + w + \" \" + h)\r\n    .attr(\"preserveAspectRatio\", \"xMinYMin meet\")\r\n    .attr(\"class\", \"svg-content\")\r\n    \r\n  const axis = svg.append(\"g\").attr(\"transform\", `translate(0, ${y(0)})`)\r\n    .style(\"font-size\", \"2em\")\r\n  \r\n  const curveLine = svg.append(\"path\")\r\n    .style(\"fill\", \"none\")\r\n    .style(\"stroke\", \"black\")\r\n    .style(\"stroke-width\", 3)\r\n    .attr(\"class\", \"invertable\")\r\n    \r\n  const clip = svg.append(\"clipPath\").attr(\"id\", \"clip\").append(\"polygon\")\r\n\r\n  const curveFill = svg.append(\"path\")\r\n    .attr(\"clip-path\", \"url(#clip)\")\r\n    .style(\"fill\", \"lightblue\")\r\n    .style(\"stroke\", \"none\")\r\n    \r\n  const meanLine = svg.append(\"g\")\r\n  meanLine.append(\"line\")\r\n    .style(\"stroke\", \"black\")\r\n    .style(\"stroke-dasharray\", [10,10])\r\n  meanLine.append(\"circle\")\r\n    \r\n\r\n  const marginOfError = svg.append(\"g\")\r\n    .style(\"stroke\", \"black\")\r\n    <!-- .classed(\"invertable\", true) -->\r\n    \r\n  marginOfError.append(\"line\")\r\n    .style(\"stroke\", \"black\")\r\n\r\n  marginOfError.append(\"polygon\").attr(\"points\", arrows[0].points).attr(\"id\", \"arrow-l\")\r\n  marginOfError.append(\"polygon\").attr(\"points\", arrows[1].points).attr(\"id\", \"arrow-r\")\r\n\r\n\r\n\r\n  getParams();\r\n  updateClip();\r\n  updateCurve();\r\n  \r\n}\r\n\r\n"}]}
 </script>
 <script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
 window._ojs.paths.runtimeToDoc = "../../ojs";
 window._ojs.paths.runtimeToRoot = "../..";
 window._ojs.paths.docToRoot = "..";
@@ -476,7 +480,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -512,24 +533,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -537,7 +576,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
-    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external)');
+ 	var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

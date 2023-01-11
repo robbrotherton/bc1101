@@ -7,7 +7,7 @@
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.1.251">
+  <meta name="generator" content="quarto-1.3.78">
 
   <title>BC1101 – variables</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -1483,6 +1483,7 @@
     {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"bar_xScale = d3.scaleBand()\n  .domain([1,2,3,4,5])\n  .range([m, w - m])\n\nbar_yScale = d3.scaleLinear()\n  .domain([0, 3])\n  .range([h - m, m])\n    \nbar_chart = {\n\n  const svg = d3.select(DOM.svg(w, h))\n    .attr(\"class\", \"invertable\")\n    .attr(\"lazy-load\", true)\n  \n  const axis_lines = svg.append(\"g\")\n    .attr(\"stroke\", \"black\")\n    .attr(\"fill\", \"none\")\n    \n  const bars = svg.append(\"g\")\n    .attr(\"fill\", \"black\")\n    .attr(\"stroke\", \"none\")\n  \n  bars.selectAll(\"rect\")\n    .data(bar_data)\n    .enter()\n      .append(\"rect\") \n      .attr(\"transform\", \"rotate(180)\")\n      .attr(\"transform-origin\", \"center center\")\n      .attr(\"x\", d => bar_xScale(d.value)+2.5)\n      .attr(\"y\", m)\n      .attr(\"width\", (w-2*m)/5-5)\n      .attr(\"height\", d => d.density*(h-m*2)/3)\n      \n\n  svg.on('click',function(){\n   bars.selectAll(\"rect\")\n    .attr(\"height\", 0)\n    .transition()\n    .duration(300)\n    .delay(function(d, i){return (6-i)*300})\n    .attr(\"height\", d => d.density*(h-m*2)/3);\n  })\n  \n\n  axis_lines.selectAll(\"line\")\n    .data(line_data)\n    .enter()\n      .append(\"line\")\n        .attr(\"x1\", d => d.x1)\n        .attr(\"x2\", d => d.x2)\n        .attr(\"y1\", d => d.y1)\n        .attr(\"y2\", d => d.y2)\n    \n  return svg.node();\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"\nxScale = d3.scaleLinear()\n  .domain([-3, 3])\n  .range([margins.left, w - m])\n\nyScale = d3.scaleLinear()\n  .domain([0, 0.4])\n  .range([h - m, m])\n  \nsmooth_curve = {\n  const svg_curve = d3.select(DOM.svg(w, h))\n    .attr(\"class\", \"invertable\");\n  \n  const axis_lines = svg_curve.append(\"g\")\n    .attr(\"stroke\", \"black\")\n    .attr(\"fill\", \"none\")\n  \n  var p = svg_curve.append(\"path\")\n    .datum(curve_data)\n    .attr(\"stroke\", \"black\")\n    .attr(\"stroke-width\", 2)\n    .attr(\"fill\", \"none\")\n    .attr(\"d\", line)\n    \n  var totalLength = p.node().getTotalLength();\n\n  svg_curve.on(\"click\", function(){\n    p.transition()\n      .duration(0)\n      .attr(\"stroke-dasharray\", totalLength + \" \" + totalLength)\n      .attr(\"stroke-dashoffset\", totalLength)\n      .transition()\n      .duration(2000)\n      .attr(\"stroke-dashoffset\", 0)})\n        \n  axis_lines.selectAll(\"line\")\n    .data(line_data)\n    .enter()\n      .append(\"line\")\n        .attr(\"x1\", d => d.x1)\n        .attr(\"x2\", d => d.x2)\n        .attr(\"y1\", d => d.y1)\n        .attr(\"y2\", d => d.y2)\n    \n  return svg_curve.node();\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"\nw = 400\nh = 200\n\nm = 20\nhalf_m = m * 0.5\n\nmargins = ({top: 20, right: 20, bottom: 20, left: 20})\n\nline_data = [\n    {x1: half_m, x2: w - half_m, y1: h - half_m, y2: h - half_m},\n    {x1: half_m, x2: half_m, y1: h - half_m, y2: half_m}\n  ]\n  \nline = d3.line()\n    .x(d => xScale(d.value))\n    .y(d => yScale(d.density))\n    \n\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"cov = { \n\n  const w = 1050\n  const h = 525\n  \n  d3.xml('covers/02_variables.svg')\n  .then(data => {\n    d3.select(\"#cover-image\").node()\n      .append(data.documentElement)\n    \n    const svg = d3.select(\"#cover-image\").select(\"svg\")\n      .attr(\"width\", w)\n      .attr(\"height\",h)\n      \n    const clip = svg.append(\"clipPath\").attr(\"id\", \"clip\")\n      .append(\"rect\")\n      .attr(\"x\", -w*2)\n      .attr(\"y\", h*2)\n      .attr(\"width\", w*2)\n      .attr(\"height\",h*2)\n      .attr(\"fill\", \"none\")\n      \n    clip\n      .transition().duration(3000)\n      .attr(\"x\", 0)\n      .attr(\"y\", 0)\n    \n    svg.select(\"polyline\")\n      .attr('clip-path', \"url(#clip)\")\n    \n      \n    svg.selectAll(\".axis-text\")\n      .style(\"opacity\", 0)\n      .transition().delay(1000).duration(3000).style(\"opacity\", 1)\n  });\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"\ndata = {\n  let arr = [];\n  for (var i = 0; i < 150; i++) {\n    arr.push({\n      x: Math.floor(Math.random() * xmax),\n      y: Math.floor(Math.random() * ymax),\n      color: Math.floor(Math.random() * 7)\n    });\n  }\n  return arr;\n}\n\nwidth = 1050\nheight = 500\nr = 15\nxmax = 400\nymax = 100\nsample_y = height - r - 1\nmargin = ({top: r*2, right: 10, bottom: r, left: 5});\n\n\npop = {\n\n  var sampleData = [];\n  \n  const svg = d3.select(\"#sample-inference-container\")\n    .append(\"svg\").attr(\"id\", \"#sample-inference-svg\")\n    .attr(\"preserveAspectRatio\", \"xMinYMin meet\")\n    .attr(\"viewBox\", \"0 0 \" + width + \" \" + height)\n\n    <!-- .attr(\"width\", width).attr(\"height\", height) -->\n  \n  const sample = svg.append(\"g\").attr(\"id\", \"sample-circles\")\n  const circles = svg.append(\"g\").attr(\"id\", \"pop-circles\")\n  \n  const arrowData = [{id: -1, points: [[-10,-10],[10,-10],[0,10]]},\n                     {id: 1,  points: [[-10,10],[10,10],[0,-10]]}]\n  \n  let path = {\n    x: (width*0.5 + xmax*.5 + r),\n    y: (margin.top + ymax*0.5),\n    cy: (height - r - (margin.top + ymax*0.5)) * 0.5\n  };\n  \n  function generateSample() {\n    let arr = [];\n    for (var i = 0; i < 10; i++) {\n      arr.push(Math.floor(Math.random() * 7))\n    }\n    return arr;\n  }\n  \n  function drawNewSample() {\n    sampleData = generateSample();\n    \n    sample.selectAll(\"circle\").remove()\n    \n    sample.selectAll(\"circle\")\n    .data(sampleData)\n    .enter()\n    .append(\"circle\")\n      .attr(\"fill\", d => color(d))\n      .attr(\"stroke\", \"black\")\n      .attr(\"r\", r)\n      .attr(\"cx\", function(d, i) {return (i * 41.5 + width/2 - xmax/2 + r)})\n      .attr(\"cy\", 55)\n        .transition()\n        .duration(700)\n        .delay(function(d, i) {return i * 50})\n        .attr(\"cy\", sample_y);\n        \n    paths.select(\"#sample-path\")\n      .attr(\"stroke-dasharray\", len + \" \" + len).attr(\"stroke-dashoffset\", len)\n      .transition().duration(900).attr(\"stroke-dashoffset\", 0)\n  }\n  \n  function animateArrow() {\n    arrows.select(\"#arrow0\")\n      .transition().duration(200)\n      .attr(\"transform\", d => \"translate(\" + (width/2 + 315*d.id) + \" ,\" + (path.cy+margin.top+ymax*0.5 - 10) +\") scale(2.5)\")\n      .transition().duration(300)\n      .attr(\"transform\", d => \"translate(\" + (width/2 + 315*d.id) + \" ,\" + (path.cy+margin.top+ymax*0.5 - 10) +\") scale(1.5)\")\n  }\n  \n  const paths = svg.append(\"g\").attr(\"id\", \"paths\")\n                        .attr(\"stroke\", \"black\")\n                        .attr(\"fill\", \"none\")\n                        .attr(\"class\", \"invertable\");\n                        \n  const labels = svg.append(\"g\").attr(\"id\", \"labels\")\n                        .attr(\"text-anchor\", \"middle\")\n                        .attr(\"dy\", \"1em\")\n                        .attr(\"class\", \"invertable\");\n  \n  const arrows = svg.append(\"g\")         \n  \n  circles.selectAll(\"circle\")\n    .data(data)\n    .enter()\n    .append(\"circle\")\n      .attr(\"fill\", d => color(d.color))\n      .attr(\"stroke\", \"black\")\n      .attr(\"r\", 15)\n      .attr(\"cx\", d => x(d.x))\n      .attr(\"cy\", d => y(d.y))\n          \n  svg.append(\"rect\").attr(\"id\", \"population-box\")\n    .attr(\"x\", width/2 - xmax/2 - r)\n    .attr(\"y\", margin.top - r)\n    .attr(\"width\", xmax + 2*r)\n    .attr(\"height\",ymax + 2*r)\n    .style(\"stroke\", \"black\")\n    .style(\"fill\", \"white\")\n    .style(\"fill-opacity\", 0.9)\n    .on(\"mouseover\", function(d){d3.select(this).style(\"fill-opacity\", 0.1)})\n    .on(\"mouseout\", function(d){d3.select(this).style(\"fill-opacity\", 0.9)})\n    \n  \n    \n  paths.append(\"path\").attr(\"id\", \"inference-path\")\n    .attr(\"d\", \"M\" + path.x + \" \" + path.y + \" q200 \" + path.cy + \" 0 \" + (height - r - path.y))\n    .attr(\"stroke-dasharray\", [5, 5])\n    \n  \n  paths.append(\"path\").attr(\"id\", \"sample-path\")\n    .attr(\"d\", \"M\" + (path.x - xmax - 2*r) + \" \" + path.y + \" q-200,\" + path.cy + \" 0 \" + (height - r - path.y))\n    \n  var len = paths.select(\"#sample-path\").node().getTotalLength();\n\n  arrows.selectAll(\"polygon\")\n    .data(arrowData)\n    .enter().append(\"polygon\")\n      .attr(\"points\", d => d.points)\n      .attr(\"id\", function(d,i){return \"arrow\" + i})\n      .attr(\"class\", \"invertable\")\n      .style(\"fill\", \"black\")\n      .attr(\"transform\", d => \"translate(\" + (width/2 + 315*d.id) + \" ,\" + (path.cy+margin.top+ymax*0.5 - 10) +\") scale(1.5)\")\n      \n  svg.select(\"#arrow0\")\n    .style(\"touch-action\", \"manipulation\")\n    .on(\"mouseover\", animateArrow)\n    .on(\"click\", drawNewSample)\n  \n\n  labels.append(\"text\").attr(\"id\", \"population-label\")\n    .text(\"POPULATION\")\n    .attr(\"x\", width/2)\n    .attr(\"y\", margin.top + ymax + 2*r + 20)\n    \n  labels.append(\"text\").attr(\"id\", \"sample-label\")\n    .text(\"SAMPLE\")\n    .attr(\"x\", width/2)\n    .attr(\"y\", sample_y - r - 10)\n    \n  drawNewSample();\n  return svg.node();\n  \n}\n\n\n\nx = d3.scaleLinear()\n  .domain([0, xmax])\n  .range([width/2 - xmax/2, width/2 + xmax/2])\n\ny = d3.scaleLinear()\n  .domain([0, ymax])\n  .range([margin.top + ymax, margin.top])\n  \ncolor = d3.scaleOrdinal().\n  domain(data.map(d => d.color))\n  .range(d3.schemeSet3);\n  \n<!-- new_sample = { -->\n<!--   s; -->\n<!--   let arr = []; -->\n<!--   for (var i = 0; i < 10; i++) { -->\n<!--     arr.push(Math.floor(Math.random() * 7)) -->\n<!--   } -->\n<!--   return arr; -->\n<!-- } -->\n\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"import { likert } from \"../ojs/utils.qmd\";\n"}]}
     </script>
     <script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
     window._ojs.paths.runtimeToDoc = "../../slides";
     window._ojs.paths.runtimeToRoot = "../..";
     window._ojs.paths.docToRoot = "..";
@@ -1569,7 +1570,24 @@
         button.classList.add('code-copy-button-checked');
         var currentTitle = button.getAttribute("title");
         button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
         setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
           button.setAttribute("title", currentTitle);
           button.classList.remove('code-copy-button-checked');
         }, 1000);
@@ -1607,24 +1625,42 @@
           return note.innerHTML;
         });
       }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
       var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
       for (var i=0; i<bibliorefs.length; i++) {
         const ref = bibliorefs[i];
-        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-        tippyHover(ref, function() {
-          var popup = window.document.createElement('div');
-          cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
-            }
-            popup.appendChild(citeDiv);
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
           });
-          return popup.innerHTML;
-        });
+        }
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1632,7 +1668,7 @@
             return filterRegex.test(href) || localhostRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-        var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external)');
+     	var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

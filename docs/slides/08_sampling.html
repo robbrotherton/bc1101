@@ -7,7 +7,7 @@
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.1.251">
+  <meta name="generator" content="quarto-1.3.78">
 
   <title>BC1101 – sampling</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -1667,6 +1667,7 @@
     {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"import { pop } from \"./02_variables.qmd\";\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"\ncover = {\n  const w = 1050\n  const h = 500\n  \n  const xScale = d3.scaleLinear()\n    .domain([25, 175])\n    .range([0, w])\n  const yScale = d3.scaleLinear()\n    .domain([0, 70])\n    .range([h, 0])\n  \n  const svg = d3.select(\"#cover-container\")\n    .append(\"svg\")\n    .attr(\"width\", w).attr(\"height\", h)\n\nsvg.selectAll(\"rect\")\n  .data(data)\n  .enter()\n  .append(\"rect\")\n    .attr(\"class\", \"invertable\")\n    .attr(\"x\", d => xScale(d.xValue))\n    .attr(\"y\", d => yScale(d.y_cum))\n    .attr(\"width\", 5)\n    .attr(\"height\",5)\n    .style(\"fill\", \"black\")\n    .style(\"stroke\", \"none\")\n    .style(\"opacity\", 0)\n    .transition().duration(0).delay((d,i) => i*2)\n      .style(\"opacity\", 1)\n\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"\n\nsampling_chart = {\n\n  const w = 1050\n  const h = 500\n  const margin = ({top: 20, right: 200, bottom: 100, left: 200})\n  const xlims = [75, 125]\n  const xRange = xlims[1] - xlims[0]\n  const x = d3.scaleLinear()\n    .domain(xlims)\n    .range([margin.left, w - margin.right])\n\n  const max_y = Math.max(...samples.map(o => o.count))\n\n  const y = d3.scaleLinear()\n    .domain([0, max_y])\n    .range([h - margin.bottom, margin.top])\n\n  const xAxis = d3.axisBottom(x).ticks(8)\n\n  d3.select(\"#sampling-chart\").select(\"svg\").remove()\n  \n  const svg =  d3.select(\"#sampling-chart\")\n    .append(\"svg\").attr(\"width\", w).attr(\"height\", h)\n    \n  const controls = svg.append(\"g\").attr(\"transform\", `translate(0,${h-margin.bottom/2})`)\n  \n  var quantity = 500;\n\n  const buttonData = [{id: \"reset\", text: \"↻\"},\n                      {id: \"next\", text: \"ᐳ\"},\n                      {id: \"play\", text: \"►\"}]\n                      \n  \n  const buttons = controls.append(\"g\")\n    .attr(\"transform\", `translate(0, 20)`)\n    \n  buttons.selectAll(\"text\")\n    .data(buttonData)\n    .enter().append(\"text\")\n    .attr(\"id\", d => \"button-\" + d.id)\n    .attr(\"class\", \"button\")\n    .text(d => d.text)\n    .attr(\"x\", (d,i) => 400 + i * 75)\n  \n  var playing = false;\n  d3.select(\"#button-reset\").on(\"click\", reset)\n  d3.select(\"#button-next\").on(\"click\", drawOne)\n  d3.select(\"#button-play\").on(\"click\", playClicked)\n  \n  const g = svg.append(\"g\").attr(\"id\", \"boxes\")\n  \n  function playButtonText() {\n    d3.select(\"#button-play\").text(function(){\n      if(playing & quantity < samples.length) {\n        return \"◼\"\n      } else {\n        return \"▶\"\n      }\n    })\n  }\n  \n  function reset() {\n    playing = false;\n    playButtonText();\n    quantity = 0;\n    drawBoxes();\n    d3.select(\"#sampling-info\")\n      .html(\"Observations: \" + '<br/>' + \"<i>M</i> = \")\n  }\n  \n  function drawOne() {\n  if (quantity >= samples.length) {\n    playing = false;\n    return false\n  }\n    quantity++;\n    drawBoxes();\n    describeSample();\n  }\n  \n\n  \n  function playClicked() {\n    playing = !playing\n    \n    playButtonText();\n  \n    if(playing) {\n      drawContinuously();\n    }\n  }\n  \n  const sleep = (milliseconds) => {\n    return new Promise(resolve => setTimeout(resolve, milliseconds))\n  }\n  \n  function drawContinuously() {\n    if(playing) {\n      drawOne();\n      sleep(10).then(drawContinuously);\n    }\n  }\n  \n  function drawBoxes() {\n  g.selectAll(\"rect\").remove()\n  g.selectAll(\"rect\")\n    .data(samples.slice(0, quantity))\n    .enter()\n    .append(\"rect\")\n      .attr(\"class\", \"invertable\")\n      .attr(\"fill\", \"black\")\n      .attr(\"stroke\", \"none\")\n      .attr(\"x\", d => x(d.mean_bin - 0.5))\n      .attr(\"y\", d => y(d.count))\n      .attr(\"width\", (w-margin.left-margin.right)/xRange * 0.9)\n      .attr(\"height\", (h-margin.top-margin.bottom)/max_y * 0.9)\n      .each(function (d, i) {\n            if (i === quantity-1) {\n              // put all your operations on the second element, e.g.\n              d3.select(this).attr(\"fill\", \"red\");    \n            }\n          })\n  }\n  svg.append(\"g\").attr(\"id\", \"xaxis\")\n      .call(xAxis)\n      .attr(\"transform\", `translate(0,${y(0)})`)\n      .attr(\"class\", \"axis\")\n      .style(\"font-size\", \"0.5em\");\n  \n  d3.select(\"#sampling-info\")\n      .style(\"font-family\", \"KaTeX_Main\")\n      .style(\"font-size\", \"0.9em\")\n      .html(\"Observations:<br/><span style='font-style: italic;'>M =</span>\")\n      \n  function describeSample() {\n    d3.select(\"#sampling-info\")\n      .style(\"font-family\", \"KaTeX_Main\")\n      .style(\"font-size\", \"0.9em\")\n      .html(\"Observations: \" + samples[quantity-1].sample.join(\", \") + '<br/>' + \"<i>M</i> = \" + samples[quantity-1].mean)\n  }\n  \n  drawBoxes();\n  describeSample();\n}\n\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"\njStat = require(\"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js\")\n\n\nchart = {\n\n  const w = 1050\n  const h = 600\n  var mu = 100\n  var sigma = 15\n  var n = 30\n  var std_err = sigma/Math.sqrt(n)\n  var max_std_err = sigma / Math.sqrt(50)\n  \n  const margin = ({top: 20, right: 0, bottom: 30, left: 0})\n\n  var xlim = [mu - 3 * sigma, mu + 3 * sigma]\n\n  var x = d3.scaleLinear()\n    .domain([xlim[0], xlim[1]])\n    .range([margin.left, w - margin.right])\n  const y = d3.scaleLinear()\n    .domain([0, jStat.normal.pdf(mu, mu, max_std_err)])\n    .range([h - margin.bottom, margin.top])\n  const line = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density))\n  \n  var xAxis = d3.axisBottom(x).ticks(10);\n  \n  function makeCurve(mu, sm) {\n    var values = jStat(xlim[0], xlim[1], 210)[0],\n        arr = [];\n    for (var i in values) {\n      arr.push({\n          value: values[i], \n          density: jStat.normal.pdf(values[i], mu, sm)\n      })\n    }\n    return arr;\n  }\n  \n\n  \n  const svg = d3.select(\"#sampling-distribution-container\").append(\"svg\")\n    .attr(\"width\", w)\n    .attr(\"height\", h)\n\n  var axis = svg.append(\"g\")\n      .attr(\"transform\", `translate(0,${y(0)})`)\n  \n  const popCurve = svg.append(\"path\")\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"black\")\n      .attr(\"opacity\", 0.5)\n      .attr(\"stroke-width\", 1.5)\n      .attr(\"stroke-dasharray\", [10, 10])\n      .attr(\"class\", \"invertable\");\n      \n  const curve = svg.append(\"path\")\n      .style(\"fill\", \"thistle\")\n      .style(\"fill-opacity\", 0.5)\n      .style(\"stroke\", \"var(--text-color)\")\n      .style(\"stroke-width\", 4);\n      \n  const f = d3.format(\".2f\")\n  \n  \n \n  const changeMu = function(e) {\n    mu = Number(e.target.value);\n    updateAxis();\n    redrawCurves();\n  }\n  \n  const muInput = document.getElementById('mu-input')\n muInput.addEventListener('input', changeMu);\n \n  const changeSigma = function(e) {\n    sigma = Number(e.target.value);\n    std_err = sigma/Math.sqrt(n);\n    updateValues();\n    updateAxis();\n    redrawCurves();\n  }\n  \n  const sigmaInput = document.getElementById('sigma-input')\n sigmaInput.addEventListener('input', changeSigma);\n\n\n  \n  const nInput = document.getElementById('n-input')\n  nInput.oninput = function() {\n    n = nInput.value\n    std_err = sigma/Math.sqrt(n)\n    updateValues();\n    redrawSamplingDistCurve();\n  };\n  \n  \n  function updateValues() {\n    d3.select(\"#n-value\").text(n)\n    d3.select(\"#std-err-value\")\n      .text(f(std_err))\n  }\n  \n  function redrawSamplingDistCurve() {\n    curve.attr(\"d\", line(makeCurve(mu, std_err)))\n  };\n  \n  function redrawPopulationCurve() {\n    popCurve.attr(\"d\", line(makeCurve(mu, sigma)))\n  };\n  \n  function redrawCurves() {\n    redrawSamplingDistCurve();\n    redrawPopulationCurve();\n  }\n  \n  function updateAxis() {\n    max_std_err = sigma / Math.sqrt(50)\n    y.domain([0, jStat.normal.pdf(mu, mu, max_std_err)])\n    \n    xlim = [mu - 3 * sigma, mu + 3 * sigma];\n    console.log(xlim);\n    x.domain([xlim[0], xlim[1]]);\n    xAxis = d3.axisBottom(x).ticks(10);\n    \n    axis.select(\"g\").remove();\n    axis.append(\"g\").call(xAxis).style(\"font-size\", \"0.6em\")\n  }\n\n  updateAxis();\n  updateValues();\n  redrawCurves();\n  \n  \n}\n\n"}]}
     </script>
     <script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
     window._ojs.paths.runtimeToDoc = "../../slides";
     window._ojs.paths.runtimeToRoot = "../..";
     window._ojs.paths.docToRoot = "..";
@@ -1753,7 +1754,24 @@
         button.classList.add('code-copy-button-checked');
         var currentTitle = button.getAttribute("title");
         button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
         setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
           button.setAttribute("title", currentTitle);
           button.classList.remove('code-copy-button-checked');
         }, 1000);
@@ -1791,24 +1809,42 @@
           return note.innerHTML;
         });
       }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
       var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
       for (var i=0; i<bibliorefs.length; i++) {
         const ref = bibliorefs[i];
-        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-        tippyHover(ref, function() {
-          var popup = window.document.createElement('div');
-          cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
-            }
-            popup.appendChild(citeDiv);
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
           });
-          return popup.innerHTML;
-        });
+        }
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1816,7 +1852,7 @@
             return filterRegex.test(href) || localhostRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-        var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external)');
+     	var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

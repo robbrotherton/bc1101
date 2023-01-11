@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.251">
+<meta name="generator" content="quarto-1.3.78">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -147,17 +147,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html">Syllabus</a>
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../slides-index.html">Lectures</a>
+    <a class="nav-link" href="../slides-index.html" rel="" target="">
+ <span class="menu-text">Lectures</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../_"><i class="bi bi-moon" role="img">
+    <a class="nav-link" href="../_" rel="" target=""><i class="bi bi-moon" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -416,6 +418,7 @@ toggle.click(function( event ) {
 {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"d3 = require(\"https://d3js.org/d3.v5.min.js\")\njStat = require(\"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js\")\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"<!-- viewof quantity = html`<input type=\"range\" value=\"1\" min=\"1\" max=${samples.length}>` -->\nviewof quantity = Inputs.range([1, samples.length], {value: 1, step: 1})\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"\n\nchart = {\n\n  const svg = d3.select(DOM.svg(width, height));\n\n  const g = svg.append(\"g\").attr(\"id\", \"boxes\")\n  \n  g.selectAll(\"rect\")\n    .data(samples.slice(0, quantity))\n    .enter()\n    .append(\"rect\")\n      .attr(\"class\", \"invertable\")\n      .attr(\"fill\", \"black\")\n      .attr(\"stroke\", \"none\")\n      .attr(\"x\", d => x(d.mean_bin - 0.5))\n      .attr(\"y\", d => y(d.count))\n      .attr(\"width\", (width-margin.left-margin.right)/100 * 0.9)\n      .attr(\"height\", (height-margin.top-margin.bottom)/ylim * 0.9)\n      .each(function (d, i) {\n            if (i === quantity-1) {\n              // put all your operations on the second element, e.g.\n              d3.select(this).attr(\"fill\", \"red\");    \n            }\n          });\n      \n  svg.append(\"text\")\n      .attr(\"id\", \"xaxis\")\n      .call(xAxis)\n      .attr(\"transform\", `translate(0,${y(0)})`)\n      .attr(\"class\", \"axis\")\n      .style(\"font-size\", \"0.5em\");\n \n  svg.append(\"g\").attr(\"id\", \"xaxis\")\n      .call(xAxis)\n      .attr(\"transform\", `translate(0,${y(0)})`)\n      .attr(\"class\", \"axis\")\n      .style(\"font-size\", \"0.5em\");\n      \n  svg.append(\"g\").attr(\"id\", \"yaxis\")\n      .call(yAxis)\n      .attr(\"transform\", `translate(${x(50)}, 0)`)\n      .attr(\"class\", \"axis\")\n      .style(\"font-size\", \"0.5em\");\n      \nreturn svg.node();\n\n}\n\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"d = d3.select(\"div#blah\")\n  .style(\"font-family\", \"KaTeX_Main\")\n  .style(\"font-size\", \"1.1em\")\n  .html(\"Observations: \" + samples[quantity-1].sample.join(\", \") + '<br/>' + \"<i>M</i> = \" + samples[quantity-1].mean)\n\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"\nwidth = 500\nheight = 250\n\nylim = 50\n\nmargin = ({top: 20, right: 20, bottom: 20, left: 20})\n\n\nx = d3.scaleLinear()\n  .domain([50, 150])\n  .range([margin.left, width - margin.right])\n\nmax_y = Math.max(...samples.map(o => o.count))\n\ny = d3.scaleLinear()\n  .domain([0, ylim])\n  .range([height - margin.bottom, margin.top])\n\nxAxis = d3.axisBottom(x).ticks(8)\n\nyAxis = d3.axisLeft(y).ticks(3)\n"},{"methodName":"interpretQuiet","source":"shinyInput('quantity')"}]}
 </script>
 <script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
 window._ojs.paths.runtimeToDoc = "../../ojs";
 window._ojs.paths.runtimeToRoot = "../..";
 window._ojs.paths.docToRoot = "..";
@@ -463,7 +466,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -499,24 +519,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -524,7 +562,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
-    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external)');
+ 	var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

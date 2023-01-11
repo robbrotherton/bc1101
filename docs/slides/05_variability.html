@@ -7,7 +7,7 @@
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.1.251">
+  <meta name="generator" content="quarto-1.3.78">
 
   <title>BC1101 – variability</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -1662,6 +1662,7 @@
     {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\njStat = require(\"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js\")\n\n\nw = 800\nh = 500\n  \nx = d3.scaleLinear()\n    .domain([-4, 4])\n    .range([0, w])\ny = d3.scaleLinear()\n    .domain([0, 0.41])\n    .range([h-100, 100])\nline = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density))\n    \nupdate_svg = {\n    \n  var sample = [];\n  \n  const svg = d3.select(\"#height-container\")\n    .append(\"svg\").attr(\"id\", \"heights-svg\")\n    .attr(\"width\", w).attr(\"height\", h)\n  \n  const curve = svg.append(\"path\")\n      .attr(\"d\", line(data))\n      .attr(\"stroke\", \"var(--text-color\")\n      .attr(\"stroke-width\", 3)\n      .attr(\"fill\", \"lightblue\")\n      .attr(\"fill-opacity\", 0.5)\n      \n  const lines = svg.append(\"g\")\n    .style(\"stroke\", \"var(--text-color)\")\n    .style(\"stroke-width\", 2)\n    .style(\"stroke-dasharray\", [5,5])\n    \n  const labels = svg.append(\"g\")\n    .style(\"font-size\", \"0.8em\")\n    .style(\"text-anchor\", \"middle\")\n    .style(\"fill\", \"var(--text-color)\")\n    \n  lines.append(\"line\").attr(\"x1\", x(-3.5)).attr(\"x2\", x(3.5))\n    .attr(\"y1\", 90).attr(\"y2\", 90)\n  labels.append(\"text\").attr(\"x\", x(0)).attr(\"y\", 80).text(\"POPULATION VARIABILITY\")\n    \n    \n  const sampleLine = lines.append(\"line\")\n    .attr(\"transform\", `translate(0, ${h-75})`)\n  const sampleLabel = labels.append(\"text\").attr(\"y\", h - 45).text(\"SAMPLE VARIABILITY\")\n      \n  \n  const resetButton = svg.append(\"g\")\n    .attr(\"transform\", `translate(0, 20)`)\n  \n  const sampleCircles = svg.append(\"g\")\n    .attr(\"transform\", `translate(0, ${h - 90})`)\n    .style(\"fill\", \"lightblue\")\n    .style(\"stroke\", \"white\")\n  \n  \n  resetButton\n    .append(\"text\")\n    .attr(\"id\", \"button-reset\")\n    .attr(\"class\", \"button\")\n    .text(\"↻\")\n    .attr(\"x\", w/2)\n    .attr(\"y\", h - 25)\n  \n  d3.select(\"#button-reset\").on(\"click\", newSample)\n\n  function newSample() {\n    \n    <!-- create new sample data -->\n      for (var i = 0; i < 10; i++) {\n        sample[i] = jStat.normal.sample(0, 1)\n      }\n      \n    <!-- update circles on svg -->\n    sampleCircles.selectAll(\"circle\").remove()\n    sampleCircles.selectAll(\"circle\")\n    .data(sample)\n    .enter()\n    .append(\"circle\")\n      .attr(\"r\", 7)\n      .attr(\"cx\", d => x(d))\n      .attr(\"opacity\", 0)\n      .transition().duration(0).delay(function(d, i){return i*50}).attr(\"opacity\", 1)\n      \n      var sampleMin = Math.min(...sample);\n      var sampleMax = Math.max(...sample);\n      console.log(sampleMin)\n      console.log(sampleMax)\n      \n      sampleLine\n        .attr(\"x1\", x(sampleMin))\n        .attr(\"x2\", x(sampleMax))\n        \n      sampleLabel\n        .attr(\"x\", x(sampleMin + (sampleMax - sampleMin)/2))\n\n  }\n  \n  newSample();\n}\n\n"}]}
     </script>
     <script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
     window._ojs.paths.runtimeToDoc = "../../slides";
     window._ojs.paths.runtimeToRoot = "../..";
     window._ojs.paths.docToRoot = "..";
@@ -1748,7 +1749,24 @@
         button.classList.add('code-copy-button-checked');
         var currentTitle = button.getAttribute("title");
         button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
         setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
           button.setAttribute("title", currentTitle);
           button.classList.remove('code-copy-button-checked');
         }, 1000);
@@ -1786,24 +1804,42 @@
           return note.innerHTML;
         });
       }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
       var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
       for (var i=0; i<bibliorefs.length; i++) {
         const ref = bibliorefs[i];
-        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-        tippyHover(ref, function() {
-          var popup = window.document.createElement('div');
-          cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
-            }
-            popup.appendChild(citeDiv);
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
           });
-          return popup.innerHTML;
-        });
+        }
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1811,7 +1847,7 @@
             return filterRegex.test(href) || localhostRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-        var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external)');
+     	var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {
