@@ -8,10 +8,10 @@ project:
 
 website:
   title: "BC1101"
-  repo-url: https://github.com/robbrotherton/bc1101
-  repo-actions:
-    - source
-    - issue
+  # repo-url: https://github.com/robbrotherton/bc1101
+  # repo-actions:
+  #   - source
+  #   - issue
   navbar:
     left:
       - href: index.qmd
