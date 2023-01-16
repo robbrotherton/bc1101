@@ -394,15 +394,15 @@
     <div class="slides">
 
 
-<section>
 <section id="course-overview" class="title-slide slide level1 center">
 <h1>1|COURSE OVERVIEW</h1>
 <div id="cover-image">
 
 </div>
 </section>
-<section id="overview" class="slide level2">
-<h2>Overview</h2>
+
+<section id="overview" class="title-slide slide level1 center">
+<h1>Overview</h1>
 <ul>
 <li><a href="#/textbook">Textbook</a></li>
 <li><a href="#/lectures">Lectures</a></li>
@@ -411,8 +411,9 @@
 <li><a href="#/other-stuff">Other stuff</a></li>
 </ul>
 </section>
-<section id="about-me" class="slide level2">
-<h2>About me</h2>
+
+<section id="about-me" class="title-slide slide level1 center">
+<h1>About me</h1>
 <div class="columns">
 <div class="column" style="width:40%;">
 <ul>
@@ -424,7 +425,8 @@
 <!-- placeholder -->
 </div>
 </div>
-</section></section>
+</section>
+
 <section id="textbook" class="title-slide slide level1 center">
 <h1>Textbook</h1>
 <div class="columns">
@@ -971,12 +973,15 @@
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
       (function () {
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          // dispatch for htmlwidgets
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
           const event = window.document.createEvent("Event");
           event.initEvent("slideenter", true, true);
           window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
 
           // dispatch for shiny
           if (window.jQuery) {
@@ -987,13 +992,6 @@
               window.jQuery(currentSlide).trigger("shown");
             }
           }
-        }
-
-        // hookup for reveal
-        if (window.Reveal) {
-          window.Reveal.addEventListener("slidechanged", function(event) {
-            fireSlideChanged(event.previousSlide, event.currentSlide);
-          });
         }
 
         // hookup for slidy
