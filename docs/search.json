@@ -93,2023 +93,2023 @@
   {
     "objectID": "slides/01_course-info.html#overview",
     "href": "slides/01_course-info.html#overview",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Overview",
     "text": "Overview\n\nTextbook\nLectures\nRecitation\nExams\nOther stuff"
   },
   {
     "objectID": "slides/01_course-info.html#about-me",
     "href": "slides/01_course-info.html#about-me",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "About me",
     "text": "About me\n\n\n\nDr. Rob Brotherton\nNorthern Irish\nResearch: Political psychology / conspiracy beliefs"
   },
   {
     "objectID": "slides/01_course-info.html#panopto",
     "href": "slides/01_course-info.html#panopto",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Panopto",
     "text": "Panopto\n\nIn-lecture quizzes\nNavigation\nSubtitles\nDiscussion\nAlso: Discussion forums on Canvas"
   },
   {
     "objectID": "slides/01_course-info.html#topics",
     "href": "slides/01_course-info.html#topics",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Topics",
     "text": "Topics\n\nBasic issues:\n\nTerminology, variables & measurement\n\nDescriptive statistics:\n\nFrequency, central tendency, variability, z-scores\n\nInferential statistics:\n\nProbability, sampling; hypothesis testing\n\\(t\\)-tests; ANOVA; Correlation & regression\n\nLogical progression"
   },
   {
     "objectID": "slides/01_course-info.html#r-problem-sets",
     "href": "slides/01_course-info.html#r-problem-sets",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "R problem sets",
     "text": "R problem sets\n\nPractical application of stats to data\n\nUsing RStudio Cloud\nShow code; how you worked out answers\nWork on .qmd in RStudio Cloud\nUpload rendered .pdf to Canvas"
   },
   {
     "objectID": "slides/01_course-info.html#grading",
     "href": "slides/01_course-info.html#grading",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Grading",
     "text": "Grading\n\nWrong answers ≠ lower grade\n\n0, 1, or 2 points\n0 = No submission, 1 = Incomplete, 2 = Valid attempt\nDeadline: 5pm day of recitation\n\n\n\n# comment your R code to show thought process\n\n# e.g. here I'm adding 2 and 2\n2 + 2 \n\n[1] 4"
   },
   {
     "objectID": "slides/01_course-info.html#math",
     "href": "slides/01_course-info.html#math",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Math",
     "text": "Math\n\nStatistics requires basic math skills\nE.g. order of operations\n\nParentheses\nExponents (like squaring/square root)\nMultiplication & division\nSummation\nAddition & subtraction"
   },
   {
     "objectID": "slides/01_course-info.html#math-1",
     "href": "slides/01_course-info.html#math-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Math",
     "text": "Math\n\nSummation\n\nSymbol \\(\\Sigma\\) (Greek letter Sigma) means add up\nSummation is done after operations in parentheses, squaring, and multiplication or division, but before other addition or subtraction\nE.g… \\(X = [2, 4, 7]\\)\n\n\n\\[\\Sigma X = ? \\\\\n\\Sigma X + 1 = ? \\\\\n\\Sigma(X + 1) = ?\\]"
   },
   {
     "objectID": "slides/01_course-info.html#math-2",
     "href": "slides/01_course-info.html#math-2",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Math",
     "text": "Math\n\nAlgebra\n\nRearranging equations\nE.g.\n\n\n\\[\\begin{align}12 &= 7 + X \\\\ X &= ? \\end{align}\\]"
   },
   {
     "objectID": "slides/01_course-info.html#r",
     "href": "slides/01_course-info.html#r",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "",
     "text": "Disadvantages\n\nA little tricky to begin with\n\nAdvantages\n\nFree\nCan do stuff other stats software can’t\nReproducible analyses\nPretty graphs\nFeel like a super cool hacker\nPirate jokes\nGood for your career"
   },
   {
     "objectID": "slides/01_course-info.html#lastly",
     "href": "slides/01_course-info.html#lastly",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Lastly",
     "text": "Lastly\n\nCheck Canvas & email regularly\nLet me know about problems\n\n\n\n\n\nw = 1050\nh = w/2\n\ncover = {\n\n  const svg = d3.select(\"#cover-image\")\n    .append(\"svg\")\n    .attr(\"width\", w)\n    .attr(\"height\", h)\n    .style(\"transform\", \"scaleY(-1)\")\n    \n  const g = svg.append(\"g\")\n  \n  g\n    .selectAll(\"rect\")\n    .data(data)\n    .enter()\n      .append(\"rect\")\n      .attr(\"fill\", \"black\")\n        .attr(\"x\", function(d, i){return 5 + i*(w/10)})\n        .attr(\"y\", 0)\n        .attr(\"height\", 0)\n        .attr(\"width\", w/10 - 10)\n        .attr(\"fill\", d => d.color)\n          .transition()\n          .duration(d => d.duration)\n          .delay(d => d.delay)\n          .attr(\"height\", d => d.value * 26)\n  \n\n \n return svg.node()\n}"
   },
   {
     "objectID": "slides/02_variables.html#producing-a-statistic",
     "href": "slides/02_variables.html#producing-a-statistic",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Producing a statistic",
     "text": "Producing a statistic\n\nHow many books are red\n\nGather data to determine what proportion of books are red\nEnter your best estimate and explain your process\nSuggested time limit: 5 minutes"
   },
   {
     "objectID": "slides/02_variables.html#making-statistics-1",
     "href": "slides/02_variables.html#making-statistics-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Making statistics",
     "text": "Making statistics\n\nIn the United States today half of all children (35.6 million) live in a household where a parent or other adult uses tobacco, drinks heavily or uses illicit drugs1\n\n\nOther questions…\n\nHow many students are smokers?\nYoung people, narcissism, anxiety, depression 2\n\n\nThe National Center on Addiction and Substance Abuse at Columbia University, 2005See Singal, 2016"
   },
   {
     "objectID": "slides/02_variables.html#constructs-operational-definitions",
     "href": "slides/02_variables.html#constructs-operational-definitions",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Constructs & operational definitions",
     "text": "Constructs & operational definitions\n\nConstruct: Extroversion\nOperational definition: Big 5 questions\n\n\n\nConstruct: Intelligence\nOperational definition: IQ test\n\n\n\n\nConstruct: Height\nOperational definition: How far the top of your head is from the floor according to a tape measure"
   },
   {
     "objectID": "slides/02_variables.html#operationalizing-variables",
     "href": "slides/02_variables.html#operationalizing-variables",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Operationalizing variables",
     "text": "Operationalizing variables\n\nUsually more than one way we could measure & record data\nResult in different types of data, and potentially different applicable analyses\nHow to decide on operational definition?\n\nAspects to consider:\n\nType of variable (discrete / continuous)\nScale of measurement (nominal / ordinal / interval / ratio)"
   },
   {
     "objectID": "slides/02_variables.html#types-of-variable",
     "href": "slides/02_variables.html#types-of-variable",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Types of variable",
     "text": "Types of variable\n\n\n\nDiscrete\n\nCount as whole numbers\nSeparate, indivisible categories\nNo values exist between neighboring categories\nE.g. number of children/cats/tvs; positive cases; hospital admissions\n\n\n\n\nContinuous\n\nCan be measured with decimals\nHas infinite number of possible values\nEvery interval is divisible into infinite number of parts\nE.g. height, time, temperature\n\n\n\n\n\n\n\n\n\nbar_xScale = d3.scaleBand()\n  .domain([1,2,3,4,5])\n  .range([m, w - m])\n\nbar_yScale = d3.scaleLinear()\n  .domain([0, 3])\n  .range([h - m, m])\n    \nbar_chart = {\n\n  const svg = d3.select(DOM.svg(w, h))\n    .attr(\"class\", \"invertable\")\n    .attr(\"lazy-load\", true)\n  \n  const axis_lines = svg.append(\"g\")\n    .attr(\"stroke\", \"black\")\n    .attr(\"fill\", \"none\")\n    \n  const bars = svg.append(\"g\")\n    .attr(\"fill\", \"black\")\n    .attr(\"stroke\", \"none\")\n  \n  bars.selectAll(\"rect\")\n    .data(bar_data)\n    .enter()\n      .append(\"rect\") \n      .attr(\"transform\", \"rotate(180)\")\n      .attr(\"transform-origin\", \"center center\")\n      .attr(\"x\", d => bar_xScale(d.value)+2.5)\n      .attr(\"y\", m)\n      .attr(\"width\", (w-2*m)/5-5)\n      .attr(\"height\", d => d.density*(h-m*2)/3)\n      \n\n  svg.on('click',function(){\n   bars.selectAll(\"rect\")\n    .attr(\"height\", 0)\n    .transition()\n    .duration(300)\n    .delay(function(d, i){return (6-i)*300})\n    .attr(\"height\", d => d.density*(h-m*2)/3);\n  })\n  \n\n  axis_lines.selectAll(\"line\")\n    .data(line_data)\n    .enter()\n      .append(\"line\")\n        .attr(\"x1\", d => d.x1)\n        .attr(\"x2\", d => d.x2)\n        .attr(\"y1\", d => d.y1)\n        .attr(\"y2\", d => d.y2)\n    \n  return svg.node();\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nxScale = d3.scaleLinear()\n  .domain([-3, 3])\n  .range([margins.left, w - m])\n\nyScale = d3.scaleLinear()\n  .domain([0, 0.4])\n  .range([h - m, m])\n  \nsmooth_curve = {\n  const svg_curve = d3.select(DOM.svg(w, h))\n    .attr(\"class\", \"invertable\");\n  \n  const axis_lines = svg_curve.append(\"g\")\n    .attr(\"stroke\", \"black\")\n    .attr(\"fill\", \"none\")\n  \n  var p = svg_curve.append(\"path\")\n    .datum(curve_data)\n    .attr(\"stroke\", \"black\")\n    .attr(\"stroke-width\", 2)\n    .attr(\"fill\", \"none\")\n    .attr(\"d\", line)\n    \n  var totalLength = p.node().getTotalLength();\n\n  svg_curve.on(\"click\", function(){\n    p.transition()\n      .duration(0)\n      .attr(\"stroke-dasharray\", totalLength + \" \" + totalLength)\n      .attr(\"stroke-dashoffset\", totalLength)\n      .transition()\n      .duration(2000)\n      .attr(\"stroke-dashoffset\", 0)})\n        \n  axis_lines.selectAll(\"line\")\n    .data(line_data)\n    .enter()\n      .append(\"line\")\n        .attr(\"x1\", d => d.x1)\n        .attr(\"x2\", d => d.x2)\n        .attr(\"y1\", d => d.y1)\n        .attr(\"y2\", d => d.y2)\n    \n  return svg_curve.node();\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nw = 400\nh = 200\n\nm = 20\nhalf_m = m * 0.5\n\nmargins = ({top: 20, right: 20, bottom: 20, left: 20})\n\nline_data = [\n    {x1: half_m, x2: w - half_m, y1: h - half_m, y2: h - half_m},\n    {x1: half_m, x2: half_m, y1: h - half_m, y2: half_m}\n  ]\n  \nline = d3.line()\n    .x(d => xScale(d.value))\n    .y(d => yScale(d.density))"
   },
   {
     "objectID": "slides/02_variables.html#scales-of-measurement",
     "href": "slides/02_variables.html#scales-of-measurement",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Scales of measurement",
     "text": "Scales of measurement\n\n\n\n\n \n  \n    Scale \n    Characteristics \n    Examples \n  \n \n\n  \n    Nominal \n    Named categories\n                                      No quantitative distinctions \n    GenderEye colorExperimental condition \n  \n  \n    Ordinal \n    Ordered categories\n                                      Indicates direction, but not size of difference \n    RankClothing sizesOlympic medals \n  \n  \n    Interval \n    Ordered categories\n                                      Equal intervals between categories\n                                      Arbitrary or absent zero point \n    Temperature (Celcius/Fahrenheit)Golf scores \n  \n  \n    Ratio \n    Ordered categories\n                                      Equal interval between categories\n                                      Absolute zero point \n    Temperature (Kelvin)\n                               Number of correct answers\n                               Response time"
   },
   {
     "objectID": "slides/02_variables.html#likert-scales",
     "href": "slides/02_variables.html#likert-scales",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Likert scales",
     "text": "Likert scales\n\nWhat is your current level of happiness?\n\nA lot less than usual\nA little less than usual\nAbout average\nA little more than usual\nA lot more than usual\n\n\n\nBarry, D. (2017). Do not use averages with Likert scale data. https://bookdown.org/Rmadillo/likert/"
   },
   {
     "objectID": "slides/02_variables.html#draw-sample-make-inference",
     "href": "slides/02_variables.html#draw-sample-make-inference",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Draw sample, make inference",
     "text": "Draw sample, make inference"
   },
   {
     "objectID": "slides/02_variables.html#terminology",
     "href": "slides/02_variables.html#terminology",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Terminology",
     "text": "Terminology\n\n\n\nPopulations\n\nPopulation parameters\nUsually Greek symbols\ne.g. \\(\\mu\\); \\(N\\)\nInferential statistics\n\n\n\n\nSamples\n\nSample statistics\nUsually letters\ne.g. \\(M\\); \\(n\\)\nDescriptive statistics"
   },
   {
     "objectID": "slides/03_frequency.html#statistics",
     "href": "slides/03_frequency.html#statistics",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Statistics",
     "text": "Statistics\n\nA bunch of numbers looking for an argument. 1\n\n\nMathematical procedures used to collect, organize, summarize & interpret information\n\nProvide standardized evaluation procedures\nTell us about patterns of interest in data\n\nEtymology\n\nStatistics comes from status, meaning state\nThe state of the state\nCensus, birth/death rate, incomes, unemployment etc\n\n\nJones, 2011"
   },
   {
     "objectID": "slides/03_frequency.html#e.g.-opinion-polling",
     "href": "slides/03_frequency.html#e.g.-opinion-polling",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "E.g. opinion polling",
     "text": "E.g. opinion polling\n\n\n\nHow often does something occur?\n\nE.g. FiveThirtyEight opinion polling"
   },
   {
     "objectID": "slides/03_frequency.html#frequency-distributions",
     "href": "slides/03_frequency.html#frequency-distributions",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Frequency distributions",
     "text": "Frequency distributions\n\nA frequency distribution…\n\nOrganizes and displays data\nConveys how scores are distributed\nCan be either a table or a graph\n\nShows:\n\nCategories that make up the scale\nFrequency, or number of observations, in each category\nAnd/or proportion/percentage/cumulative percent of scores in each category"
   },
   {
     "objectID": "slides/03_frequency.html#simple-example",
     "href": "slides/03_frequency.html#simple-example",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Simple example",
     "text": "Simple example\n\n\n\n\nFrom raw scores\n\n\n\n2 1 2 3 4 3 3 2 2 1 5 3 4 1 2\n\n\n\n\n\nTo this\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    1 \n    3 \n  \n  \n    2 \n    5 \n  \n  \n    3 \n    4 \n  \n  \n    4 \n    2 \n  \n  \n    5 \n    1 \n  \n\n\n\n\n\n\n\n\nOr this"
   },
   {
     "objectID": "slides/03_frequency.html#frequency-tables-1",
     "href": "slides/03_frequency.html#frequency-tables-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Frequency tables",
     "text": "Frequency tables\n\n\n\n\nMidterm scores: 41 43 44 45 48 50 51 51 52 52 52 53 53 53 54 54 55 55 55 55 55 56 56 56 56 56 57 57 57 57 58 58 58 59 59 59 59 59 59 59\n\n\n\nRegular frequency table not always appropriate\n\nLarge number of scores, low frequencies\n\n\n\n\nSolution: Grouped frequency tables\n\nEasier to understand\nBut lose information\n\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    41 \n    1 \n  \n  \n    42 \n    0 \n  \n  \n    43 \n    1 \n  \n  \n    44 \n    1 \n  \n  \n    45 \n    1 \n  \n  \n    46 \n    0 \n  \n  \n    47 \n    0 \n  \n  \n    48 \n    1 \n  \n  \n    49 \n    0 \n  \n  \n    50 \n    1 \n  \n  \n    51 \n    2 \n  \n  \n    52 \n    3 \n  \n  \n    53 \n    3 \n  \n  \n    54 \n    2 \n  \n  \n    55 \n    5 \n  \n  \n    56 \n    5 \n  \n  \n    57 \n    4 \n  \n  \n    58 \n    3 \n  \n  \n    59 \n    7"
   },
   {
     "objectID": "slides/03_frequency.html#grouped-frequency-table",
     "href": "slides/03_frequency.html#grouped-frequency-table",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Grouped frequency table",
     "text": "Grouped frequency table\n\nWhat’s the range of scores?\nHow can you turn that into about 10 groups? (using a simple number, e.g. 2, 5, 10…)\nWhat should we make the bottom score of each interval? (so that the bottom is a multiple of width, i.e, start at 10, not 11)\nList intervals in \\(X\\) column, frequencies in \\(f\\) column\n(optional) Create columns for proportion, percent, cumulative percent"
   },
   {
     "objectID": "slides/03_frequency.html#grouped-frequency-table-1",
     "href": "slides/03_frequency.html#grouped-frequency-table-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Grouped frequency table",
     "text": "Grouped frequency table\n\n\n\nGrouped frequency table\n\nBins all same width\nWidth is a simple number (2)\nBottom score is multiple of width (i.e, divisible by 2)\nProduces good number of bins\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    40-41 \n    1 \n  \n  \n    42-43 \n    1 \n  \n  \n    44-45 \n    2 \n  \n  \n    46-47 \n    0 \n  \n  \n    48-49 \n    1 \n  \n  \n    50-51 \n    3 \n  \n  \n    52-53 \n    6 \n  \n  \n    54-55 \n    7 \n  \n  \n    56-57 \n    9 \n  \n  \n    58-59 \n    10"
   },
   {
     "objectID": "slides/03_frequency.html#frequency-graphs",
     "href": "slides/03_frequency.html#frequency-graphs",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Frequency graphs",
     "text": "Frequency graphs\n\n\n\nHistogram, frequency polygon, bar chart, curve\n\nAppropriate type depends on:\n\nLevel of measurement (nominal; ordinal; interval; ratio)\nDescribing sample or population?\nWant to show more than one group?"
   },
   {
     "objectID": "slides/03_frequency.html#bar-graph",
     "href": "slides/03_frequency.html#bar-graph",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Bar graph",
     "text": "Bar graph\n\n\n\nFor nominal or ordinal data\nCategories on \\(x\\)-axis, frequency on \\(y\\)-axis\nSpaces between adjacent bars indicates separate categories"
   },
   {
     "objectID": "slides/03_frequency.html#histogram",
     "href": "slides/03_frequency.html#histogram",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Histogram",
     "text": "Histogram\n\n\n\nFor interval or ratio data\nScores/bins on \\(x\\)-axis, frequency on \\(y\\)-axis\nHeight corresponds to frequency\nBars centered on category"
   },
   {
     "objectID": "slides/03_frequency.html#grouped-histogram",
     "href": "slides/03_frequency.html#grouped-histogram",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Grouped histogram",
     "text": "Grouped histogram\n\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    40-41 \n    1 \n  \n  \n    42-43 \n    1 \n  \n  \n    44-45 \n    2 \n  \n  \n    46-47 \n    0 \n  \n  \n    48-49 \n    1 \n  \n  \n    50-51 \n    3 \n  \n  \n    52-53 \n    6 \n  \n  \n    54-55 \n    7 \n  \n  \n    56-57 \n    9 \n  \n  \n    58-59 \n    10"
   },
   {
     "objectID": "slides/03_frequency.html#frequency-polygon",
     "href": "slides/03_frequency.html#frequency-polygon",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Frequency polygon",
     "text": "Frequency polygon\n\n\n\nBasically the same as a histogram\n\nScores on the \\(X\\)-axis\nFrequency on \\(Y\\)-axis\nDot above the center of each interval\nConnect dots with a line\nClose the polygon with lines to the \\(Y = 0\\) point\nCan also be used with grouped frequency distribution data"
   },
   {
     "objectID": "slides/03_frequency.html#frequency-polygon-1",
     "href": "slides/03_frequency.html#frequency-polygon-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Frequency polygon",
     "text": "Frequency polygon\n\nUseful for comparing distributions"
   },
   {
     "objectID": "slides/03_frequency.html#frequency-polygon-2",
     "href": "slides/03_frequency.html#frequency-polygon-2",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Frequency polygon",
     "text": "Frequency polygon\n\n…where overlapping histograms are harder to understand"
   },
   {
     "objectID": "slides/03_frequency.html#population-curve",
     "href": "slides/03_frequency.html#population-curve",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Population curve",
     "text": "Population curve\n\n\n\nUsed for population distributions\n\nWhen population is large, scores for each individual are usually not known\nSmooth curve indicates exact scores were not used\nConvey relative frequency"
   },
   {
     "objectID": "slides/04_central-tendency.html#finding-the-center",
     "href": "slides/04_central-tendency.html#finding-the-center",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Finding the center",
     "text": "Finding the center\nWhere is the center of the distribution?"
   },
   {
     "objectID": "slides/04_central-tendency.html#finding-the-center-1",
     "href": "slides/04_central-tendency.html#finding-the-center-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Finding the center",
     "text": "Finding the center\nWhere is the center of the distribution?"
   },
   {
     "objectID": "slides/04_central-tendency.html#finding-the-center-2",
     "href": "slides/04_central-tendency.html#finding-the-center-2",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Finding the center",
     "text": "Finding the center\nWhere is the center of the distribution?"
   },
   {
     "objectID": "slides/04_central-tendency.html#measures-of-central-tendency",
     "href": "slides/04_central-tendency.html#measures-of-central-tendency",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Measures of central tendency",
     "text": "Measures of central tendency\n\nImagine you get the following grades:\n\n90, 0, 80, 85, 90\n\nHow do you fairly describe all these scores with a single number?\nThree ways:\n\nMode: grade you get most often\nMedian = grade that divides lowest 50% of scores from highest 50% of scores\nMean = sum of grades / # of grades = \\(\\dfrac{\\Sigma X} N\\)"
   },
   {
     "objectID": "slides/04_central-tendency.html#measures-of-central-tendency-1",
     "href": "slides/04_central-tendency.html#measures-of-central-tendency-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Measures of central tendency",
     "text": "Measures of central tendency\n\nImagine you get the following grades:\n\n90, 0, 80, 85, 90\n\nThree ways:\n\nMode = 90, 0, 80, 85, 90\nMedian = 0, 80, 85, 90, 90\nMean = (90 + 0 + 80 + 85 + 90) / 5 = 69"
   },
   {
     "objectID": "slides/04_central-tendency.html#mode-1",
     "href": "slides/04_central-tendency.html#mode-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Mode",
     "text": "Mode\n\nThe score/category with the greatest frequency\n\nWhat occurs most often?\n\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    5 \n    1 \n  \n  \n    4 \n    2 \n  \n  \n    3 \n    4 \n  \n  \n    2 \n    5 \n  \n  \n    1 \n    3 \n  \n\n\n\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(f\\) \n  \n \n\n  \n    90-99 \n    7 \n  \n  \n    80-89 \n    4 \n  \n  \n    70-79 \n    5 \n  \n  \n    60-60 \n    3 \n  \n  \n    50-59 \n    0 \n  \n  \n    40-49 \n    1"
   },
   {
     "objectID": "slides/04_central-tendency.html#mode-generic-examples",
     "href": "slides/04_central-tendency.html#mode-generic-examples",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Mode: generic examples",
     "text": "Mode: generic examples"
   },
   {
     "objectID": "slides/04_central-tendency.html#mode-realistic-example",
     "href": "slides/04_central-tendency.html#mode-realistic-example",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Mode: realistic example",
     "text": "Mode: realistic example"
   },
   {
     "objectID": "slides/04_central-tendency.html#median-1",
     "href": "slides/04_central-tendency.html#median-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Median",
     "text": "Median\n\nDefinition:\n\nThe midpoint of the scores in a distribution when they are listed in order from smallest to largest\nDivides the scores into two groups of equal size\nEqual number of data points either side of the median\n50% below, 50% above"
   },
   {
     "objectID": "slides/04_central-tendency.html#locating-the-median",
     "href": "slides/04_central-tendency.html#locating-the-median",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Locating the median",
     "text": "Locating the median\n\nPut scores in order\nFind the number that gives and equal number of scores on either side\nOdd number of scores\n\nMedian is the center score\n\n\n\n1 2 3 4 5"
   },
   {
     "objectID": "slides/04_central-tendency.html#locating-the-median-1",
     "href": "slides/04_central-tendency.html#locating-the-median-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Locating the median",
     "text": "Locating the median\n\nPut scores in order\nFind the number that gives and equal number of scores on either side\nEven number of scores:\n\nAverage the 2 numbers either side of center\n\n\n\n1 2 3 | 4 5 6\n(3 + 4) / 2 = 3.5\n65 70 70 80 90 90\n65 70 80 80 80 90 92 95"
   },
   {
     "objectID": "slides/04_central-tendency.html#mean-1",
     "href": "slides/04_central-tendency.html#mean-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Mean",
     "text": "Mean\n\n\n\nWhat is the “average”?\n\nTake a set of scores\nAdd them up\nDivide by how many there are\n\nDeveloped in the 16th century\n\nMainly used by astronomers\n\nAdolphe Quetelet (1796-1874)\n\nApplied the concept to people\nSize measurements (BMI), divorce, crime, suicide\nSee The Atlantic: How the Idea of a ‘Normal’ Person Got Invented"
   },
   {
     "objectID": "slides/04_central-tendency.html#history",
     "href": "slides/04_central-tendency.html#history",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "History",
     "text": "History\n\n\n\nAmerican Civil War\n\nMass production of uniforms\nSmall, Medium, Large\nAlso food rations, weapon design, etc\n\n1926: Plane cockpits\n\nBased on average measurements\nBy WW2 worked terribly\nDidn’t fit most pilots\nNobody is average on all dimensions"
   },
   {
     "objectID": "slides/04_central-tendency.html#calculating-the-mean",
     "href": "slides/04_central-tendency.html#calculating-the-mean",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Calculating the mean",
     "text": "Calculating the mean\n\nSum of scores divided by number of scores\nRepresented by a symbol (unlike mode & median)\n\n\n\nSample: \\(M = \\dfrac{\\Sigma X} n\\)\n(sometimes \\(\\overline{X}\\))\n\nPopulation: \\(\\mu = \\dfrac{\\Sigma X} N\\)"
   },
   {
     "objectID": "slides/04_central-tendency.html#visualizing-the-mean",
     "href": "slides/04_central-tendency.html#visualizing-the-mean",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Visualizing the mean",
     "text": "Visualizing the mean\n\nAnother way of thinking about the mean\n\nThe balance point for the distribution"
   },
   {
     "objectID": "slides/04_central-tendency.html#distributions-income",
     "href": "slides/04_central-tendency.html#distributions-income",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Distributions: income",
     "text": "Distributions: income\n\nSensitivity to outliers\n\nExtreme values; observations far from the center\nMean is more influenced by outliers than median"
   },
   {
     "objectID": "slides/04_central-tendency.html#distributions-income-1",
     "href": "slides/04_central-tendency.html#distributions-income-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Distributions: income",
     "text": "Distributions: income"
   },
   {
     "objectID": "slides/05_variability.html#variability-example-1",
     "href": "slides/05_variability.html#variability-example-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Variability example",
     "text": "Variability example\n\n\n\n\n\nLeptokurtotic\n\n\n\n\nPlatykurtotic"
   },
   {
     "objectID": "slides/05_variability.html#variability-1",
     "href": "slides/05_variability.html#variability-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Variability",
     "text": "Variability\n\nLike the mean\n\nA descriptive statistic\nSingle number to summarize dataset\n\nUnlike the mean\n\nRather than describing the middle of the data, variability describes the spread of the data\nHigher variability means greater differences between scores\n\nPurpose\n\nQuantify how well an individual score represents the distribution\nImportant for inferential stats"
   },
   {
     "objectID": "slides/05_variability.html#measures-of-variability",
     "href": "slides/05_variability.html#measures-of-variability",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Measures of variability",
     "text": "Measures of variability\n\nQuantitative distance measures based on the differences between scores\n\nEach has different characteristics\n\nRange\n\nDescribes the spread of scores\nDistance of most extreme scores from each other\n\n\\(SS\\), Variance, and Standard Deviation\n\nCompanion concepts, but different things\nDescribe distance of scores from the mean\nSmall values: low variability; scores clustered close to mean\nHigher values: greater variability; scores widely scattered"
   },
   {
     "objectID": "slides/05_variability.html#range-1",
     "href": "slides/05_variability.html#range-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Range",
     "text": "Range\n\nDifference between lowest & highest scores\n\nDistance covered by the scores in a distribution\nRange = \\(X_{max} - X_{min}\\)\n\n\n\n\n\n\nYou: 0, 4, 5, 5, 6, 10\n\n\\(10 - 0 = 10\\)\n\nFriend: 0, 1, 5, 5, 9, 10\n\n\\(10 - 0 = 10\\)"
   },
   {
     "objectID": "slides/05_variability.html#range-2",
     "href": "slides/05_variability.html#range-2",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Range",
     "text": "Range\n\nCharacteristics\n\nDoes not consider all the data\nBased only on two scores: most extreme values\nImprecise, unreliable measure of variability\nNot often useful for descriptive/inferential stats\n\nBut checking range & min/max values can be useful for finding mistakes in data input\n\nImpossible range / min & max values"
   },
   {
     "objectID": "slides/05_variability.html#definitions",
     "href": "slides/05_variability.html#definitions",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Definitions",
     "text": "Definitions\n\nDeviation\n\nDistance from the mean: deviation score = \\(X – \\mu\\)\n\n\\(SS\\): Sum of squares\n\nSum of squared deviations\n\nVariance\n\nThe mean squared deviation\nAverage squared distance from the mean\nCalculation differs for population and samples\n\nStandard deviation\n\nThe square root of the variance\nProvides a measure of the average (standard) distance of scores from the mean"
   },
   {
     "objectID": "slides/05_variability.html#approach",
     "href": "slides/05_variability.html#approach",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Approach",
     "text": "Approach\n\nDetermine the deviation of each score\n\nDistance from the mean\nDeviation score = \\(X - \\mu\\)\n\n\n\n\nTo find “average deviation” just sum the deviations and divide by \\(n\\)?\n\nDead end; always sums to \\(0\\)"
   },
   {
     "objectID": "slides/05_variability.html#calculations",
     "href": "slides/05_variability.html#calculations",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Calculations",
     "text": "Calculations\n\n\n\nFind the deviation for each score\n\n\n\\(X - \\mu\\)\n\n\n\n\n\nSquare deviations\n\n\n\\((X - \\mu)^2\\)\n\n\n\n\n\nSum the squared deviations\n\n\n\\(SS = \\Sigma(X - \\mu)^2\\)\n\n\n\n\n\nFind average of squared deviations\n\n\n\\(\\sigma^2 = \\dfrac{SS}N\\)\n\n\n\n\n\nTake square root of variance\n\n\n\\(\\sigma = \\sqrt{\\sigma^2} = \\sqrt{\\dfrac{SS}N}\\)"
   },
   {
     "objectID": "slides/05_variability.html#calculating-by-hand",
     "href": "slides/05_variability.html#calculating-by-hand",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Calculating by hand",
     "text": "Calculating by hand\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    0 \n    -5 \n    25 \n  \n  \n    4 \n    -1 \n    1 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    6 \n    1 \n    1 \n  \n  \n    10 \n    5 \n    25 \n  \n  \n    \\(M = 5.00\\) \n     \n    \\(SS = 52.00\\) \n  \n  \n     \n     \n    \\(\\sigma^2 = 8.67\\) \n  \n  \n     \n     \n    \\(\\sigma = 2.94\\) \n  \n\n\n\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    0 \n    -5 \n    25 \n  \n  \n    1 \n    -4 \n    16 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    5 \n    0 \n    0 \n  \n  \n    9 \n    4 \n    16 \n  \n  \n    10 \n    5 \n    25 \n  \n  \n    \\(M = 5.00\\) \n     \n    \\(SS = 82.00\\) \n  \n  \n     \n     \n    \\(\\sigma^2 = 13.67\\) \n  \n  \n     \n     \n    \\(\\sigma = 3.70\\)"
   },
   {
     "objectID": "slides/05_variability.html#sum-of-squared-deviations",
     "href": "slides/05_variability.html#sum-of-squared-deviations",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Sum of squared deviations",
     "text": "Sum of squared deviations\n\nVery important concept! Especially later\n\n\n\n\nDefinitional formula\n\nFind each deviation score \\((X – \\mu)\\)\nSquare each deviation score \\((X–\\mu)^2\\)\nSum up the squared deviations \\(\\Sigma(X–\\mu)^2\\)\n\n\n\n\\(SS = \\Sigma(X - \\mu)^2\\)\n\n\n\nComputational formula\n\nSquare each score & sum the squared scores\nFind the sum of scores, square it, divide by \\(N\\)\nSubtract the second part from the first\n\n\n\n\\(SS = \\Sigma X^2 - \\dfrac{(\\Sigma X)^2}N\\)"
   },
   {
     "objectID": "slides/05_variability.html#underestimation-soup",
     "href": "slides/05_variability.html#underestimation-soup",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Underestimation: Soup",
     "text": "Underestimation: Soup"
   },
   {
     "objectID": "slides/05_variability.html#underestimation-height",
     "href": "slides/05_variability.html#underestimation-height",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Underestimation: Height",
     "text": "Underestimation: Height"
   },
   {
     "objectID": "slides/05_variability.html#calculating-variability-of-samples",
     "href": "slides/05_variability.html#calculating-variability-of-samples",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Calculating variability of samples",
     "text": "Calculating variability of samples\n\nSimple solution: divide \\(SS\\) by \\(n – 1\\) instead of \\(n\\)\n\nProduces unbiased estimate of the population variance"
   },
   {
     "objectID": "slides/05_variability.html#variability-equations-for-samples",
     "href": "slides/05_variability.html#variability-equations-for-samples",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Variability equations for samples",
     "text": "Variability equations for samples\n\n\n\nFind the deviation for each score\n\n\n\\(X - \\mu\\)\n\n\n\n\n\nSquare deviations\n\n\n\\((X - \\mu)^2\\)\n\n\n\n\n\nSum the squared deviations\n\n\n\\(SS = \\Sigma(X - \\mu)^2\\)\n\n\n\n\n\nFind average of squared deviations\n\n\n\\(\\sigma^2 = \\dfrac{SS} {\\color{red}{n-1}}\\)\n\n\n\n\n\nTake square root of variance\n\n\n\\(\\sigma = \\sqrt{\\sigma^2} = \\sqrt{\\dfrac{SS}{\\color{red}{n-1}}}\\)"
   },
   {
     "objectID": "slides/05_variability.html#degrees-of-freedom-1",
     "href": "slides/05_variability.html#degrees-of-freedom-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Degrees of freedom",
     "text": "Degrees of freedom\n\n\n🂠\n\n\n🂠\n\n\n🂠"
   },
   {
     "objectID": "slides/05_variability.html#degrees-of-freedom-2",
     "href": "slides/05_variability.html#degrees-of-freedom-2",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Degrees of freedom",
     "text": "Degrees of freedom\n\n\n🃓\n\n\n🂠\n\n\n🂠"
   },
   {
     "objectID": "slides/05_variability.html#degrees-of-freedom-3",
     "href": "slides/05_variability.html#degrees-of-freedom-3",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Degrees of freedom",
     "text": "Degrees of freedom\n\n\n🃓\n\n\n🃕\n\n\n🂠"
   },
   {
     "objectID": "slides/05_variability.html#degrees-of-freedom-4",
     "href": "slides/05_variability.html#degrees-of-freedom-4",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Degrees of freedom",
     "text": "Degrees of freedom\n\nWhy \\(n – 1\\)?\n\n\\(M = 5\\)\n\\(n = 3\\)\n\nIf you know the first 2 scores:\n\n3, 5\n\\(M = \\dfrac{\\Sigma X}{N} = \\dfrac{3 + 5 + X}{3}\\)\nSo \\(X = 3*M - 3 - 5 = 7\\)\n\nThere is only 1 possible value that \\(X\\) can be\n\nIt is not free to vary\nWe’ve lost 1 degree of freedom"
   },
   {
     "objectID": "slides/05_variability.html#star-wars-variability",
     "href": "slides/05_variability.html#star-wars-variability",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Star Wars variability",
     "text": "Star Wars variability\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\nMetaCritic.com\nIMDb.com\n\n  \n    Movie \n    N \n    M \n    SD \n    N \n    M \n    SD \n  \n \n\n  \n    Star Wars: Episode IV - A New Hope \n    24 \n    90.1 \n    16.7 \n    1,302,317 \n    85.0 \n    16.4 \n  \n  \n    Star Wars: Episode V - The Empire Strikes Back \n    25 \n    83.5 \n    20.8 \n    1,230,844 \n    85.9 \n    16.3 \n  \n  \n    Star Wars: Episode VI - Return of the Jedi \n    24 \n    63.8 \n    25.2 \n    1,006,122 \n    82.6 \n    15.5 \n  \n  \n    Star Wars: Episode I - The Phantom Menace \n    36 \n    56.4 \n    22.9 \n    769,435 \n    65.3 \n    20.3 \n  \n  \n    Star Wars: Episode II - Attack of the Clones \n    39 \n    60.3 \n    22.0 \n    678,519 \n    66.3 \n    20.2 \n  \n  \n    Star Wars: Episode III - Revenge of the Sith \n    40 \n    71.4 \n    19.7 \n    751,751 \n    76.1 \n    18.8 \n  \n  \n    Star Wars: Episode VII - The Force Awakens \n    55 \n    80.8 \n    14.2 \n    898,767 \n    77.7 \n    19.6 \n  \n  \n    Star Wars: Episode VIII - The Last Jedi \n    56 \n    84.1 \n    13.5 \n    602,045 \n    66.6 \n    24.5 \n  \n  \n    Star Wars: Episode IX - The Rise of Skywalker \n    61 \n    57.2 \n    16.5 \n    418,656 \n    64.7 \n    23.4 \n  \n\n\n\n\n\n\n\n\n\n\n\n \n\n\nMetaCritic.com\nIMDb.com\n\n  \n    Movie \n    N \n    M \n    SD \n    N \n    M \n    SD \n  \n \n\n  \n    Star Wars: Episode IV - A New Hope \n    24 \n    90.1 \n    16.7 \n    1,302,317 \n    85.0 \n    16.4 \n  \n  \n    Star Wars: Episode V - The Empire Strikes Back \n    25 \n    83.5 \n    20.8 \n    1,230,844 \n    85.9 \n    16.3 \n  \n  \n    Star Wars: Episode VI - Return of the Jedi \n    24 \n    63.8 \n    25.2 \n    1,006,122 \n    82.6 \n    15.5 \n  \n  \n    Star Wars: Episode I - The Phantom Menace \n    36 \n    56.4 \n    22.9 \n    769,435 \n    65.3 \n    20.3 \n  \n  \n    Star Wars: Episode II - Attack of the Clones \n    39 \n    60.3 \n    22.0 \n    678,519 \n    66.3 \n    20.2 \n  \n  \n    Star Wars: Episode III - Revenge of the Sith \n    40 \n    71.4 \n    19.7 \n    751,751 \n    76.1 \n    18.8 \n  \n  \n    Star Wars: Episode VII - The Force Awakens \n    55 \n    80.8 \n    14.2 \n    898,767 \n    77.7 \n    19.6 \n  \n  \n    Star Wars: Episode VIII - The Last Jedi \n    56 \n    84.1 \n    13.5 \n    602,045 \n    66.6 \n    24.5 \n  \n  \n    Star Wars: Episode IX - The Rise of Skywalker \n    61 \n    57.2 \n    16.5 \n    418,656 \n    64.7 \n    23.4"
   },
   {
     "objectID": "slides/06_z-scores.html#z-score-calculation",
     "href": "slides/06_z-scores.html#z-score-calculation",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "\\(z\\)-score calculation",
     "text": "\\(z\\)-score calculation\n\n\\(z\\)-score formula:\n\n\n\\(z = \\dfrac{X - \\mu}\\sigma\\)     or…     \\(z = \\dfrac{X - M}s\\)\n\n\nNumerator: deviation score\nDenominator: standard deviation\n\\(z\\) expresses deviation in SD units"
   },
   {
     "objectID": "slides/06_z-scores.html#z-score-description",
     "href": "slides/06_z-scores.html#z-score-description",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "\\(z\\)-score description",
     "text": "\\(z\\)-score description\n\n\n\n\\(z\\)-score describes exact location of any score in a distribution\nTwo pieces of information:\n\nSign\n\nPositive or negative\nIndicates whether score is located above or below the mean\n\nMagnitude\n\nIndicates distance between score and mean in standard deviation units\n\\(z = 0\\) is equal to the mean"
   },
   {
     "objectID": "slides/06_z-scores.html#example-test-scores",
     "href": "slides/06_z-scores.html#example-test-scores",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Example: test scores",
     "text": "Example: test scores\n\nHow well did you do on a test\nIs your score good, bad, just ok?\n\n\n\n\n\n\nTest\nScore\nM\nSD\n\n\n\n\ngeniustest.com\n80\n70\n70\n\n\nmensa.lu\n40\n20\n5\n\n\n\n\n\n\n\\(z\\)-score can describe location of a score in any distribution\n\nMakes scores from different distributions comparable"
   },
   {
     "objectID": "slides/06_z-scores.html#example-test-scores-1",
     "href": "slides/06_z-scores.html#example-test-scores-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Example: test scores",
     "text": "Example: test scores\n\nComparing scores from different distributions\n\nHow many SDs is a score above/below the mean?\n\n\n\n\n\\(z = \\dfrac{80-70}{5} = \\dfrac{10}{5} = 2\\)\n\n\n\\(z = \\dfrac{40-20}{10} = \\dfrac{20}{10} = 2\\)"
   },
   {
     "objectID": "slides/06_z-scores.html#determining-raw-score-from-z-score",
     "href": "slides/06_z-scores.html#determining-raw-score-from-z-score",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Determining raw score from \\(z\\)-score",
     "text": "Determining raw score from \\(z\\)-score\n\n\\(z = \\dfrac{X - \\mu}\\sigma\\)     so…     \\(X = \\mu + z\\sigma\\)\n\n\nAlgebraically solve for \\(X\\)\nRaw score \\(X\\) equals population mean plus \\(z\\) multiplied by standard deviation"
   },
   {
     "objectID": "slides/06_z-scores.html#determining-raw-score-from-z-score-1",
     "href": "slides/06_z-scores.html#determining-raw-score-from-z-score-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Determining raw score from \\(z\\)-score",
     "text": "Determining raw score from \\(z\\)-score\n\n\n\\[\\begin{align}\nX & = \\mu + z\\sigma \\\\\n& = 70 + 2*5 \\\\\n& = 70 + 10 \\\\\n& = 80 \\end{align}\\]\n\n\n\\[\\begin{align}\nX & = \\mu + z\\sigma \\\\\n& = 20 + 2*10 \\\\\n& = 20 + 20 \\\\\n& = 40 \\end{align}\\]"
   },
   {
     "objectID": "slides/06_z-scores.html#z-distribution",
     "href": "slides/06_z-scores.html#z-distribution",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "\\(z\\) distribution",
     "text": "\\(z\\) distribution\n\nEvery \\(X\\) value can be transformed to a \\(z\\)-score\n\n\\(z\\)-score distribution is called a standardized distribution\n\nCharacteristics of \\(z\\)-score transformation\n\nSame shape as original distribution\nMean of \\(z\\)-score distribution is always \\(0\\)\n\nBecause the mean is the balance point; \\(\\Sigma (X - \\mu)\\) always equals \\(0\\)\n\nStandard deviation is always \\(1.00\\)\n\nBecause \\(SD\\) is the denominator"
   },
   {
     "objectID": "slides/06_z-scores.html#example",
     "href": "slides/06_z-scores.html#example",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Example",
     "text": "Example"
   },
   {
     "objectID": "slides/06_z-scores.html#other-standardized-distribtions",
     "href": "slides/06_z-scores.html#other-standardized-distribtions",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Other standardized distribtions",
     "text": "Other standardized distribtions\n\nStandardized: Predetermined mean & SD\n\n\\(z\\) distribution has \\(\\mu = 0\\) and \\(\\sigma = 1\\)\nSAT has \\(\\mu = 500\\) and \\(\\sigma = 100\\)\nIQ has \\(\\mu=100\\) and \\(\\sigma=15\\) points\n\nStandardizing a distribution has two steps\n\nOriginal raw scores transformed to \\(z\\)-scores\nThe \\(z\\)-scores are transformed to new \\(X\\) values so that the specific predetermined \\(\\mu\\) and \\(\\sigma\\) are attained\n2a. Multiply to set SD\n2b. Add or subtract a constant to set the mean"
   },
   {
     "objectID": "slides/06_z-scores.html#standardizing-scores",
     "href": "slides/06_z-scores.html#standardizing-scores",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Standardizing scores",
     "text": "Standardizing scores\n\n\n\n\nOriginal\n\n\n\\(z\\)-scores\n\n\n2a. Set SD\n\n2b. Set \\(M\\)\n\n\n\n\ngeniustest\n\n\n\n\n\n\n\n\n\n\n\n\nmensa.lu"
   },
   {
     "objectID": "slides/06_z-scores.html#z-scores-and-inferential-stats",
     "href": "slides/06_z-scores.html#z-scores-and-inferential-stats",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "\\(z\\)-scores and inferential stats",
     "text": "\\(z\\)-scores and inferential stats"
   },
   {
     "objectID": "slides/06_z-scores.html#z-scores-and-inferential-stats-1",
     "href": "slides/06_z-scores.html#z-scores-and-inferential-stats-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "\\(z\\)-scores and inferential stats",
     "text": "\\(z\\)-scores and inferential stats\n\n\n\n\nhttps://humanbenchmark.com/tests/reactiontime\n\nDo 5 reaction time trials\n(click when the color changes)\nNote your reaction time in \\(ms\\)\nThen click play to resume lecture when you’re done"
   },
   {
     "objectID": "slides/06_z-scores.html#peter-parker",
     "href": "slides/06_z-scores.html#peter-parker",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Peter Parker",
     "text": "Peter Parker\n\n\n\n\nPeter Parker \\(RT = 159ms\\)\n\nImpressive?\nDepends on population characteristics\n\n\n\n\n\n\n\n\\(\\begin{align} z & = \\dfrac{X - \\mu}{\\sigma} \\\\ & = \\dfrac{159 - 284}{50} = -2.5 \\end{align}\\)"
   },
   {
     "objectID": "slides/06_z-scores.html#cbt-for-ocd",
     "href": "slides/06_z-scores.html#cbt-for-ocd",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "CBT for OCD",
     "text": "CBT for OCD\n\n\n\n\nEfficacy of CBT for OCD1\n\nPre-treatment population \\(M = 30.25; SD = 14.89\\)\nSuppose a treated individual scores \\(X = 15.49\\)\n\n\n\n\n\n\n\\(\\begin{align} z & = \\dfrac{X - M}{s} \\\\ & = \\dfrac{15.49 - 30.25}{14.89} \\\\ & = -0.99 \\end{align}\\)\n\n\nAbramowitz et al. (2010)"
   },
   {
     "objectID": "slides/07_probability.html#probability-and-games",
     "href": "slides/07_probability.html#probability-and-games",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Probability and games",
     "text": "Probability and games\n\n\n\nSettlers of Catan\n\nBoard of hex tiles, each with a number\nPlace “settlements” at intersection of tiles\nEach turn, roll 2 dice\nYou get resources if your settlement is touching the rolled total\nWhere do you put your first settlement?"
   },
   {
     "objectID": "slides/07_probability.html#definition-notation",
     "href": "slides/07_probability.html#definition-notation",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Definition & notation",
     "text": "Definition & notation\n\nSeveral different outcomes are possible\n\nThe probability of any specific outcome is a fraction of all possible outcomes\n\\(p\\) is the symbol for “probability”\nProbability of some specific outcome is specified by \\(p(event)\\)\n\n\n\\(p(A) = \\dfrac{number \\ of \\ outcomes \\ classified \\ as \\ A}{total \\ number \\ of \\ possible \\ outcomes}\\)"
   },
   {
     "objectID": "slides/07_probability.html#example-coin-flip",
     "href": "slides/07_probability.html#example-coin-flip",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Example: coin flip",
     "text": "Example: coin flip\n\nE.g. Flipping a coin\n\nNumerator: number of those outcomes\nDenominator: all possible outcomes\n\n\n\n\n\n\\(p(heads) = 1/2 = .5\\)\n\n\n\\(p(tails) = 1/2 = .5%\\)"
   },
   {
     "objectID": "slides/07_probability.html#example-rolling-dice",
     "href": "slides/07_probability.html#example-rolling-dice",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Example: rolling dice",
     "text": "Example: rolling dice\n\nAll possible outcomes:\n1, 2, 3, 4, 5, 6\n\n\n\n\\(p(6) = 1/6 = 0.17\\)\n\\(p(1) = 1/6 = 0.17\\)\n\\(p(odd) = 3/6 = 0.5\\)"
   },
   {
     "objectID": "slides/07_probability.html#example-rolling-2-dice",
     "href": "slides/07_probability.html#example-rolling-2-dice",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Example: rolling 2 dice",
     "text": "Example: rolling 2 dice\n\n\n\n\n\\(p(2) = 1/36 = .03\\)\n\\(p(12) = 1/36 = .03\\)\n\\(p(7) = 6/36 = .17\\)\n\n\n\n\n\n\n \n  \n    Roll \n    1 \n    2 \n    3 \n    4 \n    5 \n    6 \n  \n \n\n  \n    1 \n    2 \n    3 \n    4 \n    5 \n    6 \n    7 \n  \n  \n    2 \n    3 \n    4 \n    5 \n    6 \n    7 \n    8 \n  \n  \n    3 \n    4 \n    5 \n    6 \n    7 \n    8 \n    9 \n  \n  \n    4 \n    5 \n    6 \n    7 \n    8 \n    9 \n    10 \n  \n  \n    5 \n    6 \n    7 \n    8 \n    9 \n    10 \n    11 \n  \n  \n    6 \n    7 \n    8 \n    9 \n    10 \n    11 \n    12"
   },
   {
     "objectID": "slides/07_probability.html#sampling-marbles",
     "href": "slides/07_probability.html#sampling-marbles",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Sampling marbles",
     "text": "Sampling marbles\n\n\n\n\n\nJar of marbles\n\nContains 25 white & 25 blue marbles\nWhat is the probability of randomly drawing a white marble?\nNumber of those outcomes (25)\nDivided by total number of outcomes (50)\n\n\n\\(p(white) = 25/50 = .5\\)"
   },
   {
     "objectID": "slides/07_probability.html#more-marbles",
     "href": "slides/07_probability.html#more-marbles",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "More marbles",
     "text": "More marbles\n\n\n\n\n\nDifferent jar\n\n40 blue & 10 white marbles\nWhat is the probability of randomly drawing a white marble?\n\n\n\\(p(white) = 10/50 = .2\\)"
   },
   {
     "objectID": "slides/07_probability.html#repeated-sampling",
     "href": "slides/07_probability.html#repeated-sampling",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Repeated sampling",
     "text": "Repeated sampling\n\n\n\n\n\nRepeated sampling\n\n40 blue, 10 white\nWhat is the probability of randomly drawing one white marble and then drawing a second white marble?\n\n\n\\(p(first \\ white) = 10/50 = .2\\)\n\\(p(second \\ white)\\) depends on whether we put the first one back or not"
   },
   {
     "objectID": "slides/07_probability.html#repeated-sampling-1",
     "href": "slides/07_probability.html#repeated-sampling-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Repeated sampling",
     "text": "Repeated sampling\n\n\n\n\n\nWithout replacement\n\n\\[\\begin{align} p(white) & = 10/50 = .2 \\\\\np(second \\ white) & = 9/49 \\approx .18 \\\\\np(both \\ white) & = .2 * .18  \\approx .037 \\end{align}\\]\n\nWith replacement\n\n\\(\\begin{align} p(white) &= 10/50 = .2 \\\\ p(second \\ white) &= 10/50 = .2 \\\\ p(both \\ white) &= .2 * .2 = .04\\end{align}\\)"
   },
   {
     "objectID": "slides/07_probability.html#random-sampling",
     "href": "slides/07_probability.html#random-sampling",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Random sampling",
     "text": "Random sampling\n\n“Random sample” definition\n\nA sample produced by a process that assures:\n\nEach individual in the population has an equal chance of being selected\nProbability of being selected stays constant from one selection to the next when more than one individual is selected\n\n“Independent random sampling”\n\nRequires sampling with replacement"
   },
   {
     "objectID": "slides/07_probability.html#unit-normal-table",
     "href": "slides/07_probability.html#unit-normal-table",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Unit Normal Table",
     "text": "Unit Normal Table\n\n\n\n\n\n\n \n  \n    \\(z\\) \n    Proportion in body \n    Proportion in tail \n    Proportion between \\(M\\) and \\(z\\) \n  \n \n\n  \n    0.0 \n    0.5000 \n    0.5000 \n    0.0000 \n  \n  \n    0.1 \n    0.5398 \n    0.4602 \n    0.0398 \n  \n  \n    0.2 \n    0.5793 \n    0.4207 \n    0.0793 \n  \n  \n    0.3 \n    0.6179 \n    0.3821 \n    0.1179 \n  \n  \n    0.4 \n    0.6554 \n    0.3446 \n    0.1554 \n  \n  \n    0.5 \n    0.6915 \n    0.3085 \n    0.1915 \n  \n  \n    0.6 \n    0.7257 \n    0.2743 \n    0.2257 \n  \n  \n    0.7 \n    0.7580 \n    0.2420 \n    0.2580 \n  \n  \n    0.8 \n    0.7881 \n    0.2119 \n    0.2881 \n  \n  \n    0.9 \n    0.8159 \n    0.1841 \n    0.3159 \n  \n  \n    1.0 \n    0.8413 \n    0.1587 \n    0.3413 \n  \n  \n    1.1 \n    0.8643 \n    0.1357 \n    0.3643 \n  \n  \n    1.2 \n    0.8849 \n    0.1151 \n    0.3849 \n  \n  \n    1.3 \n    0.9032 \n    0.0968 \n    0.4032 \n  \n  \n    1.4 \n    0.9192 \n    0.0808 \n    0.4192 \n  \n  \n    1.5 \n    0.9332 \n    0.0668 \n    0.4332 \n  \n  \n    1.6 \n    0.9452 \n    0.0548 \n    0.4452 \n  \n  \n    1.7 \n    0.9554 \n    0.0446 \n    0.4554 \n  \n  \n    1.8 \n    0.9641 \n    0.0359 \n    0.4641 \n  \n  \n    1.9 \n    0.9713 \n    0.0287 \n    0.4713 \n  \n  \n    2.0 \n    0.9772 \n    0.0228 \n    0.4772"
   },
   {
     "objectID": "slides/07_probability.html#unit-normal-table-1",
     "href": "slides/07_probability.html#unit-normal-table-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Unit Normal Table",
     "text": "Unit Normal Table\n\n\n\n\n\n\n \n  \n    \\(z\\) \n    Proportion in body \n    Proportion in tail \n    Proportion between \\(M\\) and \\(z\\) \n  \n \n\n  \n    0.0 \n    0.5000 \n    0.5000 \n    0.0000 \n  \n  \n    0.1 \n    0.5398 \n    0.4602 \n    0.0398 \n  \n  \n    0.2 \n    0.5793 \n    0.4207 \n    0.0793 \n  \n  \n    0.3 \n    0.6179 \n    0.3821 \n    0.1179 \n  \n  \n    0.4 \n    0.6554 \n    0.3446 \n    0.1554 \n  \n  \n    0.5 \n    0.6915 \n    0.3085 \n    0.1915 \n  \n  \n    0.6 \n    0.7257 \n    0.2743 \n    0.2257 \n  \n  \n    0.7 \n    0.7580 \n    0.2420 \n    0.2580 \n  \n  \n    0.8 \n    0.7881 \n    0.2119 \n    0.2881 \n  \n  \n    0.9 \n    0.8159 \n    0.1841 \n    0.3159 \n  \n  \n    1.0 \n    0.8413 \n    0.1587 \n    0.3413 \n  \n  \n    1.1 \n    0.8643 \n    0.1357 \n    0.3643 \n  \n  \n    1.2 \n    0.8849 \n    0.1151 \n    0.3849 \n  \n  \n    1.3 \n    0.9032 \n    0.0968 \n    0.4032 \n  \n  \n    1.4 \n    0.9192 \n    0.0808 \n    0.4192 \n  \n  \n    1.5 \n    0.9332 \n    0.0668 \n    0.4332 \n  \n  \n    1.6 \n    0.9452 \n    0.0548 \n    0.4452 \n  \n  \n    1.7 \n    0.9554 \n    0.0446 \n    0.4554 \n  \n  \n    1.8 \n    0.9641 \n    0.0359 \n    0.4641 \n  \n  \n    1.9 \n    0.9713 \n    0.0287 \n    0.4713 \n  \n  \n    2.0 \n    0.9772 \n    0.0228 \n    0.4772"
   },
   {
     "objectID": "slides/07_probability.html#using-r",
     "href": "slides/07_probability.html#using-r",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Using R",
     "text": "Using R\n\npnorm(0.2)  # area to the left of z = 0.2\n\n[1] 0.5792597\n\npnorm(0.2, lower.tail=FALSE) # area to the right of z = 0.2\n\n[1] 0.4207403\n\n# can specify different mean & SD\npnorm(700, mean=500, sd=100, lower.tail=FALSE) \n\n[1] 0.02275013\n\n# can specify proportion & find corresponding score\nqnorm(.0228, mean=500, sd=100, lower.tail=FALSE) \n\n[1] 699.9077"
   },
   {
     "objectID": "slides/07_probability.html#spiderman",
     "href": "slides/07_probability.html#spiderman",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Spiderman",
     "text": "Spiderman\n\nAre Peter Parker’s RTs “noticeably different?”\n\n\\(z = -2.5\\)\nCan state precise probability of observing a \\(z\\)-score that (or more) extreme\n\n\n\n\n\n\n\n\npnorm(-2.5)\n\n[1] 0.006209665\n\npnorm(159, mean = 284, sd = 50)\n\n[1] 0.006209665"
   },
   {
     "objectID": "slides/07_probability.html#warning",
     "href": "slides/07_probability.html#warning",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Warning",
     "text": "Warning\n\nProbabilities given in the Unit Normal Table will be accurate only for normally distributed scores\n\nShape of the distribution must be verified\nImportant assumption of Central Limit Theorem"
   },
   {
     "objectID": "slides/08_sampling.html#roadmap",
     "href": "slides/08_sampling.html#roadmap",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Roadmap",
     "text": "Roadmap\n\nSo far…\n\n\\(z\\)-scores describe the location of a single score in a sample or in a population\nNormal distributions: precisely quantify probability of obtaining certain scores\n\nMoving forward…\n\nQuantifying probability of obtaining certain sample statistics"
   },
   {
     "objectID": "slides/08_sampling.html#sampling-error-1",
     "href": "slides/08_sampling.html#sampling-error-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Sampling error",
     "text": "Sampling error\n\n\n\n\nError: Discrepancy between a sample statistic and the population parameter\n\n\nimport { pop } from \"./02_variables.qmd\";"
   },
   {
     "objectID": "slides/08_sampling.html#sampling-error-2",
     "href": "slides/08_sampling.html#sampling-error-2",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Sampling error",
     "text": "Sampling error\n\n\n\nDiscrepancy between a sample statistic and the population parameter\n\nE.g. Opinion polling\nsee Pew explainer"
   },
   {
     "objectID": "slides/08_sampling.html#sampling-error-iq",
     "href": "slides/08_sampling.html#sampling-error-iq",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Sampling error: IQ",
     "text": "Sampling error: IQ"
   },
   {
     "objectID": "slides/08_sampling.html#characteristics",
     "href": "slides/08_sampling.html#characteristics",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Characteristics",
     "text": "Characteristics\n\nShape\n\nThe distribution will be approximately normal\nSample \\(M\\)s are representative of population \\(\\mu\\)\nMost means will be close to \\(\\mu\\); means far from \\(\\mu\\) are rare\n\nCenter\n\nThe center/average of the distribution will be close to \\(\\mu\\)\n\\(M\\) is a unbiased statistic\nOn average, \\(M = \\mu\\)\n\nVariability\n\nRelated to sample size, \\(n\\)\nThe larger the sample, the less the variability\nLarger samples are more representative"
   },
   {
     "objectID": "slides/08_sampling.html#example-height-distribution",
     "href": "slides/08_sampling.html#example-height-distribution",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Example: height distribution",
     "text": "Example: height distribution"
   },
   {
     "objectID": "slides/08_sampling.html#example-height-distribution-1",
     "href": "slides/08_sampling.html#example-height-distribution-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Example: height distribution",
     "text": "Example: height distribution\n\n\n\n\n\n\n\n\nSample\nX1\nX2\nM\n\n\n\n\n1\n60\n60\n60\n\n\n2\n62\n60\n61\n\n\n3\n64\n60\n62\n\n\n4\n66\n60\n63\n\n\n5\n60\n62\n61\n\n\n6\n62\n62\n62\n\n\n7\n64\n62\n63\n\n\n8\n66\n62\n64\n\n\n9\n60\n64\n62\n\n\n10\n62\n64\n63\n\n\n11\n64\n64\n64\n\n\n12\n66\n64\n65\n\n\n13\n60\n66\n63\n\n\n14\n62\n66\n64\n\n\n15\n64\n66\n65\n\n\n16\n66\n66\n66\n\n\n\n\n\n\nSampling distribution (\\(n = 2\\))\n\n\n\\(p(M < 61) =\\ ?\\)\n\\(p(62 \\le M \\le 64) =\\ ?\\)\n\\(p(M > 65) =\\ ?\\)"
   },
   {
     "objectID": "slides/08_sampling.html#example-height-distribution-2",
     "href": "slides/08_sampling.html#example-height-distribution-2",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Example: height distribution",
     "text": "Example: height distribution\n\n\n\n\nNow we can calculate variability of sample means\n\nSince we obtained every sample mean\nUse population SD formula\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    60 \n    -3 \n    9 \n  \n  \n    61 \n    -2 \n    4 \n  \n  \n    62 \n    -1 \n    1 \n  \n  \n    63 \n    0 \n    0 \n  \n  \n    61 \n    -2 \n    4 \n  \n  \n    62 \n    -1 \n    1 \n  \n  \n    63 \n    0 \n    0 \n  \n  \n    64 \n    1 \n    1 \n  \n  \n    62 \n    -1 \n    1 \n  \n  \n    63 \n    0 \n    0 \n  \n  \n    64 \n    1 \n    1 \n  \n  \n    65 \n    2 \n    4 \n  \n  \n    63 \n    0 \n    0 \n  \n  \n    64 \n    1 \n    1 \n  \n  \n    65 \n    2 \n    4 \n  \n  \n    66 \n    3 \n    9 \n  \n  \n    \\(M = 63.00\\) \n     \n    \\(SS = 40.00\\) \n  \n  \n     \n     \n    \\(\\sigma^2 = 2.50\\) \n  \n  \n     \n     \n    \\(\\sigma = 1.58\\)"
   },
   {
     "objectID": "slides/08_sampling.html#central-limit-theorem-1",
     "href": "slides/08_sampling.html#central-limit-theorem-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Central Limit Theorem",
     "text": "Central Limit Theorem\n\nFor any population with mean \\(\\mu\\) and standard deviation \\(\\sigma\\), the distribution of sample means for sample size n will have…\n\nAn expected mean \\(\\mu_M\\) of \\(\\mu\\)\nA standard deviation of \\(\\dfrac{\\sigma} {\\sqrt{n}}\\)\nAnd will approach a normal distribution as \\(n\\) approaches infinity"
   },
   {
     "objectID": "slides/08_sampling.html#shape",
     "href": "slides/08_sampling.html#shape",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Shape",
     "text": "Shape\n\nAlmost perfectly normal in either of two conditions\n\nThe population from which the samples are selected is a normal distribution\nOr…\nSample \\(n\\)s are relatively large\n\n\n\n\n…what is relatively large?\n\nAs \\(n\\) approaches infinity, distribution of sample means approaches a normal distribution\nBut by \\(n = 30\\) means pile up symmetrically around \\(\\mu\\)\nPopulation distribution does not need to be normal; can be skewed, flat, bimodal, whatever"
   },
   {
     "objectID": "slides/08_sampling.html#mean",
     "href": "slides/08_sampling.html#mean",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Mean",
     "text": "Mean\n\nMean of the distribution of sample means is called the expected value of \\(M\\) ( \\(\\mu_M\\) )\n\nOn average, \\(M = \\mu_M = \\mu\\)\n\\(M\\) is unbiased\nIf we only have a single sample \\(M\\), our best guess at the (unknown) population mean should always be the (known) sample mean\nBut we can acknowledge variability…"
   },
   {
     "objectID": "slides/08_sampling.html#variability",
     "href": "slides/08_sampling.html#variability",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Variability",
     "text": "Variability\n\nStandard deviation of the sample means\n\n“Standard error of the mean”; \\(\\sigma_M\\)\nMeasure of how well a sample mean estimates its population mean\nHow much sampling error we can expect; how much distance is expected on average between \\(M\\) and \\(\\mu\\)\n\n\n\n\\(\\sigma_M = \\dfrac{\\sigma}{\\sqrt{n}}\\) or \\(\\dfrac{\\sqrt{\\sigma^2}}{\\sqrt{n}}\\) or \\(\\sqrt{\\dfrac{\\sigma^2}{n}}\\)"
   },
   {
     "objectID": "slides/08_sampling.html#variability-1",
     "href": "slides/08_sampling.html#variability-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Variability",
     "text": "Variability"
   },
   {
     "objectID": "slides/08_sampling.html#variability-2",
     "href": "slides/08_sampling.html#variability-2",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Variability",
     "text": "Variability"
   },
   {
     "objectID": "slides/08_sampling.html#variability-3",
     "href": "slides/08_sampling.html#variability-3",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Variability",
     "text": "Variability\n\nμ =  \nσ =  \nn = 30\n\nσM ="
   },
   {
     "objectID": "slides/08_sampling.html#variability-heights-sampling-dist",
     "href": "slides/08_sampling.html#variability-heights-sampling-dist",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Variability: heights sampling dist",
     "text": "Variability: heights sampling dist\n\n\n\n\n\n\n\n \n  \n    Sample \n    X1 \n    X2 \n    M \n  \n \n\n  \n    1 \n    60 \n    60 \n    60 \n  \n  \n    2 \n    62 \n    60 \n    61 \n  \n  \n    3 \n    64 \n    60 \n    62 \n  \n  \n    4 \n    66 \n    60 \n    63 \n  \n  \n    5 \n    60 \n    62 \n    61 \n  \n  \n    6 \n    62 \n    62 \n    62 \n  \n  \n    7 \n    64 \n    62 \n    63 \n  \n  \n    8 \n    66 \n    62 \n    64 \n  \n  \n    9 \n    60 \n    64 \n    62 \n  \n  \n    10 \n    62 \n    64 \n    63 \n  \n  \n    11 \n    64 \n    64 \n    64 \n  \n  \n    12 \n    66 \n    64 \n    65 \n  \n  \n    13 \n    60 \n    66 \n    63 \n  \n  \n    14 \n    62 \n    66 \n    64 \n  \n  \n    15 \n    64 \n    66 \n    65 \n  \n  \n    16 \n    66 \n    66 \n    66 \n  \n\n\n\n\n\n\nSampling distribution (\\(n = 2\\))\n\n\n\\(\\sigma_M = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{2.24}{\\sqrt{2}} = 1.58\\)"
   },
   {
     "objectID": "slides/08_sampling.html#summary",
     "href": "slides/08_sampling.html#summary",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Summary",
     "text": "Summary\n\nSummary\n\nDistribution of sample means for samples of size \\(n\\) will have…\n\na mean of \\(\\mu_M\\)\nstandard deviation \\(\\sigma_M = \\sigma / \\sqrt{n}\\)\nShape will be normal if population is normally distributed, or \\(n > 30\\)"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#recap-1",
     "href": "slides/09_hypothesis-testing.html#recap-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Recap",
     "text": "Recap\n\n\n\n\n\n\n\n\nSample\nX1\nX2\nM\n\n\n\n\n1\n60\n60\n60\n\n\n2\n62\n60\n61\n\n\n3\n64\n60\n62\n\n\n4\n66\n60\n63\n\n\n5\n60\n62\n61\n\n\n6\n62\n62\n62\n\n\n7\n64\n62\n63\n\n\n8\n66\n62\n64\n\n\n9\n60\n64\n62\n\n\n10\n62\n64\n63\n\n\n11\n64\n64\n64\n\n\n12\n66\n64\n65\n\n\n13\n60\n66\n63\n\n\n14\n62\n66\n64\n\n\n15\n64\n66\n65\n\n\n16\n66\n66\n66\n\n\n\n\n\n\n\nSampling distribution\n\nFind probabilities of sample means\n\n\n\n\n\\(p(M < 61) =\\ ?\\)"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#central-limit-theorem",
     "href": "slides/09_hypothesis-testing.html#central-limit-theorem",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Central Limit Theorem",
     "text": "Central Limit Theorem\n\nTells us sampling distribution characteristics without having to take all possible sampes\n\n\n\\(\\mu_M = \\mu \\ \\ \\ \\ \\ \\ \\ \\ \\ \\  \\sigma_M = \\dfrac{\\sigma}{\\sqrt{n}}\\)"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#together",
     "href": "slides/09_hypothesis-testing.html#together",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Together…",
     "text": "Together…\n\n\n\nSample statistics, normal distributions, probability, Central Limit Theorem\n\nWe can find \\(z\\)-score for any sample mean\nUsing characteristics of sampling distribution of the mean \\((\\mu_M\\) and \\(\\sigma_M)\\)\nPosition of given sample mean in the population of all possible sample means\nThen find probability (using Unit Normal Table / pnorm(), just like for regular \\(z\\)-scores)\n\n\n\n\n\\(z = \\dfrac{M-\\mu_M}{\\sigma_M}\\)"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#spiderman",
     "href": "slides/09_hypothesis-testing.html#spiderman",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Spiderman",
     "text": "Spiderman"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#inferences-spiderman",
     "href": "slides/09_hypothesis-testing.html#inferences-spiderman",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Inferences: Spiderman",
     "text": "Inferences: Spiderman\n\nAre Peter Parker’s RTs “noticeably different?”\n\n\\(z = -2.5\\)\nCan state precise probability of observing a \\(z\\)-score that (or more) extreme\n\n\n\n\n\n\n\n\npnorm(-2.5)\n\n[1] 0.006209665\n\npnorm(159, mean = 284, sd = 50)\n\n[1] 0.006209665"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#spidermen",
     "href": "slides/09_hypothesis-testing.html#spidermen",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Spidermen",
     "text": "Spidermen"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#inferences-spidermen",
     "href": "slides/09_hypothesis-testing.html#inferences-spidermen",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Inferences: spidermen",
     "text": "Inferences: spidermen\n\nA sample of spidermen (spidermans?)\n\nHow likely is a particular sample mean, given the population characteristics?\nPopulation \\(\\mu = 284; \\sigma = 50\\)\n\n\n\n\n\nSingle score of \\(X = 159\\)\nFind position of that score in population distribution and find probability\n\n\\(z = \\dfrac{X-\\mu}{\\sigma} = \\dfrac{159 - 284}{50} = -2.5\\)\n\npnorm(-2.5)\n\n[1] 0.006209665\n\n\n\n\nSample mean of \\(M = 159\\); \\(n = 5\\)\nFind position of that \\(M\\) in sampling distribution and find probability\n\n\\(z = \\dfrac{M-\\mu_M}{\\sigma_M} = \\dfrac{159 - 284}{50 / \\sqrt{5}} = -5.59\\)\n\npnorm(-5.59)\n\n[1] 1.135348e-08"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#making-inferences-spidermen",
     "href": "slides/09_hypothesis-testing.html#making-inferences-spidermen",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Making inferences: spidermen",
     "text": "Making inferences: spidermen\n\nFor sample size \\(n = 5\\), approximately 0.00000001 of sample means are this (or more) extreme\n\nGiven how unlikely the mean is, maybe spidermen aren’t from this population"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#inferential-diagram",
     "href": "slides/09_hypothesis-testing.html#inferential-diagram",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Inferential diagram",
     "text": "Inferential diagram\n\n\n\n\n\n\nTreatment\n\n\nKnown\noriginal\npopulation\n\n\nUnknown\ntreated\npopulation\n\n\nSample\n\n\nTreated\nsample"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#null-hypothesis-significance-testing",
     "href": "slides/09_hypothesis-testing.html#null-hypothesis-significance-testing",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Null Hypothesis Significance Testing",
     "text": "Null Hypothesis Significance Testing\n\nStep 1: State hypotheses\n\n“Null” and “alternative”\n\nStep 2: Set decision criteria\n\n\\(\\alpha\\) and critical region(s)\n\nStep 3: Collect & analyze data\n\nCalculate required statistics\n\nStep 4: Make decision\n\nCompare outcome with predicted probabilities\nAccept or reject the null hypothesis"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#state-hypotheses",
     "href": "slides/09_hypothesis-testing.html#state-hypotheses",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "1. State hypotheses",
     "text": "1. State hypotheses\n\nNull hypothesis: \\(H_0\\)\n\nStates that “treatment” has no effect\nTreated population is indistinguishable from original population\nNo change, no difference, or no relationship\n\nAlternative hypothesis: \\(H_1\\)\n\nStates that treated population differs from nontreated population\nThere is a change, a difference, or there is a relationship in the general population\n\nLogical complements\n\nCan’t both be true\nEnsures falsifiability"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#state-hypotheses-1",
     "href": "slides/09_hypothesis-testing.html#state-hypotheses-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "1. State hypotheses",
     "text": "1. State hypotheses\n\n\n\nClaim: This pill makes you smarter\n\n\\(H_0\\): The pill doesn’t effect intelligence\n\\(H_1\\): The pill affects intelligence\n\n\n\n💊🧠\n\n\n\n\n\nClaim: Standing like superman makes you feel more confident\n\n\\(H_0\\): Posture does not affect confidence\n\\(H_1\\): Posture does affect confidence\n\n\n\n🦸‍♀ 😎️\n\n\n\n\n\nClaim: The more education people complete, the more they earn\n\n\\(H_0\\): Education is not associated with income\n\\(H_1\\): There is a relationship between education and income\n\n\n\n🎓🤑"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#decision-criterion",
     "href": "slides/09_hypothesis-testing.html#decision-criterion",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "2. Decision criterion",
     "text": "2. Decision criterion\n\nIf the null hypothesis is true, what sample statistics are likely/unlikely?\n\nCentral Limit Theorem shows what samples are likely\nIf we get a very unlikely sample, we may reject the null\nSpecific sampling distribution depends on what test is being performed\n\nAlpha level & p-value\n\n\\(\\alpha\\) (alpha) is the probability value used to define “very unlikely” outcomes\np-value is the precise probability of statistics as extreme or more than observed sample statistic, assuming the null hypothesis is correct\nTypical alpha used by psychologists is \\(\\alpha = .05\\)\n\\(p < .05\\); “Statistically significant”"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#decision-criterion-1",
     "href": "slides/09_hypothesis-testing.html#decision-criterion-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "2. Decision criterion",
     "text": "2. Decision criterion\n\nDivide distribution of sample means into two parts\n\nOutcomes likely if \\(H_0\\) is true\nOutcomes unlikely if \\(H_0\\) is true\nBoundaries for critical region(s) determined by alpha"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#decision-criterion-2",
     "href": "slides/09_hypothesis-testing.html#decision-criterion-2",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "2. Decision criterion",
     "text": "2. Decision criterion\n\n\n\nDirectional tests\n\nResearcher has a specific prediction about the direction of the treatment\nSpecifies (in advance) looking for increase or decrease\n\n\n\n\n\n\n\n\n\n\nNondirectional tests\n\nLooking for a difference in either direction"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#data-collection",
     "href": "slides/09_hypothesis-testing.html#data-collection",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "3. Data collection",
     "text": "3. Data collection\n\nRandomly sample population of interest\n\nCompute a sample statistic to show the exact position (probability) of the sample in the distribution of sample means\nExact form of test statistic depends on research design\n\\(z\\)-test; \\(t\\)-test; ANOVA; correlation & regression statistics etc etc etc…"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#make-decision",
     "href": "slides/09_hypothesis-testing.html#make-decision",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "4. Make decision",
     "text": "4. Make decision\n\nTwo possible outcomes:\n\nIf the sample statistic is not located in critical region(s)\n\nFail to reject null\nMeaning there does not seem to be an effect\n\nSample statistic is located in critical region(s)\n\n\\(p < \\alpha\\)\nReject null\nMeaning there does seem to be an effect"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#spiderman-z-test",
     "href": "slides/09_hypothesis-testing.html#spiderman-z-test",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Spiderman \\(z\\)-test",
     "text": "Spiderman \\(z\\)-test\n\nFormal Spidermen z-test\n\n1: State Hypotheses\n\n\\(H_0\\): Radioactive spiderbites do not alter reaction times\n\\(H_1\\): Radioactive spiderbites alter reaction times\n\n2: Decision criteria\n\n\\(\\alpha = .05\\) two-tailed; Critical regions are -1.96 and 1.96\n\n3: Collect data; compute statistics & probabilities\n\n\\(\\mu = 284\\); \\(\\sigma = 50\\); so if \\(n = 5\\), \\(\\sigma_M = 50/\\sqrt{5} = 22.36\\)\n\\(M = 159\\); \\(z = (159 - 284) / 22.36 = -5.59\\)\n\n4: Decision\n\nObserved sample mean is in the critical region\n\\(p < .05\\)\nReject the null"
   },
   {
     "objectID": "slides/10_hypothesis-testing-pt-2.html#type-1-error",
     "href": "slides/10_hypothesis-testing-pt-2.html#type-1-error",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Type 1 error",
     "text": "Type 1 error\n\nIf \\(H_0\\) is true…"
   },
   {
     "objectID": "slides/10_hypothesis-testing-pt-2.html#inferential-errors-1",
     "href": "slides/10_hypothesis-testing-pt-2.html#inferential-errors-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Inferential errors",
     "text": "Inferential errors\n\n\n\nBoy who cried wolf\n\nVillagers make Type 1 error (false positive)\nType 2 error (false negative)\nIn that order"
   },
   {
     "objectID": "slides/10_hypothesis-testing-pt-2.html#quantifying-effect-size",
     "href": "slides/10_hypothesis-testing-pt-2.html#quantifying-effect-size",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Quantifying effect size",
     "text": "Quantifying effect size\n\nOne measure: Cohen’s \\(d\\)\n\nQuantifies the absolute magnitude of a treatment effect, independent of sample size\nMeasures effect size in terms of standard deviation\n\\(d = 1.00\\): treatment changed \\(\\mu\\) by 1 SD\n\n\n\\[\\text{Cohen's } d = \\dfrac{\\text{mean difference}}{\\text{standard deviation}}\n= \\dfrac{\\mu_{treatment} - \\mu_{no \\ treatment}}{\\sigma}\\]\nFor \\(z\\)-tests:\n\\[\\text{Estimated Cohen's }d = \\dfrac{\\text{mean difference}}{\\text{standard deviation}}\n= \\dfrac{M - \\mu}{\\sigma}\\]"
   },
   {
     "objectID": "slides/10_hypothesis-testing-pt-2.html#interpreting-cohens-d",
     "href": "slides/10_hypothesis-testing-pt-2.html#interpreting-cohens-d",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Interpreting Cohen’s \\(d\\)",
     "text": "Interpreting Cohen’s \\(d\\)\n\n\n\nCohen’s rules of thumb\n\n\n\n\n\n \n  \n    \\(d\\) \n    Interpretation \n  \n \n\n  \n    0.2 \n    Small \n  \n  \n    0.5 \n    Medium \n  \n  \n    0.8 \n    Large"
   },
   {
     "objectID": "slides/10_hypothesis-testing-pt-2.html#effect-size-sample-size",
     "href": "slides/10_hypothesis-testing-pt-2.html#effect-size-sample-size",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Effect size & sample size",
     "text": "Effect size & sample size\n\nSAT scores: \\(\\mu = 500; \\sigma = 100\\)\n\nAdminister treatment (banana); \\(M = 501\\)\nSignificant? \\((\\alpha = .05\\) two-tailed; critical values \\(z = \\pm 1.96)\\)\nSubstantial? (effect size)\n\n\n\n\nWith 50 participants…\n\\[z = \\dfrac{501 - 500}{100 / \\sqrt{50}} = 0.06\\\\\nd = \\dfrac{501 - 500}{100} = 0.01\\]\n\nWith 50,000 participants…\n\\[z = \\dfrac{501 - 500}{100 / \\sqrt{50000}} = 2.22\\\\\nd = \\dfrac{501 - 500}{100} = 0.01\\]"
   },
   {
     "objectID": "slides/10_hypothesis-testing-pt-2.html#power-interactive",
     "href": "slides/10_hypothesis-testing-pt-2.html#power-interactive",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Power interactive",
     "text": "Power interactive\n\n\nPopulation characteristics\nμ =  \nσ =  \n\n\nExperiment parameters\nd = \nn = \n\\(\\alpha\\) = Two-tailed\n\nσM = \n\n\n\nDiagram options\nShow \\(H_1\\)\n\\(X\\)-axis:\nRaw scores \\(H_0\\) \\(z\\)-scores \\(H_1\\) \\(z\\)-scores\n\n\n\n\n\n\n\\(\\beta =\\) \nPower:"
   },
   {
     "objectID": "slides/10_hypothesis-testing-pt-2.html#influences",
     "href": "slides/10_hypothesis-testing-pt-2.html#influences",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Influences",
     "text": "Influences\n\nFactors that influence power\n\nSee: http://rpsychologist.com/d3/NHST/\n\nEffect size\n\nLarger effect size; greater power\n\nSample size\n\nLarger sample size; greater power\n\nAlpha level\n\nLowering alpha (making the test more stringent) reduces power\n\nDirectional hypothesis\n\nUsing a one-tailed (directional) test increases power (relative to a two-tailed test)"
   },
   {
     "objectID": "slides/10_hypothesis-testing-pt-2.html#using-statistical-power",
     "href": "slides/10_hypothesis-testing-pt-2.html#using-statistical-power",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Using statistical power",
     "text": "Using statistical power\n\nPower should be estimated before starting study\n\nUsing known quantities\nOr, more often, making assumptions about factors that influence power\n\nDetermining whether a research study is likely to be successful\n\nSpecify effect size, \\(n\\), \\(\\alpha\\); calculate power\n\nFiguring out how many participants you need\n\nSpecify desired power (e.g. .8), expected effect size, \\(\\alpha\\)\nCalculate required sample size"
   },
   {
     "objectID": "slides/10_hypothesis-testing-pt-2.html#power-sample-sizes",
     "href": "slides/10_hypothesis-testing-pt-2.html#power-sample-sizes",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Power & sample sizes",
     "text": "Power & sample sizes\n\n\n\n\n \n  \n    Grouping variable \n    Dependent Variable \n    \\(d\\) \n    Required \\(n\\) \n  \n \n\n  \n    Gender \n    Height \n    1.85 \n    6 \n  \n  \n    Liberal / Conservative \n    How important is social equality? \n    0.69 \n    34 \n  \n  \n    Do you like eggs? [yes / no] \n    How often do you eat egg salad? \n    0.58 \n    48 \n  \n  \n    Are you a smoker? [yes / no] \n    What is the likelihood of a smoker dying from a smoking-related illness? \n    0.33 \n    144 \n  \n  \n    Do you prefer science or art? \n    How many planets can you name correctly? \n    0.07 \n    3669 \n  \n\n\n\n\n\n\nSimmons, J. P., Nelson, L. D., & Simonsohn, U. (2013, January). Life after p-hacking. In Meeting of the society for personality and social psychology, New Orleans, LA (pp. 17-19). http://dx.doi.org/10.2139/ssrn.2205186"
   },
   {
     "objectID": "slides/10_hypothesis-testing-pt-2.html#low-power",
     "href": "slides/10_hypothesis-testing-pt-2.html#low-power",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Low power",
     "text": "Low power\n\n\nRunning a study with low statistical power is like setting out to look for distant galaxies with a pair of binoculars: even if what you’re looking for is definitely out there, you have essentially no chance of seeing it.\n\n\nStuart Ritchie, Science Fictions"
   },
   {
     "objectID": "slides/11_the-t-test.html#z-test",
     "href": "slides/11_the-t-test.html#z-test",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "\\(z\\)-test",
     "text": "\\(z\\)-test\n\nUseful if we know everything about original population\n\n\n\n\n\n\\(z = \\dfrac{M - \\mu}{\\sigma_M}\\)"
   },
   {
     "objectID": "slides/11_the-t-test.html#problem",
     "href": "slides/11_the-t-test.html#problem",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Problem",
     "text": "Problem\n\nOften don’t know everything about original population\n\n\n\n\n\n\\(\\renewcommand{\\CancelColor}{\\red}z = \\dfrac{M - \\mu}{\\require{enclose}\\enclose{horizontalstrike}{\\sigma_M}}\\)"
   },
   {
     "objectID": "slides/11_the-t-test.html#t-test-solution",
     "href": "slides/11_the-t-test.html#t-test-solution",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "\\(t\\)-test solution",
     "text": "\\(t\\)-test solution\n\nEstimate population variability using sample\n\n\n\n\n\n\\(t = \\dfrac{M-\\mu}{s_M}\\)"
   },
   {
     "objectID": "slides/11_the-t-test.html#the-t-statistic",
     "href": "slides/11_the-t-test.html#the-t-statistic",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "The \\(t\\) statistic",
     "text": "The \\(t\\) statistic\n\nEstimated standard error \\(s_M\\) used in place of (unknown) population standard error \\(\\sigma_M\\)\n\n\n\\[z = \\dfrac{M - \\mu}{\\require{enclose}\\enclose{horizontalstrike}{\\sigma_M}}\n\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\\nt = \\dfrac{M - \\mu}{s_M}\\]\n\\[\n\\begin{align}\n\\text{Standard error} = \\sigma_M = \\dfrac{\\sigma}{\\sqrt{n}}\n\\ \\text{or...} \\\n\\dfrac{\\sqrt{\\sigma^2}}{\\sqrt{n}} \\\n\\text{or...} \\\n\\sqrt{\\dfrac{\\sigma^2}{n}}\n\\\\ \\\\\n\\text{Estimated standard error} = s_M = \\dfrac{s}{\\sqrt{n}}\n\\ \\text{or...} \\\n\\dfrac{\\sqrt{s^2}}{\\sqrt{n}} \\\n\\text{or...} \\\n\\sqrt{\\dfrac{s^2}{n}}\n\\end{align}\n\\]"
   },
   {
     "objectID": "slides/11_the-t-test.html#degrees-of-freedom",
     "href": "slides/11_the-t-test.html#degrees-of-freedom",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Degrees of freedom",
     "text": "Degrees of freedom\n\n\\(df\\) depends on kind of \\(t\\)-test you’re doing\nSingle sample \\(t\\)-test: \\(df = n - 1\\)\n\n\\(\\text{Population variance} = \\sigma^2 = \\dfrac{SS}{N}\\)\n\\(\\text{Sample variance} = s^2 = \\dfrac{SS}{df} = \\dfrac{SS}{n-1}\\)\n\\(\\text{Sample standard deviation} = s = \\sqrt{\\dfrac{SS}{df}} = \\sqrt{\\dfrac{SS}{n-1}}\\)"
   },
   {
     "objectID": "slides/11_the-t-test.html#the-t-distribution-1",
     "href": "slides/11_the-t-test.html#the-t-distribution-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "The \\(t\\) distribution",
     "text": "The \\(t\\) distribution\n\n\n\n\n\n\nviewof df = html`<input type=range min=1 max=50 step=1 value=1 style=\"width: 50%;\">`\n\n\n\n\n\n\n\n\njStat = require(\"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js\")\n\nd3 = require(\"https://d3js.org/d3.v5.min.js\")\n\n\nheight = 400\nwidth = 800\n\n\n<!-- comment -->\ntex`df = ${df.toLocaleString(\"en\")}`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndata = {\n  var values = jStat(-4, 4, 210)[0],\n      <!-- df = df, -->\n      arr = [];\n  for (var i in values) {\n    arr.push(\n      {\n        value: values[i], \n        density: jStat.studentt.pdf(values[i], df)\n      }\n    )\n  }\n  return arr;\n}\n\nnorm_data = {\n  var values = jStat(-4, 4, 210)[0],\n      <!-- df = df, -->\n      arr = [];\n  for (var i in values) {\n    arr.push(\n      {\n        value: values[i],\n        density: jStat.normal.pdf(values[i], 0, 1)\n      }\n    )\n  }\n  return arr;\n}\n\n<!-- norm_data -->\n\n\nchart = {\n  const svg = d3.select(DOM.svg(width, height));\n\n  <!-- svg.append(\"g\") -->\n  <!--     .call(xAxis); -->\n\n  <!-- svg.append(\"g\") -->\n  <!--     .call(yAxis); -->\n  \n  svg.append(\"path\")\n      .datum(data)\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"red\")\n      .attr(\"stroke-width\", 4)\n      .attr(\"stroke-linejoin\", \"round\")\n      .attr(\"stroke-linecap\", \"round\")\n      .attr(\"d\", line);\n      \n  svg.append(\"path\")\n      .datum(norm_arr)\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"black\")\n      .attr(\"stroke-width\", 2)\n      .attr(\"stroke-linejoin\", \"round\")\n      .attr(\"stroke-linecap\", \"round\")\n      .attr(\"stroke-dasharray\", \"5, 5\")\n      .attr(\"d\", line)\n      .attr(\"class\", \"invertable\");\n  \n  return svg.node();\n}\n\n<!-- margin = ({top: 20, right: 0, bottom: 30, left: 40}) -->\nmargin = ({top: 20, right: 0, bottom: 0, left: 0})\n\nline = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density))\n\nx = d3.scaleLinear()\n  .domain([d3.min(data, d => d.value * 0.9), d3.max(data, d => d.value * 0.9)]).nice()\n  .range([margin.left, width - margin.right])\n\n<!-- y = d3.scaleLinear() -->\n<!--   .domain([d3.min(data, d => d.density * 0.9), d3.max(data, d => d.density / 0.9)]) -->\n<!--   .range([height - margin.bottom, margin.top]) -->\n  \ny = d3.scaleLinear()\n  .domain([0, 0.4])\n  .range([height - margin.bottom, margin.top])\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNormal distribution \\(t\\) distribution"
   },
   {
     "objectID": "slides/11_the-t-test.html#t-table",
     "href": "slides/11_the-t-test.html#t-table",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "\\(t\\) table",
     "text": "\\(t\\) table\n\n\n\n\n\n\n \n\nProportionin 1 tail\n\n0.1\n\n0.05\n\n0.025\n\n0.01\n\n0.005\n\n  \n    Proportionin 2 tails \n    0.2 \n    0.1 \n    0.05 \n    0.02 \n    0.01 \n  \n \n\n  \n    1 \n    3.078 \n    6.314 \n    12.706 \n    31.821 \n    63.657 \n  \n  \n    2 \n    1.886 \n    2.920 \n    4.303 \n    6.965 \n    9.925 \n  \n  \n    3 \n    1.638 \n    2.353 \n    3.182 \n    4.541 \n    5.841 \n  \n  \n    4 \n    1.533 \n    2.132 \n    2.776 \n    3.747 \n    4.604 \n  \n  \n    5 \n    1.476 \n    2.015 \n    2.571 \n    3.365 \n    4.032 \n  \n  \n    6 \n    1.440 \n    1.943 \n    2.447 \n    3.143 \n    3.707 \n  \n  \n    7 \n    1.415 \n    1.895 \n    2.365 \n    2.998 \n    3.499 \n  \n  \n    \\(df\\)       8 \n    1.397 \n    1.860 \n    2.306 \n    2.896 \n    3.355 \n  \n  \n    9 \n    1.383 \n    1.833 \n    2.262 \n    2.821 \n    3.250 \n  \n  \n    10 \n    1.372 \n    1.812 \n    2.228 \n    2.764 \n    3.169 \n  \n  \n    11 \n    1.363 \n    1.796 \n    2.201 \n    2.718 \n    3.106 \n  \n  \n    12 \n    1.356 \n    1.782 \n    2.179 \n    2.681 \n    3.055 \n  \n  \n    13 \n    1.350 \n    1.771 \n    2.160 \n    2.650 \n    3.012 \n  \n  \n    14 \n    1.345 \n    1.761 \n    2.145 \n    2.624 \n    2.977 \n  \n  \n    15 \n    1.341 \n    1.753 \n    2.131 \n    2.602 \n    2.947 \n  \n  \n    ... \n    ... \n    ... \n    ... \n    ... \n    ..."
   },
   {
     "objectID": "slides/11_the-t-test.html#t-table-r",
     "href": "slides/11_the-t-test.html#t-table-r",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "\\(t\\) table & R",
     "text": "\\(t\\) table & R\n\n\n\n\n\n\n \n\nProportionin 1 tail\n\n0.1\n\n0.05\n\n0.025\n\n0.01\n\n0.005\n\n  \n    Proportionin 2 tails \n    0.2 \n    0.1 \n    0.05 \n    0.02 \n    0.01 \n  \n \n\n  \n    1 \n    3.078 \n    6.314 \n    12.706 \n    31.821 \n    63.657 \n  \n  \n    2 \n    1.886 \n    2.920 \n    4.303 \n    6.965 \n    9.925 \n  \n  \n    3 \n    1.638 \n    2.353 \n    3.182 \n    4.541 \n    5.841 \n  \n  \n    4 \n    1.533 \n    2.132 \n    2.776 \n    3.747 \n    4.604 \n  \n  \n    5 \n    1.476 \n    2.015 \n    2.571 \n    3.365 \n    4.032 \n  \n  \n    6 \n    1.440 \n    1.943 \n    2.447 \n    3.143 \n    3.707 \n  \n  \n    7 \n    1.415 \n    1.895 \n    2.365 \n    2.998 \n    3.499 \n  \n  \n    \\(df\\)       8 \n    1.397 \n    1.860 \n    2.306 \n    2.896 \n    3.355 \n  \n  \n    9 \n    1.383 \n    1.833 \n    2.262 \n    2.821 \n    3.250 \n  \n  \n    10 \n    1.372 \n    1.812 \n    2.228 \n    2.764 \n    3.169 \n  \n  \n    11 \n    1.363 \n    1.796 \n    2.201 \n    2.718 \n    3.106 \n  \n  \n    12 \n    1.356 \n    1.782 \n    2.179 \n    2.681 \n    3.055 \n  \n  \n    13 \n    1.350 \n    1.771 \n    2.160 \n    2.650 \n    3.012 \n  \n  \n    14 \n    1.345 \n    1.761 \n    2.145 \n    2.624 \n    2.977 \n  \n  \n    15 \n    1.341 \n    1.753 \n    2.131 \n    2.602 \n    2.947 \n  \n  \n    ... \n    ... \n    ... \n    ... \n    ... \n    ... \n  \n\n\n\n\n\n\n\nUsing R\npt() and qt() instead of pnorm() and qnorm()\n\n\nqnorm(.05)\n\n[1] -1.644854\n\nqt(.05)\n\nError in qt(0.05): argument \"df\" is missing, with no default\n\nqt(.05, df = 5)\n\n[1] -2.015048\n\nqt(.05, df = 10)\n\n[1] -1.812461"
   },
   {
     "objectID": "slides/11_the-t-test.html#class-reaction-times",
     "href": "slides/11_the-t-test.html#class-reaction-times",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Class reaction times",
     "text": "Class reaction times\n\n\n [1] 327.0 335.0 359.0 430.0 275.4 272.0 350.0 343.2 278.0 354.0 303.0 328.0\n[13] 371.0 312.0 346.0 359.0    NA 259.0 313.6 258.0 244.0 374.4    NA 338.0\n[25] 290.0\n\n\n\n\n\n\n\n\n \n  \n    RT \n    \\(f\\) \n  \n \n\n  \n    240-259 \n    3 \n  \n  \n    260-279 \n    3 \n  \n  \n    280-299 \n    1 \n  \n  \n    300-319 \n    3 \n  \n  \n    320-339 \n    4 \n  \n  \n    340-359 \n    6 \n  \n  \n    360-379 \n    2 \n  \n  \n    380-399 \n    0 \n  \n  \n    400-419 \n    0 \n  \n  \n    420-439 \n    1"
   },
   {
     "objectID": "slides/11_the-t-test.html#hypothesis-test",
     "href": "slides/11_the-t-test.html#hypothesis-test",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Hypothesis test",
     "text": "Hypothesis test\n\nFour steps:\n\n1: State the null and alternative hypotheses\n2: Locate the critical region using the \\(t\\) distribution probabilities, \\(df\\), and \\(\\alpha\\)\n3: Calculate the \\(t\\) test statistic\n4: Make a decision regarding \\(H_0\\) (null hypothesis)"
   },
   {
     "objectID": "slides/11_the-t-test.html#state-hypotheses",
     "href": "slides/11_the-t-test.html#state-hypotheses",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "1. State hypotheses",
     "text": "1. State hypotheses\n\nStep 1: State hypotheses\n\n\\(H_0\\): Stats students have the same average reaction times as the general population \\(\\mu = 284\\)\n\\(H_1\\): Stats students have different average reaction times to the general population"
   },
   {
     "objectID": "slides/11_the-t-test.html#decision-criterion",
     "href": "slides/11_the-t-test.html#decision-criterion",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "2. Decision criterion",
     "text": "2. Decision criterion\n\n\n\nSpecify \\(\\alpha\\), identify critical region(s)\nFor \\(t\\), depends on \\(df\\) and thus \\(n\\)\nFor single-sample \\(t\\)-test, \\(df = n – 1\\)\n\n\n\n\n\n\n\n \n  \n    \\(df\\) \n    \\(\\alpha = .05\\) \n  \n \n\n  \n    1 \n    12.706 \n  \n  \n    2 \n    4.303 \n  \n  \n    3 \n    3.182 \n  \n  \n    4 \n    2.776 \n  \n  \n    5 \n    2.571 \n  \n  \n    ... \n    ... \n  \n  \n    20 \n    2.086 \n  \n  \n    21 \n    2.080 \n  \n  \n    22 \n    2.074 \n  \n  \n    23 \n    2.069 \n  \n  \n    24 \n    2.064 \n  \n  \n    25 \n    2.060 \n  \n  \n    26 \n    2.056 \n  \n  \n    27 \n    2.052 \n  \n  \n    28 \n    2.048 \n  \n  \n    29 \n    2.045 \n  \n  \n    30 \n    2.042 \n  \n  \n    ... \n    ..."
   },
   {
     "objectID": "slides/11_the-t-test.html#calculate-statistic",
     "href": "slides/11_the-t-test.html#calculate-statistic",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "3. Calculate statistic",
     "text": "3. Calculate statistic\n\nCalculate \\(t\\)-statistic for the sample mean\nQuantifies the difference between the observed sample mean and the hypothesized population mean divided by the estimated standard error\n\n\n\n\\(\\mu = 284 \\\\ M = 322.59 \\\\ SD = 45.31 \\\\ n = 23\\)\n\n\\[\\begin{align}\nt = \\dfrac{M - \\mu}{s_M} &= \\dfrac{322.59 - 284}{45.31/\\sqrt{23}} \\\\\n&= \\dfrac{38.59}{9.45} \\\\\n&= 4.08\n\\end{align}\\]"
   },
   {
     "objectID": "slides/11_the-t-test.html#make-decision",
     "href": "slides/11_the-t-test.html#make-decision",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "4. Make decision",
     "text": "4. Make decision\n\nStep 4a: Make a decision about \\(H_0\\)\n\n\\(t = 4.08\\) exceeds critical values \\([-2.07, 2.07]\\)\n\\(p < \\alpha\\)\n“Statistically significant” difference"
   },
   {
     "objectID": "slides/11_the-t-test.html#conclusion",
     "href": "slides/11_the-t-test.html#conclusion",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Conclusion",
     "text": "Conclusion"
   },
   {
     "objectID": "slides/12_the-t-test-pt-2.html#research-designs-1",
     "href": "slides/12_the-t-test-pt-2.html#research-designs-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Research designs",
     "text": "Research designs\n\nE.g. measure of happiness\n\n\n\n\n\n\nWhat is your current level of happiness?\n  \n    \n    1. A lot less than usual\n    \n    \n    2. A little less than usual\n    \n    \n    3. About average\n    \n    \n    4. A little more than usual\n    \n    \n    5. A lot more than usual\n  \n\n\n\n\n\\(\\mu = 3\\)"
   },
   {
     "objectID": "slides/12_the-t-test-pt-2.html#effect-size-r2",
     "href": "slides/12_the-t-test-pt-2.html#effect-size-r2",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Effect size: \\(r^2\\)",
     "text": "Effect size: \\(r^2\\)\n\nProportion of all variability in the data attributable to treatment effect\nSimplifying assumption: Treatment adds or subtracts a constant to each score\nE.g. 1 point on a scale of 1 to 5\n\\(r^2\\) separates that variability due to treatment from natural variability between scores\n\n\n\\(r^2 = \\dfrac{SS_{treatment}}{SS_{total}}\\)"
   },
   {
     "objectID": "slides/12_the-t-test-pt-2.html#r2",
     "href": "slides/12_the-t-test-pt-2.html#r2",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "\\(r^2\\)",
     "text": "\\(r^2\\)\n\n\n\nCalculate sum of squared deviations from sample \\(M\\)\n\nVariability excluding treatment effect\n\\(SS_{without \\ treatment}\\)\n\nCalculate \\(SS\\) from \\(H_0\\) \\(\\mu\\)\n\nThis is total variability\n\\(SS_{total}\\)\n\nSubstract \\(SS_{without \\ treatment}\\) from \\(SS_{total}\\) to find \\(SS_{treatment}\\)\n\nVariability attributable to treatment effect\n\n\n\n\n\n\n\n\n\\[\\begin{align}\nr^2 = \\dfrac{SS_{treatment}}{SS_{total}} &= \\dfrac{SS_{total} - SS_{without \\ treatment}}{SS_{total}} \\\\\n&= \\dfrac{10-6}{10} = 0.4\n\\end{align}\\]"
   },
   {
     "objectID": "slides/12_the-t-test-pt-2.html#r2-1",
     "href": "slides/12_the-t-test-pt-2.html#r2-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "\\(r^2\\)",
     "text": "\\(r^2\\)\n\nIf we already calculated \\(t\\)…\n\n\n\\(r^2 = \\dfrac{t^2}{t^2 + df}\\)\n\n\nWorks for any kind of \\(t\\)-test\n\nSingle / related / independent-samples\n\nInterpreting \\(r^2\\)\n\n\\(r^2 = 0.01\\): small effect\n\\(r^2 = 0.09\\): medium effect\n\\(r^2 = 0.25\\): large effect"
   },
   {
     "objectID": "slides/12_the-t-test-pt-2.html#calculating-ci-boundaries",
     "href": "slides/12_the-t-test-pt-2.html#calculating-ci-boundaries",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Calculating CI boundaries",
     "text": "Calculating CI boundaries\n\n\n\nSo far, we have been specifying \\(\\mu\\), calculating \\(M\\) and \\(s_M\\), solving for \\(t\\)\nFor CI, rearrange to solve for \\(\\mu\\)\n\nCalculate \\(M\\) and \\(s_M\\), specify \\(t\\) (based on desired width of CI —99%, 95%, 90%, 80% etc), solve for \\(\\mu\\)\n\n\n\n\n\\(t = \\dfrac{M - \\mu}{s_M}\\)\n\\(\\mu = M \\pm t * s_M\\)"
   },
   {
     "objectID": "slides/12_the-t-test-pt-2.html#confidence-interval-interpretation",
     "href": "slides/12_the-t-test-pt-2.html#confidence-interval-interpretation",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Confidence interval interpretation",
     "text": "Confidence interval interpretation\n\nWhat does a confidence interval tell us?\n\nIndicates precision of parameter estimate\n“This sample came from a population which would produce sample means which fall within this range 95% of the time”\nNOT “we are 95% sure the true population mean is within this range”\n\n\n\n“The parameter is an unknown constant and no probability statement concerning its value may be made.”1\n\nJerzy Neyman, original developer of confidence intervals"
   },
   {
     "objectID": "slides/12_the-t-test-pt-2.html#factors-that-affect-ci-width",
     "href": "slides/12_the-t-test-pt-2.html#factors-that-affect-ci-width",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Factors that affect CI width",
     "text": "Factors that affect CI width\n\n\n\n\nPoint estimate: \n\n\n\n\n\nVariability: \n\n\n\n\nn = \n30\n\n\n\n\nCI: \n95"
   },
   {
     "objectID": "slides/12_the-t-test-pt-2.html#ci-nhst",
     "href": "slides/12_the-t-test-pt-2.html#ci-nhst",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "CI & NHST",
     "text": "CI & NHST\n\n\\(p\\) value and CI always agree about statistical significance if CI is \\(1 – alpha\\)\n\nE.g. \\(\\alpha = .05\\) and 95% confidence interval\n\nIf the \\(p < \\alpha\\), the confidence interval will not contain the null hypothesis value\nIf the confidence interval does not contain the null hypothesis value, the results are statistically significant\nBoth significance level and confidence level define a distance from a mean to a limit\n\nThe distances in both cases are exactly the same"
   },
   {
     "objectID": "slides/12_the-t-test-pt-2.html#ci-nhst-demonstration",
     "href": "slides/12_the-t-test-pt-2.html#ci-nhst-demonstration",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "CI & NHST demonstration",
     "text": "CI & NHST demonstration\n\n\n\nn = \n15\n\n\n\n\nd = \n0.7\n\n\n\n\n\nShow: \\(H_0\\) \\(H_1\\) Both\n\n\n\n\n\n\np"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#single-sample-t-test-design",
     "href": "slides/13_independent-samples-t-test.html#single-sample-t-test-design",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Single-sample \\(t\\)-test design",
     "text": "Single-sample \\(t\\)-test design\n\nCompare sample against expected population mean based on logic/theory/scale design\nE.g. give everyone $10 💵\n\n\n\n\n\n\nWhat is your current level of happiness?\n  \n    \n    1. A lot less than usual\n    \n    \n    2. A little less than usual\n    \n    \n    3. About average\n    \n    \n    4. A little more than usual\n    \n    \n    5. A lot more than usual\n  \n\n\n\n\n\\(\\mu = 3\\)\n\n\n\n\nimport {likert} from \"../ojs/utils.qmd\";"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#single-sample-t-test-logic",
     "href": "slides/13_independent-samples-t-test.html#single-sample-t-test-logic",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Single-sample \\(t\\)-test logic",
     "text": "Single-sample \\(t\\)-test logic\n\n\n\n\n\n\n\n\n\nPartially known\noriginal population\n\\(\\mu\\)\n\n\nUnknown\ntreated\npopulation\n\n\nSample\n\n\nTreated sample \\(n, M, SD\\)"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#independent-samples-design",
     "href": "slides/13_independent-samples-t-test.html#independent-samples-design",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Independent-samples design",
     "text": "Independent-samples design\nWhat if… give everyone $10\n\n\nGroup A:\nSpend this on yourself 💵\n\n\n\nWhat is your current level of happiness?\n  \n    \n    1. A lot less than usual\n    \n    \n    2. A little less than usual\n    \n    \n    3. About average\n    \n    \n    4. A little more than usual\n    \n    \n    5. A lot more than usual\n  \n\n\n\n\nGroup B:\nSpend this on someone else 💵\n\n\n\nWhat is your current level of happiness?\n  \n    \n    1. A lot less than usual\n    \n    \n    2. A little less than usual\n    \n    \n    3. About average\n    \n    \n    4. A little more than usual\n    \n    \n    5. A lot more than usual\n  \n\n\n\n\n\n\nDunn, E. W., Aknin, L. B., & Norton, M. I. (2014). Prosocial spending and happiness: Using money to benefit others pays off. Current Directions in Psychological Science, 23(1), 41-47. https://doi.org/10.1177/0963721413512503"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#independent-samples-t-test-logic",
     "href": "slides/13_independent-samples-t-test.html#independent-samples-t-test-logic",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Independent-samples \\(t\\)-test logic",
     "text": "Independent-samples \\(t\\)-test logic\n\n\n\n\n\n\n\n\n\nUnknown\ntreated population\nA\n\n\nUnknown\ntreated population\nB\n\n\nSample A\n\\(n, M, SD\\)\n\n\nSample B\n\\(n, M, SD\\)"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#equations",
     "href": "slides/13_independent-samples-t-test.html#equations",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Equations",
     "text": "Equations\n\n\n\nDenominator: \\(s_{M_1-M_2}\\)\n\nEstimated standard error of the mean difference\n\n\n\n\\(s_{M_1-M_2} = \\sqrt{\\dfrac{s_p^2}{n_1}+\\dfrac{s_p^2}{n_2}}\\)\n\n\n\n\n\n\\(s_p^2\\): Pooled variance\n\nWeighted average of two sample variances\n\n\n\n\\(\\begin{align} s_p^2 = &\\dfrac{SS_1+SS_2}{df_1+df_2} \\\\ \\\\ \\text{or... } &\\dfrac{df_1*s_1^2 + df_2*s_2^2}{df_1+df_2} \\\\ \\text{because... } s^2 = &\\dfrac{SS}{df} \\text{ so... } SS = df*s^2 \\end{align}\\)"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#calculating-independent-samples-t",
     "href": "slides/13_independent-samples-t-test.html#calculating-independent-samples-t",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Calculating independent samples \\(t\\)",
     "text": "Calculating independent samples \\(t\\)\n\nPooled variance: \\(s_p^2 = \\dfrac{SS_1+SS_2}{df_1+df_2}\\)\nEstimated standard error of mean difference: \\(s_{M_1-M_2} = \\sqrt{\\dfrac{s_p^2}{n_1}+\\dfrac{s_p^2}{n_2}}\\)\n\\(t\\) statistic: \\(t = \\dfrac{(M_1-M_2)-(\\mu_1-\\mu_2)}{s_{M_1-M_2}}\\)"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#step-1-state-hypotheses",
     "href": "slides/13_independent-samples-t-test.html#step-1-state-hypotheses",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 1: State hypotheses",
     "text": "Step 1: State hypotheses\n\nNull: There is no difference between groups\n\nThe treatment has no effect\n\\(μ_1 – μ_2 = 0\\)\n\nAlternative: There is a difference\n\nThe treatment has an effect\nDirectional: \\(μ_1 – μ_2 < 0\\) or \\(μ_1 – μ_2 > 0\\)\nNondirectional: \\(μ_1 – μ_2 \\ne 0\\)"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#step-2-define-critical-region",
     "href": "slides/13_independent-samples-t-test.html#step-2-define-critical-region",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 2: Define critical region",
     "text": "Step 2: Define critical region\n\n\n\nDepends on \\(\\alpha\\) and \\(df\\)\n\n\\[\n\\begin{align}\ndf &= df_1 + df_2 \\\\\n&= (n_1 – 1) + (n_2 – 1) \\\\\n&= N - 2\n\\end{align}\n\\] \n\n\n\n\n\n \n\nProportionin 1 tail\n\n0.025\n\n  \n    Proportionin 2 tails \n    0.05 \n  \n \n\n  \n    1 \n    12.706 \n  \n  \n    2 \n    4.303 \n  \n  \n    3 \n    3.182 \n  \n  \n    4 \n    2.776 \n  \n  \n    5 \n    2.571 \n  \n  \n    6 \n    2.447 \n  \n  \n    7 \n    2.365 \n  \n  \n    \\(df\\)       8 \n    2.306 \n  \n  \n    9 \n    2.262 \n  \n  \n    10 \n    2.228 \n  \n  \n    11 \n    2.201 \n  \n  \n    12 \n    2.179 \n  \n  \n    13 \n    2.160 \n  \n  \n    14 \n    2.145 \n  \n  \n    15 \n    2.131 \n  \n  \n    ... \n    ..."
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#step-3-calculate-t-statistic",
     "href": "slides/13_independent-samples-t-test.html#step-3-calculate-t-statistic",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 3: Calculate \\(t\\) statistic",
     "text": "Step 3: Calculate \\(t\\) statistic\n\n\n\n\n\nSpend $10 on self\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    1 \n    -2 \n    4 \n  \n  \n    5 \n    2 \n    4 \n  \n  \n    2 \n    -1 \n    1 \n  \n  \n    4 \n    1 \n    1 \n  \n  \n    3 \n    0 \n    0 \n  \n  \n    \\(M = 3.00\\) \n     \n    \\(SS = 10.00\\) \n  \n  \n     \n     \n    \\(s^2 = 2.50\\) \n  \n  \n     \n     \n    \\(s = 1.58\\) \n  \n\n\n\n\n\n\nSpend $10 on other\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    5 \n    1 \n    1 \n  \n  \n    5 \n    1 \n    1 \n  \n  \n    2 \n    -2 \n    4 \n  \n  \n    5 \n    1 \n    1 \n  \n  \n    3 \n    -1 \n    1 \n  \n  \n    \\(M = 4.00\\) \n     \n    \\(SS = 8.00\\) \n  \n  \n     \n     \n    \\(s^2 = 2.00\\) \n  \n  \n     \n     \n    \\(s = 1.41\\)"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#step-3-calculate-t-statistic-1",
     "href": "slides/13_independent-samples-t-test.html#step-3-calculate-t-statistic-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 3 : Calculate \\(t\\) statistic",
     "text": "Step 3 : Calculate \\(t\\) statistic\n\n\\(s_p^2 = \\dfrac{SS_1+SS_2}{df_1+df_2} = \\dfrac{10 + 8}{4 + 4} = 2.25\\)\n\n\\(s_{M_1-M_2} = \\sqrt{\\dfrac{s_p^2}{n_1}+\\dfrac{s_p^2}{n_2}} = \\sqrt{\\dfrac{2.25}{5}+\\dfrac{2.25}{5}} = 0.95\\)\n\n\\(t = \\dfrac{(M_1-M_2)-(\\mu_1-\\mu_2)}{s_{M_1-M_2}} = \\dfrac{3 - 4}{0.95} = -1.05\\)"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#step-4-make-decision",
     "href": "slides/13_independent-samples-t-test.html#step-4-make-decision",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 4: Make decision",
     "text": "Step 4: Make decision"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#step-4b-effect-size",
     "href": "slides/13_independent-samples-t-test.html#step-4b-effect-size",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 4b: Effect size",
     "text": "Step 4b: Effect size\n\nCohen’s \\(d\\) for independent samples\n\n\\[\\begin{align}\nd &= \\dfrac{\\text{difference between means}}{\\text{pooled standard deviation}} \\\\\n  &= \\dfrac{(M_1 - M_2) - (\\mu_1 - \\mu_2)}{\\sqrt{s^2_p}} \\\\\n  &= \\dfrac{3 - 4}{\\sqrt{2.25}} \\\\\n  &= -0.67\n\\end{align}\\]\n\nNote: not required for nonsignificant differences"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#step-5-report-results",
     "href": "slides/13_independent-samples-t-test.html#step-5-report-results",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 5: Report results",
     "text": "Step 5: Report results\n\nA two-tailed independent-samples \\(t\\) test suggested that the difference in average happiness between people in the “Spend on self group” \\((M = 3\\); \\(SD = 1.58)\\) and the “Spend on other” group \\((M = 4\\); \\(SD = 1.41)\\) was nonsignificant; \\(t(8) =\\) \\(-1.05\\), \\(p > .05\\)."
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#homogeneity-of-variance",
     "href": "slides/13_independent-samples-t-test.html#homogeneity-of-variance",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Homogeneity of variance",
     "text": "Homogeneity of variance\n\nTesting the homogeneity of variance assumption\n\nHartley’s F-max test\n\n\n\n\\(F_{max} = \\dfrac{s^2_{largest}}{s^2_{smallest}}\\)\n\n\nSmall value (near 1) indicates similar sample variances, larger values indicate larger difference\nLook up associated critical value for \\(F\\)-max test\nIf value exceeds critical value, indicates homogeneity assumption has been violated"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#homogeneity-of-variance-correction",
     "href": "slides/13_independent-samples-t-test.html#homogeneity-of-variance-correction",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Homogeneity of variance correction",
     "text": "Homogeneity of variance correction\n\nIf homogeneity of variance assumption is violated…\n\nCalculate standard error without pooled variance\nAdjust \\(df\\) using equation:\n\n\n\n\\[df = \\dfrac{(\\dfrac{s_1^2}{n_1}+\\dfrac{s_2^2}{n_2})}\n{\\dfrac{(\\dfrac{s_1^2}{n_1})^2}{n_1-1} + \\dfrac{(\\dfrac{s_2^2}{n_2})^2}{n_2-1}\n}\\]"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#homogeneity-of-variance-correction-1",
     "href": "slides/13_independent-samples-t-test.html#homogeneity-of-variance-correction-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Homogeneity of variance correction",
     "text": "Homogeneity of variance correction\n\n…or let R do the work for you\n\nt.test() function automatically applies correction\nSpecify var.equal = TRUE to override\n\n\n\n\n\nconditionA <- c(1, 5, 2, 4, 3)\nconditionB <- c(5, 5, 2, 5, 3)\n\nt.test(x = conditionA, y = conditionB)\n\n\n    Welch Two Sample t-test\n\ndata:  conditionA and conditionB\nt = -1.0541, df = 7.9024, p-value = 0.323\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -3.192378  1.192378\nsample estimates:\nmean of x mean of y \n        3         4 \n\n\n\n\nconditionA <- c(1, 5, 2, 4, 3)\nconditionB <- c(5, 5, 2, 5, 3)\n\nt.test(x = conditionA, y = conditionB, \n       var.equal = TRUE)\n\n\n    Two Sample t-test\n\ndata:  conditionA and conditionB\nt = -1.0541, df = 8, p-value = 0.3226\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -3.187668  1.187668\nsample estimates:\nmean of x mean of y \n        3         4"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#confidence-interval-1",
     "href": "slides/13_independent-samples-t-test.html#confidence-interval-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Confidence interval",
     "text": "Confidence interval\n\n\n\n\n\n\n\\[\\begin{align}\n(\\mu_1 - \\mu_2) &= (M_1 - M_2) \\pm t * s_{M_1 - M_2} \\\\\n                &= -1 \\pm 2.31 * 0.95 \\\\\n                &= -3.19, 1.19\n\\end{align}\\]\n\nimport { addCIPlot } from \"../ojs/confidence-interval.qmd\"\n\nchart = {\n  d3.select(\"#ci-independent\")\n    .call(addCIPlot, {test_type: \"independent\",\n                      point_estimate: -1,\n                      standard_deviation: 1.5,\n                      n: 10,\n                      ci: 95,\n                      disable_controls: true})\n}"
   },
   {
     "objectID": "slides/14_related-samples-t-test.html#independent-samples",
     "href": "slides/14_related-samples-t-test.html#independent-samples",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Independent-samples",
     "text": "Independent-samples\n\n\n\n“Between-participants” design\nTwo treated samples containing different people\nIndividual differences contribute to variability"
   },
   {
     "objectID": "slides/14_related-samples-t-test.html#related-samples",
     "href": "slides/14_related-samples-t-test.html#related-samples",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Related-samples",
     "text": "Related-samples\n\n\n\nRepeated-measures\n\n“Within-participants” design\nTwo treatment conditions, but same individuals in both\nRecord two scores per individual (one per condition)\nIndividual differences cannot contribute to difference between groups"
   },
   {
     "objectID": "slides/14_related-samples-t-test.html#related-samples-1",
     "href": "slides/14_related-samples-t-test.html#related-samples-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Related-samples",
     "text": "Related-samples\n\n\n\nMatched-subjects\n\nTwo samples of different people; each individual in sample A is “matched” on relevant variables with an individual in sample B\nUses same statistical procedures as repeated-measures\nBut requires twice as many participants as within-p’s design"
   },
   {
     "objectID": "slides/14_related-samples-t-test.html#advantages-disadvantages",
     "href": "slides/14_related-samples-t-test.html#advantages-disadvantages",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Advantages & disadvantages",
     "text": "Advantages & disadvantages\n\nAdvantages of related-samples design\n\nRequires fewer subjects (not true of matched subjects)\nAble to study changes over time\nReduces or eliminates individual differences as a source of variability; therefore less variability in scores\n\nDisadvantages of repeated-measures design\n\nFactors besides treatment may cause subject’s score to change during the time between measurements\nParticipation in first treatment may influence score in the second treatment (order effects)\nCounterbalancing is a way to control time-related or order effects\nParticipants can drop out"
   },
   {
     "objectID": "slides/14_related-samples-t-test.html#logic",
     "href": "slides/14_related-samples-t-test.html#logic",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Logic",
     "text": "Logic\n\n\n\n\n\n\n\n\n\n\nSample A\nSample B\n\n\n\n\n54\n43\n\n\n67\n57\n\n\n38\n39\n\n\n46\n41\n\n\n42\n36\n\n\n\n\n\n\n\n\n\n\n\nSample A\nSample B\nD\n\n\n\n\n54\n43\n-11\n\n\n67\n57\n-10\n\n\n38\n39\n1\n\n\n46\n41\n-5\n\n\n42\n36\n-6"
   },
   {
     "objectID": "slides/14_related-samples-t-test.html#equations-1",
     "href": "slides/14_related-samples-t-test.html#equations-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Equations",
     "text": "Equations\n\n\\(t = \\dfrac{\\text{sample statistic} - \\text{population parameter}}{\\text{estimated standard error}}\\)\n\n\n\n\nSingle sample:\n\n\\(t = \\dfrac{M-\\mu}{s_M}\\)\n\n\n\n\nIndependent samples:\n\n\\(t = \\dfrac{(M_1-M_2)-(\\mu_1-\\mu_2)}{s_{M_1-M_2}}\\)\n\n\n\n\nRelated samples:\n\n\\(t = \\dfrac{M_D-\\mu_D}{s_{M_D}}\\)"
   },
   {
     "objectID": "slides/14_related-samples-t-test.html#calculating-related-samples-t",
     "href": "slides/14_related-samples-t-test.html#calculating-related-samples-t",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Calculating related-samples \\(t\\)",
     "text": "Calculating related-samples \\(t\\)\n\n\\(df = n-1\\) (number of difference scores minus \\(1\\))\n\n\n\nDifference scores:\n\n\\(D = X_B - X_A\\)\n\n\n\n\nMean of difference scores:\n\n\\(M_D = \\dfrac{\\Sigma D}{n}\\)\n\n\n\n\nStandard error of difference scores:\n\n\\(S_{M_D} = \\dfrac{s_D}{\\sqrt{n}}\\)\n\n\n\n\n\\(t\\) statistic:\n\n\\(t = \\dfrac{M_D - \\mu_D}{s_{M_D}}\\)"
   },
   {
     "objectID": "slides/14_related-samples-t-test.html#triplett",
     "href": "slides/14_related-samples-t-test.html#triplett",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Triplett",
     "text": "Triplett\n\n\n\n\nE.g. Norman Triplett (1898)\n\nPerforming alone/in competition\n\n\n\n\n\n\nTriplett, N. (1898). The dynamogenic factors in pacemaking and competition. The American Journal of Psychology, 9(4), 507-533. https://doi.org/10.2307/1412188"
   },
   {
     "objectID": "slides/14_related-samples-t-test.html#triplett-data",
     "href": "slides/14_related-samples-t-test.html#triplett-data",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Triplett data",
     "text": "Triplett data"
   },
   {
     "objectID": "slides/14_related-samples-t-test.html#as-independent-samples",
     "href": "slides/14_related-samples-t-test.html#as-independent-samples",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "As independent samples",
     "text": "As independent samples\n\n\n\n\n\n\n \n  \n    Alone \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    54 \n    4.6 \n    21.16 \n  \n  \n    67 \n    17.6 \n    309.76 \n  \n  \n    38 \n    -11.4 \n    129.96 \n  \n  \n    46 \n    -3.4 \n    11.56 \n  \n  \n    42 \n    -7.4 \n    54.76 \n  \n  \n    \\(M = 49.40\\) \n     \n    \\(SS = 527.20\\) \n  \n  \n     \n     \n    \\(s^2 = 131.80\\) \n  \n  \n     \n     \n    \\(s = 11.48\\) \n  \n\n\n\n\n\n\n\n\n\n\n \n  \n    Competition \n    \\(X-M\\) \n    \\((X-M)^2\\) \n  \n \n\n  \n    43 \n    -0.2 \n    0.04 \n  \n  \n    57 \n    13.8 \n    190.44 \n  \n  \n    39 \n    -4.2 \n    17.64 \n  \n  \n    41 \n    -2.2 \n    4.84 \n  \n  \n    36 \n    -7.2 \n    51.84 \n  \n  \n    \\(M = 43.20\\) \n     \n    \\(SS = 264.80\\) \n  \n  \n     \n     \n    \\(s^2 = 66.20\\) \n  \n  \n     \n     \n    \\(s = 8.14\\)"
   },
   {
     "objectID": "slides/14_related-samples-t-test.html#as-independent-samples-1",
     "href": "slides/14_related-samples-t-test.html#as-independent-samples-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "As independent samples",
     "text": "As independent samples\n\nStep 2: Decision criteria\n\n\\(\\text{With } \\alpha = .05, t_{critical} (8) = \\pm 2.31\\)\n\nStep 3: Calculate\n\n\n\\(df = N - 2 = 10 - 2 = 8\\)\n\\(s^2_p = \\dfrac{SS_1 + SS_2}{df_1 + df_2} = \\dfrac{527.2 + 264.8}{4 + 4} = 99\\)\n\\(s_{M_1-M_2} = \\sqrt{\\dfrac{s_p^2}{n_1}+\\dfrac{s_p^2}{n_2}} = \\sqrt{\\dfrac{99}{5}+\\dfrac{99}{5}} = 6.29\\)\n\\(t = \\dfrac{(M_1-M_2)-(\\mu_1-\\mu_2)}{s_{M_1-M_2}} = \\dfrac{49.4 - 43.2}{6.29} = 0.99\\)"
   },
   {
     "objectID": "slides/14_related-samples-t-test.html#as-related-samples",
     "href": "slides/14_related-samples-t-test.html#as-related-samples",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "As related samples",
     "text": "As related samples\n\n\n\n\n \n  \n    Participant \n    Alone \n    Comp \n    \\(D\\) \n    \\(D-M_D\\) \n    \\((D-M_D)^2\\) \n  \n \n\n  \n    Violet F. \n    54 \n    43 \n    -11 \n    -4.8 \n    23.04 \n  \n  \n    Anna P. \n    67 \n    57 \n    -10 \n    -3.8 \n    14.44 \n  \n  \n    Willie H. \n    38 \n    39 \n    1 \n    7.2 \n    51.84 \n  \n  \n    Bessie V. \n    46 \n    41 \n    -5 \n    1.2 \n    1.44 \n  \n  \n    Howard C. \n    42 \n    36 \n    -6 \n    0.2 \n    0.04 \n  \n\n\n\n\n\n\n\n\n\n\n\\(M_D = -6.2\\)\n\n\n\\(SS = 90.8\\)\n\\(s^2 = 22.7\\)\n\\(s = 4.76\\)"
   },
   {
     "objectID": "slides/14_related-samples-t-test.html#as-related-samples-1",
     "href": "slides/14_related-samples-t-test.html#as-related-samples-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "As related samples",
     "text": "As related samples\n\n\\(\\text{With } \\alpha = .05, t_{critical} (4) = \\pm 2.78\\)\n\\(df = n-1 = 5 - 1 = 4\\)\n\\(S_{M_D} = \\dfrac{s_D}{\\sqrt{n}} = \\dfrac{4.76}{\\sqrt{5}} = 2.13\\)\n\\(t = \\dfrac{M_D - \\mu_D}{s_{M_D}} = \\dfrac{-6.2}{2.13} = -2.91\\)"
   },
   {
     "objectID": "slides/14_related-samples-t-test.html#effect-size",
     "href": "slides/14_related-samples-t-test.html#effect-size",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Effect size",
     "text": "Effect size\n\nStep 4b: Effect size\n\nIf the result was significant\nCohen’s \\(d\\) for related-samples \\(t\\)-test:\n\n\n\\[\\begin{align}\n\\text{Estimated Cohen's } d &= \\dfrac{\\text{mean of difference scores}}{\\text{SD of difference scores}} \\\\\n&= \\dfrac{M_D}{s_D} \\\\\n&= \\dfrac{-6.2}{4.76} = -1.3\n\\end{align}\\]"
   },
   {
     "objectID": "slides/14_related-samples-t-test.html#report-results",
     "href": "slides/14_related-samples-t-test.html#report-results",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Report results",
     "text": "Report results\n\nWhen performing in competition, children completed the race faster on average \\((M = 43.2\\); \\(SD = 8.14)\\) than when performing alone \\((M = 49.4\\); \\(SD = 11.48)\\). A related-samples found the difference to be statistically significant; \\(t(4) =\\) \\(-2.91\\), \\(p <.05\\), \\(d = 1.30\\)."
   },
   {
     "objectID": "slides/15_ANOVA.html#comparing-groups-t-statistic",
     "href": "slides/15_ANOVA.html#comparing-groups-t-statistic",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Comparing groups: \\(t\\) statistic",
     "text": "Comparing groups: \\(t\\) statistic\n\n\n\n\n\n\n\n\n\n\n\n\n \nManipulation\n  \n    🍌Banana \n    🍬Candy \n  \n \n\n  \n    9 \n    3 \n  \n  \n    11 \n    5 \n  \n  \n    13 \n    4 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n  \n\n\n\n\n\n\n\\(t = \\dfrac{ \\textrm{difference between groups}} {\\textrm{difference expected due to chance}}\\)\n\\[\\begin{align}\nt &= \\dfrac{(M_1-M_2)-(\\mu_1-\\mu_2)}{s_{(M_1-M_2)}} \\\\\n&= \\dfrac{11 - 4}{1.29} \\\\\n&= 5.42\n\\end{align}\\]"
   },
   {
     "objectID": "slides/15_ANOVA.html#comparing-groups-t-statistic-1",
     "href": "slides/15_ANOVA.html#comparing-groups-t-statistic-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Comparing groups: \\(t\\) statistic",
     "text": "Comparing groups: \\(t\\) statistic\n\n\n\n\n\n\n \nManipulation\n  \n    🍌Banana \n    🍬Candy \n  \n \n\n  \n    9 \n    3 \n  \n  \n    11 \n    5 \n  \n  \n    13 \n    4 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n  \n\n\n\n\n\n\\(t = 5.42\\)\n\n\n\\(t = \\dfrac{\\text{difference between groups}}{\\text{difference expected due to chance}}\\)\nis analogous to…\n\\(\\dfrac{treatment \\cdot chance}{chance}\\)"
   },
   {
     "objectID": "slides/15_ANOVA.html#comparing-groups-variances",
     "href": "slides/15_ANOVA.html#comparing-groups-variances",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Comparing groups: Variances",
     "text": "Comparing groups: Variances\n\n\n\n\n\n\n \nManipulation\n  \n    🍌Banana \n    🍬Candy \n  \n \n\n  \n    9 \n    3 \n  \n  \n    11 \n    5 \n  \n  \n    13 \n    4 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n  \n\n\n\n\n\n\\(t = 5.42\\)\n\n\n\nTotal\nvariability in data\n\n\nVariability\nbetween groups\n\n\n\nChance\nTreatment effect\n\n\n\nVariability\nwithin groups\n\n\n\nChance\n\n\n\n\n\\(\\dfrac{\\text{variability between groups}}{\\text{variability within groups}}\\)\nis analogous to…\n\\(\\dfrac{treatment \\cdot chance}{chance}\\)"
   },
   {
     "objectID": "slides/15_ANOVA.html#total-variance",
     "href": "slides/15_ANOVA.html#total-variance",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Total variance",
     "text": "Total variance\n\n\n\n\n\n\n \nManipulation\n  \n    🍌Banana \n    🍬Candy \n  \n \n\n  \n    9 \n    3 \n  \n  \n    11 \n    5 \n  \n  \n    13 \n    4 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n  \n\n\n\n\n\n\\(t = 5.42\\)\n\n\nTotal variance\n\n\\(SS_{total}\\)\nFind sum of squared deviations of all scores (ignoring different groups) from grand mean (mean of all scores)\n\\(df_{total} = N - 1\\)\n\n\n\\[\\begin{align}\n\\text{Variance}_{total} &= \\dfrac{SS_{total}}{df_{total}} \\\\\n&= \\dfrac{83.5}{5} \\\\\n&= 16.7\n\\end{align}\\]"
   },
   {
     "objectID": "slides/15_ANOVA.html#within-groups-variance",
     "href": "slides/15_ANOVA.html#within-groups-variance",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Within groups variance",
     "text": "Within groups variance\n\n\n\n\n\n\n \nManipulation\n  \n    🍌Banana \n    🍬Candy \n  \n \n\n  \n    9 \n    3 \n  \n  \n    11 \n    5 \n  \n  \n    13 \n    4 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n  \n\n\n\n\n\n\\(t = 5.42\\)\n\\(\\text{Variance}_{total} = 16.7\\)\n\n\nVariance within groups\n\n\\(SS_{within} = \\Sigma SS_{each \\ treatment}\\)\nFind \\(SS\\) for each individual group from respective group mean\nThen add \\(SS\\) values\n\\(df_{within} = \\Sigma df_{each \\ treatment}\\)\n\n\n\\[\\begin{align}\n\\text{Variance}_{within} &= \\dfrac{SS_{within}}{df_{within}} \\\\\n&= \\dfrac{8 + 2}{ + } \\\\\n&= 2.5\n\\end{align}\\]"
   },
   {
     "objectID": "slides/15_ANOVA.html#between-groups-variance",
     "href": "slides/15_ANOVA.html#between-groups-variance",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Between groups variance",
     "text": "Between groups variance\n\n\n\n\n\n\n \nManipulation\n  \n    🍌Banana \n    🍬Candy \n  \n \n\n  \n    9 \n    3 \n  \n  \n    11 \n    5 \n  \n  \n    13 \n    4 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n  \n\n\n\n\n\n\\(t = 5.42\\)\n\\(\\text{Variance}_{total} = 16.7\\)\n\\(\\text{Variance}_{within} = 2.5\\)\n\n\nTotal variability in data = Var between groups + Var within groups\nTherefore…\n\n\n\\(SS_{between} = SS_{total} – SS_{within}\\)\n\\(df_{between} = df_{total} – df_{within}\\)\n\\[\\begin{align}\n\\text{Variance}_{between} &= \\dfrac{SS_{between}}{df_{between}} \\\\\n&= \\dfrac{83.5 - 10}{5-4} \\\\\n&= 73.5\n\\end{align}\\]"
   },
   {
     "objectID": "slides/15_ANOVA.html#ratio-of-variances",
     "href": "slides/15_ANOVA.html#ratio-of-variances",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Ratio of variances",
     "text": "Ratio of variances\n\n\n\n\n\n\n \nManipulation\n  \n    🍌Banana \n    🍬Candy \n  \n \n\n  \n    9 \n    3 \n  \n  \n    11 \n    5 \n  \n  \n    13 \n    4 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n  \n\n\n\n\n\n\\(t = 5.42\\)\n\\(\\text{Variance}_{total} = 16.7\\)\n\\(\\text{Variance}_{within} = 2.5\\) \\(\\text{Variance}_{between} = 73.5\\)\n\n\n\nTotal\nvariability in data\n\n\nVariability\nbetween groups\n\n\n\nChance\nTreatment effect\n\n\n\nVariability\nwithin groups\n\n\n\nChance\n\n\n\n\\(\\dfrac{\\text{variance between groups}}{\\text{variance within groups}}\\)\n\\(\\dfrac{73.5}{2.5} = 29.4\\)"
   },
   {
     "objectID": "slides/15_ANOVA.html#the-f-ratio",
     "href": "slides/15_ANOVA.html#the-f-ratio",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "The \\(F\\) ratio",
     "text": "The \\(F\\) ratio\n\n\n\n\n\n\n \nManipulation\n  \n    🍌Banana \n    🍬Candy \n  \n \n\n  \n    9 \n    3 \n  \n  \n    11 \n    5 \n  \n  \n    13 \n    4 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n  \n\n\n\n\n\n\\(t = 5.42\\)\n\\(F = 29.4\\)\n\n\n\nTotal\nvariability in data\n\n\nVariability\nbetween groups\n\n\n\nChance\nTreatment effect\n\n\n\nVariability\nwithin groups\n\n\n\nChance\n\n\n\n\n\\(\\dfrac{\\text{variance between groups}}{\\text{variance within groups}}\\)\nis analogous to…\n\\(\\dfrac{treatment \\cdot chance}{chance}\\)"
   },
   {
     "objectID": "slides/15_ANOVA.html#more-complicated-design",
     "href": "slides/15_ANOVA.html#more-complicated-design",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "More complicated design",
     "text": "More complicated design\n\n\n\n\n \nManipulation\n  \n    🍌Banana \n    🍬Candy \n    😐Control \n  \n \n\n  \n    9 \n    3 \n    5 \n  \n  \n    11 \n    5 \n    6 \n  \n  \n    13 \n    4 \n    7 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n    \\(M = 6\\) \n  \n\n\n\n\n\n\nDifferences among 3 means\n\nDid banana improve scores? Candy bar harm scores? Both? Neither?"
   },
   {
     "objectID": "slides/15_ANOVA.html#limitation-of-t-test",
     "href": "slides/15_ANOVA.html#limitation-of-t-test",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Limitation of \\(t\\) test",
     "text": "Limitation of \\(t\\) test\n\nCan only compare two populations\n\n\\(H_0\\): \\(\\mu_1 - \\mu_2 = 0\\)"
   },
   {
     "objectID": "slides/15_ANOVA.html#advantage-of-anova",
     "href": "slides/15_ANOVA.html#advantage-of-anova",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Advantage of ANOVA",
     "text": "Advantage of ANOVA\n\nANOVA is a tool for the general case\n\nComparing any number of populations\n\\(H_0\\): \\(\\mu_1 = \\mu_2 = \\mu_3 = \\dots = \\mu_n\\)"
   },
   {
     "objectID": "slides/16_ANOVA-pt-2.html#ss-and-df",
     "href": "slides/16_ANOVA-pt-2.html#ss-and-df",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "\\(SS\\) and \\(df\\)",
     "text": "\\(SS\\) and \\(df\\)\n\n\n\\(SS_{total} = \\Sigma X^2 - \\dfrac{G^2}{N}\\) \\(df_{total} = N-1\\)\n\\(SS_{within} = \\Sigma SS_{each \\ treamtent}\\) \\(df_{within} = N-k\\)\n\\(SS_{between} = \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N}\\) \\(df_{between} = k-1\\)\n\n\n\n\n\n \n  \n    Symbol \n    Meaning \n  \n \n\n  \n    \\(k\\) \n    Number of treatment conditions \n  \n  \n    \\(n_1, n_2...\\) \n    Number of scores in each treatment \n  \n  \n    \\(N\\) \n    Total number of scores \n  \n  \n    \\(T_1, T_2...\\) \n    Sum of scores \\((\\Sigma X)\\) for each treatment \n  \n  \n    \\(G\\) \n    Grand total of all scores in the study"
   },
   {
     "objectID": "slides/16_ANOVA-pt-2.html#summary-table",
     "href": "slides/16_ANOVA-pt-2.html#summary-table",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Summary table",
     "text": "Summary table\n\n\n\n\n \n  \n    Source \n    SS \n    df \n    MS \n    F \n  \n \n\n  \n    Between treatments \n     \n     \n     \n     \n  \n  \n    Within treatments \n     \n     \n     \n     \n  \n  \n    Total"
   },
   {
     "objectID": "slides/16_ANOVA-pt-2.html#step-1.-state-hypotheses",
     "href": "slides/16_ANOVA-pt-2.html#step-1.-state-hypotheses",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 1. State hypotheses",
     "text": "Step 1. State hypotheses\n\n\\(H_0: \\mu_1 = \\mu_2 = \\mu_3\\)\n\nNo treatment effect\nNumerator & denominator should be about the same\n\\(F\\) should be near \\(1.00\\)\n\n\\(H_1\\) : At least one population mean differs from another\n\nThere is some treatment effect\nNumerator bigger than denominator\n\\(F\\) should be noticeably larger than \\(1.00\\)"
   },
   {
     "objectID": "slides/16_ANOVA-pt-2.html#step-2.-critical-region",
     "href": "slides/16_ANOVA-pt-2.html#step-2.-critical-region",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 2. Critical region",
     "text": "Step 2. Critical region\n\nLike \\(t\\) distributions, there is a different \\(F\\) distribution for each value of \\(df\\)\n\nNow we have two different \\(df\\) values\n\\(df\\) numerator \\((df_{between})\\)\n\\(df\\) denominator \\((df_{within})\\)\nNote, distribution isn’t symmetrical\n\\(F\\) values are always positive"
   },
   {
     "objectID": "slides/16_ANOVA-pt-2.html#f-table",
     "href": "slides/16_ANOVA-pt-2.html#f-table",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "\\(F\\) table",
     "text": "\\(F\\) table\n\n\n\n\n\n \n\n\\(\\alpha = .05\\)\n\\(df_{numerator}\\)\n\n  \n    \\(df_{denominator}\\) \n    1 \n    2 \n    3 \n    4 \n    5 \n    6 \n    7 \n    8 \n    9 \n    10 \n  \n \n\n  \n    1 \n    161.45 \n    199.50 \n    215.71 \n    224.58 \n    230.16 \n    233.99 \n    236.77 \n    238.88 \n    240.54 \n    241.88 \n  \n  \n    2 \n    18.51 \n    19.00 \n    19.16 \n    19.25 \n    19.30 \n    19.33 \n    19.35 \n    19.37 \n    19.39 \n    19.40 \n  \n  \n    3 \n    10.13 \n    9.55 \n    9.28 \n    9.12 \n    9.01 \n    8.94 \n    8.89 \n    8.85 \n    8.81 \n    8.79 \n  \n  \n    4 \n    7.71 \n    6.94 \n    6.59 \n    6.39 \n    6.26 \n    6.16 \n    6.09 \n    6.04 \n    6.00 \n    5.96 \n  \n  \n    5 \n    6.61 \n    5.79 \n    5.41 \n    5.19 \n    5.05 \n    4.95 \n    4.88 \n    4.82 \n    4.77 \n    4.74 \n  \n  \n    6 \n    5.99 \n    5.14 \n    4.76 \n    4.53 \n    4.39 \n    4.28 \n    4.21 \n    4.15 \n    4.10 \n    4.06 \n  \n  \n    7 \n    5.59 \n    4.74 \n    4.35 \n    4.12 \n    3.97 \n    3.87 \n    3.79 \n    3.73 \n    3.68 \n    3.64 \n  \n  \n    8 \n    5.32 \n    4.46 \n    4.07 \n    3.84 \n    3.69 \n    3.58 \n    3.50 \n    3.44 \n    3.39 \n    3.35 \n  \n  \n    9 \n    5.12 \n    4.26 \n    3.86 \n    3.63 \n    3.48 \n    3.37 \n    3.29 \n    3.23 \n    3.18 \n    3.14 \n  \n  \n    10 \n    4.96 \n    4.10 \n    3.71 \n    3.48 \n    3.33 \n    3.22 \n    3.13 \n    3.07 \n    3.02 \n    2.98 \n  \n\n\n\n\n\n\n\njStat = require(\"../js/jstat.js\")\n\naov_table = {\n\n  var df1, df2, critical\n  \n  function getDf2() {\n    try {\n      df2 = d3.select(this).select(\"td\")._groups[0][0].innerHTML;\n    } catch {} finally {update();}\n  }\n  \n    function getDf1() {\n    try {\n      df1 = d3.select(this)._groups[0][0].cellIndex\n      if (df1 < 1) {df1 = 1}\n    } catch {} finally {update();}\n  }\n  \n  d3.select(\"#tbl\").selectAll(\"tr\").on(\"click\", getDf2)\n  d3.select(\"#tbl\").selectAll(\"td\").on(\"click\", getDf1)\n\n\n  const w = 1050\n  const h = 200\n  const margin = {right: 100, left: 100, bottom: 20}\n  \n  const svg = d3.select(\"#tbl\").append(\"svg\")\n    .attr(\"width\", w).attr(\"height\", h)\n    \n\n  const x = d3.scaleLinear()\n    .domain([0,4])\n    .range([margin.left, w - margin.right])\n  const y = d3.scaleLinear()\n    .domain([0,1])\n    .range([h - margin.bottom, 0])\n  const xAxis = d3.axisBottom(x)\n  const line = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density))\n  \n  function makeCurve(df1, df2) {\n    var arr = []\n    var values = jStat(0.01, 4, 210)[0]\n    for (var i = 0; i < values.length; i++) {\n      arr.push({value: values[i],\n                density: jStat.centralF.pdf(values[i], Number(df1), Number(df2))})\n    }\n    return arr\n  }\n  \n  svg.append(\"g\").attr(\"transform\", `translate(0, ${h - margin.bottom})`)\n    .call(xAxis)\n    \n  const curve = svg.append(\"path\")\n    .attr(\"d\", line(makeCurve(10, 10)))\n    .style(\"fill\", \"none\")\n    .style(\"stroke\", \"black\")\n  \n  const df1Input = document.getElementById('df1-input')\n  df1Input.oninput = function() {\n    df1 = df1Input.value\n    update();\n  }\n  \n  const df2Input = document.getElementById('df2-input')\n  df2Input.oninput = function() {\n    df2 = df2Input.value\n    update();\n  }\n  \n  function update() {\n    d3.select(\"#df1-value\").text(df1)\n    d3.select(\"#df2-value\").text(df2)\n    critical = jStat.centralF.inv(0.95, Number(df1), Number(df2))\n    curve.attr(\"d\", line(makeCurve(Number(df1), Number(df2))))\n  }\n  \n\n\n  \n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(df_{numerator} = \\)1\n\\(df_{denominator} = \\)1"
   },
   {
     "objectID": "slides/16_ANOVA-pt-2.html#step-3.-calculate-test-statistic",
     "href": "slides/16_ANOVA-pt-2.html#step-3.-calculate-test-statistic",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 3. Calculate test statistic",
     "text": "Step 3. Calculate test statistic\n\n\n\n\n\n\n\n\n\n \nManipulation\n  \n    🍌Banana \n    🍬Candy \n    😐Control \n  \n \n\n  \n    9 \n    3 \n    5 \n  \n  \n    11 \n    5 \n    6 \n  \n  \n    13 \n    4 \n    7 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M = 11\\) \n    \\(M = 4\\) \n    \\(M = 6\\) \n  \n\n\n\n\n\n\n\\(N = 9\\)\n\\(n = 3\\)\n\\(k = 3\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)"
   },
   {
     "objectID": "slides/16_ANOVA-pt-2.html#step-3.-ss-and-dfs",
     "href": "slides/16_ANOVA-pt-2.html#step-3.-ss-and-dfs",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 3. \\(SS\\) and \\(df\\)s",
     "text": "Step 3. \\(SS\\) and \\(df\\)s\n\\(SS_{total} = \\Sigma X^2 - \\dfrac{G^2}{N} = 531 - \\dfrac{63^2}{9} = 90\\)\n\\(SS_{within} = \\Sigma SS_{each \\ treamtent} = 8+2+2 = 12\\)\n\\(SS_{between} = \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N} = \\dfrac{33^2}{3}+\\dfrac{12^2}{3}+\\dfrac{18^2}{3} - \\dfrac{63^2}{9} = 78\\)\n\\(df_{total} = N-1 = 8\\)\n\\(df_{within} = N-k = 6\\)\n\\(df_{between} = k-1 = 2\\)"
   },
   {
     "objectID": "slides/16_ANOVA-pt-2.html#step-3.-ms-and-f",
     "href": "slides/16_ANOVA-pt-2.html#step-3.-ms-and-f",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 3. \\(MS\\) and \\(F\\)",
     "text": "Step 3. \\(MS\\) and \\(F\\)\n\\(MS_{between} = \\dfrac{SS_{between}}{df_{between}} = 39\\)\n\\(MS_{within} = \\dfrac{SS_{within}}{df_{within}} = 2\\)\n\\(F = \\dfrac{MS_{between}}{MS_{within}} = \\dfrac{39}{2} = 19.5\\)"
   },
   {
     "objectID": "slides/16_ANOVA-pt-2.html#step-4.-make-decision",
     "href": "slides/16_ANOVA-pt-2.html#step-4.-make-decision",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 4. Make decision",
     "text": "Step 4. Make decision\n\n\\(F > F_{critical}\\)?\n\nReject or fail to reject \\(H_0\\)\n\nStep 4b. Effect size\n\nCompute percentage of variance accounted for by treatment\n\\(r^2\\) concept (proportion of variance explained)\nFor ANOVA called \\(\\eta^2\\) (“eta squared”)\n\n\n\n\\(\\eta^2 = \\dfrac{SS_{between}}{SS_{total}} = 0.87\\)"
   },
   {
     "objectID": "slides/16_ANOVA-pt-2.html#report-results",
     "href": "slides/16_ANOVA-pt-2.html#report-results",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Report results",
     "text": "Report results\n\nDescriptives\n\nTreatment means and standard deviations are presented in text, table and/or graph\n\nHypothesis test outcome\n\nResults of ANOVA are summarized, including\n\\(F\\) and \\(df\\) values, \\(p\\), \\(\\eta^2\\) (if significant)\n\n\n\nA single-factor, independent-samples ANOVA revealed a significant difference between people who consumed a banana (\\(M = 11\\); \\(SD = 2\\)), a candy bar (\\(M = 4\\); \\(SD = 1\\)), and the control condition (\\(M = 6\\); \\(SD = 1\\)); \\(F(2,6) = 19.5\\), \\(p < .05\\), \\(\\eta^2 = 0.87\\)."
   },
   {
     "objectID": "slides/16_ANOVA-pt-2.html#tukeys-hsd",
     "href": "slides/16_ANOVA-pt-2.html#tukeys-hsd",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Tukey’s \\(HSD\\)",
     "text": "Tukey’s \\(HSD\\)\n\nTukey’s Honestly Significant Difference\n\nMinimum difference between pairs of treatment means so that \\(p < \\alpha_{experimentwise}\\)\n\\(q\\) is the Studentized Range statistic\nDepends on \\(\\alpha\\), \\(k\\), and \\(df\\) for denominator\nFind \\(q\\) in table or R"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#independent-samples",
     "href": "slides/17_related-samples-ANOVA.html#independent-samples",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Independent-samples",
     "text": "Independent-samples\n\n\n\nIndependent-measures ANOVA\n\n“Between-participants”\nDifferent participants in each treatment\nBetween-groups variability could be due to treatment effect and/or individual differences"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#related-samples",
     "href": "slides/17_related-samples-ANOVA.html#related-samples",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Related-samples",
     "text": "Related-samples\n\n\n\nRepeated-measures (within-participants)\n\nSame participants in each treatment\n\nOr matched-samples\n\nMatched participants in each treatment"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#pros-and-cons",
     "href": "slides/17_related-samples-ANOVA.html#pros-and-cons",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Pros and cons",
     "text": "Pros and cons\n\n\n\nAdvantages\n\nEliminates individual differences as a source of variability between treatments\nSmaller number of participants needed\n\nDisadvantages\n\nSomething other than the treatment may cause participant’s scores to change\nE.g. practice, world events, natural improvement"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#partitioning-variance",
     "href": "slides/17_related-samples-ANOVA.html#partitioning-variance",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Partitioning variance",
     "text": "Partitioning variance\n\n\nTotal variance\n\n\nVariance between groups\n\\(MS_{between}\\)\n\n\n\nTreatment effect\nSampling error\nIndividual differences\n\n\n\nVariance within groups\n\\(MS_{within}\\)\n\n\n\nSampling error\nIndividual differences\n\n\n\n\n\\(F = \\dfrac{{MS_{between}}}{{MS_{within}}} = \\dfrac{treatment, \\ error, \\ ind. \\ diff.}{error, \\ ind. \\ diff.}\\)"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#partitioning-variance-1",
     "href": "slides/17_related-samples-ANOVA.html#partitioning-variance-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Partitioning variance",
     "text": "Partitioning variance\n\n\nTotal variance\n\n\nVariance between treatments\n\\(MS_{between \\ treatments}\\)\n\n\n\nTreatment effect\nSampling error\n\n\n\nVariance within groups\n\\(MS_{within}\\)\n\n\n\nSampling error\nIndividual differences\n\n\n\n\n\\(F = \\dfrac{{MS_{between \\ treatments}}}{{MS_{within}}} = \\dfrac{treatment, \\ error}{error, \\ ind. \\ diff.}\\)"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#partitioning-variance-2",
     "href": "slides/17_related-samples-ANOVA.html#partitioning-variance-2",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Partitioning variance",
     "text": "Partitioning variance\n\n\nTotal variance\n\n\nVariance between treatments\n\\(MS_{between \\ treatments}\\)\n\n\n\nTreatment effect\nSampling error\n\n\n\nVariance within groups\n\\(MS_{within}\\)\n\n\nError\n\\(MS_{error}\\)\n\n\nBetween subjects\n\\(MS_{between \\ S's}\\)\n\n\n\nSampling error\n\n\n\n\nIndividual differences\n\n\n\n\n\\(F = \\dfrac{{MS_{between \\ treatments}}}{{MS_{error}}} = \\dfrac{treatment, \\ error}{error}\\)"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#calculations-ss-and-df-values",
     "href": "slides/17_related-samples-ANOVA.html#calculations-ss-and-df-values",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Calculations: \\(SS\\) and \\(df\\) values",
     "text": "Calculations: \\(SS\\) and \\(df\\) values"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#calculations-ss-and-df",
     "href": "slides/17_related-samples-ANOVA.html#calculations-ss-and-df",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Calculations: \\(SS\\) and \\(df\\)",
     "text": "Calculations: \\(SS\\) and \\(df\\)\n\\[\\begin{align}\nSS_{total} &= \\Sigma X^2 - \\dfrac{G^2}{N} \\\\\nSS_{within} &= \\Sigma SS_{within \\ each \\ treatment} \\\\\nSS_{between \\ treatments} &= \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N} \\\\\nSS_{between \\ subjects} &= \\Sigma \\dfrac{P^2}{k} - \\dfrac{G^2}{N} \\\\\nSS_{error} &= SS_{within}-SS_{between \\ subjects}\n\\end{align}\\]\n\\[\\begin{align}\ndf_{total} &= N-1  \\\\\ndf_{within} &= N-k \\\\\ndf_{between \\ treatments} &= k-1 \\\\\ndf_{between \\ subjects} &= n-1 \\\\\ndf_{error} &= df_{within}-df_{between \\ subjects}\n\\end{align}\\]"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#calculations-ms-and-f",
     "href": "slides/17_related-samples-ANOVA.html#calculations-ms-and-f",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Calculations: \\(MS\\) and \\(F\\)",
     "text": "Calculations: \\(MS\\) and \\(F\\)\n\nStep 2. \\(MS\\) values\n\n\\[\\begin{align}\nMS_{between \\ treatments} &= \\dfrac{SS_{between \\ treatments}}{df_{between \\ treatments}} \\\\\n\\ \\\\\nMS_{error} &= \\dfrac{SS_{error}}{df_{error}}\n\\end{align}\\]\n\nStep 3. \\(F\\)-ratio\n\n\n\\(F = \\dfrac{MS_{between \\ treatments}}{MS_{error}}\\)"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#summary-table",
     "href": "slides/17_related-samples-ANOVA.html#summary-table",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Summary table",
     "text": "Summary table"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#step-1.-state-hypotheses",
     "href": "slides/17_related-samples-ANOVA.html#step-1.-state-hypotheses",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 1. State hypotheses",
     "text": "Step 1. State hypotheses\n\n\n\n\n\n\n\n \n\n\nManipulation\n\n  \n    Person \n    🍌Banana \n    🍬Candy \n    😐Control \n  \n \n\n  \n    A \n    9 \n    3 \n    5 \n  \n  \n    B \n    11 \n    5 \n    6 \n  \n  \n    C \n    13 \n    4 \n    7 \n  \n\n\n\n\n\n\n\\(H_0: \\mu_1 = \\mu_2 = \\mu_3\\)\n\\(H_1\\) : At least one population mean differs from another"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#step-2.-critical-region",
     "href": "slides/17_related-samples-ANOVA.html#step-2.-critical-region",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 2. Critical region",
     "text": "Step 2. Critical region\n\nNumerator: \\(df_{between \\ treatments} = k-1\\)\nDenominator: \\(df_{error} = df_{within}-df_{between \\ S's} = (N-k)-(n-1)\\)\n\n\n\n\n\n \n\n\\(\\alpha = .05\\)\n\\(df_{numerator}\\)\n\n  \n    \\(df_{denominator}\\) \n    1 \n    2 \n    3 \n    4 \n    5 \n    6 \n    7 \n    8 \n    9 \n    10 \n  \n \n\n  \n    1 \n    161.45 \n    199.50 \n    215.71 \n    224.58 \n    230.16 \n    233.99 \n    236.77 \n    238.88 \n    240.54 \n    241.88 \n  \n  \n    2 \n    18.51 \n    19.00 \n    19.16 \n    19.25 \n    19.30 \n    19.33 \n    19.35 \n    19.37 \n    19.39 \n    19.40 \n  \n  \n    3 \n    10.13 \n    9.55 \n    9.28 \n    9.12 \n    9.01 \n    8.94 \n    8.89 \n    8.85 \n    8.81 \n    8.79 \n  \n  \n    4 \n    7.71 \n    6.94 \n    6.59 \n    6.39 \n    6.26 \n    6.16 \n    6.09 \n    6.04 \n    6.00 \n    5.96 \n  \n  \n    5 \n    6.61 \n    5.79 \n    5.41 \n    5.19 \n    5.05 \n    4.95 \n    4.88 \n    4.82 \n    4.77 \n    4.74 \n  \n  \n    6 \n    5.99 \n    5.14 \n    4.76 \n    4.53 \n    4.39 \n    4.28 \n    4.21 \n    4.15 \n    4.10 \n    4.06 \n  \n  \n    7 \n    5.59 \n    4.74 \n    4.35 \n    4.12 \n    3.97 \n    3.87 \n    3.79 \n    3.73 \n    3.68 \n    3.64 \n  \n  \n    8 \n    5.32 \n    4.46 \n    4.07 \n    3.84 \n    3.69 \n    3.58 \n    3.50 \n    3.44 \n    3.39 \n    3.35 \n  \n  \n    9 \n    5.12 \n    4.26 \n    3.86 \n    3.63 \n    3.48 \n    3.37 \n    3.29 \n    3.23 \n    3.18 \n    3.14 \n  \n  \n    10 \n    4.96 \n    4.10 \n    3.71 \n    3.48 \n    3.33 \n    3.22 \n    3.13 \n    3.07 \n    3.02 \n    2.98"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#calculate-f-ratio",
     "href": "slides/17_related-samples-ANOVA.html#calculate-f-ratio",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "3. Calculate \\(F\\)-ratio",
     "text": "3. Calculate \\(F\\)-ratio\n\n\n\n\n\n\n \n\n\nManipulation\n\n\n  \n    Person \n    🍌Banana \n    🍬Candy \n    😐Control \n    P \n  \n \n\n  \n    A \n    9 \n    3 \n    5 \n    17 \n  \n  \n    B \n    11 \n    5 \n    6 \n    22 \n  \n  \n    C \n    13 \n    4 \n    7 \n    24 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M\\) \n    11 \n    4 \n    6 \n     \n  \n  \n    \\(T\\) \n    33 \n    12 \n    18 \n     \n  \n  \n    \\(SS\\) \n    8 \n    2 \n    2 \n     \n  \n\n\n\n\n\n\n\\(n = 3\\)\n\\(k = 3\\)\n\\(N = 9\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)\n\n\n\n\\[\\begin{align}\ndf_{total} &= N-1 = 8 \\\\\ndf_{within} &= N-k  = 6 \\\\\ndf_{between \\ treatments} &= k-1  = 2 \\\\\ndf_{between \\ subjects} &= n-1  = 2\\\\\ndf_{error} &= df_{within}-df_{between \\ subjects}  = 4\n\\end{align}\\]"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-1",
     "href": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "3. Calculate \\(F\\)-ratio",
     "text": "3. Calculate \\(F\\)-ratio\n\n\n\n\n\n\n \n\n\nManipulation\n\n\n  \n    Person \n    🍌Banana \n    🍬Candy \n    😐Control \n    P \n  \n \n\n  \n    A \n    9 \n    3 \n    5 \n    17 \n  \n  \n    B \n    11 \n    5 \n    6 \n    22 \n  \n  \n    C \n    13 \n    4 \n    7 \n    24 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M\\) \n    11 \n    4 \n    6 \n     \n  \n  \n    \\(T\\) \n    33 \n    12 \n    18 \n     \n  \n  \n    \\(SS\\) \n    8 \n    2 \n    2 \n     \n  \n\n\n\n\n\n\n\\(n = 3\\)\n\\(k = 3\\)\n\\(N = 9\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)\n\n\n\n\n\n\\(SS_{total} = \\Sigma X^2 - \\dfrac{G^2}{N} = 90\\)\n\\(SS_{within} = \\Sigma SS_{within \\ each \\ treatment} = 12\\)\n\\(SS_{between \\ treatments} = \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N} = 78\\)\n\n\\(SS_{between \\ subjects} = \\Sigma \\dfrac{P^2}{k} - \\dfrac{G^2}{N} = 8.67\\)\n\\(SS_{error} = \\Sigma SS_{within}-SS_{between \\ subjects} = 3.33\\)"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-2",
     "href": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-2",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "3. Calculate \\(F\\)-ratio",
     "text": "3. Calculate \\(F\\)-ratio\n\n\n\n\n\n\n \n\n\nManipulation\n\n\n  \n    Person \n    🍌Banana \n    🍬Candy \n    😐Control \n    P \n  \n \n\n  \n    A \n    9 \n    3 \n    5 \n    17 \n  \n  \n    B \n    11 \n    5 \n    6 \n    22 \n  \n  \n    C \n    13 \n    4 \n    7 \n    24 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M\\) \n    11 \n    4 \n    6 \n     \n  \n  \n    \\(T\\) \n    33 \n    12 \n    18 \n     \n  \n  \n    \\(SS\\) \n    8 \n    2 \n    2 \n     \n  \n\n\n\n\n\n\n\\(n = 3\\)\n\\(k = 3\\)\n\\(N = 9\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)\n\n\n\n\\(MS_{between \\ treatments} = \\dfrac{SS_{between \\ treatments}}{df_{between \\ treatments}} = 39\\)\n\\(MS_{error} = \\dfrac{SS_{error}}{df_{error}} = 0.83\\)"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-3",
     "href": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-3",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "3. Calculate \\(F\\)-ratio",
     "text": "3. Calculate \\(F\\)-ratio\n\n\n\n\n\n\n \n\n\nManipulation\n\n\n  \n    Person \n    🍌Banana \n    🍬Candy \n    😐Control \n    P \n  \n \n\n  \n    A \n    9 \n    3 \n    5 \n    17 \n  \n  \n    B \n    11 \n    5 \n    6 \n    22 \n  \n  \n    C \n    13 \n    4 \n    7 \n    24 \n  \n\n\n\n\n\n\n\n\n  \n    \\(M\\) \n    11 \n    4 \n    6 \n     \n  \n  \n    \\(T\\) \n    33 \n    12 \n    18 \n     \n  \n  \n    \\(SS\\) \n    8 \n    2 \n    2 \n     \n  \n\n\n\n\n\n\n\\(n = 3\\)\n\\(k = 3\\)\n\\(N = 9\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)\n\n\n\n\\(F = \\dfrac{MS_{between \\ treatments}}{MS_{error}} = 46.8\\)"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#report-results",
     "href": "slides/17_related-samples-ANOVA.html#report-results",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Report results",
     "text": "Report results\n\nA single-factor, related-samples ANOVA revealed a significant difference in people’s test scores when the test was preceded by consumption of a banana (\\(M = 11.00\\); \\(SD = 2.00\\)), a candy bar (\\(M = 4.00\\); \\(SD = 1.00\\)), and no snack (\\(M = 6.00\\); \\(SD = 1.00\\)); \\(F(2,4) = 46.8\\), \\(p < .05\\), \\(\\eta^2 = 0.96\\). Post-hoc tests using Tukey’s HSD revealed that test scores were significantly better following banana consumption than following no snack or candy consumption; the candy did not differ significantly from the control condition."
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#terminology",
     "href": "slides/18_factorial-ANOVA.html#terminology",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Terminology",
     "text": "Terminology\n\nFactor\n\nThe variable that designates the groups being compared\nBetween-participants / within-participants\n\nLevels\n\nIndividual conditions or values that make up a factor\n\nFactorial design\n\nA study that combines two (or more) factors, each with two (or more) levels\nCan be manipulated between-participants or within-participants (or mixed-factorial design)\nE.g. 2x2 between-participants ANOVA"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#logic-1",
     "href": "slides/18_factorial-ANOVA.html#logic-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Logic",
     "text": "Logic\n\n\n\n\n    \n        \n            \n            Factor A\n        \n        \n\n            \\(A_1\\)\\(A_2\\)\n        \n    \n    \n        \n            Factor B\n            \\(B_1\\)\n            \\(A_1 B_1\\)\\(A_2 B_1\\)\n        \n        \n            \\(B_2\\)\n            \\(A_2 B_1\\)\\(A_2 B_2\\)\n        \n    \n\n\n\n\n\nThree hypotheses tested by three \\(F\\)-ratios\n\nMain effect of Factor A\nMain effect of Factor B\nInteraction between A and B\n\nEach tested with same basic \\(F\\)-ratio structure\n\n\\(F = \\dfrac{\\textrm{variance between treatments}}{\\textrm{variance expected with no treatment effect}}\\)"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#partitioning-variance",
     "href": "slides/18_factorial-ANOVA.html#partitioning-variance",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Partitioning variance",
     "text": "Partitioning variance\n\n\nTotal variance\n\n\nVariance between treatments\n\\(MS_{between \\ treatments}\\)\n\n\nVariance within groups\n\\(MS_{within}\\)\n\n\nFactor A\n\\(MS_{A}\\)\n\n\nFactor B\n\\(MS_{B}\\)\n\n\nInteraction\n\\(MS_{A*B}\\)"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#example-data",
     "href": "slides/18_factorial-ANOVA.html#example-data",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Example data",
     "text": "Example data\n\n\n\n\n    \n        \n            \n            Snack\n        \n        \n\n            BananaCandy\n        \n    \n    \n        \n            Test\n            Math\n            7, 9, 8, 95, 4, 6, 5\n        \n        \n            Reaction time\n            5, 3, 4, 46, 6, 5, 5"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#equations",
     "href": "slides/18_factorial-ANOVA.html#equations",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Equations",
     "text": "Equations\n\n\n\\(SS_{total} = \\Sigma X^2 - \\dfrac{G^2}{N}\\)\n\\(SS_{within} = \\Sigma SS_{within \\ each \\ treatment}\\)\n\\(SS_{between} = \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N}\\)\n\\(SS_{A} = \\Sigma \\dfrac{T^2_{col}}{n_{col}} - \\dfrac{G^2}{N}\\)\n\\(SS_{B} = \\Sigma \\dfrac{T^2_{row}}{n_{row}} - \\dfrac{G^2}{N}\\)\n\\(SS_{A*B} = SS_{between}-SS_{A}-SS_{B}\\)\n\n\\(df_{total} = N-1\\)\n\\(df_{within} = N-k\\)\n\\(df_{between} = k-1\\)\n\\(df_{A} = k_A-1\\)\n\\(df_{B} = k_B-1\\)\n\\(df_{A*B} = df_{between}-df_A-df_B\\)"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#summary-table",
     "href": "slides/18_factorial-ANOVA.html#summary-table",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Summary table",
     "text": "Summary table"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-1.-hypotheses",
     "href": "slides/18_factorial-ANOVA.html#step-1.-hypotheses",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 1. Hypotheses",
     "text": "Step 1. Hypotheses\n\n\n\n\n    \n        \n            \n            Snack\n        \n        \n\n            BananaCandy\n        \n    \n    \n        \n            Test\n            Math\n            7, 9, 8, 95, 4, 6, 5\n        \n        \n            Reaction time\n            5, 3, 4, 46, 6, 5, 5\n        \n    \n\n\n\n\n\nMain effect of Snack Type\n\n\\(H_0\\): \\(\\mu_{banana} = \\mu_{candy}\\)\n\\(H_1\\): \\(\\mu_{banana} \\ne \\mu_{candy}\\)\n\nMain effect of Test Type\n\n\\(H_0\\): \\(\\mu_{math} = \\mu_{RT}\\)\n\\(H_1\\): \\(\\mu_{math} \\ne \\mu_{RT}\\)\n\nSnack * Test interaction\n\n\\(H_0\\): No interaction\n\\(H_1\\): There is an interaction"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-2.-critical-region",
     "href": "slides/18_factorial-ANOVA.html#step-2.-critical-region",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 2. Critical region",
     "text": "Step 2. Critical region\n\nStep 2. Critical region\n\nNumerators: \\(df_{A} = k_A-1 = 1 \\\\ df_{B} = k_B-1 = 1 \\\\ df_{A*B} = k-1 - df_A - df_B = 1\\)\nDenominator: \\(df_{within} = N-k = 12\\)"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-3.-calculations",
     "href": "slides/18_factorial-ANOVA.html#step-3.-calculations",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 3. Calculations",
     "text": "Step 3. Calculations\n\n\n\n\n\n\n    \n        \n            \n            Snack\n        \n        \n\n            BananaCandy\n        \n    \n    \n        \n            Test\n            Math\n            \\(T = 33\\)\\(SS = 2.75\\)\\(T = 16\\)\\(SS = 2\\)\n        \n        \n            Reaction time\n            \\(T = 20\\)\\(SS = 2\\)\\(T = 22\\)\\(SS = 1\\)\n        \n    \n\n\n\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\\[\\begin{align}\ndf_{total} &= N-1 = 15 \\\\\ndf_{within} &= N-k  = 12 \\\\\ndf_{between} &= k-1  = 3\\\\\ndf_{A} &= k_A-1  = 1\\\\\ndf_{B} &= k_B-1  = 1\\\\\ndf_{A*B} &= df_{between} - df_A - df_B  = 1\\\\\n\\end{align}\\]"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-3.-calculations-1",
     "href": "slides/18_factorial-ANOVA.html#step-3.-calculations-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 3. Calculations",
     "text": "Step 3. Calculations\n\n\n\n\n\n\n    \n        \n            \n            Snack\n        \n        \n\n            BananaCandy\n        \n    \n    \n        \n            Test\n            Math\n            \\(T = 33\\)\\(SS = 2.75\\)\\(T = 16\\)\\(SS = 2\\)\n        \n        \n            Reaction time\n            \\(T = 20\\)\\(SS = 2\\)\\(T = 22\\)\\(SS = 1\\)\n        \n    \n\n\n\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\\[\\begin{align}\nSS_{total} &= \\Sigma X^2 - \\dfrac{G^2}{N} = 47.44\\\\\nSS_{within} &= \\Sigma SS_{within \\ each \\ treatment} = 7.75\\\\\nSS_{between} &= \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N} = 39.69 \\\\\n\\end{align}\\]"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-3.-calculations-2",
     "href": "slides/18_factorial-ANOVA.html#step-3.-calculations-2",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 3. Calculations",
     "text": "Step 3. Calculations\n\n\n\n\n\n\n    \n        \n            \n            Snack\n        \n        \n\n            BananaCandy\n        \n    \n    \n        \n            Test\n            Math\n            \\(T = 33\\)\\(SS = 2.75\\)\\(T = 16\\)\\(SS = 2\\)\n        \n        \n            Reaction time\n            \\(T = 20\\)\\(SS = 2\\)\\(T = 22\\)\\(SS = 1\\)\n        \n    \n\n\n\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\\[\\begin{align}\nSS_{A} &= \\Sigma \\dfrac{T^2_{col}}{n_{col}} - \\dfrac{G^2}{N} = 14.06\\\\\nSS_{B} &= \\Sigma \\dfrac{T^2_{row}}{n_{row}} - \\dfrac{G^2}{N} = 3.06\\\\\nSS_{A*B} &= \\Sigma SS_{between}-SS_A - SS_B = 22.56\n\\end{align}\\]"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-3.-calculations-3",
     "href": "slides/18_factorial-ANOVA.html#step-3.-calculations-3",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 3. Calculations",
     "text": "Step 3. Calculations\n\n\n\n\n\n\n    \n        \n            \n            Snack\n        \n        \n\n            BananaCandy\n        \n    \n    \n        \n            Test\n            Math\n            \\(T = 33\\)\\(SS = 2.75\\)\\(T = 16\\)\\(SS = 2\\)\n        \n        \n            Reaction time\n            \\(T = 20\\)\\(SS = 2\\)\\(T = 22\\)\\(SS = 1\\)\n        \n    \n\n\n\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\n\\(MS_{A} = \\dfrac{SS_{A}}{df_{A}} = 14.06 \\ \\ \\ \\ \\ \\ \\ \\ MS_{B} = \\dfrac{SS_{B}}{df_{B}} = 3.06\\)\n\\(MS_{A*B} = \\dfrac{SS_{A*B}}{df_{A*B}} = 22.56\\)\n\\(MS_{within} = \\dfrac{SS_{within}}{df_{within}} = 0.65\\)"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-3.-calculations-4",
     "href": "slides/18_factorial-ANOVA.html#step-3.-calculations-4",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 3. Calculations",
     "text": "Step 3. Calculations\n\n\n\n\n\n\n    \n        \n            \n            Snack\n        \n        \n\n            BananaCandy\n        \n    \n    \n        \n            Test\n            Math\n            \\(T = 33\\)\\(SS = 2.75\\)\\(T = 16\\)\\(SS = 2\\)\n        \n        \n            Reaction time\n            \\(T = 20\\)\\(SS = 2\\)\\(T = 22\\)\\(SS = 1\\)\n        \n    \n\n\n\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\n\\(F_A = \\dfrac{MS_{A}}{MS_{within}} = 21.77\\)\n\\(F_B = \\dfrac{MS_{B}}{MS_{within}} = 4.74\\)\n\\(F_{A*B} = \\dfrac{MS_{A*B}}{MS_{within}} = 34.94\\)"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs",
     "href": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Interpreting interaction graphs",
     "text": "Interpreting interaction graphs\n\n\nSlope indicates main effect of factor on x-axis\nDistance between lines indicates main effect of other factor\nParallel lines indicate no interaction"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-1",
     "href": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Interpreting interaction graphs",
     "text": "Interpreting interaction graphs"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-2",
     "href": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-2",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Interpreting interaction graphs",
     "text": "Interpreting interaction graphs"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-3",
     "href": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-3",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Interpreting interaction graphs",
     "text": "Interpreting interaction graphs"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-4",
     "href": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-4",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Interpreting interaction graphs",
     "text": "Interpreting interaction graphs"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-5",
     "href": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs-5",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Interpreting interaction graphs",
     "text": "Interpreting interaction graphs"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#your-turn",
     "href": "slides/18_factorial-ANOVA.html#your-turn",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Your turn",
     "text": "Your turn\n\n\n\nCome up with your own example\n\n2 IVs with 2 levels each\n1 DV (the thing you measure, e.g. test performance)\nSketch graph of expected results"
   },
   {
     "objectID": "slides/19_correlation.html#limitations-of-correlation",
     "href": "slides/19_correlation.html#limitations-of-correlation",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Limitations of correlation",
     "text": "Limitations of correlation\n\nCorrelations are not usually useful for:\n\nDemonstrating causation\n\nPerhaps…\n\nA causes B\nB causes A\nSomething else (C) causes A and B\n\nEstablishing causation requires experiments in which one variable is manipulated\n\n\nCorley, J., et al. (2010). Caffeine consumption and cognitive function at age 70: The Lothian Birth Cohort 1936 study. Psychosomatic medicine 72(2), 206-214. https://doi.org/10.1097/PSY.0b013e3181c92a9c"
   },
   {
     "objectID": "slides/19_correlation.html#correlation-statistic",
     "href": "slides/19_correlation.html#correlation-statistic",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Correlation statistic",
     "text": "Correlation statistic\n\nCorrelation statistic\n\nA number quantifying the association between two variables\n\nThree characteristics\n\nStrength or consistency (varies from 0 to 1)\nDirection (negative or positive)\nForm (e.g. linear)\n\nCharacteristics are independent\n\nCan be positive & weak, negative & strong, etc"
   },
   {
     "objectID": "slides/19_correlation.html#pearsons-r",
     "href": "slides/19_correlation.html#pearsons-r",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Pearson’s \\(r\\)",
     "text": "Pearson’s \\(r\\)\n\nMost widely used correlation statistic\n\nMeasures the degree and the direction of the linear relationship between two variables\n\nVariability & covariability\n\nVariability: How much each variable varies\nCovariability: How much \\(X\\) and \\(Y\\) vary in tandem\nAre changes in \\(X\\) associated with corresponding changes in \\(Y\\)?\nE.g. as \\(X\\) increases, \\(Y\\) tends to increase (positive)\nOr, as \\(X\\) increases, \\(Y\\) tends to decrease (negative)"
   },
   {
     "objectID": "slides/19_correlation.html#pearsons-r-1",
     "href": "slides/19_correlation.html#pearsons-r-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Pearson’s \\(r\\)",
     "text": "Pearson’s \\(r\\)\n\nNumerator: \\(SP\\)\n\nSum of products (\\(SP\\)) related to sum of squares (\\(SS\\))\n\\(SS\\): multiplying deviations by themselves (squaring)\n\\(SP\\): multiplying deviations by one another\n\n\n\n\nDefinitional formula\n\\(SP = \\Sigma(X - M_X)(Y - M_Y)\\)\n\nComputational formula\n\\(SP = \\Sigma XY - \\dfrac{\\Sigma X \\Sigma Y}{n}\\)"
   },
   {
     "objectID": "slides/19_correlation.html#calculating",
     "href": "slides/19_correlation.html#calculating",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Calculating",
     "text": "Calculating"
   },
   {
     "objectID": "slides/19_correlation.html#step-1.-state-hypotheses",
     "href": "slides/19_correlation.html#step-1.-state-hypotheses",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 1. State hypotheses",
     "text": "Step 1. State hypotheses\n\nCorrelation is computed for sample data\nHypotheses concerns relationship in the population\nGreek letter \\(\\rho\\) (rho) represents population correlation\nNon-directional:\n\n\\(H_0: \\rho = 0\\)\n\\(H_1: \\rho \\ne 0\\)\n\nDirectional:\n\n\\(H_0: \\rho \\le 0\\); \\(H_1: ρ > 0\\)\nOr…\n\\(H_0: \\rho \\ge 0\\); \\(H_1: \\rho < 0\\)"
   },
   {
     "objectID": "slides/19_correlation.html#step-2.-critical-region",
     "href": "slides/19_correlation.html#step-2.-critical-region",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 2. Critical region",
     "text": "Step 2. Critical region\n\n\n\nCritical value for \\(r\\) is a type of \\(t\\) statistic\n\n\\(df = n - 2\\)\n\n\n\n\n\n\n\n \n\nProportionin 1 tail\n\n0.1\n\n0.05\n\n0.025\n\n0.01\n\n0.005\n\n  \n    Proportionin 2 tails \n    0.2 \n    0.1 \n    0.05 \n    0.02 \n    0.01 \n  \n \n\n  \n    1 \n    3.078 \n    6.314 \n    12.706 \n    31.821 \n    63.657 \n  \n  \n    2 \n    1.886 \n    2.920 \n    4.303 \n    6.965 \n    9.925 \n  \n  \n    3 \n    1.638 \n    2.353 \n    3.182 \n    4.541 \n    5.841 \n  \n  \n    4 \n    1.533 \n    2.132 \n    2.776 \n    3.747 \n    4.604 \n  \n  \n    5 \n    1.476 \n    2.015 \n    2.571 \n    3.365 \n    4.032 \n  \n  \n    6 \n    1.440 \n    1.943 \n    2.447 \n    3.143 \n    3.707 \n  \n  \n    7 \n    1.415 \n    1.895 \n    2.365 \n    2.998 \n    3.499 \n  \n  \n    \\(df\\)       8 \n    1.397 \n    1.860 \n    2.306 \n    2.896 \n    3.355 \n  \n  \n    9 \n    1.383 \n    1.833 \n    2.262 \n    2.821 \n    3.250 \n  \n  \n    10 \n    1.372 \n    1.812 \n    2.228 \n    2.764 \n    3.169 \n  \n  \n    11 \n    1.363 \n    1.796 \n    2.201 \n    2.718 \n    3.106 \n  \n  \n    12 \n    1.356 \n    1.782 \n    2.179 \n    2.681 \n    3.055 \n  \n  \n    13 \n    1.350 \n    1.771 \n    2.160 \n    2.650 \n    3.012 \n  \n  \n    14 \n    1.345 \n    1.761 \n    2.145 \n    2.624 \n    2.977 \n  \n  \n    15 \n    1.341 \n    1.753 \n    2.131 \n    2.602 \n    2.947 \n  \n  \n    ... \n    ... \n    ... \n    ... \n    ... \n    ..."
   },
   {
     "objectID": "slides/19_correlation.html#step-3.-calculate-statistic",
     "href": "slides/19_correlation.html#step-3.-calculate-statistic",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 3. Calculate statistic",
     "text": "Step 3. Calculate statistic\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}}\\)\n\n\n\n\nNumerator: Sum of Products, \\(SP\\)\n\nMultiply deviations by one another\n\n\nDefinitional formula\n\\(SP = \\Sigma(X - M_X)(Y - M_Y)\\)\n\n\nDenominator: Sum of Squares, \\(SS\\)\n\nMultiply deviations by themselves\n\n\nDefinitional formula\n\\[\\begin{align}\nSS &= \\Sigma(X - M_X)^2 \\\\\n   &= \\Sigma(X - M_X)(X - M_X)\n\\end{align}\\]\n\n\n\n\nComputational formula\n\\(SP = \\Sigma XY - \\dfrac{\\Sigma X \\Sigma Y}{n}\\)\n\nComputational formula\n\\[\\begin{align}\nSS &= \\Sigma X^2 - \\dfrac{(\\Sigma X)^2}{n}\\\\\n   &= \\Sigma X X - \\dfrac{(\\Sigma X)(\\Sigma X)}{n}\n\\end{align}\\]"
   },
   {
     "objectID": "slides/19_correlation.html#calculating-r",
     "href": "slides/19_correlation.html#calculating-r",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Calculating \\(r\\)",
     "text": "Calculating \\(r\\)\n\n\n\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M_X\\) \n    \\((X-M_X)^2\\) \n    \\(Y\\) \n    \\(Y-M_Y\\) \n    \\((Y-M_Y)^2\\) \n    \\(P\\) \n  \n \n\n  \n    4 \n    -3 \n    9 \n    5 \n    -3 \n    9 \n    9 \n  \n  \n    5 \n    -2 \n    4 \n    8 \n    0 \n    4 \n    0 \n  \n  \n    7 \n    0 \n    0 \n    8 \n    0 \n    0 \n    0 \n  \n  \n    8 \n    1 \n    1 \n    10 \n    2 \n    1 \n    2 \n  \n  \n    11 \n    4 \n    16 \n    9 \n    1 \n    16 \n    4 \n  \n  \n    \\(M_X = 7.00\\) \n     \n    \\(SS_X = 30.00\\) \n    \\(M_Y = 8.00\\) \n     \n    \\(SS_Y = 30.00\\) \n    \\(SP = 15.00\\) \n  \n  \n     \n     \n    \\(s^2_X = 7.50\\) \n     \n     \n    \\(s^2_Y = 7.50\\) \n     \n  \n  \n     \n     \n    \\(s_X = 2.74\\) \n     \n     \n    \\(s_Y = 2.74\\) \n     \n  \n\n\n\n\n\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}}\\)"
   },
   {
     "objectID": "slides/19_correlation.html#calculating-r-1",
     "href": "slides/19_correlation.html#calculating-r-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Calculating \\(r\\)",
     "text": "Calculating \\(r\\)\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M_X\\) \n    \\((X-M_X)^2\\) \n    \\(Y\\) \n    \\(Y-M_Y\\) \n    \\((Y-M_Y)^2\\) \n    \\(P\\) \n  \n \n\n  \n    4 \n    -3 \n    9 \n    5 \n    -3 \n    9 \n    9 \n  \n  \n    5 \n    -2 \n    4 \n    8 \n    0 \n    4 \n    0 \n  \n  \n    7 \n    0 \n    0 \n    8 \n    0 \n    0 \n    0 \n  \n  \n    8 \n    1 \n    1 \n    10 \n    2 \n    1 \n    2 \n  \n  \n    11 \n    4 \n    16 \n    9 \n    1 \n    16 \n    4 \n  \n  \n    \\(M_X = 7.00\\) \n     \n    \\(SS_X = 30.00\\) \n    \\(M_Y = 8.00\\) \n     \n    \\(SS_Y = 30.00\\) \n    \\(SP = 15.00\\) \n  \n  \n     \n     \n    \\(s^2_X = 7.50\\) \n     \n     \n    \\(s^2_Y = 7.50\\) \n     \n  \n  \n     \n     \n    \\(s_X = 2.74\\) \n     \n     \n    \\(s_Y = 2.74\\) \n     \n  \n\n\n\n\n\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}}\\)"
   },
   {
     "objectID": "slides/19_correlation.html#calculating-r-2",
     "href": "slides/19_correlation.html#calculating-r-2",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Calculating \\(r\\)",
     "text": "Calculating \\(r\\)\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M_X\\) \n    \\((X-M_X)^2\\) \n    \\(Y\\) \n    \\(Y-M_Y\\) \n    \\((Y-M_Y)^2\\) \n    \\(P\\) \n  \n \n\n  \n    4 \n    -3 \n    9 \n    5 \n    -3 \n    9 \n    9 \n  \n  \n    5 \n    -2 \n    4 \n    8 \n    0 \n    4 \n    0 \n  \n  \n    7 \n    0 \n    0 \n    8 \n    0 \n    0 \n    0 \n  \n  \n    8 \n    1 \n    1 \n    10 \n    2 \n    1 \n    2 \n  \n  \n    11 \n    4 \n    16 \n    9 \n    1 \n    16 \n    4 \n  \n  \n    \\(M_X = 7.00\\) \n     \n    \\(SS_X = 30.00\\) \n    \\(M_Y = 8.00\\) \n     \n    \\(SS_Y = 30.00\\) \n    \\(SP = 15.00\\) \n  \n  \n     \n     \n    \\(s^2_X = 7.50\\) \n     \n     \n    \\(s^2_Y = 7.50\\) \n     \n  \n  \n     \n     \n    \\(s_X = 2.74\\) \n     \n     \n    \\(s_Y = 2.74\\) \n     \n  \n\n\n\n\n\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}} = \\dfrac{15}{\\sqrt{30*14}} = 0.73\\)"
   },
   {
     "objectID": "slides/19_correlation.html#calculating-r-computation-approach",
     "href": "slides/19_correlation.html#calculating-r-computation-approach",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Calculating \\(r\\): computation approach",
     "text": "Calculating \\(r\\): computation approach"
   },
   {
     "objectID": "slides/19_correlation.html#step-4.-make-decision",
     "href": "slides/19_correlation.html#step-4.-make-decision",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 4. Make decision",
     "text": "Step 4. Make decision\n\nHypothesis test for \\(r\\) is a type of \\(t\\) test"
   },
   {
     "objectID": "slides/19_correlation.html#report-results",
     "href": "slides/19_correlation.html#report-results",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Report results",
     "text": "Report results\n\nValue of correlation, \\(r\\)\n\\(df\\) / Sample size\n\\(p\\)-value or \\(\\alpha\\) level\n\n\n“More sleep was associated with higher test scores; however, the correlation did not reach statistical significance; \\(r (3) = .73, p > .05\\).”"
   },
   {
     "objectID": "slides/19_correlation.html#correlation-effect-size",
     "href": "slides/19_correlation.html#correlation-effect-size",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Correlation & effect size",
     "text": "Correlation & effect size\n\nCorrelation & effect size\n\nPearson’s \\(r\\) correlation coefficient is a standardized measure of effect size\nQuantifies degree of association on a scale from \\(0\\) to \\(1\\)\nIndependent of sample size\nRelated to \\(r^2\\)\nRelated to \\(t\\)\nEven related to Cohen’s \\(d\\)\n\n\n\n\\(d = \\dfrac{2r}{\\sqrt{1-r^2}}\\)"
   },
   {
     "objectID": "slides/19_correlation.html#interpreting-effect-size",
     "href": "slides/19_correlation.html#interpreting-effect-size",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Interpreting effect size",
     "text": "Interpreting effect size\n\n\nCohen (1977)\n\n\n\n\n \n  \n    \\(d\\) \n    \\(r\\) \n    Description \n  \n \n\n  \n    0.3 \n    0.1 \n    Small \n  \n  \n    0.5 \n    0.3 \n    Medium \n  \n  \n    0.8 \n    0.5 \n    Large \n  \n\n\n\n\n\n\nFunder & Ozer (2019)\n\n\n\n\n \n  \n    \\(d\\) \n    \\(r\\) \n    Description \n  \n \n\n  \n    0.5 \n    0.6 \n    Very small \n  \n\n\n\n\n\n\n\n\nFunder, D. C., & Ozer, D. J. (2019). Evaluating Effect Size in Psychological Research: Sense and Nonsense. Advances in Methods and Practices in Psychological Science, 2(2), 156–168. https://doi.org/10.1177/2515245919847202"
   },
   {
     "objectID": "slides/20_regression.html#correlation",
     "href": "slides/20_regression.html#correlation",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Correlation",
     "text": "Correlation\n\nPearson’s \\(r\\), bivariate correlation coefficient\nQuantifies the strength of linear relationship between two variables"
   },
   {
     "objectID": "slides/20_regression.html#correlation-example",
     "href": "slides/20_regression.html#correlation-example",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Correlation example",
     "text": "Correlation example\n\n\n\n\n\n\n \n  \n    Participant \n    Sleep duration \n    Test score \n  \n \n\n  \n    A \n    4 \n    5 \n  \n  \n    B \n    5 \n    8 \n  \n  \n    C \n    7 \n    8 \n  \n  \n    D \n    8 \n    10 \n  \n  \n    E \n    11 \n    9 \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}} = \\dfrac{15}{30*14} = 0.73\\)"
   },
   {
     "objectID": "slides/20_regression.html#regression-1",
     "href": "slides/20_regression.html#regression-1",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Regression",
     "text": "Regression\n\n\n\nRegression defines the line of best fit\n\nMakes relationship easier to see\nShows “central tendency” of the relationship\nEmphasizes prediction"
   },
   {
     "objectID": "slides/20_regression.html#straight-line-equation",
     "href": "slides/20_regression.html#straight-line-equation",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Straight line equation",
     "text": "Straight line equation\n\n\\(Y = bX + a\\)\n\n\\(X\\) and \\(Y\\) are variables\n\\(a\\) (the intercept) and \\(b\\) (the slope) are constants\n\n\n\n\n\n\n\n\n\n\n\n \n  \n    Celcius \n    Fahrenheit \n  \n \n\n  \n    0 \n    32 \n  \n  \n    10 \n    50 \n  \n  \n    20 \n    68 \n  \n  \n    30 \n    86 \n  \n  \n    40 \n    104 \n  \n  \n    50 \n    122"
   },
   {
     "objectID": "slides/20_regression.html#regression-2",
     "href": "slides/20_regression.html#regression-2",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Regression",
     "text": "Regression\n\n\n\nRegression line equation\n\n\\(\\hat{Y} = bX + a\\)\n\\(\\hat{Y}\\): value of \\(Y\\) predicted by the regression equation for each value of \\(X\\)\n\\((Y - \\hat{Y})\\): residual (deviation of each data point from the regression line)\nRegression defines line that minimizes the sum of squared residuals\n\\(SS_{residual} = \\Sigma(Y - \\hat{Y})^2\\)\n“Least-squared-error solution”\n\n\n\nRight column"
   },
   {
     "objectID": "slides/20_regression.html#regression-3",
     "href": "slides/20_regression.html#regression-3",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Regression",
     "text": "Regression\n\nRegression line equation: \\(\\hat{Y} = bX + a\\)\n\nThe slope of the line, \\(b\\):"
   },
   {
     "objectID": "slides/20_regression.html#regression-4",
     "href": "slides/20_regression.html#regression-4",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Regression",
     "text": "Regression\n\n\n\nThe intercept of the line, \\(a\\)\n\nThe value of \\(Y\\) when \\(X = 0\\)\nThe line goes through \\((M_X, M_Y)\\) therefore:\n\n\n\n\n\n\nRight column"
   },
   {
     "objectID": "slides/20_regression.html#standard-error",
     "href": "slides/20_regression.html#standard-error",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Standard error",
     "text": "Standard error\n\nStandard error of estimate\n\nQuantifies precision of regression estimate\nAverage distance of points from the regression line\nRemember… \\(s = \\sqrt{\\dfrac{SS}{df}}\\)"
   },
   {
     "objectID": "slides/20_regression.html#analysis-of-regression",
     "href": "slides/20_regression.html#analysis-of-regression",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Analysis of regression",
     "text": "Analysis of regression\n\nAnalysis of Regression\n\nSimilar to Analysis of Variance"
   },
   {
     "objectID": "slides/20_regression.html#partitioning-variance",
     "href": "slides/20_regression.html#partitioning-variance",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Partitioning variance",
     "text": "Partitioning variance\n\n\n\n\\(SS_{Y}\\)\n\n\n\\(SS_{regression}\\)\n\n\n\\(SS_{residual}\\)\n\n\n\n\\(df_{Y}\\)\n\n\n\\(df_{regression}\\)\n\n\n\\(df_{residual}\\)\n\n\n\n\n\\(MS_{regression}=\\dfrac{SS_{regression}}{df_{regression}} \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ MS_{residual}=\\dfrac{SS_{residual}}{df_{residual}}\\)\n\\(F = \\dfrac{MS_{regression}}{MS_{residual}}\\)"
   },
   {
     "objectID": "slides/20_regression.html#step-1-hypotheses",
     "href": "slides/20_regression.html#step-1-hypotheses",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 1: Hypotheses",
     "text": "Step 1: Hypotheses\n\n\\(H_0\\): the slope of the regression line \\(\\beta = 0\\)\n\ni.e., there is no association between variables\nKnowing \\(X\\) does not help to predict \\(Y\\)\n\n\\(H_1\\): \\(\\beta \\ne 0\\)"
   },
   {
     "objectID": "slides/20_regression.html#step-2.-critical-region",
     "href": "slides/20_regression.html#step-2.-critical-region",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 2. Critical region",
     "text": "Step 2. Critical region\n\nNumerator: \\(df_{regression} = 1\\)\nDenominator: \\(df_{residual} = n-2\\)"
   },
   {
     "objectID": "slides/20_regression.html#step-3.-calculate",
     "href": "slides/20_regression.html#step-3.-calculate",
-    "title": "BC1101",
+    "title": "PSYC BC1101",
     "section": "Step 3. Calculate",
     "text": "Step 3. Calculate\n\n\n\\(SS_{Y} = \\Sigma (Y - M_Y)^2\\)\n\\(SS_{residual} = \\Sigma (Y - \\hat{Y})^2\\)\n\\(SS_{regression} = SS_Y - SS_{residual}\\)\n\n\\(df_Y = n - 1\\)\n\\(df_{residual} = n - 2\\)\n\\(df_{regression} = 1\\)"
   },
