@@ -498,15 +498,16 @@ color: #ccc
 .no-panopto {
   pointer-events: none;
 }
-/*
+
 .no-panopto:after {
   content: "[no Panopto]";
+  color: #aaa;
 }
 
 .no-panopto span {
   display: none;
 }
-*/
+
 
 
 /* ----------------- FOR HNST DIAGRAMS ---------------------- */
