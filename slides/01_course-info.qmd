@@ -99,7 +99,7 @@ format: revealjs
 - Wrong answers ≠ lower grade
   - 0, 1, or 2 points
   - 0 = No submission, 1 = Incomplete, 2 = Valid attempt
-  - Deadline: 5pm day of recitation
+  - Deadline: End of recitation
 
 ```{r echo=T}
 # comment your R code to show thought process
