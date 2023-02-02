@@ -399,8 +399,8 @@
 
 <section id="probability" class="title-slide slide level1 center">
 <h1>7|PROBABILITY</h1>
-
-<img data-src="covers/07_probability.svg" class="r-stretch"><div class="cell">
+<p><img data-src="covers/07_probability.svg" style="width: 1050px; height: 550px"></p>
+<div class="cell">
 
 </div>
 </section>
@@ -1443,12 +1443,15 @@ p(both \ white) &amp; = .2 * .18  \approx .037 \end{align}\]</span></p>
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
       (function () {
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          // dispatch for htmlwidgets
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
           const event = window.document.createEvent("Event");
           event.initEvent("slideenter", true, true);
           window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
 
           // dispatch for shiny
           if (window.jQuery) {
@@ -1459,13 +1462,6 @@ p(both \ white) &amp; = .2 * .18  \approx .037 \end{align}\]</span></p>
               window.jQuery(currentSlide).trigger("shown");
             }
           }
-        }
-
-        // hookup for reveal
-        if (window.Reveal) {
-          window.Reveal.addEventListener("slidechanged", function(event) {
-            fireSlideChanged(event.previousSlide, event.currentSlide);
-          });
         }
 
         // hookup for slidy

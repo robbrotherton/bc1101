@@ -4,7 +4,7 @@ format: revealjs
 
 # 7|PROBABILITY
 
-![](covers/07_probability.svg)
+![](covers/07_probability.svg){style="width: 1050px; height: 550px"}
 
 ```{r data}
 rt <- list(m = 284, sd = 50, x = 159)
