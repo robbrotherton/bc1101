@@ -72,7 +72,7 @@ mensa$z <- (mensa$x - mensa$m) / mensa$sd
 data <- data.frame(Test = c("geniustest.com", "mensa.lu"),
                    Score = c(genius$x, mensa$x),
                    M = c(genius$m, mensa$m), 
-                   SD = c(genius$m, genius$sd))
+                   SD = c(genius$sd, mensa$sd))
 
 knitr::kable(data)
 

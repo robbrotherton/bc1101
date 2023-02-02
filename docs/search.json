@@ -606,7 +606,7 @@
     "href": "slides/06_z-scores.html#example-test-scores",
     "title": "PSYC BC1101",
     "section": "Example: test scores",
-    "text": "Example: test scores\n\nHow well did you do on a test\nIs your score good, bad, just ok?\n\n\n\n\n\n\nTest\nScore\nM\nSD\n\n\n\n\ngeniustest.com\n80\n70\n70\n\n\nmensa.lu\n40\n20\n5\n\n\n\n\n\n\n\\(z\\)-score can describe location of a score in any distribution\n\nMakes scores from different distributions comparable"
+    "text": "Example: test scores\n\nHow well did you do on a test\nIs your score good, bad, just ok?\n\n\n\n\n\n\nTest\nScore\nM\nSD\n\n\n\n\ngeniustest.com\n80\n70\n5\n\n\nmensa.lu\n40\n20\n10\n\n\n\n\n\n\n\\(z\\)-score can describe location of a score in any distribution\n\nMakes scores from different distributions comparable"
   },
   {
     "objectID": "slides/06_z-scores.html#example-test-scores-1",
