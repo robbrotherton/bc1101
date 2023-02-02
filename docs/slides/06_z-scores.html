@@ -577,8 +577,8 @@ X &amp; = \mu + z\sigma \\
 <p><img data-src="media/generic-dist-1.svg" class="invertable" style="width:70.0%"></p>
 <p><img data-src="media/generic-dist-2.svg" class="invertable" style="width:70.0%"></p>
 </section>
-<section id="other-standardized-distribtions" class="slide level2 small">
-<h2>Other standardized distribtions</h2>
+<section id="other-standardized-distributions" class="slide level2 small">
+<h2>Other standardized distributions</h2>
 <ul>
 <li>Standardized: Predetermined mean &amp; SD
 <ul>
@@ -1187,12 +1187,15 @@ X &amp; = \mu + z\sigma \\
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
       (function () {
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          // dispatch for htmlwidgets
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
           const event = window.document.createEvent("Event");
           event.initEvent("slideenter", true, true);
           window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
 
           // dispatch for shiny
           if (window.jQuery) {
@@ -1203,13 +1206,6 @@ X &amp; = \mu + z\sigma \\
               window.jQuery(currentSlide).trigger("shown");
             }
           }
-        }
-
-        // hookup for reveal
-        if (window.Reveal) {
-          window.Reveal.addEventListener("slidechanged", function(event) {
-            fireSlideChanged(event.previousSlide, event.currentSlide);
-          });
         }
 
         // hookup for slidy

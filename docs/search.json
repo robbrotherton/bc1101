@@ -2259,5 +2259,12 @@
     "title": "PSYC BC1101",
     "section": "Exams",
     "text": "Exams\n\n3 multiple choice exams\n\nMultiple choice\n60 minutes\nOnly lecture material, not R\nNon-cumulative\nExcept inasmuch as later concepts rely on ones introduced earlier\n\nSome questions will involve sums, but only simple ones you can do on paper"
+  },
+  {
+    "objectID": "slides/06_z-scores.html#other-standardized-distributions",
+    "href": "slides/06_z-scores.html#other-standardized-distributions",
+    "title": "PSYC BC1101",
+    "section": "Other standardized distributions",
+    "text": "Other standardized distributions\n\nStandardized: Predetermined mean & SD\n\n\\(z\\) distribution has \\(\\mu = 0\\) and \\(\\sigma = 1\\)\nSAT has \\(\\mu = 500\\) and \\(\\sigma = 100\\)\nIQ has \\(\\mu=100\\) and \\(\\sigma=15\\) points\n\nStandardizing a distribution has two steps\n\nOriginal raw scores transformed to \\(z\\)-scores\nThe \\(z\\)-scores are transformed to new \\(X\\) values so that the specific predetermined \\(\\mu\\) and \\(\\sigma\\) are attained\n2a. Multiply to set SD\n2b. Add or subtract a constant to set the mean"
   }
 ]
