@@ -837,7 +837,7 @@
 <li>Find the deviation for each score</li>
 </ol>
 </div><div class="column" style="width:40%;">
-<p><span class="math inline">\(X - \mu\)</span></p>
+<p><span class="math inline">\(X - M\)</span></p>
 </div>
 </div>
 <div class="columns">
@@ -846,7 +846,7 @@
 <li>Square deviations</li>
 </ol>
 </div><div class="column" style="width:40%;">
-<p><span class="math inline">\((X - \mu)^2\)</span></p>
+<p><span class="math inline">\((X - M)^2\)</span></p>
 </div>
 </div>
 <div class="columns">
@@ -855,7 +855,7 @@
 <li>Sum the squared deviations</li>
 </ol>
 </div><div class="column" style="width:40%;">
-<p><span class="math inline">\(SS = \Sigma(X - \mu)^2\)</span></p>
+<p><span class="math inline">\(SS = \Sigma(X - M)^2\)</span></p>
 </div>
 </div>
 <div class="columns">
@@ -1675,12 +1675,15 @@
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
       (function () {
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          // dispatch for htmlwidgets
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
           const event = window.document.createEvent("Event");
           event.initEvent("slideenter", true, true);
           window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
 
           // dispatch for shiny
           if (window.jQuery) {
@@ -1691,13 +1694,6 @@
               window.jQuery(currentSlide).trigger("shown");
             }
           }
-        }
-
-        // hookup for reveal
-        if (window.Reveal) {
-          window.Reveal.addEventListener("slidechanged", function(event) {
-            fireSlideChanged(event.previousSlide, event.currentSlide);
-          });
         }
 
         // hookup for slidy

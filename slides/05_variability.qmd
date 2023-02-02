@@ -287,7 +287,7 @@ $SS = \Sigma X^2 - \dfrac{(\Sigma X)^2}N$
 :::
 
 ::: {.column width="40%"}
-$X - \mu$
+$X - M$
 :::
 :::
 
@@ -297,7 +297,7 @@ $X - \mu$
 :::
 
 ::: {.column width="40%"}
-$(X - \mu)^2$
+$(X - M)^2$
 :::
 :::
 
@@ -307,7 +307,7 @@ $(X - \mu)^2$
 :::
 
 ::: {.column width="40%"}
-$SS = \Sigma(X - \mu)^2$
+$SS = \Sigma(X - M)^2$
 :::
 :::
 
