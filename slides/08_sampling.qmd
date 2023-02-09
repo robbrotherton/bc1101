@@ -254,7 +254,7 @@ $\sigma_M = \dfrac{\sigma}{\sqrt{n}}$ or $\dfrac{\sqrt{\sigma^2}}{\sqrt{n}}$ or 
 <label for="sigma-input" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">σ = </label>
 <input type="text" id="sigma-input" class="invertable" name="sigma" value="15" style="background: none; border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; width: 2em; vertical-align: unset;">
 
-<label for="n-input" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">n = </label><span id="n-value" class="math" style="display: inline-block; width: 1em;">30</span><input data-prevent-swipe type="range" id="n-input" name="n" value="30" min="1" max="50" style="border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; margin-left: 0.5em; width: 50%; vertical-align: unset;">
+<label for="n-input" style="font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;">n = </label><span id="n-value" class="math" style="display: inline-block; width: 1em;">30</span><input data-prevent-swipe type="range" id="n-input" name="n" value="30" min="1" max="100" style="border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; margin-left: 0.5em; width: 50%; vertical-align: unset;">
 
 <p><span id="std-err-label" class="math italic">σ<sub>M</sub> = </span><span id="std-err-value" class="math"></span></p>
 
@@ -811,7 +811,7 @@ chart = {
       .attr("class", "invertable");
       
   const curve = svg.append("path")
-      .style("fill", "thistle")
+      .style("fill", "var(--link-color)")
       .style("fill-opacity", 0.5)
       .style("stroke", "var(--text-color)")
       .style("stroke-width", 4);
