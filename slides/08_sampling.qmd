@@ -195,7 +195,7 @@ bc1101tools::SD_table(sampling_dist_df$M, population_sd = TRUE)
 
 ## Central Limit Theorem
 
-- For any population with mean $\mu$ and standard deviation $\sigma$, the distribution of sample means for sample size n will have…
+- For any population with mean $\mu$ and standard deviation $\sigma$, the distribution of sample means for sample size $n$ will have…
   - An expected mean $\mu_M$ of $\mu$ 
   - A standard deviation of $\dfrac{\sigma} {\sqrt{n}}$ 
   - And will approach a normal distribution as $n$ approaches infinity

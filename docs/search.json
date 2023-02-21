@@ -851,7 +851,7 @@
     "href": "slides/08_sampling.html#central-limit-theorem-1",
     "title": "PSYC BC1101",
     "section": "Central Limit Theorem",
-    "text": "Central Limit Theorem\n\nFor any population with mean \\(\\mu\\) and standard deviation \\(\\sigma\\), the distribution of sample means for sample size n will have…\n\nAn expected mean \\(\\mu_M\\) of \\(\\mu\\)\nA standard deviation of \\(\\dfrac{\\sigma} {\\sqrt{n}}\\)\nAnd will approach a normal distribution as \\(n\\) approaches infinity"
+    "text": "Central Limit Theorem\n\nFor any population with mean \\(\\mu\\) and standard deviation \\(\\sigma\\), the distribution of sample means for sample size \\(n\\) will have…\n\nAn expected mean \\(\\mu_M\\) of \\(\\mu\\)\nA standard deviation of \\(\\dfrac{\\sigma} {\\sqrt{n}}\\)\nAnd will approach a normal distribution as \\(n\\) approaches infinity"
   },
   {
     "objectID": "slides/08_sampling.html#shape",
