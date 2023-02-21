@@ -921,7 +921,7 @@
     "href": "slides/09_hypothesis-testing.html#central-limit-theorem",
     "title": "PSYC BC1101",
     "section": "Central Limit Theorem",
-    "text": "Central Limit Theorem\n\nTells us sampling distribution characteristics without having to take all possible sampes\n\n\n\\(\\mu_M = \\mu \\ \\ \\ \\ \\ \\ \\ \\ \\ \\  \\sigma_M = \\dfrac{\\sigma}{\\sqrt{n}}\\)"
+    "text": "Central Limit Theorem\n\nTells us sampling distribution characteristics without having to take all possible samples\n\n\n\\(\\mu_M = \\mu \\ \\ \\ \\ \\ \\ \\ \\ \\ \\  \\sigma_M = \\dfrac{\\sigma}{\\sqrt{n}}\\)"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#together",

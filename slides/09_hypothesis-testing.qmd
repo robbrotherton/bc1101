@@ -85,7 +85,7 @@ $p(M < 61) =\ ?$
 
 ## Central Limit Theorem
 
-- Tells us sampling distribution characteristics without having to take all possible sampes
+- Tells us sampling distribution characteristics without having to take all possible samples
 
 ::: {.c}
 $\mu_M = \mu  \ \ \ \ \ \ \ \ \ \  \sigma_M = \dfrac{\sigma}{\sqrt{n}}$

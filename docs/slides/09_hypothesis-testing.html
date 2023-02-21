@@ -564,7 +564,7 @@
 <section id="central-limit-theorem" class="slide level2">
 <h2>Central Limit Theorem</h2>
 <ul>
-<li>Tells us sampling distribution characteristics without having to take all possible sampes</li>
+<li>Tells us sampling distribution characteristics without having to take all possible samples</li>
 </ul>
 <div class="c">
 <p><span class="math inline">\(\mu_M = \mu \ \ \ \ \ \ \ \ \ \  \sigma_M = \dfrac{\sigma}{\sqrt{n}}\)</span></p>
@@ -1421,12 +1421,15 @@ population</p>
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
       (function () {
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          // dispatch for htmlwidgets
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
           const event = window.document.createEvent("Event");
           event.initEvent("slideenter", true, true);
           window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
 
           // dispatch for shiny
           if (window.jQuery) {
@@ -1437,13 +1440,6 @@ population</p>
               window.jQuery(currentSlide).trigger("shown");
             }
           }
-        }
-
-        // hookup for reveal
-        if (window.Reveal) {
-          window.Reveal.addEventListener("slidechanged", function(event) {
-            fireSlideChanged(event.previousSlide, event.currentSlide);
-          });
         }
 
         // hookup for slidy
