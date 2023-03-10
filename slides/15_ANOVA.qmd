@@ -10,7 +10,6 @@ format: revealjs
 
 - [Intro to ANOVA]
 - [Uses of ANOVA]
-- [ANOVA terminology]
 - [Learning checks]
 
 
@@ -158,7 +157,7 @@ $t = `r t$t`$
 :::
 
 
-::: {.column .small}
+::: {.column  style="font-size: 0.8em;"}
 - Total variance
   - $SS_{total}$
   - Find sum of squared deviations of all scores (ignoring different groups) from grand mean (mean of all scores)
@@ -190,7 +189,7 @@ $\text{Variance}_{total} = `r a2$MS_total`$
 :::
 
 
-::: {.column .small}
+::: {.column style="font-size: 0.8em;"}
 - Variance within groups
   - $SS_{within} = \Sigma SS_{each \ treatment}$
   - Find $SS$ for each individual group from respective group mean
@@ -394,33 +393,6 @@ table2_footer
 
 ![](media/anova-populations-6.svg){.invertable}
 
-
-# ANOVA terminology
-
-:::: {.columns}
-
-::: {.column width="50%" style="font-size: 0.8em;"}
-- Factor
-  - The independent variable
-  - Designates the groups being compared
-  - Between-participants / within-participants
-- Levels
-  - Conditions that make up a factor
-- E.g.
-  - "1x3 between-participants ANOVA"
-:::
-
-::: {.column width="50%"}
-```{r}
-#| style: "font-size: 0.65em; margin-top: 1em;"
-table2
-table2_footer
-```
-
-![](media/anova-populations-3.svg){.invertable width="100%"}
-:::
-
-::::
 
 
 

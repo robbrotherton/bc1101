@@ -404,7 +404,6 @@
 <ul>
 <li><a href="#/intro-to-anova">Intro to ANOVA</a></li>
 <li><a href="#/uses-of-anova">Uses of ANOVA</a></li>
-<li><a href="#/anova-terminology">ANOVA terminology</a></li>
 <li><a href="#/learning-checks">Learning checks</a></li>
 </ul>
 </section>
@@ -656,7 +655,7 @@ within groups</p>
 </div>
 </div>
 <p><span class="math inline">\(t = 5.42\)</span></p>
-</div><div class="column small">
+</div><div class="column" style="font-size: 0.8em;">
 <ul>
 <li>Total variance
 <ul>
@@ -720,7 +719,7 @@ within groups</p>
 </div>
 <p><span class="math inline">\(t = 5.42\)</span><br>
 <span class="math inline">\(\text{Variance}_{total} = 16.7\)</span></p>
-</div><div class="column small">
+</div><div class="column" style="font-size: 0.8em;">
 <ul>
 <li>Variance within groups
 <ul>
@@ -1044,176 +1043,104 @@ within groups</p>
 </ul>
 
 <img data-src="media/anova-populations-6.svg" class="invertable r-stretch"></section></section>
-<section id="anova-terminology" class="title-slide slide level1 center">
-<h1>ANOVA terminology</h1>
-<div class="columns">
-<div class="column" style="font-size: 0.8em;">
-<ul>
-<li>Factor
-<ul>
-<li>The independent variable</li>
-<li>Designates the groups being compared</li>
-<li>Between-participants / within-participants</li>
-</ul></li>
-<li>Levels
-<ul>
-<li>Conditions that make up a factor</li>
-</ul></li>
-<li>E.g.
-<ul>
-<li>“1x3 between-participants ANOVA”</li>
-</ul></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell" style="font-size: 0.65em; margin-top: 1em;">
-<div class="cell-output-display">
-
-<table>
- <thead>
-<tr><th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Manipulation</div></th></tr>
-  <tr>
-   <th style="text-align:center;"> 🍌<br>Banana </th>
-   <th style="text-align:center;"> 🍬<br>Candy </th>
-   <th style="text-align:center;"> 😐<br>Control </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:center;width: 5em; "> 9 </td>
-   <td style="text-align:center;width: 5em; "> 3 </td>
-   <td style="text-align:center;width: 5em; "> 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;width: 5em; "> 11 </td>
-   <td style="text-align:center;width: 5em; "> 5 </td>
-   <td style="text-align:center;width: 5em; "> 6 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;width: 5em; "> 13 </td>
-   <td style="text-align:center;width: 5em; "> 4 </td>
-   <td style="text-align:center;width: 5em; "> 7 </td>
-  </tr>
-</tbody>
-</table>
-
-</div>
-<div class="cell-output-display">
-
-<table>
-<tbody>
-  <tr>
-   <td style="text-align:center;width: 5em; "> \(M = 11\) </td>
-   <td style="text-align:center;width: 5em; "> \(M = 4\) </td>
-   <td style="text-align:center;width: 5em; "> \(M = 6\) </td>
-  </tr>
-</tbody>
-</table>
-
-</div>
-</div>
-<p><img data-src="media/anova-populations-3.svg" class="invertable" style="width:100.0%"></p>
-</div>
-</div>
-</section>
-
 <section id="learning-checks" class="title-slide slide level1 center">
 <h1>Learning checks</h1>
 <p>If you calculate both the t and F statistics for a two-group, independent-samples design, ____ equals ____ squared.</p>
 <p><span class="emph">Why?</span></p>
 <div class="cell" data-eval="false">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="505" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 504;"><span id="cb1-505"><a href="#cb1-505"></a>aov_pop <span class="op">=</span> {</span>
-<span id="cb1-506"><a href="#cb1-506"></a></span>
-<span id="cb1-507"><a href="#cb1-507"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">1050</span></span>
-<span id="cb1-508"><a href="#cb1-508"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">250</span></span>
-<span id="cb1-509"><a href="#cb1-509"></a>  <span class="kw">const</span> r <span class="op">=</span> <span class="dv">70</span></span>
-<span id="cb1-510"><a href="#cb1-510"></a>  </span>
-<span id="cb1-511"><a href="#cb1-511"></a>  <span class="kw">const</span> data <span class="op">=</span> [<span class="dv">0</span><span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span>]</span>
-<span id="cb1-512"><a href="#cb1-512"></a>  </span>
-<span id="cb1-513"><a href="#cb1-513"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#anova-populations"</span>)</span>
-<span id="cb1-514"><a href="#cb1-514"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
-<span id="cb1-515"><a href="#cb1-515"></a></span>
-<span id="cb1-516"><a href="#cb1-516"></a>  <span class="kw">const</span> comp_lines <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb1-517"><a href="#cb1-517"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"red"</span>)</span>
-<span id="cb1-518"><a href="#cb1-518"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
-<span id="cb1-519"><a href="#cb1-519"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-dasharray"</span><span class="op">,</span> [<span class="dv">5</span><span class="op">,</span><span class="dv">5</span>])</span>
-<span id="cb1-520"><a href="#cb1-520"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">3</span>)</span>
-<span id="cb1-521"><a href="#cb1-521"></a>    </span>
-<span id="cb1-522"><a href="#cb1-522"></a>  <span class="kw">const</span> g <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb1-523"><a href="#cb1-523"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"translate(10, 2)"</span>)</span>
-<span id="cb1-524"><a href="#cb1-524"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"var(--background-color)"</span>)</span>
-<span id="cb1-525"><a href="#cb1-525"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"var(--text-color)"</span>)</span>
-<span id="cb1-526"><a href="#cb1-526"></a>  </span>
-<span id="cb1-527"><a href="#cb1-527"></a></span>
-<span id="cb1-528"><a href="#cb1-528"></a>  <span class="kw">const</span> curve <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()<span class="op">.</span><span class="fu">curve</span>(d3<span class="op">.</span><span class="at">curveNatural</span>)<span class="op">;</span></span>
-<span id="cb1-529"><a href="#cb1-529"></a>  <span class="kw">const</span> points <span class="op">=</span> [[r<span class="op">,</span> r]<span class="op">,</span>[r<span class="op">+</span>r<span class="op">*</span><span class="fl">1.25</span><span class="op">,</span>r<span class="op">/</span><span class="dv">2</span>]<span class="op">,</span>[r<span class="op">+</span>r<span class="op">*</span><span class="fl">2.5</span><span class="op">,</span> r]]<span class="op">;</span></span>
-<span id="cb1-530"><a href="#cb1-530"></a>  </span>
-<span id="cb1-531"><a href="#cb1-531"></a>  <span class="kw">const</span> labels <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb1-532"><a href="#cb1-532"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"translate(10, 2)"</span>)</span>
-<span id="cb1-533"><a href="#cb1-533"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"var(--text-color)"</span>)</span>
-<span id="cb1-534"><a href="#cb1-534"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
-<span id="cb1-535"><a href="#cb1-535"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"0.7em"</span>)</span>
-<span id="cb1-536"><a href="#cb1-536"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"z-index"</span><span class="op">,</span> <span class="dv">100</span>)</span>
-<span id="cb1-537"><a href="#cb1-537"></a>  <span class="kw">const</span> pop <span class="op">=</span> labels<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb1-538"><a href="#cb1-538"></a>  <span class="kw">const</span> samp <span class="op">=</span> labels<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb1-539"><a href="#cb1-539"></a>  </span>
-<span id="cb1-540"><a href="#cb1-540"></a>  <span class="kw">var</span> visible <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb1-541"><a href="#cb1-541"></a>  <span class="kw">function</span> <span class="fu">animate</span>() {</span>
-<span id="cb1-542"><a href="#cb1-542"></a>    <span class="cf">if</span> (visible<span class="op">==</span><span class="dv">6</span>) {</span>
-<span id="cb1-543"><a href="#cb1-543"></a>      visible <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb1-544"><a href="#cb1-544"></a>    } <span class="cf">else</span> {</span>
-<span id="cb1-545"><a href="#cb1-545"></a>      visible<span class="op">++</span></span>
-<span id="cb1-546"><a href="#cb1-546"></a>    }</span>
-<span id="cb1-547"><a href="#cb1-547"></a>    </span>
-<span id="cb1-548"><a href="#cb1-548"></a>    svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"path"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
-<span id="cb1-549"><a href="#cb1-549"></a>    svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"circle"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
-<span id="cb1-550"><a href="#cb1-550"></a>    svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"rect"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
-<span id="cb1-551"><a href="#cb1-551"></a>    svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"line"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
-<span id="cb1-552"><a href="#cb1-552"></a>    svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
-<span id="cb1-553"><a href="#cb1-553"></a>    </span>
-<span id="cb1-554"><a href="#cb1-554"></a>    comp_lines<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"path"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible<span class="op">-</span><span class="dv">1</span>))<span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb1-555"><a href="#cb1-555"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
-<span id="cb1-556"><a href="#cb1-556"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">curve</span>(points))</span>
-<span id="cb1-557"><a href="#cb1-557"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="vs">`translate(</span><span class="sc">${</span>d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span><span class="sc">}</span><span class="vs">, -20)`</span>)</span>
-<span id="cb1-558"><a href="#cb1-558"></a>      </span>
-<span id="cb1-559"><a href="#cb1-559"></a>    g<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"circle"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible))<span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb1-560"><a href="#cb1-560"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"circle"</span>)</span>
-<span id="cb1-561"><a href="#cb1-561"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cx"</span><span class="op">,</span> d <span class="kw">=&gt;</span> r <span class="op">+</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
-<span id="cb1-562"><a href="#cb1-562"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cy"</span><span class="op">,</span> r)</span>
-<span id="cb1-563"><a href="#cb1-563"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"r"</span><span class="op">,</span> r)</span>
-<span id="cb1-564"><a href="#cb1-564"></a>  </span>
-<span id="cb1-565"><a href="#cb1-565"></a>  g<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"rect"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible))<span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb1-566"><a href="#cb1-566"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
-<span id="cb1-567"><a href="#cb1-567"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
-<span id="cb1-568"><a href="#cb1-568"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> h <span class="op">-</span> r <span class="op">-</span> <span class="dv">4</span>)</span>
-<span id="cb1-569"><a href="#cb1-569"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> <span class="dv">2</span><span class="op">*</span>r)</span>
-<span id="cb1-570"><a href="#cb1-570"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> r)</span>
-<span id="cb1-571"><a href="#cb1-571"></a>      </span>
-<span id="cb1-572"><a href="#cb1-572"></a>  g<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"line"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible))<span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb1-573"><a href="#cb1-573"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
-<span id="cb1-574"><a href="#cb1-574"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> d <span class="kw">=&gt;</span> r <span class="op">+</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
-<span id="cb1-575"><a href="#cb1-575"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> d <span class="kw">=&gt;</span> r <span class="op">+</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
-<span id="cb1-576"><a href="#cb1-576"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> <span class="dv">2</span><span class="op">*</span>r)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> h <span class="op">-</span> r)</span>
-<span id="cb1-577"><a href="#cb1-577"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-dasharray"</span><span class="op">,</span> [<span class="dv">5</span><span class="op">,</span><span class="dv">5</span>])</span>
-<span id="cb1-578"><a href="#cb1-578"></a>      </span>
-<span id="cb1-579"><a href="#cb1-579"></a>  pop<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible))<span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb1-580"><a href="#cb1-580"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
-<span id="cb1-581"><a href="#cb1-581"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> d <span class="kw">=&gt;</span> r <span class="op">+</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
-<span id="cb1-582"><a href="#cb1-582"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> r <span class="op">+</span> <span class="dv">2</span>)</span>
-<span id="cb1-583"><a href="#cb1-583"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
-<span id="cb1-584"><a href="#cb1-584"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"alignment-baseline"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
-<span id="cb1-585"><a href="#cb1-585"></a>      <span class="op">.</span><span class="fu">text</span>(<span class="st">"Population"</span>)</span>
-<span id="cb1-586"><a href="#cb1-586"></a>  </span>
-<span id="cb1-587"><a href="#cb1-587"></a>  samp<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible))<span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb1-588"><a href="#cb1-588"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
-<span id="cb1-589"><a href="#cb1-589"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> d <span class="kw">=&gt;</span> r <span class="op">+</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
-<span id="cb1-590"><a href="#cb1-590"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> h <span class="op">-</span> r<span class="op">/</span><span class="dv">2</span> <span class="op">-</span> <span class="dv">2</span>)</span>
-<span id="cb1-591"><a href="#cb1-591"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
-<span id="cb1-592"><a href="#cb1-592"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"alignment-baseline"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
-<span id="cb1-593"><a href="#cb1-593"></a>      <span class="op">.</span><span class="fu">text</span>(<span class="st">"Sample"</span>)</span>
-<span id="cb1-594"><a href="#cb1-594"></a>  }</span>
-<span id="cb1-595"><a href="#cb1-595"></a>  <span class="fu">animate</span>()</span>
-<span id="cb1-596"><a href="#cb1-596"></a>  svg<span class="op">.</span><span class="fu">on</span>(<span class="st">"click"</span><span class="op">,</span> animate)</span>
-<span id="cb1-597"><a href="#cb1-597"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="477" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 476;"><span id="cb1-477"><a href="#cb1-477"></a>aov_pop <span class="op">=</span> {</span>
+<span id="cb1-478"><a href="#cb1-478"></a></span>
+<span id="cb1-479"><a href="#cb1-479"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">1050</span></span>
+<span id="cb1-480"><a href="#cb1-480"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">250</span></span>
+<span id="cb1-481"><a href="#cb1-481"></a>  <span class="kw">const</span> r <span class="op">=</span> <span class="dv">70</span></span>
+<span id="cb1-482"><a href="#cb1-482"></a>  </span>
+<span id="cb1-483"><a href="#cb1-483"></a>  <span class="kw">const</span> data <span class="op">=</span> [<span class="dv">0</span><span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span>]</span>
+<span id="cb1-484"><a href="#cb1-484"></a>  </span>
+<span id="cb1-485"><a href="#cb1-485"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#anova-populations"</span>)</span>
+<span id="cb1-486"><a href="#cb1-486"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
+<span id="cb1-487"><a href="#cb1-487"></a></span>
+<span id="cb1-488"><a href="#cb1-488"></a>  <span class="kw">const</span> comp_lines <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-489"><a href="#cb1-489"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"red"</span>)</span>
+<span id="cb1-490"><a href="#cb1-490"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
+<span id="cb1-491"><a href="#cb1-491"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-dasharray"</span><span class="op">,</span> [<span class="dv">5</span><span class="op">,</span><span class="dv">5</span>])</span>
+<span id="cb1-492"><a href="#cb1-492"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">3</span>)</span>
+<span id="cb1-493"><a href="#cb1-493"></a>    </span>
+<span id="cb1-494"><a href="#cb1-494"></a>  <span class="kw">const</span> g <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-495"><a href="#cb1-495"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"translate(10, 2)"</span>)</span>
+<span id="cb1-496"><a href="#cb1-496"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"var(--background-color)"</span>)</span>
+<span id="cb1-497"><a href="#cb1-497"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"var(--text-color)"</span>)</span>
+<span id="cb1-498"><a href="#cb1-498"></a>  </span>
+<span id="cb1-499"><a href="#cb1-499"></a></span>
+<span id="cb1-500"><a href="#cb1-500"></a>  <span class="kw">const</span> curve <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()<span class="op">.</span><span class="fu">curve</span>(d3<span class="op">.</span><span class="at">curveNatural</span>)<span class="op">;</span></span>
+<span id="cb1-501"><a href="#cb1-501"></a>  <span class="kw">const</span> points <span class="op">=</span> [[r<span class="op">,</span> r]<span class="op">,</span>[r<span class="op">+</span>r<span class="op">*</span><span class="fl">1.25</span><span class="op">,</span>r<span class="op">/</span><span class="dv">2</span>]<span class="op">,</span>[r<span class="op">+</span>r<span class="op">*</span><span class="fl">2.5</span><span class="op">,</span> r]]<span class="op">;</span></span>
+<span id="cb1-502"><a href="#cb1-502"></a>  </span>
+<span id="cb1-503"><a href="#cb1-503"></a>  <span class="kw">const</span> labels <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-504"><a href="#cb1-504"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"translate(10, 2)"</span>)</span>
+<span id="cb1-505"><a href="#cb1-505"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"var(--text-color)"</span>)</span>
+<span id="cb1-506"><a href="#cb1-506"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
+<span id="cb1-507"><a href="#cb1-507"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"0.7em"</span>)</span>
+<span id="cb1-508"><a href="#cb1-508"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"z-index"</span><span class="op">,</span> <span class="dv">100</span>)</span>
+<span id="cb1-509"><a href="#cb1-509"></a>  <span class="kw">const</span> pop <span class="op">=</span> labels<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-510"><a href="#cb1-510"></a>  <span class="kw">const</span> samp <span class="op">=</span> labels<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-511"><a href="#cb1-511"></a>  </span>
+<span id="cb1-512"><a href="#cb1-512"></a>  <span class="kw">var</span> visible <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb1-513"><a href="#cb1-513"></a>  <span class="kw">function</span> <span class="fu">animate</span>() {</span>
+<span id="cb1-514"><a href="#cb1-514"></a>    <span class="cf">if</span> (visible<span class="op">==</span><span class="dv">6</span>) {</span>
+<span id="cb1-515"><a href="#cb1-515"></a>      visible <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb1-516"><a href="#cb1-516"></a>    } <span class="cf">else</span> {</span>
+<span id="cb1-517"><a href="#cb1-517"></a>      visible<span class="op">++</span></span>
+<span id="cb1-518"><a href="#cb1-518"></a>    }</span>
+<span id="cb1-519"><a href="#cb1-519"></a>    </span>
+<span id="cb1-520"><a href="#cb1-520"></a>    svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"path"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
+<span id="cb1-521"><a href="#cb1-521"></a>    svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"circle"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
+<span id="cb1-522"><a href="#cb1-522"></a>    svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"rect"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
+<span id="cb1-523"><a href="#cb1-523"></a>    svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"line"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
+<span id="cb1-524"><a href="#cb1-524"></a>    svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
+<span id="cb1-525"><a href="#cb1-525"></a>    </span>
+<span id="cb1-526"><a href="#cb1-526"></a>    comp_lines<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"path"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible<span class="op">-</span><span class="dv">1</span>))<span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-527"><a href="#cb1-527"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
+<span id="cb1-528"><a href="#cb1-528"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">curve</span>(points))</span>
+<span id="cb1-529"><a href="#cb1-529"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="vs">`translate(</span><span class="sc">${</span>d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span><span class="sc">}</span><span class="vs">, -20)`</span>)</span>
+<span id="cb1-530"><a href="#cb1-530"></a>      </span>
+<span id="cb1-531"><a href="#cb1-531"></a>    g<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"circle"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible))<span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-532"><a href="#cb1-532"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"circle"</span>)</span>
+<span id="cb1-533"><a href="#cb1-533"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cx"</span><span class="op">,</span> d <span class="kw">=&gt;</span> r <span class="op">+</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
+<span id="cb1-534"><a href="#cb1-534"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cy"</span><span class="op">,</span> r)</span>
+<span id="cb1-535"><a href="#cb1-535"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"r"</span><span class="op">,</span> r)</span>
+<span id="cb1-536"><a href="#cb1-536"></a>  </span>
+<span id="cb1-537"><a href="#cb1-537"></a>  g<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"rect"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible))<span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-538"><a href="#cb1-538"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
+<span id="cb1-539"><a href="#cb1-539"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
+<span id="cb1-540"><a href="#cb1-540"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> h <span class="op">-</span> r <span class="op">-</span> <span class="dv">4</span>)</span>
+<span id="cb1-541"><a href="#cb1-541"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> <span class="dv">2</span><span class="op">*</span>r)</span>
+<span id="cb1-542"><a href="#cb1-542"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> r)</span>
+<span id="cb1-543"><a href="#cb1-543"></a>      </span>
+<span id="cb1-544"><a href="#cb1-544"></a>  g<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"line"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible))<span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-545"><a href="#cb1-545"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
+<span id="cb1-546"><a href="#cb1-546"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> d <span class="kw">=&gt;</span> r <span class="op">+</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
+<span id="cb1-547"><a href="#cb1-547"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> d <span class="kw">=&gt;</span> r <span class="op">+</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
+<span id="cb1-548"><a href="#cb1-548"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> <span class="dv">2</span><span class="op">*</span>r)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> h <span class="op">-</span> r)</span>
+<span id="cb1-549"><a href="#cb1-549"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-dasharray"</span><span class="op">,</span> [<span class="dv">5</span><span class="op">,</span><span class="dv">5</span>])</span>
+<span id="cb1-550"><a href="#cb1-550"></a>      </span>
+<span id="cb1-551"><a href="#cb1-551"></a>  pop<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible))<span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-552"><a href="#cb1-552"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-553"><a href="#cb1-553"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> d <span class="kw">=&gt;</span> r <span class="op">+</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
+<span id="cb1-554"><a href="#cb1-554"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> r <span class="op">+</span> <span class="dv">2</span>)</span>
+<span id="cb1-555"><a href="#cb1-555"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
+<span id="cb1-556"><a href="#cb1-556"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"alignment-baseline"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
+<span id="cb1-557"><a href="#cb1-557"></a>      <span class="op">.</span><span class="fu">text</span>(<span class="st">"Population"</span>)</span>
+<span id="cb1-558"><a href="#cb1-558"></a>  </span>
+<span id="cb1-559"><a href="#cb1-559"></a>  samp<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible))<span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-560"><a href="#cb1-560"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-561"><a href="#cb1-561"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> d <span class="kw">=&gt;</span> r <span class="op">+</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
+<span id="cb1-562"><a href="#cb1-562"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> h <span class="op">-</span> r<span class="op">/</span><span class="dv">2</span> <span class="op">-</span> <span class="dv">2</span>)</span>
+<span id="cb1-563"><a href="#cb1-563"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
+<span id="cb1-564"><a href="#cb1-564"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"alignment-baseline"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
+<span id="cb1-565"><a href="#cb1-565"></a>      <span class="op">.</span><span class="fu">text</span>(<span class="st">"Sample"</span>)</span>
+<span id="cb1-566"><a href="#cb1-566"></a>  }</span>
+<span id="cb1-567"><a href="#cb1-567"></a>  <span class="fu">animate</span>()</span>
+<span id="cb1-568"><a href="#cb1-568"></a>  svg<span class="op">.</span><span class="fu">on</span>(<span class="st">"click"</span><span class="op">,</span> animate)</span>
+<span id="cb1-569"><a href="#cb1-569"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -1507,12 +1434,15 @@ within groups</p>
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
       (function () {
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          // dispatch for htmlwidgets
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
           const event = window.document.createEvent("Event");
           event.initEvent("slideenter", true, true);
           window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
 
           // dispatch for shiny
           if (window.jQuery) {
@@ -1523,13 +1453,6 @@ within groups</p>
               window.jQuery(currentSlide).trigger("shown");
             }
           }
-        }
-
-        // hookup for reveal
-        if (window.Reveal) {
-          window.Reveal.addEventListener("slidechanged", function(event) {
-            fireSlideChanged(event.previousSlide, event.currentSlide);
-          });
         }
 
         // hookup for slidy
