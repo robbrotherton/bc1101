@@ -8,11 +8,60 @@ format: revealjs
 
 # Overview
 
+- [ANOVA terminology]
 - [Calculating ANOVA]
 - [Hypothesis test]
 - [Post-hoc tests]
 - [Assumptions]
 - [Learning checks]
+
+
+# ANOVA terminology
+
+```{r}
+
+x <- c(9,11,13)
+y <- c(3,5,4)
+z <- c(5,6,7)
+
+table2 <- knitr::kable(data.frame(x, y, z), col.names = c("🍌<br>Banana", "🍬<br>Candy", "😐<br>Control"), align = "c", format = "html", escape = FALSE) |> 
+  kableExtra::add_header_above(c("Manipulation" = 3)) |> 
+  kableExtra::column_spec(1:3, width = "5em")
+
+means <- data.frame(glue::glue('\\(M = {mean(x)}\\)'),
+                    glue::glue('\\(M = {mean(y)}\\)'),
+                    glue::glue('\\(M = {mean(z)}\\)'))
+
+table2_footer <- knitr::kable(means, col.names = NULL, align = "c") |> 
+  kableExtra::column_spec(1:3, width = "5em")
+```
+
+
+:::: {.columns}
+
+::: {.column width="50%" style="font-size: 0.8em;"}
+- Factor
+  - The independent variable
+  - Designates the groups being compared
+  - Between-participants / within-participants
+- Levels
+  - Conditions that make up a factor
+- E.g.
+  - "1x3 between-participants ANOVA"
+:::
+
+::: {.column width="50%"}
+```{r}
+#| style: "font-size: 0.65em; margin-top: 1em; margin-bottom: -1em;"
+table2
+table2_footer
+```
+
+![](media/anova-populations-3.svg){.invertable width="80%"}
+:::
+
+::::
+
 
 
 # Calculating ANOVA {.smaller}
@@ -137,7 +186,8 @@ s_tab <- data.frame(Source = c("Between treatments","Within treatments","Total")
                     MS = c("","",""),
                     F = c("","",""))
 
-knitr::kable(s_tab, format = 'html')
+knitr::kable(s_tab, format = 'html', 
+             col.names = c("Source", "\\(SS\\)", "\\(df\\)", "\\(MS\\)", "\\(F\\)"))
 ```
 
 
@@ -399,11 +449,87 @@ $\eta^2 = \dfrac{SS_{between}}{SS_{total}} = `r eta_sq`$
 
 ## Tukey's $HSD$
 
+::: {.smallest}
 - Tukey’s Honestly Significant Difference
   - Minimum difference between pairs of treatment means so that $p < \alpha_{experimentwise}$
   - $q$ is the Studentized Range statistic
   - Depends on $\alpha$, $k$, and $df$ for denominator
   - Find $q$ in table or R
+:::
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+$$\begin{align}
+HSD &= q \sqrt{\dfrac{MS_{within}}{n}} \\
+    &= 4.34 \sqrt{\dfrac{2}{3}} \\
+    &= 3.54
+\end{align}$$
+
+:::
+
+::: {.column width="60%"}
+
+```{r}
+#| style: "font-size: 0.6em;"
+
+options(digits = 3)
+
+tukey_df <- rbind(
+  qtukey(.05, 2:6, 5, lower.tail = FALSE),
+  qtukey(.05, 2:6, 6, lower.tail = FALSE),
+  qtukey(.05, 2:6, 7, lower.tail = FALSE),
+  qtukey(.05, 2:6, 8, lower.tail = FALSE),
+  qtukey(.05, 2:6, 9, lower.tail = FALSE),
+  qtukey(.05, 2:6, 10, lower.tail = FALSE)) |> 
+  as.data.frame() |> 
+  tibble::add_column(df = c(5,6,7,8,9,10), .before = 1)
+
+knitr::kable(tukey_df, digits = 2, col.names = c(" ", 2:6)) |> 
+  kableExtra::add_header_above(c("\\(df\\)" = 1, "Number of Conditions" = 5)) |> 
+  kableExtra::column_spec(1, bold = TRUE)
+
+```
+
+:::
+
+::::
+
+
+## Tukey's $HSD$
+
+::: {.smallest}
+- Tukey’s Honestly Significant Difference
+  - Minimum difference between pairs of treatment means so that $p < \alpha_{experimentwise}$
+  - $q$ is the Studentized Range statistic
+  - Depends on $\alpha$, $k$, and $df$ for denominator
+  - Find $q$ in table or R
+:::
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+$$\begin{align}
+HSD &= q \sqrt{\dfrac{MS_{within}}{n}} \\
+    &= 4.34 \sqrt{\dfrac{2}{3}} \\
+    &= 3.54
+\end{align}$$
+
+:::
+
+::: {.column width="60%"}
+
+```{r}
+#| style: "font-size: 0.65em; margin-top: 1em; margin-bottom: -1em;"
+table2
+table2_footer
+```
+
+:::
+
+::::
 
 # Assumptions
 

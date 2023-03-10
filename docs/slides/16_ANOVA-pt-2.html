@@ -402,12 +402,88 @@
 <section id="overview" class="title-slide slide level1 center">
 <h1>Overview</h1>
 <ul>
+<li><a href="#/anova-terminology">ANOVA terminology</a></li>
 <li><a href="#/calculating-anova">Calculating ANOVA</a></li>
 <li><a href="#/hypothesis-test">Hypothesis test</a></li>
 <li><a href="#/post-hoc-tests">Post-hoc tests</a></li>
 <li><a href="#/assumptions">Assumptions</a></li>
 <li><a href="#/learning-checks">Learning checks</a></li>
 </ul>
+</section>
+
+<section id="anova-terminology" class="title-slide slide level1 center">
+<h1>ANOVA terminology</h1>
+<div class="cell">
+
+</div>
+<div class="columns">
+<div class="column" style="font-size: 0.8em;">
+<ul>
+<li>Factor
+<ul>
+<li>The independent variable</li>
+<li>Designates the groups being compared</li>
+<li>Between-participants / within-participants</li>
+</ul></li>
+<li>Levels
+<ul>
+<li>Conditions that make up a factor</li>
+</ul></li>
+<li>E.g.
+<ul>
+<li>“1x3 between-participants ANOVA”</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="cell" style="font-size: 0.65em; margin-top: 1em; margin-bottom: -1em;">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+<tr><th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Manipulation</div></th></tr>
+  <tr>
+   <th style="text-align:center;"> 🍌<br>Banana </th>
+   <th style="text-align:center;"> 🍬<br>Candy </th>
+   <th style="text-align:center;"> 😐<br>Control </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;width: 5em; "> 9 </td>
+   <td style="text-align:center;width: 5em; "> 3 </td>
+   <td style="text-align:center;width: 5em; "> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;width: 5em; "> 11 </td>
+   <td style="text-align:center;width: 5em; "> 5 </td>
+   <td style="text-align:center;width: 5em; "> 6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;width: 5em; "> 13 </td>
+   <td style="text-align:center;width: 5em; "> 4 </td>
+   <td style="text-align:center;width: 5em; "> 7 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+<div class="cell-output-display">
+
+<table>
+<tbody>
+  <tr>
+   <td style="text-align:center;width: 5em; "> \(M = 11\) </td>
+   <td style="text-align:center;width: 5em; "> \(M = 4\) </td>
+   <td style="text-align:center;width: 5em; "> \(M = 6\) </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p><img data-src="media/anova-populations-3.svg" class="invertable" style="width:80.0%"></p>
+</div>
+</div>
 </section>
 
 <section>
@@ -531,10 +607,10 @@
  <thead>
   <tr>
    <th style="text-align:left;"> Source </th>
-   <th style="text-align:left;"> SS </th>
-   <th style="text-align:left;"> df </th>
-   <th style="text-align:left;"> MS </th>
-   <th style="text-align:left;"> F </th>
+   <th style="text-align:left;"> \(SS\) </th>
+   <th style="text-align:left;"> \(df\) </th>
+   <th style="text-align:left;"> \(MS\) </th>
+   <th style="text-align:left;"> \(F\) </th>
   </tr>
  </thead>
 <tbody>
@@ -764,89 +840,89 @@
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="192" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 191;"><span id="cb1-192"><a href="#cb1-192"></a>jStat <span class="op">=</span> <span class="pp">require</span>(<span class="st">"../js/jstat.js"</span>)</span>
-<span id="cb1-193"><a href="#cb1-193"></a></span>
-<span id="cb1-194"><a href="#cb1-194"></a>aov_table <span class="op">=</span> {</span>
-<span id="cb1-195"><a href="#cb1-195"></a></span>
-<span id="cb1-196"><a href="#cb1-196"></a>  <span class="kw">var</span> df1<span class="op">,</span> df2<span class="op">,</span> critical</span>
-<span id="cb1-197"><a href="#cb1-197"></a>  </span>
-<span id="cb1-198"><a href="#cb1-198"></a>  <span class="kw">function</span> <span class="fu">getDf2</span>() {</span>
-<span id="cb1-199"><a href="#cb1-199"></a>    <span class="cf">try</span> {</span>
-<span id="cb1-200"><a href="#cb1-200"></a>      df2 <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)<span class="op">.</span><span class="fu">select</span>(<span class="st">"td"</span>)<span class="op">.</span><span class="at">_groups</span>[<span class="dv">0</span>][<span class="dv">0</span>]<span class="op">.</span><span class="at">innerHTML</span><span class="op">;</span></span>
-<span id="cb1-201"><a href="#cb1-201"></a>    } <span class="cf">catch</span> {} <span class="cf">finally</span> {<span class="fu">update</span>()<span class="op">;</span>}</span>
-<span id="cb1-202"><a href="#cb1-202"></a>  }</span>
-<span id="cb1-203"><a href="#cb1-203"></a>  </span>
-<span id="cb1-204"><a href="#cb1-204"></a>    <span class="kw">function</span> <span class="fu">getDf1</span>() {</span>
-<span id="cb1-205"><a href="#cb1-205"></a>    <span class="cf">try</span> {</span>
-<span id="cb1-206"><a href="#cb1-206"></a>      df1 <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)<span class="op">.</span><span class="at">_groups</span>[<span class="dv">0</span>][<span class="dv">0</span>]<span class="op">.</span><span class="at">cellIndex</span></span>
-<span id="cb1-207"><a href="#cb1-207"></a>      <span class="cf">if</span> (df1 <span class="op">&lt;</span> <span class="dv">1</span>) {df1 <span class="op">=</span> <span class="dv">1</span>}</span>
-<span id="cb1-208"><a href="#cb1-208"></a>    } <span class="cf">catch</span> {} <span class="cf">finally</span> {<span class="fu">update</span>()<span class="op">;</span>}</span>
-<span id="cb1-209"><a href="#cb1-209"></a>  }</span>
-<span id="cb1-210"><a href="#cb1-210"></a>  </span>
-<span id="cb1-211"><a href="#cb1-211"></a>  d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#tbl"</span>)<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"tr"</span>)<span class="op">.</span><span class="fu">on</span>(<span class="st">"click"</span><span class="op">,</span> getDf2)</span>
-<span id="cb1-212"><a href="#cb1-212"></a>  d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#tbl"</span>)<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"td"</span>)<span class="op">.</span><span class="fu">on</span>(<span class="st">"click"</span><span class="op">,</span> getDf1)</span>
-<span id="cb1-213"><a href="#cb1-213"></a></span>
-<span id="cb1-214"><a href="#cb1-214"></a></span>
-<span id="cb1-215"><a href="#cb1-215"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">1050</span></span>
-<span id="cb1-216"><a href="#cb1-216"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">200</span></span>
-<span id="cb1-217"><a href="#cb1-217"></a>  <span class="kw">const</span> margin <span class="op">=</span> {<span class="dt">right</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span> <span class="dt">left</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span> <span class="dt">bottom</span><span class="op">:</span> <span class="dv">20</span>}</span>
-<span id="cb1-218"><a href="#cb1-218"></a>  </span>
-<span id="cb1-219"><a href="#cb1-219"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#tbl"</span>)<span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)</span>
-<span id="cb1-220"><a href="#cb1-220"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
-<span id="cb1-221"><a href="#cb1-221"></a>    </span>
-<span id="cb1-222"><a href="#cb1-222"></a></span>
-<span id="cb1-223"><a href="#cb1-223"></a>  <span class="kw">const</span> x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb1-224"><a href="#cb1-224"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span><span class="dv">4</span>])</span>
-<span id="cb1-225"><a href="#cb1-225"></a>    <span class="op">.</span><span class="fu">range</span>([margin<span class="op">.</span><span class="at">left</span><span class="op">,</span> w <span class="op">-</span> margin<span class="op">.</span><span class="at">right</span>])</span>
-<span id="cb1-226"><a href="#cb1-226"></a>  <span class="kw">const</span> y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb1-227"><a href="#cb1-227"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span><span class="dv">1</span>])</span>
-<span id="cb1-228"><a href="#cb1-228"></a>    <span class="op">.</span><span class="fu">range</span>([h <span class="op">-</span> margin<span class="op">.</span><span class="at">bottom</span><span class="op">,</span> <span class="dv">0</span>])</span>
-<span id="cb1-229"><a href="#cb1-229"></a>  <span class="kw">const</span> xAxis <span class="op">=</span> d3<span class="op">.</span><span class="fu">axisBottom</span>(x)</span>
-<span id="cb1-230"><a href="#cb1-230"></a>  <span class="kw">const</span> line <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()</span>
-<span id="cb1-231"><a href="#cb1-231"></a>    <span class="op">.</span><span class="fu">x</span>(d <span class="kw">=&gt;</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">value</span>))</span>
-<span id="cb1-232"><a href="#cb1-232"></a>    <span class="op">.</span><span class="fu">y</span>(d <span class="kw">=&gt;</span> <span class="fu">y</span>(d<span class="op">.</span><span class="at">density</span>))</span>
-<span id="cb1-233"><a href="#cb1-233"></a>  </span>
-<span id="cb1-234"><a href="#cb1-234"></a>  <span class="kw">function</span> <span class="fu">makeCurve</span>(df1<span class="op">,</span> df2) {</span>
-<span id="cb1-235"><a href="#cb1-235"></a>    <span class="kw">var</span> arr <span class="op">=</span> []</span>
-<span id="cb1-236"><a href="#cb1-236"></a>    <span class="kw">var</span> values <span class="op">=</span> <span class="fu">jStat</span>(<span class="fl">0.01</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">210</span>)[<span class="dv">0</span>]</span>
-<span id="cb1-237"><a href="#cb1-237"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> values<span class="op">.</span><span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb1-238"><a href="#cb1-238"></a>      arr<span class="op">.</span><span class="fu">push</span>({<span class="dt">value</span><span class="op">:</span> values[i]<span class="op">,</span></span>
-<span id="cb1-239"><a href="#cb1-239"></a>                <span class="dt">density</span><span class="op">:</span> jStat<span class="op">.</span><span class="at">centralF</span><span class="op">.</span><span class="fu">pdf</span>(values[i]<span class="op">,</span> <span class="bu">Number</span>(df1)<span class="op">,</span> <span class="bu">Number</span>(df2))})</span>
-<span id="cb1-240"><a href="#cb1-240"></a>    }</span>
-<span id="cb1-241"><a href="#cb1-241"></a>    <span class="cf">return</span> arr</span>
-<span id="cb1-242"><a href="#cb1-242"></a>  }</span>
-<span id="cb1-243"><a href="#cb1-243"></a>  </span>
-<span id="cb1-244"><a href="#cb1-244"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(0, </span><span class="sc">${</span>h <span class="op">-</span> margin<span class="op">.</span><span class="at">bottom</span><span class="sc">}</span><span class="vs">)`</span>)</span>
-<span id="cb1-245"><a href="#cb1-245"></a>    <span class="op">.</span><span class="fu">call</span>(xAxis)</span>
-<span id="cb1-246"><a href="#cb1-246"></a>    </span>
-<span id="cb1-247"><a href="#cb1-247"></a>  <span class="kw">const</span> curve <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
-<span id="cb1-248"><a href="#cb1-248"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(<span class="fu">makeCurve</span>(<span class="dv">10</span><span class="op">,</span> <span class="dv">10</span>)))</span>
-<span id="cb1-249"><a href="#cb1-249"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
-<span id="cb1-250"><a href="#cb1-250"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)</span>
-<span id="cb1-251"><a href="#cb1-251"></a>  </span>
-<span id="cb1-252"><a href="#cb1-252"></a>  <span class="kw">const</span> df1Input <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'df1-input'</span>)</span>
-<span id="cb1-253"><a href="#cb1-253"></a>  df1Input<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
-<span id="cb1-254"><a href="#cb1-254"></a>    df1 <span class="op">=</span> df1Input<span class="op">.</span><span class="at">value</span></span>
-<span id="cb1-255"><a href="#cb1-255"></a>    <span class="fu">update</span>()<span class="op">;</span></span>
-<span id="cb1-256"><a href="#cb1-256"></a>  }</span>
-<span id="cb1-257"><a href="#cb1-257"></a>  </span>
-<span id="cb1-258"><a href="#cb1-258"></a>  <span class="kw">const</span> df2Input <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'df2-input'</span>)</span>
-<span id="cb1-259"><a href="#cb1-259"></a>  df2Input<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
-<span id="cb1-260"><a href="#cb1-260"></a>    df2 <span class="op">=</span> df2Input<span class="op">.</span><span class="at">value</span></span>
-<span id="cb1-261"><a href="#cb1-261"></a>    <span class="fu">update</span>()<span class="op">;</span></span>
-<span id="cb1-262"><a href="#cb1-262"></a>  }</span>
-<span id="cb1-263"><a href="#cb1-263"></a>  </span>
-<span id="cb1-264"><a href="#cb1-264"></a>  <span class="kw">function</span> <span class="fu">update</span>() {</span>
-<span id="cb1-265"><a href="#cb1-265"></a>    d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#df1-value"</span>)<span class="op">.</span><span class="fu">text</span>(df1)</span>
-<span id="cb1-266"><a href="#cb1-266"></a>    d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#df2-value"</span>)<span class="op">.</span><span class="fu">text</span>(df2)</span>
-<span id="cb1-267"><a href="#cb1-267"></a>    critical <span class="op">=</span> jStat<span class="op">.</span><span class="at">centralF</span><span class="op">.</span><span class="fu">inv</span>(<span class="fl">0.95</span><span class="op">,</span> <span class="bu">Number</span>(df1)<span class="op">,</span> <span class="bu">Number</span>(df2))</span>
-<span id="cb1-268"><a href="#cb1-268"></a>    curve<span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(<span class="fu">makeCurve</span>(<span class="bu">Number</span>(df1)<span class="op">,</span> <span class="bu">Number</span>(df2))))</span>
-<span id="cb1-269"><a href="#cb1-269"></a>  }</span>
-<span id="cb1-270"><a href="#cb1-270"></a>  </span>
-<span id="cb1-271"><a href="#cb1-271"></a></span>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="242" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 241;"><span id="cb1-242"><a href="#cb1-242"></a>jStat <span class="op">=</span> <span class="pp">require</span>(<span class="st">"../js/jstat.js"</span>)</span>
+<span id="cb1-243"><a href="#cb1-243"></a></span>
+<span id="cb1-244"><a href="#cb1-244"></a>aov_table <span class="op">=</span> {</span>
+<span id="cb1-245"><a href="#cb1-245"></a></span>
+<span id="cb1-246"><a href="#cb1-246"></a>  <span class="kw">var</span> df1<span class="op">,</span> df2<span class="op">,</span> critical</span>
+<span id="cb1-247"><a href="#cb1-247"></a>  </span>
+<span id="cb1-248"><a href="#cb1-248"></a>  <span class="kw">function</span> <span class="fu">getDf2</span>() {</span>
+<span id="cb1-249"><a href="#cb1-249"></a>    <span class="cf">try</span> {</span>
+<span id="cb1-250"><a href="#cb1-250"></a>      df2 <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)<span class="op">.</span><span class="fu">select</span>(<span class="st">"td"</span>)<span class="op">.</span><span class="at">_groups</span>[<span class="dv">0</span>][<span class="dv">0</span>]<span class="op">.</span><span class="at">innerHTML</span><span class="op">;</span></span>
+<span id="cb1-251"><a href="#cb1-251"></a>    } <span class="cf">catch</span> {} <span class="cf">finally</span> {<span class="fu">update</span>()<span class="op">;</span>}</span>
+<span id="cb1-252"><a href="#cb1-252"></a>  }</span>
+<span id="cb1-253"><a href="#cb1-253"></a>  </span>
+<span id="cb1-254"><a href="#cb1-254"></a>    <span class="kw">function</span> <span class="fu">getDf1</span>() {</span>
+<span id="cb1-255"><a href="#cb1-255"></a>    <span class="cf">try</span> {</span>
+<span id="cb1-256"><a href="#cb1-256"></a>      df1 <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)<span class="op">.</span><span class="at">_groups</span>[<span class="dv">0</span>][<span class="dv">0</span>]<span class="op">.</span><span class="at">cellIndex</span></span>
+<span id="cb1-257"><a href="#cb1-257"></a>      <span class="cf">if</span> (df1 <span class="op">&lt;</span> <span class="dv">1</span>) {df1 <span class="op">=</span> <span class="dv">1</span>}</span>
+<span id="cb1-258"><a href="#cb1-258"></a>    } <span class="cf">catch</span> {} <span class="cf">finally</span> {<span class="fu">update</span>()<span class="op">;</span>}</span>
+<span id="cb1-259"><a href="#cb1-259"></a>  }</span>
+<span id="cb1-260"><a href="#cb1-260"></a>  </span>
+<span id="cb1-261"><a href="#cb1-261"></a>  d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#tbl"</span>)<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"tr"</span>)<span class="op">.</span><span class="fu">on</span>(<span class="st">"click"</span><span class="op">,</span> getDf2)</span>
+<span id="cb1-262"><a href="#cb1-262"></a>  d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#tbl"</span>)<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"td"</span>)<span class="op">.</span><span class="fu">on</span>(<span class="st">"click"</span><span class="op">,</span> getDf1)</span>
+<span id="cb1-263"><a href="#cb1-263"></a></span>
+<span id="cb1-264"><a href="#cb1-264"></a></span>
+<span id="cb1-265"><a href="#cb1-265"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">1050</span></span>
+<span id="cb1-266"><a href="#cb1-266"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb1-267"><a href="#cb1-267"></a>  <span class="kw">const</span> margin <span class="op">=</span> {<span class="dt">right</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span> <span class="dt">left</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span> <span class="dt">bottom</span><span class="op">:</span> <span class="dv">20</span>}</span>
+<span id="cb1-268"><a href="#cb1-268"></a>  </span>
+<span id="cb1-269"><a href="#cb1-269"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#tbl"</span>)<span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)</span>
+<span id="cb1-270"><a href="#cb1-270"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
+<span id="cb1-271"><a href="#cb1-271"></a>    </span>
 <span id="cb1-272"><a href="#cb1-272"></a></span>
-<span id="cb1-273"><a href="#cb1-273"></a>  </span>
-<span id="cb1-274"><a href="#cb1-274"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-273"><a href="#cb1-273"></a>  <span class="kw">const</span> x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb1-274"><a href="#cb1-274"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span><span class="dv">4</span>])</span>
+<span id="cb1-275"><a href="#cb1-275"></a>    <span class="op">.</span><span class="fu">range</span>([margin<span class="op">.</span><span class="at">left</span><span class="op">,</span> w <span class="op">-</span> margin<span class="op">.</span><span class="at">right</span>])</span>
+<span id="cb1-276"><a href="#cb1-276"></a>  <span class="kw">const</span> y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb1-277"><a href="#cb1-277"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span><span class="dv">1</span>])</span>
+<span id="cb1-278"><a href="#cb1-278"></a>    <span class="op">.</span><span class="fu">range</span>([h <span class="op">-</span> margin<span class="op">.</span><span class="at">bottom</span><span class="op">,</span> <span class="dv">0</span>])</span>
+<span id="cb1-279"><a href="#cb1-279"></a>  <span class="kw">const</span> xAxis <span class="op">=</span> d3<span class="op">.</span><span class="fu">axisBottom</span>(x)</span>
+<span id="cb1-280"><a href="#cb1-280"></a>  <span class="kw">const</span> line <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()</span>
+<span id="cb1-281"><a href="#cb1-281"></a>    <span class="op">.</span><span class="fu">x</span>(d <span class="kw">=&gt;</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">value</span>))</span>
+<span id="cb1-282"><a href="#cb1-282"></a>    <span class="op">.</span><span class="fu">y</span>(d <span class="kw">=&gt;</span> <span class="fu">y</span>(d<span class="op">.</span><span class="at">density</span>))</span>
+<span id="cb1-283"><a href="#cb1-283"></a>  </span>
+<span id="cb1-284"><a href="#cb1-284"></a>  <span class="kw">function</span> <span class="fu">makeCurve</span>(df1<span class="op">,</span> df2) {</span>
+<span id="cb1-285"><a href="#cb1-285"></a>    <span class="kw">var</span> arr <span class="op">=</span> []</span>
+<span id="cb1-286"><a href="#cb1-286"></a>    <span class="kw">var</span> values <span class="op">=</span> <span class="fu">jStat</span>(<span class="fl">0.01</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">210</span>)[<span class="dv">0</span>]</span>
+<span id="cb1-287"><a href="#cb1-287"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> values<span class="op">.</span><span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb1-288"><a href="#cb1-288"></a>      arr<span class="op">.</span><span class="fu">push</span>({<span class="dt">value</span><span class="op">:</span> values[i]<span class="op">,</span></span>
+<span id="cb1-289"><a href="#cb1-289"></a>                <span class="dt">density</span><span class="op">:</span> jStat<span class="op">.</span><span class="at">centralF</span><span class="op">.</span><span class="fu">pdf</span>(values[i]<span class="op">,</span> <span class="bu">Number</span>(df1)<span class="op">,</span> <span class="bu">Number</span>(df2))})</span>
+<span id="cb1-290"><a href="#cb1-290"></a>    }</span>
+<span id="cb1-291"><a href="#cb1-291"></a>    <span class="cf">return</span> arr</span>
+<span id="cb1-292"><a href="#cb1-292"></a>  }</span>
+<span id="cb1-293"><a href="#cb1-293"></a>  </span>
+<span id="cb1-294"><a href="#cb1-294"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(0, </span><span class="sc">${</span>h <span class="op">-</span> margin<span class="op">.</span><span class="at">bottom</span><span class="sc">}</span><span class="vs">)`</span>)</span>
+<span id="cb1-295"><a href="#cb1-295"></a>    <span class="op">.</span><span class="fu">call</span>(xAxis)</span>
+<span id="cb1-296"><a href="#cb1-296"></a>    </span>
+<span id="cb1-297"><a href="#cb1-297"></a>  <span class="kw">const</span> curve <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
+<span id="cb1-298"><a href="#cb1-298"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(<span class="fu">makeCurve</span>(<span class="dv">10</span><span class="op">,</span> <span class="dv">10</span>)))</span>
+<span id="cb1-299"><a href="#cb1-299"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
+<span id="cb1-300"><a href="#cb1-300"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)</span>
+<span id="cb1-301"><a href="#cb1-301"></a>  </span>
+<span id="cb1-302"><a href="#cb1-302"></a>  <span class="kw">const</span> df1Input <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'df1-input'</span>)</span>
+<span id="cb1-303"><a href="#cb1-303"></a>  df1Input<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
+<span id="cb1-304"><a href="#cb1-304"></a>    df1 <span class="op">=</span> df1Input<span class="op">.</span><span class="at">value</span></span>
+<span id="cb1-305"><a href="#cb1-305"></a>    <span class="fu">update</span>()<span class="op">;</span></span>
+<span id="cb1-306"><a href="#cb1-306"></a>  }</span>
+<span id="cb1-307"><a href="#cb1-307"></a>  </span>
+<span id="cb1-308"><a href="#cb1-308"></a>  <span class="kw">const</span> df2Input <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'df2-input'</span>)</span>
+<span id="cb1-309"><a href="#cb1-309"></a>  df2Input<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
+<span id="cb1-310"><a href="#cb1-310"></a>    df2 <span class="op">=</span> df2Input<span class="op">.</span><span class="at">value</span></span>
+<span id="cb1-311"><a href="#cb1-311"></a>    <span class="fu">update</span>()<span class="op">;</span></span>
+<span id="cb1-312"><a href="#cb1-312"></a>  }</span>
+<span id="cb1-313"><a href="#cb1-313"></a>  </span>
+<span id="cb1-314"><a href="#cb1-314"></a>  <span class="kw">function</span> <span class="fu">update</span>() {</span>
+<span id="cb1-315"><a href="#cb1-315"></a>    d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#df1-value"</span>)<span class="op">.</span><span class="fu">text</span>(df1)</span>
+<span id="cb1-316"><a href="#cb1-316"></a>    d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#df2-value"</span>)<span class="op">.</span><span class="fu">text</span>(df2)</span>
+<span id="cb1-317"><a href="#cb1-317"></a>    critical <span class="op">=</span> jStat<span class="op">.</span><span class="at">centralF</span><span class="op">.</span><span class="fu">inv</span>(<span class="fl">0.95</span><span class="op">,</span> <span class="bu">Number</span>(df1)<span class="op">,</span> <span class="bu">Number</span>(df2))</span>
+<span id="cb1-318"><a href="#cb1-318"></a>    curve<span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(<span class="fu">makeCurve</span>(<span class="bu">Number</span>(df1)<span class="op">,</span> <span class="bu">Number</span>(df2))))</span>
+<span id="cb1-319"><a href="#cb1-319"></a>  }</span>
+<span id="cb1-320"><a href="#cb1-320"></a>  </span>
+<span id="cb1-321"><a href="#cb1-321"></a></span>
+<span id="cb1-322"><a href="#cb1-322"></a></span>
+<span id="cb1-323"><a href="#cb1-323"></a>  </span>
+<span id="cb1-324"><a href="#cb1-324"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -995,6 +1071,7 @@
 </section>
 <section id="tukeys-hsd" class="slide level2">
 <h2>Tukey’s <span class="math inline">\(HSD\)</span></h2>
+<div class="smallest">
 <ul>
 <li>Tukey’s Honestly Significant Difference
 <ul>
@@ -1004,6 +1081,159 @@
 <li>Find <span class="math inline">\(q\)</span> in table or R</li>
 </ul></li>
 </ul>
+</div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><span class="math display">\[\begin{align}
+HSD &amp;= q \sqrt{\dfrac{MS_{within}}{n}} \\
+    &amp;= 4.34 \sqrt{\dfrac{2}{3}} \\
+    &amp;= 3.54
+\end{align}\]</span></p>
+</div><div class="column" style="width:60%;">
+<div class="cell" style="font-size: 0.6em;">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">\(df\)</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Number of Conditions</div></th>
+</tr>
+  <tr>
+   <th style="text-align:right;">   </th>
+   <th style="text-align:right;"> 2 </th>
+   <th style="text-align:right;"> 3 </th>
+   <th style="text-align:right;"> 4 </th>
+   <th style="text-align:right;"> 5 </th>
+   <th style="text-align:right;"> 6 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;font-weight: bold;"> 5 </td>
+   <td style="text-align:right;"> 3.64 </td>
+   <td style="text-align:right;"> 4.60 </td>
+   <td style="text-align:right;"> 5.22 </td>
+   <td style="text-align:right;"> 5.67 </td>
+   <td style="text-align:right;"> 6.03 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;font-weight: bold;"> 6 </td>
+   <td style="text-align:right;"> 3.46 </td>
+   <td style="text-align:right;"> 4.34 </td>
+   <td style="text-align:right;"> 4.90 </td>
+   <td style="text-align:right;"> 5.30 </td>
+   <td style="text-align:right;"> 5.63 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;font-weight: bold;"> 7 </td>
+   <td style="text-align:right;"> 3.34 </td>
+   <td style="text-align:right;"> 4.16 </td>
+   <td style="text-align:right;"> 4.68 </td>
+   <td style="text-align:right;"> 5.06 </td>
+   <td style="text-align:right;"> 5.36 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;font-weight: bold;"> 8 </td>
+   <td style="text-align:right;"> 3.26 </td>
+   <td style="text-align:right;"> 4.04 </td>
+   <td style="text-align:right;"> 4.53 </td>
+   <td style="text-align:right;"> 4.89 </td>
+   <td style="text-align:right;"> 5.17 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;font-weight: bold;"> 9 </td>
+   <td style="text-align:right;"> 3.20 </td>
+   <td style="text-align:right;"> 3.95 </td>
+   <td style="text-align:right;"> 4.41 </td>
+   <td style="text-align:right;"> 4.76 </td>
+   <td style="text-align:right;"> 5.02 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;font-weight: bold;"> 10 </td>
+   <td style="text-align:right;"> 3.15 </td>
+   <td style="text-align:right;"> 3.88 </td>
+   <td style="text-align:right;"> 4.33 </td>
+   <td style="text-align:right;"> 4.65 </td>
+   <td style="text-align:right;"> 4.91 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="tukeys-hsd-1" class="slide level2">
+<h2>Tukey’s <span class="math inline">\(HSD\)</span></h2>
+<div class="smallest">
+<ul>
+<li>Tukey’s Honestly Significant Difference
+<ul>
+<li>Minimum difference between pairs of treatment means so that <span class="math inline">\(p &lt; \alpha_{experimentwise}\)</span></li>
+<li><span class="math inline">\(q\)</span> is the Studentized Range statistic</li>
+<li>Depends on <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(k\)</span>, and <span class="math inline">\(df\)</span> for denominator</li>
+<li>Find <span class="math inline">\(q\)</span> in table or R</li>
+</ul></li>
+</ul>
+</div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><span class="math display">\[\begin{align}
+HSD &amp;= q \sqrt{\dfrac{MS_{within}}{n}} \\
+    &amp;= 4.34 \sqrt{\dfrac{2}{3}} \\
+    &amp;= 3.54
+\end{align}\]</span></p>
+</div><div class="column" style="width:60%;">
+<div class="cell" style="font-size: 0.65em; margin-top: 1em; margin-bottom: -1em;">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+<tr><th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Manipulation</div></th></tr>
+  <tr>
+   <th style="text-align:center;"> 🍌<br>Banana </th>
+   <th style="text-align:center;"> 🍬<br>Candy </th>
+   <th style="text-align:center;"> 😐<br>Control </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;width: 5em; "> 9 </td>
+   <td style="text-align:center;width: 5em; "> 3 </td>
+   <td style="text-align:center;width: 5em; "> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;width: 5em; "> 11 </td>
+   <td style="text-align:center;width: 5em; "> 5 </td>
+   <td style="text-align:center;width: 5em; "> 6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;width: 5em; "> 13 </td>
+   <td style="text-align:center;width: 5em; "> 4 </td>
+   <td style="text-align:center;width: 5em; "> 7 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+<div class="cell-output-display">
+
+<table>
+<tbody>
+  <tr>
+   <td style="text-align:center;width: 5em; "> \(M = 11\) </td>
+   <td style="text-align:center;width: 5em; "> \(M = 4\) </td>
+   <td style="text-align:center;width: 5em; "> \(M = 6\) </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
 </section></section>
 <section id="assumptions" class="title-slide slide level1 center">
 <h1>Assumptions</h1>
@@ -1315,12 +1545,15 @@
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
       (function () {
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          // dispatch for htmlwidgets
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
           const event = window.document.createEvent("Event");
           event.initEvent("slideenter", true, true);
           window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
 
           // dispatch for shiny
           if (window.jQuery) {
@@ -1331,13 +1564,6 @@
               window.jQuery(currentSlide).trigger("shown");
             }
           }
-        }
-
-        // hookup for reveal
-        if (window.Reveal) {
-          window.Reveal.addEventListener("slidechanged", function(event) {
-            fireSlideChanged(event.previousSlide, event.currentSlide);
-          });
         }
 
         // hookup for slidy
