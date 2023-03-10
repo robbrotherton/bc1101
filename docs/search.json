@@ -1642,7 +1642,7 @@
     "href": "slides/16_ANOVA-pt-2.html#report-results",
     "title": "PSYC BC1101",
     "section": "Report results",
-    "text": "Report results\n\nDescriptives\n\nTreatment means and standard deviations are presented in text, table and/or graph\n\nHypothesis test outcome\n\nResults of ANOVA are summarized, including\n\\(F\\) and \\(df\\) values, \\(p\\), \\(\\eta^2\\) (if significant)\n\n\n\nA single-factor, independent-samples ANOVA revealed a significant difference between people who consumed a banana (\\(M = 11\\); \\(SD = 2\\)), a candy bar (\\(M = 4\\); \\(SD = 1\\)), and the control condition (\\(M = 6\\); \\(SD = 1\\)); \\(F(2,6) = 19.5\\), \\(p < .05\\), \\(\\eta^2 = 0.87\\)."
+    "text": "Report results\n\nDescriptives\n\nTreatment means and standard deviations are presented in text, table and/or graph\n\nHypothesis test outcome\n\nResults of ANOVA are summarized, including\n\\(F\\) and \\(df\\) values, \\(p\\), \\(\\eta^2\\) (if significant)\n\n\n\nA single-factor, independent-samples ANOVA revealed a significant difference between people who consumed a banana (\\(M = 11\\); \\(SD = 2\\)), a candy bar (\\(M = 4\\); \\(SD = 1\\)), and the control condition \\((M = 6\\); \\(SD = 1)\\); \\(F(2,6) = 19.5\\), \\(p < .05\\), \\(\\eta^2 = 0.87\\)."
   },
   {
     "objectID": "slides/16_ANOVA-pt-2.html#tukeys-hsd",

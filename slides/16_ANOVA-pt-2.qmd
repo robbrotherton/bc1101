@@ -436,7 +436,7 @@ $\eta^2 = \dfrac{SS_{between}}{SS_{total}} = `r eta_sq`$
   - Results of ANOVA are summarized, including
   - $F$ and $df$ values, $p$, $\eta^2$ (if significant)
 
-> A single-factor, independent-samples ANOVA revealed a significant difference between people who consumed a banana ($M = `r a2$mean_x`$; $SD = `r sd(x)`$), a candy bar ($M = `r a2$mean_y`$; $SD = `r sd(y)`$), and the control condition ($M = `r a2$mean_z`$; $SD = `r sd(z)`$); $F(`r a2$df_between`,`r a2$df_within`) = `r a2$f_ratio`$, $p < .05$, $\eta^2 = `r eta_sq`$.
+> A single-factor, independent-samples ANOVA revealed a significant difference between people who consumed a banana ($M = `r a2$mean_x`$; $SD = `r sd(x)`$), a candy bar ($M = `r a2$mean_y`$; $SD = `r sd(y)`$), and the control condition $(M = `r a2$mean_z`$; $SD = `r sd(z)`)$; $F(`r a2$df_between`,`r a2$df_within`) = `r a2$f_ratio`$, $p < .05$, $\eta^2 = `r eta_sq`$.
 
 # Post-hoc tests
 
