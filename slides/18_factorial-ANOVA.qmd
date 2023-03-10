@@ -404,6 +404,30 @@ $F_{A*B} = \dfrac{MS_{A*B}}{MS_{within}} = `r a$f_ab`$
 
 ## Cover
 
+```{r cover-ggplot}
+#| eval: false
+library(ggplot2)
+x_seq <- seq(-5,5,.1)
+means <- seq(-2, 2, length.out = 4)
+
+dat <- purrr::map_df(means, ~data.frame(x = x_seq, y = dnorm(x_seq, mean = .), group = .))
+
+cover <- ggplot(dat, aes(x = x, y = y, fill = factor(group), group = group)) +
+  geom_area(position = "dodge", alpha = .5) +
+  scale_x_continuous(expand = c(0,0)) +
+  scale_fill_manual(values = c("dodgerblue3", "red", "dodgerblue3", "red")) +
+  theme_void() + 
+  theme(legend.position = "none")
+
+cover
+
+bc1101tools::plot_save("18_factorial-ANOVA.svg", 
+                       subdir = "covers", 
+                       plot = cover,
+                       width = 10, height = 5)
+
+```
+
 ## Generic 2x2 graphs
 
 ```{r}
