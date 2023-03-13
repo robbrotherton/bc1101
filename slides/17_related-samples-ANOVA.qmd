@@ -38,7 +38,7 @@ format: revealjs
 ::::
 
 
-## Related-samples
+## Related samples
 
 
 :::: {.columns}
@@ -60,7 +60,7 @@ format: revealjs
 ::::
 
 
-## Pros and cons
+## Related samples
 
 
 :::: {.columns}
@@ -86,13 +86,15 @@ format: revealjs
 
 ## Partitioning variance
 
+- Independent samples
+
 :::: {#diagram-container style="position: relative; width: 80%; height: 300px; font-size: 0.6em; margin: 0 auto;"}
 
 ::: {.node .top .total}
 Total variance
 :::
 ::: {.node .between style="top: 50%; left: 0"}
-Variance between groups  
+Variance between treatments  
 $MS_{between}$
 :::
 ::: {.node .text style="top: 75%; left: 0; z-index: -1;"}
@@ -113,11 +115,13 @@ $MS_{within}$
 
 
 ::: {.center-element style="margin-top: 3em;"}
-$F = \dfrac{{MS_{between}}}{{MS_{within}}} = \dfrac{treatment, \ error, \ ind. \ diff.}{error, \ ind. \ diff.}$
+$F = \dfrac{{MS_{between}}}{{MS_{within}}} = \dfrac{treatment \cdot error \cdot ind. \ diff.}{error \cdot ind. \ diff.}$
 :::
 
 
 ## Partitioning variance
+
+- Related samples: problem
 
 :::: {#diagram-container style="position: relative; width: 80%; height: 300px; font-size: 0.6em; margin: 0 auto;"}
 
@@ -145,11 +149,13 @@ $MS_{within}$
 
 
 ::: {.center-element style="margin-top: 3em;"}
-$F = \dfrac{{MS_{between \ treatments}}}{{MS_{within}}} = \dfrac{treatment, \ error}{error, \ ind. \ diff.}$
+$F = \dfrac{{MS_{between \ treatments}}}{{MS_{within}}} = \dfrac{treatment \cdot error}{error \cdot ind. \ diff.}$
 :::
 
 
 ## Partitioning variance
+
+- Related samples: solution
 
 :::: {#diagram-container style="position: relative; width: 80%; height: 300px; font-size: 0.6em; margin: 0 auto;"}
 
@@ -187,31 +193,141 @@ $MS_{between \ S's}$
 
 
 ::: {.center-element style="margin-top: 3em;"}
-$F = \dfrac{{MS_{between \ treatments}}}{{MS_{error}}} = \dfrac{treatment, \ error}{error}$
+$F = \dfrac{{MS_{between \ treatments}}}{{MS_{error}}} = \dfrac{treatment \cdot error}{error}$
 :::
 
 # Calculations
 
-## Calculations: $SS$ and $df$ values
+## Calculations: $SS$ and $df$
 
-## Calculations: $SS$ and $df$ {.smaller}
+<style>
+  .xx-total {
+    display: table;
+    margin: 0 auto;
+    margin-bottom: 2em;
+  }
+  .xx-total:before {
+    content: "";
+    position: absolute;
+    width: 4em;
+    height: 0;
+    border: 3px dashed var(--text-color);
+    transform: translate(-50%, 2.3em) rotate(135deg) scale(0.5);
+  }
+  .xx-total:after {
+    content: "";
+    position: absolute;
+    width: 4em;
+    height: 0;
+    border: 3px dashed var(--text-color);
+    transform: translate(-50%, 2.3em) rotate(45deg) scale(0.5);
+  }
+  .xx-between {
+    float: left;
+    margin-left: 20%;
+    margin-right: -4em;
+    margin-bottom: 2em;
+  }
+  .xx-within {
+    float: right;
+    margin-right: 20%;
+    <!-- margin-top: -2.5em; -->
+    <!-- margin-bottom: 4em; -->
+  }
+  .xx-within:before {
+    content: "";
+    position: absolute;
+    width: 4em;
+    height: 0;
+    border: 3px dashed var(--text-color);
+    transform: translate(-50%, 2.3em) rotate(135deg) scale(0.5);
+  }
+  .xx-within:after {
+    content: "";
+    position: absolute;
+    width: 4em;
+    height: 0;
+    border: 3px dashed var(--text-color);
+    transform: translate(-50%, 2.3em) rotate(45deg) scale(0.5);
+  }
+  .xx-error {
+    float: left;
+    margin-left: 3em;
+    margin-top: 2em;
+  }
+  .xx-btwn-ss {
+    float: right;
+    margin-top: 2em;
+  }
+</style>
 
-$$\begin{align}
-SS_{total} &= \Sigma X^2 - \dfrac{G^2}{N} \\
-SS_{within} &= \Sigma SS_{within \ each \ treatment} \\
-SS_{between \ treatments} &= \Sigma \dfrac{T^2}{n} - \dfrac{G^2}{N} \\
-SS_{between \ subjects} &= \Sigma \dfrac{P^2}{k} - \dfrac{G^2}{N} \\
-SS_{error} &= SS_{within}-SS_{between \ subjects}
-\end{align}$$
+:::: {.columns}
+
+::: {.column width="50%"}
+
+[$SS_{total}$]{.xx-total}
+
+[$SS_{btwn \ T's}$]{.xx-between} [$SS_{within}$]{.xx-within}
+
+[$SS_{error}$]{.xx-error} [$SS_{btwn \ S's}$]{.xx-btwn-ss}
+:::
+
+::: {.column width="50%"}
+[$df_{total}$]{.xx-total}
+
+[$df_{btwn \ T's}$]{.xx-between} [$df_{within}$]{.xx-within}
+
+[$df_{error}$]{.xx-error} [$df_{btwn \ S's}$]{.xx-btwn-ss}
+:::
+
+::::
+
+:::: {.columns}
+
+::: {.column .smallest}
+
+$$
+SS_{total} = \Sigma X^2 - \dfrac{G^2}{N} \\
+SS_{within} = \Sigma SS_{within \ each \ treatment} \\
+SS_{between \ treatments} = \Sigma \dfrac{T^2}{n} - \dfrac{G^2}{N} \\
+SS_{between \ subjects} = \Sigma \dfrac{P^2}{k} - \dfrac{G^2}{N} \\
+SS_{error} = SS_{within}-SS_{between \ subjects}
+$$
+
+:::
+
+::: {.column .smallest}
+
+$$
+df_{total} = N-1  \\
+df_{within} = N-k \\
+df_{between \ treatments} = k-1 \\
+df_{between \ subjects} = n-1 \\
+df_{error} = df_{within}-df_{between \ subjects}
+$$
+
+:::
+
+:::: 
+
+<!-- ## Calculations: $SS$ and $df$ {.smaller} -->
+
+<!-- $$\begin{align} -->
+<!-- SS_{total} &= \Sigma X^2 - \dfrac{G^2}{N} \\ -->
+<!-- SS_{within} &= \Sigma SS_{within \ each \ treatment} \\ -->
+<!-- SS_{between \ treatments} &= \Sigma \dfrac{T^2}{n} - \dfrac{G^2}{N} \\ -->
+<!-- SS_{between \ subjects} &= \Sigma \dfrac{P^2}{k} - \dfrac{G^2}{N} \\ -->
+<!-- SS_{error} &= SS_{within}-SS_{between \ subjects} -->
+<!-- \end{align}$$ -->
 
 
-$$\begin{align}
-df_{total} &= N-1  \\
-df_{within} &= N-k \\
-df_{between \ treatments} &= k-1 \\
-df_{between \ subjects} &= n-1 \\
-df_{error} &= df_{within}-df_{between \ subjects}
-\end{align}$$
+<!-- $$\begin{align} -->
+<!-- df_{total} &= N-1  \\ -->
+<!-- df_{within} &= N-k \\ -->
+<!-- df_{between \ treatments} &= k-1 \\ -->
+<!-- df_{between \ subjects} &= n-1 \\ -->
+<!-- df_{error} &= df_{within}-df_{between \ subjects} -->
+<!-- \end{align}$$ -->
 
 ## Calculations: $MS$ and $F$ {.small}
 
@@ -231,6 +347,21 @@ $F = \dfrac{MS_{between \ treatments}}{MS_{error}}$
 
 ## Summary table
 
+```{r}
+
+s_tab <- data.frame(Source = c("Between treatments",
+                               "Within treatments",
+                               "&nbsp;&nbsp;&nbsp;Between subjects",
+                               "&nbsp;&nbsp;&nbsp;Error",
+                               "Total"),
+                    SS = c("","","","",""),
+                    df = c("","","","",""),
+                    MS = c("","","","",""),
+                    F = c("","","","",""))
+
+knitr::kable(s_tab, format = 'html', escape = FALSE,
+             col.names = c("Source", "\\(SS\\)", "\\(df\\)", "\\(MS\\)", "\\(F\\)"))
+```
 
 # Hypothesis test
 
@@ -322,8 +453,23 @@ options(digits = 2)
 ::: {.column width="70%"}
 ```{r}
 #| style: "font-size: 0.6em;"
-table3
-table_footer
+# table3
+# table_footer
+
+
+table4 <- knitr::kable(data.frame(person = c("A","B","C", "\\(M\\)", "\\(T\\)", "\\(SS\\)"), 
+                                  c(x, mean(x), sum(x), bc1101tools:::SS(x)),
+                                  c(y, mean(y), sum(y), bc1101tools:::SS(y)),
+                                  c(z, mean(z), sum(z), bc1101tools:::SS(z)),
+                                  c(P, "", "", "")), 
+                       col.names = c("<br>Person", "🍌<br>Banana", "🍬<br>Candy", "😐<br>Control", "<br>P"), 
+                       align = "c", format = "html", escape = FALSE) |> 
+  kableExtra::add_header_above(c(" " = 1, "Manipulation" = 3, " " = 1)) |> 
+  kableExtra::column_spec(1:4, width = "5em") |> 
+  kableExtra::column_spec(5, width = "2em") |> 
+  kableExtra::row_spec(3, extra_css = "border-bottom: 3px solid black;")
+
+table4
 ```
 
 :::
