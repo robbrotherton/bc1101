@@ -252,7 +252,7 @@ $F = \dfrac{{MS_{between \ treatments}}}{{MS_{error}}} = \dfrac{treatment \cdot 
   }
   .xx-error {
     float: left;
-    margin-left: 3em;
+    margin-left: 30%;
     margin-top: 2em;
   }
   .xx-btwn-ss {
@@ -261,7 +261,7 @@ $F = \dfrac{{MS_{between \ treatments}}}{{MS_{error}}} = \dfrac{treatment \cdot 
   }
 </style>
 
-:::: {.columns}
+:::: {.columns style="font-size: 0.7em;"}
 
 ::: {.column width="50%"}
 
