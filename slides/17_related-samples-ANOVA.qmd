@@ -504,8 +504,7 @@ df_{error} &= df_{within}-df_{between \ subjects}  = `r (N - k) - (n - 1)`
 ::: {.column width="70%"}
 ```{r}
 #| style: "font-size: 0.6em;"
-table3
-table_footer
+table4
 ```
 
 :::
@@ -553,8 +552,7 @@ $SS_{error} = \Sigma SS_{within}-SS_{between \ subjects} = `r a2$SS_error`$
 ::: {.column width="70%"}
 ```{r}
 #| style: "font-size: 0.6em;"
-table3
-table_footer
+table4
 ```
 
 :::
@@ -585,8 +583,7 @@ $MS_{error} = \dfrac{SS_{error}}{df_{error}} = `r a2$MS_error`$
 ::: {.column width="70%"}
 ```{r}
 #| style: "font-size: 0.6em;"
-table3
-table_footer
+table4
 ```
 
 :::

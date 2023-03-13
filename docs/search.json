@@ -1747,21 +1747,21 @@
     "href": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-1",
     "title": "PSYC BC1101",
     "section": "3. Calculate \\(F\\)-ratio",
-    "text": "3. Calculate \\(F\\)-ratio\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n\n\nPerson\n🍌\nBanana\n🍬\nCandy\n😐\nControl\n\nP\n\n\n\n\nA\n9\n3\n5\n17\n\n\nB\n11\n5\n6\n22\n\n\nC\n13\n4\n7\n24\n\n\n\n\n\n\n\n\n\n\n\\(M\\)\n11\n4\n6\n\n\n\n\\(T\\)\n33\n12\n18\n\n\n\n\\(SS\\)\n8\n2\n2\n\n\n\n\n\n\n\n\n\n\\(n = 3\\)\n\\(k = 3\\)\n\\(N = 9\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)\n\n\n\n\n\n\\(SS_{total} = \\Sigma X^2 - \\dfrac{G^2}{N} = 90\\)\n\\(SS_{within} = \\Sigma SS_{within \\ each \\ treatment} = 12\\)\n\\(SS_{between \\ treatments} = \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N} = 78\\)\n\n\\(SS_{between \\ subjects} = \\Sigma \\dfrac{P^2}{k} - \\dfrac{G^2}{N} = 8.67\\)\n\\(SS_{error} = \\Sigma SS_{within}-SS_{between \\ subjects} = 3.33\\)"
+    "text": "3. Calculate \\(F\\)-ratio\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n\n\nPerson\n🍌\nBanana\n🍬\nCandy\n😐\nControl\n\nP\n\n\n\n\nA\n9\n3\n5\n17\n\n\nB\n11\n5\n6\n22\n\n\nC\n13\n4\n7\n24\n\n\n\\(M\\)\n11\n4\n6\n\n\n\n\\(T\\)\n33\n12\n18\n\n\n\n\\(SS\\)\n8\n2\n2\n\n\n\n\n\n\n\n\n\n\\(n = 3\\)\n\\(k = 3\\)\n\\(N = 9\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)\n\n\n\n\n\n\\(SS_{total} = \\Sigma X^2 - \\dfrac{G^2}{N} = 90\\)\n\\(SS_{within} = \\Sigma SS_{within \\ each \\ treatment} = 12\\)\n\\(SS_{between \\ treatments} = \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N} = 78\\)\n\n\\(SS_{between \\ subjects} = \\Sigma \\dfrac{P^2}{k} - \\dfrac{G^2}{N} = 8.67\\)\n\\(SS_{error} = \\Sigma SS_{within}-SS_{between \\ subjects} = 3.33\\)"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-2",
     "href": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-2",
     "title": "PSYC BC1101",
     "section": "3. Calculate \\(F\\)-ratio",
-    "text": "3. Calculate \\(F\\)-ratio\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n\n\nPerson\n🍌\nBanana\n🍬\nCandy\n😐\nControl\n\nP\n\n\n\n\nA\n9\n3\n5\n17\n\n\nB\n11\n5\n6\n22\n\n\nC\n13\n4\n7\n24\n\n\n\n\n\n\n\n\n\n\n\\(M\\)\n11\n4\n6\n\n\n\n\\(T\\)\n33\n12\n18\n\n\n\n\\(SS\\)\n8\n2\n2\n\n\n\n\n\n\n\n\n\n\\(n = 3\\)\n\\(k = 3\\)\n\\(N = 9\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)\n\n\n\n\\(MS_{between \\ treatments} = \\dfrac{SS_{between \\ treatments}}{df_{between \\ treatments}} = 39\\)\n\\(MS_{error} = \\dfrac{SS_{error}}{df_{error}} = 0.83\\)"
+    "text": "3. Calculate \\(F\\)-ratio\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n\n\nPerson\n🍌\nBanana\n🍬\nCandy\n😐\nControl\n\nP\n\n\n\n\nA\n9\n3\n5\n17\n\n\nB\n11\n5\n6\n22\n\n\nC\n13\n4\n7\n24\n\n\n\\(M\\)\n11\n4\n6\n\n\n\n\\(T\\)\n33\n12\n18\n\n\n\n\\(SS\\)\n8\n2\n2\n\n\n\n\n\n\n\n\n\n\\(n = 3\\)\n\\(k = 3\\)\n\\(N = 9\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)\n\n\n\n\\(MS_{between \\ treatments} = \\dfrac{SS_{between \\ treatments}}{df_{between \\ treatments}} = 39\\)\n\\(MS_{error} = \\dfrac{SS_{error}}{df_{error}} = 0.83\\)"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-3",
     "href": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-3",
     "title": "PSYC BC1101",
     "section": "3. Calculate \\(F\\)-ratio",
-    "text": "3. Calculate \\(F\\)-ratio\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n\n\nPerson\n🍌\nBanana\n🍬\nCandy\n😐\nControl\n\nP\n\n\n\n\nA\n9\n3\n5\n17\n\n\nB\n11\n5\n6\n22\n\n\nC\n13\n4\n7\n24\n\n\n\n\n\n\n\n\n\n\n\\(M\\)\n11\n4\n6\n\n\n\n\\(T\\)\n33\n12\n18\n\n\n\n\\(SS\\)\n8\n2\n2\n\n\n\n\n\n\n\n\n\n\\(n = 3\\)\n\\(k = 3\\)\n\\(N = 9\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)\n\n\n\n\\(F = \\dfrac{MS_{between \\ treatments}}{MS_{error}} = 46.8\\)"
+    "text": "3. Calculate \\(F\\)-ratio\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n\n\nPerson\n🍌\nBanana\n🍬\nCandy\n😐\nControl\n\nP\n\n\n\n\nA\n9\n3\n5\n17\n\n\nB\n11\n5\n6\n22\n\n\nC\n13\n4\n7\n24\n\n\n\\(M\\)\n11\n4\n6\n\n\n\n\\(T\\)\n33\n12\n18\n\n\n\n\\(SS\\)\n8\n2\n2\n\n\n\n\n\n\n\n\n\n\\(n = 3\\)\n\\(k = 3\\)\n\\(N = 9\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)\n\n\n\n\\(F = \\dfrac{MS_{between \\ treatments}}{MS_{error}} = 46.8\\)"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#report-results",
