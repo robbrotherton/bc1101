@@ -327,9 +327,9 @@ $df_{A*B} = df_{between}-df_A-df_B$
 #| style: "width: 100%;"
 
 s_tab <- data.frame(Source = c("Between treatments",
-                               "&nbsp;&nbsp;&nbsp;Between subjects",
-                               "&nbsp;&nbsp;&nbsp;Between subjects",
-                               "&nbsp;&nbsp;&nbsp;Error",
+                               "&nbsp;&nbsp;&nbsp;Factor A",
+                               "&nbsp;&nbsp;&nbsp;Factor B",
+                               "&nbsp;&nbsp;&nbsp;A * B interaction",
                                "Within treatments",
                                "Total"),
                     SS = c("","","","","",""),

@@ -1810,7 +1810,7 @@
     "href": "slides/18_factorial-ANOVA.html#summary-table",
     "title": "PSYC BC1101",
     "section": "Summary table",
-    "text": "Summary table\n\n\n\n\n\nSource\n\\(SS\\)\n\\(df\\)\n\\(MS\\)\n\\(F\\)\n\n\n\n\nBetween treatments\n\n\n\n\n\n\n   Between subjects\n\n\n\n\n\n\n   Between subjects\n\n\n\n\n\n\n   Error\n\n\n\n\n\n\nWithin treatments\n\n\n\n\n\n\nTotal"
+    "text": "Summary table\n\n\n\n\n\nSource\n\\(SS\\)\n\\(df\\)\n\\(MS\\)\n\\(F\\)\n\n\n\n\nBetween treatments\n\n\n\n\n\n\n   Factor A\n\n\n\n\n\n\n   Factor B\n\n\n\n\n\n\n   A * B interaction\n\n\n\n\n\n\nWithin treatments\n\n\n\n\n\n\nTotal"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-1.-hypotheses",
