@@ -600,33 +600,34 @@
     border: 3px dashed var(--text-color);
     transform: translate(-50%, 2.3em) rotate(45deg) scale(0.5);
   }
+  .xx-between2:after {
+    content: "";
+    position: absolute;
+    width: 3em;
+    height: 0;
+    border: 3px dashed var(--text-color);
+    transform: translate(0.8em, 2.3em) rotate(90deg) scale(0.5);
+  }
 
   .ss-level3 {
     white-space: nowrap;
     position: relative;
     transform: translate(0, 3em);
   }
-  .xx-b:before {
-    content: "";
-    position: absolute;
-    width: 1.3em;
-    height: 0;
-    border: 1.5px dashed var(--text-color);
-    transform: translate(-0.2em, -0.7em) rotate(90deg);
-  }
+
 
 </style>
 <div class="columns" style="font-size: 0.7em;">
 <div class="column" style="width:50%;">
 <p><span class="xx-total"><span class="math inline">\(SS_{total}\)</span></span></p>
-<p><span class="xx-between"><span class="math inline">\(SS_{between}\)</span></span> <span class="xx-within"><span class="math inline">\(SS_{within}\)</span></span></p>
+<p><span class="xx-between"><span class="math inline">\(SS_{between}\)</span></span> <span class="xx-between2"></span> <span class="xx-within"><span class="math inline">\(SS_{within}\)</span></span></p>
 <!-- [$SS_A$ &nbsp;&nbsp;&nbsp; $SS_B$ &nbsp;&nbsp;&nbsp; $SS_{A*B}$]{.ss-diagram .xx-ab .level3} -->
 <div class="ss-level3">
 <p><span style="margin-left: -1em;margin-right: 1em;"><span class="math inline">\(SS_A\)</span></span> <span class="xx-b"><span class="math inline">\(SS_B\)</span></span> <span style="margin-left: 1em;"><span class="math inline">\(SS_{A*B}\)</span></span></p>
 </div>
 </div><div class="column" style="width:50%;">
 <p><span class="xx-total"><span class="math inline">\(df_{total}\)</span></span></p>
-<p><span class="xx-between"><span class="math inline">\(df_{between}\)</span></span> <span class="xx-within"><span class="math inline">\(df_{within}\)</span></span></p>
+<p><span class="xx-between"><span class="math inline">\(df_{between}\)</span></span> <span class="xx-between2"></span> <span class="xx-within"><span class="math inline">\(df_{within}\)</span></span></p>
 <div class="ss-level3">
 <p><span style="margin-left: -1em;margin-right: 1.2em;"><span class="math inline">\(df_A\)</span></span> <span class="xx-b"><span class="math inline">\(df_B\)</span></span> <span style="margin-left: 1em;"><span class="math inline">\(df_{A*B}\)</span></span></p>
 </div>

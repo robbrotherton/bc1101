@@ -222,20 +222,21 @@ $MS_{A*B}$
     border: 3px dashed var(--text-color);
     transform: translate(-50%, 2.3em) rotate(45deg) scale(0.5);
   }
+  .xx-between2:after {
+    content: "";
+    position: absolute;
+    width: 3em;
+    height: 0;
+    border: 3px dashed var(--text-color);
+    transform: translate(0.8em, 2.3em) rotate(90deg) scale(0.5);
+  }
 
   .ss-level3 {
     white-space: nowrap;
     position: relative;
     transform: translate(0, 3em);
   }
-  .xx-b:before {
-    content: "";
-    position: absolute;
-    width: 1.3em;
-    height: 0;
-    border: 1.5px dashed var(--text-color);
-    transform: translate(-0.2em, -0.7em) rotate(90deg);
-  }
+
 
 </style>
 
@@ -245,7 +246,7 @@ $MS_{A*B}$
 
 [$SS_{total}$]{.xx-total}
 
-[$SS_{between}$]{.xx-between} [$SS_{within}$]{.xx-within}
+[$SS_{between}$]{.xx-between} []{.xx-between2} [$SS_{within}$]{.xx-within}
 
 <!-- [$SS_A$ &nbsp;&nbsp;&nbsp; $SS_B$ &nbsp;&nbsp;&nbsp; $SS_{A*B}$]{.ss-diagram .xx-ab .level3} -->
 
@@ -259,7 +260,7 @@ $MS_{A*B}$
 
 [$df_{total}$]{.xx-total}
 
-[$df_{between}$]{.xx-between} [$df_{within}$]{.xx-within}
+[$df_{between}$]{.xx-between} []{.xx-between2} [$df_{within}$]{.xx-within}
 
 ::: {.ss-level3}
 [$df_A$]{style="margin-left: -1em;margin-right: 1.2em;"} [$df_B$]{.xx-b} [$df_{A*B}$]{style="margin-left: 1em;"} 

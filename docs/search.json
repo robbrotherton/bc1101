@@ -2321,7 +2321,7 @@
     "href": "slides/18_factorial-ANOVA.html#partitioning-variance-1",
     "title": "PSYC BC1101",
     "section": "Partitioning variance",
-    "text": "Partitioning variance\n\n\n\n\n\\(SS_{total}\\)\n\\(SS_{between}\\) \\(SS_{within}\\)\n\n\n\\(SS_A\\) \\(SS_B\\) \\(SS_{A*B}\\)\n\n\n\\(df_{total}\\)\n\\(df_{between}\\) \\(df_{within}\\)\n\n\\(df_A\\) \\(df_B\\) \\(df_{A*B}\\)\n\n\n\n\n\n\\(SS_{total} = \\Sigma X^2 - \\dfrac{G^2}{N}\\)\n\\(SS_{within} = \\Sigma SS_{within \\ each \\ treatment}\\)\n\\(SS_{between} = \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N}\\)\n\\(SS_{A} = \\Sigma \\dfrac{T^2_{col}}{n_{col}} - \\dfrac{G^2}{N}\\)\n\\(SS_{B} = \\Sigma \\dfrac{T^2_{row}}{n_{row}} - \\dfrac{G^2}{N}\\)\n\\(SS_{A*B} = SS_{between}-SS_{A}-SS_{B}\\)\n\n\\(df_{total} = N-1\\)\n\\(df_{within} = N-k\\)\n\\(df_{between} = k-1\\)\n\\(df_{A} = k_A-1\\)\n\\(df_{B} = k_B-1\\)\n\\(df_{A*B} = df_{between}-df_A-df_B\\)"
+    "text": "Partitioning variance\n\n\n\n\n\\(SS_{total}\\)\n\\(SS_{between}\\)  \\(SS_{within}\\)\n\n\n\\(SS_A\\) \\(SS_B\\) \\(SS_{A*B}\\)\n\n\n\\(df_{total}\\)\n\\(df_{between}\\)  \\(df_{within}\\)\n\n\\(df_A\\) \\(df_B\\) \\(df_{A*B}\\)\n\n\n\n\n\n\\(SS_{total} = \\Sigma X^2 - \\dfrac{G^2}{N}\\)\n\\(SS_{within} = \\Sigma SS_{within \\ each \\ treatment}\\)\n\\(SS_{between} = \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N}\\)\n\\(SS_{A} = \\Sigma \\dfrac{T^2_{col}}{n_{col}} - \\dfrac{G^2}{N}\\)\n\\(SS_{B} = \\Sigma \\dfrac{T^2_{row}}{n_{row}} - \\dfrac{G^2}{N}\\)\n\\(SS_{A*B} = SS_{between}-SS_{A}-SS_{B}\\)\n\n\\(df_{total} = N-1\\)\n\\(df_{within} = N-k\\)\n\\(df_{between} = k-1\\)\n\\(df_{A} = k_A-1\\)\n\\(df_{B} = k_B-1\\)\n\\(df_{A*B} = df_{between}-df_A-df_B\\)"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-4.-decision",
