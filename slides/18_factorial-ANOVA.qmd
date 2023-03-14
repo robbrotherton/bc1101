@@ -85,42 +85,20 @@ bc1101tools::anova_2x2_table()
   2. Main effect of Factor B
   3. Interaction between A and B
 
-- Each tested with same basic $F$-ratio structure
 
+## Logic
+
+```{r}
+bc1101tools::anova_2x2_table()
+```
+
+  
+- Three hypotheses tested by three $F$-ratios
+  - Each tested with same basic $F$-ratio structure
+
+::: {.center-element}
 $F = \dfrac{\textrm{variance between treatments}}{\textrm{variance expected with no treatment effect}}$
-
-
-## Partitioning variance
-
-:::: {#diagram-container style="position: relative; width: 80%; height: 300px; font-size: 0.6em; margin: 0 auto;"}
-
-::: {.node .top .total}
-Total variance
 :::
-::: {.node .between style="top: 50%; left: 8%"}
-Variance between treatments   
-$MS_{between \ treatments}$
-:::
-
-::: {.node .within style="top: 50%; right: 8%;"}
-Variance within groups  
-$MS_{within}$
-:::
-::: {.node style="top: 85%; left: 0; width: 18%;"}
-Factor A  
-$MS_{A}$
-:::
-::: {.node style="top: 85%; left: 20%; width: 18%"}
-Factor B  
-$MS_{B}$
-:::
-::: {.node style="top: 85%; left: 40%; width: 18%"}
-Interaction  
-$MS_{A*B}$
-:::
-
-::::
-
 
 
 # Calculations {.smaller}
@@ -132,41 +110,261 @@ table_scores
 ```
 
 
+## Partitioning variance
 
-## Equations
+<style>
 
-:::: {.columns}
+  .node.level3:before {
+    content: "";
+    position: absolute;
+    width: 3em;
+    height: 0;
+    border: 3px dashed var(--text-color);
+    <!-- z-index: -10; -->
+  }
+  .node.msa:before {
+    transform: translate(30%, -2.2em) rotate(-45deg) scale(0.5);
+  }
+  .node.msb:before {
+    transform: translate(0%, -2.1em) rotate(90deg) scale(0.5);
+    width: 2.5em;
+    z-index: -2;
+  }
+  .node.msab:before {
+    transform: translate(-30%, -2.2em) rotate(45deg) scale(0.5);
+  }
+
+</style>
+
+:::: {#diagram-container style="position: relative; width: 80%; height: 300px; font-size: 0.6em; margin: 0 auto;"}
+
+::: {.node .top .total}
+Total variance
+:::
+::: {.node .between style="top: 50%; left: 8%;"}
+Variance between treatments   
+$MS_{between \ treatments}$
+:::
+
+::: {.node .within style="top: 50%; right: 8%;"}
+Variance within groups  
+$MS_{within}$
+:::
+
+::: {.fragment}
+
+::: {.node .level3 .msa style="top: 85%; left: 0; width: 18%;"}
+Factor A  
+$MS_{A}$
+:::
+::: {.node .level3 .msb style="top: 85%; left: 20%; width: 18%"}
+Factor B  
+$MS_{B}$
+:::
+::: {.node .level3 .msab style="top: 85%; left: 40%; width: 18%"}
+Interaction  
+$MS_{A*B}$
+:::
+:::
+
+::::
+
+
+## Partitioning variance
+
+<style>
+  .xx-total {
+    display: table;
+    margin: 0 auto;
+    margin-bottom: 2em;
+  }
+  .xx-total:before {
+    content: "";
+    position: absolute;
+    width: 4em;
+    height: 0;
+    border: 3px dashed var(--text-color);
+    transform: translate(-50%, 2.3em) rotate(135deg) scale(0.5);
+  }
+  .xx-total:after {
+    content: "";
+    position: absolute;
+    width: 4em;
+    height: 0;
+    border: 3px dashed var(--text-color);
+    transform: translate(-50%, 2.3em) rotate(45deg) scale(0.5);
+  }
+  .xx-between {
+    float: left;
+    margin-left: 20%;
+    margin-right: -4em;
+    margin-bottom: 2em;
+  }
+  .xx-within {
+    float: right;
+    margin-right: 20%;
+    <!-- margin-top: -2.5em; -->
+    <!-- margin-bottom: 4em; -->
+  }
+  .xx-between:before {
+    content: "";
+    position: absolute;
+    width: 4em;
+    height: 0;
+    border: 3px dashed var(--text-color);
+    transform: translate(-50%, 2.3em) rotate(135deg) scale(0.5);
+  }
+  .xx-between:after {
+    content: "";
+    position: absolute;
+    width: 4em;
+    height: 0;
+    border: 3px dashed var(--text-color);
+    transform: translate(-50%, 2.3em) rotate(45deg) scale(0.5);
+  }
+  .xx-a {
+    display: inline;
+    <!-- float: left; -->
+    <!-- margin-left: 30%; -->
+    <!-- margin-top: 2em; -->
+  }
+  .xx-b {
+    display: inline;
+    left: 3em;
+  }
+  .xx-ab {
+    width: 8em;
+    height: 1em;
+    display: inline;
+    white-space: nowrap;
+    float: left;
+    position: relative;
+    margin-top: 2em;
+    top: 0em;
+    left: -1em;
+    <!-- background: red; -->
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  .xx-ab:after {
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 0;
+    border: 3px dashed var(--text-color);
+    transform: translate(-6em, -1em) rotate(90deg) scale(0.5);
+  }
+
+</style>
+
+:::: {.columns style="font-size: 0.7em;"}
 
 ::: {.column width="50%"}
+
+[$SS_{total}$]{.xx-total}
+
+[$SS_{between}$]{.xx-between} [$SS_{within}$]{.xx-within}
+
+[$SS_A$ &nbsp;&nbsp;&nbsp; $SS_B$ &nbsp;&nbsp;&nbsp; $SS_{A*B}$]{.ss-diagram .xx-ab .level3}
+
+<!-- [$SS_A$]{.ss-diagram .xx-a .level3} [$SS_B$]{.ss-diagram .xx-b .level3} [$SS_{A*B}$]{.ss-diagram .xx-ab .level3} -->
+:::
+
+::: {.column width="50%"}
+
+[$df_{total}$]{.xx-total}
+
+[$df_{between}$]{.xx-between} [$df_{within}$]{.xx-within}
+
+[$df_A$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $df_B$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $df_{A*B}$]{.ss-diagram .xx-ab .level3}
+
+:::
+
+::::
+
+:::: {.columns .center-element}
+
+::: {.column .smallest style="margin-top: 1em;"}
+
 $SS_{total} = \Sigma X^2 - \dfrac{G^2}{N}$  
 $SS_{within} = \Sigma SS_{within \ each \ treatment}$  
 $SS_{between} = \Sigma \dfrac{T^2}{n} - \dfrac{G^2}{N}$  
 $SS_{A} = \Sigma \dfrac{T^2_{col}}{n_{col}} - \dfrac{G^2}{N}$  
 $SS_{B} = \Sigma \dfrac{T^2_{row}}{n_{row}} - \dfrac{G^2}{N}$  
 $SS_{A*B} = SS_{between}-SS_{A}-SS_{B}$
+
 :::
 
-::: {.column width="50%"}
+::: {.column .smallest style="margin-top: 3em;"}
+
 $df_{total} = N-1$  
 $df_{within} = N-k$  
 $df_{between} = k-1$  
 $df_{A} = k_A-1$  
 $df_{B} = k_B-1$  
 $df_{A*B} = df_{between}-df_A-df_B$
+
 :::
 
-::::
+:::: 
+
+
+<!-- ## Equations -->
+
+<!-- :::: {.columns} -->
+
+<!-- ::: {.column width="50%"} -->
+<!-- $SS_{total} = \Sigma X^2 - \dfrac{G^2}{N}$   -->
+<!-- $SS_{within} = \Sigma SS_{within \ each \ treatment}$   -->
+<!-- $SS_{between} = \Sigma \dfrac{T^2}{n} - \dfrac{G^2}{N}$   -->
+<!-- $SS_{A} = \Sigma \dfrac{T^2_{col}}{n_{col}} - \dfrac{G^2}{N}$   -->
+<!-- $SS_{B} = \Sigma \dfrac{T^2_{row}}{n_{row}} - \dfrac{G^2}{N}$   -->
+<!-- $SS_{A*B} = SS_{between}-SS_{A}-SS_{B}$ -->
+<!-- ::: -->
+
+<!-- ::: {.column width="50%"} -->
+<!-- $df_{total} = N-1$   -->
+<!-- $df_{within} = N-k$   -->
+<!-- $df_{between} = k-1$   -->
+<!-- $df_{A} = k_A-1$   -->
+<!-- $df_{B} = k_B-1$   -->
+<!-- $df_{A*B} = df_{between}-df_A-df_B$ -->
+<!-- ::: -->
+
+<!-- :::: -->
 
 ## Summary table
+
+```{r}
+#| style: "width: 100%;"
+
+s_tab <- data.frame(Source = c("Between treatments",
+                               "&nbsp;&nbsp;&nbsp;Between subjects",
+                               "&nbsp;&nbsp;&nbsp;Between subjects",
+                               "&nbsp;&nbsp;&nbsp;Error",
+                               "Within treatments",
+                               "Total"),
+                    SS = c("","","","","",""),
+                    df = c("","","","","",""),
+                    MS = c("","","","","",""),
+                    F = c("","","","","",""))
+
+knitr::kable(s_tab, format = 'html', escape = FALSE,
+             col.names = c("Source", "\\(SS\\)", "\\(df\\)", "\\(MS\\)", "\\(F\\)")) |> 
+  kableExtra::column_spec(1, width = "10em") |> 
+  kableExtra::column_spec(2:5, width = "2em")
+```
 
 # Hypothesis test
 
 ## Step 1. Hypotheses
 
 ```{r}
+#| style: "font-size: 0.7em;"
 table_scores
 ```
 
+::: {style="font-size: 0.6em;"}
 - Main effect of Snack Type
     - $H_0$: $\mu_{banana} = \mu_{candy}$
     - $H_1$: $\mu_{banana} \ne \mu_{candy}$
@@ -176,27 +374,61 @@ table_scores
 - Snack * Test interaction
     - $H_0$: No interaction
     - $H_1$: There is an interaction
+:::
 
-
-## Step 2. Critical region
+## Step 2. Critical region {.smaller}
 
 - Step 2. Critical region
   - Numerators: $df_{A} = k_A-1 = 1 \\ df_{B} = k_B-1 = 1 \\ df_{A*B} = k-1 - df_A - df_B = 1$
   - Denominator: $df_{within} = N-k  = `r a$N - a$k`$
 
+```{r}
+#| style: "font-size: 0.6em;"
+options(digits = 3)
+
+dfs <- setNames(5:15, 5:15)
+
+aov_tab <- purrr::map_df(.x = dfs, ~qf(.95, df1 = 1:10, df2 = .x)) |> 
+  t() |>
+  as.data.frame() |>
+  setNames(1:10) |>
+  tibble::rownames_to_column(var = "df_denominator")
+
+
+knitr::kable(aov_tab, format = "html", escape=FALSE, align = "c", digits = 3,
+               col.names = c("\\(df_{denominator}\\)", 1:10)) |>
+  kableExtra::add_header_above(c("\\(\\alpha = .05\\)", "\\(df_{numerator}\\)" = 10), escape=FALSE, align = "left")
+
+options(digits = 2)
+```
 
 ## Step 3. Calculations
 
 :::: {.columns}
-::: {.column width="70%"}
+::: {.column width="60%"}
 ```{r}
 #| style: "font-size: 0.6em; margin-top: 1em;"
 
 table_summary
 ```
+
+::: {style="margin-left: 7em; font-size: 0.8em;"}
+$T_{col}$  [$53$]{style="margin-left: 2em;"} [$38$]{style="margin-left: 4em;"}
+:::
 :::
 
-::: {.column style="width: 30%; font-size: 0.8em;"}
+::: {.column style="width: 20%; font-size: 0.8em;"}
+
+::: {style="margin-top: 0.8em; padding-top: 1em; height: 2em; display: flex; flex-direction: column; justify-content: space-between;"}
+$T_{row}$
+
+$49$
+
+$42$
+:::
+:::
+
+::: {.column style="width: 20%; font-size: 0.8em;"}
 $N = `r a$N`$  
 $n = `r a$n`$  
 $k = `r a$k`$  
@@ -207,6 +439,7 @@ $\Sigma X^2 = `r a$sigma_x_sq`$
 :::
 ::::
 
+::: {style="font-size: 0.8em;"}
 $$\begin{align}
 df_{total} &= N-1 = `r a$N - 1` \\
 df_{within} &= N-k  = `r a$N - a$k` \\
@@ -215,20 +448,35 @@ df_{A} &= k_A-1  = `r a$df_a`\\
 df_{B} &= k_B-1  = `r a$df_b`\\
 df_{A*B} &= df_{between} - df_A - df_B  = `r a$df_ab`\\
 \end{align}$$
-
+:::
 
 ## Step 3. Calculations
 
 :::: {.columns}
-::: {.column width="70%"}
+::: {.column width="60%"}
 ```{r}
 #| style: "font-size: 0.6em; margin-top: 1em;"
 
 table_summary
 ```
+
+::: {style="margin-left: 7em; font-size: 0.8em;"}
+$T_{col}$  [$53$]{style="margin-left: 2em;"} [$38$]{style="margin-left: 4em;"}
+:::
 :::
 
-::: {.column style="width: 30%; font-size: 0.8em;"}
+::: {.column style="width: 20%; font-size: 0.8em;"}
+
+::: {style="margin-top: 0.8em; padding-top: 1em; height: 2em; display: flex; flex-direction: column; justify-content: space-between;"}
+$T_{row}$
+
+$49$
+
+$42$
+:::
+:::
+
+::: {.column style="width: 20%; font-size: 0.8em;"}
 $N = `r a$N`$  
 $n = `r a$n`$  
 $k = `r a$k`$  
@@ -239,25 +487,41 @@ $\Sigma X^2 = `r a$sigma_x_sq`$
 :::
 ::::
 
+::: {style="font-size: 0.8em;"}
 $$\begin{align}
 SS_{total} &= \Sigma X^2 - \dfrac{G^2}{N} = `r a$ss_total`\\
 SS_{within} &= \Sigma SS_{within \ each \ treatment} = `r a$ss_within`\\
 SS_{between} &= \Sigma \dfrac{T^2}{n} - \dfrac{G^2}{N} = `r a$ss_between` \\
 \end{align}$$
-
+:::
 
 ## Step 3. Calculations
 
 :::: {.columns}
-::: {.column width="70%"}
+::: {.column width="60%"}
 ```{r}
 #| style: "font-size: 0.6em; margin-top: 1em;"
 
 table_summary
 ```
+
+::: {style="margin-left: 7em; font-size: 0.8em;"}
+$T_{col}$  [$53$]{style="margin-left: 2em;"} [$38$]{style="margin-left: 4em;"}
+:::
 :::
 
-::: {.column style="width: 30%; font-size: 0.8em;"}
+::: {.column style="width: 20%; font-size: 0.8em;"}
+
+::: {style="margin-top: 0.8em; padding-top: 1em; height: 2em; display: flex; flex-direction: column; justify-content: space-between;"}
+$T_{row}$
+
+$49$
+
+$42$
+:::
+:::
+
+::: {.column style="width: 20%; font-size: 0.8em;"}
 $N = `r a$N`$  
 $n = `r a$n`$  
 $k = `r a$k`$  
@@ -268,25 +532,41 @@ $\Sigma X^2 = `r a$sigma_x_sq`$
 :::
 ::::
 
+::: {style="font-size: 0.8em;"}
 $$\begin{align}
 SS_{A} &= \Sigma \dfrac{T^2_{col}}{n_{col}} - \dfrac{G^2}{N} = `r a$ss_a`\\
 SS_{B} &= \Sigma \dfrac{T^2_{row}}{n_{row}} - \dfrac{G^2}{N} = `r a$ss_b`\\
 SS_{A*B} &= \Sigma SS_{between}-SS_A - SS_B = `r a$ss_ab`
 \end{align}$$
-
+:::
 
 ## Step 3. Calculations
 
 :::: {.columns}
-::: {.column width="70%"}
+::: {.column width="60%"}
 ```{r}
 #| style: "font-size: 0.6em; margin-top: 1em;"
 
 table_summary
 ```
+
+::: {style="margin-left: 7em; font-size: 0.8em;"}
+$T_{col}$  [$53$]{style="margin-left: 2em;"} [$38$]{style="margin-left: 4em;"}
+:::
 :::
 
-::: {.column style="width: 30%; font-size: 0.8em;"}
+::: {.column style="width: 20%; font-size: 0.8em;"}
+
+::: {style="margin-top: 0.8em; padding-top: 1em; height: 2em; display: flex; flex-direction: column; justify-content: space-between;"}
+$T_{row}$
+
+$49$
+
+$42$
+:::
+:::
+
+::: {.column style="width: 20%; font-size: 0.8em;"}
 $N = `r a$N`$  
 $n = `r a$n`$  
 $k = `r a$k`$  
@@ -297,7 +577,7 @@ $\Sigma X^2 = `r a$sigma_x_sq`$
 :::
 ::::
 
-::: {.center-element}
+::: {.center-element style="font-size: 0.8em;"}
 $MS_{A} = \dfrac{SS_{A}}{df_{A}} = `r a$ms_a` \ \ \ \ \ \ \ \ MS_{B} = \dfrac{SS_{B}}{df_{B}} = `r a$ms_b`$
 
 $MS_{A*B} = \dfrac{SS_{A*B}}{df_{A*B}} = `r a$ms_ab`$
@@ -308,15 +588,30 @@ $MS_{within} = \dfrac{SS_{within}}{df_{within}} = `r a$ms_within`$
 ## Step 3. Calculations
 
 :::: {.columns}
-::: {.column width="70%"}
+::: {.column width="60%"}
 ```{r}
 #| style: "font-size: 0.6em; margin-top: 1em;"
 
 table_summary
 ```
+
+::: {style="margin-left: 7em; font-size: 0.8em;"}
+$T_{col}$  [$53$]{style="margin-left: 2em;"} [$38$]{style="margin-left: 4em;"}
+:::
 :::
 
-::: {.column style="width: 30%; font-size: 0.8em;"}
+::: {.column style="width: 20%; font-size: 0.8em;"}
+
+::: {style="margin-top: 0.8em; padding-top: 1em; height: 2em; display: flex; flex-direction: column; justify-content: space-between;"}
+$T_{row}$
+
+$49$
+
+$42$
+:::
+:::
+
+::: {.column style="width: 20%; font-size: 0.8em;"}
 $N = `r a$N`$  
 $n = `r a$n`$  
 $k = `r a$k`$  
@@ -327,7 +622,7 @@ $\Sigma X^2 = `r a$sigma_x_sq`$
 :::
 ::::
 
-::: {.center-element}
+::: {.center-element style="font-size: 0.8em;"}
 $F_A = \dfrac{MS_{A}}{MS_{within}} = `r a$f_a`$
 
 $F_B = \dfrac{MS_{B}}{MS_{within}} = `r a$f_b`$
@@ -335,6 +630,51 @@ $F_B = \dfrac{MS_{B}}{MS_{within}} = `r a$f_b`$
 $F_{A*B} = \dfrac{MS_{A*B}}{MS_{within}} = `r a$f_ab`$
 :::
 
+
+## Step 4a. Decision
+
+- For each $F$-ratio, reject or fail to reject $H_0$
+  - Compare calculated $F$ to corresponding $F_{critical}$
+
+![](media/2x2-snack-test-example-plot.svg){.invertable}
+
+## Step 4b. Effect size
+
+```{r}
+eta_a <-  a$ss_a / (a$ss_total - a$ss_b - a$ss_ab)
+eta_b <-  a$ss_b / (a$ss_total - a$ss_a - a$ss_ab)
+eta_ab <- a$ss_ab / (a$ss_total - a$ss_a - a$ss_b)
+```
+
+- $\eta^2_{partial}$
+  - Percentage of variability not explained by other factors
+  - Separate effect size for each $F$-ratio  
+
+::: {.center-element}
+$\eta^2_A = \dfrac{SS_A}{SS_{total}-SS_{B} - SS_{A*B}} = `r eta_a`$
+
+$\eta^2_B = \dfrac{SS_B}{SS_{total}-SS_{A} - SS_{A*B}} = `r eta_b`$
+
+$\eta^2_{A*B} = \dfrac{SS_{A*B}}{SS_{total}-SS_{A} - SS_{B}} = `r eta_ab`$
+:::
+
+
+## Step 5. Report results
+
+- Descriptives (usually in a table or graph)
+- Results of hypothesis test for all three tests
+
+:::: {.columns}
+
+::: {.column style="font-size: 0.5em;"}
+> To examine the influence of snack and test type on performance, a 2-factor ANOVA was conducted with test scores as the dependent variable and Snack Type and Test Type as between-participants independent variables. There was no significant main effect of Test Type $(F (1, 12) = 4.74$, $p > .05)$. There was, however, significant main effect of Snack Type $(F (1, 12) = 21.77$, $p < .05$, $\eta^2 = .64)$; overall, performance was superior in the Banana condition. Moreover, there was a significant interaction between Snack Type and Test Type $(F (1, 12) = 34.94$, $p < .05$, $\eta^2 = .74)$; performance on the math test was affected by snack type to a greater extent than performance on the reaction time test. The pattern of means and standard deviations is shown in Table 1. Trends are illustrated in Figure 1.
+:::
+
+::: {.column}
+![Figure 1. Test performance by snack and test type](media/2x2-snack-test-example-plot.svg){.invertable}
+:::
+
+::::
 
 # Interpretation
 
@@ -427,6 +767,31 @@ bc1101tools::plot_save("18_factorial-ANOVA.svg",
                        width = 10, height = 5)
 
 ```
+
+## 2x2 for snack * test type
+
+```{r}
+#| eval: false
+
+library(ggplot2)
+library(dplyr)
+
+df |> 
+  summarize(mean = mean(DV), .by = c(A, B)) |> 
+  ggplot(aes(x = factor(A), y = mean, group = factor(B), linetype = factor(B))) +
+  geom_line() +
+  geom_point() +
+  scale_x_discrete(labels = c("Banana", "Candy")) +
+  scale_linetype(labels = c("Math", "Reaction time")) +
+  labs(x = "Snack type", y = "Test score", linetype = "Test type") +
+  bc1101tools::theme_bc1101() +
+  theme(legend.key = element_rect(fill = NA),
+        legend.background = element_rect(fill = NA),
+        legend.box.background = element_rect(fill = NA, color = NA))
+
+bc1101tools::plot_save("2x2-snack-test-example-plot.svg")
+```
+
 
 ## Generic 2x2 graphs
 

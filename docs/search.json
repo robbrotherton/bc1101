@@ -1782,21 +1782,21 @@
     "href": "slides/18_factorial-ANOVA.html#logic-1",
     "title": "PSYC BC1101",
     "section": "Logic",
-    "text": "Logic\n\n\n\n\n    \n        \n            \n            Factor A\n        \n        \n\n            \\(A_1\\)\\(A_2\\)\n        \n    \n    \n        \n            Factor B\n            \\(B_1\\)\n            \\(A_1 B_1\\)\\(A_2 B_1\\)\n        \n        \n            \\(B_2\\)\n            \\(A_2 B_1\\)\\(A_2 B_2\\)\n        \n    \n\n\n\n\n\nThree hypotheses tested by three \\(F\\)-ratios\n\nMain effect of Factor A\nMain effect of Factor B\nInteraction between A and B\n\nEach tested with same basic \\(F\\)-ratio structure\n\n\\(F = \\dfrac{\\textrm{variance between treatments}}{\\textrm{variance expected with no treatment effect}}\\)"
+    "text": "Logic\n\n\n\n\n\n\nFactor A\n\n\n\\(A_1\\)\n\\(A_2\\)\n\n\n\n\nFactor B\n\\(B_1\\)\n\\(A_1 B_1\\)\n\\(A_2 B_1\\)\n\n\n\\(B_2\\)\n\\(A_2 B_1\\)\n\\(A_2 B_2\\)\n\n\n\n\n\n\n\n\nThree hypotheses tested by three \\(F\\)-ratios\n\nMain effect of Factor A\nMain effect of Factor B\nInteraction between A and B"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#partitioning-variance",
     "href": "slides/18_factorial-ANOVA.html#partitioning-variance",
     "title": "PSYC BC1101",
     "section": "Partitioning variance",
-    "text": "Partitioning variance\n\n\nTotal variance\n\n\nVariance between treatments\n\\(MS_{between \\ treatments}\\)\n\n\nVariance within groups\n\\(MS_{within}\\)\n\n\nFactor A\n\\(MS_{A}\\)\n\n\nFactor B\n\\(MS_{B}\\)\n\n\nInteraction\n\\(MS_{A*B}\\)"
+    "text": "Partitioning variance\n\n\n\nTotal variance\n\n\nVariance between treatments\n\\(MS_{between \\ treatments}\\)\n\n\nVariance within groups\n\\(MS_{within}\\)\n\n\n\nFactor A\n\\(MS_{A}\\)\n\n\nFactor B\n\\(MS_{B}\\)\n\n\nInteraction\n\\(MS_{A*B}\\)"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#example-data",
     "href": "slides/18_factorial-ANOVA.html#example-data",
     "title": "PSYC BC1101",
     "section": "Example data",
-    "text": "Example data\n\n\n\n\n    \n        \n            \n            Snack\n        \n        \n\n            BananaCandy\n        \n    \n    \n        \n            Test\n            Math\n            7, 9, 8, 95, 4, 6, 5\n        \n        \n            Reaction time\n            5, 3, 4, 46, 6, 5, 5"
+    "text": "Example data\n\n\n\n\n\n\nSnack\n\n\nBanana\nCandy\n\n\n\n\nTest\nMath\n7, 9, 8, 9\n5, 4, 6, 5\n\n\nReaction time\n5, 3, 4, 4\n6, 6, 5, 5"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#equations",
@@ -1810,56 +1810,56 @@
     "href": "slides/18_factorial-ANOVA.html#summary-table",
     "title": "PSYC BC1101",
     "section": "Summary table",
-    "text": "Summary table"
+    "text": "Summary table\n\n\n\n\n\nSource\n\\(SS\\)\n\\(df\\)\n\\(MS\\)\n\\(F\\)\n\n\n\n\nBetween treatments\n\n\n\n\n\n\n   Between subjects\n\n\n\n\n\n\n   Between subjects\n\n\n\n\n\n\n   Error\n\n\n\n\n\n\nWithin treatments\n\n\n\n\n\n\nTotal"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-1.-hypotheses",
     "href": "slides/18_factorial-ANOVA.html#step-1.-hypotheses",
     "title": "PSYC BC1101",
     "section": "Step 1. Hypotheses",
-    "text": "Step 1. Hypotheses\n\n\n\n\n    \n        \n            \n            Snack\n        \n        \n\n            BananaCandy\n        \n    \n    \n        \n            Test\n            Math\n            7, 9, 8, 95, 4, 6, 5\n        \n        \n            Reaction time\n            5, 3, 4, 46, 6, 5, 5\n        \n    \n\n\n\n\n\nMain effect of Snack Type\n\n\\(H_0\\): \\(\\mu_{banana} = \\mu_{candy}\\)\n\\(H_1\\): \\(\\mu_{banana} \\ne \\mu_{candy}\\)\n\nMain effect of Test Type\n\n\\(H_0\\): \\(\\mu_{math} = \\mu_{RT}\\)\n\\(H_1\\): \\(\\mu_{math} \\ne \\mu_{RT}\\)\n\nSnack * Test interaction\n\n\\(H_0\\): No interaction\n\\(H_1\\): There is an interaction"
+    "text": "Step 1. Hypotheses\n\n\n\n\n\n\nSnack\n\n\nBanana\nCandy\n\n\n\n\nTest\nMath\n7, 9, 8, 9\n5, 4, 6, 5\n\n\nReaction time\n5, 3, 4, 4\n6, 6, 5, 5\n\n\n\n\n\n\n\n\n\nMain effect of Snack Type\n\n\\(H_0\\): \\(\\mu_{banana} = \\mu_{candy}\\)\n\\(H_1\\): \\(\\mu_{banana} \\ne \\mu_{candy}\\)\n\nMain effect of Test Type\n\n\\(H_0\\): \\(\\mu_{math} = \\mu_{RT}\\)\n\\(H_1\\): \\(\\mu_{math} \\ne \\mu_{RT}\\)\n\nSnack * Test interaction\n\n\\(H_0\\): No interaction\n\\(H_1\\): There is an interaction"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-2.-critical-region",
     "href": "slides/18_factorial-ANOVA.html#step-2.-critical-region",
     "title": "PSYC BC1101",
     "section": "Step 2. Critical region",
-    "text": "Step 2. Critical region\n\nStep 2. Critical region\n\nNumerators: \\(df_{A} = k_A-1 = 1 \\\\ df_{B} = k_B-1 = 1 \\\\ df_{A*B} = k-1 - df_A - df_B = 1\\)\nDenominator: \\(df_{within} = N-k = 12\\)"
+    "text": "Step 2. Critical region\n\nStep 2. Critical region\n\nNumerators: \\(df_{A} = k_A-1 = 1 \\\\ df_{B} = k_B-1 = 1 \\\\ df_{A*B} = k-1 - df_A - df_B = 1\\)\nDenominator: \\(df_{within} = N-k = 12\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\alpha = .05\\)\n\n\n\\(df_{numerator}\\)\n\n\n\n\\(df_{denominator}\\)\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\n5\n6.61\n5.79\n5.41\n5.19\n5.05\n4.95\n4.88\n4.82\n4.77\n4.74\n\n\n6\n5.99\n5.14\n4.76\n4.53\n4.39\n4.28\n4.21\n4.15\n4.10\n4.06\n\n\n7\n5.59\n4.74\n4.35\n4.12\n3.97\n3.87\n3.79\n3.73\n3.68\n3.64\n\n\n8\n5.32\n4.46\n4.07\n3.84\n3.69\n3.58\n3.50\n3.44\n3.39\n3.35\n\n\n9\n5.12\n4.26\n3.86\n3.63\n3.48\n3.37\n3.29\n3.23\n3.18\n3.14\n\n\n10\n4.96\n4.10\n3.71\n3.48\n3.33\n3.22\n3.13\n3.07\n3.02\n2.98\n\n\n11\n4.84\n3.98\n3.59\n3.36\n3.20\n3.10\n3.01\n2.95\n2.90\n2.85\n\n\n12\n4.75\n3.88\n3.49\n3.26\n3.11\n3.00\n2.91\n2.85\n2.80\n2.75\n\n\n13\n4.67\n3.81\n3.41\n3.18\n3.02\n2.92\n2.83\n2.77\n2.71\n2.67\n\n\n14\n4.60\n3.74\n3.34\n3.11\n2.96\n2.85\n2.76\n2.70\n2.65\n2.60\n\n\n15\n4.54\n3.68\n3.29\n3.06\n2.90\n2.79\n2.71\n2.64\n2.59\n2.54"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-3.-calculations",
     "href": "slides/18_factorial-ANOVA.html#step-3.-calculations",
     "title": "PSYC BC1101",
     "section": "Step 3. Calculations",
-    "text": "Step 3. Calculations\n\n\n\n\n\n\n    \n        \n            \n            Snack\n        \n        \n\n            BananaCandy\n        \n    \n    \n        \n            Test\n            Math\n            \\(T = 33\\)\\(SS = 2.75\\)\\(T = 16\\)\\(SS = 2\\)\n        \n        \n            Reaction time\n            \\(T = 20\\)\\(SS = 2\\)\\(T = 22\\)\\(SS = 1\\)\n        \n    \n\n\n\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\\[\\begin{align}\ndf_{total} &= N-1 = 15 \\\\\ndf_{within} &= N-k  = 12 \\\\\ndf_{between} &= k-1  = 3\\\\\ndf_{A} &= k_A-1  = 1\\\\\ndf_{B} &= k_B-1  = 1\\\\\ndf_{A*B} &= df_{between} - df_A - df_B  = 1\\\\\n\\end{align}\\]"
+    "text": "Step 3. Calculations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSnack\n\n\nBanana\nCandy\n\n\n\n\nTest\nMath\n\\(T = 33\\)\n\\(SS = 2.75\\)\n\\(T = 16\\)\n\\(SS = 2\\)\n\n\nReaction time\n\\(T = 20\\)\n\\(SS = 2\\)\n\\(T = 22\\)\n\\(SS = 1\\)\n\n\n\n\n\n\n\n\n\\(T_{col}\\) \\(53\\) \\(38\\)\n\n\n\n\\(T_{row}\\)\n\\(49\\)\n\\(42\\)\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\n\\[\\begin{align}\ndf_{total} &= N-1 = 15 \\\\\ndf_{within} &= N-k  = 12 \\\\\ndf_{between} &= k-1  = 3\\\\\ndf_{A} &= k_A-1  = 1\\\\\ndf_{B} &= k_B-1  = 1\\\\\ndf_{A*B} &= df_{between} - df_A - df_B  = 1\\\\\n\\end{align}\\]"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-3.-calculations-1",
     "href": "slides/18_factorial-ANOVA.html#step-3.-calculations-1",
     "title": "PSYC BC1101",
     "section": "Step 3. Calculations",
-    "text": "Step 3. Calculations\n\n\n\n\n\n\n    \n        \n            \n            Snack\n        \n        \n\n            BananaCandy\n        \n    \n    \n        \n            Test\n            Math\n            \\(T = 33\\)\\(SS = 2.75\\)\\(T = 16\\)\\(SS = 2\\)\n        \n        \n            Reaction time\n            \\(T = 20\\)\\(SS = 2\\)\\(T = 22\\)\\(SS = 1\\)\n        \n    \n\n\n\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\\[\\begin{align}\nSS_{total} &= \\Sigma X^2 - \\dfrac{G^2}{N} = 47.44\\\\\nSS_{within} &= \\Sigma SS_{within \\ each \\ treatment} = 7.75\\\\\nSS_{between} &= \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N} = 39.69 \\\\\n\\end{align}\\]"
+    "text": "Step 3. Calculations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSnack\n\n\nBanana\nCandy\n\n\n\n\nTest\nMath\n\\(T = 33\\)\n\\(SS = 2.75\\)\n\\(T = 16\\)\n\\(SS = 2\\)\n\n\nReaction time\n\\(T = 20\\)\n\\(SS = 2\\)\n\\(T = 22\\)\n\\(SS = 1\\)\n\n\n\n\n\n\n\n\n\\(T_{col}\\) \\(53\\) \\(38\\)\n\n\n\n\\(T_{row}\\)\n\\(49\\)\n\\(42\\)\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\n\\[\\begin{align}\nSS_{total} &= \\Sigma X^2 - \\dfrac{G^2}{N} = 47.44\\\\\nSS_{within} &= \\Sigma SS_{within \\ each \\ treatment} = 7.75\\\\\nSS_{between} &= \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N} = 39.69 \\\\\n\\end{align}\\]"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-3.-calculations-2",
     "href": "slides/18_factorial-ANOVA.html#step-3.-calculations-2",
     "title": "PSYC BC1101",
     "section": "Step 3. Calculations",
-    "text": "Step 3. Calculations\n\n\n\n\n\n\n    \n        \n            \n            Snack\n        \n        \n\n            BananaCandy\n        \n    \n    \n        \n            Test\n            Math\n            \\(T = 33\\)\\(SS = 2.75\\)\\(T = 16\\)\\(SS = 2\\)\n        \n        \n            Reaction time\n            \\(T = 20\\)\\(SS = 2\\)\\(T = 22\\)\\(SS = 1\\)\n        \n    \n\n\n\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\\[\\begin{align}\nSS_{A} &= \\Sigma \\dfrac{T^2_{col}}{n_{col}} - \\dfrac{G^2}{N} = 14.06\\\\\nSS_{B} &= \\Sigma \\dfrac{T^2_{row}}{n_{row}} - \\dfrac{G^2}{N} = 3.06\\\\\nSS_{A*B} &= \\Sigma SS_{between}-SS_A - SS_B = 22.56\n\\end{align}\\]"
+    "text": "Step 3. Calculations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSnack\n\n\nBanana\nCandy\n\n\n\n\nTest\nMath\n\\(T = 33\\)\n\\(SS = 2.75\\)\n\\(T = 16\\)\n\\(SS = 2\\)\n\n\nReaction time\n\\(T = 20\\)\n\\(SS = 2\\)\n\\(T = 22\\)\n\\(SS = 1\\)\n\n\n\n\n\n\n\n\n\\(T_{col}\\) \\(53\\) \\(38\\)\n\n\n\n\\(T_{row}\\)\n\\(49\\)\n\\(42\\)\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\n\\[\\begin{align}\nSS_{A} &= \\Sigma \\dfrac{T^2_{col}}{n_{col}} - \\dfrac{G^2}{N} = 14.06\\\\\nSS_{B} &= \\Sigma \\dfrac{T^2_{row}}{n_{row}} - \\dfrac{G^2}{N} = 3.06\\\\\nSS_{A*B} &= \\Sigma SS_{between}-SS_A - SS_B = 22.56\n\\end{align}\\]"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-3.-calculations-3",
     "href": "slides/18_factorial-ANOVA.html#step-3.-calculations-3",
     "title": "PSYC BC1101",
     "section": "Step 3. Calculations",
-    "text": "Step 3. Calculations\n\n\n\n\n\n\n    \n        \n            \n            Snack\n        \n        \n\n            BananaCandy\n        \n    \n    \n        \n            Test\n            Math\n            \\(T = 33\\)\\(SS = 2.75\\)\\(T = 16\\)\\(SS = 2\\)\n        \n        \n            Reaction time\n            \\(T = 20\\)\\(SS = 2\\)\\(T = 22\\)\\(SS = 1\\)\n        \n    \n\n\n\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\n\\(MS_{A} = \\dfrac{SS_{A}}{df_{A}} = 14.06 \\ \\ \\ \\ \\ \\ \\ \\ MS_{B} = \\dfrac{SS_{B}}{df_{B}} = 3.06\\)\n\\(MS_{A*B} = \\dfrac{SS_{A*B}}{df_{A*B}} = 22.56\\)\n\\(MS_{within} = \\dfrac{SS_{within}}{df_{within}} = 0.65\\)"
+    "text": "Step 3. Calculations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSnack\n\n\nBanana\nCandy\n\n\n\n\nTest\nMath\n\\(T = 33\\)\n\\(SS = 2.75\\)\n\\(T = 16\\)\n\\(SS = 2\\)\n\n\nReaction time\n\\(T = 20\\)\n\\(SS = 2\\)\n\\(T = 22\\)\n\\(SS = 1\\)\n\n\n\n\n\n\n\n\n\\(T_{col}\\) \\(53\\) \\(38\\)\n\n\n\n\\(T_{row}\\)\n\\(49\\)\n\\(42\\)\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\n\\(MS_{A} = \\dfrac{SS_{A}}{df_{A}} = 14.06 \\ \\ \\ \\ \\ \\ \\ \\ MS_{B} = \\dfrac{SS_{B}}{df_{B}} = 3.06\\)\n\\(MS_{A*B} = \\dfrac{SS_{A*B}}{df_{A*B}} = 22.56\\)\n\\(MS_{within} = \\dfrac{SS_{within}}{df_{within}} = 0.65\\)"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-3.-calculations-4",
     "href": "slides/18_factorial-ANOVA.html#step-3.-calculations-4",
     "title": "PSYC BC1101",
     "section": "Step 3. Calculations",
-    "text": "Step 3. Calculations\n\n\n\n\n\n\n    \n        \n            \n            Snack\n        \n        \n\n            BananaCandy\n        \n    \n    \n        \n            Test\n            Math\n            \\(T = 33\\)\\(SS = 2.75\\)\\(T = 16\\)\\(SS = 2\\)\n        \n        \n            Reaction time\n            \\(T = 20\\)\\(SS = 2\\)\\(T = 22\\)\\(SS = 1\\)\n        \n    \n\n\n\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\n\\(F_A = \\dfrac{MS_{A}}{MS_{within}} = 21.77\\)\n\\(F_B = \\dfrac{MS_{B}}{MS_{within}} = 4.74\\)\n\\(F_{A*B} = \\dfrac{MS_{A*B}}{MS_{within}} = 34.94\\)"
+    "text": "Step 3. Calculations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSnack\n\n\nBanana\nCandy\n\n\n\n\nTest\nMath\n\\(T = 33\\)\n\\(SS = 2.75\\)\n\\(T = 16\\)\n\\(SS = 2\\)\n\n\nReaction time\n\\(T = 20\\)\n\\(SS = 2\\)\n\\(T = 22\\)\n\\(SS = 1\\)\n\n\n\n\n\n\n\n\n\\(T_{col}\\) \\(53\\) \\(38\\)\n\n\n\n\\(T_{row}\\)\n\\(49\\)\n\\(42\\)\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\n\\(F_A = \\dfrac{MS_{A}}{MS_{within}} = 21.77\\)\n\\(F_B = \\dfrac{MS_{B}}{MS_{within}} = 4.74\\)\n\\(F_{A*B} = \\dfrac{MS_{A*B}}{MS_{within}} = 34.94\\)"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#interpreting-interaction-graphs",
@@ -2294,5 +2294,61 @@
     "title": "PSYC BC1101",
     "section": "Calculations: \\(SS\\) and \\(df\\)",
     "text": "Calculations: \\(SS\\) and \\(df\\)\n\\[\\begin{align}\nSS_{total} &= \\Sigma X^2 - \\dfrac{G^2}{N} \\\\\nSS_{within} &= \\Sigma SS_{within \\ each \\ treatment} \\\\\nSS_{between \\ treatments} &= \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N} \\\\\nSS_{between \\ subjects} &= \\Sigma \\dfrac{P^2}{k} - \\dfrac{G^2}{N} \\\\\nSS_{error} &= SS_{within}-SS_{between \\ subjects}\n\\end{align}\\]\n\\[\\begin{align}\ndf_{total} &= N-1  \\\\\ndf_{within} &= N-k \\\\\ndf_{between \\ treatments} &= k-1 \\\\\ndf_{between \\ subjects} &= n-1 \\\\\ndf_{error} &= df_{within}-df_{between \\ subjects}\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#logic-2",
+    "href": "slides/18_factorial-ANOVA.html#logic-2",
+    "title": "PSYC BC1101",
+    "section": "Logic",
+    "text": "Logic\n\n\n\n\n\n\nFactor A\n\n\n\\(A_1\\)\n\\(A_2\\)\n\n\n\n\nFactor B\n\\(B_1\\)\n\\(A_1 B_1\\)\n\\(A_2 B_1\\)\n\n\n\\(B_2\\)\n\\(A_2 B_1\\)\n\\(A_2 B_2\\)\n\n\n\n\n\n\n\n\nThree hypotheses tested by three \\(F\\)-ratios\n\nEach tested with same basic \\(F\\)-ratio structure\n\n\n\n\\(F = \\dfrac{\\textrm{variance between treatments}}{\\textrm{variance expected with no treatment effect}}\\)"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#example",
+    "href": "slides/18_factorial-ANOVA.html#example",
+    "title": "PSYC BC1101",
+    "section": "Example",
+    "text": "Example"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#logic-3",
+    "href": "slides/18_factorial-ANOVA.html#logic-3",
+    "title": "PSYC BC1101",
+    "section": "Logic",
+    "text": "Logic\n\n\n\n\n\n\nFactor A\n\n\n\\(A_1\\)\n\\(A_2\\)\n\n\n\n\nFactor B\n\\(B_1\\)\n\\(A_1 B_1\\)\n\\(A_2 B_1\\)\n\n\n\\(B_2\\)\n\\(A_2 B_1\\)\n\\(A_2 B_2\\)"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#partitioning-variance-1",
+    "href": "slides/18_factorial-ANOVA.html#partitioning-variance-1",
+    "title": "PSYC BC1101",
+    "section": "Partitioning variance",
+    "text": "Partitioning variance\n\n\n\n\n\\(SS_{total}\\)\n\\(SS_{between}\\) \\(SS_{within}\\)\n\\(SS_A\\)     \\(SS_B\\)     \\(SS_{A*B}\\)\n\n\n\\(df_{total}\\)\n\\(df_{between}\\) \\(df_{within}\\)\n\\(df_A\\)       \\(df_B\\)       \\(df_{A*B}\\)\n\n\n\n\n\\(SS_{total} = \\Sigma X^2 - \\dfrac{G^2}{N}\\)\n\\(SS_{within} = \\Sigma SS_{within \\ each \\ treatment}\\)\n\\(SS_{between} = \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N}\\)\n\\(SS_{A} = \\Sigma \\dfrac{T^2_{col}}{n_{col}} - \\dfrac{G^2}{N}\\)\n\\(SS_{B} = \\Sigma \\dfrac{T^2_{row}}{n_{row}} - \\dfrac{G^2}{N}\\)\n\\(SS_{A*B} = SS_{between}-SS_{A}-SS_{B}\\)\n\n\\(df_{total} = N-1\\)\n\\(df_{within} = N-k\\)\n\\(df_{between} = k-1\\)\n\\(df_{A} = k_A-1\\)\n\\(df_{B} = k_B-1\\)\n\\(df_{A*B} = df_{between}-df_A-df_B\\)"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#step-4.-decision",
+    "href": "slides/18_factorial-ANOVA.html#step-4.-decision",
+    "title": "PSYC BC1101",
+    "section": "Step 4. Decision",
+    "text": "Step 4. Decision\n\nFor each \\(F\\)-ratio, reject or fail to reject \\(H_0\\)\n\nCompare calculated \\(F\\) to corresponding \\(F_{critical}\\)"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#step-4a.-decision",
+    "href": "slides/18_factorial-ANOVA.html#step-4a.-decision",
+    "title": "PSYC BC1101",
+    "section": "Step 4a. Decision",
+    "text": "Step 4a. Decision\n\nFor each \\(F\\)-ratio, reject or fail to reject \\(H_0\\)\n\nCompare calculated \\(F\\) to corresponding \\(F_{critical}\\)"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#step-4b.-effect-size",
+    "href": "slides/18_factorial-ANOVA.html#step-4b.-effect-size",
+    "title": "PSYC BC1101",
+    "section": "Step 4b. Effect size",
+    "text": "Step 4b. Effect size\n\n\\(\\eta^2_{partial}\\)\n\nPercentage of variability not explained by other factors\nSeparate effect size for each \\(F\\)-ratio\n\n\n\n\\(\\eta^2_A = \\dfrac{SS_A}{SS_{total}-SS_{B} - SS_{A*B}} = 0.64\\)\n\\(\\eta^2_B = \\dfrac{SS_B}{SS_{total}-SS_{A} - SS_{A*B}} = 0.28\\)\n\\(\\eta^2_{A*B} = \\dfrac{SS_{A*B}}{SS_{total}-SS_{A} - SS_{B}} = 0.74\\)"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#step-5.-report-results",
+    "href": "slides/18_factorial-ANOVA.html#step-5.-report-results",
+    "title": "PSYC BC1101",
+    "section": "Step 5. Report results",
+    "text": "Step 5. Report results\n\nDescriptives (usually in a table or graph)\nResults of hypothesis test for all three tests\n\n\n\n\nTo examine the influence of snack and test type on performance, a 2-factor ANOVA was conducted with test scores as the dependent variable and Snack Type and Test Type as between-participants independent variables. There was no significant main effect of Test Type \\((F (1, 12) = 4.74\\), \\(p &gt; .05)\\). There was, however, significant main effect of Snack Type \\((F (1, 12) = 21.77\\), \\(p &lt; .05\\), \\(\\eta^2 = .64)\\); overall, performance was superior in the Banana condition. Moreover, there was a significant interaction between Snack Type and Test Type \\((F (1, 12) = 34.94\\), \\(p &lt; .05\\), \\(\\eta^2 = .74)\\); performance on the math test was affected by snack type to a greater extent than performance on the reaction time test. The pattern of means and standard deviations is shown in Table 1. Trends are illustrated in Figure 1.\n\n\n\n\n\nFigure 1. Test performance by snack and test type"
   }
 ]
