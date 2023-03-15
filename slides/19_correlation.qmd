@@ -35,7 +35,7 @@ format: revealjs
   - A causes B
   - B causes A
   - Something else (C) causes A and B
-- Establishing causation requires experiments in which one variable is manipulated
+- Establishing causation requires experiments in which one variable is [manipulated]{.emph}
 
 ::: {.reference}
 Corley, J., et al. (2010). Caffeine consumption and cognitive function at age 70: The Lothian Birth Cohort 1936 study. *Psychosomatic medicine 72*(2), 206-214. <https://doi.org/10.1097/PSY.0b013e3181c92a9c>
