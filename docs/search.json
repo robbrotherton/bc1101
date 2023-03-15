@@ -1782,7 +1782,7 @@
     "href": "slides/18_factorial-ANOVA.html#logic-1",
     "title": "PSYC BC1101",
     "section": "Logic",
-    "text": "Logic\n\n\n\n\n\n\nFactor A\n\n\n\\(A_1\\)\n\\(A_2\\)\n\n\n\n\nFactor B\n\\(B_1\\)\n\\(A_1 B_1\\)\n\\(A_2 B_1\\)\n\n\n\\(B_2\\)\n\\(A_2 B_1\\)\n\\(A_2 B_2\\)\n\n\n\n\n\n\n\n\nThree hypotheses tested by three \\(F\\)-ratios\n\nMain effect of Factor A\nMain effect of Factor B\nInteraction between A and B"
+    "text": "Logic\n\n\n\n\n\n\nFactor A\n\n\n\\(A_1\\)\n\\(A_2\\)\n\n\n\n\nFactor B\n\\(B_1\\)\n\\(A_1 B_1\\)\n\\(A_2 B_1\\)\n\n\n\\(B_2\\)\n\\(A_1 B_2\\)\n\\(A_2 B_2\\)"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#partitioning-variance",
@@ -2300,7 +2300,7 @@
     "href": "slides/18_factorial-ANOVA.html#logic-2",
     "title": "PSYC BC1101",
     "section": "Logic",
-    "text": "Logic\n\n\n\n\n\n\nFactor A\n\n\n\\(A_1\\)\n\\(A_2\\)\n\n\n\n\nFactor B\n\\(B_1\\)\n\\(A_1 B_1\\)\n\\(A_2 B_1\\)\n\n\n\\(B_2\\)\n\\(A_2 B_1\\)\n\\(A_2 B_2\\)\n\n\n\n\n\n\n\n\nThree hypotheses tested by three \\(F\\)-ratios\n\nEach tested with same basic \\(F\\)-ratio structure\n\n\n\n\\(F = \\dfrac{\\textrm{variance between treatments}}{\\textrm{variance expected with no treatment effect}}\\)"
+    "text": "Logic\n\n\n\n\n\n\n\nFactor A\n\n\n\\(A_1\\)\n\\(A_2\\)\n\n\n\n\nFactor B\n\\(B_1\\)\n\\(A_1 B_1\\)\n\\(A_2 B_1\\)\n\n\n\\(B_2\\)\n\\(A_1 B_2\\)\n\\(A_2 B_2\\)\n\n\n\n\n\n\n\n\nThree hypotheses tested by three \\(F\\)-ratios\n\nMain effect of Factor \\(A\\)"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#example",
@@ -2314,7 +2314,7 @@
     "href": "slides/18_factorial-ANOVA.html#logic-3",
     "title": "PSYC BC1101",
     "section": "Logic",
-    "text": "Logic\n\n\n\n\n\n\nFactor A\n\n\n\\(A_1\\)\n\\(A_2\\)\n\n\n\n\nFactor B\n\\(B_1\\)\n\\(A_1 B_1\\)\n\\(A_2 B_1\\)\n\n\n\\(B_2\\)\n\\(A_2 B_1\\)\n\\(A_2 B_2\\)"
+    "text": "Logic\n\n\n\n\n\n\nFactor A\n\n\n\\(A_1\\)\n\\(A_2\\)\n\n\n\n\nFactor B\n\\(B_1\\)\n\\(A_1 B_1\\)\n\\(A_2 B_1\\)\n\n\n\\(B_2\\)\n\\(A_1 B_2\\)\n\\(A_2 B_2\\)\n\n\n\n\n\n\n\n\nThree hypotheses tested by three \\(F\\)-ratios\n\nMain effect of Factor \\(B\\)"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#partitioning-variance-1",
@@ -2350,5 +2350,19 @@
     "title": "PSYC BC1101",
     "section": "Step 5. Report results",
     "text": "Step 5. Report results\n\nDescriptives (usually in a table or graph)\nResults of hypothesis test for all three tests\n\n\n\n\nTo examine the influence of snack and test type on performance, a 2-factor ANOVA was conducted with test scores as the dependent variable and Snack Type and Test Type as between-participants independent variables. There was no significant main effect of Test Type \\((F (1, 12) = 4.74\\), \\(p &gt; .05)\\). There was, however, significant main effect of Snack Type \\((F (1, 12) = 21.77\\), \\(p &lt; .05\\), \\(\\eta^2 = .64)\\); overall, performance was superior in the Banana condition. Moreover, there was a significant interaction between Snack Type and Test Type \\((F (1, 12) = 34.94\\), \\(p &lt; .05\\), \\(\\eta^2 = .74)\\); performance on the math test was affected by snack type to a greater extent than performance on the reaction time test. The pattern of means and standard deviations is shown in Table 1. Trends are illustrated in Figure 1.\n\n\n\n\n\nFigure 1. Test performance by snack and test type"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#logic-4",
+    "href": "slides/18_factorial-ANOVA.html#logic-4",
+    "title": "PSYC BC1101",
+    "section": "Logic",
+    "text": "Logic\n\n\n\n\n\n\nFactor A\n\n\n\\(A_1\\)\n\\(A_2\\)\n\n\n\n\nFactor B\n\\(B_1\\)\n\\(A_1 B_1\\)\n\\(A_2 B_1\\)\n\n\n\\(B_2\\)\n\\(A_1 B_2\\)\n\\(A_2 B_2\\)\n\n\n\n\n\n\n\n\nThree hypotheses tested by three \\(F\\)-ratios\n\nInteraction between \\(A\\) and \\(B\\)"
+  },
+  {
+    "objectID": "slides/18_factorial-ANOVA.html#logic-5",
+    "href": "slides/18_factorial-ANOVA.html#logic-5",
+    "title": "PSYC BC1101",
+    "section": "Logic",
+    "text": "Logic\n\n\n\n\n\n\nFactor A\n\n\n\\(A_1\\)\n\\(A_2\\)\n\n\n\n\nFactor B\n\\(B_1\\)\n\\(A_1 B_1\\)\n\\(A_2 B_1\\)\n\n\n\\(B_2\\)\n\\(A_1 B_2\\)\n\\(A_2 B_2\\)\n\n\n\n\n\n\n\n\nThree hypotheses tested by three \\(F\\)-ratios\n\nEach tested with same basic \\(F\\)-ratio structure\n\n\n\n\\(F = \\dfrac{\\textrm{variance between treatments}}{\\textrm{variance expected with no treatment effect}}\\)"
   }
 ]

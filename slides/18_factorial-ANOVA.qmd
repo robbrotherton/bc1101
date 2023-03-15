@@ -1,5 +1,6 @@
 ---
 format: revealjs
+auto-animate-unmatched: false
 ---
 
 # 18|FACTORIAL ANOVA
@@ -73,23 +74,88 @@ table_summary <- bc1101tools::anova_2x2_table(
   - Can be manipulated between-participants or within-participants (or mixed-factorial design)
   - E.g. 2x2 between-participants ANOVA
 
+
 ## Logic
 
 ```{r}
-bc1101tools::anova_2x2_table()
+#| data-id: "tab"
+bc1101tools::anova_2x2_table(cell_values = c("\\(A_1 B_1\\)", 
+                                             "\\(A_2 B_1\\)",
+                                             "\\(A_1 B_2\\)", 
+                                             "\\(A_2 B_2\\)"))
+```
+
+
+
+## Logic
+
+<style>
+  .highlight-box {opacity: 0.5; position: absolute; z-index: -1;"}
+</style>
+
+```{r}
+#| data-id: "tab"
+bc1101tools::anova_2x2_table(cell_values = c("\\(A_1 B_1\\)", 
+                                             "\\(A_2 B_1\\)",
+                                             "\\(A_1 B_2\\)", 
+                                             "\\(A_2 B_2\\)"))
 ```
 
   
 - Three hypotheses tested by three $F$-ratios
-  1. Main effect of Factor A
-  2. Main effect of Factor B
-  3. Interaction between A and B
+  1. Main effect of Factor $A$
+
+
+[ ]{data-id="box1" .highlight-box style="background: red; left: 50%; top: 22.7%; width: 3em; height: 5.25em;"}
+[ ]{data-id="box2" .highlight-box style="background: dodgerblue; left: 64%; top: 22.7%; width: 3em; height: 5.25em;"}
+
 
 
 ## Logic
 
 ```{r}
-bc1101tools::anova_2x2_table()
+#| data-id: "tab"
+bc1101tools::anova_2x2_table(cell_values = c("\\(A_1 B_1\\)", 
+                                             "\\(A_2 B_1\\)",
+                                             "\\(A_1 B_2\\)", 
+                                             "\\(A_2 B_2\\)"))
+```
+
+  
+- Three hypotheses tested by three $F$-ratios
+  2. Main effect of Factor $B$
+
+
+[ ]{data-id="box1" .highlight-box style="background: red;  left: 41%; top: 32.8%; width: 9.3em; height: 1.7em;"}
+[ ]{data-id="box2" .highlight-box style="background: dodgerblue; left: 41%; top: 42.7%; width: 9.3em; height: 1.7em;"}
+
+## Logic
+
+```{r}
+#| data-id: "tab"
+bc1101tools::anova_2x2_table(cell_values = c("\\(A_1 B_1\\)", 
+                                             "\\(A_2 B_1\\)",
+                                             "\\(A_1 B_2\\)", 
+                                             "\\(A_2 B_2\\)"))
+```
+
+  
+- Three hypotheses tested by three $F$-ratios
+  3. Interaction between $A$ and $B$
+
+
+[ ]{.highlight-box style="background: tomato; left: 50%; top: 33.5%; width: 3em; height: 1.5em;"}
+[ ]{.highlight-box style="background: red; left: 64%; top: 43.3%; width: 3em; height: 1.5em;"}
+[ ]{.highlight-box style="background: dodgerblue; left: 64%; top: 33.5%; width: 3em; height: 1.5em;"}
+[ ]{.highlight-box style="background: blue; left: 50%; top: 43.3%; width: 3em; height: 1.5em;"}
+
+## Logic
+
+```{r}
+bc1101tools::anova_2x2_table(cell_values = c("\\(A_1 B_1\\)", 
+                                             "\\(A_2 B_1\\)",
+                                             "\\(A_1 B_2\\)", 
+                                             "\\(A_2 B_2\\)"))
 ```
 
   

@@ -372,7 +372,7 @@
 </section>
 <section id="logic-1" class="slide level2">
 <h2>Logic</h2>
-<div class="cell">
+<div class="cell" data-id="tab">
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead>
@@ -394,7 +394,44 @@
 </tr>
 <tr class="even">
 <td>\(B_2\)</td>
+<td>\(A_1 B_2\)</td>
+<td>\(A_2 B_2\)</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+<section id="logic-2" class="slide level2">
+<h2>Logic</h2>
+<style>
+  .highlight-box {opacity: 0.5; position: absolute; z-index: -1;"}
+</style>
+<div class="cell" data-id="tab">
+<div class="cell-output-display">
+<table data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th colspan="2" rowspan="2" style="text-align: center;" data-quarto-table-cell-role="th"></th>
+<th colspan="2" style="text-align: center;" data-quarto-table-cell-role="th">Factor A</th>
+</tr>
+<tr class="odd">
+<th style="text-align: center;" data-quarto-table-cell-role="th">\(A_1\)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">\(A_2\)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="2" style="text-align: center; vertical-align: middle;">Factor B</td>
+<td>\(B_1\)</td>
+<td>\(A_1 B_1\)</td>
 <td>\(A_2 B_1\)</td>
+</tr>
+<tr class="even">
+<td>\(B_2\)</td>
+<td>\(A_1 B_2\)</td>
 <td>\(A_2 B_2\)</td>
 </tr>
 </tbody>
@@ -406,13 +443,94 @@
 <ul>
 <li>Three hypotheses tested by three <span class="math inline">\(F\)</span>-ratios
 <ol type="1">
-<li>Main effect of Factor A</li>
-<li>Main effect of Factor B</li>
-<li>Interaction between A and B</li>
+<li>Main effect of Factor <span class="math inline">\(A\)</span></li>
 </ol></li>
 </ul>
+<p><span class="highlight-box" data-id="box1" style="background: red; left: 50%; top: 22.7%; width: 3em; height: 5.25em;"></span> <span class="highlight-box" data-id="box2" style="background: dodgerblue; left: 64%; top: 22.7%; width: 3em; height: 5.25em;"></span></p>
 </section>
-<section id="logic-2" class="slide level2">
+<section id="logic-3" class="slide level2">
+<h2>Logic</h2>
+<div class="cell" data-id="tab">
+<div class="cell-output-display">
+<table data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th colspan="2" rowspan="2" style="text-align: center;" data-quarto-table-cell-role="th"></th>
+<th colspan="2" style="text-align: center;" data-quarto-table-cell-role="th">Factor A</th>
+</tr>
+<tr class="odd">
+<th style="text-align: center;" data-quarto-table-cell-role="th">\(A_1\)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">\(A_2\)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="2" style="text-align: center; vertical-align: middle;">Factor B</td>
+<td>\(B_1\)</td>
+<td>\(A_1 B_1\)</td>
+<td>\(A_2 B_1\)</td>
+</tr>
+<tr class="even">
+<td>\(B_2\)</td>
+<td>\(A_1 B_2\)</td>
+<td>\(A_2 B_2\)</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<ul>
+<li>Three hypotheses tested by three <span class="math inline">\(F\)</span>-ratios
+<ol start="2" type="1">
+<li>Main effect of Factor <span class="math inline">\(B\)</span></li>
+</ol></li>
+</ul>
+<p><span class="highlight-box" data-id="box1" style="background: red;  left: 41%; top: 32.8%; width: 9.3em; height: 1.7em;"></span> <span class="highlight-box" data-id="box2" style="background: dodgerblue; left: 41%; top: 42.7%; width: 9.3em; height: 1.7em;"></span></p>
+</section>
+<section id="logic-4" class="slide level2">
+<h2>Logic</h2>
+<div class="cell" data-id="tab">
+<div class="cell-output-display">
+<table data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th colspan="2" rowspan="2" style="text-align: center;" data-quarto-table-cell-role="th"></th>
+<th colspan="2" style="text-align: center;" data-quarto-table-cell-role="th">Factor A</th>
+</tr>
+<tr class="odd">
+<th style="text-align: center;" data-quarto-table-cell-role="th">\(A_1\)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">\(A_2\)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="2" style="text-align: center; vertical-align: middle;">Factor B</td>
+<td>\(B_1\)</td>
+<td>\(A_1 B_1\)</td>
+<td>\(A_2 B_1\)</td>
+</tr>
+<tr class="even">
+<td>\(B_2\)</td>
+<td>\(A_1 B_2\)</td>
+<td>\(A_2 B_2\)</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<ul>
+<li>Three hypotheses tested by three <span class="math inline">\(F\)</span>-ratios
+<ol start="3" type="1">
+<li>Interaction between <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span></li>
+</ol></li>
+</ul>
+<p><span class="highlight-box" style="background: tomato; left: 50%; top: 33.5%; width: 3em; height: 1.5em;"></span> <span class="highlight-box" style="background: red; left: 64%; top: 43.3%; width: 3em; height: 1.5em;"></span> <span class="highlight-box" style="background: dodgerblue; left: 64%; top: 33.5%; width: 3em; height: 1.5em;"></span> <span class="highlight-box" style="background: blue; left: 50%; top: 43.3%; width: 3em; height: 1.5em;"></span></p>
+</section>
+<section id="logic-5" class="slide level2">
 <h2>Logic</h2>
 <div class="cell">
 <div class="cell-output-display">
@@ -436,7 +554,7 @@
 </tr>
 <tr class="even">
 <td>\(B_2\)</td>
-<td>\(A_2 B_1\)</td>
+<td>\(A_1 B_2\)</td>
 <td>\(A_2 B_2\)</td>
 </tr>
 </tbody>
@@ -1502,7 +1620,7 @@ SS_{A*B} &amp;= \Sigma SS_{between}-SS_A - SS_B = 22.56
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
-'autoAnimateUnmatched': true,
+'autoAnimateUnmatched': false,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"},{"title":"Source","icon":"<i class=\"fas fa-github-source\">","src":"../js/reveal-menu-github.html"}],"openButton":true},
 'chalkboard': {"buttons":true},
 'smaller': false,
