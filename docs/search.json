@@ -2117,8 +2117,8 @@
     "objectID": "slides-index.html#course-overview",
     "href": "slides-index.html#course-overview",
     "title": "Lectures",
-    "section": "1. Course Overview",
-    "text": "1. Course Overview\n\n\n17-Jan\n\n\n\n  \n    \n\n    \n\n    \n      \nTextbook\nLectures\nRecitation\nExams\nOther stuff\n\n    \n  \n\n  \nSlidesPanopto"
+    "section": "",
+    "text": "17-Jan\n\n\n\n  \n    \n\n    \n\n    \n      \nTextbook\nLectures\nRecitation\nExams\nOther stuff\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "slides-index.html#variables",
@@ -2364,5 +2364,12 @@
     "title": "PSYC BC1101",
     "section": "Logic",
     "text": "Logic\n\n\n\n\n\n\nFactor A\n\n\n\\(A_1\\)\n\\(A_2\\)\n\n\n\n\nFactor B\n\\(B_1\\)\n\\(A_1 B_1\\)\n\\(A_2 B_1\\)\n\n\n\\(B_2\\)\n\\(A_1 B_2\\)\n\\(A_2 B_2\\)\n\n\n\n\n\n\n\n\nThree hypotheses tested by three \\(F\\)-ratios\n\nEach tested with same basic \\(F\\)-ratio structure\n\n\n\n\\(F = \\dfrac{\\textrm{variance between treatments}}{\\textrm{variance expected with no treatment effect}}\\)"
+  },
+  {
+    "objectID": "slides-index.html",
+    "href": "slides-index.html",
+    "title": "Lectures",
+    "section": "",
+    "text": "17-Jan\n\n\n\n  \n    \n\n    \n\n    \n      \nTextbook\nLectures\nRecitation\nExams\nOther stuff\n\n    \n  \n\n  \nSlidesPanopto"
   }
 ]
