@@ -337,14 +337,15 @@
 <h1>Overview</h1>
 <ul>
 <li><a href="#/correlational-research-designs">Correlational research designs</a></li>
-<li><a href="#/calculating-pearsons-r">Calculating Pearson’s <span class="math inline">\(r\)</span></a></li>
-<li>[Hypothesis testing]</li>
+<li><a href="#/correlation-statistic">Correlation statistic</a></li>
+<li><a href="#/hypothesis-test">Hypothesis test</a></li>
+<li><a href="#/correlation-effect-size">Correlation &amp; effect size</a></li>
 <li><a href="#/learning-checks">Learning checks</a></li>
 </ul>
 </section>
 
 <section>
-<section id="correlational-research-designs" class="title-slide slide level1 center">
+<section id="correlational-research-designs" class="title-slide slide level1 smaller center">
 <h1>Correlational research designs</h1>
 <ul>
 <li>Correlational designs versus experimental designs
@@ -360,30 +361,38 @@
 <li>Class attendance &amp; final grades</li>
 </ul></li>
 </ul>
+<div class="r-hstack">
+<p><img data-src="media/correlation-income-happiness.svg" class="invertable" style="padding-right: 4em;"></p>
+<p><img data-src="media/correlation-practice-performance.svg" class="invertable" style="padding-right: 4em;"></p>
+<p><img data-src="media/correlation-absences-final-grade.svg" class="invertable"></p>
+</div>
 </section>
-<section id="limitations-of-correlation" class="slide level2">
+<section id="limitations-of-correlation" class="slide level2 small">
 <h2>Limitations of correlation</h2>
 <ul>
-<li>Correlations are not usually useful for:
+<li>Correlations are not usually useful for demonstrating <span class="emph">causation</span>
 <ul>
-<li>Demonstrating <span class="emph">causation</span></li>
+<li>Establishing causation requires experiments in which something is <span class="emph">manipulated</span></li>
 </ul></li>
+<li>E.g. coffee consumption &amp; intelligence
+<ul>
 <li>Perhaps…
 <ul>
 <li>A causes B</li>
 <li>B causes A</li>
 <li>Something else (C) causes A and B</li>
 </ul></li>
-<li>Establishing causation requires experiments in which one variable is manipulated</li>
+</ul></li>
 </ul>
 <div class="reference">
 <p>Corley, J., et al.&nbsp;(2010). Caffeine consumption and cognitive function at age 70: The Lothian Birth Cohort 1936 study. <em>Psychosomatic medicine 72</em>(2), 206-214. <a href="https://doi.org/10.1097/PSY.0b013e3181c92a9c" class="uri">https://doi.org/10.1097/PSY.0b013e3181c92a9c</a></p>
 </div>
-</section>
-<section id="correlation-statistic" class="slide level2 smaller">
-<h2>Correlation statistic</h2>
+</section></section>
+<section>
+<section id="correlation-statistic" class="title-slide slide level1 smaller center">
+<h1>Correlation statistic</h1>
 <ul>
-<li>Correlation statistic
+<li>Correlation coefficient
 <ul>
 <li>A number quantifying the association between two variables</li>
 </ul></li>
@@ -405,7 +414,61 @@
 <p><img data-src="media/correlation-perfect.svg" class="invertable"></p>
 </div>
 </section>
-<section id="pearsons-r" class="slide level2">
+<section id="logic" class="slide level2">
+<h2>Logic</h2>
+<div class="cell" data-opts.label="sp-table">
+
+</div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="cell" style="font-size: 0.7em; margin-top: 3em;">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Participant </th>
+   <th style="text-align:right;"> Sleep </th>
+   <th style="text-align:right;"> Score </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> C </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> D </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> E </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 9 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<p><img data-src="media/correlation-example.svg" class="invertable" style="width:100.0%"></p>
+</div>
+</div>
+</section>
+<section id="pearsons-r" class="slide level2 small">
 <h2>Pearson’s <span class="math inline">\(r\)</span></h2>
 <ul>
 <li>Most widely used correlation statistic
@@ -414,17 +477,16 @@
 </ul></li>
 <li>Variability &amp; covariability
 <ul>
-<li>Variability: How much each variable varies</li>
-<li>Covariability: How much <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> vary in tandem</li>
+<li><span class="emph">Variability</span>: How much each variable varies</li>
+<li><span class="emph">Covariability</span>: How much <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> vary in tandem</li>
 <li>Are changes in <span class="math inline">\(X\)</span> associated with corresponding changes in <span class="math inline">\(Y\)</span>?</li>
 <li>E.g. as <span class="math inline">\(X\)</span> increases, <span class="math inline">\(Y\)</span> tends to increase (positive)</li>
 <li>Or, as <span class="math inline">\(X\)</span> increases, <span class="math inline">\(Y\)</span> tends to decrease (negative)</li>
 </ul></li>
 </ul>
-</section></section>
-<section>
-<section id="calculating-pearsons-r" class="title-slide slide level1 center">
-<h1>Calculating Pearson’s <span class="math inline">\(r\)</span></h1>
+</section>
+<section id="pearsons-r-1" class="slide level2">
+<h2>Pearson’s <span class="math inline">\(r\)</span></h2>
 <p><span class="math inline">\(r = \dfrac{SP}{\sqrt{SS_X SS_Y}} = \dfrac{\textrm{covariability of X and Y}}{\textrm{variability of X and Y separately}}\)</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -436,42 +498,19 @@
 </ul></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<p><img data-src="media/correlation-perfect.svg" class="invertable"></p>
+<p><img data-src="media/correlation-perfect.svg" class="invertable" style="width:80.0%"></p>
 </div>
 </div>
-</section>
-<section id="pearsons-r-1" class="slide level2">
-<h2>Pearson’s <span class="math inline">\(r\)</span></h2>
-<ul>
-<li>Numerator: <span class="math inline">\(SP\)</span>
-<ul>
-<li>Sum of products (<span class="math inline">\(SP\)</span>) related to sum of squares (<span class="math inline">\(SS\)</span>)</li>
-<li><span class="math inline">\(SS\)</span>: multiplying deviations by themselves (squaring)</li>
-<li><span class="math inline">\(SP\)</span>: multiplying deviations by <span class="emph">one another</span></li>
-</ul></li>
-</ul>
-<div class="columns center-element">
-<div class="column" style="width:50%;">
-<p>Definitional formula</p>
-<p><span class="math inline">\(SP = \Sigma(X - M_X)(Y - M_Y)\)</span></p>
-</div><div class="column" style="width:50%;">
-<p>Computational formula</p>
-<p><span class="math inline">\(SP = \Sigma XY - \dfrac{\Sigma X \Sigma Y}{n}\)</span></p>
-</div>
-</div>
-</section>
-<section id="calculating" class="slide level2">
-<h2>Calculating</h2>
 </section></section>
 <section>
 <section id="hypothesis-test" class="title-slide slide level1 center">
 <h1>Hypothesis test</h1>
 
 </section>
-<section id="step-1.-state-hypotheses" class="slide level2">
+<section id="step-1.-state-hypotheses" class="slide level2 small">
 <h2>Step 1. State hypotheses</h2>
 <ul>
-<li><p>Correlation is computed for sample data</p></li>
+<li><p>Correlation coefficient <span class="math inline">\(r\)</span> is computed for sample data</p></li>
 <li><p>Hypotheses concerns relationship in the population</p></li>
 <li><p>Greek letter <span class="math inline">\(\rho\)</span> (rho) represents population correlation</p></li>
 <li><p>Non-directional:</p>
@@ -490,14 +529,14 @@
 <section id="step-2.-critical-region" class="slide level2">
 <h2>Step 2. Critical region</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:30%;">
 <ul>
 <li>Critical value for <span class="math inline">\(r\)</span> is a type of <span class="math inline">\(t\)</span> statistic
 <ul>
 <li><span class="math inline">\(df = n - 2\)</span></li>
 </ul></li>
 </ul>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:70%;">
 <div class="cell" style="font-size: 0.4em;">
 <div class="cell-output-display">
 
@@ -676,7 +715,9 @@
 </ul></li>
 </ul>
 <p>Definitional formula</p>
+<div style="margin-top: 2.2em;">
 <p><span class="math inline">\(SP = \Sigma(X - M_X)(Y - M_Y)\)</span></p>
+</div>
 </div><div class="column" style="width:50%;">
 <ul>
 <li>Denominator: Sum of Squares, <span class="math inline">\(SS\)</span>
@@ -694,7 +735,9 @@ SS &amp;= \Sigma(X - M_X)^2 \\
 <div class="columns center-element">
 <div class="column" style="width:50%;">
 <p>Computational formula</p>
+<div style="margin-top: 3.65em;">
 <p><span class="math inline">\(SP = \Sigma XY - \dfrac{\Sigma X \Sigma Y}{n}\)</span></p>
+</div>
 </div><div class="column" style="width:50%;">
 <p>Computational formula</p>
 <p><span class="math display">\[\begin{align}
@@ -706,9 +749,6 @@ SS &amp;= \Sigma X^2 - \dfrac{(\Sigma X)^2}{n}\\
 </section>
 <section id="calculating-r" class="slide level2">
 <h2>Calculating <span class="math inline">\(r\)</span></h2>
-<div class="cell" data-opts.label="sp-table">
-
-</div>
 <div class="cell sp-table scores-only">
 <div class="cell-output-display">
 
@@ -1025,6 +1065,73 @@ SS &amp;= \Sigma X^2 - \dfrac{(\Sigma X)^2}{n}\\
 </section>
 <section id="calculating-r-computation-approach" class="slide level2">
 <h2>Calculating <span class="math inline">\(r\)</span>: computation approach</h2>
+<div class="cell" style="font-size: 0.6em;">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> \(X\) </th>
+   <th style="text-align:right;"> \(X^2\) </th>
+   <th style="text-align:right;"> \(Y\) </th>
+   <th style="text-align:right;"> \(Y^2\) </th>
+   <th style="text-align:right;"> \(XY\) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;width: 8em; "> 4 </td>
+   <td style="text-align:right;width: 8em; "> 16 </td>
+   <td style="text-align:right;width: 8em; "> 5 </td>
+   <td style="text-align:right;width: 8em; "> 25 </td>
+   <td style="text-align:right;width: 8em; "> 20 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;width: 8em; "> 5 </td>
+   <td style="text-align:right;width: 8em; "> 25 </td>
+   <td style="text-align:right;width: 8em; "> 8 </td>
+   <td style="text-align:right;width: 8em; "> 64 </td>
+   <td style="text-align:right;width: 8em; "> 40 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;width: 8em; "> 7 </td>
+   <td style="text-align:right;width: 8em; "> 49 </td>
+   <td style="text-align:right;width: 8em; "> 8 </td>
+   <td style="text-align:right;width: 8em; "> 64 </td>
+   <td style="text-align:right;width: 8em; "> 56 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;width: 8em; "> 8 </td>
+   <td style="text-align:right;width: 8em; "> 64 </td>
+   <td style="text-align:right;width: 8em; "> 10 </td>
+   <td style="text-align:right;width: 8em; "> 100 </td>
+   <td style="text-align:right;width: 8em; "> 80 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;width: 8em; "> 11 </td>
+   <td style="text-align:right;width: 8em; "> 121 </td>
+   <td style="text-align:right;width: 8em; "> 9 </td>
+   <td style="text-align:right;width: 8em; "> 81 </td>
+   <td style="text-align:right;width: 8em; "> 99 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;border-top: 3px solid var(--text-color);width: 8em; "> \(\Sigma X = 35\) </td>
+   <td style="text-align:right;border-top: 3px solid var(--text-color);width: 8em; "> \(\Sigma X^2 = 275\) </td>
+   <td style="text-align:right;border-top: 3px solid var(--text-color);width: 8em; "> \(\Sigma Y = 40\) </td>
+   <td style="text-align:right;border-top: 3px solid var(--text-color);width: 8em; "> \(\Sigma Y^2 = 334\) </td>
+   <td style="text-align:right;border-top: 3px solid var(--text-color);width: 8em; "> \(\Sigma XY = 295\) </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="center-element" style="font-size: 0.7em;">
+<p><span class="math inline">\(SS_X = \Sigma X^2 - \dfrac{(\Sigma X)^2}{n} = 275 - \dfrac{35^2}{5} = 30\)</span></p>
+<p><span class="math inline">\(SS_Y = \Sigma Y^2 - \dfrac{(\Sigma Y)^2}{n} = 334 - \dfrac{40^2}{5} = 14\)</span></p>
+<p><span class="math inline">\(SP = \Sigma XY - \dfrac{\Sigma X \Sigma Y}{n} = 295 - \dfrac{35 \cdot 40}{5} = 15\)</span></p>
+<p><span class="math inline">\(r = \dfrac{SP}{\sqrt{SS_X SS_Y}} = \dfrac{15}{\sqrt{30 \cdot 14}} = 0.73\)</span></p>
+</div>
 </section>
 <section id="step-4.-make-decision" class="slide level2">
 <h2>Step 4. Make decision</h2>
@@ -1032,43 +1139,52 @@ SS &amp;= \Sigma X^2 - \dfrac{(\Sigma X)^2}{n}\\
 <li>Hypothesis test for <span class="math inline">\(r\)</span> is a type of <span class="math inline">\(t\)</span> test</li>
 </ul>
 <div class="center-element">
-
+<p><span class="math inline">\(t = \dfrac{\text{sample statistic} - \text{population parameter}}{\text{standard error}}\)</span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math inline">\(t = \dfrac{r - \rho}{s_r}\)</span></p>
+</div><div class="column" style="width:50%;">
+<p><span class="math inline">\(s_r = \sqrt{\dfrac{1 - r^2}{n-2}}\)</span></p>
+</div><p><span class="math inline">\(t = \dfrac{0.73}{\sqrt{\dfrac{1-0.73^2}{5 - 2}}} = 1.86\)</span></p>
+</div>
 </div>
 </section>
-<section id="report-results" class="slide level2">
-<h2>Report results</h2>
+<section id="step-5.-report-results" class="slide level2">
+<h2>Step 5. Report results</h2>
 <ul>
 <li>Value of correlation, <span class="math inline">\(r\)</span></li>
-<li><span class="math inline">\(df\)</span> / Sample size</li>
+<li><span class="math inline">\(df\)</span> (or sample size)</li>
 <li><span class="math inline">\(p\)</span>-value or <span class="math inline">\(\alpha\)</span> level</li>
 </ul>
 <blockquote>
 <p>“More sleep was associated with higher test scores; however, the correlation did not reach statistical significance; <span class="math inline">\(r (3) = .73, p &gt; .05\)</span>.”</p>
 </blockquote>
-</section>
-<section id="correlation-effect-size" class="slide level2">
-<h2>Correlation &amp; effect size</h2>
+</section></section>
+<section>
+<section id="correlation-effect-size" class="title-slide slide level1 small center">
+<h1>Correlation &amp; effect size</h1>
 <ul>
-<li>Correlation &amp; effect size
+<li>Pearson’s <span class="math inline">\(r\)</span> correlation coefficient <em>is</em> a standardized measure of effect size
 <ul>
-<li>Pearson’s <span class="math inline">\(r\)</span> correlation coefficient <em>is</em> a standardized measure of effect size</li>
 <li>Quantifies degree of association on a scale from <span class="math inline">\(0\)</span> to <span class="math inline">\(1\)</span></li>
 <li>Independent of sample size</li>
-<li>Related to <span class="math inline">\(r^2\)</span></li>
-<li>Related to <span class="math inline">\(t\)</span></li>
+<li>Related to <span class="math inline">\(r^2\)</span> <!-- - Related to $t$ --></li>
 <li>Even related to Cohen’s <span class="math inline">\(d\)</span></li>
 </ul></li>
 </ul>
 <div class="center-element">
 <p><span class="math inline">\(d = \dfrac{2r}{\sqrt{1-r^2}}\)</span></p>
 </div>
+<div class="cell">
+
+</div>
 </section>
-<section id="interpreting-effect-size" class="slide level2">
+<section id="interpreting-effect-size" class="slide level2 small">
 <h2>Interpreting effect size</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:30%;">
 <p>Cohen (1977)</p>
-<div class="cell">
+<div class="cell" style="font-size: 0.7em;">
 <div class="cell-output-display">
 
 <table>
@@ -1100,9 +1216,9 @@ SS &amp;= \Sigma X^2 - \dfrac{(\Sigma X)^2}{n}\\
 
 </div>
 </div>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:70%;">
 <p>Funder &amp; Ozer (2019)</p>
-<div class="cell">
+<div class="cell" style="font-size: 0.7em;">
 <div class="cell-output-display">
 
 <table>
@@ -1115,9 +1231,29 @@ SS &amp;= \Sigma X^2 - \dfrac{(\Sigma X)^2}{n}\\
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> 0.5 </td>
-   <td style="text-align:left;"> 0.6 </td>
-   <td style="text-align:left;"> Very small </td>
+   <td style="text-align:left;"> 0.10 </td>
+   <td style="text-align:left;"> 0.05 </td>
+   <td style="text-align:left;"> Very small for the explanation of single events but potentially consequential in longer run </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 0.20 </td>
+   <td style="text-align:left;"> 0.10 </td>
+   <td style="text-align:left;"> Still small at the level of single events but potentially more ultimately consequential </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 0.40 </td>
+   <td style="text-align:left;"> 0.20 </td>
+   <td style="text-align:left;"> Medium effect of some explanatory and practical use even in the short run </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 0.60 </td>
+   <td style="text-align:left;"> 0.30 </td>
+   <td style="text-align:left;"> Large effect that is potentially powerful in both the short and the long run </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 0.80 </td>
+   <td style="text-align:left;"> 0.40 </td>
+   <td style="text-align:left;"> A very large effect in the context of psychological research; likely to be a gross overestimate </td>
   </tr>
 </tbody>
 </table>
@@ -1144,20 +1280,11 @@ SS &amp;= \Sigma X^2 - \dfrac{(\Sigma X)^2}{n}\\
 <h1>Learning checks</h1>
 <ul>
 <li>True/False
-<ul>
-<li><ol type="1">
+<ol type="1">
 <li>The numerator of Pearson’s <span class="math inline">\(r\)</span> cannot be negative</li>
-</ol></li>
-<li><ol start="2" type="1">
 <li>The denominator of Pearson’s <span class="math inline">\(r\)</span> cannot be negative</li>
-</ol></li>
-<li><ol start="3" type="1">
 <li>In a non-directional significance test of a correlation, the null hypothesis states that the population correlation is zero</li>
 </ol></li>
-<li><ol start="4" type="1">
-<li>The graph to the right shows no correlation between “difficulty” and “rating”</li>
-</ol></li>
-</ul></li>
 </ul>
 
 <div class="footer footer-default">
@@ -1360,7 +1487,7 @@ SS &amp;= \Sigma X^2 - \dfrac{(\Sigma X)^2}{n}\\
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1435,12 +1562,15 @@ SS &amp;= \Sigma X^2 - \dfrac{(\Sigma X)^2}{n}\\
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
       (function () {
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          // dispatch for htmlwidgets
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
           const event = window.document.createEvent("Event");
           event.initEvent("slideenter", true, true);
           window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
 
           // dispatch for shiny
           if (window.jQuery) {
@@ -1451,13 +1581,6 @@ SS &amp;= \Sigma X^2 - \dfrac{(\Sigma X)^2}{n}\\
               window.jQuery(currentSlide).trigger("shown");
             }
           }
-        }
-
-        // hookup for reveal
-        if (window.Reveal) {
-          window.Reveal.addEventListener("slidechanged", function(event) {
-            fireSlideChanged(event.previousSlide, event.currentSlide);
-          });
         }
 
         // hookup for slidy

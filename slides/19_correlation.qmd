@@ -10,41 +10,54 @@ format: revealjs
 # Overview
 
 - [Correlational research designs]
-- [Calculating Pearson's $r$]
+- [Correlation statistic]
 - [Hypothesis test]
+- [Correlation & effect size]
 - [Learning checks]
 
 
 
-# Correlational research designs
+# Correlational research designs {.smaller}
 
 - Correlational designs versus experimental designs
   - No independent variable
   - Measure two (or more) variables per participant
   - Examine relationship between variables
+
 - Example research questions
   - Is income related to happiness?
   - Does practice make perfect?
   - Class attendance & final grades
 
-## Limitations of correlation
+::: {.r-hstack}
+![](media/correlation-income-happiness.svg){.invertable style="padding-right: 4em;"}
 
-- Correlations are not usually useful for:
-  - Demonstrating [causation]{.emph}
-- Perhaps...
-  - A causes B
-  - B causes A
-  - Something else (C) causes A and B
-- Establishing causation requires experiments in which one variable is [manipulated]{.emph}
+![](media/correlation-practice-performance.svg){.invertable style="padding-right: 4em;"}
+
+![](media/correlation-absences-final-grade.svg){.invertable}
+
+
+:::
+
+## Limitations of correlation {.small}
+
+- Correlations are not usually useful for demonstrating [causation]{.emph}
+  - Establishing causation requires experiments in which something is [manipulated]{.emph}
+  
+- E.g. coffee consumption & intelligence
+  - Perhaps...
+    - A causes B
+    - B causes A
+    - Something else (C) causes A and B
 
 ::: {.reference}
 Corley, J., et al. (2010). Caffeine consumption and cognitive function at age 70: The Lothian Birth Cohort 1936 study. *Psychosomatic medicine 72*(2), 206-214. <https://doi.org/10.1097/PSY.0b013e3181c92a9c>
 :::
 
   
-## Correlation statistic {.smaller}
+# Correlation statistic {.smaller}
 
-- Correlation statistic
+- Correlation coefficient
   - A number quantifying the association between two variables
 - Three characteristics
   - Strength or consistency (varies from 0 to 1)
@@ -64,19 +77,47 @@ Corley, J., et al. (2010). Caffeine consumption and cognitive function at age 70
 :::
 
 
-## Pearson's $r$
+## Logic
+
+
+```{r ref.label=I('sp-table')}
+```
+
+:::: {.columns}
+
+::: {.column width="40%"}
+```{r}
+#| style: "font-size: 0.7em; margin-top: 3em;"
+df <- data.frame(Participant = LETTERS[1:5],
+                 Sleep = x,
+                 Score = y)
+
+knitr::kable(df)
+```
+:::
+
+::: {.column width="60%"}
+![](media/correlation-example.svg){.invertable width="100%"}
+:::
+
+::::
+
+
+
+
+## Pearson's $r$ {.small}
 
 - Most widely used correlation statistic
   - Measures the degree and the direction of the linear relationship between two variables
 - Variability & covariability
-  - Variability: How much each variable varies
-  - Covariability: How much $X$ and $Y$ vary in tandem
+  - [Variability]{.emph}: How much each variable varies
+  - [Covariability]{.emph}: How much $X$ and $Y$ vary in tandem
   - Are changes in $X$ associated with corresponding changes in $Y$?
   - E.g. as $X$ increases, $Y$ tends to increase (positive)
   - Or, as $X$ increases, $Y$ tends to decrease (negative)
 
 
-# Calculating Pearson's $r$
+## Pearson's $r$
 
 $r = \dfrac{SP}{\sqrt{SS_X SS_Y}} = \dfrac{\textrm{covariability of X and Y}}{\textrm{variability of X and Y separately}}$
 
@@ -89,44 +130,20 @@ $r = \dfrac{SP}{\sqrt{SS_X SS_Y}} = \dfrac{\textrm{covariability of X and Y}}{\t
 :::
 
 ::: {.column width="50%"}
-![](media/correlation-perfect.svg){.invertable}
+![](media/correlation-perfect.svg){.invertable width="80%"}
 :::
 
 ::::
 
 
-## Pearson's $r$
 
-- Numerator: $SP$
-  - Sum of products ($SP$) related to sum of squares ($SS$)
-  - $SS$: multiplying deviations by themselves (squaring)
-  - $SP$: multiplying deviations by [one another]{.emph}
-  
-:::: {.columns .center-element}
-
-::: {.column width="50%"}
-Definitional formula
-
-$SP = \Sigma(X - M_X)(Y - M_Y)$
-
-:::
-
-::: {.column width="50%"}
-Computational formula
-
-$SP = \Sigma XY - \dfrac{\Sigma X \Sigma Y}{n}$
-:::
-
-::::
-
-
-## Calculating
 
 # Hypothesis test
 
-## Step 1. State hypotheses
 
-- Correlation is computed for sample data
+## Step 1. State hypotheses {.small}
+
+- Correlation coefficient $r$ is computed for sample data
 - Hypotheses concerns relationship in the population
 - Greek letter $\rho$ (rho) represents population correlation
 
@@ -138,16 +155,17 @@ $SP = \Sigma XY - \dfrac{\Sigma X \Sigma Y}{n}$
     - Or...
     - $H_0: \rho \ge 0$; $H_1: \rho < 0$
 
+
 ## Step 2. Critical region
 
 :::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="30%"}
 - Critical value for $r$ is a type of $t$ statistic
   - $df = n - 2$
 :::
 
-::: {.column width="50%"}
+::: {.column width="70%"}
 
 ```{r}
 #| style: "font-size: 0.4em;"
@@ -172,7 +190,9 @@ $r = \dfrac{SP}{\sqrt{SS_X SS_Y}}$
 
 Definitional formula
 
+::: {style="margin-top: 2.2em;"}
 $SP = \Sigma(X - M_X)(Y - M_Y)$
+:::
 
 :::
 
@@ -197,7 +217,9 @@ SS &= \Sigma(X - M_X)^2 \\
 ::: {.column width="50%"}
 Computational formula
 
+::: {style="margin-top: 3.65em;"}
 $SP = \Sigma XY - \dfrac{\Sigma X \Sigma Y}{n}$
+:::
 :::
 
 ::: {.column width="50%"}
@@ -214,9 +236,6 @@ SS &= \Sigma X^2 - \dfrac{(\Sigma X)^2}{n}\\
 
 
 ## Calculating $r$
-
-```{r ref.label=I('sp-table')}
-```
 
 ```{r}
 #| class: "sp-table scores-only"
@@ -272,6 +291,40 @@ $r = \dfrac{SP}{\sqrt{SS_X SS_Y}} = \dfrac{`r sp`}{\sqrt{`r ss_x`*`r ss_y`}} = `
 
 ## Calculating $r$: computation approach
 
+```{r}
+#| style: "font-size: 0.6em;"
+
+footer_value <- function(symbol, value) {
+  glue::glue("\\({symbol} = {value}\\)")
+}
+
+# footer_value("\\Sigma X", 35)
+
+comp <- data.frame(X = x, X2 = x^2, Y = y, Y2 = y^2, XY = x * y)
+
+comp_with_footer <- rbind(comp, c(footer_value("\\Sigma X", sum(x)), 
+                                  footer_value("\\Sigma X^2", sum(x^2)), 
+                                  footer_value("\\Sigma Y", sum(y)), 
+                                  footer_value("\\Sigma Y^2", sum(y^2)), 
+                                  footer_value("\\Sigma XY", sum(x*y))))
+
+knitr::kable(comp_with_footer, align = "r",
+             col.names = c("\\(X\\)", "\\(X^2\\)", "\\(Y\\)", "\\(Y^2\\)", "\\(XY\\)")) |> 
+  kableExtra::row_spec(length(x)+1, extra_css = "border-top: 3px solid var(--text-color);") |> 
+  kableExtra::column_spec(1:5, width = "8em")
+```
+
+::: {.center-element style="font-size: 0.7em;"}
+
+$SS_X = \Sigma X^2 - \dfrac{(\Sigma X)^2}{n} = `r sum(x^2)` - \dfrac{`r sum(x)`^2}{`r n`} = `r ss_x`$
+
+$SS_Y = \Sigma Y^2 - \dfrac{(\Sigma Y)^2}{n} = `r sum(y^2)` - \dfrac{`r sum(y)`^2}{`r n`} = `r ss_y`$
+
+$SP = \Sigma XY - \dfrac{\Sigma X \Sigma Y}{n} = `r sum(x*y)` - \dfrac{`r sum(x)` \cdot `r sum(y)`}{`r n`} = `r sp`$
+
+$r = \dfrac{SP}{\sqrt{SS_X SS_Y}} = \dfrac{`r sp`}{\sqrt{`r ss_x` \cdot `r ss_y`}} = `r r`$
+
+:::
 
 ## Step 4. Make decision
 
@@ -279,42 +332,66 @@ $r = \dfrac{SP}{\sqrt{SS_X SS_Y}} = \dfrac{`r sp`}{\sqrt{`r ss_x`*`r ss_y`}} = `
 
 ::: {.center-element}
 
+$t = \dfrac{\text{sample statistic} - \text{population parameter}}{\text{standard error}}$
+
+:::: {.columns}
+
+::: {.column width="50%"}
+$t = \dfrac{r - \rho}{s_r}$
+:::
+
+::: {.column width="50%"}
+$s_r = \sqrt{\dfrac{1 - r^2}{n-2}}$
+:::
+
+$t = \dfrac{`r r`}{\sqrt{\dfrac{1-`r r`^2}{`r n` - 2}}} = `r t`$
+
+::::
+
 :::
 
 
-## Report results
+## Step 5. Report results
 
 - Value of correlation, $r$
-- $df$ / Sample size
+- $df$ (or sample size)
 - $p$-value or $\alpha$ level
 
 > “More sleep was associated with higher test scores; however, the correlation did not reach statistical significance; $r (3)  = .73, p > .05$.”
 
 
-## Correlation & effect size
+# Correlation & effect size {.small}
 
-- Correlation & effect size
-  - Pearson's $r$ correlation coefficient *is* a standardized measure of effect size
+- Pearson's $r$ correlation coefficient *is* a standardized measure of effect size
   - Quantifies degree of association on a scale from $0$ to $1$
   - Independent of sample size
   - Related to $r^2$
-  - Related to $t$
+  <!-- - Related to $t$ -->
   - Even related to Cohen's $d$
 
 ::: {.center-element}
 $d = \dfrac{2r}{\sqrt{1-r^2}}$
 :::
 
+```{r}
+r_to_d <- function(r) {
+  (2*r)/sqrt(1-r^2)
+}
+```
 
-## Interpreting effect size
+
+
+## Interpreting effect size {.small}
 
 :::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="30%"}
 
 Cohen (1977)
 
 ```{r}
+#| style: "font-size: 0.7em;"
+
 cohen <- tibble::tribble(
   ~"\\(d\\)", ~"\\(r\\)", ~"Description",
   "0.3", "0.1", "Small",
@@ -328,14 +405,20 @@ knitr::kable(cohen, format = "html")
 
 :::
 
-::: {.column width="50%"}
+::: {.column width="70%"}
 
 Funder & Ozer (2019)
 
 ```{r}
+#| style: "font-size: 0.7em;"
+
 funder <- tibble::tribble(
   ~"\\(d\\)", ~"\\(r\\)", ~"Description",
-  "0.5", "0.6", "Very small"
+  "0.10", "0.05", "Very small for the explanation of single events but potentially consequential in longer run",
+  "0.20", "0.10", "Still small at the level of single events but potentially more ultimately consequential",
+  "0.40", "0.20", "Medium effect of some explanatory and practical use even in the short run",
+  "0.60", "0.30", "Large effect that is potentially powerful in both the short and the long run",
+  "0.80", "0.40", "A very large effect in the context of psychological research; likely to be a gross overestimate"
 )
 
 # - .05: Very small for the explanation of single events but potentially consequential in longer run
@@ -361,14 +444,18 @@ Funder, D. C., & Ozer, D. J. (2019). Evaluating Effect Size in Psychological Res
 - <https://www.rpsychologist.com/d3/correlation>
   - Interactive correlation visualization
   
+  
+  
 # Learning checks
 
-
 - True/False
-    - 1. The numerator of Pearson's $r$ cannot be negative
-    - 2. The denominator of Pearson's $r$ cannot be negative
-    - 3. In a non-directional significance test of a correlation, the null hypothesis states that the population correlation is zero
-    - 4. The graph to the right shows no correlation between “difficulty” and “rating”
+    1. The numerator of Pearson's $r$ cannot be negative
+    2. The denominator of Pearson's $r$ cannot be negative
+    3. In a non-directional significance test of a correlation, the null hypothesis states that the population correlation is zero
+
+
+
+
 
 
 ::: {.content-hidden}
@@ -417,8 +504,25 @@ sp <- sum(p)
 ss_x <- sum((x-mean(x))^2)
 ss_y <- sum((y-mean(y))^2)
 r <- sp/sqrt(ss_x * ss_y)
+n <- length(x)
+t <- r / sqrt((1-r^2)/(n-2))
 
 sp_table <- bc1101tools::SP_table(x = c(4,5,7,8,11), y = c(5,8,8,10,9), align = "c")
+
+```
+
+```{r example-plot}
+#| eval: false
+
+ggplot(data = NULL, aes(x = x, y = y)) +
+  geom_point() +
+  scale_x_continuous(limits = c(0, 12), breaks = 0:12) +
+  scale_y_continuous(limits = c(0, 10), breaks = 0:10) +
+  labs(x = "Sleep (hours)", y = "Test score") +
+  bc1101tools::theme_bc1101()
+
+plot_save("correlation-example.svg", width = 3.5, height = 3)
+
 ```
 
 ## Generic correlation plots
@@ -441,6 +545,30 @@ plot_save("correlation-strong.svg", width = 2, height = 2)
 
 plot_correlation_generic(df = data.frame(1:15, 1:15), line = TRUE, color = "black")
 plot_save("correlation-perfect.svg", width = 2, height = 2)
+
+```
+
+## Example correlation plots
+
+```{r}
+#| eval: false
+
+library(bc1101tools)
+library(ggplot2)
+
+set.seed(1)
+
+plot_correlation_generic(df = faux::rnorm_multi(n = 50, vars = 2, r = .4)) +
+  labs(x = "Income", y = "Happiness")
+plot_save("correlation-income-happiness.svg", width = 2, height = 2)
+
+plot_correlation_generic(df = faux::rnorm_multi(n = 50, vars = 2, r = .6)) +
+  labs(x = "Practice", y = "Performance")
+plot_save("correlation-practice-performance.svg", width = 2, height = 2)
+
+plot_correlation_generic(df = faux::rnorm_multi(n = 50, vars = 2, r = -.3)) +
+  labs(x = "Absences", y = "Final grade")
+plot_save("correlation-absences-final-grade.svg", width = 2, height = 2)
 
 ```
 
