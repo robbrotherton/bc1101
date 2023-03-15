@@ -225,10 +225,10 @@ $MS_{A*B}$
   .xx-between2:after {
     content: "";
     position: absolute;
-    width: 3em;
+    width: 2.7em;
     height: 0;
     border: 3px dashed var(--text-color);
-    transform: translate(0.8em, 2.3em) rotate(90deg) scale(0.5);
+    transform: translate(25%, 2.2em) rotate(90deg) scale(0.5);
   }
 
   .ss-level3 {
@@ -251,7 +251,7 @@ $MS_{A*B}$
 <!-- [$SS_A$ &nbsp;&nbsp;&nbsp; $SS_B$ &nbsp;&nbsp;&nbsp; $SS_{A*B}$]{.ss-diagram .xx-ab .level3} -->
 
 ::: {.ss-level3}
-[$SS_A$]{style="margin-left: -1em;margin-right: 1em;"} [$SS_B$]{.xx-b} [$SS_{A*B}$]{style="margin-left: 1em;"} 
+[$SS_A$]{style="margin-left: -2em;margin-right: 1em;"} [$SS_B$]{.xx-b} [$SS_{A*B}$]{style="margin-left: 1em;"} 
 :::
 
 :::
@@ -263,7 +263,7 @@ $MS_{A*B}$
 [$df_{between}$]{.xx-between} []{.xx-between2} [$df_{within}$]{.xx-within}
 
 ::: {.ss-level3}
-[$df_A$]{style="margin-left: -1em;margin-right: 1.2em;"} [$df_B$]{.xx-b} [$df_{A*B}$]{style="margin-left: 1em;"} 
+[$df_A$]{style="margin-left: -2em;margin-right: 1.2em;"} [$df_B$]{.xx-b} [$df_{A*B}$]{style="margin-left: 1em;"} 
 :::
 
 :::

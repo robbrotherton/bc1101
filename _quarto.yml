@@ -39,6 +39,7 @@ format:
   revealjs:
     chalkboard: true
     theme: custom-reveal.scss
+    html-math-method: mathjax
     menu:
       custom: [
       {

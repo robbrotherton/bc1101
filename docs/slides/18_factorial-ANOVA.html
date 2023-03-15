@@ -603,10 +603,10 @@
   .xx-between2:after {
     content: "";
     position: absolute;
-    width: 3em;
+    width: 2.7em;
     height: 0;
     border: 3px dashed var(--text-color);
-    transform: translate(0.8em, 2.3em) rotate(90deg) scale(0.5);
+    transform: translate(25%, 2.2em) rotate(90deg) scale(0.5);
   }
 
   .ss-level3 {
@@ -623,13 +623,13 @@
 <p><span class="xx-between"><span class="math inline">\(SS_{between}\)</span></span> <span class="xx-between2"></span> <span class="xx-within"><span class="math inline">\(SS_{within}\)</span></span></p>
 <!-- [$SS_A$ &nbsp;&nbsp;&nbsp; $SS_B$ &nbsp;&nbsp;&nbsp; $SS_{A*B}$]{.ss-diagram .xx-ab .level3} -->
 <div class="ss-level3">
-<p><span style="margin-left: -1em;margin-right: 1em;"><span class="math inline">\(SS_A\)</span></span> <span class="xx-b"><span class="math inline">\(SS_B\)</span></span> <span style="margin-left: 1em;"><span class="math inline">\(SS_{A*B}\)</span></span></p>
+<p><span style="margin-left: -2em;margin-right: 1em;"><span class="math inline">\(SS_A\)</span></span> <span class="xx-b"><span class="math inline">\(SS_B\)</span></span> <span style="margin-left: 1em;"><span class="math inline">\(SS_{A*B}\)</span></span></p>
 </div>
 </div><div class="column" style="width:50%;">
 <p><span class="xx-total"><span class="math inline">\(df_{total}\)</span></span></p>
 <p><span class="xx-between"><span class="math inline">\(df_{between}\)</span></span> <span class="xx-between2"></span> <span class="xx-within"><span class="math inline">\(df_{within}\)</span></span></p>
 <div class="ss-level3">
-<p><span style="margin-left: -1em;margin-right: 1.2em;"><span class="math inline">\(df_A\)</span></span> <span class="xx-b"><span class="math inline">\(df_B\)</span></span> <span style="margin-left: 1em;"><span class="math inline">\(df_{A*B}\)</span></span></p>
+<p><span style="margin-left: -2em;margin-right: 1.2em;"><span class="math inline">\(df_A\)</span></span> <span class="xx-b"><span class="math inline">\(df_B\)</span></span> <span style="margin-left: 1em;"><span class="math inline">\(df_{A*B}\)</span></span></p>
 </div>
 </div>
 </div>
@@ -1658,7 +1658,7 @@ SS_{A*B} &amp;= \Sigma SS_{between}-SS_A - SS_B = 22.56
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
