@@ -284,27 +284,31 @@ $F = \dfrac{{MS_{between \ treatments}}}{{MS_{error}}} = \dfrac{treatment \cdot 
 
 :::: {.columns}
 
-::: {.column .smallest}
+::: {.column .smallest .center-element style="margin-top: 1em;"}
 
-$$
-SS_{total} = \Sigma X^2 - \dfrac{G^2}{N} \\
-SS_{within} = \Sigma SS_{within \ each \ treatment} \\
-SS_{between \ treatments} = \Sigma \dfrac{T^2}{n} - \dfrac{G^2}{N} \\
-SS_{between \ subjects} = \Sigma \dfrac{P^2}{k} - \dfrac{G^2}{N} \\
-SS_{error} = SS_{within}-SS_{between \ subjects}
-$$
+$SS_{total} = \Sigma X^2 - \dfrac{G^2}{N}$
+
+$SS_{within} = \Sigma SS_{within \ each \ treatment}$
+
+$SS_{between \ treatments} = \Sigma \dfrac{T^2}{n} - \dfrac{G^2}{N}$
+
+$SS_{between \ subjects} = \Sigma \dfrac{P^2}{k} - \dfrac{G^2}{N}$
+
+$SS_{error} = SS_{within}-SS_{between \ subjects}$
 
 :::
 
-::: {.column .smallest}
+::: {.column .smallest .center-element style="margin-top: 2em;"}
 
-$$
-df_{total} = N-1  \\
-df_{within} = N-k \\
-df_{between \ treatments} = k-1 \\
-df_{between \ subjects} = n-1 \\
-df_{error} = df_{within}-df_{between \ subjects}
-$$
+$df_{total} = N-1$
+
+$df_{within} = N-k$
+
+$df_{between \ treatments} = k-1$
+
+$df_{between \ subjects} = n-1$
+
+$df_{error} = df_{within}-df_{between \ subjects}$
 
 :::
 
