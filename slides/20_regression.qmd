@@ -385,9 +385,9 @@ temp_plot <- ggplot(temp_df, aes(x = celcius, y = fahrenheit)) +
 
 library(ggplot2)
 library(dplyr)
-set.seed(42)
+set.seed(41)
 
-data <- faux::rnorm_multi(n = 300, vars = 2, r = .6)
+data <- faux::rnorm_multi(n = 300, vars = 2, r = .5)
 
 SSx <- sum( (data$X1 - mean(data$X1))^2 )
 SSy <- sum( (data$X2 - mean(data$X2))^2 )
@@ -416,13 +416,14 @@ ojs_define(ojs_line_data)
 
 data |> 
   # mutate(yhat = b * X1 + a) |> 
-  ggplot(aes(x = X1, y = X2, color = abs(X2 - yhat))) +
-  scale_color_gradient(low = "black", high = "grey") +
+  ggplot(aes(x = X1, y = X2)) +
+  # scale_color_gradient(low = "black", high = "grey") +
   geom_point() +
+  geom_smooth(method = "lm", color = "dodgerblue", se = FALSE, alpha = 0.1) +
   theme_void() +
   theme(legend.position = "none")
 
-bc1101tools::plot_save("19_correlation.svg", subdir = "covers", width = 10, height = 5)
+bc1101tools::plot_save("20_regression.svg", subdir = "covers", width = 10, height = 5)
 
 ```
 
