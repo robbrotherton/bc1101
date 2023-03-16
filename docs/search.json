@@ -2048,49 +2048,49 @@
     "href": "slides/20_regression.html#straight-line-equation",
     "title": "PSYC BC1101",
     "section": "Straight line equation",
-    "text": "Straight line equation\n\n\\(Y = bX + a\\)\n\n\\(X\\) and \\(Y\\) are variables\n\\(a\\) (the intercept) and \\(b\\) (the slope) are constants\n\n\n\n\n\n\n\n\n\n\n\n \n  \n    Celcius \n    Fahrenheit \n  \n \n\n  \n    0 \n    32 \n  \n  \n    10 \n    50 \n  \n  \n    20 \n    68 \n  \n  \n    30 \n    86 \n  \n  \n    40 \n    104 \n  \n  \n    50 \n    122"
+    "text": "Straight line equation\n\n\\(Y = bX + a\\)\n\n\\(X\\) and \\(Y\\) are variables\n\\(a\\) (the intercept) and \\(b\\) (the slope) are constants\n\n\n\n\n\n\n\n\n\n\n\n \n  \n    Celcius \n    Fahrenheit \n  \n \n\n  \n    0 \n    32 \n  \n  \n    10 \n    50 \n  \n  \n    20 \n    68 \n  \n  \n    30 \n    86 \n  \n  \n    40 \n    104 \n  \n  \n    50 \n    122 \n  \n\n\n\n\n\n\n\\(Y = 1.8 X + 32\\)"
   },
   {
     "objectID": "slides/20_regression.html#regression-2",
     "href": "slides/20_regression.html#regression-2",
     "title": "PSYC BC1101",
     "section": "Regression",
-    "text": "Regression\n\n\n\nRegression line equation\n\n\\(\\hat{Y} = bX + a\\)\n\\(\\hat{Y}\\): value of \\(Y\\) predicted by the regression equation for each value of \\(X\\)\n\\((Y - \\hat{Y})\\): residual (deviation of each data point from the regression line)\nRegression defines line that minimizes the sum of squared residuals\n\\(SS_{residual} = \\Sigma(Y - \\hat{Y})^2\\)\n“Least-squared-error solution”\n\n\n\nRight column"
+    "text": "Regression\n\n\n\nRegression defines the line of best fit\n\nMakes relationship easier to see\nShows “central tendency” of the relationship\nEmphasizes prediction\nLine of best fit is the line that minimized prediction error"
   },
   {
     "objectID": "slides/20_regression.html#regression-3",
     "href": "slides/20_regression.html#regression-3",
     "title": "PSYC BC1101",
     "section": "Regression",
-    "text": "Regression\n\nRegression line equation: \\(\\hat{Y} = bX + a\\)\n\nThe slope of the line, \\(b\\):"
+    "text": "Regression\n\n\n\nRegression line equation\n\n\\(\\hat{Y} = bX + a\\)\n\\(\\hat{Y}\\): value of \\(Y\\) predicted by the regression equation for each value of \\(X\\)\n\\((Y - \\hat{Y})\\): residual (deviation of each data point from the regression line)\nRegression defines line that minimizes the sum of squared residuals\n\\(SS_{residual} = \\Sigma(Y - \\hat{Y})^2\\)\n“Least-squared-error solution”"
   },
   {
     "objectID": "slides/20_regression.html#regression-4",
     "href": "slides/20_regression.html#regression-4",
     "title": "PSYC BC1101",
     "section": "Regression",
-    "text": "Regression\n\n\n\nThe intercept of the line, \\(a\\)\n\nThe value of \\(Y\\) when \\(X = 0\\)\nThe line goes through \\((M_X, M_Y)\\) therefore:\n\n\n\n\n\n\nRight column"
+    "text": "Regression\n\n\n\nRegression line equation: \\(\\hat{Y} = bX + a\\)\n\nThe slope of the line, \\(b\\):\n\n\n\n\\[\\begin{align}\nb &= \\dfrac{SP}{SS_X} \\\\\n  &= \\dfrac{15}{30} \\\\\n  &= 0.5\n\\end{align}\\]"
   },
   {
     "objectID": "slides/20_regression.html#standard-error",
     "href": "slides/20_regression.html#standard-error",
     "title": "PSYC BC1101",
     "section": "Standard error",
-    "text": "Standard error\n\nStandard error of estimate\n\nQuantifies precision of regression estimate\nAverage distance of points from the regression line\nRemember… \\(s = \\sqrt{\\dfrac{SS}{df}}\\)"
+    "text": "Standard error\n\n\n\nStandard error of estimate\n\nQuantifies precision of regression estimate\nAverage distance of points from the regression line\nRemember… \\(s = \\sqrt{\\dfrac{SS}{df}}\\)\n\n\n\n\n\n\n\n\\(s_{error} = \\sqrt{\\dfrac{SS_{residual}}{df}}=\\sqrt{\\dfrac{6.5}{5-2}} = 1.47\\)"
   },
   {
     "objectID": "slides/20_regression.html#analysis-of-regression",
     "href": "slides/20_regression.html#analysis-of-regression",
     "title": "PSYC BC1101",
     "section": "Analysis of regression",
-    "text": "Analysis of regression\n\nAnalysis of Regression\n\nSimilar to Analysis of Variance"
+    "text": "Analysis of regression\n\nPartitioning variance (like ANOVA)\n\n\n\n\n\\(SS_{Y}\\)\n\n\n\\(SS_{regression}\\)\n\n\n\\(SS_{residual}\\)\n\n\n\n\\(df_{Y}\\)\n\n\n\\(df_{regression}\\)\n\n\n\\(df_{residual}\\)\n\n\n\n\n\n\\(SS_Y = \\Sigma(Y - M_Y)^2\\)\n\\(SS_{residual} = \\Sigma(Y - \\hat{Y})^2\\)\n\\(SS_{regression} = SS_Y - SS_{residual}\\)\n\n\\(df_Y = n - 1\\)\n\\(df_{residual} = n - 2\\)\n\\(df_{regression} = 1\\)"
   },
   {
     "objectID": "slides/20_regression.html#partitioning-variance",
     "href": "slides/20_regression.html#partitioning-variance",
     "title": "PSYC BC1101",
     "section": "Partitioning variance",
-    "text": "Partitioning variance\n\n\n\n\\(SS_{Y}\\)\n\n\n\\(SS_{regression}\\)\n\n\n\\(SS_{residual}\\)\n\n\n\n\\(df_{Y}\\)\n\n\n\\(df_{regression}\\)\n\n\n\\(df_{residual}\\)\n\n\n\n\n\\(MS_{regression}=\\dfrac{SS_{regression}}{df_{regression}} \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ MS_{residual}=\\dfrac{SS_{residual}}{df_{residual}}\\)\n\\(F = \\dfrac{MS_{regression}}{MS_{residual}}\\)"
+    "text": "Partitioning variance\n\nAnalysis of Regression\n\nSimilar to Analysis of Variance\n\n\n\n\n\n\\(SS_{Y}\\)\n\n\n\\(SS_{regression}\\)\n\n\n\\(SS_{residual}\\)\n\n\n\n\\(df_{Y}\\)\n\n\n\\(df_{regression}\\)\n\n\n\\(df_{residual}\\)\n\n\n\n\n\\(MS_{regression}=\\dfrac{SS_{regression}}{df_{regression}} \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ MS_{residual}=\\dfrac{SS_{residual}}{df_{residual}}\\)\n\\(F = \\dfrac{MS_{regression}}{MS_{residual}}\\)"
   },
   {
     "objectID": "slides/20_regression.html#step-1-hypotheses",
@@ -2104,14 +2104,14 @@
     "href": "slides/20_regression.html#step-2.-critical-region",
     "title": "PSYC BC1101",
     "section": "Step 2. Critical region",
-    "text": "Step 2. Critical region\n\nNumerator: \\(df_{regression} = 1\\)\nDenominator: \\(df_{residual} = n-2\\)"
+    "text": "Step 2. Critical region\n\nNumerator: \\(df_{regression} = 1\\)\nDenominator: \\(df_{residual} = n-2\\)\n\n\n\n\n\n \n\n\\(\\alpha = .05\\)\n\\(df_{numerator}\\)\n\n  \n    \\(df_{denominator}\\) \n    1 \n    2 \n    3 \n    4 \n    5 \n    6 \n    7 \n    8 \n    9 \n    10 \n  \n \n\n  \n    1 \n    161.45 \n    199.50 \n    215.71 \n    224.58 \n    230.16 \n    233.99 \n    236.77 \n    238.88 \n    240.54 \n    241.88 \n  \n  \n    2 \n    18.51 \n    19.00 \n    19.16 \n    19.25 \n    19.30 \n    19.33 \n    19.35 \n    19.37 \n    19.39 \n    19.40 \n  \n  \n    3 \n    10.13 \n    9.55 \n    9.28 \n    9.12 \n    9.01 \n    8.94 \n    8.89 \n    8.85 \n    8.81 \n    8.79 \n  \n  \n    4 \n    7.71 \n    6.94 \n    6.59 \n    6.39 \n    6.26 \n    6.16 \n    6.09 \n    6.04 \n    6.00 \n    5.96 \n  \n  \n    5 \n    6.61 \n    5.79 \n    5.41 \n    5.19 \n    5.05 \n    4.95 \n    4.88 \n    4.82 \n    4.77 \n    4.74 \n  \n  \n    6 \n    5.99 \n    5.14 \n    4.76 \n    4.53 \n    4.39 \n    4.28 \n    4.21 \n    4.15 \n    4.10 \n    4.06 \n  \n  \n    7 \n    5.59 \n    4.74 \n    4.35 \n    4.12 \n    3.97 \n    3.87 \n    3.79 \n    3.73 \n    3.68 \n    3.64 \n  \n  \n    8 \n    5.32 \n    4.46 \n    4.07 \n    3.84 \n    3.69 \n    3.58 \n    3.50 \n    3.44 \n    3.39 \n    3.35 \n  \n  \n    9 \n    5.12 \n    4.26 \n    3.86 \n    3.63 \n    3.48 \n    3.37 \n    3.29 \n    3.23 \n    3.18 \n    3.14 \n  \n  \n    10 \n    4.96 \n    4.10 \n    3.71 \n    3.48 \n    3.33 \n    3.22 \n    3.13 \n    3.07 \n    3.02 \n    2.98"
   },
   {
     "objectID": "slides/20_regression.html#step-3.-calculate",
     "href": "slides/20_regression.html#step-3.-calculate",
     "title": "PSYC BC1101",
     "section": "Step 3. Calculate",
-    "text": "Step 3. Calculate\n\n\n\\(SS_{Y} = \\Sigma (Y - M_Y)^2\\)\n\\(SS_{residual} = \\Sigma (Y - \\hat{Y})^2\\)\n\\(SS_{regression} = SS_Y - SS_{residual}\\)\n\n\\(df_Y = n - 1\\)\n\\(df_{residual} = n - 2\\)\n\\(df_{regression} = 1\\)"
+    "text": "Step 3. Calculate\n\n\n\n\n \n  \n    Participant \n    Amount of sleep  (\\(X\\)) \n    Test score  (\\(Y\\)) \n  \n \n\n  \n    A \n    4 \n    5 \n  \n  \n    B \n    5 \n    8 \n  \n  \n    C \n    7 \n    8 \n  \n  \n    D \n    8 \n    10 \n  \n  \n    E \n    11 \n    9 \n  \n\n\n\n\n\n\n\n\\(SS_{Y} = 14\\)\n\\(SS_{residual} = 6.5\\)\n\\(SS_{regression} = 7.5\\)\n\n\\(df_Y = 4\\)\n\\(df_{residual} = 3\\)\n\\(df_{regression} = 1\\)"
   },
   {
     "objectID": "slides-index.html#course-overview",
@@ -2392,5 +2392,75 @@
     "title": "PSYC BC1101",
     "section": "Logic",
     "text": "Logic\n\n\n\n\n\n\n\n\n\n \n  \n    Participant \n    Sleep \n    Score \n  \n \n\n  \n    A \n    4 \n    5 \n  \n  \n    B \n    5 \n    8 \n  \n  \n    C \n    7 \n    8 \n  \n  \n    D \n    8 \n    10 \n  \n  \n    E \n    11 \n    9"
+  },
+  {
+    "objectID": "slides/20_regression.html#regression-5",
+    "href": "slides/20_regression.html#regression-5",
+    "title": "PSYC BC1101",
+    "section": "Regression",
+    "text": "Regression\n\n\n\nThe intercept of the line, \\(a\\)\n\nThe value of \\(Y\\) when \\(X = 0\\)\nThe line goes through \\((M_X, M_Y)\\) therefore:\n\n\n\n\\[\\begin{align}\na &= M_Y - b * M_X \\\\\n  &= 8 - 0.5 * 7 \\\\\n  &= 4.5\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/20_regression.html#regression-solving-b",
+    "href": "slides/20_regression.html#regression-solving-b",
+    "title": "PSYC BC1101",
+    "section": "Regression: solving \\(b\\)",
+    "text": "Regression: solving \\(b\\)\n\n\n\n\n\n\nRegression line equation: \\(\\hat{Y} = bX + a\\)\n\nThe slope of the line, \\(b\\):\n\n\n\n\\[\\begin{align}\nb &= \\dfrac{SP}{SS_X} \\\\\n  &= \\dfrac{15}{30} \\\\\n  &= 0.5\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/20_regression.html#regression-solving-a",
+    "href": "slides/20_regression.html#regression-solving-a",
+    "title": "PSYC BC1101",
+    "section": "Regression: solving \\(a\\)",
+    "text": "Regression: solving \\(a\\)\n\n\n\nThe intercept of the line, \\(a\\)\n\nThe value of \\(Y\\) when \\(X = 0\\)\nThe line goes through \\((M_X, M_Y)\\) therefore:\n\n\n\n\\[\\begin{align}\na &= M_Y - b * M_X \\\\\n  &= 8 - 0.5 * 7 \\\\\n  &= 4.5\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/20_regression.html#ss_residual",
+    "href": "slides/20_regression.html#ss_residual",
+    "title": "PSYC BC1101",
+    "section": "\\(SS_{residual}\\)",
+    "text": "\\(SS_{residual}\\)\n\n\n\n\n\n\n \n  \n    Sleep \n    Test score \n    \\(\\hat{Y}\\) \n    \\(Y - \\hat{Y}\\) \n    \\((Y - \\hat{Y})^2\\) \n  \n \n\n  \n    4 \n    5 \n    6.5 \n    -1.5 \n    2.25 \n  \n  \n    5 \n    8 \n    7.0 \n    1.0 \n    1.00 \n  \n  \n    7 \n    8 \n    8.0 \n    0.0 \n    0.00 \n  \n  \n    8 \n    10 \n    8.5 \n    1.5 \n    2.25 \n  \n  \n    11 \n    9 \n    10.0 \n    -1.0 \n    1.00 \n  \n\n\n\n\n\n\n\\[\\begin{align}\nSS_{residual} &= \\Sigma(Y - \\hat{Y})^2 \\\\\n&= \\Sigma(2.25, 1, 0, 2.25, 1) \\\\\n&= 6.5\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/20_regression.html#analysis-of-regression-1",
+    "href": "slides/20_regression.html#analysis-of-regression-1",
+    "title": "PSYC BC1101",
+    "section": "Analysis of regression",
+    "text": "Analysis of regression\n\nPartitioning variance (like ANOVA)\n\n\n\\(MS_{regression}=\\dfrac{SS_{regression}}{df_{regression}} \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ MS_{residual}=\\dfrac{SS_{residual}}{df_{residual}}\\)\n\\(F = \\dfrac{MS_{regression}}{MS_{residual}}\\)"
+  },
+  {
+    "objectID": "slides/20_regression.html#step-3.-calculate-1",
+    "href": "slides/20_regression.html#step-3.-calculate-1",
+    "title": "PSYC BC1101",
+    "section": "Step 3. Calculate",
+    "text": "Step 3. Calculate\n\n\n\n\n \n  \n    Participant \n    Amount of sleep  (\\(X\\)) \n    Test score  (\\(Y\\)) \n  \n \n\n  \n    A \n    4 \n    5 \n  \n  \n    B \n    5 \n    8 \n  \n  \n    C \n    7 \n    8 \n  \n  \n    D \n    8 \n    10 \n  \n  \n    E \n    11 \n    9 \n  \n\n\n\n\n\n\n\\(MS_{regression} = \\dfrac{SS_{regression}}{df_{regression}} = \\dfrac{7.5}{1} = 7.5\\)\n\\(MS_{residual} = \\dfrac{SS_{residual}}{df_{residual}} = \\dfrac{6.5}{3} = 2.17\\)"
+  },
+  {
+    "objectID": "slides/20_regression.html#step-3.-calculate-2",
+    "href": "slides/20_regression.html#step-3.-calculate-2",
+    "title": "PSYC BC1101",
+    "section": "Step 3. Calculate",
+    "text": "Step 3. Calculate\n\n\n\n\n \n  \n    Participant \n    Amount of sleep  (\\(X\\)) \n    Test score  (\\(Y\\)) \n  \n \n\n  \n    A \n    4 \n    5 \n  \n  \n    B \n    5 \n    8 \n  \n  \n    C \n    7 \n    8 \n  \n  \n    D \n    8 \n    10 \n  \n  \n    E \n    11 \n    9 \n  \n\n\n\n\n\n\n\\(F = \\dfrac{MS_{regression}}{MS_{residual}} = \\dfrac{7.5}{2.17} = 3.46\\)"
+  },
+  {
+    "objectID": "slides/20_regression.html#step-4.-make-decision",
+    "href": "slides/20_regression.html#step-4.-make-decision",
+    "title": "PSYC BC1101",
+    "section": "Step 4. Make decision",
+    "text": "Step 4. Make decision\n\n\\(F > F_{critical}\\)?\nStep 4b: Effect size\n\\(r^2\\): Coefficient of determination\nProportion of variance explaianed by the regression\n\n\\(r^2 = \\dfrac{SS_{regression}}{SS_Y} = \\dfrac{7.5}{14} = 0.54\\)"
+  },
+  {
+    "objectID": "slides/20_regression.html#step-5.-report",
+    "href": "slides/20_regression.html#step-5.-report",
+    "title": "PSYC BC1101",
+    "section": "Step 5. Report",
+    "text": "Step 5. Report\n\nLonger sleep duration was associated with an increase in test performance, \\(b = 0.5\\). However, the association was nonsignificant; \\(F(1, 3) = 3.46\\), \\(p > .05\\)."
+  },
+  {
+    "objectID": "slides/20_regression.html#standard-error-of-the-estimate",
+    "href": "slides/20_regression.html#standard-error-of-the-estimate",
+    "title": "PSYC BC1101",
+    "section": "Standard error of the estimate",
+    "text": "Standard error of the estimate\n\n\n\n\\(s_{error}\\)\n\nQuantifies precision of regression estimate\nAverage distance of points from the regression line\nRemember… \\(s = \\sqrt{\\dfrac{SS}{df}}\\)\n\n\n\n\n\n\n\n\\(s_{error} = \\sqrt{\\dfrac{SS_{residual}}{df}}=\\sqrt{\\dfrac{6.5}{5-2}} = 1.47\\)"
   }
 ]
