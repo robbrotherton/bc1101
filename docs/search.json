@@ -1950,14 +1950,14 @@
     "href": "slides/19_correlation.html#step-1.-state-hypotheses",
     "title": "PSYC BC1101",
     "section": "Step 1. State hypotheses",
-    "text": "Step 1. State hypotheses\n\nCorrelation coefficient \\(r\\) is computed for sample data\nHypotheses concerns relationship in the population\nGreek letter \\(\\rho\\) (rho) represents population correlation\nNon-directional:\n\n\\(H_0: \\rho = 0\\)\n\\(H_1: \\rho \\ne 0\\)\n\nDirectional:\n\n\\(H_0: \\rho \\le 0\\); \\(H_1: ρ > 0\\)\nOr…\n\\(H_0: \\rho \\ge 0\\); \\(H_1: \\rho < 0\\)"
+    "text": "Step 1. State hypotheses\n\nCorrelation coefficient \\(r\\) is computed for sample data\nHypotheses concerns relationship in the population\nGreek letter \\(\\rho\\) (rho) represents population correlation\nNon-directional:\n\n\\(H_0: \\rho = 0\\)\n\\(H_1: \\rho \\ne 0\\)\n\nDirectional:\n\n\\(H_0: \\rho \\le 0\\); \\(H_1: ρ &gt; 0\\)\nOr…\n\\(H_0: \\rho \\ge 0\\); \\(H_1: \\rho &lt; 0\\)"
   },
   {
     "objectID": "slides/19_correlation.html#step-2.-critical-region",
     "href": "slides/19_correlation.html#step-2.-critical-region",
     "title": "PSYC BC1101",
     "section": "Step 2. Critical region",
-    "text": "Step 2. Critical region\n\n\n\nCritical value for \\(r\\) is a type of \\(t\\) statistic\n\n\\(df = n - 2\\)\n\n\n\n\n\n\n\n \n\nProportionin 1 tail\n\n0.1\n\n0.05\n\n0.025\n\n0.01\n\n0.005\n\n  \n    Proportionin 2 tails \n    0.2 \n    0.1 \n    0.05 \n    0.02 \n    0.01 \n  \n \n\n  \n    1 \n    3.078 \n    6.314 \n    12.706 \n    31.821 \n    63.657 \n  \n  \n    2 \n    1.886 \n    2.920 \n    4.303 \n    6.965 \n    9.925 \n  \n  \n    3 \n    1.638 \n    2.353 \n    3.182 \n    4.541 \n    5.841 \n  \n  \n    4 \n    1.533 \n    2.132 \n    2.776 \n    3.747 \n    4.604 \n  \n  \n    5 \n    1.476 \n    2.015 \n    2.571 \n    3.365 \n    4.032 \n  \n  \n    6 \n    1.440 \n    1.943 \n    2.447 \n    3.143 \n    3.707 \n  \n  \n    7 \n    1.415 \n    1.895 \n    2.365 \n    2.998 \n    3.499 \n  \n  \n    \\(df\\)       8 \n    1.397 \n    1.860 \n    2.306 \n    2.896 \n    3.355 \n  \n  \n    9 \n    1.383 \n    1.833 \n    2.262 \n    2.821 \n    3.250 \n  \n  \n    10 \n    1.372 \n    1.812 \n    2.228 \n    2.764 \n    3.169 \n  \n  \n    11 \n    1.363 \n    1.796 \n    2.201 \n    2.718 \n    3.106 \n  \n  \n    12 \n    1.356 \n    1.782 \n    2.179 \n    2.681 \n    3.055 \n  \n  \n    13 \n    1.350 \n    1.771 \n    2.160 \n    2.650 \n    3.012 \n  \n  \n    14 \n    1.345 \n    1.761 \n    2.145 \n    2.624 \n    2.977 \n  \n  \n    15 \n    1.341 \n    1.753 \n    2.131 \n    2.602 \n    2.947 \n  \n  \n    ... \n    ... \n    ... \n    ... \n    ... \n    ..."
+    "text": "Step 2. Critical region\n\n\n\nCritical value for \\(r\\) is a type of \\(t\\) statistic\n\n\\(df = n - 2\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProportion\nin 1 tail\n\n\n\n0.1\n\n\n\n0.05\n\n\n\n0.025\n\n\n\n0.01\n\n\n\n0.005\n\n\n\nProportion\nin 2 tails\n0.2\n0.1\n0.05\n0.02\n0.01\n\n\n\n\n1\n3.078\n6.314\n12.706\n31.821\n63.657\n\n\n2\n1.886\n2.920\n4.303\n6.965\n9.925\n\n\n3\n1.638\n2.353\n3.182\n4.541\n5.841\n\n\n4\n1.533\n2.132\n2.776\n3.747\n4.604\n\n\n5\n1.476\n2.015\n2.571\n3.365\n4.032\n\n\n6\n1.440\n1.943\n2.447\n3.143\n3.707\n\n\n7\n1.415\n1.895\n2.365\n2.998\n3.499\n\n\n\\(df\\)       8\n1.397\n1.860\n2.306\n2.896\n3.355\n\n\n9\n1.383\n1.833\n2.262\n2.821\n3.250\n\n\n10\n1.372\n1.812\n2.228\n2.764\n3.169\n\n\n11\n1.363\n1.796\n2.201\n2.718\n3.106\n\n\n12\n1.356\n1.782\n2.179\n2.681\n3.055\n\n\n13\n1.350\n1.771\n2.160\n2.650\n3.012\n\n\n14\n1.345\n1.761\n2.145\n2.624\n2.977\n\n\n15\n1.341\n1.753\n2.131\n2.602\n2.947\n\n\n...\n...\n...\n...\n...\n..."
   },
   {
     "objectID": "slides/19_correlation.html#step-3.-calculate-statistic",
@@ -1971,28 +1971,28 @@
     "href": "slides/19_correlation.html#calculating-r",
     "title": "PSYC BC1101",
     "section": "Calculating \\(r\\)",
-    "text": "Calculating \\(r\\)\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M_X\\) \n    \\((X-M_X)^2\\) \n    \\(Y\\) \n    \\(Y-M_Y\\) \n    \\((Y-M_Y)^2\\) \n    \\(P\\) \n  \n \n\n  \n    4 \n    -3 \n    9 \n    5 \n    -3 \n    9 \n    9 \n  \n  \n    5 \n    -2 \n    4 \n    8 \n    0 \n    4 \n    0 \n  \n  \n    7 \n    0 \n    0 \n    8 \n    0 \n    0 \n    0 \n  \n  \n    8 \n    1 \n    1 \n    10 \n    2 \n    1 \n    2 \n  \n  \n    11 \n    4 \n    16 \n    9 \n    1 \n    16 \n    4 \n  \n  \n    \\(M_X = 7.00\\) \n     \n    \\(SS_X = 30.00\\) \n    \\(M_Y = 8.00\\) \n     \n    \\(SS_Y = 30.00\\) \n    \\(SP = 15.00\\) \n  \n  \n     \n     \n    \\(s^2_X = 7.50\\) \n     \n     \n    \\(s^2_Y = 7.50\\) \n     \n  \n  \n     \n     \n    \\(s_X = 2.74\\) \n     \n     \n    \\(s_Y = 2.74\\) \n     \n  \n\n\n\n\n\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}}\\)"
+    "text": "Calculating \\(r\\)\n\n\n\n\n\n\\(X\\)\n\\(X-M_X\\)\n\\((X-M_X)^2\\)\n\\(Y\\)\n\\(Y-M_Y\\)\n\\((Y-M_Y)^2\\)\n\\(P\\)\n\n\n\n\n4\n-3\n9\n5\n-3\n9\n9\n\n\n5\n-2\n4\n8\n0\n0\n0\n\n\n7\n0\n0\n8\n0\n0\n0\n\n\n8\n1\n1\n10\n2\n4\n2\n\n\n11\n4\n16\n9\n1\n1\n4\n\n\n\\(M_X = 7.00\\)\n\n\\(SS_X = 30.00\\)\n\\(M_Y = 8.00\\)\n\n\\(SS_Y = 14.00\\)\n\\(SP = 15.00\\)\n\n\n\n\n\\(s^2_X = 7.50\\)\n\n\n\\(s^2_Y = 3.50\\)\n\n\n\n\n\n\\(s_X = 2.74\\)\n\n\n\\(s_Y = 1.87\\)\n\n\n\n\n\n\n\n\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}}\\)"
   },
   {
     "objectID": "slides/19_correlation.html#calculating-r-1",
     "href": "slides/19_correlation.html#calculating-r-1",
     "title": "PSYC BC1101",
     "section": "Calculating \\(r\\)",
-    "text": "Calculating \\(r\\)\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M_X\\) \n    \\((X-M_X)^2\\) \n    \\(Y\\) \n    \\(Y-M_Y\\) \n    \\((Y-M_Y)^2\\) \n    \\(P\\) \n  \n \n\n  \n    4 \n    -3 \n    9 \n    5 \n    -3 \n    9 \n    9 \n  \n  \n    5 \n    -2 \n    4 \n    8 \n    0 \n    4 \n    0 \n  \n  \n    7 \n    0 \n    0 \n    8 \n    0 \n    0 \n    0 \n  \n  \n    8 \n    1 \n    1 \n    10 \n    2 \n    1 \n    2 \n  \n  \n    11 \n    4 \n    16 \n    9 \n    1 \n    16 \n    4 \n  \n  \n    \\(M_X = 7.00\\) \n     \n    \\(SS_X = 30.00\\) \n    \\(M_Y = 8.00\\) \n     \n    \\(SS_Y = 30.00\\) \n    \\(SP = 15.00\\) \n  \n  \n     \n     \n    \\(s^2_X = 7.50\\) \n     \n     \n    \\(s^2_Y = 7.50\\) \n     \n  \n  \n     \n     \n    \\(s_X = 2.74\\) \n     \n     \n    \\(s_Y = 2.74\\) \n     \n  \n\n\n\n\n\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}}\\)"
+    "text": "Calculating \\(r\\)\n\n\n\n\n\n\\(X\\)\n\\(X-M_X\\)\n\\((X-M_X)^2\\)\n\\(Y\\)\n\\(Y-M_Y\\)\n\\((Y-M_Y)^2\\)\n\\(P\\)\n\n\n\n\n4\n-3\n9\n5\n-3\n9\n9\n\n\n5\n-2\n4\n8\n0\n0\n0\n\n\n7\n0\n0\n8\n0\n0\n0\n\n\n8\n1\n1\n10\n2\n4\n2\n\n\n11\n4\n16\n9\n1\n1\n4\n\n\n\\(M_X = 7.00\\)\n\n\\(SS_X = 30.00\\)\n\\(M_Y = 8.00\\)\n\n\\(SS_Y = 14.00\\)\n\\(SP = 15.00\\)\n\n\n\n\n\\(s^2_X = 7.50\\)\n\n\n\\(s^2_Y = 3.50\\)\n\n\n\n\n\n\\(s_X = 2.74\\)\n\n\n\\(s_Y = 1.87\\)\n\n\n\n\n\n\n\n\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}}\\)"
   },
   {
     "objectID": "slides/19_correlation.html#calculating-r-2",
     "href": "slides/19_correlation.html#calculating-r-2",
     "title": "PSYC BC1101",
     "section": "Calculating \\(r\\)",
-    "text": "Calculating \\(r\\)\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X-M_X\\) \n    \\((X-M_X)^2\\) \n    \\(Y\\) \n    \\(Y-M_Y\\) \n    \\((Y-M_Y)^2\\) \n    \\(P\\) \n  \n \n\n  \n    4 \n    -3 \n    9 \n    5 \n    -3 \n    9 \n    9 \n  \n  \n    5 \n    -2 \n    4 \n    8 \n    0 \n    4 \n    0 \n  \n  \n    7 \n    0 \n    0 \n    8 \n    0 \n    0 \n    0 \n  \n  \n    8 \n    1 \n    1 \n    10 \n    2 \n    1 \n    2 \n  \n  \n    11 \n    4 \n    16 \n    9 \n    1 \n    16 \n    4 \n  \n  \n    \\(M_X = 7.00\\) \n     \n    \\(SS_X = 30.00\\) \n    \\(M_Y = 8.00\\) \n     \n    \\(SS_Y = 30.00\\) \n    \\(SP = 15.00\\) \n  \n  \n     \n     \n    \\(s^2_X = 7.50\\) \n     \n     \n    \\(s^2_Y = 7.50\\) \n     \n  \n  \n     \n     \n    \\(s_X = 2.74\\) \n     \n     \n    \\(s_Y = 2.74\\) \n     \n  \n\n\n\n\n\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}} = \\dfrac{15}{\\sqrt{30*14}} = 0.73\\)"
+    "text": "Calculating \\(r\\)\n\n\n\n\n\n\\(X\\)\n\\(X-M_X\\)\n\\((X-M_X)^2\\)\n\\(Y\\)\n\\(Y-M_Y\\)\n\\((Y-M_Y)^2\\)\n\\(P\\)\n\n\n\n\n4\n-3\n9\n5\n-3\n9\n9\n\n\n5\n-2\n4\n8\n0\n0\n0\n\n\n7\n0\n0\n8\n0\n0\n0\n\n\n8\n1\n1\n10\n2\n4\n2\n\n\n11\n4\n16\n9\n1\n1\n4\n\n\n\\(M_X = 7.00\\)\n\n\\(SS_X = 30.00\\)\n\\(M_Y = 8.00\\)\n\n\\(SS_Y = 14.00\\)\n\\(SP = 15.00\\)\n\n\n\n\n\\(s^2_X = 7.50\\)\n\n\n\\(s^2_Y = 3.50\\)\n\n\n\n\n\n\\(s_X = 2.74\\)\n\n\n\\(s_Y = 1.87\\)\n\n\n\n\n\n\n\n\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}} = \\dfrac{15}{\\sqrt{30*14}} = 0.73\\)"
   },
   {
     "objectID": "slides/19_correlation.html#calculating-r-computation-approach",
     "href": "slides/19_correlation.html#calculating-r-computation-approach",
     "title": "PSYC BC1101",
     "section": "Calculating \\(r\\): computation approach",
-    "text": "Calculating \\(r\\): computation approach\n\n\n\n\n \n  \n    \\(X\\) \n    \\(X^2\\) \n    \\(Y\\) \n    \\(Y^2\\) \n    \\(XY\\) \n  \n \n\n  \n    4 \n    16 \n    5 \n    25 \n    20 \n  \n  \n    5 \n    25 \n    8 \n    64 \n    40 \n  \n  \n    7 \n    49 \n    8 \n    64 \n    56 \n  \n  \n    8 \n    64 \n    10 \n    100 \n    80 \n  \n  \n    11 \n    121 \n    9 \n    81 \n    99 \n  \n  \n    \\(\\Sigma X = 35\\) \n    \\(\\Sigma X^2 = 275\\) \n    \\(\\Sigma Y = 40\\) \n    \\(\\Sigma Y^2 = 334\\) \n    \\(\\Sigma XY = 295\\) \n  \n\n\n\n\n\n\n\\(SS_X = \\Sigma X^2 - \\dfrac{(\\Sigma X)^2}{n} = 275 - \\dfrac{35^2}{5} = 30\\)\n\\(SS_Y = \\Sigma Y^2 - \\dfrac{(\\Sigma Y)^2}{n} = 334 - \\dfrac{40^2}{5} = 14\\)\n\\(SP = \\Sigma XY - \\dfrac{\\Sigma X \\Sigma Y}{n} = 295 - \\dfrac{35 \\cdot 40}{5} = 15\\)\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}} = \\dfrac{15}{\\sqrt{30 \\cdot 14}} = 0.73\\)"
+    "text": "Calculating \\(r\\): computation approach\n\n\n\n\n\n\\(X\\)\n\\(X^2\\)\n\\(Y\\)\n\\(Y^2\\)\n\\(XY\\)\n\n\n\n\n4\n16\n5\n25\n20\n\n\n5\n25\n8\n64\n40\n\n\n7\n49\n8\n64\n56\n\n\n8\n64\n10\n100\n80\n\n\n11\n121\n9\n81\n99\n\n\n\\(\\Sigma X = 35\\)\n\\(\\Sigma X^2 = 275\\)\n\\(\\Sigma Y = 40\\)\n\\(\\Sigma Y^2 = 334\\)\n\\(\\Sigma XY = 295\\)\n\n\n\n\n\n\n\n\n\\(SS_X = \\Sigma X^2 - \\dfrac{(\\Sigma X)^2}{n} = 275 - \\dfrac{35^2}{5} = 30\\)\n\\(SS_Y = \\Sigma Y^2 - \\dfrac{(\\Sigma Y)^2}{n} = 334 - \\dfrac{40^2}{5} = 14\\)\n\\(SP = \\Sigma XY - \\dfrac{\\Sigma X \\Sigma Y}{n} = 295 - \\dfrac{35 \\cdot 40}{5} = 15\\)\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}} = \\dfrac{15}{\\sqrt{30 \\cdot 14}} = 0.73\\)"
   },
   {
     "objectID": "slides/19_correlation.html#step-4.-make-decision",
@@ -2020,7 +2020,7 @@
     "href": "slides/19_correlation.html#interpreting-effect-size",
     "title": "PSYC BC1101",
     "section": "Interpreting effect size",
-    "text": "Interpreting effect size\n\n\nCohen (1977)\n\n\n\n\n \n  \n    \\(d\\) \n    \\(r\\) \n    Description \n  \n \n\n  \n    0.3 \n    0.1 \n    Small \n  \n  \n    0.5 \n    0.3 \n    Medium \n  \n  \n    0.8 \n    0.5 \n    Large \n  \n\n\n\n\n\n\nFunder & Ozer (2019)\n\n\n\n\n \n  \n    \\(d\\) \n    \\(r\\) \n    Description \n  \n \n\n  \n    0.10 \n    0.05 \n    Very small for the explanation of single events but potentially consequential in longer run \n  \n  \n    0.20 \n    0.10 \n    Still small at the level of single events but potentially more ultimately consequential \n  \n  \n    0.40 \n    0.20 \n    Medium effect of some explanatory and practical use even in the short run \n  \n  \n    0.60 \n    0.30 \n    Large effect that is potentially powerful in both the short and the long run \n  \n  \n    0.80 \n    0.40 \n    A very large effect in the context of psychological research; likely to be a gross overestimate \n  \n\n\n\n\n\n\n\n\nFunder, D. C., & Ozer, D. J. (2019). Evaluating Effect Size in Psychological Research: Sense and Nonsense. Advances in Methods and Practices in Psychological Science, 2(2), 156–168. https://doi.org/10.1177/2515245919847202"
+    "text": "Interpreting effect size\n\n\nCohen (1977)\n\n\n\n\n\n\\(d\\)\n\\(r\\)\nDescription\n\n\n\n\n0.3\n0.1\nSmall\n\n\n0.5\n0.3\nMedium\n\n\n0.8\n0.5\nLarge\n\n\n\n\n\n\n\n\nFunder & Ozer (2019)\n\n\n\n\n\n\\(d\\)\n\\(r\\)\nDescription\n\n\n\n\n0.10\n0.05\nVery small for the explanation of single events but potentially consequential in longer run\n\n\n0.20\n0.10\nStill small at the level of single events but potentially more ultimately consequential\n\n\n0.40\n0.20\nMedium effect of some explanatory and practical use even in the short run\n\n\n0.60\n0.30\nLarge effect that is potentially powerful in both the short and the long run\n\n\n0.80\n0.40\nA very large effect in the context of psychological research; likely to be a gross overestimate\n\n\n\n\n\n\n\n\n\n\nFunder, D. C., & Ozer, D. J. (2019). Evaluating Effect Size in Psychological Research: Sense and Nonsense. Advances in Methods and Practices in Psychological Science, 2(2), 156–168. https://doi.org/10.1177/2515245919847202"
   },
   {
     "objectID": "slides/20_regression.html#correlation",
@@ -2384,13 +2384,14 @@
     "href": "slides/19_correlation.html#step-5.-report-results",
     "title": "PSYC BC1101",
     "section": "Step 5. Report results",
-    "text": "Step 5. Report results\n\nValue of correlation, \\(r\\)\n\\(df\\) (or sample size)\n\\(p\\)-value or \\(\\alpha\\) level\n\n\n“More sleep was associated with higher test scores; however, the correlation did not reach statistical significance; \\(r (3) = .73, p > .05\\).”"
+    "text": "Step 5. Report results\n\nValue of correlation, \\(r\\)\n\\(df\\) (or sample size)\n\\(p\\)-value or \\(\\alpha\\) level\n\n\n“More sleep was associated with higher test scores; however, the correlation did not reach statistical significance; \\(r (3) = .73, p &gt; .05\\).”"
   },
   {
     "objectID": "slides/19_correlation.html#logic",
     "href": "slides/19_correlation.html#logic",
     "title": "PSYC BC1101",
     "section": "Logic",
+<<<<<<< HEAD
     "text": "Logic\n\n\n\n\n\n\n\n\n\n \n  \n    Participant \n    Sleep \n    Score \n  \n \n\n  \n    A \n    4 \n    5 \n  \n  \n    B \n    5 \n    8 \n  \n  \n    C \n    7 \n    8 \n  \n  \n    D \n    8 \n    10 \n  \n  \n    E \n    11 \n    9"
   },
   {
@@ -2462,5 +2463,8 @@
     "title": "PSYC BC1101",
     "section": "Standard error of the estimate",
     "text": "Standard error of the estimate\n\n\n\n\\(s_{error}\\)\n\nQuantifies precision of regression estimate\nAverage distance of points from the regression line\nRemember… \\(s = \\sqrt{\\dfrac{SS}{df}}\\)\n\n\n\n\n\n\n\n\\(s_{error} = \\sqrt{\\dfrac{SS_{residual}}{df}}=\\sqrt{\\dfrac{6.5}{5-2}} = 1.47\\)"
+=======
+    "text": "Logic\n\n\n\n\n\n\n\nParticipant\nSleep\nScore\n\n\n\n\nA\n4\n5\n\n\nB\n5\n8\n\n\nC\n7\n8\n\n\nD\n8\n10\n\n\nE\n11\n9"
+>>>>>>> bc1c5a317d9ae3f89c076d8de18c79dbd09095fc
   }
 ]

@@ -531,20 +531,45 @@ plot_save("correlation-example.svg", width = 3.5, height = 3)
 #| eval: false
 
 library(bc1101tools)
+library(ggplot2)
 
 set.seed(42)
 
-plot_correlation_generic(df = faux::rnorm_multi(n = 15, vars = 2, r = .2), ellipse = TRUE)
-plot_save("correlation-weak.svg", width = 2, height = 2)
+weak <- plot_correlation_generic(df = faux::rnorm_multi(n = 15, vars = 2, r = .2), ellipse = TRUE)
+mod <- plot_correlation_generic(df = faux::rnorm_multi(n = 15, vars = 2, r = .5), ellipse = TRUE)
+strong <- plot_correlation_generic(df = faux::rnorm_multi(n = 15, vars = 2, r = .8), ellipse = TRUE)
+perfect <- plot_correlation_generic(df = data.frame(X = 1:15, Y = 1:15)) + geom_line()
 
-plot_correlation_generic(df = faux::rnorm_multi(n = 15, vars = 2, r = .5), ellipse = TRUE)
-plot_save("correlation-moderate.svg", width = 2, height = 2)
+plot_save(plot = weak, "correlation-weak.svg", width = 2, height = 2)
+plot_save(plot = mod, "correlation-moderate.svg", width = 2, height = 2)
+plot_save(plot = strong, "correlation-strong.svg", width = 2, height = 2)
+plot_save(plot = perfect, "correlation-perfect.svg", width = 2, height = 2)
 
-plot_correlation_generic(df = faux::rnorm_multi(n = 15, vars = 2, r = .8), ellipse = TRUE)
-plot_save("correlation-strong.svg", width = 2, height = 2)
+# negative plots
+plot_save(plot = weak + scale_x_continuous(trans = "reverse"), "correlation-neg-weak.png", width = 2, height = 2)
+plot_save(plot = mod + scale_x_continuous(trans = "reverse"), "correlation-neg-moderate.png", width = 2, height = 2)
+plot_save(plot = strong + scale_x_continuous(trans = "reverse"), "correlation-neg-strong.png", width = 2, height = 2)
+plot_save(plot = perfect + scale_x_continuous(trans = "reverse"), "correlation-neg-perfect.png", width = 2, height = 2)
 
-plot_correlation_generic(df = data.frame(1:15, 1:15), line = TRUE, color = "black")
-plot_save("correlation-perfect.svg", width = 2, height = 2)
+
+## non linear plots
+set.seed(1)
+d <- faux::rnorm_multi(n = 15, vars = 2, r = .8, varnames = c("x","y"))
+p <- ggplot(d, aes(x = x, y = y^2)) +
+  geom_point() +
+  labs(x = "X", y = "Y") +
+  scale_x_continuous(labels = NULL) +
+  scale_y_continuous(labels = NULL) +
+  bc1101tools::theme_bc1101()
+
+loess <- p + geom_smooth(se=FALSE, color = "black")
+linear <- p + geom_smooth(formula = 'y~x', method = "lm", se=FALSE, color = "black")
+quad <- p + geom_smooth(formula = 'y~x+I(x^2)', method = "lm", se=FALSE, color = "black")
+cube <- p + geom_smooth(formula = 'y~x+I(x^3)', method = "lm", se=FALSE, color = "black")
+plot_save(plot = loess, "correlation-nonlinear-loess.png", width = 2, height = 2)
+plot_save(plot = linear, "correlation-nonlinear-linear.png", width = 2, height = 2)
+plot_save(plot = quad, "correlation-nonlinear-quad.png", width = 2, height = 2)
+plot_save(plot = cube, "correlation-nonlinear-cube.png", width = 2, height = 2)
 
 ```
 
