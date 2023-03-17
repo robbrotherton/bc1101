@@ -67,7 +67,7 @@ table
 ::::
 
 ::: {.center-element}
-$r = \dfrac{SP}{\sqrt{SS_X SS_Y}} = \dfrac{`r d$sp`}{`r d$ss_x`*`r d$ss_y`} = `r d$r`$
+$r = \dfrac{SP}{\sqrt{SS_X SS_Y}} = \dfrac{`r d$sp`}{\sqrt{`r d$ss_x`*`r d$ss_y`}} = `r d$r`$
 :::
 
 ## Regression
@@ -97,7 +97,7 @@ $r = \dfrac{SP}{\sqrt{SS_X SS_Y}} = \dfrac{`r d$sp`}{`r d$ss_x`*`r d$ss_y`} = `r
   - Makes relationship easier to see
   - Shows "central tendency" of the relationship
   - Emphasizes [prediction]{.emph}
-  - Line of best fit is the line that minimized prediction error
+  - Line of best fit is the line that minimizes prediction error
 :::
 
 ::: {.column width="50%"}
@@ -462,12 +462,14 @@ $F = \dfrac{MS_{regression}}{MS_{residual}} = \dfrac{7.5}{2.17} = 3.46$
 ## Step 4. Make decision
 
 - $F > F_{critical}$?
-
+  - Reject or fail to reject $H_0$, no relationship in population
 - Step 4b: Effect size
-- $r^2$: Coefficient of determination
-- Proportion of variance explaianed by the regression
+  - $r^2$: Coefficient of determination
+  - Proportion of variance explaianed by the regression
 
+::: {.center-element}
 $r^2 = \dfrac{SS_{regression}}{SS_Y} = \dfrac{7.5}{14} = 0.54$
+:::
 
 ## Step 5. Report
 
