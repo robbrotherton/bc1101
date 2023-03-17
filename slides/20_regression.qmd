@@ -97,7 +97,7 @@ $r = \dfrac{SP}{\sqrt{SS_X SS_Y}} = \dfrac{`r d$sp`}{\sqrt{`r d$ss_x`*`r d$ss_y`
   - Makes relationship easier to see
   - Shows "central tendency" of the relationship
   - Emphasizes [prediction]{.emph}
-  - Line of best fit is the line that minimizes prediction error
+  - Line of best fit is the line that minimizes [prediction error]{.emph}
 :::
 
 ::: {.column width="50%"}
