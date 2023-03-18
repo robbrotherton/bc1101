@@ -526,13 +526,15 @@ y <-  c(5,8,8,10,9)
 SSx <- sum( (x - mean(x))^2 )
 SSy <- sum( (y - mean(y))^2 )
 SP <- sum( (x - mean(x)) * (y - mean(y)))
-b <- SP/SSx
-a <- mean(y) - b * mean(x)
+b <- slope <- SP/SSx
+a <- intercept <- mean(y) - b * mean(x)
 yhat <- b * x + a
 
 d <- bc1101tools::example_correlation(x, y)
 
 table <- knitr::kable(data.frame(LETTERS[1:5], x, y), format = "html", col.names = c("Participant", "Sleep duration", "Test score"))
+
+
 ```
 
 ```{r}
@@ -541,8 +543,8 @@ table <- knitr::kable(data.frame(LETTERS[1:5], x, y), format = "html", col.names
 SSx <- sum( (x - mean(x))^2 )
 SSy <- sum( (y - mean(y))^2 )
 SP <- sum( (x - mean(x)) * (y - mean(y)))
-b <- SP/SSx
-a <- mean(y) - b * mean(x)
+b <- slope <- SP/SSx
+a <- intercept <- mean(y) - b * mean(x)
 yhat <- b * x + a
 
 library(ggplot2)
@@ -844,4 +846,127 @@ function mousemove(e) {
 
 :::{.center-element}
 🥳
+:::
+
+::: {.content-hidden}
+
+## ojs minimizing error
+
+<input id="a-control" type="range" value="`r intercept`" min="0" max="10" step="0.01"><span id="a-output">hi</span>
+<input id="b-control" type="range" value="`r slope`" min="-1" max="1" step="0.01"><span id="b-output">hi</span>
+
+::: {#error-plot-container}
+:::
+
+```{ojs}
+
+changable_chart = {
+
+  const w = 600;
+  const h = 500;
+  
+  const margin = {top: 20, right: 20, left: 110, bottom: 75}
+
+  const x_values = [4,5,7,8,11]
+  const y_values = [5,8,8,10,9]
+  const yhat_values = [0,0,0,0,0]
+  
+  const data = [{xVal: 4, yVal: 5},
+                {xVal: 5, yVal: 8},
+                {xVal: 7, yVal: 8},
+                {xVal: 8, yVal: 10},
+                {xVal: 11, yVal: 9}]
+                
+  const aInput = d3.select("#a-control")
+  const bInput = d3.select("#b-control")
+  
+  aInput.on("input", drawFitLine);
+  bInput.on("input", drawFitLine);
+  
+  const x = d3.scaleLinear()
+    .range([margin.left, w - margin.right])
+    .domain([0, 12])
+  const y = d3.scaleLinear()
+    .range([h - margin.bottom, margin.top])
+    .domain([0, 10])
+  
+  const xAxis = d3.axisBottom(x);
+  const yAxis = d3.axisLeft(y);
+  
+  
+  const svg = d3.select("#error-plot-container").append("svg")
+    .attr("width", w)
+    .attr("height", h)
+    
+  const axes = svg.append("g")
+  const axisFontSize = "0.7em"
+  axes.append("g").attr("transform", `translate(0, ${h - margin.bottom})`).call(xAxis).style("font-size", axisFontSize).attr("font-family", "Times New Roman");
+  axes.append("g").attr("transform", `translate(${margin.left}, 0)`).call(yAxis).style("font-size", axisFontSize).attr("font-family", "Times New Roman");
+  
+  const axisTitles = svg.append("g")
+    .style("font-size", "0.8em")
+    .style("font-family", "Times New Roman")
+    .style("fill", "var(--text-color)")
+  
+  axisTitles.append("text")
+    .attr("transform", `translate(${margin.left + (w - margin.left - margin.right) / 2}, ${h - 10})`).text("Sleep duration")
+    .attr("text-anchor", "middle");
+  
+  axisTitles.append("text")
+    .attr("transform", `translate(0, ${margin.top + (h - margin.top - margin.bottom) / 2})`)
+    .text("Score")
+    
+  
+  const residuals = svg.append("g")
+  residuals.selectAll("line").data(data).enter()
+      .append("line")
+        .attr("x1", d => x(d.xVal))
+        .attr("x2", d => x(d.xVal))
+        .attr("y1", d => y(d.yVal))
+        <!-- .attr("y2", d => y(d.yVal)) -->
+        .style("stroke", "red")
+        .style("stroke-width", 2)
+        .attr("stroke-dasharray", [5, 3])
+        
+  const fitLine = svg.append("line")
+    .style("stroke", "dodgerblue")
+    .style("stroke-width", 3)
+    
+  const dots = svg.append("g")
+    
+  dots.selectAll("circle").data(data).enter().append("circle")
+    .attr("cx", d => x(d.xVal))
+    .attr("cy", d => y(d.yVal))
+    .attr("r", 5)
+    .style("fill", "var(--text-color)")
+    
+  function drawFitLine() {
+    var a = Number(aInput.property("value"));
+    d3.select("#a-output").text(a);
+    var b = Number(bInput.property("value"));
+    d3.select("#b-output").text(b);
+    
+    var yhat1 = a
+    var yhat2 = b * 12 + a
+    
+    fitLine
+      .attr("x1", x(0))
+      .attr("x2", x(12))
+      .attr("y1", y(yhat1))
+      .attr("y2", y(yhat2))
+      
+    for(var i = 0; i < data.length; i++) {
+      data[i].yHat = b * data[i].xVal + a
+    }
+    
+    residuals.selectAll("line")
+        .attr("y2", d => y(d.yHat))
+  }
+  
+  drawFitLine();
+  
+
+}
+```
+
 :::
