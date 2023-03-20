@@ -848,7 +848,7 @@ function mousemove(e) {
 🥳
 :::
 
-::: {.content-hidden}
+<!-- ::: {.content-hidden} -->
 
 ## ojs minimizing error
 
@@ -933,12 +933,21 @@ changable_chart = {
     .style("stroke-width", 3)
     
   const dots = svg.append("g")
+  const squares = svg.append("g")
+  const ssResidualSquare = svg.append("g").append("polygon")
+    .style("fill", "plum")
+    .style("opacity", 0.5)
     
   dots.selectAll("circle").data(data).enter().append("circle")
     .attr("cx", d => x(d.xVal))
     .attr("cy", d => y(d.yVal))
     .attr("r", 5)
     .style("fill", "var(--text-color)")
+    
+  squares.selectAll("polygon").data(data).enter()
+    .append("polygon")
+    .style("fill", "plum")
+    .style("opacity", 0.5)
     
   function drawFitLine() {
     var a = Number(aInput.property("value"));
@@ -955,18 +964,48 @@ changable_chart = {
       .attr("y1", y(yhat1))
       .attr("y2", y(yhat2))
       
+    var ssResidual = 0;
+    
     for(var i = 0; i < data.length; i++) {
-      data[i].yHat = b * data[i].xVal + a
+      var yHat = b * data[i].xVal + a;
+      var residual = data[i].yVal - yHat
+      data[i].yHat = yHat;
+      data[i].res = residual;
+      
+      ssResidual += Math.pow(residual, 2);
     }
     
     residuals.selectAll("line")
         .attr("y2", d => y(d.yHat))
+        
+    squares.selectAll("polygon")
+      .attr("points", d => [[x(d.xVal), y(d.yVal)],
+                            [x(d.xVal), y(d.yHat)],
+                            [x(d.xVal + Math.abs(d.res)), y(d.yHat)],
+                            [x(d.xVal + Math.abs(d.res)), y(d.yVal)]])
+                            
+    ssResidualSquare
+    .attr("points", [[x(9), y(3)],
+                     [x(9), y(3 - Math.sqrt(ssResidual))],
+                     [x(9 + Math.sqrt(ssResidual)), y(3 - Math.sqrt(ssResidual))],
+                     [x(9 + Math.sqrt(ssResidual)), y(3)]])
   }
   
   drawFitLine();
+  
+  svg.append("polygon")
+    .attr("points", [[x(9), y(3)],
+                     [x(9), y(3 - Math.sqrt(6.5))],
+                     [x(9 + Math.sqrt(6.5)), y(3 - Math.sqrt(6.5))],
+                     [x(9 + Math.sqrt(6.5)), y(3)]])
+    .style("fill", "none")
+    .style("stroke", "black")
+    .style("stroke-dasharray", [5, 3])
+    
+
   
 
 }
 ```
 
-:::
+<!-- ::: -->
