@@ -189,7 +189,8 @@ card("14_related-samples-t-test", dates[16],
 :::: {.box}
 ## 15. ANOVA
 ```{r}
-card("15_ANOVA", dates[21])
+card("15_ANOVA", dates[21],
+     panopto_link = links[21])
 ```
 ::::
 
@@ -197,7 +198,8 @@ card("15_ANOVA", dates[21])
 :::: {.box}
 ## 16. ANOVA pt. 2
 ```{r}
-card("16_ANOVA-pt-2", dates[22])
+card("16_ANOVA-pt-2", dates[22],
+     panopto_link = links[22])
 ```
 ::::
 
