@@ -382,7 +382,7 @@
     "href": "slides/15_ANOVA.html#within-groups-variance",
     "title": "PSYC BC1101",
     "section": "Within groups variance",
-    "text": "Within groups variance\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n\n\n\n\n9\n3\n\n\n11\n5\n\n\n13\n4\n\n\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\n\n\n\n\n\n\n\\(t = 5.42\\)\n\\(\\text{Variance}_{total} = 16.7\\)\n\n\nVariance within groups\n\n\\(SS_{within} = \\Sigma SS_{each \\ treatment}\\)\nFind \\(SS\\) for each individual group from respective group mean\nThen add \\(SS\\) values\n\\(df_{within} = \\Sigma df_{each \\ treatment}\\)\n\n\n\\[\\begin{align}\n\\text{Variance}_{within} &= \\dfrac{SS_{within}}{df_{within}} \\\\\n&= \\dfrac{8 + 2}{ + } \\\\\n&= 2.5\n\\end{align}\\]"
+    "text": "Within groups variance\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n\n\n\n\n9\n3\n\n\n11\n5\n\n\n13\n4\n\n\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\n\n\n\n\n\n\n\\(t = 5.42\\)\n\\(\\text{Variance}_{total} = 16.7\\)\n\n\nVariance within groups\n\n\\(SS_{within} = \\Sigma SS_{each \\ treatment}\\)\nFind \\(SS\\) for each individual group from respective group mean\nThen add \\(SS\\) values\n\\(df_{within} = \\Sigma df_{each \\ treatment}\\)\n\n\n\\[\\begin{align}\n\\text{Variance}_{within} &= \\dfrac{SS_{within}}{df_{within}} \\\\\n&= \\dfrac{8 + 2}{2 + 2} \\\\\n&= 2.5\n\\end{align}\\]"
   },
   {
     "objectID": "slides/15_ANOVA.html#between-groups-variance",

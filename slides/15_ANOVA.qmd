@@ -198,7 +198,7 @@ $\text{Variance}_{total} = `r a2$MS_total`$
 
 $$\begin{align}
 \text{Variance}_{within} &= \dfrac{SS_{within}}{df_{within}} \\
-&= \dfrac{`r a2$SS_x` + `r a2$SS_y`}{`r a2$df_x` + `r a2$df_y`} \\
+&= \dfrac{`r a2$SS_x` + `r a2$SS_y`}{`r a2$n_x - 1` + `r a2$n_y - 1`} \\
 &= `r a2$MS_within`
 \end{align}$$
 :::
