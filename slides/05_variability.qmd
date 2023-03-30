@@ -440,7 +440,8 @@ sw_table <- sw |>
   knitr::kable(format = 'html', digits = 1, escape = F,
              format.args = list(big.mark = ",", scientific = FALSE),
              col.names = c("Movie",rep(c("<i>N</i>","<i>M</i>","<i>SD</i>"), 2))) |> 
-  kableExtra::add_header_above(c("", "MetaCritic.com" = 3, "IMDb.com" = 3))
+  kableExtra::add_header_above(c("", "MetaCritic.com" = 3, "IMDb.com" = 3)) |> 
+  kableExtra::column_spec(1, width = 300)
 ```
 
 :::: {.r-stack}
