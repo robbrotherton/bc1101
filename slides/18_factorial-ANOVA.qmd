@@ -433,11 +433,11 @@ table_scores
 ## Step 2. Critical region {.smaller}
 
 - Step 2. Critical region
-  - Numerators: $df_{A} = k_A-1 = 1 \\ df_{B} = k_B-1 = 1 \\ df_{A*B} = k-1 - df_A - df_B = 1$
+  - Numerators: $\begin{align} &df_{A} = k_A-1 = 1 \\ &df_{B} = k_B-1 = 1 \\ &df_{A*B} = k-1 - df_A - df_B = 1 \end{align}$
   - Denominator: $df_{within} = N-k  = `r a$N - a$k`$
 
 ```{r}
-#| style: "font-size: 0.6em;"
+#| style: "font-size: 0.55em;"
 options(digits = 3)
 
 dfs <- setNames(5:15, 5:15)
