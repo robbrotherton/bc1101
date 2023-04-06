@@ -35,8 +35,8 @@ table_scores <- bc1101tools::anova_2x2_table(
 
 cell_values <- c(
   glue::glue("\\(T = {a$T1}\\)<br>\\(SS = {a$SS1}\\)"),
-  glue::glue("\\(T = {a$T2}\\)<br>\\(SS = {a$SS2}\\)"),
   glue::glue("\\(T = {a$T3}\\)<br>\\(SS = {a$SS3}\\)"),
+  glue::glue("\\(T = {a$T2}\\)<br>\\(SS = {a$SS2}\\)"),
   glue::glue("\\(T = {a$T4}\\)<br>\\(SS = {a$SS4}\\)")
 )
 
@@ -467,7 +467,7 @@ table_summary
 ```
 
 ::: {style="margin-left: 7em; font-size: 0.8em;"}
-$T_{col}$  [$53$]{style="margin-left: 2em;"} [$38$]{style="margin-left: 4em;"}
+$T_{col}$  [$`r a$T1 + a$T2`$]{style="margin-left: 2em;"} [$`r a$T3 + a$T4`$]{style="margin-left: 4em;"}
 :::
 :::
 
@@ -476,9 +476,9 @@ $T_{col}$  [$53$]{style="margin-left: 2em;"} [$38$]{style="margin-left: 4em;"}
 ::: {style="margin-top: 0.8em; padding-top: 1em; height: 2em; display: flex; flex-direction: column; justify-content: space-between;"}
 $T_{row}$
 
-$49$
+$`r a$T1 + a$T3`$
 
-$42$
+$`r a$T2 + a$T4`$
 :::
 :::
 
@@ -515,7 +515,7 @@ table_summary
 ```
 
 ::: {style="margin-left: 7em; font-size: 0.8em;"}
-$T_{col}$  [$53$]{style="margin-left: 2em;"} [$38$]{style="margin-left: 4em;"}
+$T_{col}$  [$`r a$T1 + a$T2`$]{style="margin-left: 2em;"} [$`r a$T3 + a$T4`$]{style="margin-left: 4em;"}
 :::
 :::
 
@@ -524,9 +524,9 @@ $T_{col}$  [$53$]{style="margin-left: 2em;"} [$38$]{style="margin-left: 4em;"}
 ::: {style="margin-top: 0.8em; padding-top: 1em; height: 2em; display: flex; flex-direction: column; justify-content: space-between;"}
 $T_{row}$
 
-$49$
+$`r a$T1 + a$T3`$
 
-$42$
+$`r a$T2 + a$T4`$
 :::
 :::
 
@@ -560,7 +560,7 @@ table_summary
 ```
 
 ::: {style="margin-left: 7em; font-size: 0.8em;"}
-$T_{col}$  [$53$]{style="margin-left: 2em;"} [$38$]{style="margin-left: 4em;"}
+$T_{col}$  [$`r a$T1 + a$T2`$]{style="margin-left: 2em;"} [$`r a$T3 + a$T4`$]{style="margin-left: 4em;"}
 :::
 :::
 
@@ -569,9 +569,9 @@ $T_{col}$  [$53$]{style="margin-left: 2em;"} [$38$]{style="margin-left: 4em;"}
 ::: {style="margin-top: 0.8em; padding-top: 1em; height: 2em; display: flex; flex-direction: column; justify-content: space-between;"}
 $T_{row}$
 
-$49$
+$`r a$T1 + a$T3`$
 
-$42$
+$`r a$T2 + a$T4`$
 :::
 :::
 
@@ -605,7 +605,7 @@ table_summary
 ```
 
 ::: {style="margin-left: 7em; font-size: 0.8em;"}
-$T_{col}$  [$53$]{style="margin-left: 2em;"} [$38$]{style="margin-left: 4em;"}
+$T_{col}$  [$`r a$T1 + a$T2`$]{style="margin-left: 2em;"} [$`r a$T3 + a$T4`$]{style="margin-left: 4em;"}
 :::
 :::
 
@@ -614,9 +614,9 @@ $T_{col}$  [$53$]{style="margin-left: 2em;"} [$38$]{style="margin-left: 4em;"}
 ::: {style="margin-top: 0.8em; padding-top: 1em; height: 2em; display: flex; flex-direction: column; justify-content: space-between;"}
 $T_{row}$
 
-$49$
+$`r a$T1 + a$T3`$
 
-$42$
+$`r a$T2 + a$T4`$
 :::
 :::
 
@@ -650,7 +650,7 @@ table_summary
 ```
 
 ::: {style="margin-left: 7em; font-size: 0.8em;"}
-$T_{col}$  [$53$]{style="margin-left: 2em;"} [$38$]{style="margin-left: 4em;"}
+$T_{col}$  [$`r a$T1 + a$T2`$]{style="margin-left: 2em;"} [$`r a$T3 + a$T4`$]{style="margin-left: 4em;"}
 :::
 :::
 
@@ -659,9 +659,9 @@ $T_{col}$  [$53$]{style="margin-left: 2em;"} [$38$]{style="margin-left: 4em;"}
 ::: {style="margin-top: 0.8em; padding-top: 1em; height: 2em; display: flex; flex-direction: column; justify-content: space-between;"}
 $T_{row}$
 
-$49$
+$`r a$T1 + a$T3`$
 
-$42$
+$`r a$T2 + a$T4`$
 :::
 :::
 
