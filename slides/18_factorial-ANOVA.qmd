@@ -19,6 +19,8 @@ df <- data.frame(A = rep(c(1,2), each = 8),
                  B = rep(c(1,2), each = 4),
                  DV = c(banana_math, banana_rt, candy_math, candy_rt))
 
+# summary(aov(formula = DV ~ A * B, data = df))
+
 a <- bc1101tools::example_ANOVA_factorial(df)
 
 table_scores <- bc1101tools::anova_2x2_table(
@@ -27,16 +29,16 @@ table_scores <- bc1101tools::anova_2x2_table(
   factor_b_name = "Test",
   factor_b_levels = c("Math", "Reaction time"),
   cell_values = c(paste(banana_math, collapse = ", "),  
-                  paste(banana_rt, collapse = ", "), 
                   paste(candy_math, collapse = ", "), 
+                  paste(banana_rt, collapse = ", "), 
                   paste(candy_rt, collapse = ", "))
   
 )
 
 cell_values <- c(
   glue::glue("\\(T = {a$T1}\\)<br>\\(SS = {a$SS1}\\)"),
-  glue::glue("\\(T = {a$T3}\\)<br>\\(SS = {a$SS3}\\)"),
   glue::glue("\\(T = {a$T2}\\)<br>\\(SS = {a$SS2}\\)"),
+  glue::glue("\\(T = {a$T3}\\)<br>\\(SS = {a$SS3}\\)"),
   glue::glue("\\(T = {a$T4}\\)<br>\\(SS = {a$SS4}\\)")
 )
 
@@ -467,7 +469,7 @@ table_summary
 ```
 
 ::: {style="margin-left: 7em; font-size: 0.8em;"}
-$T_{col}$  [$`r a$T1 + a$T2`$]{style="margin-left: 2em;"} [$`r a$T3 + a$T4`$]{style="margin-left: 4em;"}
+$T_{col}$  [$`r a$T1 + a$T3`$]{style="margin-left: 2em;"} [$`r a$T2 + a$T4`$]{style="margin-left: 4em;"}
 :::
 :::
 
@@ -476,9 +478,9 @@ $T_{col}$  [$`r a$T1 + a$T2`$]{style="margin-left: 2em;"} [$`r a$T3 + a$T4`$]{st
 ::: {style="margin-top: 0.8em; padding-top: 1em; height: 2em; display: flex; flex-direction: column; justify-content: space-between;"}
 $T_{row}$
 
-$`r a$T1 + a$T3`$
+$`r a$T1 + a$T2`$
 
-$`r a$T2 + a$T4`$
+$`r a$T3 + a$T4`$
 :::
 :::
 
@@ -515,7 +517,7 @@ table_summary
 ```
 
 ::: {style="margin-left: 7em; font-size: 0.8em;"}
-$T_{col}$  [$`r a$T1 + a$T2`$]{style="margin-left: 2em;"} [$`r a$T3 + a$T4`$]{style="margin-left: 4em;"}
+$T_{col}$  [$`r a$T1 + a$T3`$]{style="margin-left: 2em;"} [$`r a$T2 + a$T4`$]{style="margin-left: 4em;"}
 :::
 :::
 
@@ -524,9 +526,9 @@ $T_{col}$  [$`r a$T1 + a$T2`$]{style="margin-left: 2em;"} [$`r a$T3 + a$T4`$]{st
 ::: {style="margin-top: 0.8em; padding-top: 1em; height: 2em; display: flex; flex-direction: column; justify-content: space-between;"}
 $T_{row}$
 
-$`r a$T1 + a$T3`$
+$`r a$T1 + a$T2`$
 
-$`r a$T2 + a$T4`$
+$`r a$T3 + a$T4`$
 :::
 :::
 
@@ -560,7 +562,7 @@ table_summary
 ```
 
 ::: {style="margin-left: 7em; font-size: 0.8em;"}
-$T_{col}$  [$`r a$T1 + a$T2`$]{style="margin-left: 2em;"} [$`r a$T3 + a$T4`$]{style="margin-left: 4em;"}
+$T_{col}$  [$`r a$T1 + a$T3`$]{style="margin-left: 2em;"} [$`r a$T2 + a$T4`$]{style="margin-left: 4em;"}
 :::
 :::
 
@@ -569,9 +571,9 @@ $T_{col}$  [$`r a$T1 + a$T2`$]{style="margin-left: 2em;"} [$`r a$T3 + a$T4`$]{st
 ::: {style="margin-top: 0.8em; padding-top: 1em; height: 2em; display: flex; flex-direction: column; justify-content: space-between;"}
 $T_{row}$
 
-$`r a$T1 + a$T3`$
+$`r a$T1 + a$T2`$
 
-$`r a$T2 + a$T4`$
+$`r a$T3 + a$T4`$
 :::
 :::
 
@@ -605,7 +607,7 @@ table_summary
 ```
 
 ::: {style="margin-left: 7em; font-size: 0.8em;"}
-$T_{col}$  [$`r a$T1 + a$T2`$]{style="margin-left: 2em;"} [$`r a$T3 + a$T4`$]{style="margin-left: 4em;"}
+$T_{col}$  [$`r a$T1 + a$T3`$]{style="margin-left: 2em;"} [$`r a$T2 + a$T4`$]{style="margin-left: 4em;"}
 :::
 :::
 
@@ -614,9 +616,9 @@ $T_{col}$  [$`r a$T1 + a$T2`$]{style="margin-left: 2em;"} [$`r a$T3 + a$T4`$]{st
 ::: {style="margin-top: 0.8em; padding-top: 1em; height: 2em; display: flex; flex-direction: column; justify-content: space-between;"}
 $T_{row}$
 
-$`r a$T1 + a$T3`$
+$`r a$T1 + a$T2`$
 
-$`r a$T2 + a$T4`$
+$`r a$T3 + a$T4`$
 :::
 :::
 
@@ -650,7 +652,7 @@ table_summary
 ```
 
 ::: {style="margin-left: 7em; font-size: 0.8em;"}
-$T_{col}$  [$`r a$T1 + a$T2`$]{style="margin-left: 2em;"} [$`r a$T3 + a$T4`$]{style="margin-left: 4em;"}
+$T_{col}$  [$`r a$T1 + a$T3`$]{style="margin-left: 2em;"} [$`r a$T2 + a$T4`$]{style="margin-left: 4em;"}
 :::
 :::
 
@@ -659,9 +661,9 @@ $T_{col}$  [$`r a$T1 + a$T2`$]{style="margin-left: 2em;"} [$`r a$T3 + a$T4`$]{st
 ::: {style="margin-top: 0.8em; padding-top: 1em; height: 2em; display: flex; flex-direction: column; justify-content: space-between;"}
 $T_{row}$
 
-$`r a$T1 + a$T3`$
+$`r a$T1 + a$T2`$
 
-$`r a$T2 + a$T4`$
+$`r a$T3 + a$T4`$
 :::
 :::
 
@@ -827,8 +829,20 @@ bc1101tools::plot_save("18_factorial-ANOVA.svg",
 ```{r}
 #| eval: false
 
+df <- data.frame(A = rep(c("Banana", "Candy"), each = 8),
+                 B = rep(c("Math","RT"), each = 4),
+                 DV = c(banana_math, banana_rt, candy_math, candy_rt))
+
 library(ggplot2)
 library(dplyr)
+
+# main effect of snack
+mean(c(banana_math, banana_rt))
+mean(c(candy_math, candy_rt))
+
+# main effect of test
+mean(c(banana_math, candy_math))
+mean(c(banana_rt, candy_rt))
 
 df |> 
   summarize(mean = mean(DV), .by = c(A, B)) |> 
