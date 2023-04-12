@@ -1,0 +1,295 @@
+---
+title: "Balance beam"
+format: html
+toc: false
+execute: 
+  echo: false
+---
+
+
+```{ojs}
+width = 500
+height = 500
+radius = 32
+beam_height = radius/2
+n_boxes = 10
+
+
+
+
+chart = {
+
+  let box_data = d3.range(n_boxes).map(i => ({
+      x: (Math.random() * (width - radius * 2) + radius),
+      <!-- x: Math.floor((Math.random() * 10), -->
+      y: height/2 - beam_height/2 - radius,
+      overlaps: 0,
+      level: 0
+      }))
+      
+  for (let i = 1; i < box_data.length; i++) {
+    let x = box_data[i].x
+    for (let j = 0; j < box_data.length; j++) {
+      if (i==j) continue
+      if (box_data[i].level != box_data[j].level) continue
+      let y = box_data[j].x
+      if (x < y + radius && x + radius > y) {
+        box_data[i].level++
+        continue
+      }
+    }
+  }
+  
+  console.log(box_data)
+  
+    let mean = box_data.reduce((total, next) => total + next.x, 0) / box_data.length
+  let pivot = mean
+  
+  box_data = box_data.sort(function(a, b) { return Math.abs(a.x - pivot) - Math.abs(b.x - pivot); })
+  for (let i = 0; i < box_data.length; i++) {
+    box_data[i].id = i
+    box_data[i].color = d3.schemeCategory10[i % 10]
+  }
+    
+    
+    
+  const svg = d3.create("svg")
+      .attr("viewBox", [0, 0, width, height])
+      .attr("stroke-width", 2)
+
+  const x = d3.scaleLinear()
+    .range([0, width])
+    .domain([1, 10])
+
+  const beam_and_boxes = svg.append("g")
+  
+  // draw the beam
+  beam_and_boxes.append("rect")
+    .attr("x", 0)
+    .attr("y", height/2 - beam_height / 2)
+    .attr("width", width)
+    .attr("height",  beam_height)
+    .attr("rx", 5)
+    .attr("fill", "black")
+
+  const boxes = beam_and_boxes.append("g")
+  const deviations = beam_and_boxes.append("g")
+  const deviations_vertical = deviations.append("g")
+  const deviations_horizontal = deviations.append("g")
+  const deviations_sum = svg.append("g").attr("transform", `translate(0, ${height - 20})`)
+  const deviations_sum_negative = deviations_sum.append("g")
+  const deviations_sum_positive = deviations_sum.append("g").attr("transform", `translate(0, 10)`)
+  
+  
+  boxes.selectAll("rect")
+    .data(box_data)
+    .join("rect")
+      .attr("x", d => d.x)
+      .attr("y", d => d.y - d.level*radius)
+      .attr("width", radius)
+      .attr("height", radius)
+      .attr("rx", 3)
+      .attr("fill", d => d.color)
+      .call(d3.drag().on("start", start_dragging_box)
+                     .on("drag", dragging_box)
+                     .on("end", stop_dragging_box));
+  
+  // draw a circle at the true mean point
+  const circle = beam_and_boxes.append("circle")
+    .attr("cx", mean)
+    .attr("cy", height/2)
+    .attr("r", 5)
+    .attr("fill", "red")
+  
+  // draw a triangle at the pivot point
+  const triangle = svg.append("polygon")
+    .attr("points", [[0, -radius/2], [radius/2, radius/2], [-radius/2, radius/2]])
+    .attr("fill", "red")
+    .attr("transform", `translate(${pivot}, ${height/2 + radius * 0.75})`)
+    .call(d3.drag()
+             .on("start", start_dragging_mean)
+             .on("drag", dragging_mean)
+             .on("end", stop_dragging_mean))
+    
+    
+  circle.call(d3.drag()
+             .on("start", start_dragging_mean)
+             .on("drag", dragging_mean)
+             .on("end", stop_dragging_mean)
+          )
+  
+
+  // draw the ground
+  svg.append("line")
+    .attr("x1", 0).attr("x2", width)
+    .attr("y1", height/2 + radius * 1.25).attr("y2", height/2 + radius * 1.25)
+    .attr("stroke", "grey")
+    
+  draw_deviations()
+  
+
+  return svg.node();
+  
+  
+  function start_dragging_mean(event, d) {circle.attr("fill", "dodgerblue")}
+  
+  function stop_dragging_mean(event, d) {circle.attr("fill", "red")}
+  
+  function dragging_mean(event, d) {
+      pivot = event.x
+      let angle = Math.min(Math.max((mean - pivot)*0.1, -7), 7)
+       
+      if (angle > 6) {
+        let hypotenuse = width - pivot
+        angle = 90 - Math.acos(radius / hypotenuse) * 180/Math.PI
+      } else if (angle < -6) {
+        let hypotenuse = pivot
+        angle = -1 * (90 - Math.acos(radius / hypotenuse) * 180/Math.PI)
+      }
+      
+      triangle.attr("transform", `translate(${pivot}, ${height/2 + radius * 0.75})`)
+      beam_and_boxes.attr("transform", `rotate(${angle}, ${pivot}, ${height/2})`)
+      draw_deviations()
+  }
+  
+  function start_dragging_box(event, d) {
+    d3.select(this).raise().attr("stroke", "black")
+    console.log(d.id)
+  }
+
+  function dragging_box(event, d) {
+    d3.select(this).attr("x", event.x)
+    box_data[d.id].x = event.x
+    
+    <!-- let overlaps = 0 -->
+    <!-- for (let i = 0; i < box_data.length; i++) { -->
+    <!--   if (i==d.id) continue -->
+    <!--   let other_x = box_data[i].x -->
+    <!--   if (event.x < (other_x + radius) && (event.x + radius) > other_x) overlaps++ -->
+    <!--   } -->
+    <!--   box_data[d.id].overlaps = overlaps -->
+    
+    draw_deviations()
+  }
+
+  function stop_dragging_box(event, d) {
+    d3.select(this).attr("stroke", null)
+  }
+  
+  function draw_deviations() {
+    
+    mean = box_data.reduce((total, next) => total + next.x, 0) / box_data.length
+    
+    <!-- boxes.selectAll("rect") -->
+    <!--   .attr("y", d => d.y - d.overlaps*radius) -->
+    
+    circle.attr("cx", mean)
+    for (let i = 0; i < box_data.length; i++) box_data[i].dev = box_data[i].x - pivot
+    <!-- let box_data_ = box_data.sort(function(a, b) { return Math.abs(a.dev) - Math.abs(b.dev); }) -->
+    <!-- console.log(box_data_sorted) -->
+    
+    let deviations_negative = box_data.filter(function(d){ return d.dev < 0})
+    for (let i = 0; i < deviations_negative.length; i++) {
+      if (i==0) deviations_negative[i].dev_start = 0
+      else deviations_negative[i].dev_start = deviations_negative[i-1].dev_end
+      deviations_negative[i].dev_end = deviations_negative[i].dev_start + Math.abs(deviations_negative[i].dev)
+    }
+    
+    let deviations_positive = box_data.filter(function(d){ return d.dev > 0})
+    for (let i = 0; i < deviations_positive.length; i++) {
+      if (i==0) deviations_positive[i].dev_start = 0
+      else deviations_positive[i].dev_start = deviations_positive[i-1].dev_end
+      deviations_positive[i].dev_end = deviations_positive[i].dev_start + Math.abs(deviations_positive[i].dev)
+    }
+    
+    
+    deviations_vertical.selectAll("line")
+      .data(box_data)
+      .join("line")
+        .attr("x1", d => d.x + radius/2)
+        .attr("x2", d => d.x + radius/2)
+        .attr("y1", d => d.y)
+        .attr("y2", (d, i) => height/2 - radius*2 - d.id * 20)
+        .attr("stroke", "black")
+        .attr("stroke-dasharray", [5, 5])
+        
+    deviations_horizontal.selectAll("line")
+      .data(box_data)
+      .join("line")
+        .attr("x1", d => d.x + radius/2)
+        .attr("x2", pivot)
+        .attr("y1", (d, i) => height/2 - radius*2 - d.id * 20)
+        .attr("y2", (d, i) => height/2 - radius*2 - d.id * 20)
+        .attr("stroke", d => d.color)
+        .attr("stroke-width", 3)
+        
+    deviations_sum_negative.selectAll("line")
+      .data(deviations_negative)
+      .join("line")
+        .attr("x1", d => d.dev_start)
+        .attr("x2", d => d.dev_end)
+        .attr("stroke", d => d.color)
+        .attr("stroke-width", 3)
+        
+    deviations_sum_positive.selectAll("line")
+      .data(deviations_positive)
+      .join("line")
+        .attr("x1", d => d.dev_start)
+        .attr("x2", d => d.dev_end)
+        .attr("stroke", d => d.color)
+        .attr("stroke-width", 3)
+  }
+  
+
+
+  
+}
+```
+
+
+```{ojs}
+<!-- drag = { -->
+
+<!--   function dragstarted(event, d) { -->
+<!--     d3.select(this).raise().attr("stroke", "black") -->
+<!--     console.log(d.id) -->
+<!--   } -->
+
+<!--   function dragged(event, d) { -->
+<!--     d3.select(this).attr("x", event.x) -->
+<!--   } -->
+
+<!--   function dragended(event, d) { -->
+<!--     d3.select(this).attr("stroke", null); -->
+<!--   } -->
+
+<!--   return d3.drag() -->
+<!--       .on("start", dragstarted) -->
+<!--       .on("drag", dragged) -->
+<!--       .on("end", dragended); -->
+<!-- } -->
+
+
+drag_pivot = {
+
+  function dragstarted(event, d) {
+    d3.select(this).raise().attr("stroke", "red");
+  }
+
+  function dragged(event, d) {
+    d3.select(this).attr("cx", event.x)
+  }
+
+  function dragended(event, d) {
+    d3.select(this).attr("stroke", null);
+  }
+
+  return d3.drag()
+      .on("start", dragstarted)
+      .on("drag", dragged)
+      .on("end", dragended);
+}
+
+
+
+```
