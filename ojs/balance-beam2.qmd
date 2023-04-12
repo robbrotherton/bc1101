@@ -25,36 +25,43 @@ chart = {
     let interval = width / scale_width
     return Math.round(x / interval)*interval
   }
+
+  function rounded_position_index(x) {
+    let interval = width / scale_width
+    let x0 = Math.round(x / interval)*interval
+    return Math.round(x0/(width/scale_width))  
+  }
   
+  let positions = d3.range(scale_width).map(i => (0))
+
   function stack_boxes() {
-    let positions = d3.range(scale_width).map(i => (0))
-      
     for (let i = 0; i < box_data.length; i++) {
-      box_data[i].x0 = round_position(box_data[i].x) + box_size/2
-      let this_position = Math.round(round_position(box_data[i].x)/(width/scale_width))
-      box_data[i].position = this_position
-      box_data[i].level = positions[this_position]
-      positions[this_position]++
+      box_data[i].level = positions[box_data[i].x0]
+      positions[box_data[i].x0]++
     }
   }
 
   let box_data = d3.range(n_boxes).map(i => ({
-      x: (Math.random() * (width - box_size * 2) + box_size),
+      // x: (Math.random() * (width - box_size * 2) + box_size),
+      x0: Math.floor(Math.random() *   scale_width),
       y: height/2 - beam_height/2 - radius,
       color: d3.schemeCategory10[i % 10],
       level: 0
       }))
+
+  for (let i = 0; i < box_data.length; i++) box_data[i].x = box_data[i].x0 * box_size
   
-  stack_boxes()
   
-  let mean = box_data.reduce((total, next) => total + next.x0, 0) / box_data.length
+  let mean = box_data.reduce((total, next) => total + next.x + box_size/2, 0) / box_data.length
   let pivot = mean
+  console.log(mean)
   
   box_data = box_data.sort(function(a, b) { return Math.abs(a.x - pivot) - Math.abs(b.x - pivot); })
   for (let i = 0; i < box_data.length; i++) {
     box_data[i].id = i
   }
     
+    stack_boxes()
     
     
   const svg = d3.create("svg")
@@ -80,7 +87,7 @@ chart = {
   const deviations = beam_and_boxes.append("g")
   const deviations_vertical = deviations.append("g")
   const deviations_horizontal = deviations.append("g")
-  const deviations_sum = svg.append("g").attr("transform", `translate(0, ${height - 20})`)
+  const deviations_sum = svg.append("g").attr("transform", `translate(0, ${height/2 + radius * 2})`)
   const deviations_sum_negative = deviations_sum.append("g")
   const deviations_sum_positive = deviations_sum.append("g").attr("transform", `translate(0, 10)`)
   
@@ -88,7 +95,7 @@ chart = {
   boxes.selectAll("rect")
     .data(box_data)
     .join("rect")
-      .attr("x", d => round_position(d.x))
+      .attr("x", d => d.x)
       .attr("y", d => d.y - d.level*box_size)
       .attr("width", box_size)
       .attr("height", box_size)
@@ -159,16 +166,26 @@ chart = {
   
   function start_dragging_box(event, d) {
     d3.select(this).raise().attr("stroke", "black")
+    console.log(d.x)
   }
 
   function dragging_box(event, d) {
     box_data[d.id].x = event.x
-    box_data[d.id].x0 = round_position(box_data[d.id].x) + box_size/2
-    <!-- let new_position -->
-    d3.select(this).attr("x", round_position(event.x))
+    // box_data[d.id].x0 = round_position(box_data[d.id].x) + box_size/2
+    
+    let current_position = box_data[d.id].x0
+    let new_position = rounded_position_index(event.x)
+    
+    if(new_position != current_position) {
+      console.log("moved! from " + current_position + " to " + new_position)
+      // now this box should go on top of the stack for new_position
+      // and any boxes in the current_position with a higher level need their level
+      box_data[d.id].x0 = new_position
+    }
 
-    // restack the boxes!
-    stack_boxes()
+    d3.select(this)
+      .attr("x", round_position(event.x))
+
     draw_deviations()
   }
 
@@ -178,7 +195,7 @@ chart = {
   
   function draw_deviations() {
     
-    mean = box_data.reduce((total, next) => total + next.x0, 0) / box_data.length
+    mean = box_data.reduce((total, next) => total + next.x + box_size/2, 0) / box_data.length
     
     boxes.selectAll("rect")
       .attr("y", d => d.y - d.level*box_size)
