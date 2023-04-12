@@ -10,11 +10,14 @@ execute:
 ```{ojs}
 width = 500
 height = 500
-n_boxes = 15
+n_boxes = 50
 scale_width = 15
 box_size = width / scale_width
 beam_height = box_size / 2
 radius = box_size
+
+// multiply the deviations lined up at the bottom to fit on the screen
+multiplier = 6/n_boxes
 
 
 
@@ -112,6 +115,10 @@ chart = {
     .attr("cy", height/2)
     .attr("r", 5)
     .attr("fill", "red")
+    .call(d3.drag()
+             .on("start", start_dragging_mean)
+             .on("drag", dragging_mean)
+             .on("end", stop_dragging_mean))
   
   // draw a triangle at the pivot point
   const triangle = svg.append("polygon")
@@ -122,13 +129,6 @@ chart = {
              .on("start", start_dragging_mean)
              .on("drag", dragging_mean)
              .on("end", stop_dragging_mean))
-    
-    
-  circle.call(d3.drag()
-             .on("start", start_dragging_mean)
-             .on("drag", dragging_mean)
-             .on("end", stop_dragging_mean)
-          )
   
 
   // draw the ground
@@ -166,7 +166,7 @@ chart = {
   
   function start_dragging_box(event, d) {
     d3.select(this).raise().attr("stroke", "black")
-    console.log(d.x)
+    console.log("x:" + d.x + " x0:" + d.x0 + " level:" + d.level)
   }
 
   function dragging_box(event, d) {
@@ -174,17 +174,32 @@ chart = {
     // box_data[d.id].x0 = round_position(box_data[d.id].x) + box_size/2
     
     let current_position = box_data[d.id].x0
+    let current_level = box_data[d.id].level
     let new_position = rounded_position_index(event.x)
     
     if(new_position != current_position) {
       console.log("moved! from " + current_position + " to " + new_position)
-      // now this box should go on top of the stack for new_position
-      // and any boxes in the current_position with a higher level need their level
+      
+      // update the box's position
       box_data[d.id].x0 = new_position
+      
+      // now this box should go on top of the stack for new_position
+      box_data[d.id].level = positions[new_position]
+      
+      // and update the total number of boxes in that position
+      positions[new_position]++
+      
+      // for the old position, reduce the number of boxes by one, and
+      // bump down any boxes that had a higher level that this box
+      positions[current_position]--
+      for (let i = 0; i < box_data.length; i++) {
+        if (d.id==i) continue
+        if (box_data[i].x0==current_position && box_data[i].level > current_level) {
+            box_data[i].level--
+            console.log("movin on down")
+        } 
+      }
     }
-
-    d3.select(this)
-      .attr("x", round_position(event.x))
 
     draw_deviations()
   }
@@ -198,10 +213,12 @@ chart = {
     mean = box_data.reduce((total, next) => total + next.x + box_size/2, 0) / box_data.length
     
     boxes.selectAll("rect")
+      .attr("x", d => d.x0 * box_size)
       .attr("y", d => d.y - d.level*box_size)
     
     circle.attr("cx", mean)
-    for (let i = 0; i < box_data.length; i++) box_data[i].dev = box_data[i].x0 - pivot
+    
+    for (let i = 0; i < box_data.length; i++) box_data[i].dev = (box_data[i].x0*box_size + (box_size/2)) - pivot
     <!-- let box_data_ = box_data.sort(function(a, b) { return Math.abs(a.dev) - Math.abs(b.dev); }) -->
     <!-- console.log(box_data_sorted) -->
     
@@ -220,34 +237,34 @@ chart = {
     }
     
     
-    <!-- deviations_vertical.selectAll("line") -->
-    <!--   .data(box_data) -->
-    <!--   .join("line") -->
-    <!--     .attr("x1", d => d.x + radius/2) -->
-    <!--     .attr("x2", d => d.x + radius/2) -->
-    <!--     .attr("y1", d => d.y) -->
-    <!--     .attr("y2", (d, i) => height/2 - radius*2 - d.id * 20) -->
-    <!--     .attr("stroke", "black") -->
-    <!--     .attr("stroke-dasharray", [5, 5]) -->
+    deviations_vertical.selectAll("line")
+      .data(box_data)
+      .join("line")
+        .attr("x1", d => box_size * d.x0 + box_size/2)
+        .attr("x2", d => box_size * d.x0 + box_size/2)
+        .attr("y1", d => d.y)
+        .attr("y2", (d, i) => height/2 - radius*2 - d.id * 20)
+        .attr("stroke", "black")
+        .attr("stroke-dasharray", [5, 5])
 
-    <!-- deviations_horizontal.selectAll("line") -->
-    <!--   .data(box_data) -->
-    <!--   .join("line") -->
-    <!--     .attr("x1", d => d.x + radius/2) -->
-    <!--     .attr("x2", pivot) -->
-    <!--     .attr("y1", (d, i) => height/2 - radius*2 - d.id * 20) -->
-    <!--     .attr("y2", (d, i) => height/2 - radius*2 - d.id * 20) -->
-    <!--     .attr("stroke", d => d.color) -->
-    <!--     .attr("stroke-width", 3) -->
+    deviations_horizontal.selectAll("line")
+      .data(box_data)
+      .join("line")
+        .attr("x1", d => box_size * d.x0 + box_size/2)
+        .attr("x2", pivot)
+        .attr("y1", (d, i) => height/2 - radius*2 - d.id * 20)
+        .attr("y2", (d, i) => height/2 - radius*2 - d.id * 20)
+        .attr("stroke", d => d.color)
+        .attr("stroke-width", 3)
     
-    let multiplier = 0.2
+
     deviations_sum_negative.selectAll("line")
       .data(deviations_negative)
       .join("line")
         .attr("x1", d => d.dev_start * multiplier)
         .attr("x2", d => d.dev_end * multiplier)
         .attr("stroke", d => d.color)
-        .attr("stroke-width", 3)
+        .attr("stroke-width", 5)
         
     deviations_sum_positive.selectAll("line")
       .data(deviations_positive)
@@ -255,7 +272,7 @@ chart = {
         .attr("x1", d => d.dev_start * multiplier)
         .attr("x2", d => d.dev_end * multiplier)
         .attr("stroke", d => d.color)
-        .attr("stroke-width", 3)
+        .attr("stroke-width", 5)
   }
   
 
