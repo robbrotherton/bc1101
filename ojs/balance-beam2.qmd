@@ -10,8 +10,8 @@ execute:
 ```{ojs}
 width = 600
 height = 500
-n_boxes = 50
-scale_width = 15
+n_boxes = 10
+scale_width = 11
 box_size = width / scale_width
 beam_height = box_size / 4
 radius = box_size
@@ -47,7 +47,7 @@ chart = {
   let box_data = d3.range(n_boxes).map(i => ({
       // x: (Math.random() * (width - box_size * 2) + box_size),
       x0: Math.floor(Math.random() *   scale_width),
-      y: height/2 - beam_height/2 - radius,
+      y: -box_size, // height/2 - beam_height/2 - radius,
       color: d3.schemeCategory10[i % 10],
       level: 0
       }))
@@ -84,6 +84,7 @@ chart = {
     .attr("transform", `translate(0, ${height - 51})`)
 
   const beam_and_boxes = svg.append("g")
+    .attr("transform", `translate(0, ${height - 50 - radius - beam_height})`)
   
   // draw the beam
   beam_and_boxes.append("rect")
@@ -91,7 +92,7 @@ chart = {
     .attr("height",  beam_height)
     .attr("rx", 3)
     .attr("fill", "black")
-    .attr("transform", `translate(0, ${height/2 - beam_height / 2})`)
+    // .attr("transform", `translate(0, ${height/2 - beam_height / 2})`)
 
   const boxes = beam_and_boxes.append("g")
   const deviations = beam_and_boxes.append("g")
@@ -101,7 +102,7 @@ chart = {
   const deviations_sum_negative = deviations_sum.append("g").attr("transform", `translate(0, -10)`)
   const deviations_sum_positive = deviations_sum.append("g").attr("transform", `translate(0, 10)`)
   
-  
+  // draw the boxes
   boxes.selectAll("rect")
     .data(box_data)
     .join("rect")
@@ -119,7 +120,7 @@ chart = {
   // draw a circle at the true mean point
   const circle = beam_and_boxes.append("circle")
     .attr("cx", mean)
-    .attr("cy", height/2)
+    .attr("cy", beam_height/2)
     .attr("r", 5)
     .attr("fill", "red")
     .call(d3.drag()
@@ -131,7 +132,7 @@ chart = {
   const triangle = svg.append("polygon")
     .attr("points", [[0, -radius/2], [radius/2, radius/2], [-radius/2, radius/2]])
     .attr("fill", "red")
-    .attr("transform", `translate(${pivot}, ${height/2 + radius * 0.75})`)
+    .attr("transform", `translate(${pivot}, ${height-50-radius/2})`)
     .call(d3.drag()
              .on("start", start_dragging_mean)
              .on("drag", dragging_mean)
@@ -160,10 +161,19 @@ chart = {
         angle = -1 * (90 - Math.acos(radius / hypotenuse) * 180/Math.PI)
       }
       
-      triangle.attr("transform", `translate(${pivot}, ${height/2 + radius * 0.75})`)
-      beam_and_boxes.attr("transform", `rotate(${angle}, ${pivot}, ${height/2})`)
+      triangle
+        .attr("transform", `translate(${pivot}, ${height-50-radius/2})`)
+        //  .attr("x", pivot)
+      beam_and_boxes
+        .attr("transform", `translate(0, ${height-50-radius-beam_height}) rotate(${angle}, ${pivot}, ${0})`)
       draw_deviations()
   }
+
+  svg.append("circle")
+    .attr("cx", pivot)
+    .attr("cy", 0)
+    .attr("r", 2000)
+    .attr("fill", "pink")
   
   function start_dragging_box(event, d) {
     d3.select(this).raise().attr("stroke", "black")
