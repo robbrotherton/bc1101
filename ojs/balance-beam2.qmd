@@ -8,12 +8,12 @@ execute:
 
 
 ```{ojs}
-width = 500
+width = 600
 height = 500
 n_boxes = 50
 scale_width = 15
 box_size = width / scale_width
-beam_height = box_size / 2
+beam_height = box_size / 4
 radius = box_size
 
 // multiply the deviations lined up at the bottom to fit on the screen
@@ -74,24 +74,31 @@ chart = {
   const x_ = d3.scaleLinear()
     .range([0, width])
     .domain([0, 10])
+    
+  // draw the ground
+  svg.append("rect")
+    .attr("width", width)
+    .attr("height", 50)
+    .attr("fill", "none")
+    .attr("stroke", "black")
+    .attr("transform", `translate(0, ${height - 51})`)
 
   const beam_and_boxes = svg.append("g")
   
   // draw the beam
   beam_and_boxes.append("rect")
-    .attr("x", 0)
-    .attr("y", height/2 - beam_height / 2)
     .attr("width", width)
     .attr("height",  beam_height)
-    .attr("rx", 5)
+    .attr("rx", 3)
     .attr("fill", "black")
+    .attr("transform", `translate(0, ${height/2 - beam_height / 2})`)
 
   const boxes = beam_and_boxes.append("g")
   const deviations = beam_and_boxes.append("g")
   const deviations_vertical = deviations.append("g")
   const deviations_horizontal = deviations.append("g")
-  const deviations_sum = svg.append("g").attr("transform", `translate(0, ${height/2 + radius * 2})`)
-  const deviations_sum_negative = deviations_sum.append("g")
+  const deviations_sum = svg.append("g").attr("transform", `translate(0, ${height - 25})`)
+  const deviations_sum_negative = deviations_sum.append("g").attr("transform", `translate(0, -10)`)
   const deviations_sum_positive = deviations_sum.append("g").attr("transform", `translate(0, 10)`)
   
   
@@ -102,7 +109,7 @@ chart = {
       .attr("y", d => d.y - d.level*box_size)
       .attr("width", box_size)
       .attr("height", box_size)
-      <!-- .attr("rx", 3) -->
+      .attr("rx", 1)
       .attr("fill", d => d.color)
       .attr("stroke", null)
       .call(d3.drag().on("start", start_dragging_box)
@@ -130,12 +137,6 @@ chart = {
              .on("drag", dragging_mean)
              .on("end", stop_dragging_mean))
   
-
-  // draw the ground
-  svg.append("line")
-    .attr("x1", 0).attr("x2", width)
-    .attr("y1", height/2 + radius * 1.25).attr("y2", height/2 + radius * 1.25)
-    .attr("stroke", "grey")
     
   draw_deviations()
   
@@ -237,25 +238,25 @@ chart = {
     }
     
     
-    deviations_vertical.selectAll("line")
-      .data(box_data)
-      .join("line")
-        .attr("x1", d => box_size * d.x0 + box_size/2)
-        .attr("x2", d => box_size * d.x0 + box_size/2)
-        .attr("y1", d => d.y)
-        .attr("y2", (d, i) => height/2 - radius*2 - d.id * 20)
-        .attr("stroke", "black")
-        .attr("stroke-dasharray", [5, 5])
+    <!-- deviations_vertical.selectAll("line") -->
+    <!--   .data(box_data) -->
+    <!--   .join("line") -->
+    <!--     .attr("x1", d => box_size * d.x0 + box_size/2) -->
+    <!--     .attr("x2", d => box_size * d.x0 + box_size/2) -->
+    <!--     .attr("y1", d => d.y) -->
+    <!--     .attr("y2", (d, i) => height/2 - radius*2 - d.id * 20) -->
+    <!--     .attr("stroke", "black") -->
+    <!--     .attr("stroke-dasharray", [5, 5]) -->
 
-    deviations_horizontal.selectAll("line")
-      .data(box_data)
-      .join("line")
-        .attr("x1", d => box_size * d.x0 + box_size/2)
-        .attr("x2", pivot)
-        .attr("y1", (d, i) => height/2 - radius*2 - d.id * 20)
-        .attr("y2", (d, i) => height/2 - radius*2 - d.id * 20)
-        .attr("stroke", d => d.color)
-        .attr("stroke-width", 3)
+    <!-- deviations_horizontal.selectAll("line") -->
+    <!--   .data(box_data) -->
+    <!--   .join("line") -->
+    <!--     .attr("x1", d => box_size * d.x0 + box_size/2) -->
+    <!--     .attr("x2", pivot) -->
+    <!--     .attr("y1", (d, i) => height/2 - radius*2 - d.id * 20) -->
+    <!--     .attr("y2", (d, i) => height/2 - radius*2 - d.id * 20) -->
+    <!--     .attr("stroke", d => d.color) -->
+    <!--     .attr("stroke-width", 3) -->
     
 
     deviations_sum_negative.selectAll("line")
@@ -264,7 +265,7 @@ chart = {
         .attr("x1", d => d.dev_start * multiplier)
         .attr("x2", d => d.dev_end * multiplier)
         .attr("stroke", d => d.color)
-        .attr("stroke-width", 5)
+        .attr("stroke-width", 8)
         
     deviations_sum_positive.selectAll("line")
       .data(deviations_positive)
@@ -272,7 +273,7 @@ chart = {
         .attr("x1", d => d.dev_start * multiplier)
         .attr("x2", d => d.dev_end * multiplier)
         .attr("stroke", d => d.color)
-        .attr("stroke-width", 5)
+        .attr("stroke-width", 8)
   }
   
 
