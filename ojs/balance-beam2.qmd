@@ -57,7 +57,6 @@ chart = {
   
   let mean = box_data.reduce((total, next) => total + next.x + box_size/2, 0) / box_data.length
   let pivot = mean
-  console.log(mean)
   
   box_data = box_data.sort(function(a, b) { return Math.abs(a.x - pivot) - Math.abs(b.x - pivot); })
   for (let i = 0; i < box_data.length; i++) {
@@ -79,8 +78,8 @@ chart = {
   svg.append("rect")
     .attr("width", width)
     .attr("height", 50)
-    .attr("fill", "none")
-    .attr("stroke", "black")
+    .attr("fill", "#f0f0f0")
+    .attr("stroke", "none")
     .attr("transform", `translate(0, ${height - 51})`)
 
   const beam_and_boxes = svg.append("g")
@@ -122,7 +121,7 @@ chart = {
     .attr("cx", mean)
     .attr("cy", beam_height/2)
     .attr("r", 5)
-    .attr("fill", "red")
+    .attr("fill", "#777777")
     .call(d3.drag()
              .on("start", start_dragging_mean)
              .on("drag", dragging_mean)
@@ -145,9 +144,9 @@ chart = {
   return svg.node();
   
   
-  function start_dragging_mean(event, d) {circle.attr("fill", "dodgerblue")}
+  function start_dragging_mean(event, d) {triangle.attr("fill", "dodgerblue")}
   
-  function stop_dragging_mean(event, d) {circle.attr("fill", "red")}
+  function stop_dragging_mean(event, d) {triangle.attr("fill", "red")}
   
   function dragging_mean(event, d) {
       pivot = event.x
@@ -155,10 +154,9 @@ chart = {
   }
   
   function tip_scale() {
-    let angle = Math.min(Math.max((mean - pivot)*0.1, -7), 7)
-    
-    let hypotenuse
-    let direction
+  
+    let angle = Math.abs((mean - pivot)*0.5);
+    let hypotenuse, direction;
     
     if (pivot < mean) {
       hypotenuse = width - pivot;
@@ -168,19 +166,9 @@ chart = {
       direction = -1;
     }
     
-    let tri_angle = direction * (90 - Math.acos(radius / hypotenuse) * 180/Math.PI)
-    console.log(tri_angle)
+    let tri_angle = 90 - (Math.acos(radius / hypotenuse) * 180/Math.PI)
+    angle = direction * (Math.min(angle, tri_angle))
     
-      if (angle > 6) {
-        // let hypotenuse = width - pivot
-        angle = 90 - Math.acos(radius / hypotenuse) * 180/Math.PI
-      } else if (angle < -6) {
-        // let hypotenuse = pivot
-        angle = -1 * (90 - Math.acos(radius / hypotenuse) * 180/Math.PI)
-      }
-      
-      console.log("angle: " + angle)
-      
       triangle
         .attr("transform", `translate(${pivot}, ${height-50-radius/2})`)
       beam_and_boxes
@@ -196,7 +184,7 @@ chart = {
   
   function start_dragging_box(event, d) {
     d3.select(this).raise().attr("stroke", "black")
-    console.log("x:" + d.x + " x0:" + d.x0 + " level:" + d.level)
+    // console.log("x:" + d.x + " x0:" + d.x0 + " level:" + d.level)
   }
 
   function dragging_box(event, d) {
