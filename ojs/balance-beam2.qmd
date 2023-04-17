@@ -151,19 +151,38 @@ chart = {
   
   function dragging_mean(event, d) {
       pivot = event.x
-      let angle = Math.min(Math.max((mean - pivot)*0.1, -7), 7)
-       
+      tip_scale()
+  }
+  
+  function tip_scale() {
+    let angle = Math.min(Math.max((mean - pivot)*0.1, -7), 7)
+    
+    let hypotenuse
+    let direction
+    
+    if (pivot < mean) {
+      hypotenuse = width - pivot;
+      direction = 1;
+    } else {
+      hypotenuse = pivot;
+      direction = -1;
+    }
+    
+    let tri_angle = direction * (90 - Math.acos(radius / hypotenuse) * 180/Math.PI)
+    console.log(tri_angle)
+    
       if (angle > 6) {
-        let hypotenuse = width - pivot
+        // let hypotenuse = width - pivot
         angle = 90 - Math.acos(radius / hypotenuse) * 180/Math.PI
       } else if (angle < -6) {
-        let hypotenuse = pivot
+        // let hypotenuse = pivot
         angle = -1 * (90 - Math.acos(radius / hypotenuse) * 180/Math.PI)
       }
       
+      console.log("angle: " + angle)
+      
       triangle
         .attr("transform", `translate(${pivot}, ${height-50-radius/2})`)
-        //  .attr("x", pivot)
       beam_and_boxes
         .attr("transform", `translate(0, ${height-50-radius-beam_height}) rotate(${angle}, ${pivot}, ${0})`)
       draw_deviations()
@@ -211,8 +230,9 @@ chart = {
         } 
       }
     }
-
-    draw_deviations()
+    
+    tip_scale()
+    // draw_deviations()
   }
 
   function stop_dragging_box(event, d) {
