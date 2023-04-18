@@ -16,9 +16,6 @@ execute:
 ::: {#chart}
 :::
 
-```{ojs}
-viewof box_data = html`<input type="button" value="hi there">`
-```
 
 ```{ojs}
 
@@ -360,10 +357,10 @@ chart = {
         deviations_horizontal
           .selectAll("rect")
           .data(box_data)
-          .transition().duration(1000)
           .attr("x", function(d) {if(d.dev < 0) {return box_size * d.x0 + box_size/2} else {return pivot} })
-          .attr("y", (d, i) => d.y - box_size/2 - d.level * box_size - d.id * 25 - Math.abs(d.dev))
           .attr("width", d => Math.abs(d.dev))
+          .transition().duration(1000)
+          .attr("y", (d, i) => d.y - box_size/2 - d.level * box_size - d.id * 25 - Math.abs(d.dev))
           .attr("height", d => Math.abs(d.dev))
     }
     
