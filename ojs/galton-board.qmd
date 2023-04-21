@@ -19,6 +19,7 @@ height = 830
 
 board = {
 
+
 var Example = Example || {};
 
 Example.galton = function() {
@@ -30,6 +31,7 @@ Example.galton = function() {
     Common = Matter.Common,
     MouseConstraint = Matter.MouseConstraint,
     Mouse = Matter.Mouse,
+    Events = Matter.Events,
     World = Matter.World,
     Bodies = Matter.Bodies;
 
@@ -38,7 +40,7 @@ Example.galton = function() {
       enableSleeping: true
     }),
     world = engine.world;
-
+  
   // create renderer
   var render = Render.create({
     element: document.getElementById("container"),
@@ -51,7 +53,6 @@ Example.galton = function() {
       showSleeping: false
     }
   });
-  engine.timing.timeScale = 1;
   Render.run(render);
 
   // create runner
@@ -63,30 +64,96 @@ Example.galton = function() {
   // add bodies
   
   // balls
-  let total = 1400;
-  setInterval(() => {
-    if (total-- > 0) {
-      const circle = Bodies.circle(400 + (-0.5 + Math.random()), -20, size, {
-        friction: 0.00001,
-        restitution: 0.5,
-        //mass: 0.001,
-        density: 0.001,
-        frictionAir: 0.042, // 0.042,
-        sleepThreshold: 20,
-        render: {
-          <!-- fillStyle: "#ff00ff", -->
-          fillStyle: d3.schemeCategory10[total % 10],
-          visible: true
-        }
-      });
+  let _total = 1400;
+  let intervalId;
+  
+  <!-- function make_balls() { -->
 
-      Matter.Events.on(circle, "sleepStart", () => {
-        Matter.Body.setStatic(circle, true);
-      });
-      World.add(world, circle);
+  <!--  // Clear the previous interval -->
+  <!--  clearInterval(intervalId); -->
+
+  <!--   engine.world.bodies.forEach((body) => { -->
+  <!--     if (body.label==="circle") { -->
+  <!--       World.remove(engine.world, body); -->
+  <!--     } -->
+  <!--   }); -->
+
+  <!--   let total = _total; -->
+
+
+  <!--     intervalId = setInterval(() => { -->
+  <!--   if (total-- > 0) { -->
+  <!--     const circle = Bodies.circle(400 + (-0.5 + Math.random()), -20, size, { -->
+  <!--       label: "circle", -->
+  <!--       friction: 0.00001, -->
+  <!--       restitution: 0.5, -->
+  <!--       //mass: 0.001, -->
+  <!--       density: 0.001, -->
+  <!--       frictionAir: 0.042, // 0.042, -->
+  <!--       sleepThreshold: 20, -->
+  <!--       render: { -->
+  <!--         <!-- fillStyle: "#ff00ff", --> -->
+  <!--         fillStyle: d3.schemeCategory10[total % 10], -->
+  <!--         visible: true -->
+  <!--       } -->
+  <!--     }); -->
+
+  <!--     Matter.Events.on(circle, "sleepStart", () => { -->
+  <!--       Matter.Body.setStatic(circle, true); -->
+  <!--     }); -->
+  <!--     World.add(world, circle); -->
+  <!--   } -->
+  <!-- }, 10); -->
+  <!-- } -->
+
+async function make_balls() {
+  // Remove existing balls
+  engine.world.bodies.forEach((body) => {
+    if (body.label === "circle") {
+      World.remove(engine.world, body);
     }
-  }, 10);
+  });
 
+  let total = _total;
+
+  // Function to add balls with a delay
+  const addBallWithDelay = (delay) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const circle = Bodies.circle(400 + (-0.5 + Math.random()), -20, size, {
+          label: "circle",
+          friction: 0.00001,
+          restitution: 0.5,
+          //mass: 0.001,
+          density: 0.001,
+          frictionAir: 0.042, // 0.042,
+          sleepThreshold: 20,
+          render: {
+            <!-- fillStyle: "#ff00ff", -->
+            fillStyle: d3.schemeCategory10[i % 10],
+            visible: true
+          }
+        });
+
+        Matter.Events.on(circle, "sleepStart", () => {
+          Matter.Body.setStatic(circle, true);
+        });
+        World.add(world, circle);
+        resolve();
+      }, delay);
+    });
+  };
+
+  // Loop to add balls using addBallWithDelay
+  for (let i = 0; i < total; i++) {
+    await addBallWithDelay(10);
+  }
+}
+  //make_balls();
+  
+
+  
+  // pegs
   const pegs = [];
   const spacingY = 35;
   const spacingX = 40;
@@ -149,7 +216,10 @@ Example.galton = function() {
 
   World.add(world, pegs);
   
+  Events.on(engine, "mousedown", make_balls);
   
+  
+render.canvas.addEventListener("mousedown", make_balls);
 
 
   return {
@@ -167,12 +237,7 @@ Example.galton = function() {
 
 Example.galton();
 
-
-<!-- const button = d3.select("#container").append("input") -->
-<!--   .attr("type", "button") -->
-<!--   .attr("onclick", reset) -->
-
-
+  
 }
 
 ```
