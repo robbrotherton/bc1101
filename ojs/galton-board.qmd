@@ -15,185 +15,173 @@ format: html
 Matter = require("https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js")
 
 
-width = 800
-height = 800
 
 board = {
 
 
-var Example = Example || {};
+let width = 800;
+let height = 800;
+const size = 4;
+let _total = 1200;
+let intervalId;
 
-Example.galton = function() {
-  var Engine = Matter.Engine,
-    Render = Matter.Render,
-    Runner = Matter.Runner,
-    Composite = Matter.Composite,
-    Composites = Matter.Composites,
-    Common = Matter.Common,
-    MouseConstraint = Matter.MouseConstraint,
-    Mouse = Matter.Mouse,
-    Events = Matter.Events,
-    World = Matter.World,
-    Bodies = Matter.Bodies;
 
-  // create engine
-  var engine = Engine.create({
-      enableSleeping: true
+var {Engine, Render, Runner, 
+    Composite, Composites, Common, 
+    MouseConstraint, Mouse, Events, 
+    World, Bodies} = Matter;
+
+let engine, render, runner, world;
+
+function initialize() {
+    // create engine
+    engine = Engine.create({
+        enableSleeping: true
     }),
-    world = engine.world;
-  
-  // create renderer
-  var render = Render.create({
-    element: document.getElementById("container"),
-    engine: engine,
-    options: {
-      width: width,
-      height: height,
-      background: "#ffffff",
-      wireframes: false,
-      //showSleeping: false
-    }
-  });
-  Render.run(render);
+        world = engine.world;
+    
+    // create renderer
+    render = Render.create({
+        element: document.getElementById("container"),
+        engine: engine,
+        options: {
+            width: width,
+            height: height,
+            background: "#ffffff",
+            wireframes: false,
+            showSleeping: false
+        }
+    });
+    Render.run(render);
 
-  // create runner
-  var runner = Runner.create();
-  Runner.run(runner, engine);
+    // engine.gravity.y = 1;
+    // engine.timing.timeScale = 1;
+    
+    // create runner
+    runner = Runner.create();
+    Runner.run(runner, engine);
+    render.canvas.addEventListener("mousedown", reset);
+}
 
-  const size = 4;
 
-  // add bodies
-  
-  // balls
-  let _total = 1200;
-  let intervalId;
-  
-  function make_balls() {
-
-   // Clear the previous interval
-   clearInterval(intervalId);
-
-  // Remove existing balls
-  Matter.Composite.clear(engine.world);
-  make_pegs();
+function make_balls() {
 
     let total = _total;
+    clearInterval(intervalId);
 
-      intervalId = setInterval(() => {
-    if (total-- > 0) {
-      const circle = Bodies.circle(400 + (-0.5 + Math.random()), -20, size, {
-        label: "circle",
-        friction: 0.00001,
-        restitution: 0.5,
-        //mass: 0.001,
-        density: 0.001,
-        frictionAir: 0.042, // 0.042,
-        sleepThreshold: 20,
-        render: {
-          fillStyle: d3.schemeCategory10[total % 10],
-          visible: true
+    intervalId = setInterval(() => {
+        if (total-- > 0) {
+            const circle = Bodies.circle(400 + (-0.5 + Math.random()), -20, size, {
+                label: "circle",
+                friction: 0.00001,
+                restitution: 0.5,
+                //mass: 0.0001,
+                density: 0.1,
+                frictionAir: 0.042, // 0.042,
+                sleepThreshold: 20,
+                render: {
+                    fillStyle: d3.schemeCategory10[total % 10]
+                }
+            });
+
+            Matter.Events.on(circle, "sleepStart", () => {
+                Matter.Body.setStatic(circle, true);
+            });
+            Matter.Composite.add(world, circle);
         }
-      });
+    }, 10);
+}
 
-      Matter.Events.on(circle, "sleepStart", () => {
-        Matter.Body.setStatic(circle, true);
-      });
-      Matter.Composite.add(world, circle);
+
+function make_pegs() {
+    // pegs
+    const pegs = [];
+    const spacingY = 35;
+    const spacingX = 40;
+    var i, j, lastI;
+    for (i = 0; i < 14; i++) {
+        for (j = 1; j < i; j++) {
+            pegs.push(
+                Bodies.circle(
+                    400 + (j * spacingX - i * (spacingX / 2)),
+                    i * spacingY,
+                    size,
+                    {
+                        isStatic: true,
+                        friction: 0,
+                        render: {
+                            fillStyle: "#000000",
+                            visible: true
+                        }
+                    }
+                )
+            );
+        }
+        lastI = i;
     }
-  }, 10);
-  }
-
-
-  
-
-  function make_pegs() {
-  Matter.Composite.clear(engine.world);
-  // pegs
-  const pegs = [];
-  const spacingY = 35;
-  const spacingX = 40;
-  var i, j, lastI;
-  for (i = 0; i < 14; i++) {
-    for (j = 1; j < i; j++) {
-      pegs.push(
-        Bodies.circle(
-          400 + (j * spacingX - i * (spacingX / 2)),
-          i * spacingY,
-          size,
-          {
-            isStatic: true,
-            friction: 0,
-            render: {
-              fillStyle: "#000000",
-              visible: true
-            }
-          }
-        )
-      );
+    // bins
+    for (i = 0; i < 19; i++) {
+        Matter.Composite.add(
+            world,
+            Bodies.rectangle(
+                280 - spacingX + (j * spacingX - i * spacingX),
+                lastI * spacingY + 220,
+                4,
+                lastI + 300,
+                {
+                    isStatic: true,
+                    density: 1000,
+                    mass: 1000,
+                    render: {
+                        fillStyle: "#000000",
+                        visible: true
+                    },
+                    chamfer: {
+                        radius: [size * 0.4, size * 0.4, 0, 0]
+                    }
+                }
+            )
+        );
     }
-    lastI = i;
-  }
-  // bins
-  for (i = 0; i < 19; i++) {
+    // ground
     Matter.Composite.add(
-      world,
-      Bodies.rectangle(
-        280 - spacingX + (j * spacingX - i * spacingX),
-        lastI * spacingY + 220,
-        4,
-        lastI + 300,
-        {
-          isStatic: true,
-          density: 1000,
-          mass: 1000,
-          render: {
-            fillStyle: "#000000",
-            visible: true
-          },
-          chamfer: {
-            radius: [size * 0.4, size * 0.4, 0, 0]
-          }
-        }
-      )
+        world,
+        Bodies.rectangle(400, height, 1000, 10, {
+            isStatic: true,
+            render: {
+                fillStyle: "#000000",
+                visible: true
+            }
+        })
     );
-  }
-  // ground
-  Matter.Composite.add(
-    world,
-    Bodies.rectangle(400, height, 1000, 10, {
-      isStatic: true,
-      render: {
-        fillStyle: "#000000",
-        visible: true
-      }
-    })
-  );
-  
-
-  World.add(world, pegs);
-  }
-  
-  make_pegs();
-  Events.on(engine, "mousedown", make_balls);
-  
-  
-render.canvas.addEventListener("mousedown", make_balls);
 
 
-  return {
-    engine: engine,
-    runner: runner,
-    render: render,
-    canvas: render.canvas,
-    stop: function() {
-      Matter.Render.stop(render);
-      Matter.Runner.stop(runner);
-    }
-  };
-};
+    World.add(world, pegs);
+}
+
+function reset() {
+    Composite.clear(world);
+    Engine.clear(engine);
+    Render.stop(render);
+    Runner.stop(runner);
+    render.canvas.remove();
+    render.canvas = null;
+    render.context = null;
+    render.textures = {};
+    console.log('reset clicked');
+    
+    initialize();
+    make_pegs();
+    make_balls();
+}
 
 
-Example.galton();
+//
+
+initialize();
+make_pegs();
+make_balls();
+
 
   
 }
