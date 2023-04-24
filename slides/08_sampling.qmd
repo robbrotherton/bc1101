@@ -312,6 +312,19 @@ $\sigma_M = \dfrac{\sigma}{\sqrt{n}} = \dfrac{2.24}{\sqrt{2}} = 1.58$
 2. Describe the distribution of sample means (shape, expected value of the mean, and standard error) for samples of $n = 100$ selected from a population with $\mu = 40$ and $\sigma = 10$.
 
 
+# Galton board
+
+::::{#container style="position: relative; width: 700px; margin: 0 auto;"}
+:::{#board style="position: absolute;"}
+:::
+:::{#overlay style="position: absolute;"}
+:::
+::::
+
+```{ojs}
+import { board } from "../ojs/galton-board.qmd"
+```
+
 
 ::: {.content-hidden}
 
