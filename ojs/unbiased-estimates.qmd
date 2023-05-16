@@ -6,11 +6,14 @@ execute:
   echo: false
 ---
 
+::: {#population-container}
+:::
 
 ::: {#height-container}
 :::
 
 ::: {#timeline-container}
+Average under/over-estimation by number of samples
 :::
 
 ```{ojs}
@@ -419,7 +422,7 @@ update_svg = {
     .data(running_averages)
     .enter()
     .append("line").attr("id", d => d.param + "-line")
-      .attr("stroke-width", 2)
+      .style("stroke-width", 1)
       .attr("x1", d => xSD(0)).attr("x2", d => xSD(0))
       .attr("y1", ySD(0))
       .attr("y2", ySD(34))
@@ -468,13 +471,19 @@ update_svg = {
     
   <!-- newSample(); -->
   
+  const timeChart = {
+    width: 800,
+    height: 300,
+    margin: {left: 30, right: 30, top: 10, bottom: 40}
+  }
+  
   
   const timeX = d3.scaleLinear()
-    .domain([0,500])
-    .range([0, 300])
+    .domain([0, 500])
+    .range([timeChart.margin.left, timeChart.width - timeChart.margin.right])
   const timeY = d3.scaleLinear()
-    .domain([-1, 1])
-    .range([200, 0])
+    .domain([-0.5, 0.5])
+    .range([timeChart.height - timeChart.margin.bottom, timeChart.margin.top])
   const biasLine = function(x, y){
       return d3.line()
       .x(function(d,i) { return timeX(x[i]); }) 
@@ -482,18 +491,37 @@ update_svg = {
       (Array(x.length));
   }
   
+  const timeXAxis = d3.axisBottom(timeX).tickSize(0)
+  const timeYAxis = d3.axisLeft(timeY).ticks(5).tickSize(0)
+  
   const timesvg =   d3.select("#timeline-container")
     .append("svg").attr("id", "timeline-svg")
-    .attr("width", 300).attr("height", 200)
+    .attr("width", timeChart.width).attr("height", timeChart.height)
 
   timesvg.append("g")
       .selectAll("line")
-      .data([-.75, -.5, -.25, 0, .25])
+      .data([-0.4, -0.2, 0, 0.2, 0.4])
       .enter().append("line")
         .attr("x1", d => timeX(1)).attr("x2", d => timeX(500))
         .attr("y1", d => timeY(d)).attr("y2", d => timeY(d))
         .attr("class", function(d){if(d===0){return"axis-major"}else{return "axis-minor"}})
     
+  const timeChartXAxis = timesvg.append("g")
+  timeChartXAxis.attr("transform", `translate(0, ${timeY(-0.5)})`)
+  timeChartXAxis.call(timeXAxis)
+  timeChartXAxis.select(".domain").remove();
+  
+  const timeChartYAxis = timesvg.append("g")
+  timeChartYAxis.attr("transform", `translate(${timeChart.margin.left}, 0)`)
+  timeChartYAxis.call(timeYAxis)
+  
+  timeChartXAxis.append("text")
+    .attr("fill", "var(--text-color")
+    .attr("x", timeX(0)).attr("y", 30)
+    .attr("font-size", "1.5em")
+    .attr("text-anchor", "start")
+    .text("Number of samples taken")
+  
   const biasPaths = timesvg.append("g")
   
   
@@ -523,8 +551,8 @@ update_svg = {
   font-size: 1.2em;
 }
 .axis-major {
-  stroke: black;
-  stroke-width: 2;
+  stroke: #444;
+  stroke-width: 1;
 }
 .axis-minor {
   stroke: #ddd;
@@ -561,7 +589,8 @@ update_svg = {
 }
 
 .bias-paths {
-  fill: none
+  fill: none;
+  stroke-width: 2;
 }
 
 #mean-path {
