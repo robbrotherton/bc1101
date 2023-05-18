@@ -16,7 +16,6 @@ execute:
 :::
 
 ::: {#timeline-container style="display: block; width: 100%;"}
-Average under/over-estimation by number of samples
 :::
 
 ```{ojs}
@@ -59,13 +58,6 @@ yScalePopulation = d3.scaleLinear()
     .domain([0, 300])
     .range([h, 0])
 
-xSD = d3.scaleLinear()
-    .domain([-1, 1])
-    .range([0, w * 0.5])
-ySD = d3.scaleLinear()
-    .domain([0, 35])
-    .range([50, h])
-    
 xScaleEstimates = d3.scaleLinear()
     .domain([-1, 1])
     .range([w * 0.05, w * 0.4])
@@ -122,14 +114,9 @@ update_svg = {
     estimates.map(d => d.id = nSamplesDrawn);
     sample_estimates.push(estimates)
     
-    estimates.map(d => d.id = nSamplesDrawn);
-    sample_estimates.push(estimates)
-    
     updateRunningAverages(estimates);
-    
     updateBiasChart();
     updateSampleCircles();
-    <!-- updateLines(); -->
     updatePath();
     updateVisibility();
   }
@@ -290,14 +277,14 @@ update_svg = {
       .attr("class", function(d,i){
         if(i==3) {return "axis-major"} else {return "axis-minor"}
       })
-      .attr("x1", d => xSD(d))
-      .attr("x2", d => xSD(d))
-      .attr("y1", ySD(0))
-      .attr("y2", ySD(34))
+      .attr("x1", d => xScaleEstimates(d))
+      .attr("x2", d => xScaleEstimates(d))
+      .attr("y1", yScaleEstimates(0))
+      .attr("y2", yScaleEstimates(23))
   sdAxis.selectAll("text").data(axisLabels).enter().append("text")
       .text(d => d)
-      .attr("x", d => xSD(d))
-      .attr("y", ySD(-1))
+      .attr("x", d => xScaleEstimates(d))
+      .attr("y", yScaleEstimates(-1))
       .attr("text-anchor", "middle")
 
     
@@ -316,7 +303,7 @@ update_svg = {
     
     var classes = "#" + param + "-estimate, #" + param + "-line"
     estimatesSvg.selectAll(classes).classed("hide", legendStatus[index].hide)
-    timesvg.selectAll("#" + param + "-path").classed("hide", legendStatus[index].hide)
+    timeSvg.selectAll("#" + param + "-path").classed("hide", legendStatus[index].hide)
     estimatesSvg.select("#" + param + "-legend").classed("legend-unselected", legendStatus[index].hide)
   }
   
@@ -328,8 +315,8 @@ update_svg = {
     .data(legendStatus)
     .enter()
     .append("circle").attr("id", d => d.param + "-legend")
-    .attr("cx", (d,i) => xSD((i-1)*0.5))
-    .attr("cy", ySD(-3))
+    .attr("cx", (d,i) => xScaleEstimates((i-1)*0.5))
+    .attr("cy", yScaleEstimates(-3))
     .attr("r", 5)
     .attr("class", "legend-dots")
     .classed("legend-unselected", d => d.hide)
@@ -404,13 +391,20 @@ update_svg = {
   var timeXAxis = d3.axisBottom(timeX).tickSize(0)
   const timeYAxis = d3.axisLeft(timeY).ticks(5).tickSize(0)
   
-  const timesvg =   d3.select("#timeline-container")
+  const timeSvg =   d3.select("#timeline-container")
     .append("svg").attr("id", "timeline-svg")
-    <!-- .attr("width", timeChart.width).attr("height", timeChart.height) -->
     .attr("preserveAspectRatio", "xMinYMin meet")
     .attr("viewBox", "0 0 800 300")
+  timeSvg.append("rect")
+    .attr("width", timeChart.width)
+    .attr("height", timeChart.height)
+    .attr("rx", 5)
+    .attr("fill", "#eee")
+  timeSvg.append("text")
+    .attr("y", 20)
+    .text("Average under/over-estimation by number of samples taken")
 
-  timesvg.append("g")
+  timeSvg.append("g")
       .selectAll("line")
       .data([-0.4, -0.2, 0, 0.2, 0.4])
       .enter().append("line")
@@ -418,7 +412,7 @@ update_svg = {
         .attr("y1", d => timeY(d)).attr("y2", d => timeY(d))
         .attr("class", function(d){if(d===0){return"axis-major"}else{return "axis-minor"}})
     
-  const timeChartXAxis = timesvg.append("g")
+  const timeChartXAxis = timeSvg.append("g")
   timeChartXAxis.attr("transform", `translate(0, ${timeY(-0.5)})`)
   timeChartXAxis.call(timeXAxis);
   timeChartXAxis.select(".domain").remove();
@@ -432,9 +426,9 @@ update_svg = {
     .attr("text-anchor", "start")
     .text("Number of samples taken")
   
-  const biasPaths = timesvg.append("g")
+  const biasPaths = timeSvg.append("g")
   
-  const timeChartYAxis = timesvg.append("g")
+  const timeChartYAxis = timeSvg.append("g")
   timeChartYAxis.attr("transform", `translate(${timeChart.margin.left}, 0)`)
   timeChartYAxis.call(timeYAxis)
   
@@ -485,7 +479,7 @@ function clearData() {
       var elementIds = "#" + param + "-estimate, #" + param + "-line"
       
       estimatesSvg.selectAll(elementIds).classed("hide", legendStatus[i].hide)
-      timesvg.selectAll("#" + param + "-path").classed("hide", legendStatus[i].hide)
+      timeSvg.selectAll("#" + param + "-path").classed("hide", legendStatus[i].hide)
     }
   }
   
