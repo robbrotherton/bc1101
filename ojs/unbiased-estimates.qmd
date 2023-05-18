@@ -9,6 +9,13 @@ execute:
 ::: {#controls-container style="width: 100%;"}
 :::
 
+::: {#select-estimate}
+Show: 
+[$M$]{.select-mean .selector .unselected}
+[$SD_{n}$]{.select-population .selector .selected}
+[$SD_{n - 1}$]{.select-sample .selector .selected}
+:::
+
 ::: {#population-container style="float: left; width: 50%;"}
 :::
 
@@ -288,40 +295,38 @@ update_svg = {
       .attr("text-anchor", "middle")
 
     
-  var legendStatus = [{param: "population", hide: false},
-                      {param: "sample",     hide: false},
-                      {param: "mean",       hide: true}]
+  var legendStatus = [{param: "mean",       hide: true},
+                      {param: "population", hide: false},
+                      {param: "sample",     hide: false}]
                       
   
   function updateLegendStatus(param) {
+  console.log(param);
     var index;
-    if (param==="population") {index = 0;} 
-    if (param==="sample") {index = 1;} 
-    if (param==="mean") {index = 2;} 
-    
+    if (param==="mean") {index = 0;}
+    if (param==="population") {index = 1;}
+    if (param==="sample") {index = 2;}
     legendStatus[index].hide = !legendStatus[index].hide
-    
-    var classes = "#" + param + "-estimate, #" + param + "-line"
+
+  console.log(legendStatus[index])
+  
+    <!-- d3.select("#select" + param) -->
+    <!--   .attr(") -->
+  
+    var classes = "#" + param + "-estimate"
+    console.log(classes)
     estimatesSvg.selectAll(classes).classed("hide", legendStatus[index].hide)
     timeSvg.selectAll("#" + param + "-path").classed("hide", legendStatus[index].hide)
-    estimatesSvg.select("#" + param + "-legend").classed("legend-unselected", legendStatus[index].hide)
   }
   
+    const legend = d3.selectAll(".selector")
+    console.log(legend)
+    legend
+      .data(legendStatus)
+      .classed("legend-unselected", d => d.hide)
+      .on("click", function(event, d){updateLegendStatus(d.param);})
   
-  
-  
-  const biasLegend = estimatesSvg.append("g")
-  biasLegend.selectAll("circle")
-    .data(legendStatus)
-    .enter()
-    .append("circle").attr("id", d => d.param + "-legend")
-    .attr("cx", (d,i) => xScaleEstimates((i-1)*0.5))
-    .attr("cy", yScaleEstimates(-3))
-    .attr("r", 5)
-    .attr("class", "legend-dots")
-    .classed("legend-unselected", d => d.hide)
-    .on("click", function(event, data){updateLegendStatus(data.param);})
-  
+
 
   
   // buttons
@@ -348,24 +353,7 @@ update_svg = {
     .html("►")
     .on("click", playButtonClicked)
     
-  const selectEstimate = controls.append("select")
-    .attr("name", "estimate-list")
-    .style("width", "5em");
-  
-    
-  selectEstimate.append("option")
-    .attr("name", "estimate-list")
-    .text("Standard Deviation")
-    .attr("value", "sd")
-    .attr("selected", true)
-  selectEstimate.append("option")
-    .attr("name", "estimate-list")
-    .text("Mean")
-    .attr("value", "mean")
-    
 
-    
-  <!-- newSample(); -->
   
   const timeChart = {
     width: 800,
@@ -472,7 +460,7 @@ function clearData() {
 
   function updateVisibility() {
   
-    var params = ["population", "sample", "mean"]
+    var params = ["mean", "population", "sample"]
     
     for (var i = 0; i < 3; i++) {
       var param = params[i]
@@ -647,6 +635,40 @@ function getSampleEstimates(array) {
 
 .legend-dots:hover {
   cursor: pointer;
+}
+
+
+.selector {
+  margin-right: 2em;
+  cursor: pointer;
+}
+.selector::after {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  transform: translate(50%, 0%) rotate(45deg);
+}
+
+.select-mean::after {
+  background-color: var(--mean-color);
+  border: 1px solid var(--mean-color);
+}
+.select-mean::after {
+  background-color: var(--mean-color);
+  border: 1px solid var(--mean-color);
+}
+.select-population::after {
+  background-color: var(--population-color);
+  border: 1px solid var(--population-color);
+}
+.select-sample::after {
+  background-color: var(--sample-color);
+  border: 1px solid var(--sample-color);
+}
+
+.unselected::after {
+  background-color: red;
 }
 
 ```
