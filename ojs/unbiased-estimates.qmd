@@ -9,13 +9,13 @@ execute:
 ::: {#controls-container style="width: 100%;"}
 :::
 
-::: {#population-container style="float: left; height: 400px; width: 50%;"}
+::: {#population-container style="float: left; width: 50%;"}
 :::
 
-::: {#estimates-container style="float: right; height: 400px; width: 50%;"}
+::: {#estimates-container style="float: right; width: 50%;"}
 :::
 
-::: {#timeline-container style="display: block; height: 300px; width: 100%;"}
+::: {#timeline-container style="display: block; width: 100%;"}
 Average under/over-estimation by number of samples
 :::
 
