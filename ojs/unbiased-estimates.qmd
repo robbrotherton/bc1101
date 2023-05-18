@@ -6,13 +6,16 @@ execute:
   echo: false
 ---
 
-::: {#population-container}
+::: {#controls-container style="width: 100%;"}
 :::
 
-::: {#height-container}
+::: {#population-container style="float: left; height: 400px; width: 50%;"}
 :::
 
-::: {#timeline-container}
+::: {#estimates-container style="float: right; height: 400px; width: 50%;"}
+:::
+
+::: {#timeline-container style="display: block; height: 300px; width: 100%;"}
 Average under/over-estimation by number of samples
 :::
 
@@ -27,15 +30,488 @@ data <- tibble::tibble(value = seq(-4, 4, length.out = 201),
 
 ojs_define(data)
 
-set.seed(6)
-population <- rnorm(3000)
-
+set.seed(4)
+population <- rnorm(550)
+population <- scale(population)
+# sd(population) # should be 1
 ojs_define(population)
 ```
 
+
 ```{ojs}
+w = 800
+h = 400
+curveWidth = 500
+
+radius = 5; //1.4
+
+x = d3.scaleLinear()
+    .domain([-4, 4])
+    .range([0, w * 0.5])
+y = d3.scaleLinear()
+    .domain([0, 0.5])
+    .range([h-100, 0])
+    
+xScalePopulation = d3.scaleLinear()
+    .domain([Math.min(...population), Math.max(...population)])
+    .range([0 + radius, (w * 0.5) - radius])
+yScalePopulation = d3.scaleLinear()
+    .domain([0, 300])
+    .range([h, 0])
+
+xSD = d3.scaleLinear()
+    .domain([-1, 1])
+    .range([0, w * 0.5])
+ySD = d3.scaleLinear()
+    .domain([0, 35])
+    .range([50, h])
+    
+xScaleEstimates = d3.scaleLinear()
+    .domain([-1, 1])
+    .range([0, w * 0.5])
+yScaleEstimates = d3.scaleLinear()
+    .domain([35, 0])
+    .range([h, 50])
+
+yy = d3.scaleLinear()
+    .domain([-1, 1])
+    .range([200, 0])
+yAxis = g => g
+    .attr("transform", `translate(1,0)`)
+    .call(d3.axisLeft(yy))
+xAxisGrid = d3.axisBottom(x).tickSize(-200).tickFormat('').ticks(10);
+yAxisGrid = d3.axisLeft(y).tickSize(-300).tickFormat('').ticks(10);
+
+```
+
+
+
+
+```{ojs}
+update_svg = {
+
+  var sample = [];
+  var sampleData = [];
+  var sample_estimates = [];
+  var running_averages = [{param: "population", value: [0], id: [0]},
+                          {param: "sample",     value: [0], id: [0]},
+                          {param: "mean",       value: [0], id: [0]}];
+  
+  var nSamplesDrawn = 0;
+  
+  var legendSelected = ["sample", "population"]
+  
+  var biasY = d3.scaleLinear()
+    .range([h-100, 100])
+    
+  
+  
+  
+  function newSample() {
+    
+    nSamplesDrawn++
+    
+    // pick random observations from the population by their index
+    for (var i = 0; i < 10; i++) {
+      let randomIndex = Math.floor(Math.random() * popData.length);
+      sample[i] = xScalePopulation.invert(popData[randomIndex].cx);
+      sampleData[i] = popData[randomIndex];
+    }
+    
+    var estimates = getSampleEstimates(sample)
+    estimates.map(d => d.id = nSamplesDrawn);
+    sample_estimates.push(estimates)
+    
+    estimates.map(d => d.id = nSamplesDrawn);
+    sample_estimates.push(estimates)
+    
+    updateRunningAverages(estimates);
+    
+    updateBiasChart();
+    updateSampleCircles();
+    <!-- updateLines(); -->
+    updatePath();
+    updateVisibility();
+  }
+  
+  function updateBiasChart() {
+      yScaleEstimates.domain([nSamplesDrawn-35, nSamplesDrawn])
+      
+      <!-- biasDots.selectAll("circle").remove() -->
+      <!--   biasDots.selectAll("circle") -->
+      <!--     .data(sample_estimates.flat().slice(-210)) -->
+      <!--     .enter() -->
+      <!--     .append("circle") -->
+      <!--       .attr("r", 3) -->
+      <!--       .attr("cx", d => xScaleEstimates(d.value)) -->
+      <!--       .attr("cy", d => yScaleEstimates(d.id)) -->
+      <!--       .attr("id", d => d.param + "-estimate") -->
+      <!--       biasDots.selectAll("circle").remove() -->
+            
+      biasDots.selectAll("rect").remove()
+      biasDots.selectAll("rect")
+          .data(sample_estimates.flat().slice(-210))
+          .enter()
+          .append("rect")
+            .attr("width", radius)
+            .attr("height", radius)
+            .attr("x", d => xScaleEstimates(d.value) - radius / 2)
+            .attr("y", d => yScaleEstimates(d.id) - radius / 2)
+            .attr("id", d => d.param + "-estimate")
+            
+  }
+  
+
+  function updatePath() {
+      biasPaths.selectAll("g").remove()
+      
+      if (nSamplesDrawn > 201) {
+        timeX.domain([nSamplesDrawn - 200, nSamplesDrawn]);
+        timeXAxis = d3.axisBottom(timeX).tickSize(0);
+        timeChartXAxis.call(timeXAxis);
+        timeChartXAxis.select(".domain").remove();
+      }
+      
+      biasPaths.selectAll("g")
+        .data(running_averages)
+        .enter()
+        .append("g")
+        .attr("class", "bias-paths")
+        .append("path")
+          .attr("d", d => biasLine(d.id.slice(1), d.value.slice(1)))
+          .attr("id", d => d.param + "-path")
+
+  }
+  
+  function updateSampleCircles() {
+  
+  let durationMultiplier = 5;
+  if (playing) durationMultiplier = 1;
+  
+    sampleCircles.selectAll('circle').remove()
+    sampleCircles.selectAll('circle')
+      .data(sampleData)
+      .enter().append("circle")
+      .attr("class", "sample")
+      .attr("r", radius)
+      .attr("cx", d => d.cx)
+      .attr("cy", d => (h - 50) - d.cy)
+      .attr("fill", d => d.fill)
+      .transition()
+      .duration(d => d.cy * durationMultiplier)
+      .ease(d3.easeBounceOut)
+      .attr("cy", h - 10)
+  }
+  
+  const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+  }
+  var playing = false;
+  function playButtonClicked() {
+    
+    playing = !playing; 
+    console.log(playing);
+  
+  play_button.text(function(){
+    if(playing) {
+      return "◼"
+  } else {
+    return "▶"
+  }
+  })
+  
+  if (playing) {
+    continuouslyDrawSamples();
+  }
+  }
+  
+  function continuouslyDrawSamples() {
+    if (playing) {
+      newSample();
+      sleep(200).then(continuouslyDrawSamples);
+    }
+  }
+  
+    
+  var popData = [];
+  const color = d3.scaleOrdinal(d3.schemeCategory10);
+  for (let i = 0; i < population.length; ++i) {
+    const cx = xScalePopulation(population[i]);
+    const cy = 20 + (dodge(cx) - radius - 1);
+    <!-- const cy = yScalePopulation(dodge(cx)); -->
+    const fill = color(i % 10);
+    popData.push({cx, cy, fill})
+  }
+  
+
+  const populationAndSampleSvg = d3.select("#population-container")
+    .append("svg").attr("id", "populationAndSample-svg")
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", "0 0 " + (w * 0.5) + " " + h)
+  populationAndSampleSvg.append("rect")
+    .attr("width", w * 0.5)
+    .attr("height", h - 55)
+    .attr("fill", "#c3ddff")
+    .attr("rx", 5)
+  populationAndSampleSvg.append("rect")
+    .attr("width", w * 0.5)
+    .attr("y", h - 50)
+    .attr("height", 50)
+    .attr("fill", "#d3d8a8")
+    .attr("rx", 5)
+  populationAndSampleSvg.append("text")
+    .text("Population")
+    .attr("y", 20)
+  populationAndSampleSvg.append("text")
+    .text("Sample")
+    .attr("y", h - 30)
+    
+    
+  const estimatesSvg = d3.select("#estimates-container")
+    .append("svg").attr("id", "estimates-svg")
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", "0 0 " + (w * 0.5) + " " + h)
+  
+  estimatesSvg.append("text")
+    .text("Over/Under estimation of parameter")
+    .attr("y", 20)
+    
+  const pop = populationAndSampleSvg.append("g")
+  const sampleCircles = populationAndSampleSvg.append("g")
+  
+  const biasChart = estimatesSvg.append("g")
+  const biasDots  = estimatesSvg.append("g")
+  
+  
+  pop.selectAll("circle")
+      .data(popData)
+      .enter()
+      .append("circle")
+        .attr("class", "pop")
+        .attr("cx", d => d.cx)
+        .attr("cy", d => (h - 50) - d.cy)
+        .attr("r", radius)
+        .attr("fill", d => d.fill)
+      
+  const sdAxis = estimatesSvg.append("g").attr("class", "axis invertable")
+  const axisLabels = [-0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75]
+  sdAxis.selectAll("line")
+    .data(axisLabels)
+    .enter().append("line")
+      .attr("class", function(d,i){
+        if(i==3) {return "axis-major"} else {return "axis-minor"}
+      })
+      .attr("x1", d => xSD(d))
+      .attr("x2", d => xSD(d))
+      .attr("y1", ySD(0))
+      .attr("y2", ySD(34))
+  sdAxis.selectAll("text").data(axisLabels).enter().append("text")
+      .text(d => d)
+      .attr("x", d => xSD(d))
+      .attr("y", ySD(-1))
+      .attr("text-anchor", "middle")
+
+    
+  var legendStatus = [{param: "population", hide: false},
+                      {param: "sample",     hide: false},
+                      {param: "mean",       hide: true}]
+                      
+  
+  function updateLegendStatus(param) {
+    var index;
+    if (param==="population") {index = 0;} 
+    if (param==="sample") {index = 1;} 
+    if (param==="mean") {index = 2;} 
+    
+    legendStatus[index].hide = !legendStatus[index].hide
+    
+    var classes = "#" + param + "-estimate, #" + param + "-line"
+    estimatesSvg.selectAll(classes).classed("hide", legendStatus[index].hide)
+    timesvg.selectAll("#" + param + "-path").classed("hide", legendStatus[index].hide)
+    estimatesSvg.select("#" + param + "-legend").classed("legend-unselected", legendStatus[index].hide)
+  }
+  
+  
+  
+  
+  const biasLegend = estimatesSvg.append("g")
+  biasLegend.selectAll("circle")
+    .data(legendStatus)
+    .enter()
+    .append("circle").attr("id", d => d.param + "-legend")
+    .attr("cx", (d,i) => xSD((i-1)*0.5))
+    .attr("cy", ySD(-3))
+    .attr("r", 5)
+    .attr("class", "legend-dots")
+    .classed("legend-unselected", d => d.hide)
+    .on("click", function(event, data){updateLegendStatus(data.param);})
+  
+
+  
+  // buttons
+  const controls = d3.select("#controls-container")
+  
+  const reset_button = controls.append("text")
+  .attr("class", "button invertable")
+    .html("&#x21bb;")
+    .attr("x", 10)
+    .attr("y", h - 50)
+    .on("click", clearData)
+  
+  const button = controls.append("text")
+  .attr("class", "button invertable")
+    .text("ᐳ")
+    .attr("x", 30)
+    .attr("y", h - 50)
+    .on("click", newSample)
+    
+  const play_button = controls.append("text").attr("id", "play-button")
+  .attr("class", "button invertable")
+    .attr("x", 50)
+    .attr("y", h - 50)
+    .html("►")
+    .on("click", playButtonClicked)
+    
+  const selectEstimate = controls.append("select")
+    .attr("name", "estimate-list")
+    .style("width", "5em");
+  
+    
+  selectEstimate.append("option")
+    .attr("name", "estimate-list")
+    .text("Standard Deviation")
+    .attr("value", "sd")
+    .attr("selected", true)
+  selectEstimate.append("option")
+    .attr("name", "estimate-list")
+    .text("Mean")
+    .attr("value", "mean")
+    
+
+    
+  <!-- newSample(); -->
+  
+  const timeChart = {
+    width: 800,
+    height: 300,
+    margin: {left: 30, right: 30, top: 10, bottom: 40}
+  }
+  
+  
+  var timeX = d3.scaleLinear()
+    .domain([0, 200])
+    .range([timeChart.margin.left, timeChart.width - timeChart.margin.right])
+    .clamp(true);
+  const timeY = d3.scaleLinear()
+    .domain([-0.5, 0.5])
+    .range([timeChart.height - timeChart.margin.bottom, timeChart.margin.top])
+  const biasLine = function(x, y){
+      return d3.line()
+      .x(function(d,i) { return timeX(x[i]); }) 
+      .y(function(d,i) { return timeY(y[i]); })
+      (Array(x.length));
+  }
+  
+  var timeXAxis = d3.axisBottom(timeX).tickSize(0)
+  const timeYAxis = d3.axisLeft(timeY).ticks(5).tickSize(0)
+  
+  const timesvg =   d3.select("#timeline-container")
+    .append("svg").attr("id", "timeline-svg")
+    <!-- .attr("width", timeChart.width).attr("height", timeChart.height) -->
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", "0 0 800 300")
+
+  timesvg.append("g")
+      .selectAll("line")
+      .data([-0.4, -0.2, 0, 0.2, 0.4])
+      .enter().append("line")
+        .attr("x1", d => timeX(0)).attr("x2", d => timeX(500))
+        .attr("y1", d => timeY(d)).attr("y2", d => timeY(d))
+        .attr("class", function(d){if(d===0){return"axis-major"}else{return "axis-minor"}})
+    
+  const timeChartXAxis = timesvg.append("g")
+  timeChartXAxis.attr("transform", `translate(0, ${timeY(-0.5)})`)
+  timeChartXAxis.call(timeXAxis);
+  timeChartXAxis.select(".domain").remove();
+  
+
+  
+  timeChartXAxis.append("text")
+    .attr("fill", "var(--text-color")
+    .attr("x", timeX(0)).attr("y", 30)
+    .attr("font-size", "1.5em")
+    .attr("text-anchor", "start")
+    .text("Number of samples taken")
+  
+  const biasPaths = timesvg.append("g")
+  
+  const timeChartYAxis = timesvg.append("g")
+  timeChartYAxis.attr("transform", `translate(${timeChart.margin.left}, 0)`)
+  timeChartYAxis.call(timeYAxis)
+  
+
+
+function clearData() {
+    sample = [];
+    sample_estimates = [];
+    running_averages = [{param: "population",   value: [0], id: [0]},
+                          {param: "sample",     value: [0], id: [0]},
+                          {param: "mean",       value: [0], id: [0]}];
+    nSamplesDrawn = 0;
+    
+    sampleCircles.selectAll('circle').remove()
+    biasDots.selectAll("circle").remove()
+    biasPaths.selectAll("path").remove()
+  }
+  
+  function updateRunningAverages(estimates) {
+  
+      var cur_n = nSamplesDrawn
+      var prev_n = cur_n - 1
+      
+      var old = running_averages[0].value[prev_n]
+      var new_pop = ((old * prev_n) + estimates[0].value)/cur_n
+      running_averages[0].value.push(new_pop)
+      
+      var old = running_averages[1].value[prev_n]
+      var new_sam = ((old * prev_n) + estimates[1].value)/cur_n
+      running_averages[1].value.push(new_sam)
+      
+      var old = running_averages[2].value[prev_n]
+      var new_mea = ((old * prev_n) + estimates[2].value)/cur_n
+      running_averages[2].value.push(new_mea)
+    
+      running_averages[0].id.push(cur_n)
+      running_averages[1].id.push(cur_n)
+      running_averages[2].id.push(cur_n)
+
+}
+
+  function updateVisibility() {
+  
+    var params = ["population", "sample", "mean"]
+    
+    for (var i = 0; i < 3; i++) {
+      var param = params[i]
+      var elementIds = "#" + param + "-estimate, #" + param + "-line"
+      
+      estimatesSvg.selectAll(elementIds).classed("hide", legendStatus[i].hide)
+      timesvg.selectAll("#" + param + "-path").classed("hide", legendStatus[i].hide)
+    }
+  }
+  
+}
+
+```
+
+:::{.content-hidden}
+# Helper functions
+:::
+
+```{ojs}
+
 dodger = radius => {
-  const radius2 = radius ** 2;
+  const radius2 = radius ** 1.8;
   const bisect = d3.bisector(d => d.x);
   const circles = [];
   return x => {
@@ -58,41 +534,6 @@ dodger = radius => {
 }
 
 dodge = dodger(radius * 2 + 1);
-```
-
-```{ojs}
-w = 800
-h = 500
-curveWidth = 500
-
-radius = 1.4
-
-x = d3.scaleLinear()
-    .domain([-4, 4])
-    .range([0, curveWidth])
-y = d3.scaleLinear()
-    .domain([0, 0.5])
-    .range([h-100, 0])
-
-xSD = d3.scaleLinear()
-    .domain([-1, 1])
-    .range([curveWidth, w])
-ySD = d3.scaleLinear()
-    .domain([0, 35])
-    .range([100, h-100])
-
-yy = d3.scaleLinear()
-    .domain([-1, 1])
-    .range([200, 0])
-yAxis = g => g
-    .attr("transform", `translate(1,0)`)
-    .call(d3.axisLeft(yy))
-xAxisGrid = d3.axisBottom(x).tickSize(-200).tickFormat('').ticks(10);
-yAxisGrid = d3.axisLeft(y).tickSize(-300).tickFormat('').ticks(10);
-    
-line = d3.line()
-    .x(d => x(d.value))
-    .y(d => y(d.density))
 ```
 
 ```{ojs}
@@ -132,405 +573,7 @@ function getSampleEstimates(array) {
             {param: "mean",       value: mean(array)}]
 }
 
-
-
-
 ```
-
-
-```{ojs}
-update_svg = {
-
-  var sample = [];
-  var sample_estimates = [];
-  var running_averages = [{param: "population", value: [0], id: [0]},
-                          {param: "sample",     value: [0], id: [0]},
-                          {param: "mean",       value: [0], id: [0]}];
-  
-  var nSamplesDrawn = 0;
-  
-  var legendSelected = ["sample", "population"]
-  
-  var biasY = d3.scaleLinear()
-    .range([h-100, 100])
-    
-  
-    
-  function clearData() {
-    sample = [];
-    sample_estimates = [];
-    running_averages = [{param: "population",   value: [0], id: [0]},
-                          {param: "sample",     value: [0], id: [0]},
-                          {param: "mean",       value: [0], id: [0]}];
-    nSamplesDrawn = 0;
-    
-    sampleCircles.selectAll('circle').remove()
-    biasDots.selectAll("circle").remove()
-    biasLines.selectAll("line").attr("x1", xSD(0)).attr("x2", xSD(0))
-  }
-  
-  function updateRunningAverages(estimates) {
-      var cur_n = nSamplesDrawn
-      var prev_n = cur_n - 1
-      
-      var old = running_averages[0].value[prev_n]
-      var new_pop = ((old * prev_n) + estimates[0].value)/cur_n
-      running_averages[0].value.push(new_pop)
-      
-      var old = running_averages[1].value[prev_n]
-      var new_sam = ((old * prev_n) + estimates[1].value)/cur_n
-      running_averages[1].value.push(new_sam)
-      
-      var old = running_averages[2].value[prev_n]
-      var new_mea = ((old * prev_n) + estimates[2].value)/cur_n
-      running_averages[2].value.push(new_mea)
-    
-      running_averages[0].id.push(cur_n)
-      running_averages[1].id.push(cur_n)
-      running_averages[2].id.push(cur_n)
-
-}
-
-  function updateVisibility() {
-  
-    var params = ["population", "sample", "mean"]
-    
-    for (var i = 0; i < 3; i++) {
-      var param = params[i]
-      var elementIds = "#" + param + "-estimate, #" + param + "-line"
-      
-      svg.selectAll(elementIds).classed("hide", legendStatus[i].hide)
-      timesvg.selectAll("#" + param + "-path").classed("hide", legendStatus[i].hide)
-    }
-  }
-  
-  function newSample() {
-    
-    nSamplesDrawn++
-    
-    for (var i = 0; i < 10; i++) {
-      sample[i] = jStat.normal.sample(0, 1);
-    }
-    
-    var estimates = getSampleEstimates(sample)
-    estimates.map(d => d.id = nSamplesDrawn);
-    sample_estimates.push(estimates)
-    
-    estimates.map(d => d.id = nSamplesDrawn);
-    sample_estimates.push(estimates)
-    
-    updateRunningAverages(estimates);
-    
-    updateBiasChart();
-    updateSampleCircles();
-    updateLines();
-    updatePath();
-    updateVisibility();
-    
-    svg.select("#counter").text(nSamplesDrawn)
-    
-    <!-- svg.selectAll("#population-estimate, #population-line, #population-path").classed("hide", legendStatus[0].hide) -->
-    <!-- svg.selectAll("#sample-estimate, #sample-line, #sample-path").classed("hide", legendStatus[1].hide) -->
-    <!-- svg.selectAll("#mean-estimate, #mean-line, #mean-path").classed("hide", legendStatus[2].hide) -->
-  }
-  
-  function updateBiasChart() {
-      biasY.domain([nSamplesDrawn-35, nSamplesDrawn])
-      
-      biasDots.selectAll("circle").remove()
-        biasDots.selectAll("circle")
-          .data(sample_estimates.flat().slice(-210))
-          .enter()
-          .append("circle")
-            .attr("r", 3)
-            .attr("cx", d => xSD(d.value))
-            .attr("cy", d => biasY(d.id))
-            .attr("id", d => d.param + "-estimate")
-  }
-  
-  function updateLines() {
-
-      const dat = [
-        running_averages[0].value[nSamplesDrawn],
-        running_averages[1].value[nSamplesDrawn],
-        running_averages[2].value[nSamplesDrawn]
-      ]
-      
-      biasLines.selectAll("line")
-        .data(dat)
-        .attr("x1", d => xSD(d)).attr("x2", d => xSD(d))
-  }
-  
-  function updatePath() {
-      biasPaths.selectAll("g").remove()
-      
-      biasPaths.selectAll("g")
-        .data(running_averages)
-        .enter()
-        .append("g")
-        .attr("class", "bias-paths")
-        .append("path")
-          .attr("d", d => biasLine(d.id, d.value))
-          .attr("id", d => d.param + "-path")
-
-  }
-  
-  function updateSampleCircles() {
-    sampleCircles.selectAll('circle').remove()
-    sampleCircles.selectAll('circle')
-      .data(sample)
-      .enter().append("circle")
-      .attr("class", "sample")
-      .attr("r", 5)
-      .attr("cx", d => x(d))
-      .attr("cy", h - 80)
-  }
-  
-  const sleep = (milliseconds) => {
-    return new Promise(resolve => setTimeout(resolve, milliseconds))
-  }
-  var playing = false;
-  function playButtonClicked() {
-    
-    playing = !playing; 
-    console.log(playing);
-  
-  play_button.text(function(){
-    if(playing) {
-      return "◼"
-  } else {
-    return "▶"
-  }
-  })
-  
-  if (playing) {
-    continuouslyDrawSamples();
-  }
-  }
-  
-  function continuouslyDrawSamples() {
-    if (playing) {
-      newSample();
-      sleep(200).then(continuouslyDrawSamples);
-    }
-  }
-  
-    
-  var popData = [];
-  for (let i = 0; i < population.length; ++i) {
-    const cx = x(population[i]);
-    const cy = dodge(cx) - radius - 1;
-    popData.push({cx: cx, cy: cy})
-  }
-  
-
-
-  
-  d3.select("#heights-svg").remove()
-  
-  const svg = d3.select("#height-container")
-    .append("svg").attr("id", "heights-svg")
-    .attr("width", w).attr("height", h)
-    
-  const pop = svg.append("g")
-  const sampleCircles = svg.append("g")
-  const biasChart = svg.append("g")
-  const biasDots = biasChart.append("g")
-  const biasLines = biasChart.append("g")
-  
-  pop.selectAll("circle")
-      .data(popData)
-      .enter()
-      .append("circle")
-        .attr("class", "pop")
-        .attr("cx", d => d.cx)
-        .attr("cy", d => (h - 100) - d.cy)
-        .attr("r", radius)
-  pop.append("text")
-    .text("POPULATION")
-    .attr("x", curveWidth/2)
-    .attr("y", h - 150)
-    .attr("text-anchor", "middle")
-      
-  const curve = svg.append("path")
-      .attr("d", line(data))
-      .attr("stroke", "black")
-      .attr("stroke-width", 3)
-      .attr("fill", "none")
-      .attr("class", "invertable")
-      
-  const sdAxis = svg.append("g").attr("class", "axis invertable")
-  const axisLabels = [-0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75]
-  sdAxis.selectAll("line")
-    .data(axisLabels)
-    .enter().append("line")
-      .attr("class", function(d,i){
-        if(i==3) {return "axis-major"} else {return "axis-minor"}
-      })
-      .attr("x1", d => xSD(d))
-      .attr("x2", d => xSD(d))
-      .attr("y1", ySD(0))
-      .attr("y2", ySD(34))
-  sdAxis.selectAll("text").data(axisLabels).enter().append("text")
-      .text(d => d)
-      .attr("x", d => xSD(d))
-      .attr("y", ySD(-1))
-      .attr("text-anchor", "middle")
-  sdAxis.append("text").attr("class", "bias-chart-title")
-    .text("Under/Over-Estimation of parameter")
-    .attr("x", xSD(0))
-    .attr("y", ySD(-4))
-    .attr("text-anchor", "middle")
-    
-  var legendStatus = [{param: "population", hide: false},
-                      {param: "sample",     hide: false},
-                      {param: "mean",       hide: true}]
-                      
-  
-  function updateLegendStatus(param) {
-    var index;
-    if (param==="population") {index = 0;} 
-    if (param==="sample") {index = 1;} 
-    if (param==="mean") {index = 2;} 
-    
-    legendStatus[index].hide = !legendStatus[index].hide
-    
-    var classes = "#" + param + "-estimate, #" + param + "-line"
-    svg.selectAll(classes).classed("hide", legendStatus[index].hide)
-    timesvg.selectAll("#" + param + "-path").classed("hide", legendStatus[index].hide)
-    svg.select("#" + param + "-legend").classed("legend-unselected", legendStatus[index].hide)
-  }
-  
-  
-  
-  
-  const biasLegend = svg.append("g")
-  biasLegend.selectAll("circle")
-    .data(legendStatus)
-    .enter()
-    .append("circle").attr("id", d => d.param + "-legend")
-    .attr("cx", (d,i) => xSD((i-1)*0.5))
-    .attr("cy", ySD(-3))
-    .attr("r", 5)
-    .attr("class", "legend-dots")
-    .classed("legend-unselected", d => d.hide)
-    .on("click", function(event, data){updateLegendStatus(data.param);})
-  
-
-  
-  biasLines.selectAll("line")
-    .data(running_averages)
-    .enter()
-    .append("line").attr("id", d => d.param + "-line")
-      .style("stroke-width", 1)
-      .attr("x1", d => xSD(0)).attr("x2", d => xSD(0))
-      .attr("y1", ySD(0))
-      .attr("y2", ySD(34))
-        
-
-         
-        
-        
-    const sample_counter = svg.append("g")
-    sample_counter.append("text")
-        .text(d => "Total samples: ")
-        .attr("x", 500)
-        .attr("y", 450)
-        .attr("text-anchor", "end")
-    sample_counter.append("text").attr("id", "counter")
-        .text(d => "0")
-        .attr("x", 505)
-        .attr("y", 450)
-        .attr("text-anchor", "start")
-        
-  
-  
-<!-- buttons -->
-  const reset_button = svg.append("text")
-  .attr("class", "button invertable")
-    .html("&#x21bb;")
-    .attr("x", 10)
-    .attr("y", h - 50)
-    .on("click", clearData)
-  
-  const button = svg.append("text")
-  .attr("class", "button invertable")
-    .text("ᐳ")
-    .attr("x", 30)
-    .attr("y", h - 50)
-    .on("click", newSample)
-    
-  const play_button = svg.append("text").attr("id", "play-button")
-  .attr("class", "button invertable")
-    .attr("x", 50)
-    .attr("y", h - 50)
-    .html("►")
-    .on("click", playButtonClicked)
-    
-
-    
-  <!-- newSample(); -->
-  
-  const timeChart = {
-    width: 800,
-    height: 300,
-    margin: {left: 30, right: 30, top: 10, bottom: 40}
-  }
-  
-  
-  const timeX = d3.scaleLinear()
-    .domain([0, 500])
-    .range([timeChart.margin.left, timeChart.width - timeChart.margin.right])
-  const timeY = d3.scaleLinear()
-    .domain([-0.5, 0.5])
-    .range([timeChart.height - timeChart.margin.bottom, timeChart.margin.top])
-  const biasLine = function(x, y){
-      return d3.line()
-      .x(function(d,i) { return timeX(x[i]); }) 
-      .y(function(d,i) { return timeY(y[i]); })
-      (Array(x.length));
-  }
-  
-  const timeXAxis = d3.axisBottom(timeX).tickSize(0)
-  const timeYAxis = d3.axisLeft(timeY).ticks(5).tickSize(0)
-  
-  const timesvg =   d3.select("#timeline-container")
-    .append("svg").attr("id", "timeline-svg")
-    .attr("width", timeChart.width).attr("height", timeChart.height)
-
-  timesvg.append("g")
-      .selectAll("line")
-      .data([-0.4, -0.2, 0, 0.2, 0.4])
-      .enter().append("line")
-        .attr("x1", d => timeX(1)).attr("x2", d => timeX(500))
-        .attr("y1", d => timeY(d)).attr("y2", d => timeY(d))
-        .attr("class", function(d){if(d===0){return"axis-major"}else{return "axis-minor"}})
-    
-  const timeChartXAxis = timesvg.append("g")
-  timeChartXAxis.attr("transform", `translate(0, ${timeY(-0.5)})`)
-  timeChartXAxis.call(timeXAxis)
-  timeChartXAxis.select(".domain").remove();
-  
-  const timeChartYAxis = timesvg.append("g")
-  timeChartYAxis.attr("transform", `translate(${timeChart.margin.left}, 0)`)
-  timeChartYAxis.call(timeYAxis)
-  
-  timeChartXAxis.append("text")
-    .attr("fill", "var(--text-color")
-    .attr("x", timeX(0)).attr("y", 30)
-    .attr("font-size", "1.5em")
-    .attr("text-anchor", "start")
-    .text("Number of samples taken")
-  
-  const biasPaths = timesvg.append("g")
-  
-  
-     <!-- svg.selectAll("#mean-estimate, #mean-line, #mean-path").attr("class", meanClass) -->
-
-}
-
-```
-
 
 ::: {.content-hidden}
 # CSS
@@ -551,7 +594,7 @@ update_svg = {
   font-size: 1.2em;
 }
 .axis-major {
-  stroke: #444;
+  stroke: #aaa;
   stroke-width: 1;
 }
 .axis-minor {
@@ -559,15 +602,15 @@ update_svg = {
   stroke-width: 1;
 }
 
-.pop, .sample {
-  fill: lightblue;
-}
-.pop {
-  stroke: lightblue;
-}
-.sample {
-  stroke: white;
-}
+<!-- .pop, .sample { -->
+<!--   fill: lightblue; -->
+<!-- } -->
+<!-- .pop { -->
+<!--   stroke: lightblue; -->
+<!-- } -->
+<!-- .sample { -->
+<!--   stroke: white; -->
+<!-- } -->
 
 #sample-estimate, #sample-line, #sample-legend {
   fill: var(--sample-color);
@@ -587,6 +630,7 @@ update_svg = {
 .legend-unselected {
   fill-opacity: 0.1 !important;
 }
+
 
 .bias-paths {
   fill: none;
