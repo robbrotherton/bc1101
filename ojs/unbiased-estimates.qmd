@@ -68,10 +68,10 @@ ySD = d3.scaleLinear()
     
 xScaleEstimates = d3.scaleLinear()
     .domain([-1, 1])
-    .range([0, w * 0.5])
+    .range([w * 0.05, w * 0.4])
 yScaleEstimates = d3.scaleLinear()
-    .domain([35, 0])
-    .range([h, 50])
+    .domain([20, 0])
+    .range([h - 50, 60])
 
 yy = d3.scaleLinear()
     .domain([-1, 1])
@@ -135,29 +135,18 @@ update_svg = {
   }
   
   function updateBiasChart() {
-      yScaleEstimates.domain([nSamplesDrawn-35, nSamplesDrawn])
+      yScaleEstimates.domain([nSamplesDrawn-20, nSamplesDrawn])
       
-      <!-- biasDots.selectAll("circle").remove() -->
-      <!--   biasDots.selectAll("circle") -->
-      <!--     .data(sample_estimates.flat().slice(-210)) -->
-      <!--     .enter() -->
-      <!--     .append("circle") -->
-      <!--       .attr("r", 3) -->
-      <!--       .attr("cx", d => xScaleEstimates(d.value)) -->
-      <!--       .attr("cy", d => yScaleEstimates(d.id)) -->
-      <!--       .attr("id", d => d.param + "-estimate") -->
-      <!--       biasDots.selectAll("circle").remove() -->
-            
-      biasDots.selectAll("rect").remove()
-      biasDots.selectAll("rect")
+      biasDots.selectAll("path").remove()
+      biasDots.selectAll("path")
           .data(sample_estimates.flat().slice(-210))
           .enter()
-          .append("rect")
-            .attr("width", radius)
-            .attr("height", radius)
-            .attr("x", d => xScaleEstimates(d.value) - radius / 2)
-            .attr("y", d => yScaleEstimates(d.id) - radius / 2)
+          .append("path")
             .attr("id", d => d.param + "-estimate")
+            .attr("d", d3.symbol().type(d3.symbolSquare).size(radius * radius * 1.5))
+            .attr("transform", d => `translate(${xScaleEstimates(d.value)}, ${yScaleEstimates(d.id + 1)}) rotate(45)`)
+            .transition()
+            .attr("transform", d => `translate(${xScaleEstimates(d.value)}, ${yScaleEstimates(d.id)}) rotate(45)`)
             
   }
   
