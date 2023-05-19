@@ -8,25 +8,31 @@ execute:
   echo: false
 ---
 
-::: {style="display: flex;"}
-::: {#controls-container style="width: 50%;"}
+
+::: {#controls-container}
 :::
 
-::: {#select-estimate style="width: 50%;"}
+::: {#select-estimate}
 Show: 
 [$M$]{.select-mean .selector .unselected}
 [$SD_{n}$]{.select-population .selector}
 [$SD_{n - 1}$]{.select-sample .selector}
 :::
+
+
+::: {.g-row}
+
+::: {#population-container}
 :::
 
-::: {#population-container style="float: left; width: 60%;"}
+::: {#estimates-container}
 :::
 
-::: {#estimates-container style="float: right; width: 40%;"}
 :::
 
-::: {#timeline-container style="padding-top: 1em; width: 100%;"}
+::: {.g-row}
+::: {#timeline-container}
+:::
 :::
 
 ```{ojs}
@@ -615,6 +621,44 @@ function getSampleEstimates(array) {
   --sigma-color: var(--link-color);
 }
 
+.g-row {
+  display: inline;
+  width: 100%;
+}
+
+/* for desktop */
+#population-container {
+  float: left; 
+  width: 60%;
+}
+
+#estimates-container {
+float: right;
+  width: 40%;
+}
+
+@media screen and (max-width: 600px) {
+  #population-container {
+    width: 100%;
+  }
+
+  #estimates-container {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  #population-container {
+    width: 60%;
+  }
+
+  #estimates-container {
+    width: 40%;
+  }
+}
+
+
+
 .axis {
   font-size: 0.75em;
 }
@@ -630,15 +674,10 @@ function getSampleEstimates(array) {
   stroke-width: 1;
 }
 
-<!-- .pop, .sample { -->
-<!--   fill: lightblue; -->
-<!-- } -->
-<!-- .pop { -->
-<!--   stroke: lightblue; -->
-<!-- } -->
-<!-- .sample { -->
-<!--   stroke: white; -->
-<!-- } -->
+
+.sample {
+  stroke: white;
+}
 
 #sample-estimate, #sample-line, #sample-legend {
   fill: var(--sample-color);
