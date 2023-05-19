@@ -1,6 +1,8 @@
 ---
 title: "(Un)Biased estimates"
-format: html
+format: 
+  html:
+    page-layout: full
 toc: false
 execute: 
   echo: false
@@ -18,13 +20,13 @@ Show:
 :::
 :::
 
-::: {#population-container style="float: left; width: 50%;"}
+::: {#population-container style="float: left; width: 60%;"}
 :::
 
-::: {#estimates-container style="float: right; width: 50%;"}
+::: {#estimates-container style="float: right; width: 40%;"}
 :::
 
-::: {#timeline-container style="display: block; width: 100%;"}
+::: {#timeline-container style="padding-top: 1em; width: 100%;"}
 :::
 
 ```{ojs}
@@ -49,26 +51,42 @@ ojs_define(population)
 ```{ojs}
 w = 800
 h = 400
-curveWidth = 500
 
-radius = 5; //1.4
+maxWidth = 900;
+populationPanelWidth = maxWidth * 0.6;
+populationPanelHeight = 400;
 
+populationSubPanelProportion = 0.7;
+sampleSubPanelProportion = 0.1;
+estimatesSubPanelProportion = 0.2;
+
+estimatesPanelWidth = maxWidth - populationPanelWidth;
+estimatesPanelHeight = populationPanelHeight;
+
+radius = 4; //1.4
+sampleSize = 5;
 
     
 xScalePopulation = d3.scaleLinear()
-    .domain([Math.min(...population), Math.max(...population)])
-    .range([0 + radius, (w * 0.5) - radius])
+    <!-- .domain([Math.min(...population), Math.max(...population)]) -->
+    .domain([-4, 4])
+    .range([0 + radius, (populationPanelWidth) - radius])
 yScalePopulation = d3.scaleLinear()
     .domain([0, 300])
-    .range([h, 0])
+    .range([populationPanelHeight * 0.7, 0])
 
 xScaleEstimates = d3.scaleLinear()
-    .domain([-1, 1])
-    .range([w * 0.05, w * 0.4])
+    .domain([-1.25, 1.25])
+    .range([0, estimatesPanelWidth])
 yScaleEstimates = d3.scaleLinear()
     .domain([20, 0])
-    .range([h - 50, 60])
-
+    .range([estimatesPanelHeight - 75, 50])
+    
+yPlacementEstimatesSubPanel = d3.scaleLinear()
+  .domain([0, 2])
+  .range([20 + populationPanelHeight * (1 - estimatesSubPanelProportion), populationPanelHeight - 20])
+    
+    
 ```
 
 
@@ -99,7 +117,7 @@ update_svg = {
     nSamplesDrawn++
     
     // pick random observations from the population by their index
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < sampleSize; i++) {
       let randomIndex = Math.floor(Math.random() * popData.length);
       sample[i] = xScalePopulation.invert(popData[randomIndex].cx);
       sampleData[i] = popData[randomIndex];
@@ -166,12 +184,39 @@ update_svg = {
       .attr("class", "sample")
       .attr("r", radius)
       .attr("cx", d => d.cx)
-      .attr("cy", d => (h - 50) - d.cy)
+      .attr("cy", d => yScalePopulation(d.cy))
       .attr("fill", d => d.fill)
       .transition()
       .duration(d => d.cy * durationMultiplier)
       .ease(d3.easeBounceOut)
-      .attr("cy", h - 10)
+      .attr("cy", populationPanelHeight * (populationSubPanelProportion + sampleSubPanelProportion) - radius)
+      
+      // show estimates
+    let currentEstimates = sample_estimates.flat().slice(-3);
+    
+    for (let i = 0; i < 3; i++) {
+      if (currentEstimates[i].param === "mean") {
+      currentEstimates[i].originalValue = currentEstimates[i].value;
+      currentEstimates[i].cy = yPlacementEstimatesSubPanel(0);
+      }
+      if (currentEstimates[i].param === "population") {
+      currentEstimates[i].originalValue = currentEstimates[i].value + 1;
+      currentEstimates[i].cy = yPlacementEstimatesSubPanel(1);
+      }
+      if (currentEstimates[i].param === "sample") {
+      currentEstimates[i].originalValue = currentEstimates[i].value + 1;
+      currentEstimates[i].cy = yPlacementEstimatesSubPanel(2);
+      }
+    }
+    
+    sampleEstimates.selectAll('path').remove()
+    sampleEstimates.selectAll('path')
+      .data(currentEstimates)
+      .enter().append("path")
+      .attr("id", d => d.param + "-estimate")
+      .attr("d", d3.symbol().type(d3.symbolSquare).size(radius * radius * 2))
+      .attr("transform", d => `translate(${xScalePopulation(d.originalValue)}, ${d.cy}) rotate(45)`)
+      .attr("fill", "black")
   }
   
   const sleep = (milliseconds) => {
@@ -208,7 +253,7 @@ update_svg = {
   const color = d3.scaleOrdinal(d3.schemeCategory10);
   for (let i = 0; i < population.length; ++i) {
     const cx = xScalePopulation(population[i]);
-    const cy = 20 + (dodge(cx) - radius - 1);
+    const cy = 10 + (dodge(cx) - radius - 1);
     <!-- const cy = yScalePopulation(dodge(cx)); -->
     const fill = color(i % 10);
     popData.push({cx, cy, fill})
@@ -218,16 +263,16 @@ update_svg = {
   const populationAndSampleSvg = d3.select("#population-container")
     .append("svg").attr("id", "populationAndSample-svg")
     .attr("preserveAspectRatio", "xMinYMin meet")
-    .attr("viewBox", "0 0 " + (w * 0.5) + " " + h)
+    .attr("viewBox", "0 0 " + populationPanelWidth + " " + populationPanelHeight)
   populationAndSampleSvg.append("rect")
-    .attr("width", w * 0.5)
-    .attr("height", h - 55)
+    .attr("width", populationPanelWidth)
+    .attr("height", populationPanelHeight * populationSubPanelProportion)
     .attr("fill", "#c3ddff")
     .attr("rx", 5)
   populationAndSampleSvg.append("rect")
-    .attr("width", w * 0.5)
-    .attr("y", h - 50)
-    .attr("height", 50)
+    .attr("width", populationPanelWidth)
+    .attr("y", populationPanelHeight * populationSubPanelProportion)
+    .attr("height", populationPanelHeight * sampleSubPanelProportion)
     .attr("fill", "#d3d8a8")
     .attr("rx", 5)
   populationAndSampleSvg.append("text")
@@ -235,19 +280,24 @@ update_svg = {
     .attr("y", 20)
   populationAndSampleSvg.append("text")
     .text("Sample")
-    .attr("y", h - 30)
+    .attr("y", populationPanelHeight * populationSubPanelProportion + 20)
+  populationAndSampleSvg.append("text")
+    .text("Estimates")
+    .attr("y", populationPanelHeight * (1 - estimatesSubPanelProportion) + 20)
     
     
   const estimatesSvg = d3.select("#estimates-container")
     .append("svg").attr("id", "estimates-svg")
     .attr("preserveAspectRatio", "xMinYMin meet")
-    .attr("viewBox", "0 0 " + (w * 0.5) + " " + h)
+    .attr("viewBox", "0 0 " + estimatesPanelWidth + " " + estimatesPanelHeight)
   
   estimatesSvg.append("text")
     .text("Over/Under estimation of parameter")
     .attr("y", 20)
     
   const pop = populationAndSampleSvg.append("g")
+  const parameters = populationAndSampleSvg.append("g")
+  const sampleEstimates = populationAndSampleSvg.append("g")
   const sampleCircles = populationAndSampleSvg.append("g")
   
   const biasChart = estimatesSvg.append("g")
@@ -260,9 +310,25 @@ update_svg = {
       .append("circle")
         .attr("class", "pop")
         .attr("cx", d => d.cx)
-        .attr("cy", d => (h - 50) - d.cy)
+        .attr("cy", d => yScalePopulation(d.cy))
         .attr("r", radius)
         .attr("fill", d => d.fill)
+        
+  // show parameters
+  const parameterPlacement = [{param: "mu", x: 0, y: yPlacementEstimatesSubPanel(0), text: "μ"},
+  {param: "sigma", x: 1, y: yPlacementEstimatesSubPanel(1.5), text: "σ"}]
+  
+  parameters.selectAll("path").data(parameterPlacement).enter().append("path")
+    .attr("d", d3.symbol().type(d3.symbolSquare).size(radius * radius * 4))
+    .attr("transform", d => `translate(${xScalePopulation(d.x)}, ${d.y})`)
+      .attr("stroke", d => "var(--" + d.param + "-color")
+      .attr("fill", "none")
+  parameters.selectAll("text").data(parameterPlacement).enter().append("text")
+    .attr("transform", d => `translate(${xScalePopulation(d.x) + 5}, ${d.y + 5})`)
+    .append("tspan")
+    .text(d => d.text)
+    .attr("font-style", "italic")
+
       
   const sdAxis = estimatesSvg.append("g").attr("class", "axis invertable")
   const axisLabels = [-0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75]
@@ -342,36 +408,35 @@ update_svg = {
     .html("►")
     .on("click", playButtonClicked)
     
-
-  
-  const timeChart = {
-    width: 800,
+// make timeseries chart
+const timeChart = {
+    width: maxWidth,
     height: 300,
     margin: {left: 30, right: 30, top: 40, bottom: 40}
-  }
+}
   
   
-  var timeX = d3.scaleLinear()
+var timeX = d3.scaleLinear()
     .domain([0, 200])
     .range([timeChart.margin.left, timeChart.width - timeChart.margin.right])
-    .clamp(true);
-  const timeY = d3.scaleLinear()
+var timeY = d3.scaleLinear()
     .domain([-0.5, 0.5])
     .range([timeChart.height - timeChart.margin.bottom, timeChart.margin.top])
-  const biasLine = function(x, y){
+const biasLine = function(x, y){
       return d3.line()
       .x(function(d,i) { return timeX(x[i]); }) 
       .y(function(d,i) { return timeY(y[i]); })
       (Array(x.length));
   }
   
-  var timeXAxis = d3.axisBottom(timeX).tickSize(0)
-  const timeYAxis = d3.axisLeft(timeY).ticks(5).tickSize(0)
+var timeXAxis = d3.axisBottom(timeX).tickSize(0)
+var timeYAxis = d3.axisLeft(timeY).ticks(5).tickSize(0)
   
+
   const timeSvg =   d3.select("#timeline-container")
     .append("svg").attr("id", "timeline-svg")
     .attr("preserveAspectRatio", "xMinYMin meet")
-    .attr("viewBox", "0 0 800 300")
+    .attr("viewBox", "0 0 " + timeChart.width + " " + timeChart.height)
   timeSvg.append("rect")
     .attr("width", timeChart.width)
     .attr("height", timeChart.height)
@@ -471,7 +536,7 @@ function clearData() {
 ```{ojs}
 
 dodger = radius => {
-  const radius2 = radius ** 1.8;
+  const radius2 = radius ** 1.9;
   const bisect = d3.bisector(d => d.x);
   const circles = [];
   return x => {
@@ -489,11 +554,12 @@ dodger = radius => {
       }
     }
     circles.splice(bisect.left(circles, x, l, r), 0, { x, y });
+    <!-- populationPanelHeight * 0.7 - d.cy + (radius * 2) -->
     return y;
   };
 }
 
-dodge = dodger(radius * 2 + 1);
+dodge = dodger(radius * 2 + 0.75);
 ```
 
 ```{ojs}
@@ -545,6 +611,8 @@ function getSampleEstimates(array) {
   --population-color: pink;
   --sample-color: var(--link-color);
   --mean-color: purple;
+  --mu-color: purple;
+  --sigma-color: var(--link-color);
 }
 
 .axis {
