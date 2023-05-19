@@ -6,14 +6,16 @@ execute:
   echo: false
 ---
 
-::: {#controls-container style="width: 100%;"}
+::: {style="display: flex;"}
+::: {#controls-container style="width: 50%;"}
 :::
 
-::: {#select-estimate}
+::: {#select-estimate style="width: 50%;"}
 Show: 
 [$M$]{.select-mean .selector .unselected}
-[$SD_{n}$]{.select-population .selector .selected}
-[$SD_{n - 1}$]{.select-sample .selector .selected}
+[$SD_{n}$]{.select-population .selector}
+[$SD_{n - 1}$]{.select-sample .selector}
+:::
 :::
 
 ::: {#population-container style="float: left; width: 50%;"}
@@ -51,12 +53,7 @@ curveWidth = 500
 
 radius = 5; //1.4
 
-x = d3.scaleLinear()
-    .domain([-4, 4])
-    .range([0, w * 0.5])
-y = d3.scaleLinear()
-    .domain([0, 0.5])
-    .range([h-100, 0])
+
     
 xScalePopulation = d3.scaleLinear()
     .domain([Math.min(...population), Math.max(...population)])
@@ -71,15 +68,6 @@ xScaleEstimates = d3.scaleLinear()
 yScaleEstimates = d3.scaleLinear()
     .domain([20, 0])
     .range([h - 50, 60])
-
-yy = d3.scaleLinear()
-    .domain([-1, 1])
-    .range([200, 0])
-yAxis = g => g
-    .attr("transform", `translate(1,0)`)
-    .call(d3.axisLeft(yy))
-xAxisGrid = d3.axisBottom(x).tickSize(-200).tickFormat('').ticks(10);
-yAxisGrid = d3.axisLeft(y).tickSize(-300).tickFormat('').ticks(10);
 
 ```
 
@@ -137,7 +125,7 @@ update_svg = {
           .enter()
           .append("path")
             .attr("id", d => d.param + "-estimate")
-            .attr("d", d3.symbol().type(d3.symbolSquare).size(radius * radius * 1.5))
+            .attr("d", d3.symbol().type(d3.symbolSquare).size(radius * radius * 2))
             .attr("transform", d => `translate(${xScaleEstimates(d.value)}, ${yScaleEstimates(d.id + 1)}) rotate(45)`)
             .transition()
             .attr("transform", d => `translate(${xScaleEstimates(d.value)}, ${yScaleEstimates(d.id)}) rotate(45)`)
@@ -314,16 +302,17 @@ update_svg = {
     <!--   .attr(") -->
   
     var classes = "#" + param + "-estimate"
-    console.log(classes)
+    
     estimatesSvg.selectAll(classes).classed("hide", legendStatus[index].hide)
     timeSvg.selectAll("#" + param + "-path").classed("hide", legendStatus[index].hide)
+    legend.classed("unselected", d => d.hide)
   }
   
     const legend = d3.selectAll(".selector")
     console.log(legend)
     legend
       .data(legendStatus)
-      .classed("legend-unselected", d => d.hide)
+      .classed("unselected", d => d.hide)
       .on("click", function(event, d){updateLegendStatus(d.param);})
   
 
@@ -358,7 +347,7 @@ update_svg = {
   const timeChart = {
     width: 800,
     height: 300,
-    margin: {left: 30, right: 30, top: 10, bottom: 40}
+    margin: {left: 30, right: 30, top: 40, bottom: 40}
   }
   
   
@@ -647,15 +636,15 @@ function getSampleEstimates(array) {
   display: inline-block;
   width: 10px;
   height: 10px;
-  transform: translate(50%, 0%) rotate(45deg);
+  transform: translate(50%, -10%) rotate(45deg);
 }
 
 .select-mean::after {
   background-color: var(--mean-color);
   border: 1px solid var(--mean-color);
 }
-.select-mean::after {
-  background-color: var(--mean-color);
+.select-mean::after .unselected {
+  background-color: "black";
   border: 1px solid var(--mean-color);
 }
 .select-population::after {
@@ -668,7 +657,11 @@ function getSampleEstimates(array) {
 }
 
 .unselected::after {
-  background-color: red;
+  opacity: 0.2;
+}
+
+.unselected:hover::after {
+  opacity: 0.5;
 }
 
 ```
