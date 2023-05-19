@@ -25,14 +25,14 @@ Show:
 ::: {#population-container}
 :::
 
-::: {#estimates-container}
+::: {#timeline-container}
 :::
 
 :::
 
 ::: {.g-row}
-::: {#timeline-container}
-:::
+<!-- ::: {#timeline-container style="width: 40%;"} -->
+<!-- ::: -->
 :::
 
 ```{ojs}
@@ -59,34 +59,40 @@ w = 800
 h = 400
 
 maxWidth = 900;
-populationPanelWidth = maxWidth * 0.6;
-populationPanelHeight = 400;
+maxHeight = 550;
 
-populationSubPanelProportion = 0.7;
-sampleSubPanelProportion = 0.1;
-estimatesSubPanelProportion = 0.2;
+populationPanelWidth = maxWidth * 0.6;
+populationPanelHeight = maxHeight;
+
+populationSubPanelProportion = 0.4;
+sampleSubPanelProportion = 0.05;
+
+estimatesSubPanelProportion = 0.55;
 
 estimatesPanelWidth = maxWidth - populationPanelWidth;
 estimatesPanelHeight = populationPanelHeight;
+
+timeSeriesPanelWidth = maxWidth - populationPanelWidth;
+
 
 radius = 4; //1.4
 sampleSize = 5;
 
     
 xScalePopulation = d3.scaleLinear()
-    <!-- .domain([Math.min(...population), Math.max(...population)]) -->
     .domain([-4, 4])
     .range([0 + radius, (populationPanelWidth) - radius])
 yScalePopulation = d3.scaleLinear()
     .domain([0, 300])
-    .range([populationPanelHeight * 0.7, 0])
+    .range([populationPanelHeight * populationSubPanelProportion, 0])
 
 xScaleEstimates = d3.scaleLinear()
     .domain([-1.25, 1.25])
     .range([0, estimatesPanelWidth])
+    
 yScaleEstimates = d3.scaleLinear()
     .domain([20, 0])
-    .range([estimatesPanelHeight - 75, 50])
+    .range([maxHeight - 20, maxHeight * (1 - estimatesSubPanelProportion)])
     
 yPlacementEstimatesSubPanel = d3.scaleLinear()
   .domain([0, 2])
@@ -150,9 +156,9 @@ update_svg = {
           .append("path")
             .attr("id", d => d.param + "-estimate")
             .attr("d", d3.symbol().type(d3.symbolSquare).size(radius * radius * 2))
-            .attr("transform", d => `translate(${xScaleEstimates(d.value)}, ${yScaleEstimates(d.id + 1)}) rotate(45)`)
+            .attr("transform", d => `translate(${xScalePopulation(d.value)}, ${yScaleEstimates(d.id + 1)}) rotate(45)`)
             .transition()
-            .attr("transform", d => `translate(${xScaleEstimates(d.value)}, ${yScaleEstimates(d.id)}) rotate(45)`)
+            .attr("transform", d => `translate(${xScalePopulation(d.value)}, ${yScaleEstimates(d.id)}) rotate(45)`)
             
   }
   
@@ -161,10 +167,10 @@ update_svg = {
       biasPaths.selectAll("g").remove()
       
       if (nSamplesDrawn > 201) {
-        timeX.domain([nSamplesDrawn - 200, nSamplesDrawn]);
-        timeXAxis = d3.axisBottom(timeX).tickSize(0);
-        timeChartXAxis.call(timeXAxis);
-        timeChartXAxis.select(".domain").remove();
+        timeY.domain([nSamplesDrawn - 200, nSamplesDrawn]);
+        timeYAxis = d3.axisLeft(timeY).tickSize(0);
+        timeChartYAxis.call(timeYAxis);
+        timeChartYAxis.select(".domain").remove();
       }
       
       biasPaths.selectAll("g")
@@ -173,7 +179,7 @@ update_svg = {
         .append("g")
         .attr("class", "bias-paths")
         .append("path")
-          .attr("d", d => biasLine(d.id.slice(1), d.value.slice(1)))
+          .attr("d", d => biasLine(d.value.slice(1), d.id.slice(1)))
           .attr("id", d => d.param + "-path")
 
   }
@@ -196,33 +202,6 @@ update_svg = {
       .duration(d => d.cy * durationMultiplier)
       .ease(d3.easeBounceOut)
       .attr("cy", populationPanelHeight * (populationSubPanelProportion + sampleSubPanelProportion) - radius)
-      
-      // show estimates
-    let currentEstimates = sample_estimates.flat().slice(-3);
-    
-    for (let i = 0; i < 3; i++) {
-      if (currentEstimates[i].param === "mean") {
-      currentEstimates[i].originalValue = currentEstimates[i].value;
-      currentEstimates[i].cy = yPlacementEstimatesSubPanel(0);
-      }
-      if (currentEstimates[i].param === "population") {
-      currentEstimates[i].originalValue = currentEstimates[i].value + 1;
-      currentEstimates[i].cy = yPlacementEstimatesSubPanel(1);
-      }
-      if (currentEstimates[i].param === "sample") {
-      currentEstimates[i].originalValue = currentEstimates[i].value + 1;
-      currentEstimates[i].cy = yPlacementEstimatesSubPanel(2);
-      }
-    }
-    
-    sampleEstimates.selectAll('path').remove()
-    sampleEstimates.selectAll('path')
-      .data(currentEstimates)
-      .enter().append("path")
-      .attr("id", d => d.param + "-estimate")
-      .attr("d", d3.symbol().type(d3.symbolSquare).size(radius * radius * 2))
-      .attr("transform", d => `translate(${xScalePopulation(d.originalValue)}, ${d.cy}) rotate(45)`)
-      .attr("fill", "black")
   }
   
   const sleep = (milliseconds) => {
@@ -288,8 +267,12 @@ update_svg = {
     .text("Sample")
     .attr("y", populationPanelHeight * populationSubPanelProportion + 20)
   populationAndSampleSvg.append("text")
-    .text("Estimates")
+    .text("Under/over-estimation")
     .attr("y", populationPanelHeight * (1 - estimatesSubPanelProportion) + 20)
+  populationAndSampleSvg.append("text")
+    .text("of parameter")
+    .attr("y", populationPanelHeight * (1 - estimatesSubPanelProportion) + 40)
+  
     
     
   const estimatesSvg = d3.select("#estimates-container")
@@ -307,7 +290,7 @@ update_svg = {
   const sampleCircles = populationAndSampleSvg.append("g")
   
   const biasChart = estimatesSvg.append("g")
-  const biasDots  = estimatesSvg.append("g")
+  const biasDots  = sampleEstimates.append("g")
   
   
   pop.selectAll("circle")
@@ -320,38 +303,23 @@ update_svg = {
         .attr("r", radius)
         .attr("fill", d => d.fill)
         
-  // show parameters
-  const parameterPlacement = [{param: "mu", x: 0, y: yPlacementEstimatesSubPanel(0), text: "μ"},
-  {param: "sigma", x: 1, y: yPlacementEstimatesSubPanel(1.5), text: "σ"}]
-  
-  parameters.selectAll("path").data(parameterPlacement).enter().append("path")
-    .attr("d", d3.symbol().type(d3.symbolSquare).size(radius * radius * 4))
-    .attr("transform", d => `translate(${xScalePopulation(d.x)}, ${d.y})`)
-      .attr("stroke", d => "var(--" + d.param + "-color")
-      .attr("fill", "none")
-  parameters.selectAll("text").data(parameterPlacement).enter().append("text")
-    .attr("transform", d => `translate(${xScalePopulation(d.x) + 5}, ${d.y + 5})`)
-    .append("tspan")
-    .text(d => d.text)
-    .attr("font-style", "italic")
-
-      
-  const sdAxis = estimatesSvg.append("g").attr("class", "axis invertable")
-  const axisLabels = [-0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75]
+    // estimates axis
+  const sdAxis = sampleEstimates.append("g").attr("class", "axis invertable")
+  const axisLabels = [-1, -0.5, 0, 0.5, 1]
   sdAxis.selectAll("line")
     .data(axisLabels)
     .enter().append("line")
       .attr("class", function(d,i){
         if(i==3) {return "axis-major"} else {return "axis-minor"}
       })
-      .attr("x1", d => xScaleEstimates(d))
-      .attr("x2", d => xScaleEstimates(d))
+      .attr("x1", d => xScalePopulation(d))
+      .attr("x2", d => xScalePopulation(d))
       .attr("y1", yScaleEstimates(0))
-      .attr("y2", yScaleEstimates(23))
+      .attr("y2", yScaleEstimates(20))
   sdAxis.selectAll("text").data(axisLabels).enter().append("text")
       .text(d => d)
-      .attr("x", d => xScaleEstimates(d))
-      .attr("y", yScaleEstimates(-1))
+      .attr("x", d => xScalePopulation(d))
+      .attr("y", yScaleEstimates(21))
       .attr("text-anchor", "middle")
 
     
@@ -368,14 +336,9 @@ update_svg = {
     if (param==="sample") {index = 2;}
     legendStatus[index].hide = !legendStatus[index].hide
 
-  console.log(legendStatus[index])
-  
-    <!-- d3.select("#select" + param) -->
-    <!--   .attr(") -->
-  
     var classes = "#" + param + "-estimate"
     
-    estimatesSvg.selectAll(classes).classed("hide", legendStatus[index].hide)
+    populationAndSampleSvg.selectAll(classes).classed("hide", legendStatus[index].hide)
     timeSvg.selectAll("#" + param + "-path").classed("hide", legendStatus[index].hide)
     legend.classed("unselected", d => d.hide)
   }
@@ -416,18 +379,18 @@ update_svg = {
     
 // make timeseries chart
 const timeChart = {
-    width: maxWidth,
-    height: 300,
+    width: timeSeriesPanelWidth,
+    height: maxHeight,
     margin: {left: 30, right: 30, top: 40, bottom: 40}
 }
   
   
-var timeX = d3.scaleLinear()
-    .domain([0, 200])
-    .range([timeChart.margin.left, timeChart.width - timeChart.margin.right])
 var timeY = d3.scaleLinear()
+    .domain([0, 200])
+    .range([timeChart.margin.top, timeChart.height - timeChart.margin.bottom])
+var timeX = d3.scaleLinear()
     .domain([-0.5, 0.5])
-    .range([timeChart.height - timeChart.margin.bottom, timeChart.margin.top])
+    .range([timeChart.margin.left, timeChart.width - timeChart.margin.right])
 const biasLine = function(x, y){
       return d3.line()
       .x(function(d,i) { return timeX(x[i]); }) 
@@ -435,8 +398,8 @@ const biasLine = function(x, y){
       (Array(x.length));
   }
   
-var timeXAxis = d3.axisBottom(timeX).tickSize(0)
-var timeYAxis = d3.axisLeft(timeY).ticks(5).tickSize(0)
+var timeYAxis = d3.axisLeft(timeY).tickSize(0)
+var timeXAxis = d3.axisTop(timeX).ticks(5).tickSize(0)
   
 
   const timeSvg =   d3.select("#timeline-container")
@@ -456,29 +419,30 @@ var timeYAxis = d3.axisLeft(timeY).ticks(5).tickSize(0)
       .selectAll("line")
       .data([-0.4, -0.2, 0, 0.2, 0.4])
       .enter().append("line")
-        .attr("x1", d => timeX(0)).attr("x2", d => timeX(500))
-        .attr("y1", d => timeY(d)).attr("y2", d => timeY(d))
+        .attr("y1", d => timeY(0)).attr("y2", d => timeY(500))
+        .attr("x1", d => timeX(d)).attr("x2", d => timeX(d))
         .attr("class", function(d){if(d===0){return"axis-major"}else{return "axis-minor"}})
     
   const timeChartXAxis = timeSvg.append("g")
-  timeChartXAxis.attr("transform", `translate(0, ${timeY(-0.5)})`)
+  timeChartXAxis.attr("transform", `translate(0, ${timeY(0)})`)
   timeChartXAxis.call(timeXAxis);
-  timeChartXAxis.select(".domain").remove();
   
 
   
-  timeChartXAxis.append("text")
-    .attr("fill", "var(--text-color")
-    .attr("x", timeX(0)).attr("y", 30)
-    .attr("font-size", "1.5em")
-    .attr("text-anchor", "start")
-    .text("Number of samples taken")
+  <!-- timeChartXAxis.append("text") -->
+  <!--   .attr("fill", "var(--text-color") -->
+  <!--   .attr("x", timeX(0)).attr("y", 30) -->
+  <!--   .attr("font-size", "1.5em") -->
+  <!--   .attr("text-anchor", "start") -->
+  <!--   .text("Number of samples taken") -->
   
   const biasPaths = timeSvg.append("g")
   
   const timeChartYAxis = timeSvg.append("g")
   timeChartYAxis.attr("transform", `translate(${timeChart.margin.left}, 0)`)
   timeChartYAxis.call(timeYAxis)
+  timeChartYAxis.select(".domain").remove();
+  timeChartXAxis.select(".domain").remove();
   
 
 
@@ -526,7 +490,8 @@ function clearData() {
       var param = params[i]
       var elementIds = "#" + param + "-estimate, #" + param + "-line"
       
-      estimatesSvg.selectAll(elementIds).classed("hide", legendStatus[i].hide)
+      populationAndSampleSvg.selectAll(elementIds).classed("hide", legendStatus[i].hide)
+      <!-- populationAndSampleSvg.selectAll("#" + param + "-estimate").classed("hide", legendStatus[i].hide) -->
       timeSvg.selectAll("#" + param + "-path").classed("hide", legendStatus[i].hide)
     }
   }
@@ -622,7 +587,6 @@ function getSampleEstimates(array) {
 }
 
 .g-row {
-  display: inline;
   width: 100%;
 }
 
@@ -632,7 +596,7 @@ function getSampleEstimates(array) {
   width: 60%;
 }
 
-#estimates-container {
+#timeline-container {
 float: right;
   width: 40%;
 }
@@ -642,7 +606,7 @@ float: right;
     width: 100%;
   }
 
-  #estimates-container {
+  #timeline-container {
     width: 100%;
   }
 }
