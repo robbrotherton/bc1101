@@ -92,11 +92,17 @@ xScaleEstimates = d3.scaleLinear()
     
 yScaleEstimates = d3.scaleLinear()
     .domain([20, 0])
-    .range([maxHeight - 20, maxHeight * (1 - estimatesSubPanelProportion)])
+    .range([maxHeight - 30, maxHeight * (1 - estimatesSubPanelProportion) + 30])
+
+xAxisEstimatesValues = [-2, -1, 0, 1, 2];
+xAxisEstimates = d3.axisBottom(xScalePopulation)
+  .tickValues(xAxisEstimatesValues)
+  .tickFormat(d => d)
+  .tickSize(-maxHeight * (1 - estimatesSubPanelProportion) - 10)
     
 yPlacementEstimatesSubPanel = d3.scaleLinear()
   .domain([0, 2])
-  .range([20 + populationPanelHeight * (1 - estimatesSubPanelProportion), populationPanelHeight - 20])
+  .range([50 + populationPanelHeight * (1 - estimatesSubPanelProportion), populationPanelHeight - 10])
     
     
 ```
@@ -304,23 +310,30 @@ update_svg = {
         .attr("fill", d => d.fill)
         
     // estimates axis
-  const sdAxis = sampleEstimates.append("g").attr("class", "axis invertable")
-  const axisLabels = [-1, -0.5, 0, 0.5, 1]
-  sdAxis.selectAll("line")
-    .data(axisLabels)
-    .enter().append("line")
-      .attr("class", function(d,i){
-        if(i==3) {return "axis-major"} else {return "axis-minor"}
-      })
-      .attr("x1", d => xScalePopulation(d))
-      .attr("x2", d => xScalePopulation(d))
-      .attr("y1", yScaleEstimates(0))
-      .attr("y2", yScaleEstimates(20))
-  sdAxis.selectAll("text").data(axisLabels).enter().append("text")
-      .text(d => d)
-      .attr("x", d => xScalePopulation(d))
-      .attr("y", yScaleEstimates(21))
-      .attr("text-anchor", "middle")
+    
+  const estimatesAxis = sampleEstimates.append("g")
+    .attr("transform", `translate(0, ${yScaleEstimates(21)})`)
+  
+  estimatesAxis.call(xAxisEstimates)
+  estimatesAxis.select(".domain").remove()
+  
+  <!-- const sdAxis = sampleEstimates.append("g").attr("class", "axis invertable") -->
+  <!-- const axisLabels = [-1, -0.5, 0, 0.5, 1] -->
+  <!-- sdAxis.selectAll("line") -->
+  <!--   .data(axisLabels) -->
+  <!--   .enter().append("line") -->
+  <!--     .attr("class", function(d,i){ -->
+  <!--       if(d === 0) {return "axis-major"} else {return "axis-minor"} -->
+  <!--     }) -->
+  <!--     .attr("x1", d => xScalePopulation(d)) -->
+  <!--     .attr("x2", d => xScalePopulation(d)) -->
+  <!--     .attr("y1", yScaleEstimates(0)) -->
+  <!--     .attr("y2", yScaleEstimates(20)) -->
+  <!-- sdAxis.selectAll("text").data(axisLabels).enter().append("text") -->
+  <!--     .text(d => d) -->
+  <!--     .attr("x", d => xScalePopulation(d)) -->
+  <!--     .attr("y", yScaleEstimates(21)) -->
+  <!--     .attr("text-anchor", "middle") -->
 
     
   var legendStatus = [{param: "mean",       hide: true},
