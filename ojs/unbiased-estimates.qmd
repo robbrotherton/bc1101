@@ -174,7 +174,7 @@ update_svg = {
       
       if (nSamplesDrawn > 201) {
         timeY.domain([nSamplesDrawn - 200, nSamplesDrawn]);
-        timeYAxis = d3.axisLeft(timeY).tickSize(0);
+        timeYAxis = d3.axisRight(timeY).tickSize(0);
         timeChartYAxis.call(timeYAxis);
         timeChartYAxis.select(".domain").remove();
       }
@@ -477,8 +477,12 @@ function clearData() {
                           {param: "mean",       value: [0], id: [0]}];
     nSamplesDrawn = 0;
     
+    timeY.domain([0, 200]);
+    timeChartYAxis.call(timeYAxis);
+    timeChartYAxis.select(".domain").remove();
+    
     sampleCircles.selectAll('circle').remove()
-    biasDots.selectAll("circle").remove()
+    sampleEstimates.selectAll("path").remove()
     biasPaths.selectAll("path").remove()
   }
   
