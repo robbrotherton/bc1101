@@ -250,6 +250,22 @@ update_svg = {
     popData.push({cx, cy, fill})
   }
   
+  
+  
+  const populationLabels = [{label: "Population", top: 0},
+                            {label: "Sample",     top: populationSubPanelProportion * 100},
+                            {label: "Under/over-</br>estimation of</br>parameter",     top: (populationSubPanelProportion + sampleSubPanelProportion) * 100}]
+  
+  const populationContainer = d3.select("#population-container")
+    .style("position", "relative")
+    .style("height", maxHeight)
+    
+  populationContainer.selectAll("text").data(populationLabels).enter()
+    .append("text")
+    .style("position", "absolute")
+    .html(d => d.label)
+    .style("top", d => d.top + "%")
+    .style("line-height", "1em")
 
   const populationAndSampleSvg = d3.select("#population-container")
     .append("svg").attr("id", "populationAndSample-svg")
@@ -266,19 +282,6 @@ update_svg = {
     .attr("height", populationPanelHeight * sampleSubPanelProportion)
     .attr("fill", "#d3d8a8")
     .attr("rx", 5)
-  populationAndSampleSvg.append("text")
-    .text("Population")
-    .attr("y", 20)
-  populationAndSampleSvg.append("text")
-    .text("Sample")
-    .attr("y", populationPanelHeight * populationSubPanelProportion + 20)
-  populationAndSampleSvg.append("text")
-    .text("Under/over-estimation")
-    .attr("y", populationPanelHeight * (1 - estimatesSubPanelProportion) + 20)
-  populationAndSampleSvg.append("text")
-    .text("of parameter")
-    .attr("y", populationPanelHeight * (1 - estimatesSubPanelProportion) + 40)
-  
     
     
   const estimatesSvg = d3.select("#estimates-container")
@@ -394,16 +397,16 @@ update_svg = {
 const timeChart = {
     width: timeSeriesPanelWidth,
     height: maxHeight,
-    margin: {left: 30, right: 30, top: 40, bottom: 40}
+    margin: {left: 30, right: 30, top: 50, bottom: 60}
 }
   
   
-var timeY = d3.scaleLinear()
-    .domain([0, 200])
-    .range([timeChart.margin.top, timeChart.height - timeChart.margin.bottom])
 var timeX = d3.scaleLinear()
     .domain([-0.5, 0.5])
     .range([timeChart.margin.left, timeChart.width - timeChart.margin.right])
+var timeY = d3.scaleLinear()
+    .domain([0, 200])
+    .range([timeChart.margin.top, timeChart.height - timeChart.margin.bottom])
 const biasLine = function(x, y){
       return d3.line()
       .x(function(d,i) { return timeX(x[i]); }) 
@@ -411,9 +414,11 @@ const biasLine = function(x, y){
       (Array(x.length));
   }
   
-var timeYAxis = d3.axisLeft(timeY).tickSize(0)
 var timeXAxis = d3.axisTop(timeX).ticks(5).tickSize(0)
+var timeYAxis = d3.axisRight(timeY).tickSize(0)
   
+  const timeseriesContainer = d3.select("#timeline-container");
+  timeseriesContainer.style("position", "relative")
 
   const timeSvg =   d3.select("#timeline-container")
     .append("svg").attr("id", "timeline-svg")
@@ -424,15 +429,13 @@ var timeXAxis = d3.axisTop(timeX).ticks(5).tickSize(0)
     .attr("height", timeChart.height)
     .attr("rx", 5)
     .attr("fill", "#eee")
-  timeSvg.append("text")
-    .attr("y", 20)
-    .text("Average under/over-estimation by number of samples taken")
+
 
   timeSvg.append("g")
       .selectAll("line")
       .data([-0.4, -0.2, 0, 0.2, 0.4])
       .enter().append("line")
-        .attr("y1", d => timeY(0)).attr("y2", d => timeY(500))
+        .attr("y1", d => timeY(0)).attr("y2", d => timeY(200))
         .attr("x1", d => timeX(d)).attr("x2", d => timeX(d))
         .attr("class", function(d){if(d===0){return"axis-major"}else{return "axis-minor"}})
     
@@ -442,17 +445,24 @@ var timeXAxis = d3.axisTop(timeX).ticks(5).tickSize(0)
   
 
   
-  <!-- timeChartXAxis.append("text") -->
-  <!--   .attr("fill", "var(--text-color") -->
-  <!--   .attr("x", timeX(0)).attr("y", 30) -->
-  <!--   .attr("font-size", "1.5em") -->
-  <!--   .attr("text-anchor", "start") -->
-  <!--   .text("Number of samples taken") -->
+  timeseriesContainer.append("text")
+    .style("position", "absolute")
+    .style("left", 0)
+    .text("Average under/over-estimation")
   
+  timeseriesContainer.append("text")
+    .style("position", "absolute")
+    .style("line-height", "1em")
+    .style("bottom", 0)
+    .style("right", 0)
+    .style("text-align", "right")
+    .html("Total<br>samples")
+    
+
   const biasPaths = timeSvg.append("g")
   
   const timeChartYAxis = timeSvg.append("g")
-  timeChartYAxis.attr("transform", `translate(${timeChart.margin.left}, 0)`)
+  timeChartYAxis.attr("transform", `translate(${timeChart.width - timeChart.margin.right}, 0)`)
   timeChartYAxis.call(timeYAxis)
   timeChartYAxis.select(".domain").remove();
   timeChartXAxis.select(".domain").remove();
