@@ -128,7 +128,7 @@ update_svg = {
     .range([h-100, 100])
     
   
-  
+  <!-- var estimates; -->
   
   function newSample() {
     
@@ -148,6 +148,7 @@ update_svg = {
     updateRunningAverages(estimates);
     updateBiasChart();
     updateSampleCircles();
+    animateEstimates(sampleData, estimates);
     updatePath();
     updateVisibility();
   }
@@ -157,12 +158,13 @@ update_svg = {
       
       biasDots.selectAll("path").remove()
       biasDots.selectAll("path")
-          .data(sample_estimates.flat().slice(-210))
+          .data(sample_estimates.flat())
           .enter()
           .append("path")
             .attr("id", d => d.param + "-estimate")
             .attr("d", d3.symbol().type(d3.symbolSquare).size(radius * radius * 2))
             .attr("transform", d => `translate(${xScalePopulation(d.value)}, ${yScaleEstimates(d.id + 1)}) rotate(45)`)
+            .attr("opacity", d => (d.id === nSamplesDrawn ? 0 : 1))
             .transition()
             .attr("transform", d => `translate(${xScalePopulation(d.value)}, ${yScaleEstimates(d.id)}) rotate(45)`)
             
@@ -208,6 +210,48 @@ update_svg = {
       .duration(d => d.cy * durationMultiplier)
       .ease(d3.easeBounceOut)
       .attr("cy", populationPanelHeight * (populationSubPanelProportion + sampleSubPanelProportion) - radius)
+  }
+  
+  
+  
+  function animateEstimates(sampleData, estimates) {
+  
+    sampleEstimatesTemp.selectAll("path").remove()
+    
+    var wait = Math.max(...sampleData.map(z => z.cy));
+    console.log(wait);
+    
+    for (let i = 0; i < estimates.length; i++) {
+
+    var p = estimates[i].param;
+    var endPosition = estimates[i].value;
+    var dur = (playing ? 0 : 1000);
+    var convergeWait = (playing ? 0 : wait * 5);
+    var moveDownWait = (playing ? 250 : 0);
+    
+    sampleData.forEach((s) => {
+    
+    // first, place estimate symbols where each sample dot lands
+      sampleEstimatesTemp
+      .append("path")
+      .attr("id", p + "-estimate")
+      .attr("d", d3.symbol().type(d3.symbolSquare).size(radius * radius * 2))
+        .attr("transform", d => `translate(${s.cx}, ${populationPanelHeight * (populationSubPanelProportion + sampleSubPanelProportion) - radius}) rotate(45)`)
+        .attr("opacity", 0)
+        
+    // then move them all to the estimate
+        .transition().duration(dur * 0.67).delay(convergeWait)
+        .attr("opacity", 1)
+        .attr("transform", d => `translate(${xScalePopulation(endPosition)}, ${populationPanelHeight * (populationSubPanelProportion + sampleSubPanelProportion) - radius}) rotate(45)`)
+        
+    // then move them down to the estimates tracker
+    .transition().duration((playing ? 250 : (dur * 0.33))).delay(0)
+      .ease(d3.easeCubicOut)
+        .attr("opacity", 1)
+        .attr("transform", `translate(${xScalePopulation(endPosition)}, ${yScaleEstimates(nSamplesDrawn)}) rotate(45)`)
+    })
+
+    }
   }
   
   const sleep = (milliseconds) => {
@@ -296,11 +340,12 @@ update_svg = {
   const pop = populationAndSampleSvg.append("g")
   const parameters = populationAndSampleSvg.append("g")
   const sampleEstimates = populationAndSampleSvg.append("g")
+  const sampleEstimatesTemp = populationAndSampleSvg.append("g")
   const sampleCircles = populationAndSampleSvg.append("g")
-  
+
+
   const biasChart = estimatesSvg.append("g")
   const biasDots  = sampleEstimates.append("g")
-  
   
   pop.selectAll("circle")
       .data(popData)
@@ -317,6 +362,10 @@ update_svg = {
   const estimatesAxis = sampleEstimates.append("g")
     .attr("transform", `translate(0, ${yScaleEstimates(21)})`)
   
+  estimatesAxis.append("rect")
+    .attr("width", populationPanelWidth)
+    .attr("height", 100)
+    .attr("fill", "var(--background-color)")
   estimatesAxis.call(xAxisEstimates)
   estimatesAxis.select(".domain").remove()
   
