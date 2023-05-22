@@ -124,12 +124,7 @@ update_svg = {
   
   var legendSelected = ["sample", "population"]
   
-  var biasY = d3.scaleLinear()
-    .range([h-100, 100])
-    
-  
-  <!-- var estimates; -->
-  
+
   function newSample() {
     
     nSamplesDrawn++
@@ -219,7 +214,6 @@ update_svg = {
     sampleEstimatesTemp.selectAll("path").remove()
     
     var wait = Math.max(...sampleData.map(z => z.cy));
-    console.log(wait);
     
     for (let i = 0; i < estimates.length; i++) {
 
@@ -261,7 +255,6 @@ update_svg = {
   function playButtonClicked() {
     
     playing = !playing; 
-    console.log(playing);
   
   play_button.text(function(){
     if(playing) {
@@ -368,24 +361,6 @@ update_svg = {
     .attr("fill", "var(--background-color)")
   estimatesAxis.call(xAxisEstimates)
   estimatesAxis.select(".domain").remove()
-  
-  <!-- const sdAxis = sampleEstimates.append("g").attr("class", "axis invertable") -->
-  <!-- const axisLabels = [-1, -0.5, 0, 0.5, 1] -->
-  <!-- sdAxis.selectAll("line") -->
-  <!--   .data(axisLabels) -->
-  <!--   .enter().append("line") -->
-  <!--     .attr("class", function(d,i){ -->
-  <!--       if(d === 0) {return "axis-major"} else {return "axis-minor"} -->
-  <!--     }) -->
-  <!--     .attr("x1", d => xScalePopulation(d)) -->
-  <!--     .attr("x2", d => xScalePopulation(d)) -->
-  <!--     .attr("y1", yScaleEstimates(0)) -->
-  <!--     .attr("y2", yScaleEstimates(20)) -->
-  <!-- sdAxis.selectAll("text").data(axisLabels).enter().append("text") -->
-  <!--     .text(d => d) -->
-  <!--     .attr("x", d => xScalePopulation(d)) -->
-  <!--     .attr("y", yScaleEstimates(21)) -->
-  <!--     .attr("text-anchor", "middle") -->
 
     
   var legendStatus = [{param: "mean",       hide: true},
@@ -394,7 +369,6 @@ update_svg = {
                       
   
   function updateLegendStatus(param) {
-  console.log(param);
     var index;
     if (param==="mean") {index = 0;}
     if (param==="population") {index = 1;}
@@ -409,7 +383,6 @@ update_svg = {
   }
   
     const legend = d3.selectAll(".selector")
-    console.log(legend)
     legend
       .data(legendStatus)
       .classed("unselected", d => d.hide)
