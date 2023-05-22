@@ -61,6 +61,8 @@ h = 400
 maxWidth = 900;
 maxHeight = 550;
 
+panelSpacing = 5;
+
 populationPanelWidth = maxWidth * 0.6;
 populationPanelHeight = maxHeight;
 
@@ -73,6 +75,7 @@ estimatesPanelWidth = maxWidth - populationPanelWidth;
 estimatesPanelHeight = populationPanelHeight;
 
 timeSeriesPanelWidth = maxWidth - populationPanelWidth;
+
 
 
 radius = 4; //1.4
@@ -167,7 +170,7 @@ update_svg = {
   
 
   function updatePath() {
-      biasPaths.selectAll("g").remove()
+      timeseriesData.selectAll("g").remove()
       
       if (nSamplesDrawn > 201) {
         timeY.domain([nSamplesDrawn - 200, nSamplesDrawn]);
@@ -176,7 +179,7 @@ update_svg = {
         timeChartYAxis.select(".domain").remove();
       }
       
-      biasPaths.selectAll("g")
+      timeseriesData.selectAll("g")
         .data(running_averages)
         .enter()
         .append("g")
@@ -290,13 +293,14 @@ update_svg = {
   
   
   const populationLabels = [{label: "Population", top: 0},
-                            {label: "Sample",     top: populationSubPanelProportion * 100},
-                            {label: "Under/over-</br>estimation of</br>parameter",     top: (populationSubPanelProportion + sampleSubPanelProportion) * 100}]
+                            {label: "Sample",     top: (panelSpacing /  maxHeight + populationSubPanelProportion) * 100},
+                            {label: "Under/over-</br>estimation of</br>parameter",     top: (panelSpacing /  maxHeight + populationSubPanelProportion + sampleSubPanelProportion) * 100}]
   
   const populationContainer = d3.select("#population-container")
     .style("position", "relative")
-    .style("height", maxHeight)
+    <!-- .style("height", maxHeight) -->
     
+    // panel labels
   populationContainer.selectAll("text").data(populationLabels).enter()
     .append("text")
     .style("position", "absolute")
@@ -307,17 +311,25 @@ update_svg = {
   const populationAndSampleSvg = d3.select("#population-container")
     .append("svg").attr("id", "populationAndSample-svg")
     .attr("preserveAspectRatio", "xMinYMin meet")
-    .attr("viewBox", "0 0 " + populationPanelWidth + " " + populationPanelHeight)
+    .attr("viewBox", "0 0 " + (populationPanelWidth) + " " + populationPanelHeight)
+    
+    // panel backgrounds
   populationAndSampleSvg.append("rect")
     .attr("width", populationPanelWidth)
     .attr("height", populationPanelHeight * populationSubPanelProportion)
-    .attr("fill", "#c3ddff")
+    .attr("fill", "var(--population-panel-background)")
     .attr("rx", 5)
   populationAndSampleSvg.append("rect")
     .attr("width", populationPanelWidth)
-    .attr("y", populationPanelHeight * populationSubPanelProportion)
-    .attr("height", populationPanelHeight * sampleSubPanelProportion)
-    .attr("fill", "#d3d8a8")
+    .attr("y", panelSpacing + populationPanelHeight * populationSubPanelProportion)
+    .attr("height", populationPanelHeight * sampleSubPanelProportion - panelSpacing)
+    .attr("fill", "var(--sample-panel-background)")
+    .attr("rx", 5)
+  populationAndSampleSvg.append("rect")
+    .attr("width", populationPanelWidth)
+    .attr("y", panelSpacing + populationPanelHeight * (1 - estimatesSubPanelProportion))
+    .attr("height", populationPanelHeight * estimatesSubPanelProportion - panelSpacing)
+    .attr("fill", "var(--estimates-panel-background)")
     .attr("rx", 5)
     
     
@@ -357,11 +369,22 @@ update_svg = {
   
   estimatesAxis.append("rect")
     .attr("width", populationPanelWidth)
-    .attr("height", 100)
-    .attr("fill", "var(--background-color)")
+    .attr("height", populationPanelHeight - yScaleEstimates(21))
+    .attr("fill", "var(--estimates-panel-background)")
+    .attr("rx", 5)
   estimatesAxis.call(xAxisEstimates)
   estimatesAxis.select(".domain").remove()
-
+  
+  const estimatesAxisLines = estimatesAxis.selectAll("line");
+  
+  estimatesAxisLines._groups[0].forEach((l) => {
+    if (l.__data__ === 0) {
+      l.classList = "axis-major";
+    } else {
+      l.classList = "axis-minor";
+    }
+  })
+  
     
   var legendStatus = [{param: "mean",       hide: true},
                       {param: "population", hide: false},
@@ -436,6 +459,7 @@ const biasLine = function(x, y){
       (Array(x.length));
   }
   
+  
 var timeXAxis = d3.axisTop(timeX).ticks(5).tickSize(0)
 var timeYAxis = d3.axisRight(timeY).tickSize(0)
   
@@ -450,7 +474,7 @@ var timeYAxis = d3.axisRight(timeY).tickSize(0)
     .attr("width", timeChart.width)
     .attr("height", timeChart.height)
     .attr("rx", 5)
-    .attr("fill", "#eee")
+    .attr("fill", "var(--timeseries-panel-background)")
 
 
   timeSvg.append("g")
@@ -460,9 +484,19 @@ var timeYAxis = d3.axisRight(timeY).tickSize(0)
         .attr("y1", d => timeY(0)).attr("y2", d => timeY(200))
         .attr("x1", d => timeX(d)).attr("x2", d => timeX(d))
         .attr("class", function(d){if(d===0){return"axis-major"}else{return "axis-minor"}})
+        .classed("dark", true)
     
+  const timeseriesData = timeSvg.append("g");
   const timeChartXAxis = timeSvg.append("g")
   timeChartXAxis.attr("transform", `translate(0, ${timeY(0)})`)
+  
+  timeChartXAxis.append("rect")
+    .attr("width", timeChart.width)
+    .attr("y", -timeChart.margin.top)
+    .attr("height", timeChart.margin.top)
+    .attr("rx", 5)
+    .attr("fill", "var(--timeseries-panel-background)")
+    
   timeChartXAxis.call(timeXAxis);
   
 
@@ -633,6 +667,10 @@ function getSampleEstimates(array) {
   --mean-color: purple;
   --mu-color: purple;
   --sigma-color: var(--link-color);
+  --population-panel-background: #c3ddff;
+  --sample-panel-background: #d3d8a8;
+  --estimates-panel-background: #eee;
+  --timeseries-panel-background: #444;
 }
 
 .g-row {
@@ -642,12 +680,13 @@ function getSampleEstimates(array) {
 /* for desktop */
 #population-container {
   float: left; 
-  width: 60%;
+  width: 59.7%;
 }
 
 #timeline-container {
-float: right;
-  width: 40%;
+  color: var(--text-color-dark);
+  float: right;
+  width: 39.8%;
 }
 
 @media screen and (max-width: 600px) {
@@ -660,15 +699,15 @@ float: right;
   }
 }
 
-@media screen and (min-width: 600px) {
-  #population-container {
-    width: 60%;
-  }
+<!-- @media screen and (min-width: 600px) { -->
+<!--   #population-container { -->
+<!--     width: 60%; -->
+<!--   } -->
 
-  #estimates-container {
-    width: 40%;
-  }
-}
+<!--   #estimates-container { -->
+<!--     width: 40%; -->
+<!--   } -->
+<!-- } -->
 
 
 
@@ -684,6 +723,15 @@ float: right;
 }
 .axis-minor {
   stroke: #ddd;
+  stroke-width: 1;
+}
+
+.axis-major.dark {
+  stroke: #ccc;
+  stroke-width: 1;
+}
+.axis-minor.dark {
+  stroke: #777;
   stroke-width: 1;
 }
 
