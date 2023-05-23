@@ -127,6 +127,7 @@ update_svg = {
   
   var legendSelected = ["sample", "population"]
   
+  var timeX, timeY, biasLine, timeXAxis, timeYAxis;
 
   function newSample() {
     
@@ -169,26 +170,6 @@ update_svg = {
   }
   
 
-  function updatePath() {
-      timeseriesData.selectAll("g").remove()
-      
-      if (nSamplesDrawn > 201) {
-        timeY.domain([nSamplesDrawn - 200, nSamplesDrawn]);
-        timeYAxis = d3.axisRight(timeY).tickSize(0);
-        timeChartYAxis.call(timeYAxis);
-        timeChartYAxis.select(".domain").remove();
-      }
-      
-      timeseriesData.selectAll("g")
-        .data(running_averages)
-        .enter()
-        .append("g")
-        .attr("class", "bias-paths")
-        .append("path")
-          .attr("d", d => biasLine(d.value.slice(1), d.id.slice(1)))
-          .attr("id", d => d.param + "-path")
-
-  }
   
   function updateSampleCircles() {
   
@@ -375,15 +356,10 @@ update_svg = {
   estimatesAxis.call(xAxisEstimates)
   estimatesAxis.select(".domain").remove()
   
-  const estimatesAxisLines = estimatesAxis.selectAll("line");
+
+
   
-  estimatesAxisLines._groups[0].forEach((l) => {
-    if (l.__data__ === 0) {
-      l.classList = "axis-major";
-    } else {
-      l.classList = "axis-minor";
-    }
-  })
+  formatAxes(estimatesAxis.selectAll("line"));
   
     
   var legendStatus = [{param: "mean",       hide: true},
@@ -444,64 +420,57 @@ const timeChart = {
     height: maxHeight,
     margin: {left: 30, right: 30, top: 50, bottom: 60}
 }
+
+const timeChartHorizontal = {
+    width: populationPanelWidth,
+    height: 300,
+    margin: {left: 30, right: 30, top: 50, bottom: 60}
+}
+
+
+
+  function setUpTimeAxes(vertical = true) {
   
-  
-var timeX = d3.scaleLinear()
-    .domain([-0.5, 0.5])
-    .range([timeChart.margin.left, timeChart.width - timeChart.margin.right])
-var timeY = d3.scaleLinear()
-    .domain([0, 200])
-    .range([timeChart.margin.top, timeChart.height - timeChart.margin.bottom])
-const biasLine = function(x, y){
-      return d3.line()
-      .x(function(d,i) { return timeX(x[i]); }) 
-      .y(function(d,i) { return timeY(y[i]); })
-      (Array(x.length));
+  if (vertical) {
+    timeX = d3.scaleLinear()
+      .domain([-0.5, 0.5])
+      .range([timeChart.margin.left, timeChart.width - timeChart.margin.right])
+    timeY = d3.scaleLinear()
+      .domain([0, 200])
+      .range([timeChart.margin.top, timeChart.height - timeChart.margin.bottom])
+    biasLine = function(x, y){
+        return d3.line()
+        .x(function(d,i) { return timeX(x[i]); })
+        .y(function(d,i) { return timeY(y[i]); })
+        (Array(x.length));
+    }
+    timeXAxis = d3.axisTop(timeX).ticks(5).tickSize(-timeChart.height - (timeChart.margin.top + timeChart.margin.bottom))
+    timeYAxis = d3.axisRight(timeY).tickSize(0)
+  } else {
+  timeY = d3.scaleLinear()
+      .domain([-0.5, 0.5])
+      .range([timeChartHorizontal.height - timeChartHorizontal.margin.bottom, timeChart.margin.top])
+      timeX = d3.scaleLinear()
+      .domain([0, 200])
+      .range([timeChartHorizontal.margin.left, timeChartHorizontal.width - timeChartHorizontal.margin.right])
+    biasLine = function(x, y){
+        return d3.line()
+        .x(function(d,i) { return timeX(y[i]); })
+        .y(function(d,i) { return timeY(x[i]); })
+        (Array(x.length));
+    }
+    timeXAxis = d3.axisBottom(timeX).tickSize(0)
+    timeYAxis = d3.axisLeft(timeY).ticks(5).tickSize(-timeChartHorizontal.width - timeChartHorizontal.margin.left - timeChartHorizontal.margin.right)
   }
-  
-  
-var timeXAxis = d3.axisTop(timeX).ticks(5).tickSize(0)
-var timeYAxis = d3.axisRight(timeY).tickSize(0)
-  
-  const timeseriesContainer = d3.select("#timeline-container");
-  timeseriesContainer.style("position", "relative")
+}
 
-  const timeSvg =   d3.select("#timeline-container")
-    .append("svg").attr("id", "timeline-svg")
-    .attr("preserveAspectRatio", "xMinYMin meet")
-    .attr("viewBox", "0 0 " + timeChart.width + " " + timeChart.height)
-  timeSvg.append("rect")
-    .attr("width", timeChart.width)
-    .attr("height", timeChart.height)
-    .attr("rx", 5)
-    .attr("fill", "var(--timeseries-panel-background)")
+  
 
-
-  timeSvg.append("g")
-      .selectAll("line")
-      .data([-0.4, -0.2, 0, 0.2, 0.4])
-      .enter().append("line")
-        .attr("y1", d => timeY(0)).attr("y2", d => timeY(200))
-        .attr("x1", d => timeX(d)).attr("x2", d => timeX(d))
-        .attr("class", function(d){if(d===0){return"axis-major"}else{return "axis-minor"}})
-        .classed("dark", true)
+  
+  function makeTimeseriesChart(params) {
     
-  const timeseriesData = timeSvg.append("g");
-  const timeChartXAxis = timeSvg.append("g")
-  timeChartXAxis.attr("transform", `translate(0, ${timeY(0)})`)
-  
-  timeChartXAxis.append("rect")
-    .attr("width", timeChart.width)
-    .attr("y", -timeChart.margin.top)
-    .attr("height", timeChart.margin.top)
-    .attr("rx", 5)
-    .attr("fill", "var(--timeseries-panel-background)")
-    
-  timeChartXAxis.call(timeXAxis);
-  
-
-  
-  timeseriesContainer.append("text")
+    // text labels
+    timeseriesContainer.append("text")
     .style("position", "absolute")
     .style("left", 0)
     .text("Average under/over-estimation")
@@ -514,14 +483,96 @@ var timeYAxis = d3.axisRight(timeY).tickSize(0)
     .style("text-align", "right")
     .html("Total<br>samples")
     
-
-  const biasPaths = timeSvg.append("g")
+    const svg = d3.select("#timeline-container")
+    .append("svg").attr("id", "timeline-svg")
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", "0 0 " + params.width + " " + params.height)
+    
+    // background panel
+  svg.append("rect")
+    .attr("width", params.width)
+    .attr("height", params.height)
+    .attr("rx", 5)
+    .attr("fill", "var(--timeseries-panel-background)")
+    
+    return svg;
+    
+  }
   
-  const timeChartYAxis = timeSvg.append("g")
-  timeChartYAxis.attr("transform", `translate(${timeChart.width - timeChart.margin.right}, 0)`)
-  timeChartYAxis.call(timeYAxis)
-  timeChartYAxis.select(".domain").remove();
-  timeChartXAxis.select(".domain").remove();
+  
+  
+  const timeseriesContainer = d3.select("#timeline-container");
+  timeseriesContainer.style("position", "relative")
+
+  setUpTimeAxes();
+  const timeSvg = makeTimeseriesChart(timeChart);
+  
+  const timeseriesData = timeSvg.append("g");
+  const timeChartXAxis = timeSvg.append("g");
+  const timeChartYAxis = timeSvg.append("g");
+  
+  positionTimeAxes();
+  
+  
+  function positionTimeAxes(vertical = true) {
+    if (vertical) {
+      timeChartXAxis.attr("transform", `translate(0, ${timeY(0)})`)
+
+      timeChartXAxis.append("rect")
+        .attr("width", timeChart.width)
+        .attr("y", -timeChart.margin.top)
+        .attr("height", timeChart.margin.top)
+        .attr("rx", 5)
+        .attr("fill", "var(--timeseries-panel-background)")
+
+        timeChartYAxis.attr("transform", `translate(${timeChart.width - timeChart.margin.right}, 0)`)
+  
+    } else {
+      timeChartXAxis.attr("transform", `translate(0, ${timeChartHorizontal.height - timeChartHorizontal.margin.bottom})`)
+
+      timeChartXAxis.append("rect")
+        .attr("width", timeChartHorizontal.margin.left)
+        .attr("height", timeChartHorizontal.height)
+        .attr("rx", 5)
+        .attr("fill", "var(--timeseries-panel-background)")
+      
+          timeChartYAxis.attr("transform", `translate(${timeChartHorizontal.margin.left}, 0)`)
+        
+      
+    }
+    timeChartXAxis.call(timeXAxis);
+    timeChartYAxis.call(timeYAxis)
+    timeChartYAxis.select(".domain").remove();
+    timeChartXAxis.select(".domain").remove();
+    
+    formatAxes(timeSvg.selectAll("line"));
+    
+    timeSvg.selectAll("line").classed("dark", true)
+  }
+  
+
+  
+  
+  function updatePath() {
+      timeseriesData.selectAll("g").remove()
+      
+      if (nSamplesDrawn > 201) {
+        timeY.domain([nSamplesDrawn - 200, nSamplesDrawn]);
+        timeYAxis = d3.axisRight(timeY).tickSize(0);
+        timeChartYAxis.call(timeYAxis);
+        timeChartYAxis.select(".domain").remove();
+      }
+      
+      timeseriesData.selectAll("g")
+        .data(running_averages)
+        .enter()
+        .append("g")
+        .attr("class", "bias-paths")
+        .append("path")
+          .attr("d", d => biasLine(d.value.slice(1), d.id.slice(1)))
+          .attr("id", d => d.param + "-path")
+
+  }
   
 
 
@@ -539,7 +590,8 @@ function clearData() {
     
     sampleCircles.selectAll('circle').remove()
     sampleEstimates.selectAll("path").remove()
-    biasPaths.selectAll("path").remove()
+    sampleEstimatesTemp.selectAll("path").remove()
+    timeseriesData.selectAll("path").remove()
   }
   
   function updateRunningAverages(estimates) {
@@ -653,6 +705,17 @@ function getSampleEstimates(array) {
             {param: "mean",       value: mean(array)}]
 }
 
+
+function formatAxes(elements) {
+  elements._groups[0].forEach((l) => {
+    if (l.__data__ === 0) {
+      l.classList = "axis-major";
+    } else {
+      l.classList = "axis-minor";
+    }
+  })
+}
+  
 ```
 
 ::: {.content-hidden}
