@@ -61,6 +61,8 @@ h = 400
 maxWidth = 900;
 maxHeight = 550;
 
+timeseriesVertical = false;
+
 panelSpacing = 5;
 
 populationPanelWidth = maxWidth * 0.6;
@@ -128,6 +130,16 @@ update_svg = {
   var legendSelected = ["sample", "population"]
   
   var timeX, timeY, biasLine, timeXAxis, timeYAxis;
+  var timeSvg, 
+  timeScaleBias, 
+  timeScaleId, 
+  timeBiasAxis, 
+  timeIdAxis, 
+  timeseriesDataLayer,
+  timeseriesBiasAxisLayer,
+  timeseriesIdAxisLayer;
+
+  let isLargeScreen;
 
   function newSample() {
     
@@ -429,39 +441,75 @@ const timeChartHorizontal = {
 
 
 
-  function setUpTimeAxes(vertical = true) {
-  
-  if (vertical) {
-    timeX = d3.scaleLinear()
+  function updateTimeseriesDimensions(winWidth) {
+
+    const largeScreen = winWidth > 600;
+    if (largeScreen === isLargeScreen) return;
+    // Update the screen state
+    isLargeScreen = largeScreen;
+    
+  var params;
+  var orientation = (winWidth > 600) ? "vertical" : "horizontal;"
+
+  console.log(orientation);
+
+  // first, set up chart dimensions and axes
+  if (winWidth > 600) {
+
+    params = timeChart;
+
+    timeScaleBias = d3.scaleLinear()
       .domain([-0.5, 0.5])
-      .range([timeChart.margin.left, timeChart.width - timeChart.margin.right])
-    timeY = d3.scaleLinear()
+      .range([params.margin.left, params.width - params.margin.right])
+    timeScaleId = d3.scaleLinear()
       .domain([0, 200])
-      .range([timeChart.margin.top, timeChart.height - timeChart.margin.bottom])
+      .range([params.margin.top, params.height - params.margin.bottom])
     biasLine = function(x, y){
         return d3.line()
-        .x(function(d,i) { return timeX(x[i]); })
-        .y(function(d,i) { return timeY(y[i]); })
+        .x(function(d,i) { return timeScaleBias(x[i]); })
+        .y(function(d,i) { return timeScaleId(y[i]); })
         (Array(x.length));
     }
-    timeXAxis = d3.axisTop(timeX).ticks(5).tickSize(-timeChart.height - (timeChart.margin.top + timeChart.margin.bottom))
-    timeYAxis = d3.axisRight(timeY).tickSize(0)
+    timeBiasAxis = d3.axisTop(timeScaleBias)
+      .ticks(5)
+      .tickSize(-(params.height - params.margin.top - params.margin.bottom)) // 440
+    timeIdAxis = d3.axisRight(timeScaleId).tickSize(0)
   } else {
-  timeY = d3.scaleLinear()
-      .domain([-0.5, 0.5])
-      .range([timeChartHorizontal.height - timeChartHorizontal.margin.bottom, timeChart.margin.top])
-      timeX = d3.scaleLinear()
-      .domain([0, 200])
-      .range([timeChartHorizontal.margin.left, timeChartHorizontal.width - timeChartHorizontal.margin.right])
-    biasLine = function(x, y){
-        return d3.line()
-        .x(function(d,i) { return timeX(y[i]); })
-        .y(function(d,i) { return timeY(x[i]); })
-        (Array(x.length));
-    }
-    timeXAxis = d3.axisBottom(timeX).tickSize(0)
-    timeYAxis = d3.axisLeft(timeY).ticks(5).tickSize(-timeChartHorizontal.width - timeChartHorizontal.margin.left - timeChartHorizontal.margin.right)
+
+      params = timeChartHorizontal;
+
+      timeScaleBias = d3.scaleLinear()
+        .domain([-0.5, 0.5])
+        .range([params.height - params.margin.bottom, params.margin.top])
+        
+      timeScaleId = d3.scaleLinear()
+        .domain([0, 200])
+        .range([params.margin.left, params.width - params.margin.right])
+      biasLine = function(x, y){
+          return d3.line()
+          .x(function(d,i) { return timeScaleId(y[i]); })
+          .y(function(d,i) { return timeScaleBias(x[i]); })
+          (Array(x.length));
+      }
+    timeIdAxis = d3.axisBottom(timeScaleId)
+      .tickSize(0)
+    timeBiasAxis = d3.axisLeft(timeScaleBias)
+      .ticks(5).tickSize(-params.width - params.margin.left - params.margin.right)
   }
+
+  // then instantiate the chart svg itself
+  d3.select("#timeline-container").select("svg").remove();
+  d3.select("#timeline-container").selectAll("text").remove();
+  timeSvg = makeTimeseriesChart(params);
+  timeseriesDataLayer = timeSvg.append("g");
+  timeseriesBiasAxisLayer = timeSvg.append("g");
+  timeseriesIdAxisLayer = timeSvg.append("g");
+
+  // then place the axes
+  positionTimeAxes(orientation, params);
+
+  // then draw the current data
+  updatePath();
 }
 
   
@@ -504,46 +552,42 @@ const timeChartHorizontal = {
   const timeseriesContainer = d3.select("#timeline-container");
   timeseriesContainer.style("position", "relative")
 
-  setUpTimeAxes();
-  const timeSvg = makeTimeseriesChart(timeChart);
-  
-  const timeseriesData = timeSvg.append("g");
-  const timeChartXAxis = timeSvg.append("g");
-  const timeChartYAxis = timeSvg.append("g");
-  
-  positionTimeAxes();
-  
-  
-  function positionTimeAxes(vertical = true) {
-    if (vertical) {
-      timeChartXAxis.attr("transform", `translate(0, ${timeY(0)})`)
+  updateTimeseriesDimensions(window.innerWidth);
 
-      timeChartXAxis.append("rect")
-        .attr("width", timeChart.width)
-        .attr("y", -timeChart.margin.top)
-        .attr("height", timeChart.margin.top)
+  // Re-render the chart whenever the window size changes
+  window.addEventListener("resize", () => updateTimeseriesDimensions(window.innerWidth)); 
+  
+  function positionTimeAxes(orientation, params) {
+    if (orientation === "vertical") {
+      timeseriesBiasAxisLayer.attr("transform", `translate(0, ${params.margin.top})`)
+
+      timeseriesBiasAxisLayer.append("rect")
+        .attr("width", params.width)
+        .attr("y", -params.margin.top)
+        .attr("height", params.margin.top)
         .attr("rx", 5)
         .attr("fill", "var(--timeseries-panel-background)")
 
-        timeChartYAxis.attr("transform", `translate(${timeChart.width - timeChart.margin.right}, 0)`)
+        timeseriesIdAxisLayer.attr("transform", `translate(${params.width - params.margin.right}, 0)`)
   
     } else {
-      timeChartXAxis.attr("transform", `translate(0, ${timeChartHorizontal.height - timeChartHorizontal.margin.bottom})`)
+      timeseriesIdAxisLayer.attr("transform", `translate(0, ${params.height - params.margin.bottom})`)
 
-      timeChartXAxis.append("rect")
-        .attr("width", timeChartHorizontal.margin.left)
-        .attr("height", timeChartHorizontal.height)
-        .attr("rx", 5)
-        .attr("fill", "var(--timeseries-panel-background)")
+      // todo: this isn't positioned correctly
+      // timeseriesBiasAxisLayer.append("rect")
+      //   .attr("width", params.margin.left)
+      //   .attr("height", params.height)
+      //   .attr("rx", 5)
+      //   .attr("fill", "var(--timeseries-panel-background)")
       
-          timeChartYAxis.attr("transform", `translate(${timeChartHorizontal.margin.left}, 0)`)
+      timeseriesBiasAxisLayer.attr("transform", `translate(${params.margin.left}, 0)`)
         
       
     }
-    timeChartXAxis.call(timeXAxis);
-    timeChartYAxis.call(timeYAxis)
-    timeChartYAxis.select(".domain").remove();
-    timeChartXAxis.select(".domain").remove();
+    timeseriesIdAxisLayer.call(timeIdAxis)
+    timeseriesBiasAxisLayer.call(timeBiasAxis);
+    timeseriesBiasAxisLayer.select(".domain").remove();
+    timeseriesIdAxisLayer.select(".domain").remove();
     
     formatAxes(timeSvg.selectAll("line"));
     
@@ -554,16 +598,16 @@ const timeChartHorizontal = {
   
   
   function updatePath() {
-      timeseriesData.selectAll("g").remove()
+      timeseriesDataLayer.selectAll("g").remove()
       
       if (nSamplesDrawn > 201) {
-        timeY.domain([nSamplesDrawn - 200, nSamplesDrawn]);
-        timeYAxis = d3.axisRight(timeY).tickSize(0);
-        timeChartYAxis.call(timeYAxis);
-        timeChartYAxis.select(".domain").remove();
+        timeScaleId.domain([nSamplesDrawn - 200, nSamplesDrawn]);
+        // timeIdAxis = d3.axisRight(timeScaleId).tickSize(0);
+        timeseriesIdAxisLayer.call(timeIdAxis);
+        timeseriesIdAxisLayer.select(".domain").remove();
       }
       
-      timeseriesData.selectAll("g")
+      timeseriesDataLayer.selectAll("g")
         .data(running_averages)
         .enter()
         .append("g")
@@ -584,14 +628,14 @@ function clearData() {
                           {param: "mean",       value: [0], id: [0]}];
     nSamplesDrawn = 0;
     
-    timeY.domain([0, 200]);
-    timeChartYAxis.call(timeYAxis);
-    timeChartYAxis.select(".domain").remove();
+    timeScaleId.domain([0, 200]);
+    timeseriesIdAxisLayer.call(timeIdAxis);
+    timeseriesIdAxisLayer.select(".domain").remove();
     
     sampleCircles.selectAll('circle').remove()
     sampleEstimates.selectAll("path").remove()
     sampleEstimatesTemp.selectAll("path").remove()
-    timeseriesData.selectAll("path").remove()
+    timeseriesDataLayer.selectAll("path").remove()
   }
   
   function updateRunningAverages(estimates) {
@@ -759,6 +803,7 @@ function formatAxes(elements) {
 
   #timeline-container {
     width: 100%;
+    margin-top: 1vw;
   }
 }
 
