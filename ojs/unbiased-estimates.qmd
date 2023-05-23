@@ -9,6 +9,7 @@ execute:
 ---
 
 
+:::: {#controls}
 ::: {#controls-container}
 :::
 
@@ -18,7 +19,7 @@ Show:
 [$SD_{n}$]{.select-population .selector}
 [$SD_{n - 1}$]{.select-sample .selector}
 :::
-
+::::
 
 ::: {.g-row}
 
@@ -30,10 +31,7 @@ Show:
 
 :::
 
-::: {.g-row}
-<!-- ::: {#timeline-container style="width: 40%;"} -->
-<!-- ::: -->
-:::
+
 
 ```{ojs}
 jStat = require("https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js")
@@ -104,12 +102,7 @@ xAxisEstimates = d3.axisBottom(xScalePopulation)
   .tickValues(xAxisEstimatesValues)
   .tickFormat(d => d)
   .tickSize(-maxHeight * (1 - estimatesSubPanelProportion) - 10)
-    
-yPlacementEstimatesSubPanel = d3.scaleLinear()
-  .domain([0, 2])
-  .range([50 + populationPanelHeight * (1 - estimatesSubPanelProportion), populationPanelHeight - 10])
-    
-    
+  
 ```
 
 
@@ -325,15 +318,7 @@ update_svg = {
     .attr("fill", "var(--estimates-panel-background)")
     .attr("rx", 5)
     
-    
-  const estimatesSvg = d3.select("#estimates-container")
-    .append("svg").attr("id", "estimates-svg")
-    .attr("preserveAspectRatio", "xMinYMin meet")
-    .attr("viewBox", "0 0 " + estimatesPanelWidth + " " + estimatesPanelHeight)
-  
-  estimatesSvg.append("text")
-    .text("Over/Under estimation of parameter")
-    .attr("y", 20)
+
     
   const pop = populationAndSampleSvg.append("g")
   const parameters = populationAndSampleSvg.append("g")
@@ -341,8 +326,6 @@ update_svg = {
   const sampleEstimatesTemp = populationAndSampleSvg.append("g")
   const sampleCircles = populationAndSampleSvg.append("g")
 
-
-  const biasChart = estimatesSvg.append("g")
   const biasDots  = sampleEstimates.append("g")
   
   pop.selectAll("circle")
@@ -405,27 +388,26 @@ update_svg = {
   // buttons
   const controls = d3.select("#controls-container")
   
-  const reset_button = controls.append("text")
-  .attr("class", "button invertable")
-    .html("&#x21bb;")
-    .attr("x", 10)
-    .attr("y", h - 50)
+  const reset_button = controls.append("button")
+    // .attr("class", "button invertable")
+    // .attr("type", "button")
+    .text("Reset")
     .on("click", clearData)
   
-  const button = controls.append("text")
-  .attr("class", "button invertable")
-    .text("ᐳ")
-    .attr("x", 30)
-    .attr("y", h - 50)
+  const button = controls.append("button")
+    .text("Take one sample")
     .on("click", newSample)
     
-  const play_button = controls.append("text").attr("id", "play-button")
-  .attr("class", "button invertable")
+  const play_button = controls.append("button")
+    .attr("id", "play-button")
+    // .attr("class", "button invertable")
     .attr("x", 50)
     .attr("y", h - 50)
     .html("►")
     .on("click", playButtonClicked)
     
+
+
 // make timeseries chart
 const timeChart = {
     width: timeSeriesPanelWidth,
@@ -438,6 +420,14 @@ const timeChartHorizontal = {
     height: 300,
     margin: {left: 30, right: 30, top: 50, bottom: 60}
 }
+
+  const timeseriesContainer = d3.select("#timeline-container");
+  timeseriesContainer.style("position", "relative")
+
+  updateTimeseriesDimensions(window.innerWidth);
+
+  // Re-render the chart whenever the window size changes
+  window.addEventListener("resize", () => updateTimeseriesDimensions(window.innerWidth)); 
 
 
 
@@ -548,15 +538,6 @@ const timeChartHorizontal = {
   }
   
   
-  
-  const timeseriesContainer = d3.select("#timeline-container");
-  timeseriesContainer.style("position", "relative")
-
-  updateTimeseriesDimensions(window.innerWidth);
-
-  // Re-render the chart whenever the window size changes
-  window.addEventListener("resize", () => updateTimeseriesDimensions(window.innerWidth)); 
-  
   function positionTimeAxes(orientation, params) {
     if (orientation === "vertical") {
       timeseriesBiasAxisLayer.attr("transform", `translate(0, ${params.margin.top})`)
@@ -574,11 +555,12 @@ const timeChartHorizontal = {
       timeseriesIdAxisLayer.attr("transform", `translate(0, ${params.height - params.margin.bottom})`)
 
       // todo: this isn't positioned correctly
-      // timeseriesBiasAxisLayer.append("rect")
-      //   .attr("width", params.margin.left)
-      //   .attr("height", params.height)
-      //   .attr("rx", 5)
-      //   .attr("fill", "var(--timeseries-panel-background)")
+      timeseriesBiasAxisLayer.append("rect")
+        .attr("x", -params.margin.left)
+        .attr("width", params.margin.left)
+        .attr("height", params.height)
+        .attr("rx", 5)
+        .attr("fill", "var(--timeseries-panel-background)")
       
       timeseriesBiasAxisLayer.attr("transform", `translate(${params.margin.left}, 0)`)
         
@@ -593,8 +575,6 @@ const timeChartHorizontal = {
     
     timeSvg.selectAll("line").classed("dark", true)
   }
-  
-
   
   
   function updatePath() {
@@ -796,6 +776,25 @@ function formatAxes(elements) {
   width: 39.8%;
 }
 
+#controls {
+  width: fit-content;
+  display: flex;
+  margin: auto;
+}
+
+#controls-container {
+  color: var(--text-color);
+  font-size: 0.8em;
+  /* float: right; */
+  width: fit-content;
+  margin-right: 1em;
+}
+
+#select-estimates {
+  width: fit-content;
+  font-size: 0.7em;
+}
+
 @media screen and (max-width: 600px) {
   #population-container {
     width: 100%;
@@ -805,19 +804,21 @@ function formatAxes(elements) {
     width: 100%;
     margin-top: 1vw;
   }
+
+  #controls {
+    width: 100%;
+    display: block;
+  }
+  #controls-container {
+    width: fit-content;
+    margin: auto;
+  }
+
+  #select-estimate {
+    width: fit-content;
+    margin: auto;
+  }
 }
-
-<!-- @media screen and (min-width: 600px) { -->
-<!--   #population-container { -->
-<!--     width: 60%; -->
-<!--   } -->
-
-<!--   #estimates-container { -->
-<!--     width: 40%; -->
-<!--   } -->
-<!-- } -->
-
-
 
 .axis {
   font-size: 0.75em;
@@ -904,7 +905,7 @@ function formatAxes(elements) {
 
 
 .selector {
-  margin-right: 2em;
+  margin-right: 1em;
   cursor: pointer;
 }
 .selector::after {
