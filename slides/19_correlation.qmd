@@ -471,7 +471,28 @@ library(ggplot2)
 library(dplyr)
 set.seed(42)
 
-data <- faux::rnorm_multi(n = 300, vars = 2, r = .6)
+# data <- faux::rnorm_multi(n = 300, vars = 2, r = .6)
+
+create_correlated_data <- function(n, r, mean_x = 0, sd_x = 1, mean_y = 0, sd_y = 1) {
+  # Check if the desired correlation is within the permissible range [-1, 1]
+  if (r < -1 || r > 1) {
+    stop("r must be between -1 and 1")
+  }
+  
+  # Create x as a normally distributed variable
+  x <- rnorm(n, mean = mean_x, sd = sd_x)
+  
+  # Create an error term that is also normally distributed
+  error <- rnorm(n, mean = 0, sd = sqrt(1 - r^2))
+  
+  # Create y using the desired correlation
+  y <- r * (x - mean_x) / sd_x * sd_y + mean_y + error
+  
+  # Return a dataframe with the variables x and y
+  return(data.frame(x, y))
+}
+
+data <- create_correlated_data(n = 300, r = .6)
 
 SSx <- sum( (data$X1 - mean(data$X1))^2 )
 SSy <- sum( (data$X2 - mean(data$X2))^2 )
