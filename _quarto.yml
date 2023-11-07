@@ -17,7 +17,7 @@ website:
       - href: index.qmd
         text: Syllabus
         icon: file-text
-      - href: slides-index.qmd
+      - href: lectures.qmd
         text: Lectures
         icon: easel2
       - href: https://docs.google.com/document/d/19YFZAyz12SsFKDnjZn7tZRbcqviyHnKBkX2laTpePO4/edit?usp=sharing
