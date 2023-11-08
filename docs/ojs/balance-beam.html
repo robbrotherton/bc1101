@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.78">
+<meta name="generator" content="quarto-1.3.310">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,43 +47,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -138,6 +109,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">PSYC BC1101</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -166,7 +138,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -552,7 +525,7 @@ toggle.click(function( event ) {
 });
 </script>
 <script type="ojs-module-contents">
-{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"width = 500\r\nheight = 500\r\nradius = 32\r\nbeam_height = radius/2\r\nn_boxes = 10\r\n\r\n\r\n\r\n\r\nchart = {\r\n\r\n  let box_data = d3.range(n_boxes).map(i => ({\r\n      x: (Math.random() * (width - radius * 2) + radius),\r\n      <!-- x: Math.floor((Math.random() * 10), -->\r\n      y: height/2 - beam_height/2 - radius,\r\n      overlaps: 0,\r\n      level: 0\r\n      }))\r\n      \r\n  for (let i = 1; i < box_data.length; i++) {\r\n    let x = box_data[i].x\r\n    for (let j = 0; j < box_data.length; j++) {\r\n      if (i==j) continue\r\n      if (box_data[i].level != box_data[j].level) continue\r\n      let y = box_data[j].x\r\n      if (x < y + radius && x + radius > y) {\r\n        box_data[i].level++\r\n        continue\r\n      }\r\n    }\r\n  }\r\n  \r\n  console.log(box_data)\r\n  \r\n    let mean = box_data.reduce((total, next) => total + next.x, 0) / box_data.length\r\n  let pivot = mean\r\n  \r\n  box_data = box_data.sort(function(a, b) { return Math.abs(a.x - pivot) - Math.abs(b.x - pivot); })\r\n  for (let i = 0; i < box_data.length; i++) {\r\n    box_data[i].id = i\r\n    box_data[i].color = d3.schemeCategory10[i % 10]\r\n  }\r\n    \r\n    \r\n    \r\n  const svg = d3.create(\"svg\")\r\n      .attr(\"viewBox\", [0, 0, width, height])\r\n      .attr(\"stroke-width\", 2)\r\n\r\n  const x = d3.scaleLinear()\r\n    .range([0, width])\r\n    .domain([1, 10])\r\n\r\n  const beam_and_boxes = svg.append(\"g\")\r\n  \r\n  // draw the beam\r\n  beam_and_boxes.append(\"rect\")\r\n    .attr(\"x\", 0)\r\n    .attr(\"y\", height/2 - beam_height / 2)\r\n    .attr(\"width\", width)\r\n    .attr(\"height\",  beam_height)\r\n    .attr(\"rx\", 5)\r\n    .attr(\"fill\", \"black\")\r\n\r\n  const boxes = beam_and_boxes.append(\"g\")\r\n  const deviations = beam_and_boxes.append(\"g\")\r\n  const deviations_vertical = deviations.append(\"g\")\r\n  const deviations_horizontal = deviations.append(\"g\")\r\n  const deviations_sum = svg.append(\"g\").attr(\"transform\", `translate(0, ${height - 20})`)\r\n  const deviations_sum_negative = deviations_sum.append(\"g\")\r\n  const deviations_sum_positive = deviations_sum.append(\"g\").attr(\"transform\", `translate(0, 10)`)\r\n  \r\n  \r\n  boxes.selectAll(\"rect\")\r\n    .data(box_data)\r\n    .join(\"rect\")\r\n      .attr(\"x\", d => d.x)\r\n      .attr(\"y\", d => d.y - d.level*radius)\r\n      .attr(\"width\", radius)\r\n      .attr(\"height\", radius)\r\n      .attr(\"rx\", 3)\r\n      .attr(\"fill\", d => d.color)\r\n      .call(d3.drag().on(\"start\", start_dragging_box)\r\n                     .on(\"drag\", dragging_box)\r\n                     .on(\"end\", stop_dragging_box));\r\n  \r\n  // draw a circle at the true mean point\r\n  const circle = beam_and_boxes.append(\"circle\")\r\n    .attr(\"cx\", mean)\r\n    .attr(\"cy\", height/2)\r\n    .attr(\"r\", 5)\r\n    .attr(\"fill\", \"red\")\r\n  \r\n  // draw a triangle at the pivot point\r\n  const triangle = svg.append(\"polygon\")\r\n    .attr(\"points\", [[0, -radius/2], [radius/2, radius/2], [-radius/2, radius/2]])\r\n    .attr(\"fill\", \"red\")\r\n    .attr(\"transform\", `translate(${pivot}, ${height/2 + radius * 0.75})`)\r\n    .call(d3.drag()\r\n             .on(\"start\", start_dragging_mean)\r\n             .on(\"drag\", dragging_mean)\r\n             .on(\"end\", stop_dragging_mean))\r\n    \r\n    \r\n  circle.call(d3.drag()\r\n             .on(\"start\", start_dragging_mean)\r\n             .on(\"drag\", dragging_mean)\r\n             .on(\"end\", stop_dragging_mean)\r\n          )\r\n  \r\n\r\n  // draw the ground\r\n  svg.append(\"line\")\r\n    .attr(\"x1\", 0).attr(\"x2\", width)\r\n    .attr(\"y1\", height/2 + radius * 1.25).attr(\"y2\", height/2 + radius * 1.25)\r\n    .attr(\"stroke\", \"grey\")\r\n    \r\n  draw_deviations()\r\n  \r\n\r\n  return svg.node();\r\n  \r\n  \r\n  function start_dragging_mean(event, d) {circle.attr(\"fill\", \"dodgerblue\")}\r\n  \r\n  function stop_dragging_mean(event, d) {circle.attr(\"fill\", \"red\")}\r\n  \r\n  function dragging_mean(event, d) {\r\n      pivot = event.x\r\n      let angle = Math.min(Math.max((mean - pivot)*0.1, -7), 7)\r\n       \r\n      if (angle > 6) {\r\n        let hypotenuse = width - pivot\r\n        angle = 90 - Math.acos(radius / hypotenuse) * 180/Math.PI\r\n      } else if (angle < -6) {\r\n        let hypotenuse = pivot\r\n        angle = -1 * (90 - Math.acos(radius / hypotenuse) * 180/Math.PI)\r\n      }\r\n      \r\n      triangle.attr(\"transform\", `translate(${pivot}, ${height/2 + radius * 0.75})`)\r\n      beam_and_boxes.attr(\"transform\", `rotate(${angle}, ${pivot}, ${height/2})`)\r\n      draw_deviations()\r\n  }\r\n  \r\n  function start_dragging_box(event, d) {\r\n    d3.select(this).raise().attr(\"stroke\", \"black\")\r\n    console.log(d.id)\r\n  }\r\n\r\n  function dragging_box(event, d) {\r\n    d3.select(this).attr(\"x\", event.x)\r\n    box_data[d.id].x = event.x\r\n    \r\n    <!-- let overlaps = 0 -->\r\n    <!-- for (let i = 0; i < box_data.length; i++) { -->\r\n    <!--   if (i==d.id) continue -->\r\n    <!--   let other_x = box_data[i].x -->\r\n    <!--   if (event.x < (other_x + radius) && (event.x + radius) > other_x) overlaps++ -->\r\n    <!--   } -->\r\n    <!--   box_data[d.id].overlaps = overlaps -->\r\n    \r\n    draw_deviations()\r\n  }\r\n\r\n  function stop_dragging_box(event, d) {\r\n    d3.select(this).attr(\"stroke\", null)\r\n  }\r\n  \r\n  function draw_deviations() {\r\n    \r\n    mean = box_data.reduce((total, next) => total + next.x, 0) / box_data.length\r\n    \r\n    <!-- boxes.selectAll(\"rect\") -->\r\n    <!--   .attr(\"y\", d => d.y - d.overlaps*radius) -->\r\n    \r\n    circle.attr(\"cx\", mean)\r\n    for (let i = 0; i < box_data.length; i++) box_data[i].dev = box_data[i].x - pivot\r\n    <!-- let box_data_ = box_data.sort(function(a, b) { return Math.abs(a.dev) - Math.abs(b.dev); }) -->\r\n    <!-- console.log(box_data_sorted) -->\r\n    \r\n    let deviations_negative = box_data.filter(function(d){ return d.dev < 0})\r\n    for (let i = 0; i < deviations_negative.length; i++) {\r\n      if (i==0) deviations_negative[i].dev_start = 0\r\n      else deviations_negative[i].dev_start = deviations_negative[i-1].dev_end\r\n      deviations_negative[i].dev_end = deviations_negative[i].dev_start + Math.abs(deviations_negative[i].dev)\r\n    }\r\n    \r\n    let deviations_positive = box_data.filter(function(d){ return d.dev > 0})\r\n    for (let i = 0; i < deviations_positive.length; i++) {\r\n      if (i==0) deviations_positive[i].dev_start = 0\r\n      else deviations_positive[i].dev_start = deviations_positive[i-1].dev_end\r\n      deviations_positive[i].dev_end = deviations_positive[i].dev_start + Math.abs(deviations_positive[i].dev)\r\n    }\r\n    \r\n    \r\n    deviations_vertical.selectAll(\"line\")\r\n      .data(box_data)\r\n      .join(\"line\")\r\n        .attr(\"x1\", d => d.x + radius/2)\r\n        .attr(\"x2\", d => d.x + radius/2)\r\n        .attr(\"y1\", d => d.y)\r\n        .attr(\"y2\", (d, i) => height/2 - radius*2 - d.id * 20)\r\n        .attr(\"stroke\", \"black\")\r\n        .attr(\"stroke-dasharray\", [5, 5])\r\n        \r\n    deviations_horizontal.selectAll(\"line\")\r\n      .data(box_data)\r\n      .join(\"line\")\r\n        .attr(\"x1\", d => d.x + radius/2)\r\n        .attr(\"x2\", pivot)\r\n        .attr(\"y1\", (d, i) => height/2 - radius*2 - d.id * 20)\r\n        .attr(\"y2\", (d, i) => height/2 - radius*2 - d.id * 20)\r\n        .attr(\"stroke\", d => d.color)\r\n        .attr(\"stroke-width\", 3)\r\n        \r\n    deviations_sum_negative.selectAll(\"line\")\r\n      .data(deviations_negative)\r\n      .join(\"line\")\r\n        .attr(\"x1\", d => d.dev_start)\r\n        .attr(\"x2\", d => d.dev_end)\r\n        .attr(\"stroke\", d => d.color)\r\n        .attr(\"stroke-width\", 3)\r\n        \r\n    deviations_sum_positive.selectAll(\"line\")\r\n      .data(deviations_positive)\r\n      .join(\"line\")\r\n        .attr(\"x1\", d => d.dev_start)\r\n        .attr(\"x2\", d => d.dev_end)\r\n        .attr(\"stroke\", d => d.color)\r\n        .attr(\"stroke-width\", 3)\r\n  }\r\n  \r\n\r\n\r\n  \r\n}\r\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"<!-- drag = { -->\r\n\r\n<!--   function dragstarted(event, d) { -->\r\n<!--     d3.select(this).raise().attr(\"stroke\", \"black\") -->\r\n<!--     console.log(d.id) -->\r\n<!--   } -->\r\n\r\n<!--   function dragged(event, d) { -->\r\n<!--     d3.select(this).attr(\"x\", event.x) -->\r\n<!--   } -->\r\n\r\n<!--   function dragended(event, d) { -->\r\n<!--     d3.select(this).attr(\"stroke\", null); -->\r\n<!--   } -->\r\n\r\n<!--   return d3.drag() -->\r\n<!--       .on(\"start\", dragstarted) -->\r\n<!--       .on(\"drag\", dragged) -->\r\n<!--       .on(\"end\", dragended); -->\r\n<!-- } -->\r\n\r\n\r\ndrag_pivot = {\r\n\r\n  function dragstarted(event, d) {\r\n    d3.select(this).raise().attr(\"stroke\", \"red\");\r\n  }\r\n\r\n  function dragged(event, d) {\r\n    d3.select(this).attr(\"cx\", event.x)\r\n  }\r\n\r\n  function dragended(event, d) {\r\n    d3.select(this).attr(\"stroke\", null);\r\n  }\r\n\r\n  return d3.drag()\r\n      .on(\"start\", dragstarted)\r\n      .on(\"drag\", dragged)\r\n      .on(\"end\", dragended);\r\n}\r\n\r\n\r\n\r\n"}]}
+{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"width = 500\nheight = 500\nradius = 32\nbeam_height = radius/2\nn_boxes = 10\n\n\n\n\nchart = {\n\n  let box_data = d3.range(n_boxes).map(i => ({\n      x: (Math.random() * (width - radius * 2) + radius),\n      <!-- x: Math.floor((Math.random() * 10), -->\n      y: height/2 - beam_height/2 - radius,\n      overlaps: 0,\n      level: 0\n      }))\n      \n  for (let i = 1; i < box_data.length; i++) {\n    let x = box_data[i].x\n    for (let j = 0; j < box_data.length; j++) {\n      if (i==j) continue\n      if (box_data[i].level != box_data[j].level) continue\n      let y = box_data[j].x\n      if (x < y + radius && x + radius > y) {\n        box_data[i].level++\n        continue\n      }\n    }\n  }\n  \n  console.log(box_data)\n  \n    let mean = box_data.reduce((total, next) => total + next.x, 0) / box_data.length\n  let pivot = mean\n  \n  box_data = box_data.sort(function(a, b) { return Math.abs(a.x - pivot) - Math.abs(b.x - pivot); })\n  for (let i = 0; i < box_data.length; i++) {\n    box_data[i].id = i\n    box_data[i].color = d3.schemeCategory10[i % 10]\n  }\n    \n    \n    \n  const svg = d3.create(\"svg\")\n      .attr(\"viewBox\", [0, 0, width, height])\n      .attr(\"stroke-width\", 2)\n\n  const x = d3.scaleLinear()\n    .range([0, width])\n    .domain([1, 10])\n\n  const beam_and_boxes = svg.append(\"g\")\n  \n  // draw the beam\n  beam_and_boxes.append(\"rect\")\n    .attr(\"x\", 0)\n    .attr(\"y\", height/2 - beam_height / 2)\n    .attr(\"width\", width)\n    .attr(\"height\",  beam_height)\n    .attr(\"rx\", 5)\n    .attr(\"fill\", \"black\")\n\n  const boxes = beam_and_boxes.append(\"g\")\n  const deviations = beam_and_boxes.append(\"g\")\n  const deviations_vertical = deviations.append(\"g\")\n  const deviations_horizontal = deviations.append(\"g\")\n  const deviations_sum = svg.append(\"g\").attr(\"transform\", `translate(0, ${height - 20})`)\n  const deviations_sum_negative = deviations_sum.append(\"g\")\n  const deviations_sum_positive = deviations_sum.append(\"g\").attr(\"transform\", `translate(0, 10)`)\n  \n  \n  boxes.selectAll(\"rect\")\n    .data(box_data)\n    .join(\"rect\")\n      .attr(\"x\", d => d.x)\n      .attr(\"y\", d => d.y - d.level*radius)\n      .attr(\"width\", radius)\n      .attr(\"height\", radius)\n      .attr(\"rx\", 3)\n      .attr(\"fill\", d => d.color)\n      .call(d3.drag().on(\"start\", start_dragging_box)\n                     .on(\"drag\", dragging_box)\n                     .on(\"end\", stop_dragging_box));\n  \n  // draw a circle at the true mean point\n  const circle = beam_and_boxes.append(\"circle\")\n    .attr(\"cx\", mean)\n    .attr(\"cy\", height/2)\n    .attr(\"r\", 5)\n    .attr(\"fill\", \"red\")\n  \n  // draw a triangle at the pivot point\n  const triangle = svg.append(\"polygon\")\n    .attr(\"points\", [[0, -radius/2], [radius/2, radius/2], [-radius/2, radius/2]])\n    .attr(\"fill\", \"red\")\n    .attr(\"transform\", `translate(${pivot}, ${height/2 + radius * 0.75})`)\n    .call(d3.drag()\n             .on(\"start\", start_dragging_mean)\n             .on(\"drag\", dragging_mean)\n             .on(\"end\", stop_dragging_mean))\n    \n    \n  circle.call(d3.drag()\n             .on(\"start\", start_dragging_mean)\n             .on(\"drag\", dragging_mean)\n             .on(\"end\", stop_dragging_mean)\n          )\n  \n\n  // draw the ground\n  svg.append(\"line\")\n    .attr(\"x1\", 0).attr(\"x2\", width)\n    .attr(\"y1\", height/2 + radius * 1.25).attr(\"y2\", height/2 + radius * 1.25)\n    .attr(\"stroke\", \"grey\")\n    \n  draw_deviations()\n  \n\n  return svg.node();\n  \n  \n  function start_dragging_mean(event, d) {circle.attr(\"fill\", \"dodgerblue\")}\n  \n  function stop_dragging_mean(event, d) {circle.attr(\"fill\", \"red\")}\n  \n  function dragging_mean(event, d) {\n      pivot = event.x\n      let angle = Math.min(Math.max((mean - pivot)*0.1, -7), 7)\n       \n      if (angle > 6) {\n        let hypotenuse = width - pivot\n        angle = 90 - Math.acos(radius / hypotenuse) * 180/Math.PI\n      } else if (angle < -6) {\n        let hypotenuse = pivot\n        angle = -1 * (90 - Math.acos(radius / hypotenuse) * 180/Math.PI)\n      }\n      \n      triangle.attr(\"transform\", `translate(${pivot}, ${height/2 + radius * 0.75})`)\n      beam_and_boxes.attr(\"transform\", `rotate(${angle}, ${pivot}, ${height/2})`)\n      draw_deviations()\n  }\n  \n  function start_dragging_box(event, d) {\n    d3.select(this).raise().attr(\"stroke\", \"black\")\n    console.log(d.id)\n  }\n\n  function dragging_box(event, d) {\n    d3.select(this).attr(\"x\", event.x)\n    box_data[d.id].x = event.x\n    \n    <!-- let overlaps = 0 -->\n    <!-- for (let i = 0; i < box_data.length; i++) { -->\n    <!--   if (i==d.id) continue -->\n    <!--   let other_x = box_data[i].x -->\n    <!--   if (event.x < (other_x + radius) && (event.x + radius) > other_x) overlaps++ -->\n    <!--   } -->\n    <!--   box_data[d.id].overlaps = overlaps -->\n    \n    draw_deviations()\n  }\n\n  function stop_dragging_box(event, d) {\n    d3.select(this).attr(\"stroke\", null)\n  }\n  \n  function draw_deviations() {\n    \n    mean = box_data.reduce((total, next) => total + next.x, 0) / box_data.length\n    \n    <!-- boxes.selectAll(\"rect\") -->\n    <!--   .attr(\"y\", d => d.y - d.overlaps*radius) -->\n    \n    circle.attr(\"cx\", mean)\n    for (let i = 0; i < box_data.length; i++) box_data[i].dev = box_data[i].x - pivot\n    <!-- let box_data_ = box_data.sort(function(a, b) { return Math.abs(a.dev) - Math.abs(b.dev); }) -->\n    <!-- console.log(box_data_sorted) -->\n    \n    let deviations_negative = box_data.filter(function(d){ return d.dev < 0})\n    for (let i = 0; i < deviations_negative.length; i++) {\n      if (i==0) deviations_negative[i].dev_start = 0\n      else deviations_negative[i].dev_start = deviations_negative[i-1].dev_end\n      deviations_negative[i].dev_end = deviations_negative[i].dev_start + Math.abs(deviations_negative[i].dev)\n    }\n    \n    let deviations_positive = box_data.filter(function(d){ return d.dev > 0})\n    for (let i = 0; i < deviations_positive.length; i++) {\n      if (i==0) deviations_positive[i].dev_start = 0\n      else deviations_positive[i].dev_start = deviations_positive[i-1].dev_end\n      deviations_positive[i].dev_end = deviations_positive[i].dev_start + Math.abs(deviations_positive[i].dev)\n    }\n    \n    \n    deviations_vertical.selectAll(\"line\")\n      .data(box_data)\n      .join(\"line\")\n        .attr(\"x1\", d => d.x + radius/2)\n        .attr(\"x2\", d => d.x + radius/2)\n        .attr(\"y1\", d => d.y)\n        .attr(\"y2\", (d, i) => height/2 - radius*2 - d.id * 20)\n        .attr(\"stroke\", \"black\")\n        .attr(\"stroke-dasharray\", [5, 5])\n        \n    deviations_horizontal.selectAll(\"line\")\n      .data(box_data)\n      .join(\"line\")\n        .attr(\"x1\", d => d.x + radius/2)\n        .attr(\"x2\", pivot)\n        .attr(\"y1\", (d, i) => height/2 - radius*2 - d.id * 20)\n        .attr(\"y2\", (d, i) => height/2 - radius*2 - d.id * 20)\n        .attr(\"stroke\", d => d.color)\n        .attr(\"stroke-width\", 3)\n        \n    deviations_sum_negative.selectAll(\"line\")\n      .data(deviations_negative)\n      .join(\"line\")\n        .attr(\"x1\", d => d.dev_start)\n        .attr(\"x2\", d => d.dev_end)\n        .attr(\"stroke\", d => d.color)\n        .attr(\"stroke-width\", 3)\n        \n    deviations_sum_positive.selectAll(\"line\")\n      .data(deviations_positive)\n      .join(\"line\")\n        .attr(\"x1\", d => d.dev_start)\n        .attr(\"x2\", d => d.dev_end)\n        .attr(\"stroke\", d => d.color)\n        .attr(\"stroke-width\", 3)\n  }\n  \n\n\n  \n}\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"<!-- drag = { -->\n\n<!--   function dragstarted(event, d) { -->\n<!--     d3.select(this).raise().attr(\"stroke\", \"black\") -->\n<!--     console.log(d.id) -->\n<!--   } -->\n\n<!--   function dragged(event, d) { -->\n<!--     d3.select(this).attr(\"x\", event.x) -->\n<!--   } -->\n\n<!--   function dragended(event, d) { -->\n<!--     d3.select(this).attr(\"stroke\", null); -->\n<!--   } -->\n\n<!--   return d3.drag() -->\n<!--       .on(\"start\", dragstarted) -->\n<!--       .on(\"drag\", dragged) -->\n<!--       .on(\"end\", dragended); -->\n<!-- } -->\n\n\ndrag_pivot = {\n\n  function dragstarted(event, d) {\n    d3.select(this).raise().attr(\"stroke\", \"red\");\n  }\n\n  function dragged(event, d) {\n    d3.select(this).attr(\"cx\", event.x)\n  }\n\n  function dragended(event, d) {\n    d3.select(this).attr(\"stroke\", null);\n  }\n\n  return d3.drag()\n      .on(\"start\", dragstarted)\n      .on(\"drag\", dragged)\n      .on(\"end\", dragended);\n}\n\n\n\n"}]}
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -589,9 +562,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -656,6 +643,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -699,7 +772,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

@@ -5,9 +5,10 @@
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.78">
+  <meta name="generator" content="quarto-1.3.310">
 
   <title>PSYC BC1101 – the-t-test-pt-2</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -24,9 +25,10 @@
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
       width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
     pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -137,44 +139,44 @@
     font-weight: 400;
   }
 
-  .callout.callout-captioned.callout-style-simple .callout-body {
+  .callout.callout-titled.callout-style-simple .callout-body {
     margin-top: 0.2em;
   }
 
-  .callout:not(.callout-captioned) .callout-body {
+  .callout:not(.callout-titled) .callout-body {
       display: flex;
   }
 
-  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
     padding-left: 1.6em;
   }
 
-  .callout.callout-captioned .callout-header {
+  .callout.callout-titled .callout-header {
     padding-top: 0.2em;
     margin-bottom: -0.2em;
   }
 
-  .callout.callout-captioned .callout-caption  p {
+  .callout.callout-titled .callout-title  p {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
   }
     
-  .callout.callout-captioned.callout-style-simple .callout-content  p {
+  .callout.callout-titled.callout-style-simple .callout-content  p {
     margin-top: 0;
   }
 
-  .callout.callout-captioned.callout-style-default .callout-content  p {
+  .callout.callout-titled.callout-style-default .callout-content  p {
     margin-top: 0.7em;
   }
 
-  .callout.callout-style-simple div.callout-caption {
+  .callout.callout-style-simple div.callout-title {
     border-bottom: none;
     font-size: .9rem;
     font-weight: 600;
     opacity: 75%;
   }
 
-  .callout.callout-style-default  div.callout-caption {
+  .callout.callout-style-default  div.callout-title {
     border-bottom: none;
     font-weight: 600;
     opacity: 85%;
@@ -206,7 +208,7 @@
     background-size: 0.9rem 0.9rem;
   }
 
-  .callout-caption {
+  .callout-title {
     display: flex
   }
     
@@ -219,16 +221,16 @@
     display: none !important;
   }
 
-  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
     margin-bottom: 0.5rem;
   }
 
-  .callout.callout-captioned .callout-icon::before {
+  .callout.callout-titled .callout-icon::before {
     margin-top: .5rem;
     padding-right: .5rem;
   }
 
-  .callout:not(.callout-captioned) .callout-icon::before {
+  .callout:not(.callout-titled) .callout-icon::before {
     margin-top: 1rem;
     padding-right: .5rem;
   }
@@ -243,7 +245,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
   }
 
-  div.callout-note.callout-style-default .callout-caption {
+  div.callout-note.callout-style-default .callout-title {
     background-color: #dae6fb
   }
 
@@ -255,7 +257,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
   }
 
-  div.callout-important.callout-style-default .callout-caption {
+  div.callout-important.callout-style-default .callout-title {
     background-color: #f7dddc
   }
 
@@ -267,7 +269,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
   }
 
-  div.callout-warning.callout-style-default .callout-caption {
+  div.callout-warning.callout-style-default .callout-title {
     background-color: #fcefdc
   }
 
@@ -279,7 +281,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
   }
 
-  div.callout-tip.callout-style-default .callout-caption {
+  div.callout-tip.callout-style-default .callout-title {
     background-color: #ccf1e3
   }
 
@@ -291,7 +293,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
   }
 
-  div.callout-caution.callout-style-default .callout-caption {
+  div.callout-caution.callout-style-default .callout-title {
     background-color: #ffe5d0
   }
 
@@ -399,7 +401,7 @@
 <section id="overview" class="title-slide slide level1 center">
 <h1>Overview</h1>
 <ul>
-<li><a href="#/research-designs-1">Research designs</a></li>
+<li><a href="#/research-designs">Research designs</a></li>
 <li><a href="#/assumptions">Assumptions</a></li>
 <li><a href="#/effect-size">Effect size</a></li>
 <li><a href="#/confidence-intervals">Confidence intervals</a></li>
@@ -492,9 +494,6 @@
 <section>
 <section id="effect-size" class="title-slide slide level1 small center">
 <h1>Effect size</h1>
-<div class="cell">
-
-</div>
 <ul>
 <li>Hypothesis test Step 4: Make decision (reject null?)</li>
 <li>Step 4b: Evaluate effect size
@@ -1121,7 +1120,7 @@ r^2 = \dfrac{SS_{treatment}}{SS_{total}} &amp;= \dfrac{SS_{total} - SS_{without 
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"},{"title":"Source","icon":"<i class=\"fas fa-github-source\">","src":"../js/reveal-menu-github.html"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"},{"title":"Source","icon":"<i class=\"fas fa-github-source\">","src":"../js/reveal-menu-github.html"}],"openButton":true},
 'chalkboard': {"buttons":true},
 'smaller': false,
  
@@ -1345,6 +1344,49 @@ r^2 = \dfrac{SS_{treatment}}{SS_{total}} &amp;= \dfrac{SS_{total} - SS_{without 
       git.addEventListener("click", changeLink);
 
     </script>
+    <script>
+
+        var div = document.querySelector('div[data-panel="Custom0"]')
+        var ul = div.querySelector('.slide-menu-items');
+        console.log(ul)
+
+        // Create a new li element
+        var li = document.createElement('li');
+
+        // Set the text content of li
+        li.innerHTML = '<kbd>t</kbd> Toggle UI Elements';
+        li.className = "slide-tool-item"
+
+        // Append the new li to the ul
+        ul.insertBefore(li, ul.children[1]);
+
+
+    function toggleVisibility(element) {
+        if (element) {
+            element.style.display = element.style.display === 'none' ? 'block' : 'none';
+        }
+    }
+
+    document.addEventListener('keydown', function(event) {
+        // Check if the 't' key was pressed
+        if (event.key === 't') {
+
+            // Get the element by its ID
+            var moon = document.getElementById('theme-toggle');
+            var hamburger = document.querySelector('.slide-menu-button');
+            var buttons = document.querySelector('.slide-chalkboard-buttons')
+            var progress = document.querySelector('.progress')
+
+            toggleVisibility(moon);
+            toggleVisibility(hamburger);
+            toggleVisibility(buttons);
+            toggleVisibility(progress);
+
+            console.log("toggled ui elements");
+        }
+    });
+
+    </script>
     
     <script type="ojs-module-contents">
     {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\njStat = require(\"../js/jstat.js\")\n\nci = {\n\n  const w = 1050, h = 600;\n  const margin = {bottom: 30};\n  const f = d3.format(\".2f\");\n  var mean, sd, confidence, n, std_err, xlim, ci_x_lim;\n  \n  const x = d3.scaleLinear()\n    .range([0, w])\n  const xRaw = d3.scaleLinear()\n    .domain([-1, 1])\n    .range([0, w])\n  const y = d3.scaleLinear()\n    .domain([0, 0.43])\n    .range([h - margin.bottom, 0])\n  const line = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density));\n  const xAxis = d3.axisBottom(x);\n  const xAxisRaw = d3.axisBottom(xRaw).tickSize(10);\n  \n  function makeCurve(xlim) {\n    var arr = [];\n    var x = jStat(-xlim, xlim, 210)[0];\n    for (var i = 0; i < x.length; i++) {\n      arr.push({value: x[i], density: jStat.studentt.pdf(x[i], n - 1)})\n    }\n    return arr\n  }\n  \n  const svg = d3.select(\"#ci-container\").append(\"svg\")\n    .attr(\"width\", w).attr(\"height\", h)\n    \n  const axis = svg.append(\"g\")\n    .attr(\"transform\", `translate(0, ${y(0)})`)\n    .style(\"color\", \"steelblue\")\n    .call(xAxis);\n    \n  const axisRaw = svg.append(\"g\")\n    .attr(\"transform\", `translate(0, ${y(0)})`)\n    .call(xAxisRaw);\n    \n  const defs = svg.append(\"defs\")\n  const mask = defs.append(\"mask\").attr(\"id\", \"mask\")\n  const mask_rect = mask.append(\"rect\")\n  .attr(\"height\", h)\n  .style(\"fill\", \"white\")\n  \n  const ci_fill = svg.append(\"path\")\n    .attr(\"mask\", \"url(#mask)\")\n    .style(\"stroke\", \"none\").style(\"fill\", \"lightblue\")\n  \n  const ci_curve = svg.append(\"path\")\n    .attr(\"class\", \"invertable\")\n    .style(\"stroke\", \"black\")\n    .style(\"fill\", \"none\")\n    .style(\"stroke-width\", 4)\n  \n  const ci_line = svg.append(\"line\")\n    .style(\"stroke\", \"black\").style(\"stroke-dasharray\", [5,5])\n  \n  const ci_point_estimate = svg.append(\"line\")\n    .style(\"stroke\", \"black\").style(\"stroke-dasharray\", [5,5])\n    \n  const ci_limit_labels = svg.append(\"g\")\n  const ci_limit_lower = ci_limit_labels.append(\"text\")\n  const ci_limit_upper = ci_limit_labels.append(\"text\").style(\"text-anchor\", \"end\")\n  \n  const inputCI =  d3.select(\"#input-ci\")\n  const inputN =  d3.select(\"#input-n\")\n  const inputMu =  d3.select(\"#input-mu\")\n  const inputSigma =  d3.select(\"#input-sigma\")\n  \n  function initialize() {\n    mean = Number(inputMu.property(\"value\"));\n    sd = inputSigma.property(\"value\");\n    confidence = inputCI.property(\"value\");\n    n = inputN.property(\"value\");\n    std_err = sd / Math.sqrt(n);\n    updateCI();\n  }\n  \n  inputMu.on(\"input\", function() {\n    mean = Number(this.value);\n    updateCI();\n  })\n  \n  inputSigma.on(\"input\", function() {\n    sd = Number(this.value);\n    std_err = sd / Math.sqrt(n);\n    updateCI();\n  })\n  \n  inputCI.on(\"input\", function() {\n    confidence = Number(this.value);\n    d3.select(\"#value-ci\").text(confidence);\n    \n    updateCI();\n  })\n  \n  inputN.on(\"input\", function() {\n    n = Number(this.value);\n    d3.select(\"#value-n\").text(n);\n    std_err = sd / Math.sqrt(n);\n\n    updateCI();\n  })\n\n  function updateCI() {\n    xlim = sd / std_err;\n    x.domain([-xlim, xlim]);\n    axis.call(xAxis);\n    xRaw.domain([mean - sd, mean + sd]);\n    axisRaw.call(xAxisRaw);\n    \n    ci_x_lim = jStat.studentt.inv((1 - (confidence/100)) / 2, n - 1);\n    var line_height = jStat.studentt.pdf(ci_x_lim, n-1) / 2;\n    \n    var ci_lims = [mean + ci_x_lim * std_err, mean - ci_x_lim * std_err];\n    \n    ci_limit_lower\n      .text(f(ci_lims[0]))\n      .attr(\"x\", x(ci_x_lim))\n      .attr(\"y\", y(line_height))\n    ci_limit_upper\n      .text(f(ci_lims[1]))\n      .attr(\"x\", x(-ci_x_lim))\n      .attr(\"y\", y(line_height))\n    \n    ci_fill.attr(\"d\", line(makeCurve(15)))\n    ci_curve.attr(\"d\", line(makeCurve(xlim)))\n    \n    mask_rect\n      .attr(\"x\", x(ci_x_lim))\n      .attr(\"width\", x(-ci_x_lim) - x(ci_x_lim));\n    \n    ci_line\n      .attr(\"transform\", `translate(0, ${y(line_height)})`)\n      .attr(\"x1\", x(-ci_x_lim)).attr(\"x2\", x(ci_x_lim))\n    ci_point_estimate\n      .attr(\"transform\", `translate(${x(0)}, 0)`)\n      .attr(\"y1\", y(jStat.studentt.pdf(0, n - 1))).attr(\"y2\", y(0))\n  }\n  \n  initialize();\n}\n\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"\nci_nhst = {\n\n  const w = 1050, h = 500;\n  const margin = {bottom: 5};\n  const xlim = [-1, 1.5];\n  const sigma = 1;\n  const confidence = 95;\n  var cohensD, n, std_err, ci_x_lim;\n  \n  const x = d3.scaleLinear()\n    .domain(xlim)\n    .range([0, w])\n  const y = d3.scaleLinear()\n    .domain([0, 2])\n    .range([h - margin.bottom, 0])\n  const line = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density));\n  const xAxis = d3.axisBottom(x);\n  \n  function makeCurve(mu, std_err) {\n    var arr = [];\n    var x = jStat(xlim[0], xlim[1], 210)[0];\n    for (var i = 0; i < x.length; i++) {\n      arr.push({value: x[i], density: jStat.normal.pdf(x[i], mu, std_err)})\n    }\n    return arr\n  }\n  function makeFill(mu, std_err) {\n    var arr = [];\n    var x = jStat(-5, 5, 310)[0];\n    for (var i = 0; i < x.length; i++) {\n      arr.push({value: x[i], density: jStat.normal.pdf(x[i], mu, std_err)})\n    }\n    return arr\n  }\n  \n  const svg = d3.select(\"#ci-nhst-container\").append(\"svg\")\n    .attr(\"width\", w).attr(\"height\", h)\n    \n  <!-- const axis = svg.append(\"g\").attr(\"transform\", `translate(0, ${y(0)})`).call(xAxis); -->\n  \n  const ci_dist = svg.append(\"g\")\n  const null_dist = svg.append(\"g\")\n  \n\n  const defs = svg.append(\"defs\")\n  const mask = defs.append(\"mask\").attr(\"id\", \"nhst-mask\")\n  const mask_rect = mask.append(\"rect\")\n  .attr(\"height\", h)\n  .style(\"fill\", \"white\")\n  const null_mask = defs.append(\"mask\").attr(\"id\", \"null-mask\")\n  null_mask.append(\"rect\").attr(\"width\", w).attr(\"height\", h).style(\"fill\", \"white\")\n  const null_rect = null_mask.append(\"rect\")\n    .attr(\"height\", h)\n    .style(\"fill\", \"black\")\n  \n  const null_fill = null_dist.append(\"path\")\n    .attr(\"mask\", \"url(#null-mask)\")\n    .style(\"stroke\", \"none\")\n    .style(\"fill\", \"red\")\n    .style(\"opacity\", 0.7)\n  const null_curve = null_dist.append(\"path\")\n    .attr(\"class\", \"invertable\")\n    .style(\"stroke\", \"red\")\n    .style(\"fill\", \"none\")\n    .style(\"stroke-width\", 4)\n    .style(\"stroke-dasharray\", [10, 10])\n  const null_mu = null_dist.append(\"line\")\n    .attr(\"transform\", `translate(${x(0)}, 0)`)\n    .attr(\"y1\", y(0))\n    .style(\"stroke\", \"red\").style(\"stroke-dasharray\", [5,5])\n  const null_margin = null_dist.append(\"line\")\n    .style(\"stroke\", \"red\").style(\"stroke-dasharray\", [5,5])\n  \n  const ci_fill = ci_dist.append(\"path\")\n    .attr(\"mask\", \"url(#nhst-mask)\")\n    .style(\"stroke\", \"none\").style(\"fill\", \"lightblue\")\n  \n  const ci_curve = ci_dist.append(\"path\")\n    .attr(\"class\", \"invertable\")\n    .style(\"stroke\", \"black\")\n    .style(\"fill\", \"none\")\n    .style(\"stroke-width\", 4)\n  \n  const ci_line = ci_dist.append(\"line\")\n    .style(\"stroke\", \"black\").style(\"stroke-dasharray\", [5,5])\n  const ci_point_estimate = ci_dist.append(\"line\")\n    .style(\"stroke\", \"black\").style(\"stroke-dasharray\", [5,5])\n    \n  const p_value = svg.append(\"text\")\n    .attr(\"transform\", `translate(${w * 0.75}, ${h * 0.25})`)\n    .style(\"color\", \"var(--text-color)\")\n    .attr(\"class\", \"math\")\n\n  const inputCohensD =  d3.select(\"#input-cohens-d\")\n  const inputN =  d3.select(\"#input-nhst-n\")\n  \n  function initialize() {\n    cohensD = Number(inputCohensD.property(\"value\"));\n    n = Number(inputN.property(\"value\"));\n    std_err = sigma / Math.sqrt(n);\n    updateCI();\n  }\n  \n\n  inputCohensD.on(\"input\", function() {\n    initialize();\n    d3.select(\"#value-cohens-d\").text(cohensD);\n  })\n  inputN.on(\"input\", function() {\n    initialize();\n    d3.select(\"#value-nhst-n\").text(n);\n  })\n\n  function updateCI() {\n    null_fill.attr(\"d\", line(makeFill(0, std_err)));\n    null_curve.attr(\"d\", line(makeCurve(0, std_err)));\n    null_rect\n      .attr(\"x\", x(jStat.normal.inv(0.025, 0, std_err)))\n      .attr(\"width\", x(jStat.normal.inv(0.975, 0, std_err)) -\n                     x(jStat.normal.inv(0.025, 0, std_err)))\n    null_mu.attr(\"y2\", y(jStat.normal.pdf(0, 0, std_err)))\n    null_margin\n      .attr(\"transform\", `translate(0, ${y(jStat.normal.pdf(jStat.normal.inv(0.025, 0, std_err), 0, std_err))})`)\n      .attr(\"x1\", x(0))\n      .attr(\"x2\", x(jStat.normal.inv(0.975, 0, std_err)))\n                     \n    var ci_lim_lower = jStat.normal.inv(0.025, cohensD, std_err);\n    var ci_lim_upper = jStat.normal.inv(0.975, cohensD, std_err);\n    var ci_lims = [ci_lim_lower, ci_lim_upper];\n    \n    var line_height = jStat.normal.pdf(ci_lims[0], cohensD, std_err) / 2;\n\n    ci_fill.attr(\"d\", line(makeFill(cohensD, std_err)))\n    ci_curve.attr(\"d\", line(makeCurve(cohensD, std_err)))\n    mask_rect\n      .attr(\"x\", x(ci_lims[0]))\n      .attr(\"width\", x(ci_lims[1]) - x(ci_lims[0]));\n\n    ci_line\n      .attr(\"transform\", `translate(0, ${y(line_height)})`)\n      .attr(\"x1\", x(ci_lims[0])).attr(\"x2\", x(cohensD));\n    ci_point_estimate\n      .attr(\"transform\", `translate(${x(cohensD)}, 0)`)\n      .attr(\"y1\", y(jStat.normal.pdf(cohensD, cohensD, std_err))).attr(\"y2\", y(0))\n      \n      \n    var significant = ci_lims[0] > 0;\n    var p_value = d3.select(\"#p-value\");\n    if (significant) {\n      ci_fill.style(\"filter\", \"grayscale(0)\");\n      p_value.text(\"< .05 🥳\");\n    } else {\n      ci_fill.style(\"filter\", \"grayscale(1)\");\n      p_value.text(\"> .05\");\n    }\n  }\n  \n  d3.select(\"#h0\").on(\"input\", showSelected);\n  d3.select(\"#h1\").on(\"input\", showSelected);\n  d3.select(\"#both\").on(\"input\", showSelected);\n  \n  function showSelected() {\n    var h0 = d3.select(\"#h0\").property(\"checked\");\n    var h1 = d3.select(\"#h1\").property(\"checked\");\n    var both = d3.select(\"#both\").property(\"checked\");\n    var selected = [false, false];\n    if (h0 || both) { selected[0] = true; }\n    if (h1 || both) { selected[1] = true; }\n    null_dist.classed(\"hide-element\", !selected[0]);\n    ci_dist.classed(\"hide-element\", !selected[1]);\n    d3.select(\"#p-value-container\").classed(\"hide-element\", !both)\n  }\n  \n  initialize();\n}\n\n"}]}
@@ -1419,9 +1461,23 @@ r^2 = \dfrac{SS_{treatment}}{SS_{total}} &amp;= \dfrac{SS_{total} - SS_{without 
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
       });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
       const clipboard = new window.ClipboardJS('.code-copy-button', {
-        target: function(trigger) {
-          return trigger.previousElementSibling;
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
         }
       });
       clipboard.on('success', function(e) {
@@ -1469,7 +1525,7 @@ r^2 = \dfrac{SS_{treatment}}{SS_{total}} &amp;= \dfrac{SS_{total} - SS_{without 
           },
           interactive: true,
           interactiveBorder: 10,
-          theme: 'quarto-reveal',
+          theme: 'light-border',
           placement: 'bottom-start'
         };
           config['offset'] = [0,0];
@@ -1531,7 +1587,7 @@ r^2 = \dfrac{SS_{treatment}}{SS_{total}} &amp;= \dfrac{SS_{total} - SS_{without 
             return filterRegex.test(href) || localhostRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

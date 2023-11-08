@@ -52,6 +52,7 @@ format:
     include-after-body:
       - js/dark-reveal.js
       - js/reveal-menu-github.js
+      - js/hide-ui-elements.js
 
 execute:
   echo: false
