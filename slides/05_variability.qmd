@@ -317,7 +317,7 @@ $SS = \Sigma(X - M)^2$
 :::
 
 ::: {.column width="40%"}
-$\sigma^2 = \dfrac{SS} {\color{red}{n-1}}$
+$s^2 = \dfrac{SS} {\color{red}{n-1}}$
 :::
 :::
 
@@ -327,7 +327,7 @@ $\sigma^2 = \dfrac{SS} {\color{red}{n-1}}$
 :::
 
 ::: {.column width="40%"}
-$\sigma = \sqrt{\sigma^2} = \sqrt{\dfrac{SS}{\color{red}{n-1}}}$
+$SD = \sqrt{s^2} = \sqrt{\dfrac{SS}{\color{red}{n-1}}}$
 :::
 :::
 

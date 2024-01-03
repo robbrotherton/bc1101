@@ -1250,7 +1250,7 @@
     "href": "slides/05_variability.html#variability-equations-for-samples",
     "title": "PSYC BC1101",
     "section": "Variability equations for samples",
-    "text": "Variability equations for samples\n\n\n\nFind the deviation for each score\n\n\n\\(X - M\\)\n\n\n\n\n\nSquare deviations\n\n\n\\((X - M)^2\\)\n\n\n\n\n\nSum the squared deviations\n\n\n\\(SS = \\Sigma(X - M)^2\\)\n\n\n\n\n\nFind average of squared deviations\n\n\n\\(\\sigma^2 = \\dfrac{SS} {\\color{red}{n-1}}\\)\n\n\n\n\n\nTake square root of variance\n\n\n\\(\\sigma = \\sqrt{\\sigma^2} = \\sqrt{\\dfrac{SS}{\\color{red}{n-1}}}\\)"
+    "text": "Variability equations for samples\n\n\n\nFind the deviation for each score\n\n\n\\(X - M\\)\n\n\n\n\n\nSquare deviations\n\n\n\\((X - M)^2\\)\n\n\n\n\n\nSum the squared deviations\n\n\n\\(SS = \\Sigma(X - M)^2\\)\n\n\n\n\n\nFind average of squared deviations\n\n\n\\(s^2 = \\dfrac{SS} {\\color{red}{n-1}}\\)\n\n\n\n\n\nTake square root of variance\n\n\n\\(SD = \\sqrt{s^2} = \\sqrt{\\dfrac{SS}{\\color{red}{n-1}}}\\)"
   },
   {
     "objectID": "slides/05_variability.html#degrees-of-freedom-1",
