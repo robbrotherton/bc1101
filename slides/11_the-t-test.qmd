@@ -1,5 +1,9 @@
 ---
-format: revealjs
+format: 
+  revealjs:
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@4.0.0-beta.4/tex-mml-chtml.js"
 ---
 
 # 11|THE $t$-TEST
