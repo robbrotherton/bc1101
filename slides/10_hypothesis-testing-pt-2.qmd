@@ -343,6 +343,48 @@ Stuart Ritchie, *Science Fictions*
 
 ::: {.content-hidden}
 
+# Power example
+
+- Step 1: Determine critical $z$-scores
+
+```{r}
+#| echo: true
+qnorm(c(.025, .975))
+```
+
+# Power example {.small}
+
+- Step 2: Convert $z$-scores to raw means
+
+$z = \dfrac{M - \mu}{\sigma_M} \ \ \ \text{so...} \ \ \ M = \mu + z * \sigma_M = 50 \pm 1.96 * 2 = [46.1, 53.9]$
+
+# Power example {.small}
+
+- Step 3: For $H_1$ distribution, find $z$-scores corresponding to sample means from step 2
+
+$z = \dfrac{M - \mu_{treated}}{\sigma_M} = \dfrac{46.1 - 55}{2} = -4.46; = \dfrac{53.9 - 55}{2} = -0.54$
+
+# Power example {.small}
+
+- Step 4: Find proportion of $H_1$ distribution between those $z$-scores
+  - This is $\beta$: chances of *mistakenly failing* to reject $H_0$
+
+```{r}
+#| echo: true
+pnorm(-0.54) - pnorm(-4.46)
+```
+
+# Power example
+
+- Step 5: Find power
+    - Power = $1 - \beta = 1 - 0.295 = 0.705$
+    - Chances of correctly rejecting $H_0$ if there is a treatment effect of 5 points with $n = 25$
+    
+:::
+
+
+::: {.content-hidden}
+
 # Data and figures
 
 ## Cover
