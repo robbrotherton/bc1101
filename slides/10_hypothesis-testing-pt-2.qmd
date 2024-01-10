@@ -36,7 +36,7 @@ format:
   </thead>
   <tbody>
     <tr>
-      <td rowspan=2 style="writing-mode: vertical-rl; transform: rotate(180deg); text-align: center; font-weight: bold;">Researcher's<br>Decision</td>
+      <td rowspan=2 style="vertical-align: middle; text-align: center; font-weight: bold;">Researcher's<br>Decision</td>
       <td style="text-align: right; font-weight: bold;" >Reject $H_0$</td>
       <td style="text-align: center; color: red; border-color: var(--text-color);">Type 1 error<br>$\alpha$</td>
       <td style="text-align: center; color: green; border-color: var(--text-color);">Correct</td>
@@ -48,6 +48,12 @@ format:
     </tr>
   </tbody>
 </table>
+
+<style>
+  #inf-tab {
+    font-size: 0.8em;
+  }
+</style>
 
 
 ## Type 1 error
@@ -190,24 +196,24 @@ d = \dfrac{501 - 500}{100} = 0.01$$
 # Statistical power
 
 - Power: Probability of correctly rejecting a false null hypothesis
-  - Power = 1 – $\beta$
+  - Power = $1 – \beta$
 
 <table id="inf-tab">
   <thead>
      <tr><th colspan=2 style="border-bottom: none;"></th><th colspan=2 style="text-align: center;">Actual situation</th></tr>
-     <tr><th colspan=2></th><th style="text-align: center;">$H_0$ true</th><th style="text-align: center; background-color: #f5ea95;">$H_0$ false</th></tr>
+     <tr><th colspan=2></th><th style="text-align: center;">$H_0$ true</th><th style="text-align: center; background-color: #B3D1E3;">$H_0$ false</th></tr>
   </thead>
   <tbody>
     <tr>
       <td rowspan=2 style="writing-mode: vertical-rl; transform: rotate(180deg); text-align: center; font-weight: bold;">Researcher's<br>Decision</td>
       <td style="text-align: right; font-weight: bold;" >Reject $H_0$</td>
       <td style="text-align: center; color: red; border-color: var(--text-color);">Type 1 error<br>$\alpha$</td>
-      <td style="text-align: center; color: #50C878; border-color: var(--text-color); background-color: #f5ea95;">Correct<br>$1-\beta$</td>
+      <td style="text-align: center; color: #50C878; border-color: var(--text-color); background-color: #B3D1E3;">Correct<br>$1-\beta$</td>
     </tr>
     <tr>
       <td style="text-align: right; font-weight: bold;" >Fail to reject $H_0$</td>
       <td style="text-align: center; color: #50C878; border-color: var(--text-color);">Correct</td>
-      <td style="text-align: center; color: red; border-color: var(--text-color); background-color: #f5ea95; background-opacity: 0.5;">Type 2 error<br>$\beta$</td>  
+      <td style="text-align: center; color: red; border-color: var(--text-color); background-color: #B3D1E3; background-opacity: 0.5;">Type 2 error<br>$\beta$</td>  
     </tr>
   </tbody>
 </table>
