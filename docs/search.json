@@ -2062,7 +2062,7 @@
     "href": "slides/10_hypothesis-testing-pt-2.html#effect-size-sample-size",
     "title": "PSYC BC1101",
     "section": "Effect size & sample size",
-    "text": "Effect size & sample size\n\nSAT scores: \\(\\mu = 500; \\sigma = 100\\)\n\nAdminister treatment (banana); \\(M = 501\\)\nSignificant? \\((\\alpha = .05\\) two-tailed; critical values \\(z = \\pm 1.96)\\)\nSubstantial? (effect size)\n\n\n\n\nWith 50 participants…\n\\[z = \\dfrac{501 - 500}{100 / \\sqrt{50}} = 0.06\\\\\nd = \\dfrac{501 - 500}{100} = 0.01\\]\n\nWith 50,000 participants…\n\\[z = \\dfrac{501 - 500}{100 / \\sqrt{50000}} = 2.22\\\\\nd = \\dfrac{501 - 500}{100} = 0.01\\]"
+    "text": "Effect size & sample size\n\nSAT scores: \\(\\mu = 500; \\sigma = 100\\)\n\nAdminister treatment (banana); \\(M = 501\\)\nSignificant? \\((\\alpha = .05\\) two-tailed; critical values \\(z = \\pm 1.96)\\)\nSubstantial? (effect size)\n\n\n\n\nWith 50 participants…\n\\[z = \\dfrac{501 - 500}{100 / \\sqrt{50}} = 0.06 \\\\\nd = \\dfrac{501 - 500}{100} = 0.01\\]\n\nWith 50,000 participants…\n\\[z = \\dfrac{501 - 500}{100 / \\sqrt{50000}} = 2.22\\\\\nd = \\dfrac{501 - 500}{100} = 0.01\\]"
   },
   {
     "objectID": "slides/10_hypothesis-testing-pt-2.html#power-interactive",
