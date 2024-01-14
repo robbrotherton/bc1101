@@ -220,8 +220,9 @@ $\mu = M \pm t * s_M$
 
 - What does a confidence interval tell us?
   - Indicates precision of parameter estimate
-  - “This sample came from a population which would produce sample means which fall within this range 95% of the time”
-  - NOT “we are 95% sure the true population mean is within this range”
+  - Quantifies variability around a single point estimate
+  - NOT "we are 95% sure the true population mean is within this range"
+  - NOT "sample means from this population will fall within this range 95% of the time"
 
 > "The parameter is an unknown constant and no probability statement concerning its value may be made."[^1]
 

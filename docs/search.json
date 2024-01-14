@@ -1131,7 +1131,7 @@
     "href": "slides/12_the-t-test-pt-2.html#confidence-interval-interpretation",
     "title": "PSYC BC1101",
     "section": "Confidence interval interpretation",
-    "text": "Confidence interval interpretation\n\nWhat does a confidence interval tell us?\n\nIndicates precision of parameter estimate\n“This sample came from a population which would produce sample means which fall within this range 95% of the time”\nNOT “we are 95% sure the true population mean is within this range”\n\n\n\n“The parameter is an unknown constant and no probability statement concerning its value may be made.”1\n\nJerzy Neyman, original developer of confidence intervals"
+    "text": "Confidence interval interpretation\n\nWhat does a confidence interval tell us?\n\nIndicates precision of parameter estimate\nQuantifies variability around a single point estimate\nNOT “we are 95% sure the true population mean is within this range”\nNOT “sample means from this population will fall within this range 95% of the time”\n\n\n\n“The parameter is an unknown constant and no probability statement concerning its value may be made.”1\n\nJerzy Neyman, original developer of confidence intervals"
   },
   {
     "objectID": "slides/12_the-t-test-pt-2.html#factors-that-affect-ci-width",
@@ -1145,7 +1145,7 @@
     "href": "slides/12_the-t-test-pt-2.html#ci-nhst",
     "title": "PSYC BC1101",
     "section": "CI & NHST",
-    "text": "CI & NHST\n\n\\(p\\) value and CI always agree about statistical significance if CI is \\(1 – alpha\\)\n\nE.g. \\(\\alpha = .05\\) and 95% confidence interval\n\nIf the \\(p &lt; \\alpha\\), the confidence interval will not contain the null hypothesis value\nIf the confidence interval does not contain the null hypothesis value, the results are statistically significant\nBoth significance level and confidence level define a distance from a mean to a limit\n\nThe distances in both cases are exactly the same"
+    "text": "CI & NHST\n\n\\(p\\) value and CI always agree about statistical significance if CI is \\(1 – alpha\\)\n\nE.g. \\(\\alpha = .05\\) and 95% confidence interval\n\nIf the \\(p < \\alpha\\), the confidence interval will not contain the null hypothesis value\nIf the confidence interval does not contain the null hypothesis value, the results are statistically significant\nBoth significance level and confidence level define a distance from a mean to a limit\n\nThe distances in both cases are exactly the same"
   },
   {
     "objectID": "slides/12_the-t-test-pt-2.html#ci-nhst-demonstration",
