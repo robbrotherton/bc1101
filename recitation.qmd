@@ -1,6 +1,7 @@
 ---
 format: html
 title: "Recitation"
+echo: true
 ---
 
 You will use posit.cloud to access problem sets as Quarto documents, using RStudio to write R code and answer questions. You'll just need to [sign up for a free account](https://login.posit.cloud/register).
@@ -113,19 +114,31 @@ Running the code will bring up the function's help documentation in RStudio's He
 
 ### Piping
 
-You can string together different operations in a pipeline using the pipe operator: `|>`.[^recitation-2] The result of each line of code gets "piped" into the function on the next line as its first argument. For example, below I take some data (named `data`) and perform a series of operations, first selecting a subset of columns, then filtering rows based on whether the values in certain columns meet specified criteria, then I create (`mutate`) a new column averaging across existing columns; and lastly, I summarize the new column down to an average value.
+You can string together different operations in a pipeline using the pipe operator: `|>`.[^recitation-2] The result of each line of code gets "piped" into the function on the next line as its first argument. For example, below I take some data (named `my_data`) and perform a series of operations, first changing its shape using `pivot_longer()`, then creating summary statistics for the mean and standard deviation separately by a grouping-variable, then I pipe the summary statistics into `ggplot()` to create a graph with a `geom_col()` layer for the geometry.
 
-[^recitation-2]: If you're looking at R code from beyond this handbook (e.g. looking up help elsewhere) you may see a different pipe: `%>%`. The `|>` pipe, called the "native" pipe, was only included as a feature of base R relatively recently. Until then, the `%>%` pipe was provided by an external package (called `magrittr`. [Get it?](https://magrittr.tidyverse.org/logo.png)). In practice the pipes work similarly, so you can often just replace `%>%` with `|>` and it'll work fine, but it's worth being aware of.
+[^recitation-2]: If you're looking at R code from elsewhere (e.g. looking up help online) you may see a different pipe: `%>%`. The `|>` pipe, called the "native" pipe, was only included as a feature of base R relatively recently. Until then, the `%>%` pipe was provided by an external package (called `magrittr`. [Get it?](https://magrittr.tidyverse.org/logo.png)). In practice the pipes work similarly, so you can often just replace `%>%` with `|>` and it'll work fine, but it's worth being aware of.
 
 ```{r}
-#| eval: false
+#| include: false
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+my_data <- data.frame(a = c(3, 3, 3),
+                      b = c(5, 5, 5))
+```
 
-data |> 
-  select(column_a, column_b) |> 
-  filter(if_all(c(column_a, column_b), ~!is.na(.))) |> 
-  mutate(column_c = rowSums(across(everything()))) |> 
-  summarize(mean_sum = mean(column_c))
+```{r}
+my_data |> 
+  pivot_longer(everything(),
+               names_to = "condition",
+               values_to = "score") |> 
+  summarize(mean = mean(score),
+            .by = condition) |> 
+  ggplot(aes(x = condition, y = mean)) +
+  geom_col()
 
 ```
 
-There's a lot going on there, and the specifics will become clearer as we work though this project. But using the pipe operator this way can make for relatively readable code.
+Et voilà, we have a serviceable graph of group means!
+
+There's a lot going on there, and the specifics will become clearer as you work on the problem sets. But using the pipe operator this way can make for relatively readable code.
