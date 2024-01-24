@@ -20,6 +20,9 @@ website:
       - href: lectures.qmd
         text: Lectures
         icon: easel2
+      - href: recitation.qmd
+        text: Recitation
+        icon: code-slash
       - href: https://docs.google.com/document/d/1dFyI32mothgeqGG7jxXR3AEar_eVbZ869oZHPaNvif8/edit?usp=sharing
         text: Class notes
         icon: people
