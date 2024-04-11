@@ -882,7 +882,7 @@ function mousemove(e) {
 
 changable_chart = {
 
-  const w = 600;
+  const w = 900;
   const h = 500;
   
   const margin = {top: 20, right: 20, left: 110, bottom: 75}
@@ -904,7 +904,7 @@ changable_chart = {
   bInput.on("input", drawFitLine);
   
   const x = d3.scaleLinear()
-    .range([margin.left, w - margin.right])
+    .range([margin.left, w - margin.right - 300])
     .domain([0, 12])
   const y = d3.scaleLinear()
     .range([h - margin.bottom, margin.top])
@@ -922,6 +922,9 @@ changable_chart = {
   const axisFontSize = "0.7em"
   axes.append("g").attr("transform", `translate(0, ${h - margin.bottom})`).call(xAxis).style("font-size", axisFontSize).attr("font-family", "Times New Roman");
   axes.append("g").attr("transform", `translate(${margin.left}, 0)`).call(yAxis).style("font-size", axisFontSize).attr("font-family", "Times New Roman");
+  
+  const sumSquaresPlot = svg.append("g")
+  sumSquaresPlot.attr("transform", `translate(500, 0)`)
   
   const axisTitles = svg.append("g")
     .style("font-size", "0.8em")
@@ -954,9 +957,10 @@ changable_chart = {
     
   const dots = svg.append("g")
   const squares = svg.append("g")
-  const ssResidualSquare = svg.append("g").append("polygon")
+  
+  const ssResidualSquare = sumSquaresPlot.append("g").append("polygon")
     .style("fill", "plum")
-    .style("opacity", 0.5)
+    .style("opacity", 0.8)
     
   dots.selectAll("circle").data(data).enter().append("circle")
     .attr("cx", d => x(d.xVal))
@@ -1005,22 +1009,36 @@ changable_chart = {
                             [x(d.xVal + Math.abs(d.res)), y(d.yVal)]])
                             
     ssResidualSquare
-    .attr("points", [[x(9), y(3)],
-                     [x(9), y(3 - Math.sqrt(ssResidual))],
-                     [x(9 + Math.sqrt(ssResidual)), y(3 - Math.sqrt(ssResidual))],
-                     [x(9 + Math.sqrt(ssResidual)), y(3)]])
+    .attr("points", [[x(0), y(10)],
+                     [x(0), y(10 - Math.sqrt(ssResidual))],
+                     [x(0 + Math.sqrt(ssResidual)), y(10 - Math.sqrt(ssResidual))],
+                     [x(0 + Math.sqrt(ssResidual)), y(10)]])
   }
   
   drawFitLine();
   
-  svg.append("polygon")
-    .attr("points", [[x(9), y(3)],
-                     [x(9), y(3 - Math.sqrt(6.5))],
-                     [x(9 + Math.sqrt(6.5)), y(3 - Math.sqrt(6.5))],
-                     [x(9 + Math.sqrt(6.5)), y(3)]])
+  // this is the dashed outline of the minimum SSresidual
+  sumSquaresPlot.append("polygon")
+    .attr("points", [[x(0), y(10)],
+                     [x(0), y(10 - Math.sqrt(6.5))],
+                     [x(Math.sqrt(6.5)), y(10 - Math.sqrt(6.5))],
+                     [x(Math.sqrt(6.5)), y(10)]])
     .style("fill", "none")
     .style("stroke", "black")
     .style("stroke-dasharray", [5, 3])
+    
+    sumSquaresPlot.append("text")
+      .text("LSE solution")
+      .attr("x", x(0))
+      .attr("y", y(10.05))
+      .style("font-size", "0.4em")
+      
+    sumSquaresPlot.append("text")
+      .text("SSresidual")
+      .attr("x", x(0))
+      .attr("y", y(9.6))
+      .style("font-size", "0.5em")
+      .style("fill", "white")
     
 
   
