@@ -1,0 +1,16 @@
+---
+editor: visual
+format:
+  pdf:
+    include-in-header:
+      - text: \pagenumbering{gobble}
+---
+
+```{r}
+df <- tibble::tibble(z = seq(0, 0.39, 0.01),
+                     pr_less = pnorm(z),
+                     pr_more = 1 - pr_less)
+
+knitr::kable(df, digits = 3,
+             col.names = c("$z$", "$p(<z)$", "p(>z)$"))
+```
