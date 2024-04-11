@@ -1039,10 +1039,7 @@ changable_chart = {
       .attr("y", y(9.6))
       .style("font-size", "0.5em")
       .style("fill", "white")
-    
-
   
-
 }
 ```
 
