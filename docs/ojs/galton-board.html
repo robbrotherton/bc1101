@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.310">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -79,7 +79,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -88,8 +94,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
@@ -102,9 +110,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">PSYC BC1101</span>
     </a>
@@ -116,36 +124,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target=""><i class="bi bi-file-text" role="img">
+    <a class="nav-link" href="../index.html"> <i class="bi bi-file-text" role="img">
 </i> 
- <span class="menu-text">Syllabus</span></a>
+<span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../lectures.html" rel="" target=""><i class="bi bi-easel2" role="img">
+    <a class="nav-link" href="../lectures.html"> <i class="bi bi-easel2" role="img">
 </i> 
- <span class="menu-text">Lectures</span></a>
+<span class="menu-text">Lectures</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../recitation.html" rel="" target=""><i class="bi bi-code-slash" role="img">
+    <a class="nav-link" href="../recitation.html"> <i class="bi bi-code-slash" role="img">
 </i> 
- <span class="menu-text">Recitation</span></a>
+<span class="menu-text">Recitation</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://docs.google.com/document/d/1dFyI32mothgeqGG7jxXR3AEar_eVbZ869oZHPaNvif8/edit?usp=sharing" rel="" target="blank"><i class="bi bi-people" role="img">
+    <a class="nav-link" href="https://docs.google.com/document/d/1dFyI32mothgeqGG7jxXR3AEar_eVbZ869oZHPaNvif8/edit?usp=sharing" target="blank"> <i class="bi bi-people" role="img">
 </i> 
- <span class="menu-text">Class notes</span></a>
+<span class="menu-text">Class notes</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../_" rel="" target=""><i class="bi bi-moon" role="img">
+    <a class="nav-link" href="../_"> <i class="bi bi-moon" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -174,7 +182,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <div id="container">
 <div id="board">
@@ -533,7 +543,7 @@ toggle.click(function( event ) {
 });
 </script>
 <script type="ojs-module-contents">
-{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\n// code adapted from https://codepen.io/lmeetr/pen/NWPxomj\n\nMatter = require(\"https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js\")\n\njStat = require(\"../js/jstat.js\")\n\n\nboard = {\n\n\n// https://codesandbox.io/s/github/rjoxford/MatterJSGaltonBoard\n// https://www.tylermw.com/plinko-statistics-insights-from-the-bean-machine/\n\n\nlet width = 700;\nlet height = 600;\nlet x0 = width / 2;\n\n// ball properties\nconst ballRadius = 4;\nlet y_start = 0;\n\nlet generation_speed = 20;\nlet nBalls = 650;\nlet mass = 100;\nlet density = 1;\n\n// peg board properties\nlet rows = 20;\nlet y_peg_start = 20;\nlet pegGap = 6.5 * ballRadius;\nlet pegRadius = 0.5 * ballRadius;\nlet xGap = pegGap;\nlet yGap = 0.6 * xGap;\nlet pegAngle = 0; // Math.PI / 4;\nlet gap_between_pegs_and_buckets = 0;\n\n// funnel properties\nconst funnelTostartGap = yGap;\nconst funnelWallLength = 600;\nconst funnelAngle = Math.PI / 3;\nconst funnelOpening = 5 * ballRadius;\n\n// physics properties\nlet restitution = 0.5; // bounciness\nlet friction = 0.01;\nlet frictionAir = 0.045;\nlet frictionStatic = 0;\n\n\nlet intervalId;\n\n\nvar {Engine, Render, Runner, \n    Composite, Composites, Common, \n    MouseConstraint, Mouse, Events, \n    World, Bodies, Body} = Matter;\n\nlet engine, render, runner, world;\n\n\n\nfunction initialize() {\n    // create engine\n    engine = Engine.create({\n        enableSleeping: true\n    }),\n        world = engine.world;\n    \n    // create renderer\n    render = Render.create({\n        element: document.getElementById(\"board\"),\n        engine: engine,\n        options: {\n            width: width,\n            height: height,\n            background: \"#ffffff\",\n            wireframes: false,\n            showSleeping: false\n        }\n    });\n    Render.run(render);\n\n    // engine.gravity.y = 1;\n    // engine.timing.timeScale = 1;\n    \n    // create runner\n    runner = Runner.create();\n    Runner.run(runner, engine);\n    render.canvas.addEventListener(\"mousedown\", reset);\n    render.canvas.position = \"absolute\";\n}\n\n\n\n// Create top funnel\nlet leftBumper_x =  x0 - (funnelWallLength * Math.cos(funnelAngle) + funnelOpening) / 2;\nlet rightBumper_x = x0 + (funnelWallLength * Math.cos(funnelAngle) + funnelOpening) / 2;\nlet bumper_y = y_peg_start - ((funnelWallLength * Math.sin(funnelAngle)) / 2 - funnelTostartGap);\nconsole.log(bumper_y)\n\nlet createFunnel = () => {\n\n        let leftBumper = Bodies.rectangle(leftBumper_x, bumper_y, funnelWallLength, 3, {\n            restitution,\n            friction: 0,\n            frictionStatic: 0,\n            isStatic: true\n        });\n        Matter.Body.rotate(leftBumper, funnelAngle);\n\n        let rightBumper = Bodies.rectangle(rightBumper_x, bumper_y, funnelWallLength, 3, {\n            restitution: 0.6,\n            friction: 0,\n            frictionStatic: 0,\n            isStatic: true\n        });\n        Matter.Body.rotate(rightBumper, -funnelAngle);\n\n        Matter.Composite.add(world, [leftBumper, rightBumper]);\n}\n\n\nfunction make_balls() {\n\n    let total = nBalls;\n    clearInterval(intervalId);\n\n    intervalId = setInterval(() => {\n        let balls = [];\n        if (total-- > 0) {\n            const circle = Bodies.circle(x0 + (-0.5 + Math.random()) * 1, -20, ballRadius, {\n                label: \"circle\",\n                friction: 0.001,\n                restitution,\n                mass,\n                slop: 0.05,\n                density,\n                frictionAir,\n                sleepThreshold: Infinity,\n                render: {\n                    fillStyle: d3.schemeCategory10[total % 10]\n                }\n            });\n            // Matter.Events.on(circle, \"sleepStart\", () => {\n            //     Matter.Body.setStatic(circle, true);\n            // });\n            \n            Matter.Composite.add(world, circle);\n        }\n    }, generation_speed);\n}\n\nlet existingBalls = () => {\n    return world.bodies.filter((body) => body.label === \"circle\");\n  };\n\nconst makeStaticInterval = setInterval(() => {\n    existingBalls().forEach(function(ball) {\n      let ballHeight = ball.position.y;\n      let ballSpeed = ball.speed;\n      let minHeight = 350; // height - (floorHeight + wallHeight);\n      if (ballHeight > minHeight && ballSpeed < 0.02) {\n        // ball.render.opacity = 0.5;\n        Body.setStatic(ball, true);\n      }\n    });\n  }, 200);\n\n\nfunction make_pegs() {\n    const pegs = [];\n    const spacingY = ballRadius*4;\n    const spacingX = ballRadius*4;\n    var i, j, lastI;\n    for (i = 0; i < rows; i++) {\n        for (j = 1; j < i; j++) {\n            pegs.push(\n                // Bodies.rectangle(\n                Bodies.circle(\n                    x0 + (j * xGap - i * (xGap / 2)),\n                    y_peg_start + i * yGap,\n                    pegRadius,\n                    // ballRadius * 1.2,\n                    // 2,\n                    {\n                        angle: pegAngle,\n                        isStatic: true,\n                        friction: 0,\n                        frictionStatic: 0,\n                        render: {\n                            fillStyle: \"#000000\"\n                        },\n                    chamfer: {\n                        radius: [ballRadius * 0.2, ballRadius * 0.2, 0, 0]\n                    }\n        })\n            );\n        }\n        lastI = i;\n    }\n    // bins\n    for (i = 0; i < rows; i++) {\n        Matter.Composite.add(\n            world,\n            Bodies.rectangle(\n\n                x0 - (rows - 1) * (xGap / 2) + i * xGap,\n                y_peg_start + rows * yGap + gap_between_pegs_and_buckets + (height-(y_peg_start + rows * yGap))/2,\n                4,\n                (height-(y_peg_start + rows * yGap)),\n                {\n                    isStatic: true,\n                    density: 1000,\n                    mass: 1000,\n                    slop: 0,\n                    render: {\n                        fillStyle: \"#000000\",\n                        visible: true\n                    },\n                    chamfer: {\n                        radius: [ballRadius * 0.4, ballRadius * 0.4, 0, 0]\n                    }\n                }\n            )\n        );\n    }\n    // ground\n    Matter.Composite.add(\n        world,\n        Bodies.rectangle(400, height, 1000, 10, {\n            isStatic: true,\n            render: {\n                fillStyle: \"#000000\",\n                visible: true\n            }\n        })\n    );\n\n\n    World.add(world, pegs);\n}\n\nconst canvas = d3.select(\"#overlay\")\n.append(\"canvas\")\n.attr(\"id\", \"overlay\")\n.attr(\"position\", \"absolute\")\n.attr(\"width\", width)\n.attr(\"height\", height);\n\nconst ctx = canvas.node().getContext('2d');\ncanvas.on(\"mousedown\", reset);\n\nfunction drawNormalDistribution() {\n\n    ctx.strokeStyle = 'red';\n    ctx.lineWidth = 3;\n    ctx.beginPath();\n    ctx.moveTo(0, height - 5);\n\n    let yMultiplier = (height-(y_peg_start + rows * yGap));\n    var values = jStat(-4, 4, 210)[0]\n\n\n    for (var i in values) {\n        let value = values[i];\n        let density = jStat.normal.pdf(value, 0, 0.9);\n        ctx.lineTo((value + 4)*(width/8), height-(density*2.2*yMultiplier) - 5);\n        ctx.stroke();\n    }\n}\n\nfunction reset() {\n    Composite.clear(world);\n    Engine.clear(engine);\n    Render.stop(render);\n    Runner.stop(runner);\n    render.canvas.remove();\n    render.canvas = null;\n    render.context = null;\n    render.textures = {};\n    console.log('reset clicked');\n    \n    initialize();\n    make_pegs();\n    make_balls();\n    createFunnel();\n    drawNormalDistribution();\n}\n\n\n//\n\ninitialize();\nmake_pegs();\nmake_balls();\ncreateFunnel();\ndrawNormalDistribution();\n  \n}\n\n"}]}
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gY29kZSBhZGFwdGVkIGZyb20gaHR0cHM6Ly9jb2RlcGVuLmlvL2xtZWV0ci9wZW4vTldQeG9talxuXG5NYXR0ZXIgPSByZXF1aXJlKFwiaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvbWF0dGVyLWpzLzAuMTkuMC9tYXR0ZXIubWluLmpzXCIpXG5cbmpTdGF0ID0gcmVxdWlyZShcIi4uL2pzL2pzdGF0LmpzXCIpXG5cblxuYm9hcmQgPSB7XG5cblxuLy8gaHR0cHM6Ly9jb2Rlc2FuZGJveC5pby9zL2dpdGh1Yi9yam94Zm9yZC9NYXR0ZXJKU0dhbHRvbkJvYXJkXG4vLyBodHRwczovL3d3dy50eWxlcm13LmNvbS9wbGlua28tc3RhdGlzdGljcy1pbnNpZ2h0cy1mcm9tLXRoZS1iZWFuLW1hY2hpbmUvXG5cblxubGV0IHdpZHRoID0gNzAwO1xubGV0IGhlaWdodCA9IDYwMDtcbmxldCB4MCA9IHdpZHRoIC8gMjtcblxuLy8gYmFsbCBwcm9wZXJ0aWVzXG5jb25zdCBiYWxsUmFkaXVzID0gNDtcbmxldCB5X3N0YXJ0ID0gMDtcblxubGV0IGdlbmVyYXRpb25fc3BlZWQgPSAyMDtcbmxldCBuQmFsbHMgPSA2NTA7XG5sZXQgbWFzcyA9IDEwMDtcbmxldCBkZW5zaXR5ID0gMTtcblxuLy8gcGVnIGJvYXJkIHByb3BlcnRpZXNcbmxldCByb3dzID0gMjA7XG5sZXQgeV9wZWdfc3RhcnQgPSAyMDtcbmxldCBwZWdHYXAgPSA2LjUgKiBiYWxsUmFkaXVzO1xubGV0IHBlZ1JhZGl1cyA9IDAuNSAqIGJhbGxSYWRpdXM7XG5sZXQgeEdhcCA9IHBlZ0dhcDtcbmxldCB5R2FwID0gMC42ICogeEdhcDtcbmxldCBwZWdBbmdsZSA9IDA7IC8vIE1hdGguUEkgLyA0O1xubGV0IGdhcF9iZXR3ZWVuX3BlZ3NfYW5kX2J1Y2tldHMgPSAwO1xuXG4vLyBmdW5uZWwgcHJvcGVydGllc1xuY29uc3QgZnVubmVsVG9zdGFydEdhcCA9IHlHYXA7XG5jb25zdCBmdW5uZWxXYWxsTGVuZ3RoID0gNjAwO1xuY29uc3QgZnVubmVsQW5nbGUgPSBNYXRoLlBJIC8gMztcbmNvbnN0IGZ1bm5lbE9wZW5pbmcgPSA1ICogYmFsbFJhZGl1cztcblxuLy8gcGh5c2ljcyBwcm9wZXJ0aWVzXG5sZXQgcmVzdGl0dXRpb24gPSAwLjU7IC8vIGJvdW5jaW5lc3NcbmxldCBmcmljdGlvbiA9IDAuMDE7XG5sZXQgZnJpY3Rpb25BaXIgPSAwLjA0NTtcbmxldCBmcmljdGlvblN0YXRpYyA9IDA7XG5cblxubGV0IGludGVydmFsSWQ7XG5cblxudmFyIHtFbmdpbmUsIFJlbmRlciwgUnVubmVyLCBcbiAgICBDb21wb3NpdGUsIENvbXBvc2l0ZXMsIENvbW1vbiwgXG4gICAgTW91c2VDb25zdHJhaW50LCBNb3VzZSwgRXZlbnRzLCBcbiAgICBXb3JsZCwgQm9kaWVzLCBCb2R5fSA9IE1hdHRlcjtcblxubGV0IGVuZ2luZSwgcmVuZGVyLCBydW5uZXIsIHdvcmxkO1xuXG5cblxuZnVuY3Rpb24gaW5pdGlhbGl6ZSgpIHtcbiAgICAvLyBjcmVhdGUgZW5naW5lXG4gICAgZW5naW5lID0gRW5naW5lLmNyZWF0ZSh7XG4gICAgICAgIGVuYWJsZVNsZWVwaW5nOiB0cnVlXG4gICAgfSksXG4gICAgICAgIHdvcmxkID0gZW5naW5lLndvcmxkO1xuICAgIFxuICAgIC8vIGNyZWF0ZSByZW5kZXJlclxuICAgIHJlbmRlciA9IFJlbmRlci5jcmVhdGUoe1xuICAgICAgICBlbGVtZW50OiBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImJvYXJkXCIpLFxuICAgICAgICBlbmdpbmU6IGVuZ2luZSxcbiAgICAgICAgb3B0aW9uczoge1xuICAgICAgICAgICAgd2lkdGg6IHdpZHRoLFxuICAgICAgICAgICAgaGVpZ2h0OiBoZWlnaHQsXG4gICAgICAgICAgICBiYWNrZ3JvdW5kOiBcIiNmZmZmZmZcIixcbiAgICAgICAgICAgIHdpcmVmcmFtZXM6IGZhbHNlLFxuICAgICAgICAgICAgc2hvd1NsZWVwaW5nOiBmYWxzZVxuICAgICAgICB9XG4gICAgfSk7XG4gICAgUmVuZGVyLnJ1bihyZW5kZXIpO1xuXG4gICAgLy8gZW5naW5lLmdyYXZpdHkueSA9IDE7XG4gICAgLy8gZW5naW5lLnRpbWluZy50aW1lU2NhbGUgPSAxO1xuICAgIFxuICAgIC8vIGNyZWF0ZSBydW5uZXJcbiAgICBydW5uZXIgPSBSdW5uZXIuY3JlYXRlKCk7XG4gICAgUnVubmVyLnJ1bihydW5uZXIsIGVuZ2luZSk7XG4gICAgcmVuZGVyLmNhbnZhcy5hZGRFdmVudExpc3RlbmVyKFwibW91c2Vkb3duXCIsIHJlc2V0KTtcbiAgICByZW5kZXIuY2FudmFzLnBvc2l0aW9uID0gXCJhYnNvbHV0ZVwiO1xufVxuXG5cblxuLy8gQ3JlYXRlIHRvcCBmdW5uZWxcbmxldCBsZWZ0QnVtcGVyX3ggPSAgeDAgLSAoZnVubmVsV2FsbExlbmd0aCAqIE1hdGguY29zKGZ1bm5lbEFuZ2xlKSArIGZ1bm5lbE9wZW5pbmcpIC8gMjtcbmxldCByaWdodEJ1bXBlcl94ID0geDAgKyAoZnVubmVsV2FsbExlbmd0aCAqIE1hdGguY29zKGZ1bm5lbEFuZ2xlKSArIGZ1bm5lbE9wZW5pbmcpIC8gMjtcbmxldCBidW1wZXJfeSA9IHlfcGVnX3N0YXJ0IC0gKChmdW5uZWxXYWxsTGVuZ3RoICogTWF0aC5zaW4oZnVubmVsQW5nbGUpKSAvIDIgLSBmdW5uZWxUb3N0YXJ0R2FwKTtcbmNvbnNvbGUubG9nKGJ1bXBlcl95KVxuXG5sZXQgY3JlYXRlRnVubmVsID0gKCkgPT4ge1xuXG4gICAgICAgIGxldCBsZWZ0QnVtcGVyID0gQm9kaWVzLnJlY3RhbmdsZShsZWZ0QnVtcGVyX3gsIGJ1bXBlcl95LCBmdW5uZWxXYWxsTGVuZ3RoLCAzLCB7XG4gICAgICAgICAgICByZXN0aXR1dGlvbixcbiAgICAgICAgICAgIGZyaWN0aW9uOiAwLFxuICAgICAgICAgICAgZnJpY3Rpb25TdGF0aWM6IDAsXG4gICAgICAgICAgICBpc1N0YXRpYzogdHJ1ZVxuICAgICAgICB9KTtcbiAgICAgICAgTWF0dGVyLkJvZHkucm90YXRlKGxlZnRCdW1wZXIsIGZ1bm5lbEFuZ2xlKTtcblxuICAgICAgICBsZXQgcmlnaHRCdW1wZXIgPSBCb2RpZXMucmVjdGFuZ2xlKHJpZ2h0QnVtcGVyX3gsIGJ1bXBlcl95LCBmdW5uZWxXYWxsTGVuZ3RoLCAzLCB7XG4gICAgICAgICAgICByZXN0aXR1dGlvbjogMC42LFxuICAgICAgICAgICAgZnJpY3Rpb246IDAsXG4gICAgICAgICAgICBmcmljdGlvblN0YXRpYzogMCxcbiAgICAgICAgICAgIGlzU3RhdGljOiB0cnVlXG4gICAgICAgIH0pO1xuICAgICAgICBNYXR0ZXIuQm9keS5yb3RhdGUocmlnaHRCdW1wZXIsIC1mdW5uZWxBbmdsZSk7XG5cbiAgICAgICAgTWF0dGVyLkNvbXBvc2l0ZS5hZGQod29ybGQsIFtsZWZ0QnVtcGVyLCByaWdodEJ1bXBlcl0pO1xufVxuXG5cbmZ1bmN0aW9uIG1ha2VfYmFsbHMoKSB7XG5cbiAgICBsZXQgdG90YWwgPSBuQmFsbHM7XG4gICAgY2xlYXJJbnRlcnZhbChpbnRlcnZhbElkKTtcblxuICAgIGludGVydmFsSWQgPSBzZXRJbnRlcnZhbCgoKSA9PiB7XG4gICAgICAgIGxldCBiYWxscyA9IFtdO1xuICAgICAgICBpZiAodG90YWwtLSA+IDApIHtcbiAgICAgICAgICAgIGNvbnN0IGNpcmNsZSA9IEJvZGllcy5jaXJjbGUoeDAgKyAoLTAuNSArIE1hdGgucmFuZG9tKCkpICogMSwgLTIwLCBiYWxsUmFkaXVzLCB7XG4gICAgICAgICAgICAgICAgbGFiZWw6IFwiY2lyY2xlXCIsXG4gICAgICAgICAgICAgICAgZnJpY3Rpb246IDAuMDAxLFxuICAgICAgICAgICAgICAgIHJlc3RpdHV0aW9uLFxuICAgICAgICAgICAgICAgIG1hc3MsXG4gICAgICAgICAgICAgICAgc2xvcDogMC4wNSxcbiAgICAgICAgICAgICAgICBkZW5zaXR5LFxuICAgICAgICAgICAgICAgIGZyaWN0aW9uQWlyLFxuICAgICAgICAgICAgICAgIHNsZWVwVGhyZXNob2xkOiBJbmZpbml0eSxcbiAgICAgICAgICAgICAgICByZW5kZXI6IHtcbiAgICAgICAgICAgICAgICAgICAgZmlsbFN0eWxlOiBkMy5zY2hlbWVDYXRlZ29yeTEwW3RvdGFsICUgMTBdXG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgfSk7XG4gICAgICAgICAgICAvLyBNYXR0ZXIuRXZlbnRzLm9uKGNpcmNsZSwgXCJzbGVlcFN0YXJ0XCIsICgpID0+IHtcbiAgICAgICAgICAgIC8vICAgICBNYXR0ZXIuQm9keS5zZXRTdGF0aWMoY2lyY2xlLCB0cnVlKTtcbiAgICAgICAgICAgIC8vIH0pO1xuICAgICAgICAgICAgXG4gICAgICAgICAgICBNYXR0ZXIuQ29tcG9zaXRlLmFkZCh3b3JsZCwgY2lyY2xlKTtcbiAgICAgICAgfVxuICAgIH0sIGdlbmVyYXRpb25fc3BlZWQpO1xufVxuXG5sZXQgZXhpc3RpbmdCYWxscyA9ICgpID0+IHtcbiAgICByZXR1cm4gd29ybGQuYm9kaWVzLmZpbHRlcigoYm9keSkgPT4gYm9keS5sYWJlbCA9PT0gXCJjaXJjbGVcIik7XG4gIH07XG5cbmNvbnN0IG1ha2VTdGF0aWNJbnRlcnZhbCA9IHNldEludGVydmFsKCgpID0+IHtcbiAgICBleGlzdGluZ0JhbGxzKCkuZm9yRWFjaChmdW5jdGlvbihiYWxsKSB7XG4gICAgICBsZXQgYmFsbEhlaWdodCA9IGJhbGwucG9zaXRpb24ueTtcbiAgICAgIGxldCBiYWxsU3BlZWQgPSBiYWxsLnNwZWVkO1xuICAgICAgbGV0IG1pbkhlaWdodCA9IDM1MDsgLy8gaGVpZ2h0IC0gKGZsb29ySGVpZ2h0ICsgd2FsbEhlaWdodCk7XG4gICAgICBpZiAoYmFsbEhlaWdodCA+IG1pbkhlaWdodCAmJiBiYWxsU3BlZWQgPCAwLjAyKSB7XG4gICAgICAgIC8vIGJhbGwucmVuZGVyLm9wYWNpdHkgPSAwLjU7XG4gICAgICAgIEJvZHkuc2V0U3RhdGljKGJhbGwsIHRydWUpO1xuICAgICAgfVxuICAgIH0pO1xuICB9LCAyMDApO1xuXG5cbmZ1bmN0aW9uIG1ha2VfcGVncygpIHtcbiAgICBjb25zdCBwZWdzID0gW107XG4gICAgY29uc3Qgc3BhY2luZ1kgPSBiYWxsUmFkaXVzKjQ7XG4gICAgY29uc3Qgc3BhY2luZ1ggPSBiYWxsUmFkaXVzKjQ7XG4gICAgdmFyIGksIGosIGxhc3RJO1xuICAgIGZvciAoaSA9IDA7IGkgPCByb3dzOyBpKyspIHtcbiAgICAgICAgZm9yIChqID0gMTsgaiA8IGk7IGorKykge1xuICAgICAgICAgICAgcGVncy5wdXNoKFxuICAgICAgICAgICAgICAgIC8vIEJvZGllcy5yZWN0YW5nbGUoXG4gICAgICAgICAgICAgICAgQm9kaWVzLmNpcmNsZShcbiAgICAgICAgICAgICAgICAgICAgeDAgKyAoaiAqIHhHYXAgLSBpICogKHhHYXAgLyAyKSksXG4gICAgICAgICAgICAgICAgICAgIHlfcGVnX3N0YXJ0ICsgaSAqIHlHYXAsXG4gICAgICAgICAgICAgICAgICAgIHBlZ1JhZGl1cyxcbiAgICAgICAgICAgICAgICAgICAgLy8gYmFsbFJhZGl1cyAqIDEuMixcbiAgICAgICAgICAgICAgICAgICAgLy8gMixcbiAgICAgICAgICAgICAgICAgICAge1xuICAgICAgICAgICAgICAgICAgICAgICAgYW5nbGU6IHBlZ0FuZ2xlLFxuICAgICAgICAgICAgICAgICAgICAgICAgaXNTdGF0aWM6IHRydWUsXG4gICAgICAgICAgICAgICAgICAgICAgICBmcmljdGlvbjogMCxcbiAgICAgICAgICAgICAgICAgICAgICAgIGZyaWN0aW9uU3RhdGljOiAwLFxuICAgICAgICAgICAgICAgICAgICAgICAgcmVuZGVyOiB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgZmlsbFN0eWxlOiBcIiMwMDAwMDBcIlxuICAgICAgICAgICAgICAgICAgICAgICAgfSxcbiAgICAgICAgICAgICAgICAgICAgY2hhbWZlcjoge1xuICAgICAgICAgICAgICAgICAgICAgICAgcmFkaXVzOiBbYmFsbFJhZGl1cyAqIDAuMiwgYmFsbFJhZGl1cyAqIDAuMiwgMCwgMF1cbiAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICB9KVxuICAgICAgICAgICAgKTtcbiAgICAgICAgfVxuICAgICAgICBsYXN0SSA9IGk7XG4gICAgfVxuICAgIC8vIGJpbnNcbiAgICBmb3IgKGkgPSAwOyBpIDwgcm93czsgaSsrKSB7XG4gICAgICAgIE1hdHRlci5Db21wb3NpdGUuYWRkKFxuICAgICAgICAgICAgd29ybGQsXG4gICAgICAgICAgICBCb2RpZXMucmVjdGFuZ2xlKFxuXG4gICAgICAgICAgICAgICAgeDAgLSAocm93cyAtIDEpICogKHhHYXAgLyAyKSArIGkgKiB4R2FwLFxuICAgICAgICAgICAgICAgIHlfcGVnX3N0YXJ0ICsgcm93cyAqIHlHYXAgKyBnYXBfYmV0d2Vlbl9wZWdzX2FuZF9idWNrZXRzICsgKGhlaWdodC0oeV9wZWdfc3RhcnQgKyByb3dzICogeUdhcCkpLzIsXG4gICAgICAgICAgICAgICAgNCxcbiAgICAgICAgICAgICAgICAoaGVpZ2h0LSh5X3BlZ19zdGFydCArIHJvd3MgKiB5R2FwKSksXG4gICAgICAgICAgICAgICAge1xuICAgICAgICAgICAgICAgICAgICBpc1N0YXRpYzogdHJ1ZSxcbiAgICAgICAgICAgICAgICAgICAgZGVuc2l0eTogMTAwMCxcbiAgICAgICAgICAgICAgICAgICAgbWFzczogMTAwMCxcbiAgICAgICAgICAgICAgICAgICAgc2xvcDogMCxcbiAgICAgICAgICAgICAgICAgICAgcmVuZGVyOiB7XG4gICAgICAgICAgICAgICAgICAgICAgICBmaWxsU3R5bGU6IFwiIzAwMDAwMFwiLFxuICAgICAgICAgICAgICAgICAgICAgICAgdmlzaWJsZTogdHJ1ZVxuICAgICAgICAgICAgICAgICAgICB9LFxuICAgICAgICAgICAgICAgICAgICBjaGFtZmVyOiB7XG4gICAgICAgICAgICAgICAgICAgICAgICByYWRpdXM6IFtiYWxsUmFkaXVzICogMC40LCBiYWxsUmFkaXVzICogMC40LCAwLCAwXVxuICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgKVxuICAgICAgICApO1xuICAgIH1cbiAgICAvLyBncm91bmRcbiAgICBNYXR0ZXIuQ29tcG9zaXRlLmFkZChcbiAgICAgICAgd29ybGQsXG4gICAgICAgIEJvZGllcy5yZWN0YW5nbGUoNDAwLCBoZWlnaHQsIDEwMDAsIDEwLCB7XG4gICAgICAgICAgICBpc1N0YXRpYzogdHJ1ZSxcbiAgICAgICAgICAgIHJlbmRlcjoge1xuICAgICAgICAgICAgICAgIGZpbGxTdHlsZTogXCIjMDAwMDAwXCIsXG4gICAgICAgICAgICAgICAgdmlzaWJsZTogdHJ1ZVxuICAgICAgICAgICAgfVxuICAgICAgICB9KVxuICAgICk7XG5cblxuICAgIFdvcmxkLmFkZCh3b3JsZCwgcGVncyk7XG59XG5cbmNvbnN0IGNhbnZhcyA9IGQzLnNlbGVjdChcIiNvdmVybGF5XCIpXG4uYXBwZW5kKFwiY2FudmFzXCIpXG4uYXR0cihcImlkXCIsIFwib3ZlcmxheVwiKVxuLmF0dHIoXCJwb3NpdGlvblwiLCBcImFic29sdXRlXCIpXG4uYXR0cihcIndpZHRoXCIsIHdpZHRoKVxuLmF0dHIoXCJoZWlnaHRcIiwgaGVpZ2h0KTtcblxuY29uc3QgY3R4ID0gY2FudmFzLm5vZGUoKS5nZXRDb250ZXh0KCcyZCcpO1xuY2FudmFzLm9uKFwibW91c2Vkb3duXCIsIHJlc2V0KTtcblxuZnVuY3Rpb24gZHJhd05vcm1hbERpc3RyaWJ1dGlvbigpIHtcblxuICAgIGN0eC5zdHJva2VTdHlsZSA9ICdyZWQnO1xuICAgIGN0eC5saW5lV2lkdGggPSAzO1xuICAgIGN0eC5iZWdpblBhdGgoKTtcbiAgICBjdHgubW92ZVRvKDAsIGhlaWdodCAtIDUpO1xuXG4gICAgbGV0IHlNdWx0aXBsaWVyID0gKGhlaWdodC0oeV9wZWdfc3RhcnQgKyByb3dzICogeUdhcCkpO1xuICAgIHZhciB2YWx1ZXMgPSBqU3RhdCgtNCwgNCwgMjEwKVswXVxuXG5cbiAgICBmb3IgKHZhciBpIGluIHZhbHVlcykge1xuICAgICAgICBsZXQgdmFsdWUgPSB2YWx1ZXNbaV07XG4gICAgICAgIGxldCBkZW5zaXR5ID0galN0YXQubm9ybWFsLnBkZih2YWx1ZSwgMCwgMC45KTtcbiAgICAgICAgY3R4LmxpbmVUbygodmFsdWUgKyA0KSood2lkdGgvOCksIGhlaWdodC0oZGVuc2l0eSoyLjIqeU11bHRpcGxpZXIpIC0gNSk7XG4gICAgICAgIGN0eC5zdHJva2UoKTtcbiAgICB9XG59XG5cbmZ1bmN0aW9uIHJlc2V0KCkge1xuICAgIENvbXBvc2l0ZS5jbGVhcih3b3JsZCk7XG4gICAgRW5naW5lLmNsZWFyKGVuZ2luZSk7XG4gICAgUmVuZGVyLnN0b3AocmVuZGVyKTtcbiAgICBSdW5uZXIuc3RvcChydW5uZXIpO1xuICAgIHJlbmRlci5jYW52YXMucmVtb3ZlKCk7XG4gICAgcmVuZGVyLmNhbnZhcyA9IG51bGw7XG4gICAgcmVuZGVyLmNvbnRleHQgPSBudWxsO1xuICAgIHJlbmRlci50ZXh0dXJlcyA9IHt9O1xuICAgIGNvbnNvbGUubG9nKCdyZXNldCBjbGlja2VkJyk7XG4gICAgXG4gICAgaW5pdGlhbGl6ZSgpO1xuICAgIG1ha2VfcGVncygpO1xuICAgIG1ha2VfYmFsbHMoKTtcbiAgICBjcmVhdGVGdW5uZWwoKTtcbiAgICBkcmF3Tm9ybWFsRGlzdHJpYnV0aW9uKCk7XG59XG5cblxuLy9cblxuaW5pdGlhbGl6ZSgpO1xubWFrZV9wZWdzKCk7XG5tYWtlX2JhbGxzKCk7XG5jcmVhdGVGdW5uZWwoKTtcbmRyYXdOb3JtYWxEaXN0cmlidXRpb24oKTtcbiAgXG59XG5cbiJ9XX0=
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -622,10 +632,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -635,8 +667,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -648,7 +689,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -692,6 +856,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -717,6 +882,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -774,23 +965,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-      }
-    }
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

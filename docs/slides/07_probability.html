@@ -8,9 +8,9 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.310">
+  <meta name="generator" content="quarto-1.4.551">
 
-  <title>PSYC BC1101 – probability</title>
+  <title>PSYC BC1101</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,7 +30,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -94,7 +94,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -222,7 +222,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -387,7 +388,6 @@
   </style>
   <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
   <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
-  
   <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
   <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
   <script type="ojs-define">
@@ -496,6 +496,7 @@
 </div>
 <div class="cell" style="font-size: 0.8em; margin-top: 1em; width: 100%;">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -567,6 +568,7 @@
 </table>
 
 
+</div>
 </div>
 </div>
 </section></section>
@@ -644,7 +646,9 @@ p(both \ white) &amp; = .2 * .18  \approx .037 \end{align}\]</span></p>
 <ul>
 <li>With replacement</li>
 </ul>
-<p><span class="math inline">\(\begin{align} p(white) &amp;= 10/50 = .2 \\ p(second \ white) &amp;= 10/50 = .2 \\ p(both \ white) &amp;= .2 * .2 = .04\end{align}\)</span></p>
+<p><span class="math inline">\(\begin{align} p(white) &amp;= 10/50 = .2 \\
+p(second \ white) &amp;= 10/50 = .2 \\
+p(both \ white) &amp;= .2 * .2 = .04\end{align}\)</span></p>
 </div>
 </div>
 </section>
@@ -708,6 +712,7 @@ p(both \ white) &amp; = .2 * .18  \approx .037 \end{align}\]</span></p>
 <div class="column" style="font-size: 0.35em;">
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -848,6 +853,7 @@ p(both \ white) &amp; = .2 * .18  \approx .037 \end{align}\]</span></p>
 </table>
 
 
+</div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
@@ -863,6 +869,7 @@ p(both \ white) &amp; = .2 * .18  \approx .037 \end{align}\]</span></p>
 <div id="tbl" class="column" style="font-size: 0.35em;">
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -1005,6 +1012,7 @@ p(both \ white) &amp; = .2 * .18  \approx .037 \end{align}\]</span></p>
 
 </div>
 </div>
+</div>
 </div><div class="column" style="width:50%;">
 <div id="z-container">
 
@@ -1015,21 +1023,21 @@ p(both \ white) &amp; = .2 * .18  \approx .037 \end{align}\]</span></p>
 <section id="using-r" class="slide level2">
 <h2>Using R</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">pnorm</span>(<span class="fl">0.2</span>)  <span class="co"># area to the left of z = 0.2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">pnorm</span>(<span class="fl">0.2</span>)  <span class="co"># area to the left of z = 0.2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5792597</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">pnorm</span>(<span class="fl">0.2</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>) <span class="co"># area to the right of z = 0.2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">pnorm</span>(<span class="fl">0.2</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>) <span class="co"># area to the right of z = 0.2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4207403</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># can specify different mean &amp; SD</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">pnorm</span>(<span class="dv">700</span>, <span class="at">mean=</span><span class="dv">500</span>, <span class="at">sd=</span><span class="dv">100</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># can specify different mean &amp; SD</span></span>
+<span id="cb5-2"><a></a><span class="fu">pnorm</span>(<span class="dv">700</span>, <span class="at">mean=</span><span class="dv">500</span>, <span class="at">sd=</span><span class="dv">100</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.02275013</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># can specify proportion &amp; find corresponding score</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">qnorm</span>(.<span class="dv">0228</span>, <span class="at">mean=</span><span class="dv">500</span>, <span class="at">sd=</span><span class="dv">100</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># can specify proportion &amp; find corresponding score</span></span>
+<span id="cb7-2"><a></a><span class="fu">qnorm</span>(.<span class="dv">0228</span>, <span class="at">mean=</span><span class="dv">500</span>, <span class="at">sd=</span><span class="dv">100</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 699.9077</code></pre>
 </div>
@@ -1050,11 +1058,11 @@ p(both \ white) &amp; = .2 * .18  \approx .037 \end{align}\]</span></p>
 <p><img data-src="media/spiderman-distribution.svg" class="invertable-blue" style="margin-top: -1em;"></p>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">2.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">2.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.006209665</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">pnorm</span>(<span class="dv">159</span>, <span class="at">mean =</span> <span class="dv">284</span>, <span class="at">sd =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">pnorm</span>(<span class="dv">159</span>, <span class="at">mean =</span> <span class="dv">284</span>, <span class="at">sd =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.006209665</code></pre>
 </div>
@@ -1083,65 +1091,65 @@ p(both \ white) &amp; = .2 * .18  \approx .037 \end{align}\]</span></p>
 <li>Calling random phone numbers from a database</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="483" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 482;"><span id="cb13-483"><a href="#cb13-483"></a>table_selection <span class="op">=</span> {</span>
-<span id="cb13-484"><a href="#cb13-484"></a>  <span class="kw">var</span> num <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb13-485"><a href="#cb13-485"></a>  </span>
-<span id="cb13-486"><a href="#cb13-486"></a>  <span class="kw">function</span> <span class="fu">getNumberFromTable</span>() {</span>
-<span id="cb13-487"><a href="#cb13-487"></a>    <span class="cf">try</span> {</span>
-<span id="cb13-488"><a href="#cb13-488"></a>      num <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)<span class="op">.</span><span class="fu">select</span>(<span class="st">"td"</span>)<span class="op">.</span><span class="at">_groups</span>[<span class="dv">0</span>][<span class="dv">0</span>]<span class="op">.</span><span class="at">innerHTML</span><span class="op">;</span></span>
-<span id="cb13-489"><a href="#cb13-489"></a>    } <span class="cf">catch</span> {} <span class="cf">finally</span> {<span class="fu">update</span>()<span class="op">;</span>}</span>
-<span id="cb13-490"><a href="#cb13-490"></a>  }</span>
-<span id="cb13-491"><a href="#cb13-491"></a>  </span>
-<span id="cb13-492"><a href="#cb13-492"></a>  d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#tbl"</span>)<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"tr"</span>)<span class="op">.</span><span class="fu">on</span>(<span class="st">"mouseover"</span><span class="op">,</span> getNumberFromTable)</span>
-<span id="cb13-493"><a href="#cb13-493"></a>  </span>
-<span id="cb13-494"><a href="#cb13-494"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">500</span></span>
-<span id="cb13-495"><a href="#cb13-495"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">400</span></span>
-<span id="cb13-496"><a href="#cb13-496"></a>  </span>
-<span id="cb13-497"><a href="#cb13-497"></a>  <span class="kw">const</span> margins <span class="op">=</span> {<span class="dt">t</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">b</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span> <span class="dt">l</span><span class="op">:</span> <span class="dv">10</span>}</span>
-<span id="cb13-498"><a href="#cb13-498"></a>  </span>
-<span id="cb13-499"><a href="#cb13-499"></a>  <span class="kw">const</span> x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb13-500"><a href="#cb13-500"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="op">-</span><span class="dv">3</span><span class="op">,</span><span class="dv">3</span>])</span>
-<span id="cb13-501"><a href="#cb13-501"></a>    <span class="op">.</span><span class="fu">range</span>([margins<span class="op">.</span><span class="at">l</span><span class="op">,</span>w<span class="op">-</span>margins<span class="op">.</span><span class="at">r</span>])</span>
-<span id="cb13-502"><a href="#cb13-502"></a>  <span class="kw">const</span> y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb13-503"><a href="#cb13-503"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span><span class="fl">0.41</span>])</span>
-<span id="cb13-504"><a href="#cb13-504"></a>    <span class="op">.</span><span class="fu">range</span>([h<span class="op">-</span>margins<span class="op">.</span><span class="at">b</span><span class="op">,</span>margins<span class="op">.</span><span class="at">t</span>])</span>
-<span id="cb13-505"><a href="#cb13-505"></a>  <span class="kw">const</span> line <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()</span>
-<span id="cb13-506"><a href="#cb13-506"></a>    <span class="op">.</span><span class="fu">x</span>(d <span class="kw">=&gt;</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">value</span>))</span>
-<span id="cb13-507"><a href="#cb13-507"></a>    <span class="op">.</span><span class="fu">y</span>(d <span class="kw">=&gt;</span> <span class="fu">y</span>(d<span class="op">.</span><span class="at">density</span>))</span>
-<span id="cb13-508"><a href="#cb13-508"></a>  <span class="kw">const</span> axis <span class="op">=</span> d3<span class="op">.</span><span class="fu">axisBottom</span>(x)</span>
-<span id="cb13-509"><a href="#cb13-509"></a>  </span>
-<span id="cb13-510"><a href="#cb13-510"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#z-container"</span>)</span>
-<span id="cb13-511"><a href="#cb13-511"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
-<span id="cb13-512"><a href="#cb13-512"></a>  </span>
-<span id="cb13-513"><a href="#cb13-513"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb13-514"><a href="#cb13-514"></a>    <span class="op">.</span><span class="fu">call</span>(axis)</span>
-<span id="cb13-515"><a href="#cb13-515"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"translate(0,"</span> <span class="op">+</span> <span class="fu">y</span>(<span class="dv">0</span>) <span class="op">+</span><span class="st">")"</span>)</span>
-<span id="cb13-516"><a href="#cb13-516"></a>  </span>
-<span id="cb13-517"><a href="#cb13-517"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(curve))</span>
-<span id="cb13-518"><a href="#cb13-518"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)<span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
-<span id="cb13-519"><a href="#cb13-519"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)</span>
-<span id="cb13-520"><a href="#cb13-520"></a>    </span>
-<span id="cb13-521"><a href="#cb13-521"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
-<span id="cb13-522"><a href="#cb13-522"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"thistle"</span>)<span class="op">.</span><span class="fu">style</span>(<span class="st">"fill-opacity"</span><span class="op">,</span> <span class="fl">0.5</span>)</span>
-<span id="cb13-523"><a href="#cb13-523"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(curve))</span>
-<span id="cb13-524"><a href="#cb13-524"></a>    </span>
-<span id="cb13-525"><a href="#cb13-525"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
-<span id="cb13-526"><a href="#cb13-526"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"thistle"</span>)<span class="op">.</span><span class="fu">style</span>(<span class="st">"fill-opacity"</span><span class="op">,</span> <span class="fl">0.5</span>)</span>
-<span id="cb13-527"><a href="#cb13-527"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(curve))</span>
-<span id="cb13-528"><a href="#cb13-528"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"clip-path"</span><span class="op">,</span> <span class="st">"url(#clip)"</span>)</span>
-<span id="cb13-529"><a href="#cb13-529"></a></span>
-<span id="cb13-530"><a href="#cb13-530"></a>    </span>
-<span id="cb13-531"><a href="#cb13-531"></a>  <span class="kw">function</span> <span class="fu">update</span>() {</span>
-<span id="cb13-532"><a href="#cb13-532"></a>  </span>
-<span id="cb13-533"><a href="#cb13-533"></a>  svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"clipPath"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
-<span id="cb13-534"><a href="#cb13-534"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"clipPath"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"clip"</span>)</span>
-<span id="cb13-535"><a href="#cb13-535"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
-<span id="cb13-536"><a href="#cb13-536"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> <span class="fu">x</span>(num))</span>
-<span id="cb13-537"><a href="#cb13-537"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
-<span id="cb13-538"><a href="#cb13-538"></a>  }</span>
-<span id="cb13-539"><a href="#cb13-539"></a>  </span>
-<span id="cb13-540"><a href="#cb13-540"></a>  <span class="fu">update</span>()<span class="op">;</span></span>
-<span id="cb13-541"><a href="#cb13-541"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="483" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 482;"><span id="cb13-483"><a></a>table_selection <span class="op">=</span> {</span>
+<span id="cb13-484"><a></a>  <span class="kw">var</span> num <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb13-485"><a></a>  </span>
+<span id="cb13-486"><a></a>  <span class="kw">function</span> <span class="fu">getNumberFromTable</span>() {</span>
+<span id="cb13-487"><a></a>    <span class="cf">try</span> {</span>
+<span id="cb13-488"><a></a>      num <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="kw">this</span>)<span class="op">.</span><span class="fu">select</span>(<span class="st">"td"</span>)<span class="op">.</span><span class="at">_groups</span>[<span class="dv">0</span>][<span class="dv">0</span>]<span class="op">.</span><span class="at">innerHTML</span><span class="op">;</span></span>
+<span id="cb13-489"><a></a>    } <span class="cf">catch</span> {} <span class="cf">finally</span> {<span class="fu">update</span>()<span class="op">;</span>}</span>
+<span id="cb13-490"><a></a>  }</span>
+<span id="cb13-491"><a></a>  </span>
+<span id="cb13-492"><a></a>  d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#tbl"</span>)<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"tr"</span>)<span class="op">.</span><span class="fu">on</span>(<span class="st">"mouseover"</span><span class="op">,</span> getNumberFromTable)</span>
+<span id="cb13-493"><a></a>  </span>
+<span id="cb13-494"><a></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb13-495"><a></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">400</span></span>
+<span id="cb13-496"><a></a>  </span>
+<span id="cb13-497"><a></a>  <span class="kw">const</span> margins <span class="op">=</span> {<span class="dt">t</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">b</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span> <span class="dt">l</span><span class="op">:</span> <span class="dv">10</span>}</span>
+<span id="cb13-498"><a></a>  </span>
+<span id="cb13-499"><a></a>  <span class="kw">const</span> x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb13-500"><a></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="op">-</span><span class="dv">3</span><span class="op">,</span><span class="dv">3</span>])</span>
+<span id="cb13-501"><a></a>    <span class="op">.</span><span class="fu">range</span>([margins<span class="op">.</span><span class="at">l</span><span class="op">,</span>w<span class="op">-</span>margins<span class="op">.</span><span class="at">r</span>])</span>
+<span id="cb13-502"><a></a>  <span class="kw">const</span> y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb13-503"><a></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span><span class="fl">0.41</span>])</span>
+<span id="cb13-504"><a></a>    <span class="op">.</span><span class="fu">range</span>([h<span class="op">-</span>margins<span class="op">.</span><span class="at">b</span><span class="op">,</span>margins<span class="op">.</span><span class="at">t</span>])</span>
+<span id="cb13-505"><a></a>  <span class="kw">const</span> line <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()</span>
+<span id="cb13-506"><a></a>    <span class="op">.</span><span class="fu">x</span>(d <span class="kw">=&gt;</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">value</span>))</span>
+<span id="cb13-507"><a></a>    <span class="op">.</span><span class="fu">y</span>(d <span class="kw">=&gt;</span> <span class="fu">y</span>(d<span class="op">.</span><span class="at">density</span>))</span>
+<span id="cb13-508"><a></a>  <span class="kw">const</span> axis <span class="op">=</span> d3<span class="op">.</span><span class="fu">axisBottom</span>(x)</span>
+<span id="cb13-509"><a></a>  </span>
+<span id="cb13-510"><a></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#z-container"</span>)</span>
+<span id="cb13-511"><a></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
+<span id="cb13-512"><a></a>  </span>
+<span id="cb13-513"><a></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb13-514"><a></a>    <span class="op">.</span><span class="fu">call</span>(axis)</span>
+<span id="cb13-515"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"translate(0,"</span> <span class="op">+</span> <span class="fu">y</span>(<span class="dv">0</span>) <span class="op">+</span><span class="st">")"</span>)</span>
+<span id="cb13-516"><a></a>  </span>
+<span id="cb13-517"><a></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(curve))</span>
+<span id="cb13-518"><a></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)<span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
+<span id="cb13-519"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)</span>
+<span id="cb13-520"><a></a>    </span>
+<span id="cb13-521"><a></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
+<span id="cb13-522"><a></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"thistle"</span>)<span class="op">.</span><span class="fu">style</span>(<span class="st">"fill-opacity"</span><span class="op">,</span> <span class="fl">0.5</span>)</span>
+<span id="cb13-523"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(curve))</span>
+<span id="cb13-524"><a></a>    </span>
+<span id="cb13-525"><a></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
+<span id="cb13-526"><a></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"thistle"</span>)<span class="op">.</span><span class="fu">style</span>(<span class="st">"fill-opacity"</span><span class="op">,</span> <span class="fl">0.5</span>)</span>
+<span id="cb13-527"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(curve))</span>
+<span id="cb13-528"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"clip-path"</span><span class="op">,</span> <span class="st">"url(#clip)"</span>)</span>
+<span id="cb13-529"><a></a></span>
+<span id="cb13-530"><a></a>    </span>
+<span id="cb13-531"><a></a>  <span class="kw">function</span> <span class="fu">update</span>() {</span>
+<span id="cb13-532"><a></a>  </span>
+<span id="cb13-533"><a></a>  svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"clipPath"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
+<span id="cb13-534"><a></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"clipPath"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"clip"</span>)</span>
+<span id="cb13-535"><a></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
+<span id="cb13-536"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> <span class="fu">x</span>(num))</span>
+<span id="cb13-537"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
+<span id="cb13-538"><a></a>  }</span>
+<span id="cb13-539"><a></a>  </span>
+<span id="cb13-540"><a></a>  <span class="fu">update</span>()<span class="op">;</span></span>
+<span id="cb13-541"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -1149,6 +1157,7 @@ p(both \ white) &amp; = .2 * .18  \approx .037 \end{align}\]</span></p>
 </div>
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <button id="theme-toggle">
 <svg id="moon" class="d-block d-block-light d-none" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 384 512">
@@ -1160,6 +1169,7 @@ p(both \ white) &amp; = .2 * .18  \approx .037 \end{align}\]</span></p>
 <path d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM352 256c0 53-43 96-96 96s-96-43-96-96s43-96 96-96s96 43 96 96zm32 0c0-70.7-57.3-128-128-128s-128 57.3-128 128s57.3 128 128 128s128-57.3 128-128z"></path>
 </svg>
 </button>
+</div>
 </div>
 </section>
     </div>
@@ -1189,7 +1199,6 @@ p(both \ white) &amp; = .2 * .18  \approx .037 \end{align}\]</span></p>
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1461,9 +1470,8 @@ p(both \ white) &amp; = .2 * .18  \approx .037 \end{align}\]</span></p>
     });
 
     </script>
-    
     <script type="ojs-module-contents">
-    {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\ntable_selection = {\n  var num = 0\n  \n  function getNumberFromTable() {\n    try {\n      num = d3.select(this).select(\"td\")._groups[0][0].innerHTML;\n    } catch {} finally {update();}\n  }\n  \n  d3.select(\"#tbl\").selectAll(\"tr\").on(\"mouseover\", getNumberFromTable)\n  \n  const w = 500\n  const h = 400\n  \n  const margins = {t: 50, r: 10, b: 50, l: 10}\n  \n  const x = d3.scaleLinear()\n    .domain([-3,3])\n    .range([margins.l,w-margins.r])\n  const y = d3.scaleLinear()\n    .domain([0,0.41])\n    .range([h-margins.b,margins.t])\n  const line = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density))\n  const axis = d3.axisBottom(x)\n  \n  const svg = d3.select(\"#z-container\")\n    .append(\"svg\").attr(\"width\", w).attr(\"height\", h)\n  \n  svg.append(\"g\")\n    .call(axis)\n    .attr(\"transform\", \"translate(0,\" + y(0) +\")\")\n  \n  svg.append(\"path\").attr(\"d\", line(curve))\n    .style(\"stroke\", \"black\").style(\"fill\", \"none\")\n    .attr(\"class\", \"invertable\")\n    \n  svg.append(\"path\")\n    .style(\"fill\", \"thistle\").style(\"fill-opacity\", 0.5)\n    .attr(\"d\", line(curve))\n    \n  svg.append(\"path\")\n    .style(\"fill\", \"thistle\").style(\"fill-opacity\", 0.5)\n    .attr(\"d\", line(curve))\n    .attr(\"clip-path\", \"url(#clip)\")\n\n    \n  function update() {\n  \n  svg.selectAll(\"clipPath\").remove()\n  svg.append(\"clipPath\").attr(\"id\", \"clip\")\n    .append(\"rect\")\n    .attr(\"width\", x(num))\n    .attr(\"height\", h)\n  }\n  \n  update();\n}\n\n"}]}
+    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxudGFibGVfc2VsZWN0aW9uID0ge1xuICB2YXIgbnVtID0gMFxuICBcbiAgZnVuY3Rpb24gZ2V0TnVtYmVyRnJvbVRhYmxlKCkge1xuICAgIHRyeSB7XG4gICAgICBudW0gPSBkMy5zZWxlY3QodGhpcykuc2VsZWN0KFwidGRcIikuX2dyb3Vwc1swXVswXS5pbm5lckhUTUw7XG4gICAgfSBjYXRjaCB7fSBmaW5hbGx5IHt1cGRhdGUoKTt9XG4gIH1cbiAgXG4gIGQzLnNlbGVjdChcIiN0YmxcIikuc2VsZWN0QWxsKFwidHJcIikub24oXCJtb3VzZW92ZXJcIiwgZ2V0TnVtYmVyRnJvbVRhYmxlKVxuICBcbiAgY29uc3QgdyA9IDUwMFxuICBjb25zdCBoID0gNDAwXG4gIFxuICBjb25zdCBtYXJnaW5zID0ge3Q6IDUwLCByOiAxMCwgYjogNTAsIGw6IDEwfVxuICBcbiAgY29uc3QgeCA9IGQzLnNjYWxlTGluZWFyKClcbiAgICAuZG9tYWluKFstMywzXSlcbiAgICAucmFuZ2UoW21hcmdpbnMubCx3LW1hcmdpbnMucl0pXG4gIGNvbnN0IHkgPSBkMy5zY2FsZUxpbmVhcigpXG4gICAgLmRvbWFpbihbMCwwLjQxXSlcbiAgICAucmFuZ2UoW2gtbWFyZ2lucy5iLG1hcmdpbnMudF0pXG4gIGNvbnN0IGxpbmUgPSBkMy5saW5lKClcbiAgICAueChkID0+IHgoZC52YWx1ZSkpXG4gICAgLnkoZCA9PiB5KGQuZGVuc2l0eSkpXG4gIGNvbnN0IGF4aXMgPSBkMy5heGlzQm90dG9tKHgpXG4gIFxuICBjb25zdCBzdmcgPSBkMy5zZWxlY3QoXCIjei1jb250YWluZXJcIilcbiAgICAuYXBwZW5kKFwic3ZnXCIpLmF0dHIoXCJ3aWR0aFwiLCB3KS5hdHRyKFwiaGVpZ2h0XCIsIGgpXG4gIFxuICBzdmcuYXBwZW5kKFwiZ1wiKVxuICAgIC5jYWxsKGF4aXMpXG4gICAgLmF0dHIoXCJ0cmFuc2Zvcm1cIiwgXCJ0cmFuc2xhdGUoMCxcIiArIHkoMCkgK1wiKVwiKVxuICBcbiAgc3ZnLmFwcGVuZChcInBhdGhcIikuYXR0cihcImRcIiwgbGluZShjdXJ2ZSkpXG4gICAgLnN0eWxlKFwic3Ryb2tlXCIsIFwiYmxhY2tcIikuc3R5bGUoXCJmaWxsXCIsIFwibm9uZVwiKVxuICAgIC5hdHRyKFwiY2xhc3NcIiwgXCJpbnZlcnRhYmxlXCIpXG4gICAgXG4gIHN2Zy5hcHBlbmQoXCJwYXRoXCIpXG4gICAgLnN0eWxlKFwiZmlsbFwiLCBcInRoaXN0bGVcIikuc3R5bGUoXCJmaWxsLW9wYWNpdHlcIiwgMC41KVxuICAgIC5hdHRyKFwiZFwiLCBsaW5lKGN1cnZlKSlcbiAgICBcbiAgc3ZnLmFwcGVuZChcInBhdGhcIilcbiAgICAuc3R5bGUoXCJmaWxsXCIsIFwidGhpc3RsZVwiKS5zdHlsZShcImZpbGwtb3BhY2l0eVwiLCAwLjUpXG4gICAgLmF0dHIoXCJkXCIsIGxpbmUoY3VydmUpKVxuICAgIC5hdHRyKFwiY2xpcC1wYXRoXCIsIFwidXJsKCNjbGlwKVwiKVxuXG4gICAgXG4gIGZ1bmN0aW9uIHVwZGF0ZSgpIHtcbiAgXG4gIHN2Zy5zZWxlY3RBbGwoXCJjbGlwUGF0aFwiKS5yZW1vdmUoKVxuICBzdmcuYXBwZW5kKFwiY2xpcFBhdGhcIikuYXR0cihcImlkXCIsIFwiY2xpcFwiKVxuICAgIC5hcHBlbmQoXCJyZWN0XCIpXG4gICAgLmF0dHIoXCJ3aWR0aFwiLCB4KG51bSkpXG4gICAgLmF0dHIoXCJoZWlnaHRcIiwgaClcbiAgfVxuICBcbiAgdXBkYXRlKCk7XG59XG5cbiJ9XX0=
     </script>
     <script type="module">
     if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -1587,10 +1595,32 @@ p(both \ white) &amp; = .2 * .18  \approx .037 \end{align}\]</span></p>
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+              // target, if specified
+              link.setAttribute("target", "_blank");
+              if (link.getAttribute("rel") === null) {
+                link.setAttribute("rel", "noopener");
+              }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1600,8 +1630,17 @@ p(both \ white) &amp; = .2 * .18  \approx .037 \end{align}\]</span></p>
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1615,7 +1654,11 @@ p(both \ white) &amp; = .2 * .18  \approx .037 \end{align}\]</span></p>
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
@@ -1655,20 +1698,6 @@ p(both \ white) &amp; = .2 * .18  \approx .037 \end{align}\]</span></p>
           });
         }
       }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-              // target, if specified
-              link.setAttribute("target", "_blank");
-          }
-        }
     });
     </script>
     

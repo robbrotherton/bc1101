@@ -8,9 +8,9 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.310">
+  <meta name="generator" content="quarto-1.4.551">
 
-  <title>PSYC BC1101 – frequency</title>
+  <title>PSYC BC1101</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,7 +30,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -94,7 +94,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -222,7 +222,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -487,6 +488,7 @@
 <div style="font-size: 0.75em;">
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -522,6 +524,7 @@
 </div>
 </div>
 </div>
+</div>
 </div><div class="column" style="width:70%;">
 <ul>
 <li>Or this</li>
@@ -549,6 +552,7 @@
 </ul>
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -601,6 +605,7 @@
 
 </div>
 </div>
+</div>
 </section>
 <section id="frequency-tables-1" class="slide level2">
 <h2>Frequency tables</h2>
@@ -629,6 +634,7 @@
 </div><div class="column table-small top" style="width:30%;">
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -721,6 +727,7 @@
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="grouped-frequency-table" class="slide level2">
 <h2>Grouped frequency table</h2>
@@ -748,6 +755,7 @@
 </div><div class="column table-small" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -800,6 +808,7 @@
 </table>
 
 
+</div>
 </div>
 </div>
 </div>
@@ -870,6 +879,7 @@
 </div><div class="column table-small" style="width:20%;">
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -922,6 +932,7 @@
 </table>
 
 
+</div>
 </div>
 </div>
 </div>
@@ -1002,6 +1013,7 @@
 </div><div class="column" style="width:20%;">
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -1038,64 +1050,65 @@
 </div>
 </div>
 </div>
+</div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="381" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 380;"><span id="cb3-381"><a href="#cb3-381"></a>coverAnim <span class="op">=</span> {</span>
-<span id="cb3-382"><a href="#cb3-382"></a></span>
-<span id="cb3-383"><a href="#cb3-383"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">1050</span></span>
-<span id="cb3-384"><a href="#cb3-384"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">500</span></span>
-<span id="cb3-385"><a href="#cb3-385"></a>  </span>
-<span id="cb3-386"><a href="#cb3-386"></a>  <span class="kw">const</span> x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb3-387"><a href="#cb3-387"></a>              <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">6</span>])</span>
-<span id="cb3-388"><a href="#cb3-388"></a>              <span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span>w])</span>
-<span id="cb3-389"><a href="#cb3-389"></a>  <span class="kw">const</span> y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb3-390"><a href="#cb3-390"></a>              <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span> <span class="fl">0.36</span>])</span>
-<span id="cb3-391"><a href="#cb3-391"></a>              <span class="op">.</span><span class="fu">range</span>([h<span class="op">,</span><span class="dv">0</span>])</span>
-<span id="cb3-392"><a href="#cb3-392"></a>  <span class="kw">const</span> line <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()</span>
-<span id="cb3-393"><a href="#cb3-393"></a>                <span class="op">.</span><span class="fu">x</span>(d <span class="kw">=&gt;</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">value</span>))</span>
-<span id="cb3-394"><a href="#cb3-394"></a>                <span class="op">.</span><span class="fu">y</span>(d <span class="kw">=&gt;</span> <span class="fu">y</span>(d<span class="op">.</span><span class="at">density</span>))</span>
-<span id="cb3-395"><a href="#cb3-395"></a>  </span>
-<span id="cb3-396"><a href="#cb3-396"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#cover-image"</span>)</span>
-<span id="cb3-397"><a href="#cb3-397"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)</span>
-<span id="cb3-398"><a href="#cb3-398"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)</span>
-<span id="cb3-399"><a href="#cb3-399"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
-<span id="cb3-400"><a href="#cb3-400"></a>    </span>
-<span id="cb3-401"><a href="#cb3-401"></a>  <span class="kw">const</span> path <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
-<span id="cb3-402"><a href="#cb3-402"></a>    <span class="op">.</span><span class="fu">datum</span>(data)</span>
-<span id="cb3-403"><a href="#cb3-403"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> line)</span>
-<span id="cb3-404"><a href="#cb3-404"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
-<span id="cb3-405"><a href="#cb3-405"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)</span>
-<span id="cb3-406"><a href="#cb3-406"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)</span>
-<span id="cb3-407"><a href="#cb3-407"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">2</span>)</span>
-<span id="cb3-408"><a href="#cb3-408"></a>    </span>
-<span id="cb3-409"><a href="#cb3-409"></a>  <span class="kw">const</span> length <span class="op">=</span> path<span class="op">.</span><span class="fu">node</span>()<span class="op">.</span><span class="fu">getTotalLength</span>()</span>
-<span id="cb3-410"><a href="#cb3-410"></a>  </span>
-<span id="cb3-411"><a href="#cb3-411"></a>  path</span>
-<span id="cb3-412"><a href="#cb3-412"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dasharray"</span><span class="op">,</span> length <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> length)</span>
-<span id="cb3-413"><a href="#cb3-413"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> length)</span>
-<span id="cb3-414"><a href="#cb3-414"></a>  path</span>
-<span id="cb3-415"><a href="#cb3-415"></a>    <span class="op">.</span><span class="fu">transition</span>()</span>
-<span id="cb3-416"><a href="#cb3-416"></a>    <span class="op">.</span><span class="fu">duration</span>(<span class="dv">2000</span>)</span>
-<span id="cb3-417"><a href="#cb3-417"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> <span class="dv">0</span>)</span>
-<span id="cb3-418"><a href="#cb3-418"></a>  </span>
-<span id="cb3-419"><a href="#cb3-419"></a>  <span class="kw">const</span> sleep <span class="op">=</span> (milliseconds) <span class="kw">=&gt;</span> {</span>
-<span id="cb3-420"><a href="#cb3-420"></a>    <span class="cf">return</span> <span class="kw">new</span> <span class="bu">Promise</span>(resolve <span class="kw">=&gt;</span> <span class="pp">setTimeout</span>(resolve<span class="op">,</span> milliseconds))</span>
-<span id="cb3-421"><a href="#cb3-421"></a>  }</span>
-<span id="cb3-422"><a href="#cb3-422"></a></span>
-<span id="cb3-423"><a href="#cb3-423"></a>  <span class="kw">function</span> <span class="fu">anim</span>() {</span>
-<span id="cb3-424"><a href="#cb3-424"></a>    path</span>
-<span id="cb3-425"><a href="#cb3-425"></a>    <span class="op">.</span><span class="fu">transition</span>()<span class="op">.</span><span class="fu">duration</span>(<span class="dv">2000</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> <span class="op">-</span>length)</span>
-<span id="cb3-426"><a href="#cb3-426"></a>    <span class="op">.</span><span class="fu">transition</span>()<span class="op">.</span><span class="fu">duration</span>(<span class="dv">0</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> length)</span>
-<span id="cb3-427"><a href="#cb3-427"></a>    <span class="op">.</span><span class="fu">transition</span>()</span>
-<span id="cb3-428"><a href="#cb3-428"></a>    <span class="op">.</span><span class="fu">duration</span>(<span class="dv">3000</span>)</span>
-<span id="cb3-429"><a href="#cb3-429"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> <span class="dv">0</span>)</span>
-<span id="cb3-430"><a href="#cb3-430"></a>    <span class="op">.</span><span class="fu">on</span>(<span class="st">"end"</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="fu">sleep</span>(<span class="dv">2000</span>)<span class="op">.</span><span class="fu">then</span>(anim))</span>
-<span id="cb3-431"><a href="#cb3-431"></a>  }<span class="op">;</span></span>
-<span id="cb3-432"><a href="#cb3-432"></a></span>
-<span id="cb3-433"><a href="#cb3-433"></a>  svg<span class="op">.</span><span class="fu">on</span>(<span class="st">"click"</span><span class="op">,</span> anim)<span class="op">;</span></span>
-<span id="cb3-434"><a href="#cb3-434"></a>                </span>
-<span id="cb3-435"><a href="#cb3-435"></a>  <span class="cf">return</span> svg<span class="op">.</span><span class="fu">node</span>()<span class="op">;</span></span>
-<span id="cb3-436"><a href="#cb3-436"></a>  </span>
-<span id="cb3-437"><a href="#cb3-437"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="381" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 380;"><span id="cb3-381"><a></a>coverAnim <span class="op">=</span> {</span>
+<span id="cb3-382"><a></a></span>
+<span id="cb3-383"><a></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">1050</span></span>
+<span id="cb3-384"><a></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb3-385"><a></a>  </span>
+<span id="cb3-386"><a></a>  <span class="kw">const</span> x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb3-387"><a></a>              <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">6</span>])</span>
+<span id="cb3-388"><a></a>              <span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span>w])</span>
+<span id="cb3-389"><a></a>  <span class="kw">const</span> y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb3-390"><a></a>              <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span> <span class="fl">0.36</span>])</span>
+<span id="cb3-391"><a></a>              <span class="op">.</span><span class="fu">range</span>([h<span class="op">,</span><span class="dv">0</span>])</span>
+<span id="cb3-392"><a></a>  <span class="kw">const</span> line <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()</span>
+<span id="cb3-393"><a></a>                <span class="op">.</span><span class="fu">x</span>(d <span class="kw">=&gt;</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">value</span>))</span>
+<span id="cb3-394"><a></a>                <span class="op">.</span><span class="fu">y</span>(d <span class="kw">=&gt;</span> <span class="fu">y</span>(d<span class="op">.</span><span class="at">density</span>))</span>
+<span id="cb3-395"><a></a>  </span>
+<span id="cb3-396"><a></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#cover-image"</span>)</span>
+<span id="cb3-397"><a></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)</span>
+<span id="cb3-398"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)</span>
+<span id="cb3-399"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
+<span id="cb3-400"><a></a>    </span>
+<span id="cb3-401"><a></a>  <span class="kw">const</span> path <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
+<span id="cb3-402"><a></a>    <span class="op">.</span><span class="fu">datum</span>(data)</span>
+<span id="cb3-403"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> line)</span>
+<span id="cb3-404"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
+<span id="cb3-405"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)</span>
+<span id="cb3-406"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)</span>
+<span id="cb3-407"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">2</span>)</span>
+<span id="cb3-408"><a></a>    </span>
+<span id="cb3-409"><a></a>  <span class="kw">const</span> length <span class="op">=</span> path<span class="op">.</span><span class="fu">node</span>()<span class="op">.</span><span class="fu">getTotalLength</span>()</span>
+<span id="cb3-410"><a></a>  </span>
+<span id="cb3-411"><a></a>  path</span>
+<span id="cb3-412"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dasharray"</span><span class="op">,</span> length <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> length)</span>
+<span id="cb3-413"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> length)</span>
+<span id="cb3-414"><a></a>  path</span>
+<span id="cb3-415"><a></a>    <span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb3-416"><a></a>    <span class="op">.</span><span class="fu">duration</span>(<span class="dv">2000</span>)</span>
+<span id="cb3-417"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> <span class="dv">0</span>)</span>
+<span id="cb3-418"><a></a>  </span>
+<span id="cb3-419"><a></a>  <span class="kw">const</span> sleep <span class="op">=</span> (milliseconds) <span class="kw">=&gt;</span> {</span>
+<span id="cb3-420"><a></a>    <span class="cf">return</span> <span class="kw">new</span> <span class="bu">Promise</span>(resolve <span class="kw">=&gt;</span> <span class="pp">setTimeout</span>(resolve<span class="op">,</span> milliseconds))</span>
+<span id="cb3-421"><a></a>  }</span>
+<span id="cb3-422"><a></a></span>
+<span id="cb3-423"><a></a>  <span class="kw">function</span> <span class="fu">anim</span>() {</span>
+<span id="cb3-424"><a></a>    path</span>
+<span id="cb3-425"><a></a>    <span class="op">.</span><span class="fu">transition</span>()<span class="op">.</span><span class="fu">duration</span>(<span class="dv">2000</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> <span class="op">-</span>length)</span>
+<span id="cb3-426"><a></a>    <span class="op">.</span><span class="fu">transition</span>()<span class="op">.</span><span class="fu">duration</span>(<span class="dv">0</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> length)</span>
+<span id="cb3-427"><a></a>    <span class="op">.</span><span class="fu">transition</span>()</span>
+<span id="cb3-428"><a></a>    <span class="op">.</span><span class="fu">duration</span>(<span class="dv">3000</span>)</span>
+<span id="cb3-429"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-dashoffset"</span><span class="op">,</span> <span class="dv">0</span>)</span>
+<span id="cb3-430"><a></a>    <span class="op">.</span><span class="fu">on</span>(<span class="st">"end"</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="fu">sleep</span>(<span class="dv">2000</span>)<span class="op">.</span><span class="fu">then</span>(anim))</span>
+<span id="cb3-431"><a></a>  }<span class="op">;</span></span>
+<span id="cb3-432"><a></a></span>
+<span id="cb3-433"><a></a>  svg<span class="op">.</span><span class="fu">on</span>(<span class="st">"click"</span><span class="op">,</span> anim)<span class="op">;</span></span>
+<span id="cb3-434"><a></a>                </span>
+<span id="cb3-435"><a></a>  <span class="cf">return</span> svg<span class="op">.</span><span class="fu">node</span>()<span class="op">;</span></span>
+<span id="cb3-436"><a></a>  </span>
+<span id="cb3-437"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -1103,6 +1116,7 @@
 </div>
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <button id="theme-toggle">
 <svg id="moon" class="d-block d-block-light d-none" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 384 512">
@@ -1114,6 +1128,7 @@
 <path d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM352 256c0 53-43 96-96 96s-96-43-96-96s43-96 96-96s96 43 96 96zm32 0c0-70.7-57.3-128-128-128s-128 57.3-128 128s57.3 128 128 128s128-57.3 128-128z"></path>
 </svg>
 </button>
+</div>
 </div>
 </section>
 
@@ -1145,7 +1160,6 @@
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1417,9 +1431,8 @@
     });
 
     </script>
-    
     <script type="ojs-module-contents">
-    {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\ncoverAnim = {\n\n  const w = 1050\n  const h = 500\n  \n  const x = d3.scaleLinear()\n              .domain([0, 6])\n              .range([0,w])\n  const y = d3.scaleLinear()\n              .domain([0, 0.36])\n              .range([h,0])\n  const line = d3.line()\n                .x(d => x(d.value))\n                .y(d => y(d.density))\n  \n  const svg = d3.select(\"#cover-image\")\n    .append(\"svg\")\n    .attr(\"width\", w)\n    .attr(\"height\", h)\n    \n  const path = svg.append(\"path\")\n    .datum(data)\n    .attr(\"d\", line)\n    .attr(\"fill\", \"none\")\n    .attr(\"stroke\", \"black\")\n    .attr(\"class\", \"invertable\")\n    .attr(\"stroke-width\", 2)\n    \n  const length = path.node().getTotalLength()\n  \n  path\n    .attr(\"stroke-dasharray\", length + \" \" + length)\n    .attr(\"stroke-dashoffset\", length)\n  path\n    .transition()\n    .duration(2000)\n    .attr(\"stroke-dashoffset\", 0)\n  \n  const sleep = (milliseconds) => {\n    return new Promise(resolve => setTimeout(resolve, milliseconds))\n  }\n\n  function anim() {\n    path\n    .transition().duration(2000).attr(\"stroke-dashoffset\", -length)\n    .transition().duration(0).attr(\"stroke-dashoffset\", length)\n    .transition()\n    .duration(3000)\n    .attr(\"stroke-dashoffset\", 0)\n    .on(\"end\", () => sleep(2000).then(anim))\n  };\n\n  svg.on(\"click\", anim);\n                \n  return svg.node();\n  \n}\n\n"}]}
+    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuY292ZXJBbmltID0ge1xuXG4gIGNvbnN0IHcgPSAxMDUwXG4gIGNvbnN0IGggPSA1MDBcbiAgXG4gIGNvbnN0IHggPSBkMy5zY2FsZUxpbmVhcigpXG4gICAgICAgICAgICAgIC5kb21haW4oWzAsIDZdKVxuICAgICAgICAgICAgICAucmFuZ2UoWzAsd10pXG4gIGNvbnN0IHkgPSBkMy5zY2FsZUxpbmVhcigpXG4gICAgICAgICAgICAgIC5kb21haW4oWzAsIDAuMzZdKVxuICAgICAgICAgICAgICAucmFuZ2UoW2gsMF0pXG4gIGNvbnN0IGxpbmUgPSBkMy5saW5lKClcbiAgICAgICAgICAgICAgICAueChkID0+IHgoZC52YWx1ZSkpXG4gICAgICAgICAgICAgICAgLnkoZCA9PiB5KGQuZGVuc2l0eSkpXG4gIFxuICBjb25zdCBzdmcgPSBkMy5zZWxlY3QoXCIjY292ZXItaW1hZ2VcIilcbiAgICAuYXBwZW5kKFwic3ZnXCIpXG4gICAgLmF0dHIoXCJ3aWR0aFwiLCB3KVxuICAgIC5hdHRyKFwiaGVpZ2h0XCIsIGgpXG4gICAgXG4gIGNvbnN0IHBhdGggPSBzdmcuYXBwZW5kKFwicGF0aFwiKVxuICAgIC5kYXR1bShkYXRhKVxuICAgIC5hdHRyKFwiZFwiLCBsaW5lKVxuICAgIC5hdHRyKFwiZmlsbFwiLCBcIm5vbmVcIilcbiAgICAuYXR0cihcInN0cm9rZVwiLCBcImJsYWNrXCIpXG4gICAgLmF0dHIoXCJjbGFzc1wiLCBcImludmVydGFibGVcIilcbiAgICAuYXR0cihcInN0cm9rZS13aWR0aFwiLCAyKVxuICAgIFxuICBjb25zdCBsZW5ndGggPSBwYXRoLm5vZGUoKS5nZXRUb3RhbExlbmd0aCgpXG4gIFxuICBwYXRoXG4gICAgLmF0dHIoXCJzdHJva2UtZGFzaGFycmF5XCIsIGxlbmd0aCArIFwiIFwiICsgbGVuZ3RoKVxuICAgIC5hdHRyKFwic3Ryb2tlLWRhc2hvZmZzZXRcIiwgbGVuZ3RoKVxuICBwYXRoXG4gICAgLnRyYW5zaXRpb24oKVxuICAgIC5kdXJhdGlvbigyMDAwKVxuICAgIC5hdHRyKFwic3Ryb2tlLWRhc2hvZmZzZXRcIiwgMClcbiAgXG4gIGNvbnN0IHNsZWVwID0gKG1pbGxpc2Vjb25kcykgPT4ge1xuICAgIHJldHVybiBuZXcgUHJvbWlzZShyZXNvbHZlID0+IHNldFRpbWVvdXQocmVzb2x2ZSwgbWlsbGlzZWNvbmRzKSlcbiAgfVxuXG4gIGZ1bmN0aW9uIGFuaW0oKSB7XG4gICAgcGF0aFxuICAgIC50cmFuc2l0aW9uKCkuZHVyYXRpb24oMjAwMCkuYXR0cihcInN0cm9rZS1kYXNob2Zmc2V0XCIsIC1sZW5ndGgpXG4gICAgLnRyYW5zaXRpb24oKS5kdXJhdGlvbigwKS5hdHRyKFwic3Ryb2tlLWRhc2hvZmZzZXRcIiwgbGVuZ3RoKVxuICAgIC50cmFuc2l0aW9uKClcbiAgICAuZHVyYXRpb24oMzAwMClcbiAgICAuYXR0cihcInN0cm9rZS1kYXNob2Zmc2V0XCIsIDApXG4gICAgLm9uKFwiZW5kXCIsICgpID0+IHNsZWVwKDIwMDApLnRoZW4oYW5pbSkpXG4gIH07XG5cbiAgc3ZnLm9uKFwiY2xpY2tcIiwgYW5pbSk7XG4gICAgICAgICAgICAgICAgXG4gIHJldHVybiBzdmcubm9kZSgpO1xuICBcbn1cblxuIn1dfQ==
     </script>
     <script type="module">
     if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -1543,10 +1556,32 @@
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+              // target, if specified
+              link.setAttribute("target", "_blank");
+              if (link.getAttribute("rel") === null) {
+                link.setAttribute("rel", "noopener");
+              }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1556,8 +1591,17 @@
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1571,7 +1615,11 @@
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
@@ -1611,20 +1659,6 @@
           });
         }
       }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-              // target, if specified
-              link.setAttribute("target", "_blank");
-          }
-        }
     });
     </script>
     

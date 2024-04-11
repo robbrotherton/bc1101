@@ -438,6 +438,7 @@ table thead {
 .lecture-image {
   float: left;
   width: 50%;
+  padding: 20px;
 }
 
 .lecture-overview {
@@ -445,6 +446,8 @@ table thead {
   font-size: min(max(0.6em, 2vw), 1em);
   position: relative;
   width: 50%;
+  height: 100%;
+  padding-top: 15px;
 }
 
 .footer {

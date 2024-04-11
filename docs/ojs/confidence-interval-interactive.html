@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.310">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -79,7 +79,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -88,8 +94,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
@@ -102,9 +110,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">PSYC BC1101</span>
     </a>
@@ -116,36 +124,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target=""><i class="bi bi-file-text" role="img">
+    <a class="nav-link" href="../index.html"> <i class="bi bi-file-text" role="img">
 </i> 
- <span class="menu-text">Syllabus</span></a>
+<span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../lectures.html" rel="" target=""><i class="bi bi-easel2" role="img">
+    <a class="nav-link" href="../lectures.html"> <i class="bi bi-easel2" role="img">
 </i> 
- <span class="menu-text">Lectures</span></a>
+<span class="menu-text">Lectures</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../recitation.html" rel="" target=""><i class="bi bi-code-slash" role="img">
+    <a class="nav-link" href="../recitation.html"> <i class="bi bi-code-slash" role="img">
 </i> 
- <span class="menu-text">Recitation</span></a>
+<span class="menu-text">Recitation</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://docs.google.com/document/d/1dFyI32mothgeqGG7jxXR3AEar_eVbZ869oZHPaNvif8/edit?usp=sharing" rel="" target="blank"><i class="bi bi-people" role="img">
+    <a class="nav-link" href="https://docs.google.com/document/d/1dFyI32mothgeqGG7jxXR3AEar_eVbZ869oZHPaNvif8/edit?usp=sharing" target="blank"> <i class="bi bi-people" role="img">
 </i> 
- <span class="menu-text">Class notes</span></a>
+<span class="menu-text">Class notes</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../_" rel="" target=""><i class="bi bi-moon" role="img">
+    <a class="nav-link" href="../_"> <i class="bi bi-moon" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -172,7 +180,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <div id="controls" style="align-content: baseline; position: relative; top: 4em; width: 60%;">
 <p><label for="confidence-input" style="font-family: KaTeX_Main, Times; font-size: 1em; height: 1em;">Confidence:&nbsp;</label><span id="confidence-value" class="math" style="display: inline-block; width: 1em;">95%</span><input data-prevent-swipe="" type="range" id="confidence-input" name="confidence" value="95" min="0" max="100" style="border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; margin-left: 1em; width: 50%; vertical-align: unset;"></p>
@@ -412,9 +422,8 @@ toggle.click(function( event ) {
     localStorage.setItem('theme', targetTheme);
 });
 </script>
-
 <script type="ojs-module-contents">
-{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"jStat = require(\"https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js\")\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"\n\nci = {\n\n  const w = 1050\n  const h = 600\n  const m = {t: 0, r: 0, l: 0, b: 100}\n  \n  const f = d3.format(\".2f\")\n  const x = d3.scaleLinear()\n    .range([0,w])\n  const y = d3.scaleLinear()\n    .range([h-m.b,m.t])\n  const line = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density))\n  const arrows = [{id: -1,points: [[0,0],[5,5],[5,-5]]},\n                  {id: 1, points: [[-5,5],[0,0],[-5,-5]]}]\n                  \n  const xAxis = d3.axisBottom(x)\n  \n  var confidence, n, mean, sd, std_err, critical, xlim;\n  \n  const confidenceInput = document.getElementById('confidence-input')\n  const nInput = document.getElementById('n-input')\n  const meanInput = document.getElementById('mean-input')\n  const sdInput = document.getElementById('sd-input')\n  \n  function updateCritical() {\n    var upper = 1 - (1 - confidence/100)*0.5\n    var lower = 1 - upper\n    critical = [jStat.normal.inv(lower, mean, std_err),\n                jStat.normal.inv(upper, mean, std_err)]\n  }\n  \n  function getParams() {\n    confidence = confidenceInput.value\n    n = nInput.value\n    mean = meanInput.value\n    sd = sdInput.value\n    std_err = sd / Math.sqrt(n)\n    updateCritical()\n    xlim = [mean-3*std_err,Number(mean+3*std_err)]\n    x.domain([xlim[0], xlim[1]])\n    y.domain([0, jStat.normal.pdf(0, mean, std_err)+0.01])\n    d3.select(\"#std-err-value\").text(f(std_err))\n  }\n  \n  \n  confidenceInput.oninput = function() {\n    confidence = confidenceInput.value\n    d3.select(\"#confidence-value\").text(confidence + \"%\")\n    updateCritical();\n    updateCurve();\n    updateClip();\n  };\n  \n  nInput.oninput = function() {\n    n = nInput.value\n    std_err = sd/Math.sqrt(n)\n    d3.select(\"#n-value\").text(n)\n    d3.select(\"#std-err-value\").text(f(std_err))\n    updateCritical();\n    updateCurve();\n    updateClip();\n  };\n    \n  meanInput.oninput = function() {\n    mean = Number(meanInput.value)\n    updateCritical();\n    updateCurve();\n    updateClip();\n  };\n  \n  sdInput.oninput = function() {\n    sd = sdInput.value\n    std_err = sd/Math.sqrt(n)\n    d3.select(\"#std-err-value\").text(f(std_err))\n    updateCritical();\n    updateCurve();\n    updateClip();\n  };\n  \n  function makeCurve(mean, std_err) {\n    var values = jStat(xlim[0], xlim[1], 210)[0],\n        arr = [];\n    for (var i in values) {\n      arr.push({\n          value: values[i], \n          density: jStat.normal.pdf(values[i], mean, std_err)\n      })\n    }\n    return arr;\n  }\n  \n  function updateCurve() {\n    xlim = [Number(mean-3*std_err),Number(mean+3*std_err)]\n    <!-- console.log(xlim) -->\n    x.domain([xlim[0], xlim[1]])\n    y.domain([0, jStat.normal.pdf(mean, mean, std_err)+0.01])\n    \n    axis.call(xAxis)\n    \n    curveLine.attr(\"d\", line(makeCurve(mean, std_err)))\n    curveFill.attr(\"d\", line(makeCurve(mean, std_err)))\n    \n    meanLine.select(\"line\")\n      .attr(\"x1\", x(mean)).attr(\"x2\", x(mean))\n      .attr(\"y1\", y(0)).attr(\"y2\", y(jStat.normal.pdf(mean, mean, std_err)))\n    meanLine.select(\"circle\")\n      .attr(\"cx\", x(mean)).attr(\"cy\", y(0)).attr(\"r\", 5)\n      \n    marginOfError.attr(\"transform\", `translate(0, ${y(jStat.normal.pdf(critical[0], mean, std_err)/2)})`)\n    marginOfError.select(\"line\")\n      .attr(\"x1\", x(critical[0])).attr(\"x2\", x(critical[1]))\n    marginOfError.select(\"#arrow-l\").attr(\"transform\", `translate(${x(critical[0])}, 0) scale(2)`)\n    marginOfError.select(\"#arrow-r\").attr(\"transform\", `translate(${x(critical[1])}, 0) scale(2)`)\n  }\n  \n  function updateClip() {\n    clip.attr(\"points\", [[x(critical[0]),0],[x(critical[0]),h],[x(critical[1]),h],[x(critical[1]),0]])\n  }\n  \n  const svg = d3.select(\"#confidence-interval\").append(\"svg\")\n    .attr(\"viewBox\", \"0 0 \" + w + \" \" + h)\n    .attr(\"preserveAspectRatio\", \"xMinYMin meet\")\n    .attr(\"class\", \"svg-content\")\n    \n  const axis = svg.append(\"g\").attr(\"transform\", `translate(0, ${y(0)})`)\n    .style(\"font-size\", \"2em\")\n  \n  const curveLine = svg.append(\"path\")\n    .style(\"fill\", \"none\")\n    .style(\"stroke\", \"black\")\n    .style(\"stroke-width\", 3)\n    .attr(\"class\", \"invertable\")\n    \n  const clip = svg.append(\"clipPath\").attr(\"id\", \"clip\").append(\"polygon\")\n\n  const curveFill = svg.append(\"path\")\n    .attr(\"clip-path\", \"url(#clip)\")\n    .style(\"fill\", \"lightblue\")\n    .style(\"stroke\", \"none\")\n    \n  const meanLine = svg.append(\"g\")\n  meanLine.append(\"line\")\n    .style(\"stroke\", \"black\")\n    .style(\"stroke-dasharray\", [10,10])\n  meanLine.append(\"circle\")\n    \n\n  const marginOfError = svg.append(\"g\")\n    .style(\"stroke\", \"black\")\n    <!-- .classed(\"invertable\", true) -->\n    \n  marginOfError.append(\"line\")\n    .style(\"stroke\", \"black\")\n\n  marginOfError.append(\"polygon\").attr(\"points\", arrows[0].points).attr(\"id\", \"arrow-l\")\n  marginOfError.append(\"polygon\").attr(\"points\", arrows[1].points).attr(\"id\", \"arrow-r\")\n\n\n\n  getParams();\n  updateClip();\n  updateCurve();\n  \n}\n\n"}]}
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImpTdGF0ID0gcmVxdWlyZShcImh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9ucG0vanN0YXRAbGF0ZXN0L2Rpc3QvanN0YXQubWluLmpzXCIpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcblxuY2kgPSB7XG5cbiAgY29uc3QgdyA9IDEwNTBcbiAgY29uc3QgaCA9IDYwMFxuICBjb25zdCBtID0ge3Q6IDAsIHI6IDAsIGw6IDAsIGI6IDEwMH1cbiAgXG4gIGNvbnN0IGYgPSBkMy5mb3JtYXQoXCIuMmZcIilcbiAgY29uc3QgeCA9IGQzLnNjYWxlTGluZWFyKClcbiAgICAucmFuZ2UoWzAsd10pXG4gIGNvbnN0IHkgPSBkMy5zY2FsZUxpbmVhcigpXG4gICAgLnJhbmdlKFtoLW0uYixtLnRdKVxuICBjb25zdCBsaW5lID0gZDMubGluZSgpXG4gICAgLngoZCA9PiB4KGQudmFsdWUpKVxuICAgIC55KGQgPT4geShkLmRlbnNpdHkpKVxuICBjb25zdCBhcnJvd3MgPSBbe2lkOiAtMSxwb2ludHM6IFtbMCwwXSxbNSw1XSxbNSwtNV1dfSxcbiAgICAgICAgICAgICAgICAgIHtpZDogMSwgcG9pbnRzOiBbWy01LDVdLFswLDBdLFstNSwtNV1dfV1cbiAgICAgICAgICAgICAgICAgIFxuICBjb25zdCB4QXhpcyA9IGQzLmF4aXNCb3R0b20oeClcbiAgXG4gIHZhciBjb25maWRlbmNlLCBuLCBtZWFuLCBzZCwgc3RkX2VyciwgY3JpdGljYWwsIHhsaW07XG4gIFxuICBjb25zdCBjb25maWRlbmNlSW5wdXQgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnY29uZmlkZW5jZS1pbnB1dCcpXG4gIGNvbnN0IG5JbnB1dCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCduLWlucHV0JylcbiAgY29uc3QgbWVhbklucHV0ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ21lYW4taW5wdXQnKVxuICBjb25zdCBzZElucHV0ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3NkLWlucHV0JylcbiAgXG4gIGZ1bmN0aW9uIHVwZGF0ZUNyaXRpY2FsKCkge1xuICAgIHZhciB1cHBlciA9IDEgLSAoMSAtIGNvbmZpZGVuY2UvMTAwKSowLjVcbiAgICB2YXIgbG93ZXIgPSAxIC0gdXBwZXJcbiAgICBjcml0aWNhbCA9IFtqU3RhdC5ub3JtYWwuaW52KGxvd2VyLCBtZWFuLCBzdGRfZXJyKSxcbiAgICAgICAgICAgICAgICBqU3RhdC5ub3JtYWwuaW52KHVwcGVyLCBtZWFuLCBzdGRfZXJyKV1cbiAgfVxuICBcbiAgZnVuY3Rpb24gZ2V0UGFyYW1zKCkge1xuICAgIGNvbmZpZGVuY2UgPSBjb25maWRlbmNlSW5wdXQudmFsdWVcbiAgICBuID0gbklucHV0LnZhbHVlXG4gICAgbWVhbiA9IG1lYW5JbnB1dC52YWx1ZVxuICAgIHNkID0gc2RJbnB1dC52YWx1ZVxuICAgIHN0ZF9lcnIgPSBzZCAvIE1hdGguc3FydChuKVxuICAgIHVwZGF0ZUNyaXRpY2FsKClcbiAgICB4bGltID0gW21lYW4tMypzdGRfZXJyLE51bWJlcihtZWFuKzMqc3RkX2VycildXG4gICAgeC5kb21haW4oW3hsaW1bMF0sIHhsaW1bMV1dKVxuICAgIHkuZG9tYWluKFswLCBqU3RhdC5ub3JtYWwucGRmKDAsIG1lYW4sIHN0ZF9lcnIpKzAuMDFdKVxuICAgIGQzLnNlbGVjdChcIiNzdGQtZXJyLXZhbHVlXCIpLnRleHQoZihzdGRfZXJyKSlcbiAgfVxuICBcbiAgXG4gIGNvbmZpZGVuY2VJbnB1dC5vbmlucHV0ID0gZnVuY3Rpb24oKSB7XG4gICAgY29uZmlkZW5jZSA9IGNvbmZpZGVuY2VJbnB1dC52YWx1ZVxuICAgIGQzLnNlbGVjdChcIiNjb25maWRlbmNlLXZhbHVlXCIpLnRleHQoY29uZmlkZW5jZSArIFwiJVwiKVxuICAgIHVwZGF0ZUNyaXRpY2FsKCk7XG4gICAgdXBkYXRlQ3VydmUoKTtcbiAgICB1cGRhdGVDbGlwKCk7XG4gIH07XG4gIFxuICBuSW5wdXQub25pbnB1dCA9IGZ1bmN0aW9uKCkge1xuICAgIG4gPSBuSW5wdXQudmFsdWVcbiAgICBzdGRfZXJyID0gc2QvTWF0aC5zcXJ0KG4pXG4gICAgZDMuc2VsZWN0KFwiI24tdmFsdWVcIikudGV4dChuKVxuICAgIGQzLnNlbGVjdChcIiNzdGQtZXJyLXZhbHVlXCIpLnRleHQoZihzdGRfZXJyKSlcbiAgICB1cGRhdGVDcml0aWNhbCgpO1xuICAgIHVwZGF0ZUN1cnZlKCk7XG4gICAgdXBkYXRlQ2xpcCgpO1xuICB9O1xuICAgIFxuICBtZWFuSW5wdXQub25pbnB1dCA9IGZ1bmN0aW9uKCkge1xuICAgIG1lYW4gPSBOdW1iZXIobWVhbklucHV0LnZhbHVlKVxuICAgIHVwZGF0ZUNyaXRpY2FsKCk7XG4gICAgdXBkYXRlQ3VydmUoKTtcbiAgICB1cGRhdGVDbGlwKCk7XG4gIH07XG4gIFxuICBzZElucHV0Lm9uaW5wdXQgPSBmdW5jdGlvbigpIHtcbiAgICBzZCA9IHNkSW5wdXQudmFsdWVcbiAgICBzdGRfZXJyID0gc2QvTWF0aC5zcXJ0KG4pXG4gICAgZDMuc2VsZWN0KFwiI3N0ZC1lcnItdmFsdWVcIikudGV4dChmKHN0ZF9lcnIpKVxuICAgIHVwZGF0ZUNyaXRpY2FsKCk7XG4gICAgdXBkYXRlQ3VydmUoKTtcbiAgICB1cGRhdGVDbGlwKCk7XG4gIH07XG4gIFxuICBmdW5jdGlvbiBtYWtlQ3VydmUobWVhbiwgc3RkX2Vycikge1xuICAgIHZhciB2YWx1ZXMgPSBqU3RhdCh4bGltWzBdLCB4bGltWzFdLCAyMTApWzBdLFxuICAgICAgICBhcnIgPSBbXTtcbiAgICBmb3IgKHZhciBpIGluIHZhbHVlcykge1xuICAgICAgYXJyLnB1c2goe1xuICAgICAgICAgIHZhbHVlOiB2YWx1ZXNbaV0sIFxuICAgICAgICAgIGRlbnNpdHk6IGpTdGF0Lm5vcm1hbC5wZGYodmFsdWVzW2ldLCBtZWFuLCBzdGRfZXJyKVxuICAgICAgfSlcbiAgICB9XG4gICAgcmV0dXJuIGFycjtcbiAgfVxuICBcbiAgZnVuY3Rpb24gdXBkYXRlQ3VydmUoKSB7XG4gICAgeGxpbSA9IFtOdW1iZXIobWVhbi0zKnN0ZF9lcnIpLE51bWJlcihtZWFuKzMqc3RkX2VycildXG4gICAgPCEtLSBjb25zb2xlLmxvZyh4bGltKSAtLT5cbiAgICB4LmRvbWFpbihbeGxpbVswXSwgeGxpbVsxXV0pXG4gICAgeS5kb21haW4oWzAsIGpTdGF0Lm5vcm1hbC5wZGYobWVhbiwgbWVhbiwgc3RkX2VycikrMC4wMV0pXG4gICAgXG4gICAgYXhpcy5jYWxsKHhBeGlzKVxuICAgIFxuICAgIGN1cnZlTGluZS5hdHRyKFwiZFwiLCBsaW5lKG1ha2VDdXJ2ZShtZWFuLCBzdGRfZXJyKSkpXG4gICAgY3VydmVGaWxsLmF0dHIoXCJkXCIsIGxpbmUobWFrZUN1cnZlKG1lYW4sIHN0ZF9lcnIpKSlcbiAgICBcbiAgICBtZWFuTGluZS5zZWxlY3QoXCJsaW5lXCIpXG4gICAgICAuYXR0cihcIngxXCIsIHgobWVhbikpLmF0dHIoXCJ4MlwiLCB4KG1lYW4pKVxuICAgICAgLmF0dHIoXCJ5MVwiLCB5KDApKS5hdHRyKFwieTJcIiwgeShqU3RhdC5ub3JtYWwucGRmKG1lYW4sIG1lYW4sIHN0ZF9lcnIpKSlcbiAgICBtZWFuTGluZS5zZWxlY3QoXCJjaXJjbGVcIilcbiAgICAgIC5hdHRyKFwiY3hcIiwgeChtZWFuKSkuYXR0cihcImN5XCIsIHkoMCkpLmF0dHIoXCJyXCIsIDUpXG4gICAgICBcbiAgICBtYXJnaW5PZkVycm9yLmF0dHIoXCJ0cmFuc2Zvcm1cIiwgYHRyYW5zbGF0ZSgwLCAke3koalN0YXQubm9ybWFsLnBkZihjcml0aWNhbFswXSwgbWVhbiwgc3RkX2VycikvMil9KWApXG4gICAgbWFyZ2luT2ZFcnJvci5zZWxlY3QoXCJsaW5lXCIpXG4gICAgICAuYXR0cihcIngxXCIsIHgoY3JpdGljYWxbMF0pKS5hdHRyKFwieDJcIiwgeChjcml0aWNhbFsxXSkpXG4gICAgbWFyZ2luT2ZFcnJvci5zZWxlY3QoXCIjYXJyb3ctbFwiKS5hdHRyKFwidHJhbnNmb3JtXCIsIGB0cmFuc2xhdGUoJHt4KGNyaXRpY2FsWzBdKX0sIDApIHNjYWxlKDIpYClcbiAgICBtYXJnaW5PZkVycm9yLnNlbGVjdChcIiNhcnJvdy1yXCIpLmF0dHIoXCJ0cmFuc2Zvcm1cIiwgYHRyYW5zbGF0ZSgke3goY3JpdGljYWxbMV0pfSwgMCkgc2NhbGUoMilgKVxuICB9XG4gIFxuICBmdW5jdGlvbiB1cGRhdGVDbGlwKCkge1xuICAgIGNsaXAuYXR0cihcInBvaW50c1wiLCBbW3goY3JpdGljYWxbMF0pLDBdLFt4KGNyaXRpY2FsWzBdKSxoXSxbeChjcml0aWNhbFsxXSksaF0sW3goY3JpdGljYWxbMV0pLDBdXSlcbiAgfVxuICBcbiAgY29uc3Qgc3ZnID0gZDMuc2VsZWN0KFwiI2NvbmZpZGVuY2UtaW50ZXJ2YWxcIikuYXBwZW5kKFwic3ZnXCIpXG4gICAgLmF0dHIoXCJ2aWV3Qm94XCIsIFwiMCAwIFwiICsgdyArIFwiIFwiICsgaClcbiAgICAuYXR0cihcInByZXNlcnZlQXNwZWN0UmF0aW9cIiwgXCJ4TWluWU1pbiBtZWV0XCIpXG4gICAgLmF0dHIoXCJjbGFzc1wiLCBcInN2Zy1jb250ZW50XCIpXG4gICAgXG4gIGNvbnN0IGF4aXMgPSBzdmcuYXBwZW5kKFwiZ1wiKS5hdHRyKFwidHJhbnNmb3JtXCIsIGB0cmFuc2xhdGUoMCwgJHt5KDApfSlgKVxuICAgIC5zdHlsZShcImZvbnQtc2l6ZVwiLCBcIjJlbVwiKVxuICBcbiAgY29uc3QgY3VydmVMaW5lID0gc3ZnLmFwcGVuZChcInBhdGhcIilcbiAgICAuc3R5bGUoXCJmaWxsXCIsIFwibm9uZVwiKVxuICAgIC5zdHlsZShcInN0cm9rZVwiLCBcImJsYWNrXCIpXG4gICAgLnN0eWxlKFwic3Ryb2tlLXdpZHRoXCIsIDMpXG4gICAgLmF0dHIoXCJjbGFzc1wiLCBcImludmVydGFibGVcIilcbiAgICBcbiAgY29uc3QgY2xpcCA9IHN2Zy5hcHBlbmQoXCJjbGlwUGF0aFwiKS5hdHRyKFwiaWRcIiwgXCJjbGlwXCIpLmFwcGVuZChcInBvbHlnb25cIilcblxuICBjb25zdCBjdXJ2ZUZpbGwgPSBzdmcuYXBwZW5kKFwicGF0aFwiKVxuICAgIC5hdHRyKFwiY2xpcC1wYXRoXCIsIFwidXJsKCNjbGlwKVwiKVxuICAgIC5zdHlsZShcImZpbGxcIiwgXCJsaWdodGJsdWVcIilcbiAgICAuc3R5bGUoXCJzdHJva2VcIiwgXCJub25lXCIpXG4gICAgXG4gIGNvbnN0IG1lYW5MaW5lID0gc3ZnLmFwcGVuZChcImdcIilcbiAgbWVhbkxpbmUuYXBwZW5kKFwibGluZVwiKVxuICAgIC5zdHlsZShcInN0cm9rZVwiLCBcImJsYWNrXCIpXG4gICAgLnN0eWxlKFwic3Ryb2tlLWRhc2hhcnJheVwiLCBbMTAsMTBdKVxuICBtZWFuTGluZS5hcHBlbmQoXCJjaXJjbGVcIilcbiAgICBcblxuICBjb25zdCBtYXJnaW5PZkVycm9yID0gc3ZnLmFwcGVuZChcImdcIilcbiAgICAuc3R5bGUoXCJzdHJva2VcIiwgXCJibGFja1wiKVxuICAgIDwhLS0gLmNsYXNzZWQoXCJpbnZlcnRhYmxlXCIsIHRydWUpIC0tPlxuICAgIFxuICBtYXJnaW5PZkVycm9yLmFwcGVuZChcImxpbmVcIilcbiAgICAuc3R5bGUoXCJzdHJva2VcIiwgXCJibGFja1wiKVxuXG4gIG1hcmdpbk9mRXJyb3IuYXBwZW5kKFwicG9seWdvblwiKS5hdHRyKFwicG9pbnRzXCIsIGFycm93c1swXS5wb2ludHMpLmF0dHIoXCJpZFwiLCBcImFycm93LWxcIilcbiAgbWFyZ2luT2ZFcnJvci5hcHBlbmQoXCJwb2x5Z29uXCIpLmF0dHIoXCJwb2ludHNcIiwgYXJyb3dzWzFdLnBvaW50cykuYXR0cihcImlkXCIsIFwiYXJyb3ctclwiKVxuXG5cblxuICBnZXRQYXJhbXMoKTtcbiAgdXBkYXRlQ2xpcCgpO1xuICB1cGRhdGVDdXJ2ZSgpO1xuICBcbn1cblxuIn1dfQ==
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -503,10 +512,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -516,8 +547,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -529,7 +569,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -573,6 +736,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -598,6 +762,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -655,23 +845,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-      }
-    }
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

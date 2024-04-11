@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.310">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -79,7 +79,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -88,8 +94,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
@@ -102,9 +110,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">PSYC BC1101</span>
     </a>
@@ -116,36 +124,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target=""><i class="bi bi-file-text" role="img">
+    <a class="nav-link" href="../index.html"> <i class="bi bi-file-text" role="img">
 </i> 
- <span class="menu-text">Syllabus</span></a>
+<span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../lectures.html" rel="" target=""><i class="bi bi-easel2" role="img">
+    <a class="nav-link" href="../lectures.html"> <i class="bi bi-easel2" role="img">
 </i> 
- <span class="menu-text">Lectures</span></a>
+<span class="menu-text">Lectures</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../recitation.html" rel="" target=""><i class="bi bi-code-slash" role="img">
+    <a class="nav-link" href="../recitation.html"> <i class="bi bi-code-slash" role="img">
 </i> 
- <span class="menu-text">Recitation</span></a>
+<span class="menu-text">Recitation</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://docs.google.com/document/d/1dFyI32mothgeqGG7jxXR3AEar_eVbZ869oZHPaNvif8/edit?usp=sharing" rel="" target="blank"><i class="bi bi-people" role="img">
+    <a class="nav-link" href="https://docs.google.com/document/d/1dFyI32mothgeqGG7jxXR3AEar_eVbZ869oZHPaNvif8/edit?usp=sharing" target="blank"> <i class="bi bi-people" role="img">
 </i> 
- <span class="menu-text">Class notes</span></a>
+<span class="menu-text">Class notes</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../_" rel="" target=""><i class="bi bi-moon" role="img">
+    <a class="nav-link" href="../_"> <i class="bi bi-moon" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -172,7 +180,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <div id="ci-container">
 
@@ -539,9 +549,8 @@ toggle.click(function( event ) {
     localStorage.setItem('theme', targetTheme);
 });
 </script>
-
 <script type="ojs-module-contents">
-{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\nchart = { \n\n  d3.select(\"#ci-container\")\n    .call(addCIPlot, {test_type: \"single\",\n                     point_estimate: 322.59,\n                     standard_deviation: 45.31,\n                     n: 23,\n                     ci: 95,\n                     disable_controls: false})\n                     \n}\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"addCIPlot = function(selection, params) {\n  selection\n    .call(ciParams, params)\n    .call(ciPlot, params)\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"\nciParams = function(selection, params) {\n    \n  selection.append(\"div\")\n  .attr(\"id\", \"ci-controls\")\n    .call(inputDropdown, params)\n    .call(slider, {id: 'ci', label: 'CI: ', value: params.ci, hide_slider: params.disable_controls})\n    .call(textInput, {id: 'point-estimate', label: 'Point estimate: ', value: params.point_estimate, disabled: params.disable_controls})\n    .call(textInput, {id: 'standard-deviation', label: 'Standard deviation: ', value: params.standard_deviation})\n    .call(stdErrSpan)\n    .call(slider, {id: 'n', label: 'n = ', value: params.n, hide_slider: params.disable_controls})\n  \n  d3.select(\"#test\").property(\"value\", params.test_type)\n  d3.selectAll(\"#input-point-estimate, #input-standard-deviation\").property(\"disabled\", params.disable_controls)\n     \n}\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"ciPlot = function(selection, params) {\n\n  const w = 1050, h = 600;\n  const margin = {bottom: 30};\n  const f = d3.format(\".2f\");\n  \n  var point_estimate = params.point_estimate\n  var sd = params.standard_deviation\n  var confidence = params.ci\n  var n = params.n\n  var df = computeDf(n, params.test_type)\n  var std_err = computeStdErr(sd, n, params.test_type)\n  var xlim\n  var ci_x_lim\n  d3.select(\"#value-standard-error\").text(f(std_err))\n  \n  const x = d3.scaleLinear()\n    .range([0, w])\n  const t = d3.scaleLinear()\n    .range([0, w])\n  const y = d3.scaleLinear()\n    .domain([0, 0.43])\n    .range([h - margin.bottom, 0])\n  const line = d3.line()\n    .x(d => t(d.value))\n    .y(d => y(d.density));\n  const xAxis = d3.axisBottom(x);\n  const tAxis = d3.axisBottom(t).tickSize(10);\n  \n  function makeCurve(limits) {\n    var arr = [];\n    var x = jStat(limits[0], limits[1], 210)[0];\n    for (var i = 0; i < x.length; i++) {\n      arr.push({value: x[i], density: jStat.studentt.pdf(x[i], df)})\n    }\n    return arr\n  }\n  \n\n  const svg = selection.append(\"svg\")\n    .attr(\"viewBox\", \"0 0 \" + w + \" \" + h)\n    .attr(\"preserveAspectRatio\", \"xMinYMin meet\")\n    <!-- .attr(\"width\", w).attr(\"height\", h) -->\n    \n  const axis = svg.append(\"g\")\n    .attr(\"class\", \"axis\")\n    .attr(\"transform\", `translate(0, ${y(0)})`)\n    <!-- .style(\"color\", \"steelblue\") -->\n    <!-- .call(xAxis); -->\n    \n  const axis_t = svg.append(\"g\")\n    .attr(\"class\", \"axis\")\n    .attr(\"transform\", `translate(0, ${y(0)})`)\n    <!-- .style(\"font-size\", \"1em\"); -->\n    \n  const randomId = Math.floor(Math.random() * 10000);\n  const defs = svg.append(\"defs\")\n  const mask = defs.append(\"mask\").attr(\"id\", \"mask-\" + randomId)\n  const mask_rect = mask.append(\"rect\")\n  .attr(\"height\", h)\n  .style(\"fill\", \"white\")\n  \n  \n  const ci_fill = svg.append(\"path\")\n    .attr(\"mask\", \"url(#mask-\" + randomId + \")\")\n    .style(\"stroke\", \"none\").style(\"fill\", \"lightblue\")\n  \n  const ci_curve = svg.append(\"path\")\n    .attr(\"class\", \"invertable\")\n    .style(\"stroke\", \"black\")\n    .style(\"fill\", \"none\")\n    .style(\"stroke-width\", 4)\n  \n  const ci_line = svg.append(\"line\")\n    .style(\"stroke\", \"black\")\n    .style(\"stroke-dasharray\", [5,5])\n  const ci_point_estimate = svg.append(\"line\")\n    .style(\"stroke\", \"black\")\n    .style(\"stroke-dasharray\", [5,5])\n  const ci_point_estimate_dot = svg.append(\"circle\")\n    .style(\"stroke\", \"none\")\n    .style(\"fill\", \"black\")\n    .attr(\"cx\", w/2)\n    .attr(\"cy\", y(0))\n    .attr(\"r\", 5)\n    \n  const ci_limit_labels = svg.append(\"g\")\n  const ci_limit_lower = ci_limit_labels.append(\"text\")\n  const ci_limit_upper = ci_limit_labels.append(\"text\").style(\"text-anchor\", \"end\")\n  \n  const inputCI =  d3.select(\"#input-ci\")\n  const inputN =  d3.select(\"#input-n\")\n  const inputPoint =  d3.select(\"#input-point-estimate\")\n  const inputSd =  d3.select(\"#input-standard-deviation\")\n  const inputTest =  d3.select(\"#test\")\n  \n  function updatePlot() {\n    var test = inputTest.property(\"value\");\n    point_estimate = Number(inputPoint.property(\"value\"));\n    sd = Number(inputSd.property(\"value\"));\n    n = Number(inputN.property(\"value\"));\n    std_err = computeStdErr(sd, n, test);\n    df = computeDf(n, test);\n    confidence = Number(inputCI.property(\"value\"));\n    updateSliderTextValues();\n    updateCI();\n  }\n  \n  function updateSliderTextValues() {\n    d3.select(\"#value-standard-error\").text(f(std_err));\n    d3.select(\"#value-ci\").text(confidence);\n    d3.select(\"#value-n\").text(n);\n  }\n  \n  inputCI.on(\"input\", updatePlot)\n  inputN.on(\"input\", updatePlot)\n  inputPoint.on(\"input\", updatePlot)\n  inputSd.on(\"input\", updatePlot)\n  inputTest.on(\"change\", updatePlot)\n  \n  function computeDf(n, test) {\n    if (test==\"independent\") return n - 2;\n    else return n - 1;\n  }\n  \n  function computeStdErr(sd, n, test) {\n    var variance = sd * sd;\n    console.log(\"var = \" + variance)\n    if (test==\"independent\") return Math.sqrt(variance/(n/2) + variance/(n/2));\n    else return sd / Math.sqrt(n);\n  }\n  \n  function updateCI() {\n\n    var x_lim = [point_estimate - 3 * sd, point_estimate + 3 * sd];\n    var t_lim = [x_to_t(x_lim[0], point_estimate, std_err),\n                 x_to_t(x_lim[1], point_estimate, std_err)]\n    x.domain(x_lim);\n    axis.call(xAxis);\n    \n    t.domain(t_lim)\n    <!-- axis_t.call(tAxis); -->\n\n    var critical_t = [jStat.studentt.inv((1 - (confidence/100)) / 2, df),\n                      jStat.studentt.inv(1-(1 - (confidence/100)) / 2, df)]\n    var critical_x = [t_to_x(critical_t[0], point_estimate, std_err),\n                      t_to_x(critical_t[1], point_estimate, std_err)]\n    var line_height = jStat.studentt.pdf(critical_t[0], df) / 2\n\n    ci_limit_lower\n      .text(f(critical_x[0]))\n      .attr(\"x\", x(critical_x[0]))\n      .attr(\"y\", y(line_height))\n    ci_limit_upper\n      .text(f(critical_x[1]))\n      .attr(\"x\", x(critical_x[1]))\n      .attr(\"y\", y(line_height))\n\n    ci_fill.attr(\"d\", line(makeCurve([-15, 15])))\n    ci_curve.attr(\"d\", line(makeCurve(t_lim)))\n\n    mask_rect\n      .attr(\"x\", t(critical_t[0]))\n      .attr(\"width\", t(critical_t[1]) - t(critical_t[0]));\n\n    ci_line\n      .attr(\"transform\", `translate(0, ${y(line_height)})`)\n      .attr(\"x1\", t(critical_t[0])).attr(\"x2\", t(critical_t[1]))\n    ci_point_estimate\n      .attr(\"transform\", `translate(${t(0)}, 0)`)\n      .attr(\"y1\", y(jStat.studentt.pdf(0, df))).attr(\"y2\", y(0))\n  }\n  \n  updateCI();\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"\ninputDropdown = function(selection, params) {\n  selection.append(\"div\")\n    .attr(\"id\", \"test-dropdown\")\n    .classed(\"hide-element\", params.disable_controls)\n    .html(`\n  <label for=\"test\">Test type:</label>\n  <select id=\"test\" name=\"test\">\n    <option value=\"single\">Single-sample</option>\n    <option value=\"independent\" selected>Independent-samples</option>\n    <option value=\"related\">Related-samples</option>\n  </select>\n  `)\n}\n\ntextInput = function(selection, params) {\n  selection.append(\"div\").html(`\n  \n  <label for=\"input-${params.id}\" class = \"text-input-label\" style=\"\">${params.label}\n<input type=\"text\" id=\"input-${params.id}\" class=\"text-input-box math\" name=\"${params.id}\" value=\"${params.value}\" style=\"width: 3em;\">\n</label>`)\n}\n\nslider = function(selection, params) {\n\n  if (params.hide_slider) var visibility = \"hidden\"\n  else var visbility = \"visible\"\n  \n  selection.append(\"div\").html(`\n  \n  <label for=\"input-${params.id}\" style=\"font-family: KaTeX_Main; font-size: 1em; font-style: italic; height: 1em;\">${params.label}</label>\n<span id=\"value-${params.id}\" class=\"math\" style=\"display: inline-block; width: 1em;\">${params.value}</span>\n<input data-prevent-swipe type=\"range\" id=\"input-${params.id}\" name=\"scale\" value=\"${params.value}\" min=\"2\" max=\"100\" step=\"1\" style=\"border: none; height: 1em; font-family: KaTeX_Main; font-size: 1em; margin-left: 0.5em; width: 50%; vertical-align: unset; visibility: ${visibility};\">\n  `)\n}\n\nstdErrSpan = function(selection, params) {\n  selection.append(\"div\").html(`\n    Standard error: <span id=\"value-standard-error\"></span>\n  `)\n}\n\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"\nt_to_x = function(t, mu, std_err) {\n  return mu + t * std_err;\n}\n\nx_to_t = function(x, mu, std_err) {\n  return (x - mu) / std_err;\n}\n\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"jStat = require(\"../js/jstat.js\")\n"}]}
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuY2hhcnQgPSB7IFxuXG4gIGQzLnNlbGVjdChcIiNjaS1jb250YWluZXJcIilcbiAgICAuY2FsbChhZGRDSVBsb3QsIHt0ZXN0X3R5cGU6IFwic2luZ2xlXCIsXG4gICAgICAgICAgICAgICAgICAgICBwb2ludF9lc3RpbWF0ZTogMzIyLjU5LFxuICAgICAgICAgICAgICAgICAgICAgc3RhbmRhcmRfZGV2aWF0aW9uOiA0NS4zMSxcbiAgICAgICAgICAgICAgICAgICAgIG46IDIzLFxuICAgICAgICAgICAgICAgICAgICAgY2k6IDk1LFxuICAgICAgICAgICAgICAgICAgICAgZGlzYWJsZV9jb250cm9sczogZmFsc2V9KVxuICAgICAgICAgICAgICAgICAgICAgXG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJhZGRDSVBsb3QgPSBmdW5jdGlvbihzZWxlY3Rpb24sIHBhcmFtcykge1xuICBzZWxlY3Rpb25cbiAgICAuY2FsbChjaVBhcmFtcywgcGFyYW1zKVxuICAgIC5jYWxsKGNpUGxvdCwgcGFyYW1zKVxufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiXG5jaVBhcmFtcyA9IGZ1bmN0aW9uKHNlbGVjdGlvbiwgcGFyYW1zKSB7XG4gICAgXG4gIHNlbGVjdGlvbi5hcHBlbmQoXCJkaXZcIilcbiAgLmF0dHIoXCJpZFwiLCBcImNpLWNvbnRyb2xzXCIpXG4gICAgLmNhbGwoaW5wdXREcm9wZG93biwgcGFyYW1zKVxuICAgIC5jYWxsKHNsaWRlciwge2lkOiAnY2knLCBsYWJlbDogJ0NJOiAnLCB2YWx1ZTogcGFyYW1zLmNpLCBoaWRlX3NsaWRlcjogcGFyYW1zLmRpc2FibGVfY29udHJvbHN9KVxuICAgIC5jYWxsKHRleHRJbnB1dCwge2lkOiAncG9pbnQtZXN0aW1hdGUnLCBsYWJlbDogJ1BvaW50IGVzdGltYXRlOiAnLCB2YWx1ZTogcGFyYW1zLnBvaW50X2VzdGltYXRlLCBkaXNhYmxlZDogcGFyYW1zLmRpc2FibGVfY29udHJvbHN9KVxuICAgIC5jYWxsKHRleHRJbnB1dCwge2lkOiAnc3RhbmRhcmQtZGV2aWF0aW9uJywgbGFiZWw6ICdTdGFuZGFyZCBkZXZpYXRpb246ICcsIHZhbHVlOiBwYXJhbXMuc3RhbmRhcmRfZGV2aWF0aW9ufSlcbiAgICAuY2FsbChzdGRFcnJTcGFuKVxuICAgIC5jYWxsKHNsaWRlciwge2lkOiAnbicsIGxhYmVsOiAnbiA9ICcsIHZhbHVlOiBwYXJhbXMubiwgaGlkZV9zbGlkZXI6IHBhcmFtcy5kaXNhYmxlX2NvbnRyb2xzfSlcbiAgXG4gIGQzLnNlbGVjdChcIiN0ZXN0XCIpLnByb3BlcnR5KFwidmFsdWVcIiwgcGFyYW1zLnRlc3RfdHlwZSlcbiAgZDMuc2VsZWN0QWxsKFwiI2lucHV0LXBvaW50LWVzdGltYXRlLCAjaW5wdXQtc3RhbmRhcmQtZGV2aWF0aW9uXCIpLnByb3BlcnR5KFwiZGlzYWJsZWRcIiwgcGFyYW1zLmRpc2FibGVfY29udHJvbHMpXG4gICAgIFxufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC00IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiY2lQbG90ID0gZnVuY3Rpb24oc2VsZWN0aW9uLCBwYXJhbXMpIHtcblxuICBjb25zdCB3ID0gMTA1MCwgaCA9IDYwMDtcbiAgY29uc3QgbWFyZ2luID0ge2JvdHRvbTogMzB9O1xuICBjb25zdCBmID0gZDMuZm9ybWF0KFwiLjJmXCIpO1xuICBcbiAgdmFyIHBvaW50X2VzdGltYXRlID0gcGFyYW1zLnBvaW50X2VzdGltYXRlXG4gIHZhciBzZCA9IHBhcmFtcy5zdGFuZGFyZF9kZXZpYXRpb25cbiAgdmFyIGNvbmZpZGVuY2UgPSBwYXJhbXMuY2lcbiAgdmFyIG4gPSBwYXJhbXMublxuICB2YXIgZGYgPSBjb21wdXRlRGYobiwgcGFyYW1zLnRlc3RfdHlwZSlcbiAgdmFyIHN0ZF9lcnIgPSBjb21wdXRlU3RkRXJyKHNkLCBuLCBwYXJhbXMudGVzdF90eXBlKVxuICB2YXIgeGxpbVxuICB2YXIgY2lfeF9saW1cbiAgZDMuc2VsZWN0KFwiI3ZhbHVlLXN0YW5kYXJkLWVycm9yXCIpLnRleHQoZihzdGRfZXJyKSlcbiAgXG4gIGNvbnN0IHggPSBkMy5zY2FsZUxpbmVhcigpXG4gICAgLnJhbmdlKFswLCB3XSlcbiAgY29uc3QgdCA9IGQzLnNjYWxlTGluZWFyKClcbiAgICAucmFuZ2UoWzAsIHddKVxuICBjb25zdCB5ID0gZDMuc2NhbGVMaW5lYXIoKVxuICAgIC5kb21haW4oWzAsIDAuNDNdKVxuICAgIC5yYW5nZShbaCAtIG1hcmdpbi5ib3R0b20sIDBdKVxuICBjb25zdCBsaW5lID0gZDMubGluZSgpXG4gICAgLngoZCA9PiB0KGQudmFsdWUpKVxuICAgIC55KGQgPT4geShkLmRlbnNpdHkpKTtcbiAgY29uc3QgeEF4aXMgPSBkMy5heGlzQm90dG9tKHgpO1xuICBjb25zdCB0QXhpcyA9IGQzLmF4aXNCb3R0b20odCkudGlja1NpemUoMTApO1xuICBcbiAgZnVuY3Rpb24gbWFrZUN1cnZlKGxpbWl0cykge1xuICAgIHZhciBhcnIgPSBbXTtcbiAgICB2YXIgeCA9IGpTdGF0KGxpbWl0c1swXSwgbGltaXRzWzFdLCAyMTApWzBdO1xuICAgIGZvciAodmFyIGkgPSAwOyBpIDwgeC5sZW5ndGg7IGkrKykge1xuICAgICAgYXJyLnB1c2goe3ZhbHVlOiB4W2ldLCBkZW5zaXR5OiBqU3RhdC5zdHVkZW50dC5wZGYoeFtpXSwgZGYpfSlcbiAgICB9XG4gICAgcmV0dXJuIGFyclxuICB9XG4gIFxuXG4gIGNvbnN0IHN2ZyA9IHNlbGVjdGlvbi5hcHBlbmQoXCJzdmdcIilcbiAgICAuYXR0cihcInZpZXdCb3hcIiwgXCIwIDAgXCIgKyB3ICsgXCIgXCIgKyBoKVxuICAgIC5hdHRyKFwicHJlc2VydmVBc3BlY3RSYXRpb1wiLCBcInhNaW5ZTWluIG1lZXRcIilcbiAgICA8IS0tIC5hdHRyKFwid2lkdGhcIiwgdykuYXR0cihcImhlaWdodFwiLCBoKSAtLT5cbiAgICBcbiAgY29uc3QgYXhpcyA9IHN2Zy5hcHBlbmQoXCJnXCIpXG4gICAgLmF0dHIoXCJjbGFzc1wiLCBcImF4aXNcIilcbiAgICAuYXR0cihcInRyYW5zZm9ybVwiLCBgdHJhbnNsYXRlKDAsICR7eSgwKX0pYClcbiAgICA8IS0tIC5zdHlsZShcImNvbG9yXCIsIFwic3RlZWxibHVlXCIpIC0tPlxuICAgIDwhLS0gLmNhbGwoeEF4aXMpOyAtLT5cbiAgICBcbiAgY29uc3QgYXhpc190ID0gc3ZnLmFwcGVuZChcImdcIilcbiAgICAuYXR0cihcImNsYXNzXCIsIFwiYXhpc1wiKVxuICAgIC5hdHRyKFwidHJhbnNmb3JtXCIsIGB0cmFuc2xhdGUoMCwgJHt5KDApfSlgKVxuICAgIDwhLS0gLnN0eWxlKFwiZm9udC1zaXplXCIsIFwiMWVtXCIpOyAtLT5cbiAgICBcbiAgY29uc3QgcmFuZG9tSWQgPSBNYXRoLmZsb29yKE1hdGgucmFuZG9tKCkgKiAxMDAwMCk7XG4gIGNvbnN0IGRlZnMgPSBzdmcuYXBwZW5kKFwiZGVmc1wiKVxuICBjb25zdCBtYXNrID0gZGVmcy5hcHBlbmQoXCJtYXNrXCIpLmF0dHIoXCJpZFwiLCBcIm1hc2stXCIgKyByYW5kb21JZClcbiAgY29uc3QgbWFza19yZWN0ID0gbWFzay5hcHBlbmQoXCJyZWN0XCIpXG4gIC5hdHRyKFwiaGVpZ2h0XCIsIGgpXG4gIC5zdHlsZShcImZpbGxcIiwgXCJ3aGl0ZVwiKVxuICBcbiAgXG4gIGNvbnN0IGNpX2ZpbGwgPSBzdmcuYXBwZW5kKFwicGF0aFwiKVxuICAgIC5hdHRyKFwibWFza1wiLCBcInVybCgjbWFzay1cIiArIHJhbmRvbUlkICsgXCIpXCIpXG4gICAgLnN0eWxlKFwic3Ryb2tlXCIsIFwibm9uZVwiKS5zdHlsZShcImZpbGxcIiwgXCJsaWdodGJsdWVcIilcbiAgXG4gIGNvbnN0IGNpX2N1cnZlID0gc3ZnLmFwcGVuZChcInBhdGhcIilcbiAgICAuYXR0cihcImNsYXNzXCIsIFwiaW52ZXJ0YWJsZVwiKVxuICAgIC5zdHlsZShcInN0cm9rZVwiLCBcImJsYWNrXCIpXG4gICAgLnN0eWxlKFwiZmlsbFwiLCBcIm5vbmVcIilcbiAgICAuc3R5bGUoXCJzdHJva2Utd2lkdGhcIiwgNClcbiAgXG4gIGNvbnN0IGNpX2xpbmUgPSBzdmcuYXBwZW5kKFwibGluZVwiKVxuICAgIC5zdHlsZShcInN0cm9rZVwiLCBcImJsYWNrXCIpXG4gICAgLnN0eWxlKFwic3Ryb2tlLWRhc2hhcnJheVwiLCBbNSw1XSlcbiAgY29uc3QgY2lfcG9pbnRfZXN0aW1hdGUgPSBzdmcuYXBwZW5kKFwibGluZVwiKVxuICAgIC5zdHlsZShcInN0cm9rZVwiLCBcImJsYWNrXCIpXG4gICAgLnN0eWxlKFwic3Ryb2tlLWRhc2hhcnJheVwiLCBbNSw1XSlcbiAgY29uc3QgY2lfcG9pbnRfZXN0aW1hdGVfZG90ID0gc3ZnLmFwcGVuZChcImNpcmNsZVwiKVxuICAgIC5zdHlsZShcInN0cm9rZVwiLCBcIm5vbmVcIilcbiAgICAuc3R5bGUoXCJmaWxsXCIsIFwiYmxhY2tcIilcbiAgICAuYXR0cihcImN4XCIsIHcvMilcbiAgICAuYXR0cihcImN5XCIsIHkoMCkpXG4gICAgLmF0dHIoXCJyXCIsIDUpXG4gICAgXG4gIGNvbnN0IGNpX2xpbWl0X2xhYmVscyA9IHN2Zy5hcHBlbmQoXCJnXCIpXG4gIGNvbnN0IGNpX2xpbWl0X2xvd2VyID0gY2lfbGltaXRfbGFiZWxzLmFwcGVuZChcInRleHRcIilcbiAgY29uc3QgY2lfbGltaXRfdXBwZXIgPSBjaV9saW1pdF9sYWJlbHMuYXBwZW5kKFwidGV4dFwiKS5zdHlsZShcInRleHQtYW5jaG9yXCIsIFwiZW5kXCIpXG4gIFxuICBjb25zdCBpbnB1dENJID0gIGQzLnNlbGVjdChcIiNpbnB1dC1jaVwiKVxuICBjb25zdCBpbnB1dE4gPSAgZDMuc2VsZWN0KFwiI2lucHV0LW5cIilcbiAgY29uc3QgaW5wdXRQb2ludCA9ICBkMy5zZWxlY3QoXCIjaW5wdXQtcG9pbnQtZXN0aW1hdGVcIilcbiAgY29uc3QgaW5wdXRTZCA9ICBkMy5zZWxlY3QoXCIjaW5wdXQtc3RhbmRhcmQtZGV2aWF0aW9uXCIpXG4gIGNvbnN0IGlucHV0VGVzdCA9ICBkMy5zZWxlY3QoXCIjdGVzdFwiKVxuICBcbiAgZnVuY3Rpb24gdXBkYXRlUGxvdCgpIHtcbiAgICB2YXIgdGVzdCA9IGlucHV0VGVzdC5wcm9wZXJ0eShcInZhbHVlXCIpO1xuICAgIHBvaW50X2VzdGltYXRlID0gTnVtYmVyKGlucHV0UG9pbnQucHJvcGVydHkoXCJ2YWx1ZVwiKSk7XG4gICAgc2QgPSBOdW1iZXIoaW5wdXRTZC5wcm9wZXJ0eShcInZhbHVlXCIpKTtcbiAgICBuID0gTnVtYmVyKGlucHV0Ti5wcm9wZXJ0eShcInZhbHVlXCIpKTtcbiAgICBzdGRfZXJyID0gY29tcHV0ZVN0ZEVycihzZCwgbiwgdGVzdCk7XG4gICAgZGYgPSBjb21wdXRlRGYobiwgdGVzdCk7XG4gICAgY29uZmlkZW5jZSA9IE51bWJlcihpbnB1dENJLnByb3BlcnR5KFwidmFsdWVcIikpO1xuICAgIHVwZGF0ZVNsaWRlclRleHRWYWx1ZXMoKTtcbiAgICB1cGRhdGVDSSgpO1xuICB9XG4gIFxuICBmdW5jdGlvbiB1cGRhdGVTbGlkZXJUZXh0VmFsdWVzKCkge1xuICAgIGQzLnNlbGVjdChcIiN2YWx1ZS1zdGFuZGFyZC1lcnJvclwiKS50ZXh0KGYoc3RkX2VycikpO1xuICAgIGQzLnNlbGVjdChcIiN2YWx1ZS1jaVwiKS50ZXh0KGNvbmZpZGVuY2UpO1xuICAgIGQzLnNlbGVjdChcIiN2YWx1ZS1uXCIpLnRleHQobik7XG4gIH1cbiAgXG4gIGlucHV0Q0kub24oXCJpbnB1dFwiLCB1cGRhdGVQbG90KVxuICBpbnB1dE4ub24oXCJpbnB1dFwiLCB1cGRhdGVQbG90KVxuICBpbnB1dFBvaW50Lm9uKFwiaW5wdXRcIiwgdXBkYXRlUGxvdClcbiAgaW5wdXRTZC5vbihcImlucHV0XCIsIHVwZGF0ZVBsb3QpXG4gIGlucHV0VGVzdC5vbihcImNoYW5nZVwiLCB1cGRhdGVQbG90KVxuICBcbiAgZnVuY3Rpb24gY29tcHV0ZURmKG4sIHRlc3QpIHtcbiAgICBpZiAodGVzdD09XCJpbmRlcGVuZGVudFwiKSByZXR1cm4gbiAtIDI7XG4gICAgZWxzZSByZXR1cm4gbiAtIDE7XG4gIH1cbiAgXG4gIGZ1bmN0aW9uIGNvbXB1dGVTdGRFcnIoc2QsIG4sIHRlc3QpIHtcbiAgICB2YXIgdmFyaWFuY2UgPSBzZCAqIHNkO1xuICAgIGNvbnNvbGUubG9nKFwidmFyID0gXCIgKyB2YXJpYW5jZSlcbiAgICBpZiAodGVzdD09XCJpbmRlcGVuZGVudFwiKSByZXR1cm4gTWF0aC5zcXJ0KHZhcmlhbmNlLyhuLzIpICsgdmFyaWFuY2UvKG4vMikpO1xuICAgIGVsc2UgcmV0dXJuIHNkIC8gTWF0aC5zcXJ0KG4pO1xuICB9XG4gIFxuICBmdW5jdGlvbiB1cGRhdGVDSSgpIHtcblxuICAgIHZhciB4X2xpbSA9IFtwb2ludF9lc3RpbWF0ZSAtIDMgKiBzZCwgcG9pbnRfZXN0aW1hdGUgKyAzICogc2RdO1xuICAgIHZhciB0X2xpbSA9IFt4X3RvX3QoeF9saW1bMF0sIHBvaW50X2VzdGltYXRlLCBzdGRfZXJyKSxcbiAgICAgICAgICAgICAgICAgeF90b190KHhfbGltWzFdLCBwb2ludF9lc3RpbWF0ZSwgc3RkX2VycildXG4gICAgeC5kb21haW4oeF9saW0pO1xuICAgIGF4aXMuY2FsbCh4QXhpcyk7XG4gICAgXG4gICAgdC5kb21haW4odF9saW0pXG4gICAgPCEtLSBheGlzX3QuY2FsbCh0QXhpcyk7IC0tPlxuXG4gICAgdmFyIGNyaXRpY2FsX3QgPSBbalN0YXQuc3R1ZGVudHQuaW52KCgxIC0gKGNvbmZpZGVuY2UvMTAwKSkgLyAyLCBkZiksXG4gICAgICAgICAgICAgICAgICAgICAgalN0YXQuc3R1ZGVudHQuaW52KDEtKDEgLSAoY29uZmlkZW5jZS8xMDApKSAvIDIsIGRmKV1cbiAgICB2YXIgY3JpdGljYWxfeCA9IFt0X3RvX3goY3JpdGljYWxfdFswXSwgcG9pbnRfZXN0aW1hdGUsIHN0ZF9lcnIpLFxuICAgICAgICAgICAgICAgICAgICAgIHRfdG9feChjcml0aWNhbF90WzFdLCBwb2ludF9lc3RpbWF0ZSwgc3RkX2VycildXG4gICAgdmFyIGxpbmVfaGVpZ2h0ID0galN0YXQuc3R1ZGVudHQucGRmKGNyaXRpY2FsX3RbMF0sIGRmKSAvIDJcblxuICAgIGNpX2xpbWl0X2xvd2VyXG4gICAgICAudGV4dChmKGNyaXRpY2FsX3hbMF0pKVxuICAgICAgLmF0dHIoXCJ4XCIsIHgoY3JpdGljYWxfeFswXSkpXG4gICAgICAuYXR0cihcInlcIiwgeShsaW5lX2hlaWdodCkpXG4gICAgY2lfbGltaXRfdXBwZXJcbiAgICAgIC50ZXh0KGYoY3JpdGljYWxfeFsxXSkpXG4gICAgICAuYXR0cihcInhcIiwgeChjcml0aWNhbF94WzFdKSlcbiAgICAgIC5hdHRyKFwieVwiLCB5KGxpbmVfaGVpZ2h0KSlcblxuICAgIGNpX2ZpbGwuYXR0cihcImRcIiwgbGluZShtYWtlQ3VydmUoWy0xNSwgMTVdKSkpXG4gICAgY2lfY3VydmUuYXR0cihcImRcIiwgbGluZShtYWtlQ3VydmUodF9saW0pKSlcblxuICAgIG1hc2tfcmVjdFxuICAgICAgLmF0dHIoXCJ4XCIsIHQoY3JpdGljYWxfdFswXSkpXG4gICAgICAuYXR0cihcIndpZHRoXCIsIHQoY3JpdGljYWxfdFsxXSkgLSB0KGNyaXRpY2FsX3RbMF0pKTtcblxuICAgIGNpX2xpbmVcbiAgICAgIC5hdHRyKFwidHJhbnNmb3JtXCIsIGB0cmFuc2xhdGUoMCwgJHt5KGxpbmVfaGVpZ2h0KX0pYClcbiAgICAgIC5hdHRyKFwieDFcIiwgdChjcml0aWNhbF90WzBdKSkuYXR0cihcIngyXCIsIHQoY3JpdGljYWxfdFsxXSkpXG4gICAgY2lfcG9pbnRfZXN0aW1hdGVcbiAgICAgIC5hdHRyKFwidHJhbnNmb3JtXCIsIGB0cmFuc2xhdGUoJHt0KDApfSwgMClgKVxuICAgICAgLmF0dHIoXCJ5MVwiLCB5KGpTdGF0LnN0dWRlbnR0LnBkZigwLCBkZikpKS5hdHRyKFwieTJcIiwgeSgwKSlcbiAgfVxuICBcbiAgdXBkYXRlQ0koKTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuaW5wdXREcm9wZG93biA9IGZ1bmN0aW9uKHNlbGVjdGlvbiwgcGFyYW1zKSB7XG4gIHNlbGVjdGlvbi5hcHBlbmQoXCJkaXZcIilcbiAgICAuYXR0cihcImlkXCIsIFwidGVzdC1kcm9wZG93blwiKVxuICAgIC5jbGFzc2VkKFwiaGlkZS1lbGVtZW50XCIsIHBhcmFtcy5kaXNhYmxlX2NvbnRyb2xzKVxuICAgIC5odG1sKGBcbiAgPGxhYmVsIGZvcj1cInRlc3RcIj5UZXN0IHR5cGU6PC9sYWJlbD5cbiAgPHNlbGVjdCBpZD1cInRlc3RcIiBuYW1lPVwidGVzdFwiPlxuICAgIDxvcHRpb24gdmFsdWU9XCJzaW5nbGVcIj5TaW5nbGUtc2FtcGxlPC9vcHRpb24+XG4gICAgPG9wdGlvbiB2YWx1ZT1cImluZGVwZW5kZW50XCIgc2VsZWN0ZWQ+SW5kZXBlbmRlbnQtc2FtcGxlczwvb3B0aW9uPlxuICAgIDxvcHRpb24gdmFsdWU9XCJyZWxhdGVkXCI+UmVsYXRlZC1zYW1wbGVzPC9vcHRpb24+XG4gIDwvc2VsZWN0PlxuICBgKVxufVxuXG50ZXh0SW5wdXQgPSBmdW5jdGlvbihzZWxlY3Rpb24sIHBhcmFtcykge1xuICBzZWxlY3Rpb24uYXBwZW5kKFwiZGl2XCIpLmh0bWwoYFxuICBcbiAgPGxhYmVsIGZvcj1cImlucHV0LSR7cGFyYW1zLmlkfVwiIGNsYXNzID0gXCJ0ZXh0LWlucHV0LWxhYmVsXCIgc3R5bGU9XCJcIj4ke3BhcmFtcy5sYWJlbH1cbjxpbnB1dCB0eXBlPVwidGV4dFwiIGlkPVwiaW5wdXQtJHtwYXJhbXMuaWR9XCIgY2xhc3M9XCJ0ZXh0LWlucHV0LWJveCBtYXRoXCIgbmFtZT1cIiR7cGFyYW1zLmlkfVwiIHZhbHVlPVwiJHtwYXJhbXMudmFsdWV9XCIgc3R5bGU9XCJ3aWR0aDogM2VtO1wiPlxuPC9sYWJlbD5gKVxufVxuXG5zbGlkZXIgPSBmdW5jdGlvbihzZWxlY3Rpb24sIHBhcmFtcykge1xuXG4gIGlmIChwYXJhbXMuaGlkZV9zbGlkZXIpIHZhciB2aXNpYmlsaXR5ID0gXCJoaWRkZW5cIlxuICBlbHNlIHZhciB2aXNiaWxpdHkgPSBcInZpc2libGVcIlxuICBcbiAgc2VsZWN0aW9uLmFwcGVuZChcImRpdlwiKS5odG1sKGBcbiAgXG4gIDxsYWJlbCBmb3I9XCJpbnB1dC0ke3BhcmFtcy5pZH1cIiBzdHlsZT1cImZvbnQtZmFtaWx5OiBLYVRlWF9NYWluOyBmb250LXNpemU6IDFlbTsgZm9udC1zdHlsZTogaXRhbGljOyBoZWlnaHQ6IDFlbTtcIj4ke3BhcmFtcy5sYWJlbH08L2xhYmVsPlxuPHNwYW4gaWQ9XCJ2YWx1ZS0ke3BhcmFtcy5pZH1cIiBjbGFzcz1cIm1hdGhcIiBzdHlsZT1cImRpc3BsYXk6IGlubGluZS1ibG9jazsgd2lkdGg6IDFlbTtcIj4ke3BhcmFtcy52YWx1ZX08L3NwYW4+XG48aW5wdXQgZGF0YS1wcmV2ZW50LXN3aXBlIHR5cGU9XCJyYW5nZVwiIGlkPVwiaW5wdXQtJHtwYXJhbXMuaWR9XCIgbmFtZT1cInNjYWxlXCIgdmFsdWU9XCIke3BhcmFtcy52YWx1ZX1cIiBtaW49XCIyXCIgbWF4PVwiMTAwXCIgc3RlcD1cIjFcIiBzdHlsZT1cImJvcmRlcjogbm9uZTsgaGVpZ2h0OiAxZW07IGZvbnQtZmFtaWx5OiBLYVRlWF9NYWluOyBmb250LXNpemU6IDFlbTsgbWFyZ2luLWxlZnQ6IDAuNWVtOyB3aWR0aDogNTAlOyB2ZXJ0aWNhbC1hbGlnbjogdW5zZXQ7IHZpc2liaWxpdHk6ICR7dmlzaWJpbGl0eX07XCI+XG4gIGApXG59XG5cbnN0ZEVyclNwYW4gPSBmdW5jdGlvbihzZWxlY3Rpb24sIHBhcmFtcykge1xuICBzZWxlY3Rpb24uYXBwZW5kKFwiZGl2XCIpLmh0bWwoYFxuICAgIFN0YW5kYXJkIGVycm9yOiA8c3BhbiBpZD1cInZhbHVlLXN0YW5kYXJkLWVycm9yXCI+PC9zcGFuPlxuICBgKVxufVxuXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTYiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcbnRfdG9feCA9IGZ1bmN0aW9uKHQsIG11LCBzdGRfZXJyKSB7XG4gIHJldHVybiBtdSArIHQgKiBzdGRfZXJyO1xufVxuXG54X3RvX3QgPSBmdW5jdGlvbih4LCBtdSwgc3RkX2Vycikge1xuICByZXR1cm4gKHggLSBtdSkgLyBzdGRfZXJyO1xufVxuXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTciLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJqU3RhdCA9IHJlcXVpcmUoXCIuLi9qcy9qc3RhdC5qc1wiKVxuIn1dfQ==
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -630,10 +639,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -643,8 +674,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -656,7 +696,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -700,6 +863,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -725,6 +889,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -782,23 +972,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-      }
-    }
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

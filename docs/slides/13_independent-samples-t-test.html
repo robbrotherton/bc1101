@@ -8,9 +8,9 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.310">
+  <meta name="generator" content="quarto-1.4.551">
 
-  <title>PSYC BC1101 – independent-samples-t-test</title>
+  <title>PSYC BC1101</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,7 +30,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -94,7 +94,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -222,7 +222,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -387,7 +388,6 @@
   </style>
   <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
   <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
-  
   <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
   <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
   <script type="ojs-define">
@@ -459,7 +459,7 @@
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="53" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 52;"><span id="cb1-53"><a href="#cb1-53"></a><span class="im">import</span> {likert} <span class="im">from</span> <span class="st">"../ojs/utils.qmd"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="53" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 52;"><span id="cb1-53"><a></a><span class="im">import</span> {likert} <span class="im">from</span> <span class="st">"../ojs/utils.qmd"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -685,6 +685,7 @@ df &amp;= df_1 + df_2 \\
 </div><div class="column" style="width:50%;">
 <div class="cell" style="font-size: 0.4em;">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <colgroup>
 <col style="width: 50%">
@@ -780,6 +781,7 @@ in 2 tails</th>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="step-3-calculate-t-statistic" class="slide level2">
 <h2>Step 3: Calculate <span class="math inline">\(t\)</span> statistic</h2>
@@ -788,6 +790,7 @@ in 2 tails</th>
 <p>Spend $10 on self</p>
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true" style="width:33.3%;">
 <thead>
 <tr class="header">
@@ -843,10 +846,12 @@ in 2 tails</th>
 
 </div>
 </div>
+</div>
 </div><div class="column" style="width:50%;">
 <p>Spend $10 on other</p>
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true" style="width:33.3%;">
 <thead>
 <tr class="header">
@@ -900,6 +905,7 @@ in 2 tails</th>
 </table>
 
 
+</div>
 </div>
 </div>
 </div>
@@ -1001,10 +1007,10 @@ d &amp;= \dfrac{\text{difference between means}}{\text{pooled standard deviation
 <div class="columns small">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>conditionA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>conditionB <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span>
-<span id="cb2-3"><a href="#cb2-3"></a></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="fu">t.test</span>(<span class="at">x =</span> conditionA, <span class="at">y =</span> conditionB)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>conditionA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>)</span>
+<span id="cb2-2"><a></a>conditionB <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a><span class="fu">t.test</span>(<span class="at">x =</span> conditionA, <span class="at">y =</span> conditionB)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -1021,11 +1027,11 @@ mean of x mean of y
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>conditionA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>)</span>
-<span id="cb4-2"><a href="#cb4-2"></a>conditionB <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span>
-<span id="cb4-3"><a href="#cb4-3"></a></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="fu">t.test</span>(<span class="at">x =</span> conditionA, <span class="at">y =</span> conditionB, </span>
-<span id="cb4-5"><a href="#cb4-5"></a>       <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>conditionA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>)</span>
+<span id="cb4-2"><a></a>conditionB <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span>
+<span id="cb4-3"><a></a></span>
+<span id="cb4-4"><a></a><span class="fu">t.test</span>(<span class="at">x =</span> conditionA, <span class="at">y =</span> conditionB, </span>
+<span id="cb4-5"><a></a>       <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Two Sample t-test
@@ -1072,17 +1078,17 @@ mean of x mean of y
                 &amp;= -3.19, 1.19
 \end{align}\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="479" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 478;"><span id="cb6-479"><a href="#cb6-479"></a><span class="im">import</span> { addCIPlot } <span class="im">from</span> <span class="st">"../ojs/confidence-interval.qmd"</span></span>
-<span id="cb6-480"><a href="#cb6-480"></a></span>
-<span id="cb6-481"><a href="#cb6-481"></a>chart <span class="op">=</span> {</span>
-<span id="cb6-482"><a href="#cb6-482"></a>  d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#ci-independent"</span>)</span>
-<span id="cb6-483"><a href="#cb6-483"></a>    <span class="op">.</span><span class="fu">call</span>(addCIPlot<span class="op">,</span> {<span class="dt">test_type</span><span class="op">:</span> <span class="st">"independent"</span><span class="op">,</span></span>
-<span id="cb6-484"><a href="#cb6-484"></a>                      <span class="dt">point_estimate</span><span class="op">:</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span></span>
-<span id="cb6-485"><a href="#cb6-485"></a>                      <span class="dt">standard_deviation</span><span class="op">:</span> <span class="fl">1.5</span><span class="op">,</span></span>
-<span id="cb6-486"><a href="#cb6-486"></a>                      <span class="dt">n</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></span>
-<span id="cb6-487"><a href="#cb6-487"></a>                      <span class="dt">ci</span><span class="op">:</span> <span class="dv">95</span><span class="op">,</span></span>
-<span id="cb6-488"><a href="#cb6-488"></a>                      <span class="dt">disable_controls</span><span class="op">:</span> <span class="kw">true</span>})</span>
-<span id="cb6-489"><a href="#cb6-489"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="479" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 478;"><span id="cb6-479"><a></a><span class="im">import</span> { addCIPlot } <span class="im">from</span> <span class="st">"../ojs/confidence-interval.qmd"</span></span>
+<span id="cb6-480"><a></a></span>
+<span id="cb6-481"><a></a>chart <span class="op">=</span> {</span>
+<span id="cb6-482"><a></a>  d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#ci-independent"</span>)</span>
+<span id="cb6-483"><a></a>    <span class="op">.</span><span class="fu">call</span>(addCIPlot<span class="op">,</span> {<span class="dt">test_type</span><span class="op">:</span> <span class="st">"independent"</span><span class="op">,</span></span>
+<span id="cb6-484"><a></a>                      <span class="dt">point_estimate</span><span class="op">:</span> <span class="op">-</span><span class="dv">1</span><span class="op">,</span></span>
+<span id="cb6-485"><a></a>                      <span class="dt">standard_deviation</span><span class="op">:</span> <span class="fl">1.5</span><span class="op">,</span></span>
+<span id="cb6-486"><a></a>                      <span class="dt">n</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></span>
+<span id="cb6-487"><a></a>                      <span class="dt">ci</span><span class="op">:</span> <span class="dv">95</span><span class="op">,</span></span>
+<span id="cb6-488"><a></a>                      <span class="dt">disable_controls</span><span class="op">:</span> <span class="kw">true</span>})</span>
+<span id="cb6-489"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-2-1" data-nodetype="declaration">
@@ -1126,28 +1132,28 @@ svg .axis {
 </ul></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="568" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 567;"><span id="cb7-568"><a href="#cb7-568"></a>cover <span class="op">=</span> {</span>
-<span id="cb7-569"><a href="#cb7-569"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">1050</span></span>
-<span id="cb7-570"><a href="#cb7-570"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">500</span></span>
-<span id="cb7-571"><a href="#cb7-571"></a>  <span class="kw">const</span> x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb7-572"><a href="#cb7-572"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">40</span><span class="op">,</span><span class="dv">180</span>])</span>
-<span id="cb7-573"><a href="#cb7-573"></a>    <span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span>w])</span>
-<span id="cb7-574"><a href="#cb7-574"></a>  <span class="kw">const</span> y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb7-575"><a href="#cb7-575"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span><span class="dv">70</span>])</span>
-<span id="cb7-576"><a href="#cb7-576"></a>    <span class="op">.</span><span class="fu">range</span>([h<span class="op">,</span><span class="dv">0</span>])</span>
-<span id="cb7-577"><a href="#cb7-577"></a>  <span class="kw">const</span> fill <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleOrdinal</span>()</span>
-<span id="cb7-578"><a href="#cb7-578"></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="st">"A"</span><span class="op">,</span><span class="st">"B"</span><span class="op">,</span> <span class="st">"AB"</span>])</span>
-<span id="cb7-579"><a href="#cb7-579"></a>    <span class="op">.</span><span class="fu">range</span>([<span class="st">"#dda6a6"</span><span class="op">,</span> <span class="st">"#b0d3ff"</span><span class="op">,</span> <span class="st">"#9c9ecb"</span>])</span>
-<span id="cb7-580"><a href="#cb7-580"></a>    </span>
-<span id="cb7-581"><a href="#cb7-581"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#cover"</span>)<span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
-<span id="cb7-582"><a href="#cb7-582"></a>  </span>
-<span id="cb7-583"><a href="#cb7-583"></a>  svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"rect"</span>)<span class="op">.</span><span class="fu">data</span>(data)<span class="op">.</span><span class="fu">enter</span>()<span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
-<span id="cb7-584"><a href="#cb7-584"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">value</span>))</span>
-<span id="cb7-585"><a href="#cb7-585"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">y</span>(d<span class="op">.</span><span class="at">y_cum</span>))</span>
-<span id="cb7-586"><a href="#cb7-586"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> <span class="dv">6</span>)</span>
-<span id="cb7-587"><a href="#cb7-587"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> <span class="dv">6</span>)</span>
-<span id="cb7-588"><a href="#cb7-588"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">fill</span>(d<span class="op">.</span><span class="at">group</span>))</span>
-<span id="cb7-589"><a href="#cb7-589"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="568" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 567;"><span id="cb7-568"><a></a>cover <span class="op">=</span> {</span>
+<span id="cb7-569"><a></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">1050</span></span>
+<span id="cb7-570"><a></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb7-571"><a></a>  <span class="kw">const</span> x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb7-572"><a></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">40</span><span class="op">,</span><span class="dv">180</span>])</span>
+<span id="cb7-573"><a></a>    <span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span>w])</span>
+<span id="cb7-574"><a></a>  <span class="kw">const</span> y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb7-575"><a></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span><span class="dv">70</span>])</span>
+<span id="cb7-576"><a></a>    <span class="op">.</span><span class="fu">range</span>([h<span class="op">,</span><span class="dv">0</span>])</span>
+<span id="cb7-577"><a></a>  <span class="kw">const</span> fill <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleOrdinal</span>()</span>
+<span id="cb7-578"><a></a>    <span class="op">.</span><span class="fu">domain</span>([<span class="st">"A"</span><span class="op">,</span><span class="st">"B"</span><span class="op">,</span> <span class="st">"AB"</span>])</span>
+<span id="cb7-579"><a></a>    <span class="op">.</span><span class="fu">range</span>([<span class="st">"#dda6a6"</span><span class="op">,</span> <span class="st">"#b0d3ff"</span><span class="op">,</span> <span class="st">"#9c9ecb"</span>])</span>
+<span id="cb7-580"><a></a>    </span>
+<span id="cb7-581"><a></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#cover"</span>)<span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
+<span id="cb7-582"><a></a>  </span>
+<span id="cb7-583"><a></a>  svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"rect"</span>)<span class="op">.</span><span class="fu">data</span>(data)<span class="op">.</span><span class="fu">enter</span>()<span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
+<span id="cb7-584"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">value</span>))</span>
+<span id="cb7-585"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">y</span>(d<span class="op">.</span><span class="at">y_cum</span>))</span>
+<span id="cb7-586"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> <span class="dv">6</span>)</span>
+<span id="cb7-587"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> <span class="dv">6</span>)</span>
+<span id="cb7-588"><a></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">fill</span>(d<span class="op">.</span><span class="at">group</span>))</span>
+<span id="cb7-589"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="declaration">
 
@@ -1155,6 +1161,7 @@ svg .axis {
 </div>
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <button id="theme-toggle">
 <svg id="moon" class="d-block d-block-light d-none" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 384 512">
@@ -1166,6 +1173,7 @@ svg .axis {
 <path d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM352 256c0 53-43 96-96 96s-96-43-96-96s43-96 96-96s96 43 96 96zm32 0c0-70.7-57.3-128-128-128s-128 57.3-128 128s57.3 128 128 128s128-57.3 128-128z"></path>
 </svg>
 </button>
+</div>
 </div>
 </section>
     </div>
@@ -1195,7 +1203,6 @@ svg .axis {
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1468,7 +1475,7 @@ svg .axis {
 
     </script>
     <script type="ojs-module-contents">
-    {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"import {likert} from \"../ojs/utils.qmd\";\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"import { addCIPlot } from \"../ojs/confidence-interval.qmd\"\n\nchart = {\n  d3.select(\"#ci-independent\")\n    .call(addCIPlot, {test_type: \"independent\",\n                      point_estimate: -1,\n                      standard_deviation: 1.5,\n                      n: 10,\n                      ci: 95,\n                      disable_controls: true})\n}\n\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"\ncover = {\n  const w = 1050\n  const h = 500\n  const x = d3.scaleLinear()\n    .domain([40,180])\n    .range([0,w])\n  const y = d3.scaleLinear()\n    .domain([0,70])\n    .range([h,0])\n  const fill = d3.scaleOrdinal()\n    .domain([\"A\",\"B\", \"AB\"])\n    .range([\"#dda6a6\", \"#b0d3ff\", \"#9c9ecb\"])\n    \n  const svg = d3.select(\"#cover\").append(\"svg\").attr(\"width\", w).attr(\"height\", h)\n  \n  svg.selectAll(\"rect\").data(data).enter().append(\"rect\")\n    .attr(\"x\", d => x(d.value))\n    .attr(\"y\", d => y(d.y_cum))\n    .attr(\"width\", 6)\n    .attr(\"height\", 6)\n    .style(\"fill\", d => fill(d.group))\n}\n"}]}
+    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImltcG9ydCB7bGlrZXJ0fSBmcm9tIFwiLi4vb2pzL3V0aWxzLnFtZFwiO1xuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiaW1wb3J0IHsgYWRkQ0lQbG90IH0gZnJvbSBcIi4uL29qcy9jb25maWRlbmNlLWludGVydmFsLnFtZFwiXG5cbmNoYXJ0ID0ge1xuICBkMy5zZWxlY3QoXCIjY2ktaW5kZXBlbmRlbnRcIilcbiAgICAuY2FsbChhZGRDSVBsb3QsIHt0ZXN0X3R5cGU6IFwiaW5kZXBlbmRlbnRcIixcbiAgICAgICAgICAgICAgICAgICAgICBwb2ludF9lc3RpbWF0ZTogLTEsXG4gICAgICAgICAgICAgICAgICAgICAgc3RhbmRhcmRfZGV2aWF0aW9uOiAxLjUsXG4gICAgICAgICAgICAgICAgICAgICAgbjogMTAsXG4gICAgICAgICAgICAgICAgICAgICAgY2k6IDk1LFxuICAgICAgICAgICAgICAgICAgICAgIGRpc2FibGVfY29udHJvbHM6IHRydWV9KVxufVxuXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcbmNvdmVyID0ge1xuICBjb25zdCB3ID0gMTA1MFxuICBjb25zdCBoID0gNTAwXG4gIGNvbnN0IHggPSBkMy5zY2FsZUxpbmVhcigpXG4gICAgLmRvbWFpbihbNDAsMTgwXSlcbiAgICAucmFuZ2UoWzAsd10pXG4gIGNvbnN0IHkgPSBkMy5zY2FsZUxpbmVhcigpXG4gICAgLmRvbWFpbihbMCw3MF0pXG4gICAgLnJhbmdlKFtoLDBdKVxuICBjb25zdCBmaWxsID0gZDMuc2NhbGVPcmRpbmFsKClcbiAgICAuZG9tYWluKFtcIkFcIixcIkJcIiwgXCJBQlwiXSlcbiAgICAucmFuZ2UoW1wiI2RkYTZhNlwiLCBcIiNiMGQzZmZcIiwgXCIjOWM5ZWNiXCJdKVxuICAgIFxuICBjb25zdCBzdmcgPSBkMy5zZWxlY3QoXCIjY292ZXJcIikuYXBwZW5kKFwic3ZnXCIpLmF0dHIoXCJ3aWR0aFwiLCB3KS5hdHRyKFwiaGVpZ2h0XCIsIGgpXG4gIFxuICBzdmcuc2VsZWN0QWxsKFwicmVjdFwiKS5kYXRhKGRhdGEpLmVudGVyKCkuYXBwZW5kKFwicmVjdFwiKVxuICAgIC5hdHRyKFwieFwiLCBkID0+IHgoZC52YWx1ZSkpXG4gICAgLmF0dHIoXCJ5XCIsIGQgPT4geShkLnlfY3VtKSlcbiAgICAuYXR0cihcIndpZHRoXCIsIDYpXG4gICAgLmF0dHIoXCJoZWlnaHRcIiwgNilcbiAgICAuc3R5bGUoXCJmaWxsXCIsIGQgPT4gZmlsbChkLmdyb3VwKSlcbn1cbiJ9XX0=
     </script>
     <script type="module">
     if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -1592,10 +1599,32 @@ svg .axis {
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+              // target, if specified
+              link.setAttribute("target", "_blank");
+              if (link.getAttribute("rel") === null) {
+                link.setAttribute("rel", "noopener");
+              }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1605,8 +1634,17 @@ svg .axis {
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1620,7 +1658,11 @@ svg .axis {
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
@@ -1660,20 +1702,6 @@ svg .axis {
           });
         }
       }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-              // target, if specified
-              link.setAttribute("target", "_blank");
-          }
-        }
     });
     </script>
     

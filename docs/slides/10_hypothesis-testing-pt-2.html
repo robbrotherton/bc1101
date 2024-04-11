@@ -8,9 +8,9 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.310">
+  <meta name="generator" content="quarto-1.4.551">
 
-  <title>PSYC BC1101 – hypothesis-testing-pt-2</title>
+  <title>PSYC BC1101</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,7 +30,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -94,7 +94,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -222,7 +222,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -416,7 +417,6 @@
 <li>Hypothesis testing is an <span class="emph">inferential</span> process</li>
 <li>Incorrect inferences are possible</li>
 </ul>
-
 <table id="inf-tab">
 <thead>
 <tr>
@@ -464,7 +464,6 @@ Type 2 error<br><span class="math inline">\(\beta\)</span>
 </td>
 </tr>
 </tbody>
-
 </table>
 <style>
   #inf-tab {
@@ -545,6 +544,7 @@ Type 2 error<br><span class="math inline">\(\beta\)</span>
 </ul>
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -569,6 +569,7 @@ Type 2 error<br><span class="math inline">\(\beta\)</span>
 </table>
 
 
+</div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
@@ -609,7 +610,6 @@ d = \dfrac{501 - 500}{100} = 0.01\]</span></p>
 <li>Power = <span class="math inline">\(1 – \beta\)</span></li>
 </ul></li>
 </ul>
-
 <table id="inf-tab">
 <thead>
 <tr>
@@ -657,7 +657,6 @@ Type 2 error<br><span class="math inline">\(\beta\)</span>
 </td>
 </tr>
 </tbody>
-
 </table>
 </section>
 <section id="power-interactive" class="slide level2">
@@ -740,6 +739,7 @@ Power: <span id="power-value" class="math" style="color: steelblue;"></span></p>
 <h2>Power &amp; sample sizes</h2>
 <div class="cell" style="font-size: 0.65em;">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -786,6 +786,7 @@ Power: <span id="power-value" class="math" style="color: steelblue;"></span></p>
 
 </div>
 </div>
+</div>
 <div class="footnote reference">
 <p>Simmons, J. P., Nelson, L. D., &amp; Simonsohn, U. (2013, January). Life after p-hacking. In <em>Meeting of the society for personality and social psychology</em>, New Orleans, LA (pp.&nbsp;17-19). <a href="http://dx.doi.org/10.2139/ssrn.2205186" class="uri">http://dx.doi.org/10.2139/ssrn.2205186</a></p>
 </div>
@@ -814,337 +815,337 @@ Power: <span id="power-value" class="math" style="color: steelblue;"></span></p>
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="440" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 439;"><span id="cb1-440"><a href="#cb1-440"></a>jStat <span class="op">=</span> <span class="pp">require</span>(<span class="st">"../js/jstat.js"</span>)</span>
-<span id="cb1-441"><a href="#cb1-441"></a></span>
-<span id="cb1-442"><a href="#cb1-442"></a>chart <span class="op">=</span> {</span>
-<span id="cb1-443"><a href="#cb1-443"></a></span>
-<span id="cb1-444"><a href="#cb1-444"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">1050</span></span>
-<span id="cb1-445"><a href="#cb1-445"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">600</span></span>
-<span id="cb1-446"><a href="#cb1-446"></a>  <span class="kw">const</span> margin <span class="op">=</span> ({<span class="dt">top</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">right</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">bottom</span><span class="op">:</span> <span class="dv">80</span><span class="op">,</span> <span class="dt">left</span><span class="op">:</span> <span class="dv">0</span>})</span>
-<span id="cb1-447"><a href="#cb1-447"></a>  <span class="kw">const</span> f <span class="op">=</span> d3<span class="op">.</span><span class="fu">format</span>(<span class="st">".2f"</span>)</span>
-<span id="cb1-448"><a href="#cb1-448"></a>  <span class="kw">const</span> f2 <span class="op">=</span> d3<span class="op">.</span><span class="fu">format</span>(<span class="st">".0f"</span>)</span>
-<span id="cb1-449"><a href="#cb1-449"></a>  <span class="kw">const</span> labelHeight <span class="op">=</span> h<span class="op">/</span><span class="dv">2</span></span>
-<span id="cb1-450"><a href="#cb1-450"></a>  </span>
-<span id="cb1-451"><a href="#cb1-451"></a></span>
-<span id="cb1-452"><a href="#cb1-452"></a>  <span class="kw">var</span> mu<span class="op">,</span> sigma<span class="op">,</span> d<span class="op">,</span> mean_diff<span class="op">,</span> n<span class="op">,</span> alpha<span class="op">,</span> beta<span class="op">,</span> power<span class="op">,</span> xlim<span class="op">,</span> std_err<span class="op">,</span> max_std_err<span class="op">,</span> alpha_x<span class="op">,</span> alpha_x2<span class="op">,</span> showAlt<span class="op">,</span> tails<span class="op">;</span></span>
-<span id="cb1-453"><a href="#cb1-453"></a>  </span>
-<span id="cb1-454"><a href="#cb1-454"></a></span>
-<span id="cb1-455"><a href="#cb1-455"></a>  <span class="kw">var</span> x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb1-456"><a href="#cb1-456"></a>    <span class="op">.</span><span class="fu">range</span>([margin<span class="op">.</span><span class="at">left</span> <span class="op">-</span> <span class="dv">400</span><span class="op">,</span> w <span class="op">+</span> <span class="dv">400</span>])</span>
-<span id="cb1-457"><a href="#cb1-457"></a>  <span class="kw">var</span> z <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb1-458"><a href="#cb1-458"></a>    <span class="op">.</span><span class="fu">range</span>([margin<span class="op">.</span><span class="at">left</span> <span class="op">-</span> <span class="dv">400</span><span class="op">,</span> w <span class="op">+</span> <span class="dv">400</span>])</span>
-<span id="cb1-459"><a href="#cb1-459"></a>  <span class="kw">var</span> y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
-<span id="cb1-460"><a href="#cb1-460"></a>    <span class="op">.</span><span class="fu">range</span>([h <span class="op">-</span> margin<span class="op">.</span><span class="at">bottom</span><span class="op">,</span> margin<span class="op">.</span><span class="at">top</span>])</span>
-<span id="cb1-461"><a href="#cb1-461"></a>  <span class="kw">const</span> line <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()</span>
-<span id="cb1-462"><a href="#cb1-462"></a>    <span class="op">.</span><span class="fu">x</span>(d <span class="kw">=&gt;</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">value</span>))</span>
-<span id="cb1-463"><a href="#cb1-463"></a>    <span class="op">.</span><span class="fu">y</span>(d <span class="kw">=&gt;</span> <span class="fu">y</span>(d<span class="op">.</span><span class="at">density</span>))</span>
-<span id="cb1-464"><a href="#cb1-464"></a>  <span class="kw">var</span> xAxis <span class="op">=</span> d3<span class="op">.</span><span class="fu">axisBottom</span>(x)<span class="op">.</span><span class="fu">ticks</span>(<span class="dv">10</span>)</span>
-<span id="cb1-465"><a href="#cb1-465"></a>  <span class="kw">var</span> zAxis <span class="op">=</span> d3<span class="op">.</span><span class="fu">axisBottom</span>(z)<span class="op">.</span><span class="fu">tickSize</span>(<span class="dv">20</span>)</span>
-<span id="cb1-466"><a href="#cb1-466"></a>  <span class="kw">var</span> h1Axis <span class="op">=</span> d3<span class="op">.</span><span class="fu">axisBottom</span>(z)<span class="op">.</span><span class="fu">tickSize</span>(<span class="dv">20</span>)</span>
-<span id="cb1-467"><a href="#cb1-467"></a>  </span>
-<span id="cb1-468"><a href="#cb1-468"></a>  <span class="kw">function</span> <span class="fu">curveData</span>(mu<span class="op">,</span> sm) {</span>
-<span id="cb1-469"><a href="#cb1-469"></a>    <span class="kw">var</span> values <span class="op">=</span> <span class="fu">jStat</span>(xlim[<span class="dv">0</span>]<span class="op">,</span> xlim[<span class="dv">1</span>]<span class="op">,</span> <span class="dv">310</span>)[<span class="dv">0</span>]<span class="op">,</span></span>
-<span id="cb1-470"><a href="#cb1-470"></a>        arr <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb1-471"><a href="#cb1-471"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> values) {</span>
-<span id="cb1-472"><a href="#cb1-472"></a>      arr<span class="op">.</span><span class="fu">push</span>({</span>
-<span id="cb1-473"><a href="#cb1-473"></a>          <span class="dt">value</span><span class="op">:</span> values[i]<span class="op">,</span> </span>
-<span id="cb1-474"><a href="#cb1-474"></a>          <span class="dt">density</span><span class="op">:</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">pdf</span>(values[i]<span class="op">,</span> mu<span class="op">,</span> sm)</span>
-<span id="cb1-475"><a href="#cb1-475"></a>      })</span>
-<span id="cb1-476"><a href="#cb1-476"></a>    }</span>
-<span id="cb1-477"><a href="#cb1-477"></a>    <span class="cf">return</span> arr<span class="op">;</span></span>
-<span id="cb1-478"><a href="#cb1-478"></a>  }</span>
-<span id="cb1-479"><a href="#cb1-479"></a>  </span>
-<span id="cb1-480"><a href="#cb1-480"></a>  <span class="kw">const</span> muInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'mu-input'</span>)</span>
-<span id="cb1-481"><a href="#cb1-481"></a>  <span class="kw">const</span> sigmaInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'sigma-input'</span>)<span class="op">;</span></span>
-<span id="cb1-482"><a href="#cb1-482"></a>  <span class="kw">const</span> dInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'d-input'</span>)</span>
-<span id="cb1-483"><a href="#cb1-483"></a>  <span class="kw">const</span> nInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'n-input'</span>)</span>
-<span id="cb1-484"><a href="#cb1-484"></a>  <span class="kw">const</span> aInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'alpha-input'</span>)</span>
-<span id="cb1-485"><a href="#cb1-485"></a>  <span class="kw">const</span> altInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'alt-input'</span>)</span>
-<span id="cb1-486"><a href="#cb1-486"></a>  <span class="kw">const</span> tailsInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'tails-input'</span>)</span>
-<span id="cb1-487"><a href="#cb1-487"></a>  <span class="kw">const</span> axisRawInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'axis-raw'</span>)</span>
-<span id="cb1-488"><a href="#cb1-488"></a>  <span class="kw">const</span> axisZNullInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'axis-z-null'</span>)</span>
-<span id="cb1-489"><a href="#cb1-489"></a>  <span class="kw">const</span> axisZAltInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'axis-z-alt'</span>)</span>
-<span id="cb1-490"><a href="#cb1-490"></a>  </span>
-<span id="cb1-491"><a href="#cb1-491"></a>  <span class="kw">var</span> hideAxisRaw <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
-<span id="cb1-492"><a href="#cb1-492"></a>  <span class="kw">var</span> hideAxisZNull <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb1-493"><a href="#cb1-493"></a>  <span class="kw">var</span> hideAxisZAlt <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb1-494"><a href="#cb1-494"></a>  axisRawInput<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
-<span id="cb1-495"><a href="#cb1-495"></a>    hideAxisRaw <span class="op">=</span> <span class="op">!</span>hideAxisRaw<span class="op">;</span></span>
-<span id="cb1-496"><a href="#cb1-496"></a>    axis<span class="op">.</span><span class="fu">classed</span>(<span class="st">"hide-element"</span><span class="op">,</span> hideAxisRaw)</span>
-<span id="cb1-497"><a href="#cb1-497"></a>  }</span>
-<span id="cb1-498"><a href="#cb1-498"></a>  axisZNullInput<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
-<span id="cb1-499"><a href="#cb1-499"></a>    hideAxisZNull <span class="op">=</span> <span class="op">!</span>hideAxisZNull<span class="op">;</span></span>
-<span id="cb1-500"><a href="#cb1-500"></a>    svgH0Axis<span class="op">.</span><span class="fu">classed</span>(<span class="st">"hide-element"</span><span class="op">,</span> hideAxisZNull)</span>
-<span id="cb1-501"><a href="#cb1-501"></a>  }</span>
-<span id="cb1-502"><a href="#cb1-502"></a>  axisZAltInput<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
-<span id="cb1-503"><a href="#cb1-503"></a>    hideAxisZAlt <span class="op">=</span> <span class="op">!</span>hideAxisZAlt<span class="op">;</span></span>
-<span id="cb1-504"><a href="#cb1-504"></a>    svgH1Axis<span class="op">.</span><span class="fu">classed</span>(<span class="st">"hide-element"</span><span class="op">,</span> hideAxisZAlt)</span>
-<span id="cb1-505"><a href="#cb1-505"></a>  }</span>
-<span id="cb1-506"><a href="#cb1-506"></a>  </span>
-<span id="cb1-507"><a href="#cb1-507"></a>  muInput<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
-<span id="cb1-508"><a href="#cb1-508"></a>    mu <span class="op">=</span> <span class="bu">Number</span>(muInput<span class="op">.</span><span class="at">value</span>)<span class="op">;</span></span>
-<span id="cb1-509"><a href="#cb1-509"></a>    <span class="fu">updateValues</span>()<span class="op">;</span></span>
-<span id="cb1-510"><a href="#cb1-510"></a>    <span class="fu">updateAxis</span>()<span class="op">;</span></span>
-<span id="cb1-511"><a href="#cb1-511"></a>    <span class="fu">updateZAxis</span>()<span class="op">;</span></span>
-<span id="cb1-512"><a href="#cb1-512"></a>    <span class="fu">redrawCurves</span>()<span class="op">;</span></span>
-<span id="cb1-513"><a href="#cb1-513"></a>  }<span class="op">;</span></span>
-<span id="cb1-514"><a href="#cb1-514"></a>  </span>
-<span id="cb1-515"><a href="#cb1-515"></a>  sigmaInput<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
-<span id="cb1-516"><a href="#cb1-516"></a>    sigma <span class="op">=</span> sigmaInput<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
-<span id="cb1-517"><a href="#cb1-517"></a>    mean_diff <span class="op">=</span> d <span class="op">*</span> sigma<span class="op">;</span></span>
-<span id="cb1-518"><a href="#cb1-518"></a>    std_err <span class="op">=</span> sigma<span class="op">/</span><span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(n)<span class="op">;</span></span>
-<span id="cb1-519"><a href="#cb1-519"></a>    max_std_err <span class="op">=</span> sigma <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">50</span>)<span class="op">;</span></span>
-<span id="cb1-520"><a href="#cb1-520"></a>    <span class="fu">updateValues</span>()<span class="op">;</span></span>
-<span id="cb1-521"><a href="#cb1-521"></a>    <span class="fu">updateYScale</span>()<span class="op">;</span></span>
-<span id="cb1-522"><a href="#cb1-522"></a>    <span class="fu">updateAxis</span>()<span class="op">;</span></span>
-<span id="cb1-523"><a href="#cb1-523"></a>    <span class="fu">updateZAxis</span>()<span class="op">;</span></span>
-<span id="cb1-524"><a href="#cb1-524"></a>    <span class="fu">redrawCurves</span>()<span class="op">;</span></span>
-<span id="cb1-525"><a href="#cb1-525"></a>  }</span>
-<span id="cb1-526"><a href="#cb1-526"></a>  </span>
-<span id="cb1-527"><a href="#cb1-527"></a>  <span class="kw">function</span> <span class="fu">getParams</span>() {</span>
-<span id="cb1-528"><a href="#cb1-528"></a>    mu <span class="op">=</span> <span class="bu">Number</span>(muInput<span class="op">.</span><span class="at">value</span>)<span class="op">;</span></span>
-<span id="cb1-529"><a href="#cb1-529"></a>    sigma <span class="op">=</span> <span class="bu">Number</span>(sigmaInput<span class="op">.</span><span class="at">value</span>)<span class="op">;</span></span>
-<span id="cb1-530"><a href="#cb1-530"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"mu = "</span> <span class="op">+</span> mu <span class="op">+</span> <span class="st">"; sigma = "</span> <span class="op">+</span> sigma)</span>
-<span id="cb1-531"><a href="#cb1-531"></a>    d <span class="op">=</span> <span class="bu">Number</span>(dInput<span class="op">.</span><span class="at">value</span>)<span class="op">;</span></span>
-<span id="cb1-532"><a href="#cb1-532"></a>    mean_diff <span class="op">=</span> d <span class="op">*</span> sigma<span class="op">;</span></span>
-<span id="cb1-533"><a href="#cb1-533"></a>    n <span class="op">=</span> <span class="bu">Number</span>(nInput<span class="op">.</span><span class="at">value</span>)<span class="op">;</span></span>
-<span id="cb1-534"><a href="#cb1-534"></a>    alpha <span class="op">=</span> <span class="bu">Number</span>(aInput<span class="op">.</span><span class="at">value</span>)<span class="op">;</span></span>
-<span id="cb1-535"><a href="#cb1-535"></a>    std_err <span class="op">=</span> sigma <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(n)<span class="op">;</span></span>
-<span id="cb1-536"><a href="#cb1-536"></a>    max_std_err <span class="op">=</span> sigma <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">50</span>)<span class="op">;</span></span>
-<span id="cb1-537"><a href="#cb1-537"></a>    tails <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb1-538"><a href="#cb1-538"></a>    <span class="fu">updateCriticalValues</span>()<span class="op">;</span></span>
-<span id="cb1-539"><a href="#cb1-539"></a>  }</span>
-<span id="cb1-540"><a href="#cb1-540"></a>  </span>
-<span id="cb1-541"><a href="#cb1-541"></a>  <span class="kw">function</span> <span class="fu">updateCriticalValues</span>() {</span>
-<span id="cb1-542"><a href="#cb1-542"></a>    <span class="cf">if</span>(tails) {</span>
-<span id="cb1-543"><a href="#cb1-543"></a>        alpha_x <span class="op">=</span> mu <span class="op">+</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">inv</span>(<span class="dv">1</span> <span class="op">-</span> alpha<span class="op">/</span><span class="dv">2</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>) <span class="op">*</span> std_err</span>
-<span id="cb1-544"><a href="#cb1-544"></a>    } <span class="cf">else</span> {</span>
-<span id="cb1-545"><a href="#cb1-545"></a>        alpha_x <span class="op">=</span> mu <span class="op">+</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">inv</span>(<span class="dv">1</span> <span class="op">-</span> alpha<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>) <span class="op">*</span> std_err</span>
-<span id="cb1-546"><a href="#cb1-546"></a>    }</span>
-<span id="cb1-547"><a href="#cb1-547"></a></span>
-<span id="cb1-548"><a href="#cb1-548"></a>    <span class="cf">if</span>(tails) {</span>
-<span id="cb1-549"><a href="#cb1-549"></a>        alpha_x2 <span class="op">=</span> mu <span class="op">-</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">inv</span>(<span class="dv">1</span> <span class="op">-</span> alpha<span class="op">/</span><span class="dv">2</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>) <span class="op">*</span> std_err</span>
-<span id="cb1-550"><a href="#cb1-550"></a>    } <span class="cf">else</span> {</span>
-<span id="cb1-551"><a href="#cb1-551"></a>        alpha_x2 <span class="op">=-</span><span class="dv">1000</span></span>
-<span id="cb1-552"><a href="#cb1-552"></a>    }</span>
-<span id="cb1-553"><a href="#cb1-553"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"crit high: "</span> <span class="op">+</span> alpha_x <span class="op">+</span> <span class="st">"; crit low: "</span> <span class="op">+</span> alpha_x2)</span>
-<span id="cb1-554"><a href="#cb1-554"></a>  }</span>
-<span id="cb1-555"><a href="#cb1-555"></a>  </span>
-<span id="cb1-556"><a href="#cb1-556"></a>  <span class="kw">function</span> <span class="fu">updateValues</span>() {</span>
-<span id="cb1-557"><a href="#cb1-557"></a>    <span class="fu">updateCriticalValues</span>()<span class="op">;</span></span>
-<span id="cb1-558"><a href="#cb1-558"></a>    </span>
-<span id="cb1-559"><a href="#cb1-559"></a>      beta <span class="op">=</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">cdf</span>(alpha_x<span class="op">,</span> mu <span class="op">+</span> mean_diff<span class="op">,</span> std_err) <span class="op">-</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">cdf</span>(alpha_x2<span class="op">,</span> mu <span class="op">+</span> mean_diff<span class="op">,</span> std_err)<span class="op">;</span></span>
-<span id="cb1-560"><a href="#cb1-560"></a>    power <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> beta<span class="op">;</span></span>
-<span id="cb1-561"><a href="#cb1-561"></a>    </span>
-<span id="cb1-562"><a href="#cb1-562"></a>    d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#d-value"</span>)<span class="op">.</span><span class="fu">text</span>(d)</span>
-<span id="cb1-563"><a href="#cb1-563"></a>    d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#n-value"</span>)<span class="op">.</span><span class="fu">text</span>(n)</span>
-<span id="cb1-564"><a href="#cb1-564"></a>    d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#alpha-value"</span>)<span class="op">.</span><span class="fu">text</span>(alpha)</span>
-<span id="cb1-565"><a href="#cb1-565"></a>    d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#std-err-value"</span>)<span class="op">.</span><span class="fu">text</span>(<span class="fu">f</span>(std_err))</span>
-<span id="cb1-566"><a href="#cb1-566"></a>    d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#beta-value"</span>)<span class="op">.</span><span class="fu">text</span>(<span class="fu">f</span>(beta))</span>
-<span id="cb1-567"><a href="#cb1-567"></a>    d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#power-value"</span>)<span class="op">.</span><span class="fu">text</span>(<span class="fu">f</span>(power))</span>
-<span id="cb1-568"><a href="#cb1-568"></a>    </span>
-<span id="cb1-569"><a href="#cb1-569"></a></span>
-<span id="cb1-570"><a href="#cb1-570"></a>  }</span>
-<span id="cb1-571"><a href="#cb1-571"></a>  </span>
-<span id="cb1-572"><a href="#cb1-572"></a>  <span class="kw">function</span> <span class="fu">updateAxis</span>() {</span>
-<span id="cb1-573"><a href="#cb1-573"></a>    xlim <span class="op">=</span> [mu <span class="op">-</span> <span class="dv">12</span> <span class="op">*</span> std_err<span class="op">,</span> mu <span class="op">+</span> <span class="dv">12</span> <span class="op">*</span> std_err]<span class="op">;</span></span>
-<span id="cb1-574"><a href="#cb1-574"></a>    x<span class="op">.</span><span class="fu">domain</span>([xlim[<span class="dv">0</span>]<span class="op">,</span> xlim[<span class="dv">1</span>]])</span>
-<span id="cb1-575"><a href="#cb1-575"></a>    <span class="op">&lt;!--</span> xAxis<span class="op">.</span><span class="fu">tickFormat</span>(x <span class="kw">=&gt;</span> x <span class="op">/</span> std_err)<span class="op">.</span><span class="fu">ticks</span>([<span class="op">-</span><span class="dv">3</span><span class="op">,-</span><span class="dv">2</span><span class="op">,-</span><span class="dv">1</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])<span class="op">;</span> <span class="op">--&gt;</span></span>
-<span id="cb1-576"><a href="#cb1-576"></a>    axis<span class="op">.</span><span class="fu">call</span>(xAxis)<span class="op">;</span></span>
-<span id="cb1-577"><a href="#cb1-577"></a>  }</span>
-<span id="cb1-578"><a href="#cb1-578"></a>  </span>
-<span id="cb1-579"><a href="#cb1-579"></a>  <span class="kw">function</span> <span class="fu">updateYScale</span>() {</span>
-<span id="cb1-580"><a href="#cb1-580"></a>    y<span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">pdf</span>(mu<span class="op">,</span> mu<span class="op">,</span> max_std_err)])<span class="op">;</span></span>
-<span id="cb1-581"><a href="#cb1-581"></a>  }</span>
-<span id="cb1-582"><a href="#cb1-582"></a>  </span>
-<span id="cb1-583"><a href="#cb1-583"></a>  <span class="kw">function</span> <span class="fu">updateZAxis</span>() {</span>
-<span id="cb1-584"><a href="#cb1-584"></a>    <span class="kw">var</span> tickSeq <span class="op">=</span> [<span class="op">-</span><span class="dv">3</span><span class="op">,-</span><span class="dv">2</span><span class="op">,-</span><span class="dv">1</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]</span>
-<span id="cb1-585"><a href="#cb1-585"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> tickSeq<span class="op">.</span><span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb1-586"><a href="#cb1-586"></a>      tickSeq[i] <span class="op">=</span> mu <span class="op">+</span> tickSeq[i] <span class="op">*</span> std_err<span class="op">;</span></span>
-<span id="cb1-587"><a href="#cb1-587"></a>    }</span>
-<span id="cb1-588"><a href="#cb1-588"></a>    <span class="kw">var</span> zlim <span class="op">=</span> [mu <span class="op">-</span> <span class="dv">3</span> <span class="op">*</span> sigma<span class="op">,</span> mu <span class="op">+</span> <span class="dv">3</span> <span class="op">*</span> sigma]<span class="op">;</span></span>
-<span id="cb1-589"><a href="#cb1-589"></a>    z<span class="op">.</span><span class="fu">domain</span>([xlim[<span class="dv">0</span>]<span class="op">,</span> xlim[<span class="dv">1</span>]])</span>
-<span id="cb1-590"><a href="#cb1-590"></a>    zAxis</span>
-<span id="cb1-591"><a href="#cb1-591"></a>      <span class="op">.</span><span class="fu">tickFormat</span>(z <span class="kw">=&gt;</span> <span class="fu">f2</span>((z <span class="op">-</span> mu)<span class="op">/</span>std_err))</span>
-<span id="cb1-592"><a href="#cb1-592"></a>      <span class="op">.</span><span class="fu">tickValues</span>(tickSeq)</span>
-<span id="cb1-593"><a href="#cb1-593"></a>    svgH0Axis</span>
-<span id="cb1-594"><a href="#cb1-594"></a>      <span class="op">.</span><span class="fu">call</span>(zAxis)<span class="op">;</span></span>
-<span id="cb1-595"><a href="#cb1-595"></a>      </span>
-<span id="cb1-596"><a href="#cb1-596"></a>    tickSeq <span class="op">=</span> [<span class="op">-</span><span class="dv">3</span><span class="op">,-</span><span class="dv">2</span><span class="op">,-</span><span class="dv">1</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]</span>
-<span id="cb1-597"><a href="#cb1-597"></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> tickSeq<span class="op">.</span><span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb1-598"><a href="#cb1-598"></a>      tickSeq[i] <span class="op">=</span> mu <span class="op">+</span> mean_diff <span class="op">+</span> tickSeq[i] <span class="op">*</span> std_err<span class="op">;</span></span>
-<span id="cb1-599"><a href="#cb1-599"></a>    }</span>
-<span id="cb1-600"><a href="#cb1-600"></a>    h1Axis</span>
-<span id="cb1-601"><a href="#cb1-601"></a>      <span class="op">.</span><span class="fu">tickFormat</span>(z <span class="kw">=&gt;</span> <span class="fu">f2</span>((z <span class="op">-</span> mu <span class="op">-</span> mean_diff)<span class="op">/</span>std_err))</span>
-<span id="cb1-602"><a href="#cb1-602"></a>      <span class="op">.</span><span class="fu">tickValues</span>(tickSeq)</span>
-<span id="cb1-603"><a href="#cb1-603"></a>    svgH1Axis</span>
-<span id="cb1-604"><a href="#cb1-604"></a>      <span class="op">.</span><span class="fu">call</span>(h1Axis)<span class="op">;</span></span>
-<span id="cb1-605"><a href="#cb1-605"></a>  }</span>
-<span id="cb1-606"><a href="#cb1-606"></a>  </span>
-<span id="cb1-607"><a href="#cb1-607"></a>  <span class="kw">function</span> <span class="fu">redrawCurves</span>() {</span>
-<span id="cb1-608"><a href="#cb1-608"></a>    <span class="op">&lt;!--</span> <span class="fu">updateAxis</span>()<span class="op">;</span> <span class="op">--&gt;</span></span>
-<span id="cb1-609"><a href="#cb1-609"></a>    <span class="fu">redrawNull</span>()<span class="op">;</span></span>
-<span id="cb1-610"><a href="#cb1-610"></a>    <span class="fu">redrawAlt</span>()<span class="op">;</span></span>
-<span id="cb1-611"><a href="#cb1-611"></a>  }</span>
-<span id="cb1-612"><a href="#cb1-612"></a>  </span>
-<span id="cb1-613"><a href="#cb1-613"></a>  <span class="kw">function</span> <span class="fu">redrawNull</span>() {</span>
-<span id="cb1-614"><a href="#cb1-614"></a>    nullCurve<span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(<span class="fu">curveData</span>(mu<span class="op">,</span> std_err)))<span class="op">;</span></span>
-<span id="cb1-615"><a href="#cb1-615"></a>    nullLabel<span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(</span><span class="sc">${</span><span class="fu">x</span>(mu)<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>labelHeight<span class="sc">}</span><span class="vs">)`</span>)<span class="op">;</span></span>
-<span id="cb1-616"><a href="#cb1-616"></a>    nullFill<span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(<span class="fu">curveData</span>(mu<span class="op">,</span> std_err)))<span class="op">;</span></span>
-<span id="cb1-617"><a href="#cb1-617"></a>    nullClip<span class="op">.</span><span class="fu">attr</span>(<span class="st">"points"</span><span class="op">,</span> [[<span class="dv">0</span><span class="op">,</span><span class="dv">0</span>]<span class="op">,</span> [<span class="dv">0</span><span class="op">,</span>h]<span class="op">,</span> [<span class="fu">x</span>(alpha_x2)<span class="op">,</span>h]<span class="op">,</span>[<span class="fu">x</span>(alpha_x2)<span class="op">,</span><span class="dv">0</span>]<span class="op">,</span></span>
-<span id="cb1-618"><a href="#cb1-618"></a>                     [<span class="fu">x</span>(alpha_x)<span class="op">,</span><span class="dv">0</span>]<span class="op">,</span> [<span class="fu">x</span>(alpha_x)<span class="op">,</span>h]<span class="op">,</span> [w<span class="op">,</span>h]<span class="op">,</span>[w<span class="op">,</span><span class="dv">0</span>]])<span class="op">;</span></span>
-<span id="cb1-619"><a href="#cb1-619"></a>    nullClipInterior<span class="op">.</span><span class="fu">attr</span>(<span class="st">"points"</span><span class="op">,</span> [[<span class="fu">x</span>(alpha_x2)<span class="op">,</span><span class="dv">0</span>]<span class="op">,</span>[<span class="fu">x</span>(alpha_x2)<span class="op">,</span>h]<span class="op">,</span></span>
-<span id="cb1-620"><a href="#cb1-620"></a>                     [<span class="fu">x</span>(alpha_x)<span class="op">,</span>h]<span class="op">,</span> [<span class="fu">x</span>(alpha_x)<span class="op">,</span><span class="dv">0</span>]])<span class="op">;</span></span>
-<span id="cb1-621"><a href="#cb1-621"></a>                     </span>
-<span id="cb1-622"><a href="#cb1-622"></a>  }</span>
-<span id="cb1-623"><a href="#cb1-623"></a>  <span class="kw">function</span> <span class="fu">redrawAlt</span>() {</span>
-<span id="cb1-624"><a href="#cb1-624"></a>    <span class="kw">var</span> dat <span class="op">=</span> <span class="fu">curveData</span>(<span class="bu">Number</span>(mu <span class="op">+</span> mean_diff)<span class="op">,</span> std_err)</span>
-<span id="cb1-625"><a href="#cb1-625"></a>    altCurve<span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(dat))</span>
-<span id="cb1-626"><a href="#cb1-626"></a>    altFillPower<span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(dat))</span>
-<span id="cb1-627"><a href="#cb1-627"></a>    altFillBeta<span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(dat))</span>
-<span id="cb1-628"><a href="#cb1-628"></a>    altLabel<span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(</span><span class="sc">${</span><span class="fu">x</span>(mu <span class="op">+</span> mean_diff)<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>labelHeight<span class="sc">}</span><span class="vs">)`</span>)</span>
-<span id="cb1-629"><a href="#cb1-629"></a>  }</span>
-<span id="cb1-630"><a href="#cb1-630"></a>  </span>
-<span id="cb1-631"><a href="#cb1-631"></a>  nInput<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
-<span id="cb1-632"><a href="#cb1-632"></a>    n <span class="op">=</span> <span class="bu">Number</span>(nInput<span class="op">.</span><span class="at">value</span>)</span>
-<span id="cb1-633"><a href="#cb1-633"></a>    std_err <span class="op">=</span> sigma<span class="op">/</span><span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(n)</span>
-<span id="cb1-634"><a href="#cb1-634"></a>    <span class="fu">updateZAxis</span>()<span class="op">;</span></span>
-<span id="cb1-635"><a href="#cb1-635"></a>    <span class="fu">updateValues</span>()<span class="op">;</span></span>
-<span id="cb1-636"><a href="#cb1-636"></a>    <span class="fu">redrawCurves</span>()<span class="op">;</span></span>
-<span id="cb1-637"><a href="#cb1-637"></a>  }<span class="op">;</span></span>
-<span id="cb1-638"><a href="#cb1-638"></a>  </span>
-<span id="cb1-639"><a href="#cb1-639"></a>  dInput<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
-<span id="cb1-640"><a href="#cb1-640"></a>    d <span class="op">=</span> <span class="bu">Number</span>(dInput<span class="op">.</span><span class="at">value</span>)<span class="op">;</span></span>
-<span id="cb1-641"><a href="#cb1-641"></a>    mean_diff <span class="op">=</span> d <span class="op">*</span> sigma<span class="op">;</span></span>
-<span id="cb1-642"><a href="#cb1-642"></a>    <span class="fu">updateValues</span>()<span class="op">;</span></span>
-<span id="cb1-643"><a href="#cb1-643"></a>    <span class="fu">updateZAxis</span>()<span class="op">;</span></span>
-<span id="cb1-644"><a href="#cb1-644"></a>    <span class="fu">redrawAlt</span>()<span class="op">;</span></span>
-<span id="cb1-645"><a href="#cb1-645"></a>  }<span class="op">;</span></span>
-<span id="cb1-646"><a href="#cb1-646"></a>  </span>
-<span id="cb1-647"><a href="#cb1-647"></a>  aInput<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
-<span id="cb1-648"><a href="#cb1-648"></a>    alpha <span class="op">=</span> <span class="bu">Number</span>(aInput<span class="op">.</span><span class="at">value</span>)</span>
-<span id="cb1-649"><a href="#cb1-649"></a>    <span class="fu">updateValues</span>()<span class="op">;</span></span>
-<span id="cb1-650"><a href="#cb1-650"></a>    <span class="fu">redrawNull</span>()<span class="op">;</span></span>
-<span id="cb1-651"><a href="#cb1-651"></a>  }<span class="op">;</span></span>
-<span id="cb1-652"><a href="#cb1-652"></a>  </span>
-<span id="cb1-653"><a href="#cb1-653"></a>  tailsInput<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
-<span id="cb1-654"><a href="#cb1-654"></a>    tails <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">"tails-input"</span>)<span class="op">.</span><span class="at">checked</span></span>
-<span id="cb1-655"><a href="#cb1-655"></a>    <span class="fu">updateValues</span>()</span>
-<span id="cb1-656"><a href="#cb1-656"></a>    <span class="fu">redrawNull</span>()</span>
-<span id="cb1-657"><a href="#cb1-657"></a>  }</span>
-<span id="cb1-658"><a href="#cb1-658"></a>  </span>
-<span id="cb1-659"><a href="#cb1-659"></a>  altInput<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
-<span id="cb1-660"><a href="#cb1-660"></a>    showAlt <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">"alt-input"</span>)<span class="op">.</span><span class="at">checked</span></span>
-<span id="cb1-661"><a href="#cb1-661"></a>    </span>
-<span id="cb1-662"><a href="#cb1-662"></a>    d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#power-values"</span>)<span class="op">.</span><span class="fu">classed</span>(<span class="st">"hide-element"</span><span class="op">,</span> <span class="op">!</span>showAlt)</span>
-<span id="cb1-663"><a href="#cb1-663"></a>    </span>
-<span id="cb1-664"><a href="#cb1-664"></a>    <span class="cf">if</span>(showAlt) {<span class="kw">var</span> opacity <span class="op">=</span> <span class="dv">1</span>} <span class="cf">else</span> {<span class="kw">var</span> opacity <span class="op">=</span> <span class="dv">0</span>}</span>
-<span id="cb1-665"><a href="#cb1-665"></a>    altCurve<span class="op">.</span><span class="fu">style</span>(<span class="st">"opacity"</span><span class="op">,</span> opacity)</span>
-<span id="cb1-666"><a href="#cb1-666"></a>    altLabel<span class="op">.</span><span class="fu">style</span>(<span class="st">"opacity"</span><span class="op">,</span> opacity)</span>
-<span id="cb1-667"><a href="#cb1-667"></a>    <span class="cf">if</span>(showAlt) {<span class="kw">var</span> opacity <span class="op">=</span> <span class="fl">0.7</span>} <span class="cf">else</span> {<span class="kw">var</span> opacity <span class="op">=</span> <span class="dv">0</span>}</span>
-<span id="cb1-668"><a href="#cb1-668"></a>    altFillPower<span class="op">.</span><span class="fu">style</span>(<span class="st">"opacity"</span><span class="op">,</span> opacity)</span>
-<span id="cb1-669"><a href="#cb1-669"></a>    <span class="cf">if</span>(showAlt) {<span class="kw">var</span> opacity <span class="op">=</span> <span class="fl">0.3</span>} <span class="cf">else</span> {<span class="kw">var</span> opacity <span class="op">=</span> <span class="dv">0</span>}</span>
-<span id="cb1-670"><a href="#cb1-670"></a>    altFillBeta<span class="op">.</span><span class="fu">style</span>(<span class="st">"opacity"</span><span class="op">,</span> opacity)</span>
-<span id="cb1-671"><a href="#cb1-671"></a>  }</span>
-<span id="cb1-672"><a href="#cb1-672"></a>  </span>
-<span id="cb1-673"><a href="#cb1-673"></a></span>
-<span id="cb1-674"><a href="#cb1-674"></a>  </span>
-<span id="cb1-675"><a href="#cb1-675"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#power-interactive"</span>)</span>
-<span id="cb1-676"><a href="#cb1-676"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)</span>
-<span id="cb1-677"><a href="#cb1-677"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
-<span id="cb1-678"><a href="#cb1-678"></a></span>
-<span id="cb1-679"><a href="#cb1-679"></a>  <span class="kw">const</span> svgH0Axis <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb1-680"><a href="#cb1-680"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"axis"</span>)</span>
-<span id="cb1-681"><a href="#cb1-681"></a>      <span class="op">.</span><span class="fu">classed</span>(<span class="st">"hide-element"</span><span class="op">,</span> hideAxisZNull)</span>
-<span id="cb1-682"><a href="#cb1-682"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(0, </span><span class="sc">${</span><span class="fu">y</span>(<span class="dv">0</span>)<span class="sc">}</span><span class="vs">)`</span>)</span>
-<span id="cb1-683"><a href="#cb1-683"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"0.5em"</span>)</span>
-<span id="cb1-684"><a href="#cb1-684"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"color"</span><span class="op">,</span> <span class="st">"red"</span>)</span>
-<span id="cb1-685"><a href="#cb1-685"></a>      </span>
-<span id="cb1-686"><a href="#cb1-686"></a>  <span class="kw">const</span> svgH1Axis <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb1-687"><a href="#cb1-687"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"axis"</span>)</span>
-<span id="cb1-688"><a href="#cb1-688"></a>      <span class="op">.</span><span class="fu">classed</span>(<span class="st">"hide-element"</span><span class="op">,</span> hideAxisZAlt)</span>
-<span id="cb1-689"><a href="#cb1-689"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(0, </span><span class="sc">${</span><span class="fu">y</span>(<span class="dv">0</span>)<span class="sc">}</span><span class="vs">)`</span>)</span>
-<span id="cb1-690"><a href="#cb1-690"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"0.5em"</span>)</span>
-<span id="cb1-691"><a href="#cb1-691"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"color"</span><span class="op">,</span> <span class="st">"steelblue"</span>)</span>
-<span id="cb1-692"><a href="#cb1-692"></a>      </span>
-<span id="cb1-693"><a href="#cb1-693"></a>  <span class="kw">const</span> axis <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb1-694"><a href="#cb1-694"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"axis"</span>)</span>
-<span id="cb1-695"><a href="#cb1-695"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(0, </span><span class="sc">${</span><span class="fu">y</span>(<span class="dv">0</span>)<span class="sc">}</span><span class="vs">)`</span>)</span>
-<span id="cb1-696"><a href="#cb1-696"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"0.5em"</span>)<span class="op">;</span></span>
-<span id="cb1-697"><a href="#cb1-697"></a>  </span>
-<span id="cb1-698"><a href="#cb1-698"></a>  <span class="kw">const</span> nullDist <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"null-dist"</span>)</span>
-<span id="cb1-699"><a href="#cb1-699"></a></span>
-<span id="cb1-700"><a href="#cb1-700"></a>  <span class="kw">const</span> nullFill <span class="op">=</span> nullDist<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"critical-region-fill"</span>)</span>
-<span id="cb1-701"><a href="#cb1-701"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"red"</span>)</span>
-<span id="cb1-702"><a href="#cb1-702"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
-<span id="cb1-703"><a href="#cb1-703"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'clip-path'</span><span class="op">,</span> <span class="st">"url(#clip-area)"</span>)</span>
-<span id="cb1-704"><a href="#cb1-704"></a></span>
-<span id="cb1-705"><a href="#cb1-705"></a>  <span class="kw">const</span> nullCurve <span class="op">=</span> nullDist<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"h0-curve"</span>)</span>
-<span id="cb1-706"><a href="#cb1-706"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
-<span id="cb1-707"><a href="#cb1-707"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)</span>
-<span id="cb1-708"><a href="#cb1-708"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">2</span>)</span>
-<span id="cb1-709"><a href="#cb1-709"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)<span class="op">;</span></span>
-<span id="cb1-710"><a href="#cb1-710"></a></span>
-<span id="cb1-711"><a href="#cb1-711"></a>  <span class="kw">const</span> nullLabel <span class="op">=</span> nullDist<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb1-712"><a href="#cb1-712"></a>  nullLabel<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"h0-text"</span>)</span>
-<span id="cb1-713"><a href="#cb1-713"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)</span>
-<span id="cb1-714"><a href="#cb1-714"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
-<span id="cb1-715"><a href="#cb1-715"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'1em'</span>)</span>
-<span id="cb1-716"><a href="#cb1-716"></a>      <span class="op">.</span><span class="fu">text</span>(<span class="st">''</span>)</span>
-<span id="cb1-717"><a href="#cb1-717"></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">'tspan'</span>)</span>
-<span id="cb1-718"><a href="#cb1-718"></a>        <span class="op">.</span><span class="fu">html</span>(<span class="st">'H'</span>)</span>
-<span id="cb1-719"><a href="#cb1-719"></a>        <span class="op">.</span><span class="fu">append</span>(<span class="st">'tspan'</span>)</span>
-<span id="cb1-720"><a href="#cb1-720"></a>        <span class="op">.</span><span class="fu">html</span>(<span class="st">'0'</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">'baseline-shift'</span><span class="op">,</span> <span class="st">'sub'</span>)<span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.5em'</span>)<span class="op">;</span></span>
-<span id="cb1-721"><a href="#cb1-721"></a></span>
-<span id="cb1-722"><a href="#cb1-722"></a>  <span class="kw">const</span> nullClip <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"clipPath"</span>)</span>
-<span id="cb1-723"><a href="#cb1-723"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"clip-area"</span>)</span>
-<span id="cb1-724"><a href="#cb1-724"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"polygon"</span>)</span>
-<span id="cb1-725"><a href="#cb1-725"></a></span>
-<span id="cb1-726"><a href="#cb1-726"></a>  <span class="kw">const</span> nullClipInterior <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"clipPath"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"clip-area-interior"</span>)</span>
-<span id="cb1-727"><a href="#cb1-727"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"polygon"</span>)</span>
-<span id="cb1-728"><a href="#cb1-728"></a></span>
-<span id="cb1-729"><a href="#cb1-729"></a></span>
-<span id="cb1-730"><a href="#cb1-730"></a><span class="op">&lt;!--</span> <span class="op">&lt;!--</span> alternative distribution <span class="op">--&gt;</span> <span class="op">--&gt;</span></span>
-<span id="cb1-731"><a href="#cb1-731"></a></span>
-<span id="cb1-732"><a href="#cb1-732"></a>  <span class="kw">const</span> altDist <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"null-dist"</span>)</span>
-<span id="cb1-733"><a href="#cb1-733"></a></span>
-<span id="cb1-734"><a href="#cb1-734"></a>  <span class="kw">const</span> altCurve <span class="op">=</span> altDist<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"h1-curve"</span>)</span>
-<span id="cb1-735"><a href="#cb1-735"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
-<span id="cb1-736"><a href="#cb1-736"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)</span>
-<span id="cb1-737"><a href="#cb1-737"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">2</span>)</span>
-<span id="cb1-738"><a href="#cb1-738"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)<span class="op">;</span></span>
-<span id="cb1-739"><a href="#cb1-739"></a></span>
-<span id="cb1-740"><a href="#cb1-740"></a>  <span class="kw">const</span> altLabel <span class="op">=</span> altDist<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb1-741"><a href="#cb1-741"></a>  altLabel<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
-<span id="cb1-742"><a href="#cb1-742"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
-<span id="cb1-743"><a href="#cb1-743"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'fill'</span><span class="op">,</span> <span class="st">'steelblue'</span>)</span>
-<span id="cb1-744"><a href="#cb1-744"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'1em'</span>)</span>
-<span id="cb1-745"><a href="#cb1-745"></a>      <span class="op">.</span><span class="fu">text</span>(<span class="st">''</span>)</span>
-<span id="cb1-746"><a href="#cb1-746"></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">'tspan'</span>)</span>
-<span id="cb1-747"><a href="#cb1-747"></a>        <span class="op">.</span><span class="fu">html</span>(<span class="st">'H'</span>)</span>
-<span id="cb1-748"><a href="#cb1-748"></a>        <span class="op">.</span><span class="fu">append</span>(<span class="st">'tspan'</span>)</span>
-<span id="cb1-749"><a href="#cb1-749"></a>        <span class="op">.</span><span class="fu">html</span>(<span class="st">'1'</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">'baseline-shift'</span><span class="op">,</span> <span class="st">'sub'</span>)<span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.5em'</span>)<span class="op">;</span></span>
-<span id="cb1-750"><a href="#cb1-750"></a></span>
-<span id="cb1-751"><a href="#cb1-751"></a>  <span class="kw">const</span> altFillPower <span class="op">=</span> altDist<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
-<span id="cb1-752"><a href="#cb1-752"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'clip-path'</span><span class="op">,</span> <span class="st">"url(#clip-area)"</span>)</span>
-<span id="cb1-753"><a href="#cb1-753"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"steelblue"</span>)</span>
-<span id="cb1-754"><a href="#cb1-754"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"opacity"</span><span class="op">,</span> <span class="fl">0.7</span>)</span>
-<span id="cb1-755"><a href="#cb1-755"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"steelblue"</span>)</span>
-<span id="cb1-756"><a href="#cb1-756"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="fl">2.5</span>)</span>
-<span id="cb1-757"><a href="#cb1-757"></a></span>
-<span id="cb1-758"><a href="#cb1-758"></a>  <span class="kw">const</span> altFillBeta <span class="op">=</span> altDist<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
-<span id="cb1-759"><a href="#cb1-759"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'clip-path'</span><span class="op">,</span> <span class="st">"url(#clip-area-interior)"</span>)</span>
-<span id="cb1-760"><a href="#cb1-760"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"grey"</span>)</span>
-<span id="cb1-761"><a href="#cb1-761"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"opacity"</span><span class="op">,</span> <span class="fl">0.3</span>)</span>
-<span id="cb1-762"><a href="#cb1-762"></a></span>
-<span id="cb1-763"><a href="#cb1-763"></a>  <span class="fu">getParams</span>()<span class="op">;</span></span>
-<span id="cb1-764"><a href="#cb1-764"></a>  <span class="fu">updateValues</span>()<span class="op">;</span></span>
-<span id="cb1-765"><a href="#cb1-765"></a>  <span class="fu">updateYScale</span>()<span class="op">;</span></span>
-<span id="cb1-766"><a href="#cb1-766"></a>  <span class="fu">updateAxis</span>()<span class="op">;</span></span>
-<span id="cb1-767"><a href="#cb1-767"></a>  <span class="fu">updateZAxis</span>()<span class="op">;</span></span>
-<span id="cb1-768"><a href="#cb1-768"></a>  <span class="fu">redrawCurves</span>()<span class="op">;</span></span>
-<span id="cb1-769"><a href="#cb1-769"></a>  </span>
-<span id="cb1-770"><a href="#cb1-770"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="440" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 439;"><span id="cb1-440"><a></a>jStat <span class="op">=</span> <span class="pp">require</span>(<span class="st">"../js/jstat.js"</span>)</span>
+<span id="cb1-441"><a></a></span>
+<span id="cb1-442"><a></a>chart <span class="op">=</span> {</span>
+<span id="cb1-443"><a></a></span>
+<span id="cb1-444"><a></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">1050</span></span>
+<span id="cb1-445"><a></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">600</span></span>
+<span id="cb1-446"><a></a>  <span class="kw">const</span> margin <span class="op">=</span> ({<span class="dt">top</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">right</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">bottom</span><span class="op">:</span> <span class="dv">80</span><span class="op">,</span> <span class="dt">left</span><span class="op">:</span> <span class="dv">0</span>})</span>
+<span id="cb1-447"><a></a>  <span class="kw">const</span> f <span class="op">=</span> d3<span class="op">.</span><span class="fu">format</span>(<span class="st">".2f"</span>)</span>
+<span id="cb1-448"><a></a>  <span class="kw">const</span> f2 <span class="op">=</span> d3<span class="op">.</span><span class="fu">format</span>(<span class="st">".0f"</span>)</span>
+<span id="cb1-449"><a></a>  <span class="kw">const</span> labelHeight <span class="op">=</span> h<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb1-450"><a></a>  </span>
+<span id="cb1-451"><a></a></span>
+<span id="cb1-452"><a></a>  <span class="kw">var</span> mu<span class="op">,</span> sigma<span class="op">,</span> d<span class="op">,</span> mean_diff<span class="op">,</span> n<span class="op">,</span> alpha<span class="op">,</span> beta<span class="op">,</span> power<span class="op">,</span> xlim<span class="op">,</span> std_err<span class="op">,</span> max_std_err<span class="op">,</span> alpha_x<span class="op">,</span> alpha_x2<span class="op">,</span> showAlt<span class="op">,</span> tails<span class="op">;</span></span>
+<span id="cb1-453"><a></a>  </span>
+<span id="cb1-454"><a></a></span>
+<span id="cb1-455"><a></a>  <span class="kw">var</span> x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb1-456"><a></a>    <span class="op">.</span><span class="fu">range</span>([margin<span class="op">.</span><span class="at">left</span> <span class="op">-</span> <span class="dv">400</span><span class="op">,</span> w <span class="op">+</span> <span class="dv">400</span>])</span>
+<span id="cb1-457"><a></a>  <span class="kw">var</span> z <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb1-458"><a></a>    <span class="op">.</span><span class="fu">range</span>([margin<span class="op">.</span><span class="at">left</span> <span class="op">-</span> <span class="dv">400</span><span class="op">,</span> w <span class="op">+</span> <span class="dv">400</span>])</span>
+<span id="cb1-459"><a></a>  <span class="kw">var</span> y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb1-460"><a></a>    <span class="op">.</span><span class="fu">range</span>([h <span class="op">-</span> margin<span class="op">.</span><span class="at">bottom</span><span class="op">,</span> margin<span class="op">.</span><span class="at">top</span>])</span>
+<span id="cb1-461"><a></a>  <span class="kw">const</span> line <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()</span>
+<span id="cb1-462"><a></a>    <span class="op">.</span><span class="fu">x</span>(d <span class="kw">=&gt;</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">value</span>))</span>
+<span id="cb1-463"><a></a>    <span class="op">.</span><span class="fu">y</span>(d <span class="kw">=&gt;</span> <span class="fu">y</span>(d<span class="op">.</span><span class="at">density</span>))</span>
+<span id="cb1-464"><a></a>  <span class="kw">var</span> xAxis <span class="op">=</span> d3<span class="op">.</span><span class="fu">axisBottom</span>(x)<span class="op">.</span><span class="fu">ticks</span>(<span class="dv">10</span>)</span>
+<span id="cb1-465"><a></a>  <span class="kw">var</span> zAxis <span class="op">=</span> d3<span class="op">.</span><span class="fu">axisBottom</span>(z)<span class="op">.</span><span class="fu">tickSize</span>(<span class="dv">20</span>)</span>
+<span id="cb1-466"><a></a>  <span class="kw">var</span> h1Axis <span class="op">=</span> d3<span class="op">.</span><span class="fu">axisBottom</span>(z)<span class="op">.</span><span class="fu">tickSize</span>(<span class="dv">20</span>)</span>
+<span id="cb1-467"><a></a>  </span>
+<span id="cb1-468"><a></a>  <span class="kw">function</span> <span class="fu">curveData</span>(mu<span class="op">,</span> sm) {</span>
+<span id="cb1-469"><a></a>    <span class="kw">var</span> values <span class="op">=</span> <span class="fu">jStat</span>(xlim[<span class="dv">0</span>]<span class="op">,</span> xlim[<span class="dv">1</span>]<span class="op">,</span> <span class="dv">310</span>)[<span class="dv">0</span>]<span class="op">,</span></span>
+<span id="cb1-470"><a></a>        arr <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb1-471"><a></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="kw">in</span> values) {</span>
+<span id="cb1-472"><a></a>      arr<span class="op">.</span><span class="fu">push</span>({</span>
+<span id="cb1-473"><a></a>          <span class="dt">value</span><span class="op">:</span> values[i]<span class="op">,</span> </span>
+<span id="cb1-474"><a></a>          <span class="dt">density</span><span class="op">:</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">pdf</span>(values[i]<span class="op">,</span> mu<span class="op">,</span> sm)</span>
+<span id="cb1-475"><a></a>      })</span>
+<span id="cb1-476"><a></a>    }</span>
+<span id="cb1-477"><a></a>    <span class="cf">return</span> arr<span class="op">;</span></span>
+<span id="cb1-478"><a></a>  }</span>
+<span id="cb1-479"><a></a>  </span>
+<span id="cb1-480"><a></a>  <span class="kw">const</span> muInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'mu-input'</span>)</span>
+<span id="cb1-481"><a></a>  <span class="kw">const</span> sigmaInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'sigma-input'</span>)<span class="op">;</span></span>
+<span id="cb1-482"><a></a>  <span class="kw">const</span> dInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'d-input'</span>)</span>
+<span id="cb1-483"><a></a>  <span class="kw">const</span> nInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'n-input'</span>)</span>
+<span id="cb1-484"><a></a>  <span class="kw">const</span> aInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'alpha-input'</span>)</span>
+<span id="cb1-485"><a></a>  <span class="kw">const</span> altInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'alt-input'</span>)</span>
+<span id="cb1-486"><a></a>  <span class="kw">const</span> tailsInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'tails-input'</span>)</span>
+<span id="cb1-487"><a></a>  <span class="kw">const</span> axisRawInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'axis-raw'</span>)</span>
+<span id="cb1-488"><a></a>  <span class="kw">const</span> axisZNullInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'axis-z-null'</span>)</span>
+<span id="cb1-489"><a></a>  <span class="kw">const</span> axisZAltInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'axis-z-alt'</span>)</span>
+<span id="cb1-490"><a></a>  </span>
+<span id="cb1-491"><a></a>  <span class="kw">var</span> hideAxisRaw <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb1-492"><a></a>  <span class="kw">var</span> hideAxisZNull <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb1-493"><a></a>  <span class="kw">var</span> hideAxisZAlt <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb1-494"><a></a>  axisRawInput<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
+<span id="cb1-495"><a></a>    hideAxisRaw <span class="op">=</span> <span class="op">!</span>hideAxisRaw<span class="op">;</span></span>
+<span id="cb1-496"><a></a>    axis<span class="op">.</span><span class="fu">classed</span>(<span class="st">"hide-element"</span><span class="op">,</span> hideAxisRaw)</span>
+<span id="cb1-497"><a></a>  }</span>
+<span id="cb1-498"><a></a>  axisZNullInput<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
+<span id="cb1-499"><a></a>    hideAxisZNull <span class="op">=</span> <span class="op">!</span>hideAxisZNull<span class="op">;</span></span>
+<span id="cb1-500"><a></a>    svgH0Axis<span class="op">.</span><span class="fu">classed</span>(<span class="st">"hide-element"</span><span class="op">,</span> hideAxisZNull)</span>
+<span id="cb1-501"><a></a>  }</span>
+<span id="cb1-502"><a></a>  axisZAltInput<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
+<span id="cb1-503"><a></a>    hideAxisZAlt <span class="op">=</span> <span class="op">!</span>hideAxisZAlt<span class="op">;</span></span>
+<span id="cb1-504"><a></a>    svgH1Axis<span class="op">.</span><span class="fu">classed</span>(<span class="st">"hide-element"</span><span class="op">,</span> hideAxisZAlt)</span>
+<span id="cb1-505"><a></a>  }</span>
+<span id="cb1-506"><a></a>  </span>
+<span id="cb1-507"><a></a>  muInput<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
+<span id="cb1-508"><a></a>    mu <span class="op">=</span> <span class="bu">Number</span>(muInput<span class="op">.</span><span class="at">value</span>)<span class="op">;</span></span>
+<span id="cb1-509"><a></a>    <span class="fu">updateValues</span>()<span class="op">;</span></span>
+<span id="cb1-510"><a></a>    <span class="fu">updateAxis</span>()<span class="op">;</span></span>
+<span id="cb1-511"><a></a>    <span class="fu">updateZAxis</span>()<span class="op">;</span></span>
+<span id="cb1-512"><a></a>    <span class="fu">redrawCurves</span>()<span class="op">;</span></span>
+<span id="cb1-513"><a></a>  }<span class="op">;</span></span>
+<span id="cb1-514"><a></a>  </span>
+<span id="cb1-515"><a></a>  sigmaInput<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
+<span id="cb1-516"><a></a>    sigma <span class="op">=</span> sigmaInput<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
+<span id="cb1-517"><a></a>    mean_diff <span class="op">=</span> d <span class="op">*</span> sigma<span class="op">;</span></span>
+<span id="cb1-518"><a></a>    std_err <span class="op">=</span> sigma<span class="op">/</span><span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(n)<span class="op">;</span></span>
+<span id="cb1-519"><a></a>    max_std_err <span class="op">=</span> sigma <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">50</span>)<span class="op">;</span></span>
+<span id="cb1-520"><a></a>    <span class="fu">updateValues</span>()<span class="op">;</span></span>
+<span id="cb1-521"><a></a>    <span class="fu">updateYScale</span>()<span class="op">;</span></span>
+<span id="cb1-522"><a></a>    <span class="fu">updateAxis</span>()<span class="op">;</span></span>
+<span id="cb1-523"><a></a>    <span class="fu">updateZAxis</span>()<span class="op">;</span></span>
+<span id="cb1-524"><a></a>    <span class="fu">redrawCurves</span>()<span class="op">;</span></span>
+<span id="cb1-525"><a></a>  }</span>
+<span id="cb1-526"><a></a>  </span>
+<span id="cb1-527"><a></a>  <span class="kw">function</span> <span class="fu">getParams</span>() {</span>
+<span id="cb1-528"><a></a>    mu <span class="op">=</span> <span class="bu">Number</span>(muInput<span class="op">.</span><span class="at">value</span>)<span class="op">;</span></span>
+<span id="cb1-529"><a></a>    sigma <span class="op">=</span> <span class="bu">Number</span>(sigmaInput<span class="op">.</span><span class="at">value</span>)<span class="op">;</span></span>
+<span id="cb1-530"><a></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"mu = "</span> <span class="op">+</span> mu <span class="op">+</span> <span class="st">"; sigma = "</span> <span class="op">+</span> sigma)</span>
+<span id="cb1-531"><a></a>    d <span class="op">=</span> <span class="bu">Number</span>(dInput<span class="op">.</span><span class="at">value</span>)<span class="op">;</span></span>
+<span id="cb1-532"><a></a>    mean_diff <span class="op">=</span> d <span class="op">*</span> sigma<span class="op">;</span></span>
+<span id="cb1-533"><a></a>    n <span class="op">=</span> <span class="bu">Number</span>(nInput<span class="op">.</span><span class="at">value</span>)<span class="op">;</span></span>
+<span id="cb1-534"><a></a>    alpha <span class="op">=</span> <span class="bu">Number</span>(aInput<span class="op">.</span><span class="at">value</span>)<span class="op">;</span></span>
+<span id="cb1-535"><a></a>    std_err <span class="op">=</span> sigma <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(n)<span class="op">;</span></span>
+<span id="cb1-536"><a></a>    max_std_err <span class="op">=</span> sigma <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">50</span>)<span class="op">;</span></span>
+<span id="cb1-537"><a></a>    tails <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb1-538"><a></a>    <span class="fu">updateCriticalValues</span>()<span class="op">;</span></span>
+<span id="cb1-539"><a></a>  }</span>
+<span id="cb1-540"><a></a>  </span>
+<span id="cb1-541"><a></a>  <span class="kw">function</span> <span class="fu">updateCriticalValues</span>() {</span>
+<span id="cb1-542"><a></a>    <span class="cf">if</span>(tails) {</span>
+<span id="cb1-543"><a></a>        alpha_x <span class="op">=</span> mu <span class="op">+</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">inv</span>(<span class="dv">1</span> <span class="op">-</span> alpha<span class="op">/</span><span class="dv">2</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>) <span class="op">*</span> std_err</span>
+<span id="cb1-544"><a></a>    } <span class="cf">else</span> {</span>
+<span id="cb1-545"><a></a>        alpha_x <span class="op">=</span> mu <span class="op">+</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">inv</span>(<span class="dv">1</span> <span class="op">-</span> alpha<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>) <span class="op">*</span> std_err</span>
+<span id="cb1-546"><a></a>    }</span>
+<span id="cb1-547"><a></a></span>
+<span id="cb1-548"><a></a>    <span class="cf">if</span>(tails) {</span>
+<span id="cb1-549"><a></a>        alpha_x2 <span class="op">=</span> mu <span class="op">-</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">inv</span>(<span class="dv">1</span> <span class="op">-</span> alpha<span class="op">/</span><span class="dv">2</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>) <span class="op">*</span> std_err</span>
+<span id="cb1-550"><a></a>    } <span class="cf">else</span> {</span>
+<span id="cb1-551"><a></a>        alpha_x2 <span class="op">=-</span><span class="dv">1000</span></span>
+<span id="cb1-552"><a></a>    }</span>
+<span id="cb1-553"><a></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"crit high: "</span> <span class="op">+</span> alpha_x <span class="op">+</span> <span class="st">"; crit low: "</span> <span class="op">+</span> alpha_x2)</span>
+<span id="cb1-554"><a></a>  }</span>
+<span id="cb1-555"><a></a>  </span>
+<span id="cb1-556"><a></a>  <span class="kw">function</span> <span class="fu">updateValues</span>() {</span>
+<span id="cb1-557"><a></a>    <span class="fu">updateCriticalValues</span>()<span class="op">;</span></span>
+<span id="cb1-558"><a></a>    </span>
+<span id="cb1-559"><a></a>      beta <span class="op">=</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">cdf</span>(alpha_x<span class="op">,</span> mu <span class="op">+</span> mean_diff<span class="op">,</span> std_err) <span class="op">-</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">cdf</span>(alpha_x2<span class="op">,</span> mu <span class="op">+</span> mean_diff<span class="op">,</span> std_err)<span class="op">;</span></span>
+<span id="cb1-560"><a></a>    power <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> beta<span class="op">;</span></span>
+<span id="cb1-561"><a></a>    </span>
+<span id="cb1-562"><a></a>    d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#d-value"</span>)<span class="op">.</span><span class="fu">text</span>(d)</span>
+<span id="cb1-563"><a></a>    d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#n-value"</span>)<span class="op">.</span><span class="fu">text</span>(n)</span>
+<span id="cb1-564"><a></a>    d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#alpha-value"</span>)<span class="op">.</span><span class="fu">text</span>(alpha)</span>
+<span id="cb1-565"><a></a>    d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#std-err-value"</span>)<span class="op">.</span><span class="fu">text</span>(<span class="fu">f</span>(std_err))</span>
+<span id="cb1-566"><a></a>    d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#beta-value"</span>)<span class="op">.</span><span class="fu">text</span>(<span class="fu">f</span>(beta))</span>
+<span id="cb1-567"><a></a>    d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#power-value"</span>)<span class="op">.</span><span class="fu">text</span>(<span class="fu">f</span>(power))</span>
+<span id="cb1-568"><a></a>    </span>
+<span id="cb1-569"><a></a></span>
+<span id="cb1-570"><a></a>  }</span>
+<span id="cb1-571"><a></a>  </span>
+<span id="cb1-572"><a></a>  <span class="kw">function</span> <span class="fu">updateAxis</span>() {</span>
+<span id="cb1-573"><a></a>    xlim <span class="op">=</span> [mu <span class="op">-</span> <span class="dv">12</span> <span class="op">*</span> std_err<span class="op">,</span> mu <span class="op">+</span> <span class="dv">12</span> <span class="op">*</span> std_err]<span class="op">;</span></span>
+<span id="cb1-574"><a></a>    x<span class="op">.</span><span class="fu">domain</span>([xlim[<span class="dv">0</span>]<span class="op">,</span> xlim[<span class="dv">1</span>]])</span>
+<span id="cb1-575"><a></a>    <span class="op">&lt;!--</span> xAxis<span class="op">.</span><span class="fu">tickFormat</span>(x <span class="kw">=&gt;</span> x <span class="op">/</span> std_err)<span class="op">.</span><span class="fu">ticks</span>([<span class="op">-</span><span class="dv">3</span><span class="op">,-</span><span class="dv">2</span><span class="op">,-</span><span class="dv">1</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>])<span class="op">;</span> <span class="op">--&gt;</span></span>
+<span id="cb1-576"><a></a>    axis<span class="op">.</span><span class="fu">call</span>(xAxis)<span class="op">;</span></span>
+<span id="cb1-577"><a></a>  }</span>
+<span id="cb1-578"><a></a>  </span>
+<span id="cb1-579"><a></a>  <span class="kw">function</span> <span class="fu">updateYScale</span>() {</span>
+<span id="cb1-580"><a></a>    y<span class="op">.</span><span class="fu">domain</span>([<span class="dv">0</span><span class="op">,</span> jStat<span class="op">.</span><span class="at">normal</span><span class="op">.</span><span class="fu">pdf</span>(mu<span class="op">,</span> mu<span class="op">,</span> max_std_err)])<span class="op">;</span></span>
+<span id="cb1-581"><a></a>  }</span>
+<span id="cb1-582"><a></a>  </span>
+<span id="cb1-583"><a></a>  <span class="kw">function</span> <span class="fu">updateZAxis</span>() {</span>
+<span id="cb1-584"><a></a>    <span class="kw">var</span> tickSeq <span class="op">=</span> [<span class="op">-</span><span class="dv">3</span><span class="op">,-</span><span class="dv">2</span><span class="op">,-</span><span class="dv">1</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]</span>
+<span id="cb1-585"><a></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> tickSeq<span class="op">.</span><span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb1-586"><a></a>      tickSeq[i] <span class="op">=</span> mu <span class="op">+</span> tickSeq[i] <span class="op">*</span> std_err<span class="op">;</span></span>
+<span id="cb1-587"><a></a>    }</span>
+<span id="cb1-588"><a></a>    <span class="kw">var</span> zlim <span class="op">=</span> [mu <span class="op">-</span> <span class="dv">3</span> <span class="op">*</span> sigma<span class="op">,</span> mu <span class="op">+</span> <span class="dv">3</span> <span class="op">*</span> sigma]<span class="op">;</span></span>
+<span id="cb1-589"><a></a>    z<span class="op">.</span><span class="fu">domain</span>([xlim[<span class="dv">0</span>]<span class="op">,</span> xlim[<span class="dv">1</span>]])</span>
+<span id="cb1-590"><a></a>    zAxis</span>
+<span id="cb1-591"><a></a>      <span class="op">.</span><span class="fu">tickFormat</span>(z <span class="kw">=&gt;</span> <span class="fu">f2</span>((z <span class="op">-</span> mu)<span class="op">/</span>std_err))</span>
+<span id="cb1-592"><a></a>      <span class="op">.</span><span class="fu">tickValues</span>(tickSeq)</span>
+<span id="cb1-593"><a></a>    svgH0Axis</span>
+<span id="cb1-594"><a></a>      <span class="op">.</span><span class="fu">call</span>(zAxis)<span class="op">;</span></span>
+<span id="cb1-595"><a></a>      </span>
+<span id="cb1-596"><a></a>    tickSeq <span class="op">=</span> [<span class="op">-</span><span class="dv">3</span><span class="op">,-</span><span class="dv">2</span><span class="op">,-</span><span class="dv">1</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]</span>
+<span id="cb1-597"><a></a>    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> tickSeq<span class="op">.</span><span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb1-598"><a></a>      tickSeq[i] <span class="op">=</span> mu <span class="op">+</span> mean_diff <span class="op">+</span> tickSeq[i] <span class="op">*</span> std_err<span class="op">;</span></span>
+<span id="cb1-599"><a></a>    }</span>
+<span id="cb1-600"><a></a>    h1Axis</span>
+<span id="cb1-601"><a></a>      <span class="op">.</span><span class="fu">tickFormat</span>(z <span class="kw">=&gt;</span> <span class="fu">f2</span>((z <span class="op">-</span> mu <span class="op">-</span> mean_diff)<span class="op">/</span>std_err))</span>
+<span id="cb1-602"><a></a>      <span class="op">.</span><span class="fu">tickValues</span>(tickSeq)</span>
+<span id="cb1-603"><a></a>    svgH1Axis</span>
+<span id="cb1-604"><a></a>      <span class="op">.</span><span class="fu">call</span>(h1Axis)<span class="op">;</span></span>
+<span id="cb1-605"><a></a>  }</span>
+<span id="cb1-606"><a></a>  </span>
+<span id="cb1-607"><a></a>  <span class="kw">function</span> <span class="fu">redrawCurves</span>() {</span>
+<span id="cb1-608"><a></a>    <span class="op">&lt;!--</span> <span class="fu">updateAxis</span>()<span class="op">;</span> <span class="op">--&gt;</span></span>
+<span id="cb1-609"><a></a>    <span class="fu">redrawNull</span>()<span class="op">;</span></span>
+<span id="cb1-610"><a></a>    <span class="fu">redrawAlt</span>()<span class="op">;</span></span>
+<span id="cb1-611"><a></a>  }</span>
+<span id="cb1-612"><a></a>  </span>
+<span id="cb1-613"><a></a>  <span class="kw">function</span> <span class="fu">redrawNull</span>() {</span>
+<span id="cb1-614"><a></a>    nullCurve<span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(<span class="fu">curveData</span>(mu<span class="op">,</span> std_err)))<span class="op">;</span></span>
+<span id="cb1-615"><a></a>    nullLabel<span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(</span><span class="sc">${</span><span class="fu">x</span>(mu)<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>labelHeight<span class="sc">}</span><span class="vs">)`</span>)<span class="op">;</span></span>
+<span id="cb1-616"><a></a>    nullFill<span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(<span class="fu">curveData</span>(mu<span class="op">,</span> std_err)))<span class="op">;</span></span>
+<span id="cb1-617"><a></a>    nullClip<span class="op">.</span><span class="fu">attr</span>(<span class="st">"points"</span><span class="op">,</span> [[<span class="dv">0</span><span class="op">,</span><span class="dv">0</span>]<span class="op">,</span> [<span class="dv">0</span><span class="op">,</span>h]<span class="op">,</span> [<span class="fu">x</span>(alpha_x2)<span class="op">,</span>h]<span class="op">,</span>[<span class="fu">x</span>(alpha_x2)<span class="op">,</span><span class="dv">0</span>]<span class="op">,</span></span>
+<span id="cb1-618"><a></a>                     [<span class="fu">x</span>(alpha_x)<span class="op">,</span><span class="dv">0</span>]<span class="op">,</span> [<span class="fu">x</span>(alpha_x)<span class="op">,</span>h]<span class="op">,</span> [w<span class="op">,</span>h]<span class="op">,</span>[w<span class="op">,</span><span class="dv">0</span>]])<span class="op">;</span></span>
+<span id="cb1-619"><a></a>    nullClipInterior<span class="op">.</span><span class="fu">attr</span>(<span class="st">"points"</span><span class="op">,</span> [[<span class="fu">x</span>(alpha_x2)<span class="op">,</span><span class="dv">0</span>]<span class="op">,</span>[<span class="fu">x</span>(alpha_x2)<span class="op">,</span>h]<span class="op">,</span></span>
+<span id="cb1-620"><a></a>                     [<span class="fu">x</span>(alpha_x)<span class="op">,</span>h]<span class="op">,</span> [<span class="fu">x</span>(alpha_x)<span class="op">,</span><span class="dv">0</span>]])<span class="op">;</span></span>
+<span id="cb1-621"><a></a>                     </span>
+<span id="cb1-622"><a></a>  }</span>
+<span id="cb1-623"><a></a>  <span class="kw">function</span> <span class="fu">redrawAlt</span>() {</span>
+<span id="cb1-624"><a></a>    <span class="kw">var</span> dat <span class="op">=</span> <span class="fu">curveData</span>(<span class="bu">Number</span>(mu <span class="op">+</span> mean_diff)<span class="op">,</span> std_err)</span>
+<span id="cb1-625"><a></a>    altCurve<span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(dat))</span>
+<span id="cb1-626"><a></a>    altFillPower<span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(dat))</span>
+<span id="cb1-627"><a></a>    altFillBeta<span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">line</span>(dat))</span>
+<span id="cb1-628"><a></a>    altLabel<span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(</span><span class="sc">${</span><span class="fu">x</span>(mu <span class="op">+</span> mean_diff)<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>labelHeight<span class="sc">}</span><span class="vs">)`</span>)</span>
+<span id="cb1-629"><a></a>  }</span>
+<span id="cb1-630"><a></a>  </span>
+<span id="cb1-631"><a></a>  nInput<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
+<span id="cb1-632"><a></a>    n <span class="op">=</span> <span class="bu">Number</span>(nInput<span class="op">.</span><span class="at">value</span>)</span>
+<span id="cb1-633"><a></a>    std_err <span class="op">=</span> sigma<span class="op">/</span><span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb1-634"><a></a>    <span class="fu">updateZAxis</span>()<span class="op">;</span></span>
+<span id="cb1-635"><a></a>    <span class="fu">updateValues</span>()<span class="op">;</span></span>
+<span id="cb1-636"><a></a>    <span class="fu">redrawCurves</span>()<span class="op">;</span></span>
+<span id="cb1-637"><a></a>  }<span class="op">;</span></span>
+<span id="cb1-638"><a></a>  </span>
+<span id="cb1-639"><a></a>  dInput<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
+<span id="cb1-640"><a></a>    d <span class="op">=</span> <span class="bu">Number</span>(dInput<span class="op">.</span><span class="at">value</span>)<span class="op">;</span></span>
+<span id="cb1-641"><a></a>    mean_diff <span class="op">=</span> d <span class="op">*</span> sigma<span class="op">;</span></span>
+<span id="cb1-642"><a></a>    <span class="fu">updateValues</span>()<span class="op">;</span></span>
+<span id="cb1-643"><a></a>    <span class="fu">updateZAxis</span>()<span class="op">;</span></span>
+<span id="cb1-644"><a></a>    <span class="fu">redrawAlt</span>()<span class="op">;</span></span>
+<span id="cb1-645"><a></a>  }<span class="op">;</span></span>
+<span id="cb1-646"><a></a>  </span>
+<span id="cb1-647"><a></a>  aInput<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
+<span id="cb1-648"><a></a>    alpha <span class="op">=</span> <span class="bu">Number</span>(aInput<span class="op">.</span><span class="at">value</span>)</span>
+<span id="cb1-649"><a></a>    <span class="fu">updateValues</span>()<span class="op">;</span></span>
+<span id="cb1-650"><a></a>    <span class="fu">redrawNull</span>()<span class="op">;</span></span>
+<span id="cb1-651"><a></a>  }<span class="op">;</span></span>
+<span id="cb1-652"><a></a>  </span>
+<span id="cb1-653"><a></a>  tailsInput<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
+<span id="cb1-654"><a></a>    tails <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">"tails-input"</span>)<span class="op">.</span><span class="at">checked</span></span>
+<span id="cb1-655"><a></a>    <span class="fu">updateValues</span>()</span>
+<span id="cb1-656"><a></a>    <span class="fu">redrawNull</span>()</span>
+<span id="cb1-657"><a></a>  }</span>
+<span id="cb1-658"><a></a>  </span>
+<span id="cb1-659"><a></a>  altInput<span class="op">.</span><span class="at">oninput</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
+<span id="cb1-660"><a></a>    showAlt <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">"alt-input"</span>)<span class="op">.</span><span class="at">checked</span></span>
+<span id="cb1-661"><a></a>    </span>
+<span id="cb1-662"><a></a>    d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#power-values"</span>)<span class="op">.</span><span class="fu">classed</span>(<span class="st">"hide-element"</span><span class="op">,</span> <span class="op">!</span>showAlt)</span>
+<span id="cb1-663"><a></a>    </span>
+<span id="cb1-664"><a></a>    <span class="cf">if</span>(showAlt) {<span class="kw">var</span> opacity <span class="op">=</span> <span class="dv">1</span>} <span class="cf">else</span> {<span class="kw">var</span> opacity <span class="op">=</span> <span class="dv">0</span>}</span>
+<span id="cb1-665"><a></a>    altCurve<span class="op">.</span><span class="fu">style</span>(<span class="st">"opacity"</span><span class="op">,</span> opacity)</span>
+<span id="cb1-666"><a></a>    altLabel<span class="op">.</span><span class="fu">style</span>(<span class="st">"opacity"</span><span class="op">,</span> opacity)</span>
+<span id="cb1-667"><a></a>    <span class="cf">if</span>(showAlt) {<span class="kw">var</span> opacity <span class="op">=</span> <span class="fl">0.7</span>} <span class="cf">else</span> {<span class="kw">var</span> opacity <span class="op">=</span> <span class="dv">0</span>}</span>
+<span id="cb1-668"><a></a>    altFillPower<span class="op">.</span><span class="fu">style</span>(<span class="st">"opacity"</span><span class="op">,</span> opacity)</span>
+<span id="cb1-669"><a></a>    <span class="cf">if</span>(showAlt) {<span class="kw">var</span> opacity <span class="op">=</span> <span class="fl">0.3</span>} <span class="cf">else</span> {<span class="kw">var</span> opacity <span class="op">=</span> <span class="dv">0</span>}</span>
+<span id="cb1-670"><a></a>    altFillBeta<span class="op">.</span><span class="fu">style</span>(<span class="st">"opacity"</span><span class="op">,</span> opacity)</span>
+<span id="cb1-671"><a></a>  }</span>
+<span id="cb1-672"><a></a>  </span>
+<span id="cb1-673"><a></a></span>
+<span id="cb1-674"><a></a>  </span>
+<span id="cb1-675"><a></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#power-interactive"</span>)</span>
+<span id="cb1-676"><a></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)</span>
+<span id="cb1-677"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
+<span id="cb1-678"><a></a></span>
+<span id="cb1-679"><a></a>  <span class="kw">const</span> svgH0Axis <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-680"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"axis"</span>)</span>
+<span id="cb1-681"><a></a>      <span class="op">.</span><span class="fu">classed</span>(<span class="st">"hide-element"</span><span class="op">,</span> hideAxisZNull)</span>
+<span id="cb1-682"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(0, </span><span class="sc">${</span><span class="fu">y</span>(<span class="dv">0</span>)<span class="sc">}</span><span class="vs">)`</span>)</span>
+<span id="cb1-683"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"0.5em"</span>)</span>
+<span id="cb1-684"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"color"</span><span class="op">,</span> <span class="st">"red"</span>)</span>
+<span id="cb1-685"><a></a>      </span>
+<span id="cb1-686"><a></a>  <span class="kw">const</span> svgH1Axis <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-687"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"axis"</span>)</span>
+<span id="cb1-688"><a></a>      <span class="op">.</span><span class="fu">classed</span>(<span class="st">"hide-element"</span><span class="op">,</span> hideAxisZAlt)</span>
+<span id="cb1-689"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(0, </span><span class="sc">${</span><span class="fu">y</span>(<span class="dv">0</span>)<span class="sc">}</span><span class="vs">)`</span>)</span>
+<span id="cb1-690"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"0.5em"</span>)</span>
+<span id="cb1-691"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"color"</span><span class="op">,</span> <span class="st">"steelblue"</span>)</span>
+<span id="cb1-692"><a></a>      </span>
+<span id="cb1-693"><a></a>  <span class="kw">const</span> axis <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-694"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"axis"</span>)</span>
+<span id="cb1-695"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(0, </span><span class="sc">${</span><span class="fu">y</span>(<span class="dv">0</span>)<span class="sc">}</span><span class="vs">)`</span>)</span>
+<span id="cb1-696"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"0.5em"</span>)<span class="op">;</span></span>
+<span id="cb1-697"><a></a>  </span>
+<span id="cb1-698"><a></a>  <span class="kw">const</span> nullDist <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"null-dist"</span>)</span>
+<span id="cb1-699"><a></a></span>
+<span id="cb1-700"><a></a>  <span class="kw">const</span> nullFill <span class="op">=</span> nullDist<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"critical-region-fill"</span>)</span>
+<span id="cb1-701"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"red"</span>)</span>
+<span id="cb1-702"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
+<span id="cb1-703"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'clip-path'</span><span class="op">,</span> <span class="st">"url(#clip-area)"</span>)</span>
+<span id="cb1-704"><a></a></span>
+<span id="cb1-705"><a></a>  <span class="kw">const</span> nullCurve <span class="op">=</span> nullDist<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"h0-curve"</span>)</span>
+<span id="cb1-706"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
+<span id="cb1-707"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)</span>
+<span id="cb1-708"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">2</span>)</span>
+<span id="cb1-709"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)<span class="op">;</span></span>
+<span id="cb1-710"><a></a></span>
+<span id="cb1-711"><a></a>  <span class="kw">const</span> nullLabel <span class="op">=</span> nullDist<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-712"><a></a>  nullLabel<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"h0-text"</span>)</span>
+<span id="cb1-713"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)</span>
+<span id="cb1-714"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
+<span id="cb1-715"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'1em'</span>)</span>
+<span id="cb1-716"><a></a>      <span class="op">.</span><span class="fu">text</span>(<span class="st">''</span>)</span>
+<span id="cb1-717"><a></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">'tspan'</span>)</span>
+<span id="cb1-718"><a></a>        <span class="op">.</span><span class="fu">html</span>(<span class="st">'H'</span>)</span>
+<span id="cb1-719"><a></a>        <span class="op">.</span><span class="fu">append</span>(<span class="st">'tspan'</span>)</span>
+<span id="cb1-720"><a></a>        <span class="op">.</span><span class="fu">html</span>(<span class="st">'0'</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">'baseline-shift'</span><span class="op">,</span> <span class="st">'sub'</span>)<span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.5em'</span>)<span class="op">;</span></span>
+<span id="cb1-721"><a></a></span>
+<span id="cb1-722"><a></a>  <span class="kw">const</span> nullClip <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"clipPath"</span>)</span>
+<span id="cb1-723"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"clip-area"</span>)</span>
+<span id="cb1-724"><a></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"polygon"</span>)</span>
+<span id="cb1-725"><a></a></span>
+<span id="cb1-726"><a></a>  <span class="kw">const</span> nullClipInterior <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"clipPath"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"clip-area-interior"</span>)</span>
+<span id="cb1-727"><a></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"polygon"</span>)</span>
+<span id="cb1-728"><a></a></span>
+<span id="cb1-729"><a></a></span>
+<span id="cb1-730"><a></a><span class="op">&lt;!--</span> <span class="op">&lt;!--</span> alternative distribution <span class="op">--&gt;</span> <span class="op">--&gt;</span></span>
+<span id="cb1-731"><a></a></span>
+<span id="cb1-732"><a></a>  <span class="kw">const</span> altDist <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"null-dist"</span>)</span>
+<span id="cb1-733"><a></a></span>
+<span id="cb1-734"><a></a>  <span class="kw">const</span> altCurve <span class="op">=</span> altDist<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"id"</span><span class="op">,</span> <span class="st">"h1-curve"</span>)</span>
+<span id="cb1-735"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
+<span id="cb1-736"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"black"</span>)</span>
+<span id="cb1-737"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">2</span>)</span>
+<span id="cb1-738"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)<span class="op">;</span></span>
+<span id="cb1-739"><a></a></span>
+<span id="cb1-740"><a></a>  <span class="kw">const</span> altLabel <span class="op">=</span> altDist<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-741"><a></a>  altLabel<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-742"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
+<span id="cb1-743"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'fill'</span><span class="op">,</span> <span class="st">'steelblue'</span>)</span>
+<span id="cb1-744"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'1em'</span>)</span>
+<span id="cb1-745"><a></a>      <span class="op">.</span><span class="fu">text</span>(<span class="st">''</span>)</span>
+<span id="cb1-746"><a></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">'tspan'</span>)</span>
+<span id="cb1-747"><a></a>        <span class="op">.</span><span class="fu">html</span>(<span class="st">'H'</span>)</span>
+<span id="cb1-748"><a></a>        <span class="op">.</span><span class="fu">append</span>(<span class="st">'tspan'</span>)</span>
+<span id="cb1-749"><a></a>        <span class="op">.</span><span class="fu">html</span>(<span class="st">'1'</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">'baseline-shift'</span><span class="op">,</span> <span class="st">'sub'</span>)<span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.5em'</span>)<span class="op">;</span></span>
+<span id="cb1-750"><a></a></span>
+<span id="cb1-751"><a></a>  <span class="kw">const</span> altFillPower <span class="op">=</span> altDist<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
+<span id="cb1-752"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'clip-path'</span><span class="op">,</span> <span class="st">"url(#clip-area)"</span>)</span>
+<span id="cb1-753"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"steelblue"</span>)</span>
+<span id="cb1-754"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"opacity"</span><span class="op">,</span> <span class="fl">0.7</span>)</span>
+<span id="cb1-755"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"steelblue"</span>)</span>
+<span id="cb1-756"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="fl">2.5</span>)</span>
+<span id="cb1-757"><a></a></span>
+<span id="cb1-758"><a></a>  <span class="kw">const</span> altFillBeta <span class="op">=</span> altDist<span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
+<span id="cb1-759"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'clip-path'</span><span class="op">,</span> <span class="st">"url(#clip-area-interior)"</span>)</span>
+<span id="cb1-760"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"grey"</span>)</span>
+<span id="cb1-761"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"opacity"</span><span class="op">,</span> <span class="fl">0.3</span>)</span>
+<span id="cb1-762"><a></a></span>
+<span id="cb1-763"><a></a>  <span class="fu">getParams</span>()<span class="op">;</span></span>
+<span id="cb1-764"><a></a>  <span class="fu">updateValues</span>()<span class="op">;</span></span>
+<span id="cb1-765"><a></a>  <span class="fu">updateYScale</span>()<span class="op">;</span></span>
+<span id="cb1-766"><a></a>  <span class="fu">updateAxis</span>()<span class="op">;</span></span>
+<span id="cb1-767"><a></a>  <span class="fu">updateZAxis</span>()<span class="op">;</span></span>
+<span id="cb1-768"><a></a>  <span class="fu">redrawCurves</span>()<span class="op">;</span></span>
+<span id="cb1-769"><a></a>  </span>
+<span id="cb1-770"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -1161,6 +1162,7 @@ Power: <span id="power-value" class="math" style="color: steelblue;"></span></p>
 </div>
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <button id="theme-toggle">
 <svg id="moon" class="d-block d-block-light d-none" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 384 512">
@@ -1172,6 +1174,7 @@ Power: <span id="power-value" class="math" style="color: steelblue;"></span></p>
 <path d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM352 256c0 53-43 96-96 96s-96-43-96-96s43-96 96-96s96 43 96 96zm32 0c0-70.7-57.3-128-128-128s-128 57.3-128 128s57.3 128 128 128s128-57.3 128-128z"></path>
 </svg>
 </button>
+</div>
 </div>
 </section>
     </div>
@@ -1201,7 +1204,6 @@ Power: <span id="power-value" class="math" style="color: steelblue;"></span></p>
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1473,9 +1475,8 @@ Power: <span id="power-value" class="math" style="color: steelblue;"></span></p>
     });
 
     </script>
-    
     <script type="ojs-module-contents">
-    {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\njStat = require(\"../js/jstat.js\")\n\nchart = {\n\n  const w = 1050\n  const h = 600\n  const margin = ({top: 20, right: 0, bottom: 80, left: 0})\n  const f = d3.format(\".2f\")\n  const f2 = d3.format(\".0f\")\n  const labelHeight = h/2\n  \n\n  var mu, sigma, d, mean_diff, n, alpha, beta, power, xlim, std_err, max_std_err, alpha_x, alpha_x2, showAlt, tails;\n  \n\n  var x = d3.scaleLinear()\n    .range([margin.left - 400, w + 400])\n  var z = d3.scaleLinear()\n    .range([margin.left - 400, w + 400])\n  var y = d3.scaleLinear()\n    .range([h - margin.bottom, margin.top])\n  const line = d3.line()\n    .x(d => x(d.value))\n    .y(d => y(d.density))\n  var xAxis = d3.axisBottom(x).ticks(10)\n  var zAxis = d3.axisBottom(z).tickSize(20)\n  var h1Axis = d3.axisBottom(z).tickSize(20)\n  \n  function curveData(mu, sm) {\n    var values = jStat(xlim[0], xlim[1], 310)[0],\n        arr = [];\n    for (var i in values) {\n      arr.push({\n          value: values[i], \n          density: jStat.normal.pdf(values[i], mu, sm)\n      })\n    }\n    return arr;\n  }\n  \n  const muInput = document.getElementById('mu-input')\n  const sigmaInput = document.getElementById('sigma-input');\n  const dInput = document.getElementById('d-input')\n  const nInput = document.getElementById('n-input')\n  const aInput = document.getElementById('alpha-input')\n  const altInput = document.getElementById('alt-input')\n  const tailsInput = document.getElementById('tails-input')\n  const axisRawInput = document.getElementById('axis-raw')\n  const axisZNullInput = document.getElementById('axis-z-null')\n  const axisZAltInput = document.getElementById('axis-z-alt')\n  \n  var hideAxisRaw = false;\n  var hideAxisZNull = true;\n  var hideAxisZAlt = true;\n  axisRawInput.oninput = function() {\n    hideAxisRaw = !hideAxisRaw;\n    axis.classed(\"hide-element\", hideAxisRaw)\n  }\n  axisZNullInput.oninput = function() {\n    hideAxisZNull = !hideAxisZNull;\n    svgH0Axis.classed(\"hide-element\", hideAxisZNull)\n  }\n  axisZAltInput.oninput = function() {\n    hideAxisZAlt = !hideAxisZAlt;\n    svgH1Axis.classed(\"hide-element\", hideAxisZAlt)\n  }\n  \n  muInput.oninput = function() {\n    mu = Number(muInput.value);\n    updateValues();\n    updateAxis();\n    updateZAxis();\n    redrawCurves();\n  };\n  \n  sigmaInput.oninput = function() {\n    sigma = sigmaInput.value;\n    mean_diff = d * sigma;\n    std_err = sigma/Math.sqrt(n);\n    max_std_err = sigma / Math.sqrt(50);\n    updateValues();\n    updateYScale();\n    updateAxis();\n    updateZAxis();\n    redrawCurves();\n  }\n  \n  function getParams() {\n    mu = Number(muInput.value);\n    sigma = Number(sigmaInput.value);\n    console.log(\"mu = \" + mu + \"; sigma = \" + sigma)\n    d = Number(dInput.value);\n    mean_diff = d * sigma;\n    n = Number(nInput.value);\n    alpha = Number(aInput.value);\n    std_err = sigma / Math.sqrt(n);\n    max_std_err = sigma / Math.sqrt(50);\n    tails = true;\n    updateCriticalValues();\n  }\n  \n  function updateCriticalValues() {\n    if(tails) {\n        alpha_x = mu + jStat.normal.inv(1 - alpha/2, 0, 1) * std_err\n    } else {\n        alpha_x = mu + jStat.normal.inv(1 - alpha, 0, 1) * std_err\n    }\n\n    if(tails) {\n        alpha_x2 = mu - jStat.normal.inv(1 - alpha/2, 0, 1) * std_err\n    } else {\n        alpha_x2 =-1000\n    }\n    console.log(\"crit high: \" + alpha_x + \"; crit low: \" + alpha_x2)\n  }\n  \n  function updateValues() {\n    updateCriticalValues();\n    \n      beta = jStat.normal.cdf(alpha_x, mu + mean_diff, std_err) - jStat.normal.cdf(alpha_x2, mu + mean_diff, std_err);\n    power = 1 - beta;\n    \n    d3.select(\"#d-value\").text(d)\n    d3.select(\"#n-value\").text(n)\n    d3.select(\"#alpha-value\").text(alpha)\n    d3.select(\"#std-err-value\").text(f(std_err))\n    d3.select(\"#beta-value\").text(f(beta))\n    d3.select(\"#power-value\").text(f(power))\n    \n\n  }\n  \n  function updateAxis() {\n    xlim = [mu - 12 * std_err, mu + 12 * std_err];\n    x.domain([xlim[0], xlim[1]])\n    <!-- xAxis.tickFormat(x => x / std_err).ticks([-3,-2,-1,0,1,2,3]); -->\n    axis.call(xAxis);\n  }\n  \n  function updateYScale() {\n    y.domain([0, jStat.normal.pdf(mu, mu, max_std_err)]);\n  }\n  \n  function updateZAxis() {\n    var tickSeq = [-3,-2,-1,0,1,2,3]\n    for (var i = 0; i < tickSeq.length; i++) {\n      tickSeq[i] = mu + tickSeq[i] * std_err;\n    }\n    var zlim = [mu - 3 * sigma, mu + 3 * sigma];\n    z.domain([xlim[0], xlim[1]])\n    zAxis\n      .tickFormat(z => f2((z - mu)/std_err))\n      .tickValues(tickSeq)\n    svgH0Axis\n      .call(zAxis);\n      \n    tickSeq = [-3,-2,-1,0,1,2,3]\n    for (var i = 0; i < tickSeq.length; i++) {\n      tickSeq[i] = mu + mean_diff + tickSeq[i] * std_err;\n    }\n    h1Axis\n      .tickFormat(z => f2((z - mu - mean_diff)/std_err))\n      .tickValues(tickSeq)\n    svgH1Axis\n      .call(h1Axis);\n  }\n  \n  function redrawCurves() {\n    <!-- updateAxis(); -->\n    redrawNull();\n    redrawAlt();\n  }\n  \n  function redrawNull() {\n    nullCurve.attr(\"d\", line(curveData(mu, std_err)));\n    nullLabel.attr(\"transform\", `translate(${x(mu)}, ${labelHeight})`);\n    nullFill.attr(\"d\", line(curveData(mu, std_err)));\n    nullClip.attr(\"points\", [[0,0], [0,h], [x(alpha_x2),h],[x(alpha_x2),0],\n                     [x(alpha_x),0], [x(alpha_x),h], [w,h],[w,0]]);\n    nullClipInterior.attr(\"points\", [[x(alpha_x2),0],[x(alpha_x2),h],\n                     [x(alpha_x),h], [x(alpha_x),0]]);\n                     \n  }\n  function redrawAlt() {\n    var dat = curveData(Number(mu + mean_diff), std_err)\n    altCurve.attr(\"d\", line(dat))\n    altFillPower.attr(\"d\", line(dat))\n    altFillBeta.attr(\"d\", line(dat))\n    altLabel.attr(\"transform\", `translate(${x(mu + mean_diff)}, ${labelHeight})`)\n  }\n  \n  nInput.oninput = function() {\n    n = Number(nInput.value)\n    std_err = sigma/Math.sqrt(n)\n    updateZAxis();\n    updateValues();\n    redrawCurves();\n  };\n  \n  dInput.oninput = function() {\n    d = Number(dInput.value);\n    mean_diff = d * sigma;\n    updateValues();\n    updateZAxis();\n    redrawAlt();\n  };\n  \n  aInput.oninput = function() {\n    alpha = Number(aInput.value)\n    updateValues();\n    redrawNull();\n  };\n  \n  tailsInput.oninput = function() {\n    tails = document.getElementById(\"tails-input\").checked\n    updateValues()\n    redrawNull()\n  }\n  \n  altInput.oninput = function() {\n    showAlt = document.getElementById(\"alt-input\").checked\n    \n    d3.select(\"#power-values\").classed(\"hide-element\", !showAlt)\n    \n    if(showAlt) {var opacity = 1} else {var opacity = 0}\n    altCurve.style(\"opacity\", opacity)\n    altLabel.style(\"opacity\", opacity)\n    if(showAlt) {var opacity = 0.7} else {var opacity = 0}\n    altFillPower.style(\"opacity\", opacity)\n    if(showAlt) {var opacity = 0.3} else {var opacity = 0}\n    altFillBeta.style(\"opacity\", opacity)\n  }\n  \n\n  \n  const svg = d3.select(\"#power-interactive\")\n    .append(\"svg\")\n    .attr(\"width\", w).attr(\"height\", h)\n\n  const svgH0Axis = svg.append(\"g\")\n      .attr(\"class\", \"axis\")\n      .classed(\"hide-element\", hideAxisZNull)\n      .attr(\"transform\", `translate(0, ${y(0)})`)\n      .style(\"font-size\", \"0.5em\")\n      .style(\"color\", \"red\")\n      \n  const svgH1Axis = svg.append(\"g\")\n      .attr(\"class\", \"axis\")\n      .classed(\"hide-element\", hideAxisZAlt)\n      .attr(\"transform\", `translate(0, ${y(0)})`)\n      .style(\"font-size\", \"0.5em\")\n      .style(\"color\", \"steelblue\")\n      \n  const axis = svg.append(\"g\")\n      .attr(\"class\", \"axis\")\n      .attr(\"transform\", `translate(0, ${y(0)})`)\n      .style(\"font-size\", \"0.5em\");\n  \n  const nullDist = svg.append(\"g\").attr(\"id\", \"null-dist\")\n\n  const nullFill = nullDist.append(\"path\").attr(\"id\", \"critical-region-fill\")\n      .attr(\"fill\", \"red\")\n      .attr(\"stroke\", \"none\")\n      .attr('clip-path', \"url(#clip-area)\")\n\n  const nullCurve = nullDist.append(\"path\").attr(\"id\", \"h0-curve\")\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"black\")\n      .attr(\"stroke-width\", 2)\n      .attr(\"class\", \"invertable\");\n\n  const nullLabel = nullDist.append(\"g\")\n  nullLabel.append(\"text\").attr(\"id\", \"h0-text\")\n      .attr(\"class\", \"invertable\")\n      .style(\"text-anchor\", \"middle\")\n      .style('font-size', '1em')\n      .text('')\n      .append('tspan')\n        .html('H')\n        .append('tspan')\n        .html('0').attr('baseline-shift', 'sub').style('font-size', '0.5em');\n\n  const nullClip = svg.append(\"clipPath\")\n    .attr(\"id\", \"clip-area\")\n    .append(\"polygon\")\n\n  const nullClipInterior = svg.append(\"clipPath\").attr(\"id\", \"clip-area-interior\")\n    .append(\"polygon\")\n\n\n<!-- <!-- alternative distribution --> -->\n\n  const altDist = svg.append(\"g\").attr(\"id\", \"null-dist\")\n\n  const altCurve = altDist.append(\"path\").attr(\"id\", \"h1-curve\")\n      .attr(\"fill\", \"none\")\n      .attr(\"stroke\", \"black\")\n      .attr(\"stroke-width\", 2)\n      .attr(\"class\", \"invertable\");\n\n  const altLabel = altDist.append(\"g\")\n  altLabel.append(\"text\")\n      .style(\"text-anchor\", \"middle\")\n      .style('fill', 'steelblue')\n      .style('font-size', '1em')\n      .text('')\n      .append('tspan')\n        .html('H')\n        .append('tspan')\n        .html('1').attr('baseline-shift', 'sub').style('font-size', '0.5em');\n\n  const altFillPower = altDist.append(\"path\")\n      .attr('clip-path', \"url(#clip-area)\")\n      .attr(\"fill\", \"steelblue\")\n      .attr(\"opacity\", 0.7)\n      .attr(\"stroke\", \"steelblue\")\n      .attr(\"stroke-width\", 2.5)\n\n  const altFillBeta = altDist.append(\"path\")\n      .attr('clip-path', \"url(#clip-area-interior)\")\n      .attr(\"fill\", \"grey\")\n      .attr(\"opacity\", 0.3)\n\n  getParams();\n  updateValues();\n  updateYScale();\n  updateAxis();\n  updateZAxis();\n  redrawCurves();\n  \n}\n\n  \n"}]}
+    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxualN0YXQgPSByZXF1aXJlKFwiLi4vanMvanN0YXQuanNcIilcblxuY2hhcnQgPSB7XG5cbiAgY29uc3QgdyA9IDEwNTBcbiAgY29uc3QgaCA9IDYwMFxuICBjb25zdCBtYXJnaW4gPSAoe3RvcDogMjAsIHJpZ2h0OiAwLCBib3R0b206IDgwLCBsZWZ0OiAwfSlcbiAgY29uc3QgZiA9IGQzLmZvcm1hdChcIi4yZlwiKVxuICBjb25zdCBmMiA9IGQzLmZvcm1hdChcIi4wZlwiKVxuICBjb25zdCBsYWJlbEhlaWdodCA9IGgvMlxuICBcblxuICB2YXIgbXUsIHNpZ21hLCBkLCBtZWFuX2RpZmYsIG4sIGFscGhhLCBiZXRhLCBwb3dlciwgeGxpbSwgc3RkX2VyciwgbWF4X3N0ZF9lcnIsIGFscGhhX3gsIGFscGhhX3gyLCBzaG93QWx0LCB0YWlscztcbiAgXG5cbiAgdmFyIHggPSBkMy5zY2FsZUxpbmVhcigpXG4gICAgLnJhbmdlKFttYXJnaW4ubGVmdCAtIDQwMCwgdyArIDQwMF0pXG4gIHZhciB6ID0gZDMuc2NhbGVMaW5lYXIoKVxuICAgIC5yYW5nZShbbWFyZ2luLmxlZnQgLSA0MDAsIHcgKyA0MDBdKVxuICB2YXIgeSA9IGQzLnNjYWxlTGluZWFyKClcbiAgICAucmFuZ2UoW2ggLSBtYXJnaW4uYm90dG9tLCBtYXJnaW4udG9wXSlcbiAgY29uc3QgbGluZSA9IGQzLmxpbmUoKVxuICAgIC54KGQgPT4geChkLnZhbHVlKSlcbiAgICAueShkID0+IHkoZC5kZW5zaXR5KSlcbiAgdmFyIHhBeGlzID0gZDMuYXhpc0JvdHRvbSh4KS50aWNrcygxMClcbiAgdmFyIHpBeGlzID0gZDMuYXhpc0JvdHRvbSh6KS50aWNrU2l6ZSgyMClcbiAgdmFyIGgxQXhpcyA9IGQzLmF4aXNCb3R0b20oeikudGlja1NpemUoMjApXG4gIFxuICBmdW5jdGlvbiBjdXJ2ZURhdGEobXUsIHNtKSB7XG4gICAgdmFyIHZhbHVlcyA9IGpTdGF0KHhsaW1bMF0sIHhsaW1bMV0sIDMxMClbMF0sXG4gICAgICAgIGFyciA9IFtdO1xuICAgIGZvciAodmFyIGkgaW4gdmFsdWVzKSB7XG4gICAgICBhcnIucHVzaCh7XG4gICAgICAgICAgdmFsdWU6IHZhbHVlc1tpXSwgXG4gICAgICAgICAgZGVuc2l0eTogalN0YXQubm9ybWFsLnBkZih2YWx1ZXNbaV0sIG11LCBzbSlcbiAgICAgIH0pXG4gICAgfVxuICAgIHJldHVybiBhcnI7XG4gIH1cbiAgXG4gIGNvbnN0IG11SW5wdXQgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbXUtaW5wdXQnKVxuICBjb25zdCBzaWdtYUlucHV0ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3NpZ21hLWlucHV0Jyk7XG4gIGNvbnN0IGRJbnB1dCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdkLWlucHV0JylcbiAgY29uc3QgbklucHV0ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ24taW5wdXQnKVxuICBjb25zdCBhSW5wdXQgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnYWxwaGEtaW5wdXQnKVxuICBjb25zdCBhbHRJbnB1dCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdhbHQtaW5wdXQnKVxuICBjb25zdCB0YWlsc0lucHV0ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3RhaWxzLWlucHV0JylcbiAgY29uc3QgYXhpc1Jhd0lucHV0ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2F4aXMtcmF3JylcbiAgY29uc3QgYXhpc1pOdWxsSW5wdXQgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnYXhpcy16LW51bGwnKVxuICBjb25zdCBheGlzWkFsdElucHV0ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2F4aXMtei1hbHQnKVxuICBcbiAgdmFyIGhpZGVBeGlzUmF3ID0gZmFsc2U7XG4gIHZhciBoaWRlQXhpc1pOdWxsID0gdHJ1ZTtcbiAgdmFyIGhpZGVBeGlzWkFsdCA9IHRydWU7XG4gIGF4aXNSYXdJbnB1dC5vbmlucHV0ID0gZnVuY3Rpb24oKSB7XG4gICAgaGlkZUF4aXNSYXcgPSAhaGlkZUF4aXNSYXc7XG4gICAgYXhpcy5jbGFzc2VkKFwiaGlkZS1lbGVtZW50XCIsIGhpZGVBeGlzUmF3KVxuICB9XG4gIGF4aXNaTnVsbElucHV0Lm9uaW5wdXQgPSBmdW5jdGlvbigpIHtcbiAgICBoaWRlQXhpc1pOdWxsID0gIWhpZGVBeGlzWk51bGw7XG4gICAgc3ZnSDBBeGlzLmNsYXNzZWQoXCJoaWRlLWVsZW1lbnRcIiwgaGlkZUF4aXNaTnVsbClcbiAgfVxuICBheGlzWkFsdElucHV0Lm9uaW5wdXQgPSBmdW5jdGlvbigpIHtcbiAgICBoaWRlQXhpc1pBbHQgPSAhaGlkZUF4aXNaQWx0O1xuICAgIHN2Z0gxQXhpcy5jbGFzc2VkKFwiaGlkZS1lbGVtZW50XCIsIGhpZGVBeGlzWkFsdClcbiAgfVxuICBcbiAgbXVJbnB1dC5vbmlucHV0ID0gZnVuY3Rpb24oKSB7XG4gICAgbXUgPSBOdW1iZXIobXVJbnB1dC52YWx1ZSk7XG4gICAgdXBkYXRlVmFsdWVzKCk7XG4gICAgdXBkYXRlQXhpcygpO1xuICAgIHVwZGF0ZVpBeGlzKCk7XG4gICAgcmVkcmF3Q3VydmVzKCk7XG4gIH07XG4gIFxuICBzaWdtYUlucHV0Lm9uaW5wdXQgPSBmdW5jdGlvbigpIHtcbiAgICBzaWdtYSA9IHNpZ21hSW5wdXQudmFsdWU7XG4gICAgbWVhbl9kaWZmID0gZCAqIHNpZ21hO1xuICAgIHN0ZF9lcnIgPSBzaWdtYS9NYXRoLnNxcnQobik7XG4gICAgbWF4X3N0ZF9lcnIgPSBzaWdtYSAvIE1hdGguc3FydCg1MCk7XG4gICAgdXBkYXRlVmFsdWVzKCk7XG4gICAgdXBkYXRlWVNjYWxlKCk7XG4gICAgdXBkYXRlQXhpcygpO1xuICAgIHVwZGF0ZVpBeGlzKCk7XG4gICAgcmVkcmF3Q3VydmVzKCk7XG4gIH1cbiAgXG4gIGZ1bmN0aW9uIGdldFBhcmFtcygpIHtcbiAgICBtdSA9IE51bWJlcihtdUlucHV0LnZhbHVlKTtcbiAgICBzaWdtYSA9IE51bWJlcihzaWdtYUlucHV0LnZhbHVlKTtcbiAgICBjb25zb2xlLmxvZyhcIm11ID0gXCIgKyBtdSArIFwiOyBzaWdtYSA9IFwiICsgc2lnbWEpXG4gICAgZCA9IE51bWJlcihkSW5wdXQudmFsdWUpO1xuICAgIG1lYW5fZGlmZiA9IGQgKiBzaWdtYTtcbiAgICBuID0gTnVtYmVyKG5JbnB1dC52YWx1ZSk7XG4gICAgYWxwaGEgPSBOdW1iZXIoYUlucHV0LnZhbHVlKTtcbiAgICBzdGRfZXJyID0gc2lnbWEgLyBNYXRoLnNxcnQobik7XG4gICAgbWF4X3N0ZF9lcnIgPSBzaWdtYSAvIE1hdGguc3FydCg1MCk7XG4gICAgdGFpbHMgPSB0cnVlO1xuICAgIHVwZGF0ZUNyaXRpY2FsVmFsdWVzKCk7XG4gIH1cbiAgXG4gIGZ1bmN0aW9uIHVwZGF0ZUNyaXRpY2FsVmFsdWVzKCkge1xuICAgIGlmKHRhaWxzKSB7XG4gICAgICAgIGFscGhhX3ggPSBtdSArIGpTdGF0Lm5vcm1hbC5pbnYoMSAtIGFscGhhLzIsIDAsIDEpICogc3RkX2VyclxuICAgIH0gZWxzZSB7XG4gICAgICAgIGFscGhhX3ggPSBtdSArIGpTdGF0Lm5vcm1hbC5pbnYoMSAtIGFscGhhLCAwLCAxKSAqIHN0ZF9lcnJcbiAgICB9XG5cbiAgICBpZih0YWlscykge1xuICAgICAgICBhbHBoYV94MiA9IG11IC0galN0YXQubm9ybWFsLmludigxIC0gYWxwaGEvMiwgMCwgMSkgKiBzdGRfZXJyXG4gICAgfSBlbHNlIHtcbiAgICAgICAgYWxwaGFfeDIgPS0xMDAwXG4gICAgfVxuICAgIGNvbnNvbGUubG9nKFwiY3JpdCBoaWdoOiBcIiArIGFscGhhX3ggKyBcIjsgY3JpdCBsb3c6IFwiICsgYWxwaGFfeDIpXG4gIH1cbiAgXG4gIGZ1bmN0aW9uIHVwZGF0ZVZhbHVlcygpIHtcbiAgICB1cGRhdGVDcml0aWNhbFZhbHVlcygpO1xuICAgIFxuICAgICAgYmV0YSA9IGpTdGF0Lm5vcm1hbC5jZGYoYWxwaGFfeCwgbXUgKyBtZWFuX2RpZmYsIHN0ZF9lcnIpIC0galN0YXQubm9ybWFsLmNkZihhbHBoYV94MiwgbXUgKyBtZWFuX2RpZmYsIHN0ZF9lcnIpO1xuICAgIHBvd2VyID0gMSAtIGJldGE7XG4gICAgXG4gICAgZDMuc2VsZWN0KFwiI2QtdmFsdWVcIikudGV4dChkKVxuICAgIGQzLnNlbGVjdChcIiNuLXZhbHVlXCIpLnRleHQobilcbiAgICBkMy5zZWxlY3QoXCIjYWxwaGEtdmFsdWVcIikudGV4dChhbHBoYSlcbiAgICBkMy5zZWxlY3QoXCIjc3RkLWVyci12YWx1ZVwiKS50ZXh0KGYoc3RkX2VycikpXG4gICAgZDMuc2VsZWN0KFwiI2JldGEtdmFsdWVcIikudGV4dChmKGJldGEpKVxuICAgIGQzLnNlbGVjdChcIiNwb3dlci12YWx1ZVwiKS50ZXh0KGYocG93ZXIpKVxuICAgIFxuXG4gIH1cbiAgXG4gIGZ1bmN0aW9uIHVwZGF0ZUF4aXMoKSB7XG4gICAgeGxpbSA9IFttdSAtIDEyICogc3RkX2VyciwgbXUgKyAxMiAqIHN0ZF9lcnJdO1xuICAgIHguZG9tYWluKFt4bGltWzBdLCB4bGltWzFdXSlcbiAgICA8IS0tIHhBeGlzLnRpY2tGb3JtYXQoeCA9PiB4IC8gc3RkX2VycikudGlja3MoWy0zLC0yLC0xLDAsMSwyLDNdKTsgLS0+XG4gICAgYXhpcy5jYWxsKHhBeGlzKTtcbiAgfVxuICBcbiAgZnVuY3Rpb24gdXBkYXRlWVNjYWxlKCkge1xuICAgIHkuZG9tYWluKFswLCBqU3RhdC5ub3JtYWwucGRmKG11LCBtdSwgbWF4X3N0ZF9lcnIpXSk7XG4gIH1cbiAgXG4gIGZ1bmN0aW9uIHVwZGF0ZVpBeGlzKCkge1xuICAgIHZhciB0aWNrU2VxID0gWy0zLC0yLC0xLDAsMSwyLDNdXG4gICAgZm9yICh2YXIgaSA9IDA7IGkgPCB0aWNrU2VxLmxlbmd0aDsgaSsrKSB7XG4gICAgICB0aWNrU2VxW2ldID0gbXUgKyB0aWNrU2VxW2ldICogc3RkX2VycjtcbiAgICB9XG4gICAgdmFyIHpsaW0gPSBbbXUgLSAzICogc2lnbWEsIG11ICsgMyAqIHNpZ21hXTtcbiAgICB6LmRvbWFpbihbeGxpbVswXSwgeGxpbVsxXV0pXG4gICAgekF4aXNcbiAgICAgIC50aWNrRm9ybWF0KHogPT4gZjIoKHogLSBtdSkvc3RkX2VycikpXG4gICAgICAudGlja1ZhbHVlcyh0aWNrU2VxKVxuICAgIHN2Z0gwQXhpc1xuICAgICAgLmNhbGwoekF4aXMpO1xuICAgICAgXG4gICAgdGlja1NlcSA9IFstMywtMiwtMSwwLDEsMiwzXVxuICAgIGZvciAodmFyIGkgPSAwOyBpIDwgdGlja1NlcS5sZW5ndGg7IGkrKykge1xuICAgICAgdGlja1NlcVtpXSA9IG11ICsgbWVhbl9kaWZmICsgdGlja1NlcVtpXSAqIHN0ZF9lcnI7XG4gICAgfVxuICAgIGgxQXhpc1xuICAgICAgLnRpY2tGb3JtYXQoeiA9PiBmMigoeiAtIG11IC0gbWVhbl9kaWZmKS9zdGRfZXJyKSlcbiAgICAgIC50aWNrVmFsdWVzKHRpY2tTZXEpXG4gICAgc3ZnSDFBeGlzXG4gICAgICAuY2FsbChoMUF4aXMpO1xuICB9XG4gIFxuICBmdW5jdGlvbiByZWRyYXdDdXJ2ZXMoKSB7XG4gICAgPCEtLSB1cGRhdGVBeGlzKCk7IC0tPlxuICAgIHJlZHJhd051bGwoKTtcbiAgICByZWRyYXdBbHQoKTtcbiAgfVxuICBcbiAgZnVuY3Rpb24gcmVkcmF3TnVsbCgpIHtcbiAgICBudWxsQ3VydmUuYXR0cihcImRcIiwgbGluZShjdXJ2ZURhdGEobXUsIHN0ZF9lcnIpKSk7XG4gICAgbnVsbExhYmVsLmF0dHIoXCJ0cmFuc2Zvcm1cIiwgYHRyYW5zbGF0ZSgke3gobXUpfSwgJHtsYWJlbEhlaWdodH0pYCk7XG4gICAgbnVsbEZpbGwuYXR0cihcImRcIiwgbGluZShjdXJ2ZURhdGEobXUsIHN0ZF9lcnIpKSk7XG4gICAgbnVsbENsaXAuYXR0cihcInBvaW50c1wiLCBbWzAsMF0sIFswLGhdLCBbeChhbHBoYV94MiksaF0sW3goYWxwaGFfeDIpLDBdLFxuICAgICAgICAgICAgICAgICAgICAgW3goYWxwaGFfeCksMF0sIFt4KGFscGhhX3gpLGhdLCBbdyxoXSxbdywwXV0pO1xuICAgIG51bGxDbGlwSW50ZXJpb3IuYXR0cihcInBvaW50c1wiLCBbW3goYWxwaGFfeDIpLDBdLFt4KGFscGhhX3gyKSxoXSxcbiAgICAgICAgICAgICAgICAgICAgIFt4KGFscGhhX3gpLGhdLCBbeChhbHBoYV94KSwwXV0pO1xuICAgICAgICAgICAgICAgICAgICAgXG4gIH1cbiAgZnVuY3Rpb24gcmVkcmF3QWx0KCkge1xuICAgIHZhciBkYXQgPSBjdXJ2ZURhdGEoTnVtYmVyKG11ICsgbWVhbl9kaWZmKSwgc3RkX2VycilcbiAgICBhbHRDdXJ2ZS5hdHRyKFwiZFwiLCBsaW5lKGRhdCkpXG4gICAgYWx0RmlsbFBvd2VyLmF0dHIoXCJkXCIsIGxpbmUoZGF0KSlcbiAgICBhbHRGaWxsQmV0YS5hdHRyKFwiZFwiLCBsaW5lKGRhdCkpXG4gICAgYWx0TGFiZWwuYXR0cihcInRyYW5zZm9ybVwiLCBgdHJhbnNsYXRlKCR7eChtdSArIG1lYW5fZGlmZil9LCAke2xhYmVsSGVpZ2h0fSlgKVxuICB9XG4gIFxuICBuSW5wdXQub25pbnB1dCA9IGZ1bmN0aW9uKCkge1xuICAgIG4gPSBOdW1iZXIobklucHV0LnZhbHVlKVxuICAgIHN0ZF9lcnIgPSBzaWdtYS9NYXRoLnNxcnQobilcbiAgICB1cGRhdGVaQXhpcygpO1xuICAgIHVwZGF0ZVZhbHVlcygpO1xuICAgIHJlZHJhd0N1cnZlcygpO1xuICB9O1xuICBcbiAgZElucHV0Lm9uaW5wdXQgPSBmdW5jdGlvbigpIHtcbiAgICBkID0gTnVtYmVyKGRJbnB1dC52YWx1ZSk7XG4gICAgbWVhbl9kaWZmID0gZCAqIHNpZ21hO1xuICAgIHVwZGF0ZVZhbHVlcygpO1xuICAgIHVwZGF0ZVpBeGlzKCk7XG4gICAgcmVkcmF3QWx0KCk7XG4gIH07XG4gIFxuICBhSW5wdXQub25pbnB1dCA9IGZ1bmN0aW9uKCkge1xuICAgIGFscGhhID0gTnVtYmVyKGFJbnB1dC52YWx1ZSlcbiAgICB1cGRhdGVWYWx1ZXMoKTtcbiAgICByZWRyYXdOdWxsKCk7XG4gIH07XG4gIFxuICB0YWlsc0lucHV0Lm9uaW5wdXQgPSBmdW5jdGlvbigpIHtcbiAgICB0YWlscyA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwidGFpbHMtaW5wdXRcIikuY2hlY2tlZFxuICAgIHVwZGF0ZVZhbHVlcygpXG4gICAgcmVkcmF3TnVsbCgpXG4gIH1cbiAgXG4gIGFsdElucHV0Lm9uaW5wdXQgPSBmdW5jdGlvbigpIHtcbiAgICBzaG93QWx0ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoXCJhbHQtaW5wdXRcIikuY2hlY2tlZFxuICAgIFxuICAgIGQzLnNlbGVjdChcIiNwb3dlci12YWx1ZXNcIikuY2xhc3NlZChcImhpZGUtZWxlbWVudFwiLCAhc2hvd0FsdClcbiAgICBcbiAgICBpZihzaG93QWx0KSB7dmFyIG9wYWNpdHkgPSAxfSBlbHNlIHt2YXIgb3BhY2l0eSA9IDB9XG4gICAgYWx0Q3VydmUuc3R5bGUoXCJvcGFjaXR5XCIsIG9wYWNpdHkpXG4gICAgYWx0TGFiZWwuc3R5bGUoXCJvcGFjaXR5XCIsIG9wYWNpdHkpXG4gICAgaWYoc2hvd0FsdCkge3ZhciBvcGFjaXR5ID0gMC43fSBlbHNlIHt2YXIgb3BhY2l0eSA9IDB9XG4gICAgYWx0RmlsbFBvd2VyLnN0eWxlKFwib3BhY2l0eVwiLCBvcGFjaXR5KVxuICAgIGlmKHNob3dBbHQpIHt2YXIgb3BhY2l0eSA9IDAuM30gZWxzZSB7dmFyIG9wYWNpdHkgPSAwfVxuICAgIGFsdEZpbGxCZXRhLnN0eWxlKFwib3BhY2l0eVwiLCBvcGFjaXR5KVxuICB9XG4gIFxuXG4gIFxuICBjb25zdCBzdmcgPSBkMy5zZWxlY3QoXCIjcG93ZXItaW50ZXJhY3RpdmVcIilcbiAgICAuYXBwZW5kKFwic3ZnXCIpXG4gICAgLmF0dHIoXCJ3aWR0aFwiLCB3KS5hdHRyKFwiaGVpZ2h0XCIsIGgpXG5cbiAgY29uc3Qgc3ZnSDBBeGlzID0gc3ZnLmFwcGVuZChcImdcIilcbiAgICAgIC5hdHRyKFwiY2xhc3NcIiwgXCJheGlzXCIpXG4gICAgICAuY2xhc3NlZChcImhpZGUtZWxlbWVudFwiLCBoaWRlQXhpc1pOdWxsKVxuICAgICAgLmF0dHIoXCJ0cmFuc2Zvcm1cIiwgYHRyYW5zbGF0ZSgwLCAke3koMCl9KWApXG4gICAgICAuc3R5bGUoXCJmb250LXNpemVcIiwgXCIwLjVlbVwiKVxuICAgICAgLnN0eWxlKFwiY29sb3JcIiwgXCJyZWRcIilcbiAgICAgIFxuICBjb25zdCBzdmdIMUF4aXMgPSBzdmcuYXBwZW5kKFwiZ1wiKVxuICAgICAgLmF0dHIoXCJjbGFzc1wiLCBcImF4aXNcIilcbiAgICAgIC5jbGFzc2VkKFwiaGlkZS1lbGVtZW50XCIsIGhpZGVBeGlzWkFsdClcbiAgICAgIC5hdHRyKFwidHJhbnNmb3JtXCIsIGB0cmFuc2xhdGUoMCwgJHt5KDApfSlgKVxuICAgICAgLnN0eWxlKFwiZm9udC1zaXplXCIsIFwiMC41ZW1cIilcbiAgICAgIC5zdHlsZShcImNvbG9yXCIsIFwic3RlZWxibHVlXCIpXG4gICAgICBcbiAgY29uc3QgYXhpcyA9IHN2Zy5hcHBlbmQoXCJnXCIpXG4gICAgICAuYXR0cihcImNsYXNzXCIsIFwiYXhpc1wiKVxuICAgICAgLmF0dHIoXCJ0cmFuc2Zvcm1cIiwgYHRyYW5zbGF0ZSgwLCAke3koMCl9KWApXG4gICAgICAuc3R5bGUoXCJmb250LXNpemVcIiwgXCIwLjVlbVwiKTtcbiAgXG4gIGNvbnN0IG51bGxEaXN0ID0gc3ZnLmFwcGVuZChcImdcIikuYXR0cihcImlkXCIsIFwibnVsbC1kaXN0XCIpXG5cbiAgY29uc3QgbnVsbEZpbGwgPSBudWxsRGlzdC5hcHBlbmQoXCJwYXRoXCIpLmF0dHIoXCJpZFwiLCBcImNyaXRpY2FsLXJlZ2lvbi1maWxsXCIpXG4gICAgICAuYXR0cihcImZpbGxcIiwgXCJyZWRcIilcbiAgICAgIC5hdHRyKFwic3Ryb2tlXCIsIFwibm9uZVwiKVxuICAgICAgLmF0dHIoJ2NsaXAtcGF0aCcsIFwidXJsKCNjbGlwLWFyZWEpXCIpXG5cbiAgY29uc3QgbnVsbEN1cnZlID0gbnVsbERpc3QuYXBwZW5kKFwicGF0aFwiKS5hdHRyKFwiaWRcIiwgXCJoMC1jdXJ2ZVwiKVxuICAgICAgLmF0dHIoXCJmaWxsXCIsIFwibm9uZVwiKVxuICAgICAgLmF0dHIoXCJzdHJva2VcIiwgXCJibGFja1wiKVxuICAgICAgLmF0dHIoXCJzdHJva2Utd2lkdGhcIiwgMilcbiAgICAgIC5hdHRyKFwiY2xhc3NcIiwgXCJpbnZlcnRhYmxlXCIpO1xuXG4gIGNvbnN0IG51bGxMYWJlbCA9IG51bGxEaXN0LmFwcGVuZChcImdcIilcbiAgbnVsbExhYmVsLmFwcGVuZChcInRleHRcIikuYXR0cihcImlkXCIsIFwiaDAtdGV4dFwiKVxuICAgICAgLmF0dHIoXCJjbGFzc1wiLCBcImludmVydGFibGVcIilcbiAgICAgIC5zdHlsZShcInRleHQtYW5jaG9yXCIsIFwibWlkZGxlXCIpXG4gICAgICAuc3R5bGUoJ2ZvbnQtc2l6ZScsICcxZW0nKVxuICAgICAgLnRleHQoJycpXG4gICAgICAuYXBwZW5kKCd0c3BhbicpXG4gICAgICAgIC5odG1sKCdIJylcbiAgICAgICAgLmFwcGVuZCgndHNwYW4nKVxuICAgICAgICAuaHRtbCgnMCcpLmF0dHIoJ2Jhc2VsaW5lLXNoaWZ0JywgJ3N1YicpLnN0eWxlKCdmb250LXNpemUnLCAnMC41ZW0nKTtcblxuICBjb25zdCBudWxsQ2xpcCA9IHN2Zy5hcHBlbmQoXCJjbGlwUGF0aFwiKVxuICAgIC5hdHRyKFwiaWRcIiwgXCJjbGlwLWFyZWFcIilcbiAgICAuYXBwZW5kKFwicG9seWdvblwiKVxuXG4gIGNvbnN0IG51bGxDbGlwSW50ZXJpb3IgPSBzdmcuYXBwZW5kKFwiY2xpcFBhdGhcIikuYXR0cihcImlkXCIsIFwiY2xpcC1hcmVhLWludGVyaW9yXCIpXG4gICAgLmFwcGVuZChcInBvbHlnb25cIilcblxuXG48IS0tIDwhLS0gYWx0ZXJuYXRpdmUgZGlzdHJpYnV0aW9uIC0tPiAtLT5cblxuICBjb25zdCBhbHREaXN0ID0gc3ZnLmFwcGVuZChcImdcIikuYXR0cihcImlkXCIsIFwibnVsbC1kaXN0XCIpXG5cbiAgY29uc3QgYWx0Q3VydmUgPSBhbHREaXN0LmFwcGVuZChcInBhdGhcIikuYXR0cihcImlkXCIsIFwiaDEtY3VydmVcIilcbiAgICAgIC5hdHRyKFwiZmlsbFwiLCBcIm5vbmVcIilcbiAgICAgIC5hdHRyKFwic3Ryb2tlXCIsIFwiYmxhY2tcIilcbiAgICAgIC5hdHRyKFwic3Ryb2tlLXdpZHRoXCIsIDIpXG4gICAgICAuYXR0cihcImNsYXNzXCIsIFwiaW52ZXJ0YWJsZVwiKTtcblxuICBjb25zdCBhbHRMYWJlbCA9IGFsdERpc3QuYXBwZW5kKFwiZ1wiKVxuICBhbHRMYWJlbC5hcHBlbmQoXCJ0ZXh0XCIpXG4gICAgICAuc3R5bGUoXCJ0ZXh0LWFuY2hvclwiLCBcIm1pZGRsZVwiKVxuICAgICAgLnN0eWxlKCdmaWxsJywgJ3N0ZWVsYmx1ZScpXG4gICAgICAuc3R5bGUoJ2ZvbnQtc2l6ZScsICcxZW0nKVxuICAgICAgLnRleHQoJycpXG4gICAgICAuYXBwZW5kKCd0c3BhbicpXG4gICAgICAgIC5odG1sKCdIJylcbiAgICAgICAgLmFwcGVuZCgndHNwYW4nKVxuICAgICAgICAuaHRtbCgnMScpLmF0dHIoJ2Jhc2VsaW5lLXNoaWZ0JywgJ3N1YicpLnN0eWxlKCdmb250LXNpemUnLCAnMC41ZW0nKTtcblxuICBjb25zdCBhbHRGaWxsUG93ZXIgPSBhbHREaXN0LmFwcGVuZChcInBhdGhcIilcbiAgICAgIC5hdHRyKCdjbGlwLXBhdGgnLCBcInVybCgjY2xpcC1hcmVhKVwiKVxuICAgICAgLmF0dHIoXCJmaWxsXCIsIFwic3RlZWxibHVlXCIpXG4gICAgICAuYXR0cihcIm9wYWNpdHlcIiwgMC43KVxuICAgICAgLmF0dHIoXCJzdHJva2VcIiwgXCJzdGVlbGJsdWVcIilcbiAgICAgIC5hdHRyKFwic3Ryb2tlLXdpZHRoXCIsIDIuNSlcblxuICBjb25zdCBhbHRGaWxsQmV0YSA9IGFsdERpc3QuYXBwZW5kKFwicGF0aFwiKVxuICAgICAgLmF0dHIoJ2NsaXAtcGF0aCcsIFwidXJsKCNjbGlwLWFyZWEtaW50ZXJpb3IpXCIpXG4gICAgICAuYXR0cihcImZpbGxcIiwgXCJncmV5XCIpXG4gICAgICAuYXR0cihcIm9wYWNpdHlcIiwgMC4zKVxuXG4gIGdldFBhcmFtcygpO1xuICB1cGRhdGVWYWx1ZXMoKTtcbiAgdXBkYXRlWVNjYWxlKCk7XG4gIHVwZGF0ZUF4aXMoKTtcbiAgdXBkYXRlWkF4aXMoKTtcbiAgcmVkcmF3Q3VydmVzKCk7XG4gIFxufVxuXG4gIFxuIn1dfQ==
     </script>
     <script type="module">
     if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -1599,10 +1600,32 @@ Power: <span id="power-value" class="math" style="color: steelblue;"></span></p>
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+              // target, if specified
+              link.setAttribute("target", "_blank");
+              if (link.getAttribute("rel") === null) {
+                link.setAttribute("rel", "noopener");
+              }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1612,8 +1635,17 @@ Power: <span id="power-value" class="math" style="color: steelblue;"></span></p>
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1627,7 +1659,11 @@ Power: <span id="power-value" class="math" style="color: steelblue;"></span></p>
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
@@ -1667,20 +1703,6 @@ Power: <span id="power-value" class="math" style="color: steelblue;"></span></p>
           });
         }
       }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-              // target, if specified
-              link.setAttribute("target", "_blank");
-          }
-        }
     });
     </script>
     

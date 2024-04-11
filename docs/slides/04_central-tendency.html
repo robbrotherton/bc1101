@@ -8,9 +8,9 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.310">
+  <meta name="generator" content="quarto-1.4.551">
 
-  <title>PSYC BC1101 – central-tendency</title>
+  <title>PSYC BC1101</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,7 +30,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -94,7 +94,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -222,7 +222,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -485,6 +486,7 @@
 <div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -519,9 +521,11 @@
 
 </div>
 </div>
+</div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -562,11 +566,12 @@
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="mode-generic-examples" class="slide level2">
 <h2>Mode: generic examples</h2>
-<div class="quarto-layout-panel" style="margin-top: 2em;">
-<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-panel" style="margin-top: 2em;" data-layout-ncol="2">
+<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img data-src="media/central-tendency-symmetrical.svg" class="invertable"></p>
 </div>
@@ -719,8 +724,8 @@
 <div class="center-element">
 <p><span class="invertable" style="color: #D81B60;">mean</span>, <span class="invertable" style="color: #1E88E5;">median</span>, <span class="invertable" style="color: #FFC107;">mode</span></p>
 </div>
-<div class="invertable quarto-layout-panel" style="margin-top: -2em;">
-<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="invertable quarto-layout-panel" style="margin-top: -2em;" data-layout-ncol="2">
+<div class="quarto-layout-row">
 <div class="r-stack quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img data-src="media/dist-norm.svg"></p>
 <p><img data-src="media/dist-norm-labelled.svg" class="fragment" data-fragment-index="1"></p>
@@ -731,8 +736,8 @@
 </div>
 </div>
 </div>
-<div class="invertable quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="invertable quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
 <div class="r-stack quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img data-src="media/dist-positive.svg"></p>
 <p><img data-src="media/dist-positive-labelled.svg" class="fragment" data-fragment-index="1"></p>
@@ -813,88 +818,88 @@
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="556" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 555;"><span id="cb1-556"><a href="#cb1-556"></a>people_illustration <span class="op">=</span> {</span>
-<span id="cb1-557"><a href="#cb1-557"></a></span>
-<span id="cb1-558"><a href="#cb1-558"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">650</span></span>
-<span id="cb1-559"><a href="#cb1-559"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">400</span></span>
-<span id="cb1-560"><a href="#cb1-560"></a>  <span class="kw">const</span> personWidth <span class="op">=</span> <span class="dv">80</span></span>
-<span id="cb1-561"><a href="#cb1-561"></a>  </span>
-<span id="cb1-562"><a href="#cb1-562"></a>  <span class="kw">const</span> data <span class="op">=</span> [</span>
-<span id="cb1-563"><a href="#cb1-563"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$33,000"</span>}<span class="op">,</span></span>
-<span id="cb1-564"><a href="#cb1-564"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$34,000"</span>}<span class="op">,</span></span>
-<span id="cb1-565"><a href="#cb1-565"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$35,000"</span>}<span class="op">,</span></span>
-<span id="cb1-566"><a href="#cb1-566"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$35,000"</span>}<span class="op">,</span></span>
-<span id="cb1-567"><a href="#cb1-567"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$35,000"</span>}<span class="op">,</span></span>
-<span id="cb1-568"><a href="#cb1-568"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$36,000"</span>}<span class="op">,</span></span>
-<span id="cb1-569"><a href="#cb1-569"></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">6</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$37,000"</span>}<span class="op">,</span></span>
-<span id="cb1-570"><a href="#cb1-570"></a>  ]</span>
-<span id="cb1-571"><a href="#cb1-571"></a>      </span>
-<span id="cb1-572"><a href="#cb1-572"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#distributions-people-container"</span>)</span>
-<span id="cb1-573"><a href="#cb1-573"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)</span>
-<span id="cb1-574"><a href="#cb1-574"></a>  </span>
-<span id="cb1-575"><a href="#cb1-575"></a>  <span class="kw">const</span> imgs <span class="op">=</span> svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"image"</span>)</span>
-<span id="cb1-576"><a href="#cb1-576"></a>    <span class="op">.</span><span class="fu">data</span>(data)</span>
-<span id="cb1-577"><a href="#cb1-577"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb1-578"><a href="#cb1-578"></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg:image"</span>)</span>
-<span id="cb1-579"><a href="#cb1-579"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="dv">50</span> <span class="op">+</span> d<span class="op">.</span><span class="at">id</span> <span class="op">*</span> personWidth)</span>
-<span id="cb1-580"><a href="#cb1-580"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="dv">50</span>)</span>
-<span id="cb1-581"><a href="#cb1-581"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'width'</span><span class="op">,</span> personWidth)</span>
-<span id="cb1-582"><a href="#cb1-582"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"xlink:href"</span><span class="op">,</span> <span class="st">"media/person.svg"</span>)</span>
-<span id="cb1-583"><a href="#cb1-583"></a>      </span>
-<span id="cb1-584"><a href="#cb1-584"></a>  <span class="kw">const</span> incomes <span class="op">=</span> svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)</span>
-<span id="cb1-585"><a href="#cb1-585"></a>    <span class="op">.</span><span class="fu">data</span>(data)</span>
-<span id="cb1-586"><a href="#cb1-586"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb1-587"><a href="#cb1-587"></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
-<span id="cb1-588"><a href="#cb1-588"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'text-anchor'</span><span class="op">,</span> <span class="st">'middle'</span>)</span>
-<span id="cb1-589"><a href="#cb1-589"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="dv">50</span> <span class="op">+</span> personWidth<span class="op">/</span><span class="dv">2</span> <span class="op">+</span> d<span class="op">.</span><span class="at">id</span> <span class="op">*</span> personWidth)</span>
-<span id="cb1-590"><a href="#cb1-590"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="dv">30</span>)</span>
-<span id="cb1-591"><a href="#cb1-591"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.5em'</span>)</span>
-<span id="cb1-592"><a href="#cb1-592"></a>      <span class="op">.</span><span class="fu">text</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">income</span>)</span>
-<span id="cb1-593"><a href="#cb1-593"></a></span>
-<span id="cb1-594"><a href="#cb1-594"></a>  <span class="kw">const</span> mean1 <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)</span>
-<span id="cb1-595"><a href="#cb1-595"></a>    <span class="op">.</span><span class="fu">data</span>([<span class="st">'median: $35,000'</span><span class="op">,</span> <span class="st">'&lt;tspan style="font-family: Times; font-style: italic"&gt;M&lt;/tspan&gt; = $35,000'</span>])</span>
-<span id="cb1-596"><a href="#cb1-596"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb1-597"><a href="#cb1-597"></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
-<span id="cb1-598"><a href="#cb1-598"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'text-anchor'</span><span class="op">,</span> <span class="st">'middle'</span>)</span>
-<span id="cb1-599"><a href="#cb1-599"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> personWidth <span class="op">*</span> <span class="dv">7</span><span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb1-600"><a href="#cb1-600"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="kw">function</span>(d<span class="op">,</span>i){<span class="cf">return</span> <span class="dv">250</span> <span class="op">+</span> i<span class="op">*</span><span class="dv">50</span>})</span>
-<span id="cb1-601"><a href="#cb1-601"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.8em'</span>)</span>
-<span id="cb1-602"><a href="#cb1-602"></a>      <span class="op">.</span><span class="fu">html</span>(d <span class="kw">=&gt;</span> d)</span>
-<span id="cb1-603"><a href="#cb1-603"></a>}</span>
-<span id="cb1-604"><a href="#cb1-604"></a></span>
-<span id="cb1-605"><a href="#cb1-605"></a>monopoly_man <span class="op">=</span> {</span>
-<span id="cb1-606"><a href="#cb1-606"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">400</span></span>
-<span id="cb1-607"><a href="#cb1-607"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">400</span></span>
-<span id="cb1-608"><a href="#cb1-608"></a>  <span class="kw">const</span> personWidth <span class="op">=</span> <span class="dv">80</span></span>
-<span id="cb1-609"><a href="#cb1-609"></a>  </span>
-<span id="cb1-610"><a href="#cb1-610"></a>  </span>
-<span id="cb1-611"><a href="#cb1-611"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#distributions-monopoly-man-container"</span>)</span>
-<span id="cb1-612"><a href="#cb1-612"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)</span>
-<span id="cb1-613"><a href="#cb1-613"></a>    </span>
-<span id="cb1-614"><a href="#cb1-614"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"svg:image"</span>)</span>
-<span id="cb1-615"><a href="#cb1-615"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> <span class="dv">100</span>)</span>
-<span id="cb1-616"><a href="#cb1-616"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="dv">30</span>)</span>
-<span id="cb1-617"><a href="#cb1-617"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'width'</span><span class="op">,</span> <span class="dv">200</span>)</span>
-<span id="cb1-618"><a href="#cb1-618"></a>      <span class="op">&lt;!--</span> <span class="op">.</span><span class="fu">attr</span>(<span class="st">'height'</span><span class="op">,</span> <span class="dv">210</span>) <span class="op">--&gt;</span></span>
-<span id="cb1-619"><a href="#cb1-619"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"xlink:href"</span><span class="op">,</span> <span class="st">"media/monopoly-man.svg"</span>)</span>
-<span id="cb1-620"><a href="#cb1-620"></a>      </span>
-<span id="cb1-621"><a href="#cb1-621"></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
-<span id="cb1-622"><a href="#cb1-622"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'text-anchor'</span><span class="op">,</span> <span class="st">'middle'</span>)</span>
-<span id="cb1-623"><a href="#cb1-623"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.5em'</span>)</span>
-<span id="cb1-624"><a href="#cb1-624"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> w<span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb1-625"><a href="#cb1-625"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="dv">30</span>)</span>
-<span id="cb1-626"><a href="#cb1-626"></a>      <span class="op">.</span><span class="fu">text</span>(<span class="st">"$1 billion"</span>)</span>
-<span id="cb1-627"><a href="#cb1-627"></a>      </span>
-<span id="cb1-628"><a href="#cb1-628"></a>  <span class="kw">const</span> new_mean <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)</span>
-<span id="cb1-629"><a href="#cb1-629"></a>    <span class="op">.</span><span class="fu">data</span>([<span class="st">'new median: $35,000'</span><span class="op">,</span> <span class="st">'new &lt;tspan style="font-family: Times; font-style: italic"&gt;M&lt;/tspan&gt; = $125 million'</span>])</span>
-<span id="cb1-630"><a href="#cb1-630"></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb1-631"><a href="#cb1-631"></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
-<span id="cb1-632"><a href="#cb1-632"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'text-anchor'</span><span class="op">,</span> <span class="st">'middle'</span>)</span>
-<span id="cb1-633"><a href="#cb1-633"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> w<span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb1-634"><a href="#cb1-634"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="kw">function</span>(d<span class="op">,</span>i){<span class="cf">return</span> <span class="dv">250</span> <span class="op">+</span> i<span class="op">*</span><span class="dv">50</span>})</span>
-<span id="cb1-635"><a href="#cb1-635"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.8em'</span>)</span>
-<span id="cb1-636"><a href="#cb1-636"></a>      <span class="op">.</span><span class="fu">html</span>(d <span class="kw">=&gt;</span> d)</span>
-<span id="cb1-637"><a href="#cb1-637"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="556" data-source-offset="-1"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 555;"><span id="cb1-556"><a></a>people_illustration <span class="op">=</span> {</span>
+<span id="cb1-557"><a></a></span>
+<span id="cb1-558"><a></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">650</span></span>
+<span id="cb1-559"><a></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">400</span></span>
+<span id="cb1-560"><a></a>  <span class="kw">const</span> personWidth <span class="op">=</span> <span class="dv">80</span></span>
+<span id="cb1-561"><a></a>  </span>
+<span id="cb1-562"><a></a>  <span class="kw">const</span> data <span class="op">=</span> [</span>
+<span id="cb1-563"><a></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$33,000"</span>}<span class="op">,</span></span>
+<span id="cb1-564"><a></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$34,000"</span>}<span class="op">,</span></span>
+<span id="cb1-565"><a></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$35,000"</span>}<span class="op">,</span></span>
+<span id="cb1-566"><a></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$35,000"</span>}<span class="op">,</span></span>
+<span id="cb1-567"><a></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$35,000"</span>}<span class="op">,</span></span>
+<span id="cb1-568"><a></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$36,000"</span>}<span class="op">,</span></span>
+<span id="cb1-569"><a></a>    {<span class="dt">id</span><span class="op">:</span> <span class="dv">6</span><span class="op">,</span> <span class="dt">income</span><span class="op">:</span> <span class="st">"$37,000"</span>}<span class="op">,</span></span>
+<span id="cb1-570"><a></a>  ]</span>
+<span id="cb1-571"><a></a>      </span>
+<span id="cb1-572"><a></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#distributions-people-container"</span>)</span>
+<span id="cb1-573"><a></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)</span>
+<span id="cb1-574"><a></a>  </span>
+<span id="cb1-575"><a></a>  <span class="kw">const</span> imgs <span class="op">=</span> svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"image"</span>)</span>
+<span id="cb1-576"><a></a>    <span class="op">.</span><span class="fu">data</span>(data)</span>
+<span id="cb1-577"><a></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-578"><a></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg:image"</span>)</span>
+<span id="cb1-579"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="dv">50</span> <span class="op">+</span> d<span class="op">.</span><span class="at">id</span> <span class="op">*</span> personWidth)</span>
+<span id="cb1-580"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="dv">50</span>)</span>
+<span id="cb1-581"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'width'</span><span class="op">,</span> personWidth)</span>
+<span id="cb1-582"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"xlink:href"</span><span class="op">,</span> <span class="st">"media/person.svg"</span>)</span>
+<span id="cb1-583"><a></a>      </span>
+<span id="cb1-584"><a></a>  <span class="kw">const</span> incomes <span class="op">=</span> svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-585"><a></a>    <span class="op">.</span><span class="fu">data</span>(data)</span>
+<span id="cb1-586"><a></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-587"><a></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-588"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'text-anchor'</span><span class="op">,</span> <span class="st">'middle'</span>)</span>
+<span id="cb1-589"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="dv">50</span> <span class="op">+</span> personWidth<span class="op">/</span><span class="dv">2</span> <span class="op">+</span> d<span class="op">.</span><span class="at">id</span> <span class="op">*</span> personWidth)</span>
+<span id="cb1-590"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="dv">30</span>)</span>
+<span id="cb1-591"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.5em'</span>)</span>
+<span id="cb1-592"><a></a>      <span class="op">.</span><span class="fu">text</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">income</span>)</span>
+<span id="cb1-593"><a></a></span>
+<span id="cb1-594"><a></a>  <span class="kw">const</span> mean1 <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-595"><a></a>    <span class="op">.</span><span class="fu">data</span>([<span class="st">'median: $35,000'</span><span class="op">,</span> <span class="st">'&lt;tspan style="font-family: Times; font-style: italic"&gt;M&lt;/tspan&gt; = $35,000'</span>])</span>
+<span id="cb1-596"><a></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-597"><a></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-598"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'text-anchor'</span><span class="op">,</span> <span class="st">'middle'</span>)</span>
+<span id="cb1-599"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> personWidth <span class="op">*</span> <span class="dv">7</span><span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb1-600"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="kw">function</span>(d<span class="op">,</span>i){<span class="cf">return</span> <span class="dv">250</span> <span class="op">+</span> i<span class="op">*</span><span class="dv">50</span>})</span>
+<span id="cb1-601"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.8em'</span>)</span>
+<span id="cb1-602"><a></a>      <span class="op">.</span><span class="fu">html</span>(d <span class="kw">=&gt;</span> d)</span>
+<span id="cb1-603"><a></a>}</span>
+<span id="cb1-604"><a></a></span>
+<span id="cb1-605"><a></a>monopoly_man <span class="op">=</span> {</span>
+<span id="cb1-606"><a></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">400</span></span>
+<span id="cb1-607"><a></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">400</span></span>
+<span id="cb1-608"><a></a>  <span class="kw">const</span> personWidth <span class="op">=</span> <span class="dv">80</span></span>
+<span id="cb1-609"><a></a>  </span>
+<span id="cb1-610"><a></a>  </span>
+<span id="cb1-611"><a></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#distributions-monopoly-man-container"</span>)</span>
+<span id="cb1-612"><a></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"class"</span><span class="op">,</span> <span class="st">"invertable"</span>)</span>
+<span id="cb1-613"><a></a>    </span>
+<span id="cb1-614"><a></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"svg:image"</span>)</span>
+<span id="cb1-615"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> <span class="dv">100</span>)</span>
+<span id="cb1-616"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="dv">30</span>)</span>
+<span id="cb1-617"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'width'</span><span class="op">,</span> <span class="dv">200</span>)</span>
+<span id="cb1-618"><a></a>      <span class="op">&lt;!--</span> <span class="op">.</span><span class="fu">attr</span>(<span class="st">'height'</span><span class="op">,</span> <span class="dv">210</span>) <span class="op">--&gt;</span></span>
+<span id="cb1-619"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"xlink:href"</span><span class="op">,</span> <span class="st">"media/monopoly-man.svg"</span>)</span>
+<span id="cb1-620"><a></a>      </span>
+<span id="cb1-621"><a></a>  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-622"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'text-anchor'</span><span class="op">,</span> <span class="st">'middle'</span>)</span>
+<span id="cb1-623"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.5em'</span>)</span>
+<span id="cb1-624"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> w<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb1-625"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="dv">30</span>)</span>
+<span id="cb1-626"><a></a>      <span class="op">.</span><span class="fu">text</span>(<span class="st">"$1 billion"</span>)</span>
+<span id="cb1-627"><a></a>      </span>
+<span id="cb1-628"><a></a>  <span class="kw">const</span> new_mean <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-629"><a></a>    <span class="op">.</span><span class="fu">data</span>([<span class="st">'new median: $35,000'</span><span class="op">,</span> <span class="st">'new &lt;tspan style="font-family: Times; font-style: italic"&gt;M&lt;/tspan&gt; = $125 million'</span>])</span>
+<span id="cb1-630"><a></a>    <span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-631"><a></a>      <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-632"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'text-anchor'</span><span class="op">,</span> <span class="st">'middle'</span>)</span>
+<span id="cb1-633"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'x'</span><span class="op">,</span> w<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb1-634"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">'y'</span><span class="op">,</span> <span class="kw">function</span>(d<span class="op">,</span>i){<span class="cf">return</span> <span class="dv">250</span> <span class="op">+</span> i<span class="op">*</span><span class="dv">50</span>})</span>
+<span id="cb1-635"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">'font-size'</span><span class="op">,</span> <span class="st">'0.8em'</span>)</span>
+<span id="cb1-636"><a></a>      <span class="op">.</span><span class="fu">html</span>(d <span class="kw">=&gt;</span> d)</span>
+<span id="cb1-637"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -911,6 +916,7 @@
 </div>
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <button id="theme-toggle">
 <svg id="moon" class="d-block d-block-light d-none" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 384 512">
@@ -922,6 +928,7 @@
 <path d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM352 256c0 53-43 96-96 96s-96-43-96-96s43-96 96-96s96 43 96 96zm32 0c0-70.7-57.3-128-128-128s-128 57.3-128 128s57.3 128 128 128s128-57.3 128-128z"></path>
 </svg>
 </button>
+</div>
 </div>
 </section>
     </div>
@@ -951,7 +958,6 @@
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1223,9 +1229,8 @@
     });
 
     </script>
-    
     <script type="ojs-module-contents">
-    {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\npeople_illustration = {\n\n  const w = 650\n  const h = 400\n  const personWidth = 80\n  \n  const data = [\n    {id: 0, income: \"$33,000\"},\n    {id: 1, income: \"$34,000\"},\n    {id: 2, income: \"$35,000\"},\n    {id: 3, income: \"$35,000\"},\n    {id: 4, income: \"$35,000\"},\n    {id: 5, income: \"$36,000\"},\n    {id: 6, income: \"$37,000\"},\n  ]\n      \n  const svg = d3.select(\"#distributions-people-container\")\n    .append(\"svg\").attr(\"width\", w).attr(\"height\", h).attr(\"class\", \"invertable\")\n  \n  const imgs = svg.selectAll(\"image\")\n    .data(data)\n    .enter()\n      .append(\"svg:image\")\n      .attr('x', d => 50 + d.id * personWidth)\n      .attr('y', 50)\n      .attr('width', personWidth)\n      .attr(\"xlink:href\", \"media/person.svg\")\n      \n  const incomes = svg.selectAll(\"text\")\n    .data(data)\n    .enter()\n      .append(\"text\")\n      .attr('text-anchor', 'middle')\n      .attr('x', d => 50 + personWidth/2 + d.id * personWidth)\n      .attr('y', 30)\n      .style('font-size', '0.5em')\n      .text(d => d.income)\n\n  const mean1 = svg.append(\"g\").selectAll(\"text\")\n    .data(['median: $35,000', '<tspan style=\"font-family: Times; font-style: italic\">M</tspan> = $35,000'])\n    .enter()\n      .append(\"text\")\n      .attr('text-anchor', 'middle')\n      .attr('x', personWidth * 7/2)\n      .attr('y', function(d,i){return 250 + i*50})\n      .style('font-size', '0.8em')\n      .html(d => d)\n}\n\nmonopoly_man = {\n  const w = 400\n  const h = 400\n  const personWidth = 80\n  \n  \n  const svg = d3.select(\"#distributions-monopoly-man-container\")\n    .append(\"svg\").attr(\"width\", w).attr(\"height\", h).attr(\"class\", \"invertable\")\n    \n  svg.append(\"svg:image\")\n      .attr('x', 100)\n      .attr('y', 30)\n      .attr('width', 200)\n      <!-- .attr('height', 210) -->\n      .attr(\"xlink:href\", \"media/monopoly-man.svg\")\n      \n  svg.append(\"text\")\n      .attr('text-anchor', 'middle')\n      .style('font-size', '0.5em')\n      .attr('x', w/2)\n      .attr('y', 30)\n      .text(\"$1 billion\")\n      \n  const new_mean = svg.append(\"g\").selectAll(\"text\")\n    .data(['new median: $35,000', 'new <tspan style=\"font-family: Times; font-style: italic\">M</tspan> = $125 million'])\n    .enter()\n      .append(\"text\")\n      .attr('text-anchor', 'middle')\n      .attr('x', w/2)\n      .attr('y', function(d,i){return 250 + i*50})\n      .style('font-size', '0.8em')\n      .html(d => d)\n}\n\n"}]}
+    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxucGVvcGxlX2lsbHVzdHJhdGlvbiA9IHtcblxuICBjb25zdCB3ID0gNjUwXG4gIGNvbnN0IGggPSA0MDBcbiAgY29uc3QgcGVyc29uV2lkdGggPSA4MFxuICBcbiAgY29uc3QgZGF0YSA9IFtcbiAgICB7aWQ6IDAsIGluY29tZTogXCIkMzMsMDAwXCJ9LFxuICAgIHtpZDogMSwgaW5jb21lOiBcIiQzNCwwMDBcIn0sXG4gICAge2lkOiAyLCBpbmNvbWU6IFwiJDM1LDAwMFwifSxcbiAgICB7aWQ6IDMsIGluY29tZTogXCIkMzUsMDAwXCJ9LFxuICAgIHtpZDogNCwgaW5jb21lOiBcIiQzNSwwMDBcIn0sXG4gICAge2lkOiA1LCBpbmNvbWU6IFwiJDM2LDAwMFwifSxcbiAgICB7aWQ6IDYsIGluY29tZTogXCIkMzcsMDAwXCJ9LFxuICBdXG4gICAgICBcbiAgY29uc3Qgc3ZnID0gZDMuc2VsZWN0KFwiI2Rpc3RyaWJ1dGlvbnMtcGVvcGxlLWNvbnRhaW5lclwiKVxuICAgIC5hcHBlbmQoXCJzdmdcIikuYXR0cihcIndpZHRoXCIsIHcpLmF0dHIoXCJoZWlnaHRcIiwgaCkuYXR0cihcImNsYXNzXCIsIFwiaW52ZXJ0YWJsZVwiKVxuICBcbiAgY29uc3QgaW1ncyA9IHN2Zy5zZWxlY3RBbGwoXCJpbWFnZVwiKVxuICAgIC5kYXRhKGRhdGEpXG4gICAgLmVudGVyKClcbiAgICAgIC5hcHBlbmQoXCJzdmc6aW1hZ2VcIilcbiAgICAgIC5hdHRyKCd4JywgZCA9PiA1MCArIGQuaWQgKiBwZXJzb25XaWR0aClcbiAgICAgIC5hdHRyKCd5JywgNTApXG4gICAgICAuYXR0cignd2lkdGgnLCBwZXJzb25XaWR0aClcbiAgICAgIC5hdHRyKFwieGxpbms6aHJlZlwiLCBcIm1lZGlhL3BlcnNvbi5zdmdcIilcbiAgICAgIFxuICBjb25zdCBpbmNvbWVzID0gc3ZnLnNlbGVjdEFsbChcInRleHRcIilcbiAgICAuZGF0YShkYXRhKVxuICAgIC5lbnRlcigpXG4gICAgICAuYXBwZW5kKFwidGV4dFwiKVxuICAgICAgLmF0dHIoJ3RleHQtYW5jaG9yJywgJ21pZGRsZScpXG4gICAgICAuYXR0cigneCcsIGQgPT4gNTAgKyBwZXJzb25XaWR0aC8yICsgZC5pZCAqIHBlcnNvbldpZHRoKVxuICAgICAgLmF0dHIoJ3knLCAzMClcbiAgICAgIC5zdHlsZSgnZm9udC1zaXplJywgJzAuNWVtJylcbiAgICAgIC50ZXh0KGQgPT4gZC5pbmNvbWUpXG5cbiAgY29uc3QgbWVhbjEgPSBzdmcuYXBwZW5kKFwiZ1wiKS5zZWxlY3RBbGwoXCJ0ZXh0XCIpXG4gICAgLmRhdGEoWydtZWRpYW46ICQzNSwwMDAnLCAnPHRzcGFuIHN0eWxlPVwiZm9udC1mYW1pbHk6IFRpbWVzOyBmb250LXN0eWxlOiBpdGFsaWNcIj5NPC90c3Bhbj4gPSAkMzUsMDAwJ10pXG4gICAgLmVudGVyKClcbiAgICAgIC5hcHBlbmQoXCJ0ZXh0XCIpXG4gICAgICAuYXR0cigndGV4dC1hbmNob3InLCAnbWlkZGxlJylcbiAgICAgIC5hdHRyKCd4JywgcGVyc29uV2lkdGggKiA3LzIpXG4gICAgICAuYXR0cigneScsIGZ1bmN0aW9uKGQsaSl7cmV0dXJuIDI1MCArIGkqNTB9KVxuICAgICAgLnN0eWxlKCdmb250LXNpemUnLCAnMC44ZW0nKVxuICAgICAgLmh0bWwoZCA9PiBkKVxufVxuXG5tb25vcG9seV9tYW4gPSB7XG4gIGNvbnN0IHcgPSA0MDBcbiAgY29uc3QgaCA9IDQwMFxuICBjb25zdCBwZXJzb25XaWR0aCA9IDgwXG4gIFxuICBcbiAgY29uc3Qgc3ZnID0gZDMuc2VsZWN0KFwiI2Rpc3RyaWJ1dGlvbnMtbW9ub3BvbHktbWFuLWNvbnRhaW5lclwiKVxuICAgIC5hcHBlbmQoXCJzdmdcIikuYXR0cihcIndpZHRoXCIsIHcpLmF0dHIoXCJoZWlnaHRcIiwgaCkuYXR0cihcImNsYXNzXCIsIFwiaW52ZXJ0YWJsZVwiKVxuICAgIFxuICBzdmcuYXBwZW5kKFwic3ZnOmltYWdlXCIpXG4gICAgICAuYXR0cigneCcsIDEwMClcbiAgICAgIC5hdHRyKCd5JywgMzApXG4gICAgICAuYXR0cignd2lkdGgnLCAyMDApXG4gICAgICA8IS0tIC5hdHRyKCdoZWlnaHQnLCAyMTApIC0tPlxuICAgICAgLmF0dHIoXCJ4bGluazpocmVmXCIsIFwibWVkaWEvbW9ub3BvbHktbWFuLnN2Z1wiKVxuICAgICAgXG4gIHN2Zy5hcHBlbmQoXCJ0ZXh0XCIpXG4gICAgICAuYXR0cigndGV4dC1hbmNob3InLCAnbWlkZGxlJylcbiAgICAgIC5zdHlsZSgnZm9udC1zaXplJywgJzAuNWVtJylcbiAgICAgIC5hdHRyKCd4Jywgdy8yKVxuICAgICAgLmF0dHIoJ3knLCAzMClcbiAgICAgIC50ZXh0KFwiJDEgYmlsbGlvblwiKVxuICAgICAgXG4gIGNvbnN0IG5ld19tZWFuID0gc3ZnLmFwcGVuZChcImdcIikuc2VsZWN0QWxsKFwidGV4dFwiKVxuICAgIC5kYXRhKFsnbmV3IG1lZGlhbjogJDM1LDAwMCcsICduZXcgPHRzcGFuIHN0eWxlPVwiZm9udC1mYW1pbHk6IFRpbWVzOyBmb250LXN0eWxlOiBpdGFsaWNcIj5NPC90c3Bhbj4gPSAkMTI1IG1pbGxpb24nXSlcbiAgICAuZW50ZXIoKVxuICAgICAgLmFwcGVuZChcInRleHRcIilcbiAgICAgIC5hdHRyKCd0ZXh0LWFuY2hvcicsICdtaWRkbGUnKVxuICAgICAgLmF0dHIoJ3gnLCB3LzIpXG4gICAgICAuYXR0cigneScsIGZ1bmN0aW9uKGQsaSl7cmV0dXJuIDI1MCArIGkqNTB9KVxuICAgICAgLnN0eWxlKCdmb250LXNpemUnLCAnMC44ZW0nKVxuICAgICAgLmh0bWwoZCA9PiBkKVxufVxuXG4ifV19
     </script>
     <script type="module">
     if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -1349,10 +1354,32 @@
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+              // target, if specified
+              link.setAttribute("target", "_blank");
+              if (link.getAttribute("rel") === null) {
+                link.setAttribute("rel", "noopener");
+              }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1362,8 +1389,17 @@
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1377,7 +1413,11 @@
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
@@ -1417,20 +1457,6 @@
           });
         }
       }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-              // target, if specified
-              link.setAttribute("target", "_blank");
-          }
-        }
     });
     </script>
     

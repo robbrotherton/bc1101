@@ -8,9 +8,9 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.310">
+  <meta name="generator" content="quarto-1.4.551">
 
-  <title>PSYC BC1101 – anova</title>
+  <title>PSYC BC1101</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,7 +30,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -94,7 +94,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -222,7 +222,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -387,7 +388,6 @@
   </style>
   <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
   <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
-  
   <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
   <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 </head>
@@ -421,6 +421,7 @@
 <div class="column" style="width:50%;">
 <div class="cell" style="font-size: 0.7em; margin-top: 2em;">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <colgroup>
 <col style="width: 50%">
@@ -457,7 +458,9 @@ Candy</th>
 
 
 </div>
+</div>
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
@@ -468,6 +471,7 @@ Candy</th>
 </table>
 
 
+</div>
 </div>
 </div>
 </div><div class="column" style="font-size: 0.75em;">
@@ -486,6 +490,7 @@ t &amp;= \dfrac{(M_1-M_2)-(\mu_1-\mu_2)}{s_{(M_1-M_2)}} \\
 <div class="column" style="width:50%;">
 <div class="cell" style="font-size: 0.7em; margin-top: 2em;">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <colgroup>
 <col style="width: 50%">
@@ -522,7 +527,9 @@ Candy</th>
 
 
 </div>
+</div>
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
@@ -533,6 +540,7 @@ Candy</th>
 </table>
 
 
+</div>
 </div>
 </div>
 <p><span class="math inline">\(t = 5.42\)</span></p>
@@ -551,6 +559,7 @@ Candy</th>
 <div class="column" style="width:50%;">
 <div class="cell" style="font-size: 0.7em; margin-top: 2em;">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <colgroup>
 <col style="width: 50%">
@@ -587,7 +596,9 @@ Candy</th>
 
 
 </div>
+</div>
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
@@ -598,6 +609,7 @@ Candy</th>
 </table>
 
 
+</div>
 </div>
 </div>
 <p><span class="math inline">\(t = 5.42\)</span></p>
@@ -641,6 +653,7 @@ within groups</p>
 <div class="column" style="width:50%;">
 <div class="cell" style="font-size: 0.7em; margin-top: 2em;">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <colgroup>
 <col style="width: 50%">
@@ -677,7 +690,9 @@ Candy</th>
 
 
 </div>
+</div>
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
@@ -688,6 +703,7 @@ Candy</th>
 </table>
 
 
+</div>
 </div>
 </div>
 <p><span class="math inline">\(t = 5.42\)</span></p>
@@ -714,6 +730,7 @@ Candy</th>
 <div class="column" style="width:50%;">
 <div class="cell" style="font-size: 0.7em; margin-top: 2em;">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <colgroup>
 <col style="width: 50%">
@@ -750,7 +767,9 @@ Candy</th>
 
 
 </div>
+</div>
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
@@ -761,6 +780,7 @@ Candy</th>
 </table>
 
 
+</div>
 </div>
 </div>
 <p><span class="math inline">\(t = 5.42\)</span><br>
@@ -789,6 +809,7 @@ Candy</th>
 <div class="column" style="width:50%;">
 <div class="cell" style="font-size: 0.7em; margin-top: 2em;">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <colgroup>
 <col style="width: 50%">
@@ -825,7 +846,9 @@ Candy</th>
 
 
 </div>
+</div>
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
@@ -836,6 +859,7 @@ Candy</th>
 </table>
 
 
+</div>
 </div>
 </div>
 <p><span class="math inline">\(t = 5.42\)</span><br>
@@ -864,6 +888,7 @@ Candy</th>
 <div class="column" style="width:50%;">
 <div class="cell" style="font-size: 0.7em; margin-top: 2em;">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <colgroup>
 <col style="width: 50%">
@@ -900,7 +925,9 @@ Candy</th>
 
 
 </div>
+</div>
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
@@ -911,6 +938,7 @@ Candy</th>
 </table>
 
 
+</div>
 </div>
 </div>
 <p><span class="math inline">\(t = 5.42\)</span><br>
@@ -953,6 +981,7 @@ within groups</p>
 <div class="column" style="width:50%;">
 <div class="cell" style="font-size: 0.7em; margin-top: 2em;">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <colgroup>
 <col style="width: 50%">
@@ -989,7 +1018,9 @@ Candy</th>
 
 
 </div>
+</div>
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
@@ -1000,6 +1031,7 @@ Candy</th>
 </table>
 
 
+</div>
 </div>
 </div>
 <p><span class="math inline">\(t = 5.42\)</span><br>
@@ -1047,6 +1079,7 @@ within groups</p>
 <h2>More complicated design</h2>
 <div class="cell" style="font-size: 0.8em">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <colgroup>
 <col style="width: 33%">
@@ -1089,7 +1122,9 @@ Control</th>
 
 
 </div>
+</div>
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
@@ -1101,6 +1136,7 @@ Control</th>
 </table>
 
 
+</div>
 </div>
 </div>
 <ul>
@@ -1143,99 +1179,99 @@ Control</th>
 <li>Which statistic, <span class="math inline">\(t\)</span> or <span class="math inline">\(F\)</span>, is more ‘flexible’, i.e.&nbsp;applicable in a wider range of research contexts?</li>
 </ul>
 <div class="cell" data-eval="false">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="478" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 477;"><span id="cb1-478"><a href="#cb1-478"></a>aov_pop <span class="op">=</span> {</span>
-<span id="cb1-479"><a href="#cb1-479"></a></span>
-<span id="cb1-480"><a href="#cb1-480"></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">1050</span></span>
-<span id="cb1-481"><a href="#cb1-481"></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">250</span></span>
-<span id="cb1-482"><a href="#cb1-482"></a>  <span class="kw">const</span> r <span class="op">=</span> <span class="dv">70</span></span>
-<span id="cb1-483"><a href="#cb1-483"></a>  </span>
-<span id="cb1-484"><a href="#cb1-484"></a>  <span class="kw">const</span> data <span class="op">=</span> [<span class="dv">0</span><span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span>]</span>
-<span id="cb1-485"><a href="#cb1-485"></a>  </span>
-<span id="cb1-486"><a href="#cb1-486"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#anova-populations"</span>)</span>
-<span id="cb1-487"><a href="#cb1-487"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
-<span id="cb1-488"><a href="#cb1-488"></a></span>
-<span id="cb1-489"><a href="#cb1-489"></a>  <span class="kw">const</span> comp_lines <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb1-490"><a href="#cb1-490"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"red"</span>)</span>
-<span id="cb1-491"><a href="#cb1-491"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
-<span id="cb1-492"><a href="#cb1-492"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-dasharray"</span><span class="op">,</span> [<span class="dv">5</span><span class="op">,</span><span class="dv">5</span>])</span>
-<span id="cb1-493"><a href="#cb1-493"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">3</span>)</span>
-<span id="cb1-494"><a href="#cb1-494"></a>    </span>
-<span id="cb1-495"><a href="#cb1-495"></a>  <span class="kw">const</span> g <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb1-496"><a href="#cb1-496"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"translate(10, 2)"</span>)</span>
-<span id="cb1-497"><a href="#cb1-497"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"var(--background-color)"</span>)</span>
-<span id="cb1-498"><a href="#cb1-498"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"var(--text-color)"</span>)</span>
-<span id="cb1-499"><a href="#cb1-499"></a>  </span>
-<span id="cb1-500"><a href="#cb1-500"></a></span>
-<span id="cb1-501"><a href="#cb1-501"></a>  <span class="kw">const</span> curve <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()<span class="op">.</span><span class="fu">curve</span>(d3<span class="op">.</span><span class="at">curveNatural</span>)<span class="op">;</span></span>
-<span id="cb1-502"><a href="#cb1-502"></a>  <span class="kw">const</span> points <span class="op">=</span> [[r<span class="op">,</span> r]<span class="op">,</span>[r<span class="op">+</span>r<span class="op">*</span><span class="fl">1.25</span><span class="op">,</span>r<span class="op">/</span><span class="dv">2</span>]<span class="op">,</span>[r<span class="op">+</span>r<span class="op">*</span><span class="fl">2.5</span><span class="op">,</span> r]]<span class="op">;</span></span>
-<span id="cb1-503"><a href="#cb1-503"></a>  </span>
-<span id="cb1-504"><a href="#cb1-504"></a>  <span class="kw">const</span> labels <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb1-505"><a href="#cb1-505"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"translate(10, 2)"</span>)</span>
-<span id="cb1-506"><a href="#cb1-506"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"var(--text-color)"</span>)</span>
-<span id="cb1-507"><a href="#cb1-507"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
-<span id="cb1-508"><a href="#cb1-508"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"0.7em"</span>)</span>
-<span id="cb1-509"><a href="#cb1-509"></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"z-index"</span><span class="op">,</span> <span class="dv">100</span>)</span>
-<span id="cb1-510"><a href="#cb1-510"></a>  <span class="kw">const</span> pop <span class="op">=</span> labels<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb1-511"><a href="#cb1-511"></a>  <span class="kw">const</span> samp <span class="op">=</span> labels<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
-<span id="cb1-512"><a href="#cb1-512"></a>  </span>
-<span id="cb1-513"><a href="#cb1-513"></a>  <span class="kw">var</span> visible <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb1-514"><a href="#cb1-514"></a>  <span class="kw">function</span> <span class="fu">animate</span>() {</span>
-<span id="cb1-515"><a href="#cb1-515"></a>    <span class="cf">if</span> (visible<span class="op">==</span><span class="dv">6</span>) {</span>
-<span id="cb1-516"><a href="#cb1-516"></a>      visible <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb1-517"><a href="#cb1-517"></a>    } <span class="cf">else</span> {</span>
-<span id="cb1-518"><a href="#cb1-518"></a>      visible<span class="op">++</span></span>
-<span id="cb1-519"><a href="#cb1-519"></a>    }</span>
-<span id="cb1-520"><a href="#cb1-520"></a>    </span>
-<span id="cb1-521"><a href="#cb1-521"></a>    svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"path"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
-<span id="cb1-522"><a href="#cb1-522"></a>    svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"circle"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
-<span id="cb1-523"><a href="#cb1-523"></a>    svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"rect"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
-<span id="cb1-524"><a href="#cb1-524"></a>    svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"line"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
-<span id="cb1-525"><a href="#cb1-525"></a>    svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
-<span id="cb1-526"><a href="#cb1-526"></a>    </span>
-<span id="cb1-527"><a href="#cb1-527"></a>    comp_lines<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"path"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible<span class="op">-</span><span class="dv">1</span>))<span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb1-528"><a href="#cb1-528"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
-<span id="cb1-529"><a href="#cb1-529"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">curve</span>(points))</span>
-<span id="cb1-530"><a href="#cb1-530"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="vs">`translate(</span><span class="sc">${</span>d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span><span class="sc">}</span><span class="vs">, -20)`</span>)</span>
-<span id="cb1-531"><a href="#cb1-531"></a>      </span>
-<span id="cb1-532"><a href="#cb1-532"></a>    g<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"circle"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible))<span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb1-533"><a href="#cb1-533"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"circle"</span>)</span>
-<span id="cb1-534"><a href="#cb1-534"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cx"</span><span class="op">,</span> d <span class="kw">=&gt;</span> r <span class="op">+</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
-<span id="cb1-535"><a href="#cb1-535"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cy"</span><span class="op">,</span> r)</span>
-<span id="cb1-536"><a href="#cb1-536"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"r"</span><span class="op">,</span> r)</span>
-<span id="cb1-537"><a href="#cb1-537"></a>  </span>
-<span id="cb1-538"><a href="#cb1-538"></a>  g<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"rect"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible))<span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb1-539"><a href="#cb1-539"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
-<span id="cb1-540"><a href="#cb1-540"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
-<span id="cb1-541"><a href="#cb1-541"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> h <span class="op">-</span> r <span class="op">-</span> <span class="dv">4</span>)</span>
-<span id="cb1-542"><a href="#cb1-542"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> <span class="dv">2</span><span class="op">*</span>r)</span>
-<span id="cb1-543"><a href="#cb1-543"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> r)</span>
-<span id="cb1-544"><a href="#cb1-544"></a>      </span>
-<span id="cb1-545"><a href="#cb1-545"></a>  g<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"line"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible))<span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb1-546"><a href="#cb1-546"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
-<span id="cb1-547"><a href="#cb1-547"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> d <span class="kw">=&gt;</span> r <span class="op">+</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
-<span id="cb1-548"><a href="#cb1-548"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> d <span class="kw">=&gt;</span> r <span class="op">+</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
-<span id="cb1-549"><a href="#cb1-549"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> <span class="dv">2</span><span class="op">*</span>r)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> h <span class="op">-</span> r)</span>
-<span id="cb1-550"><a href="#cb1-550"></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-dasharray"</span><span class="op">,</span> [<span class="dv">5</span><span class="op">,</span><span class="dv">5</span>])</span>
-<span id="cb1-551"><a href="#cb1-551"></a>      </span>
-<span id="cb1-552"><a href="#cb1-552"></a>  pop<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible))<span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb1-553"><a href="#cb1-553"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
-<span id="cb1-554"><a href="#cb1-554"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> d <span class="kw">=&gt;</span> r <span class="op">+</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
-<span id="cb1-555"><a href="#cb1-555"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> r <span class="op">+</span> <span class="dv">2</span>)</span>
-<span id="cb1-556"><a href="#cb1-556"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
-<span id="cb1-557"><a href="#cb1-557"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"alignment-baseline"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
-<span id="cb1-558"><a href="#cb1-558"></a>      <span class="op">.</span><span class="fu">text</span>(<span class="st">"Population"</span>)</span>
-<span id="cb1-559"><a href="#cb1-559"></a>  </span>
-<span id="cb1-560"><a href="#cb1-560"></a>  samp<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible))<span class="op">.</span><span class="fu">enter</span>()</span>
-<span id="cb1-561"><a href="#cb1-561"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
-<span id="cb1-562"><a href="#cb1-562"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> d <span class="kw">=&gt;</span> r <span class="op">+</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
-<span id="cb1-563"><a href="#cb1-563"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> h <span class="op">-</span> r<span class="op">/</span><span class="dv">2</span> <span class="op">-</span> <span class="dv">2</span>)</span>
-<span id="cb1-564"><a href="#cb1-564"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
-<span id="cb1-565"><a href="#cb1-565"></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"alignment-baseline"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
-<span id="cb1-566"><a href="#cb1-566"></a>      <span class="op">.</span><span class="fu">text</span>(<span class="st">"Sample"</span>)</span>
-<span id="cb1-567"><a href="#cb1-567"></a>  }</span>
-<span id="cb1-568"><a href="#cb1-568"></a>  <span class="fu">animate</span>()</span>
-<span id="cb1-569"><a href="#cb1-569"></a>  svg<span class="op">.</span><span class="fu">on</span>(<span class="st">"click"</span><span class="op">,</span> animate)</span>
-<span id="cb1-570"><a href="#cb1-570"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="478" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 477;"><span id="cb1-478"><a></a>aov_pop <span class="op">=</span> {</span>
+<span id="cb1-479"><a></a></span>
+<span id="cb1-480"><a></a>  <span class="kw">const</span> w <span class="op">=</span> <span class="dv">1050</span></span>
+<span id="cb1-481"><a></a>  <span class="kw">const</span> h <span class="op">=</span> <span class="dv">250</span></span>
+<span id="cb1-482"><a></a>  <span class="kw">const</span> r <span class="op">=</span> <span class="dv">70</span></span>
+<span id="cb1-483"><a></a>  </span>
+<span id="cb1-484"><a></a>  <span class="kw">const</span> data <span class="op">=</span> [<span class="dv">0</span><span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span>]</span>
+<span id="cb1-485"><a></a>  </span>
+<span id="cb1-486"><a></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(<span class="st">"#anova-populations"</span>)</span>
+<span id="cb1-487"><a></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> w)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> h)</span>
+<span id="cb1-488"><a></a></span>
+<span id="cb1-489"><a></a>  <span class="kw">const</span> comp_lines <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-490"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"red"</span>)</span>
+<span id="cb1-491"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
+<span id="cb1-492"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-dasharray"</span><span class="op">,</span> [<span class="dv">5</span><span class="op">,</span><span class="dv">5</span>])</span>
+<span id="cb1-493"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="dv">3</span>)</span>
+<span id="cb1-494"><a></a>    </span>
+<span id="cb1-495"><a></a>  <span class="kw">const</span> g <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-496"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"translate(10, 2)"</span>)</span>
+<span id="cb1-497"><a></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"var(--background-color)"</span>)</span>
+<span id="cb1-498"><a></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"var(--text-color)"</span>)</span>
+<span id="cb1-499"><a></a>  </span>
+<span id="cb1-500"><a></a></span>
+<span id="cb1-501"><a></a>  <span class="kw">const</span> curve <span class="op">=</span> d3<span class="op">.</span><span class="fu">line</span>()<span class="op">.</span><span class="fu">curve</span>(d3<span class="op">.</span><span class="at">curveNatural</span>)<span class="op">;</span></span>
+<span id="cb1-502"><a></a>  <span class="kw">const</span> points <span class="op">=</span> [[r<span class="op">,</span> r]<span class="op">,</span>[r<span class="op">+</span>r<span class="op">*</span><span class="fl">1.25</span><span class="op">,</span>r<span class="op">/</span><span class="dv">2</span>]<span class="op">,</span>[r<span class="op">+</span>r<span class="op">*</span><span class="fl">2.5</span><span class="op">,</span> r]]<span class="op">;</span></span>
+<span id="cb1-503"><a></a>  </span>
+<span id="cb1-504"><a></a>  <span class="kw">const</span> labels <span class="op">=</span> svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-505"><a></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"translate(10, 2)"</span>)</span>
+<span id="cb1-506"><a></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"var(--text-color)"</span>)</span>
+<span id="cb1-507"><a></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"none"</span>)</span>
+<span id="cb1-508"><a></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"font-size"</span><span class="op">,</span> <span class="st">"0.7em"</span>)</span>
+<span id="cb1-509"><a></a>    <span class="op">.</span><span class="fu">style</span>(<span class="st">"z-index"</span><span class="op">,</span> <span class="dv">100</span>)</span>
+<span id="cb1-510"><a></a>  <span class="kw">const</span> pop <span class="op">=</span> labels<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-511"><a></a>  <span class="kw">const</span> samp <span class="op">=</span> labels<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb1-512"><a></a>  </span>
+<span id="cb1-513"><a></a>  <span class="kw">var</span> visible <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb1-514"><a></a>  <span class="kw">function</span> <span class="fu">animate</span>() {</span>
+<span id="cb1-515"><a></a>    <span class="cf">if</span> (visible<span class="op">==</span><span class="dv">6</span>) {</span>
+<span id="cb1-516"><a></a>      visible <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb1-517"><a></a>    } <span class="cf">else</span> {</span>
+<span id="cb1-518"><a></a>      visible<span class="op">++</span></span>
+<span id="cb1-519"><a></a>    }</span>
+<span id="cb1-520"><a></a>    </span>
+<span id="cb1-521"><a></a>    svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"path"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
+<span id="cb1-522"><a></a>    svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"circle"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
+<span id="cb1-523"><a></a>    svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"rect"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
+<span id="cb1-524"><a></a>    svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"line"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
+<span id="cb1-525"><a></a>    svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)<span class="op">.</span><span class="fu">remove</span>()</span>
+<span id="cb1-526"><a></a>    </span>
+<span id="cb1-527"><a></a>    comp_lines<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"path"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible<span class="op">-</span><span class="dv">1</span>))<span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-528"><a></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"path"</span>)</span>
+<span id="cb1-529"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"d"</span><span class="op">,</span> <span class="fu">curve</span>(points))</span>
+<span id="cb1-530"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="vs">`translate(</span><span class="sc">${</span>d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span><span class="sc">}</span><span class="vs">, -20)`</span>)</span>
+<span id="cb1-531"><a></a>      </span>
+<span id="cb1-532"><a></a>    g<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"circle"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible))<span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-533"><a></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"circle"</span>)</span>
+<span id="cb1-534"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cx"</span><span class="op">,</span> d <span class="kw">=&gt;</span> r <span class="op">+</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
+<span id="cb1-535"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cy"</span><span class="op">,</span> r)</span>
+<span id="cb1-536"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"r"</span><span class="op">,</span> r)</span>
+<span id="cb1-537"><a></a>  </span>
+<span id="cb1-538"><a></a>  g<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"rect"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible))<span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-539"><a></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"rect"</span>)</span>
+<span id="cb1-540"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
+<span id="cb1-541"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> h <span class="op">-</span> r <span class="op">-</span> <span class="dv">4</span>)</span>
+<span id="cb1-542"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> <span class="dv">2</span><span class="op">*</span>r)</span>
+<span id="cb1-543"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> r)</span>
+<span id="cb1-544"><a></a>      </span>
+<span id="cb1-545"><a></a>  g<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"line"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible))<span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-546"><a></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
+<span id="cb1-547"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> d <span class="kw">=&gt;</span> r <span class="op">+</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
+<span id="cb1-548"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> d <span class="kw">=&gt;</span> r <span class="op">+</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
+<span id="cb1-549"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> <span class="dv">2</span><span class="op">*</span>r)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> h <span class="op">-</span> r)</span>
+<span id="cb1-550"><a></a>      <span class="op">.</span><span class="fu">style</span>(<span class="st">"stroke-dasharray"</span><span class="op">,</span> [<span class="dv">5</span><span class="op">,</span><span class="dv">5</span>])</span>
+<span id="cb1-551"><a></a>      </span>
+<span id="cb1-552"><a></a>  pop<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible))<span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-553"><a></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-554"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> d <span class="kw">=&gt;</span> r <span class="op">+</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
+<span id="cb1-555"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> r <span class="op">+</span> <span class="dv">2</span>)</span>
+<span id="cb1-556"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
+<span id="cb1-557"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"alignment-baseline"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
+<span id="cb1-558"><a></a>      <span class="op">.</span><span class="fu">text</span>(<span class="st">"Population"</span>)</span>
+<span id="cb1-559"><a></a>  </span>
+<span id="cb1-560"><a></a>  samp<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"text"</span>)<span class="op">.</span><span class="fu">data</span>(data<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span>visible))<span class="op">.</span><span class="fu">enter</span>()</span>
+<span id="cb1-561"><a></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)</span>
+<span id="cb1-562"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> d <span class="kw">=&gt;</span> r <span class="op">+</span> d <span class="op">*</span> r <span class="op">*</span> <span class="fl">2.5</span>)</span>
+<span id="cb1-563"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> h <span class="op">-</span> r<span class="op">/</span><span class="dv">2</span> <span class="op">-</span> <span class="dv">2</span>)</span>
+<span id="cb1-564"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
+<span id="cb1-565"><a></a>      <span class="op">.</span><span class="fu">attr</span>(<span class="st">"alignment-baseline"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
+<span id="cb1-566"><a></a>      <span class="op">.</span><span class="fu">text</span>(<span class="st">"Sample"</span>)</span>
+<span id="cb1-567"><a></a>  }</span>
+<span id="cb1-568"><a></a>  <span class="fu">animate</span>()</span>
+<span id="cb1-569"><a></a>  svg<span class="op">.</span><span class="fu">on</span>(<span class="st">"click"</span><span class="op">,</span> animate)</span>
+<span id="cb1-570"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -1243,6 +1279,7 @@ Control</th>
 </div>
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <button id="theme-toggle">
 <svg id="moon" class="d-block d-block-light d-none" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 384 512">
@@ -1254,6 +1291,7 @@ Control</th>
 <path d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM352 256c0 53-43 96-96 96s-96-43-96-96s43-96 96-96s96 43 96 96zm32 0c0-70.7-57.3-128-128-128s-128 57.3-128 128s57.3 128 128 128s128-57.3 128-128z"></path>
 </svg>
 </button>
+</div>
 </div>
 </section>
     </div>
@@ -1283,7 +1321,6 @@ Control</th>
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1556,7 +1593,7 @@ Control</th>
 
     </script>
     <script type="ojs-module-contents">
-    {"contents":[]}
+    eyJjb250ZW50cyI6W119
     </script>
     <script type="module">
     if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -1680,10 +1717,32 @@ Control</th>
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+              // target, if specified
+              link.setAttribute("target", "_blank");
+              if (link.getAttribute("rel") === null) {
+                link.setAttribute("rel", "noopener");
+              }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1693,8 +1752,17 @@ Control</th>
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1708,7 +1776,11 @@ Control</th>
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
@@ -1748,20 +1820,6 @@ Control</th>
           });
         }
       }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-              // target, if specified
-              link.setAttribute("target", "_blank");
-          }
-        }
     });
     </script>
     

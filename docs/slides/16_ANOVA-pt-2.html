@@ -389,9 +389,7 @@
   <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
   <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
   <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
-
   <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -1568,177 +1566,91 @@ Control</th>
       });
     </script>
     <script>
-
     var toggle = document.getElementById("theme-toggle");
 
-    
-
     var storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-
     if (storedTheme)
-
         document.documentElement.setAttribute('data-theme', storedTheme)
 
-    
-
-    
 
     toggle.onclick = function() {
-
         var currentTheme = document.documentElement.getAttribute("data-theme");
-
         var targetTheme = "light";
 
-    
-
         if (currentTheme === "light") {
-
             targetTheme = "dark";
-
         }
 
-    
-
         document.documentElement.setAttribute('data-theme', targetTheme)
-
         localStorage.setItem('theme', targetTheme);
-
     };
-
     </script>
-
     <script>
-
       git = document.querySelector('[data-panel="Custom1"]');
 
-    
-
       function changeLink() {
-
         var link = document.getElementById('source-link');
-
         var href = link.getAttribute('href');
 
-    
-
         var path = window.location.pathname;
-
         var html = path.split('/');
-
         var lecture = html[html.length - 1];
-
         var qmd = lecture.replace('html', 'qmd');
-
         link.setAttribute('href', href.concat('/' + qmd));
-
-    
 
         var page = window.location.hash.replace('#/', ' : ');
 
-    
-
         var issueLink = document.getElementById('issue-link');
-
         issueLink.setAttribute('href', issueLink.getAttribute('href').concat('?title=' + ' Issue with ' + lecture + page));
-
-    
 
       }
 
-    
-
       git.addEventListener("click", changeLink);
 
-    
-
     </script>
-
     <script>
 
-    
-
         var div = document.querySelector('div[data-panel="Custom0"]')
-
         var ul = div.querySelector('.slide-menu-items');
-
         console.log(ul)
 
-    
-
         // Create a new li element
-
         var li = document.createElement('li');
 
-    
-
         // Set the text content of li
-
         li.innerHTML = '<kbd>t</kbd> Toggle UI Elements';
-
         li.className = "slide-tool-item"
 
-    
-
         // Append the new li to the ul
-
         ul.insertBefore(li, ul.children[1]);
 
-    
-
-    
 
     function toggleVisibility(element) {
-
         if (element) {
-
             element.style.display = element.style.display === 'none' ? 'block' : 'none';
-
         }
-
     }
 
-    
-
     document.addEventListener('keydown', function(event) {
-
         // Check if the 't' key was pressed
-
         if (event.key === 't') {
 
-    
-
             // Get the element by its ID
-
             var moon = document.getElementById('theme-toggle');
-
             var hamburger = document.querySelector('.slide-menu-button');
-
             var buttons = document.querySelector('.slide-chalkboard-buttons')
-
             var progress = document.querySelector('.progress')
 
-    
-
             toggleVisibility(moon);
-
             toggleVisibility(hamburger);
-
             toggleVisibility(buttons);
-
             toggleVisibility(progress);
 
-    
-
             console.log("toggled ui elements");
-
         }
-
     });
 
-    
-
     </script>
-
     <script type="ojs-module-contents">
     eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxualN0YXQgPSByZXF1aXJlKFwiLi4vanMvanN0YXQuanNcIilcblxuYW92X3RhYmxlID0ge1xuXG4gIHZhciBkZjEsIGRmMiwgY3JpdGljYWxcbiAgXG4gIGZ1bmN0aW9uIGdldERmMigpIHtcbiAgICB0cnkge1xuICAgICAgZGYyID0gZDMuc2VsZWN0KHRoaXMpLnNlbGVjdChcInRkXCIpLl9ncm91cHNbMF1bMF0uaW5uZXJIVE1MO1xuICAgIH0gY2F0Y2gge30gZmluYWxseSB7dXBkYXRlKCk7fVxuICB9XG4gIFxuICAgIGZ1bmN0aW9uIGdldERmMSgpIHtcbiAgICB0cnkge1xuICAgICAgZGYxID0gZDMuc2VsZWN0KHRoaXMpLl9ncm91cHNbMF1bMF0uY2VsbEluZGV4XG4gICAgICBpZiAoZGYxIDwgMSkge2RmMSA9IDF9XG4gICAgfSBjYXRjaCB7fSBmaW5hbGx5IHt1cGRhdGUoKTt9XG4gIH1cbiAgXG4gIGQzLnNlbGVjdChcIiN0YmxcIikuc2VsZWN0QWxsKFwidHJcIikub24oXCJjbGlja1wiLCBnZXREZjIpXG4gIGQzLnNlbGVjdChcIiN0YmxcIikuc2VsZWN0QWxsKFwidGRcIikub24oXCJjbGlja1wiLCBnZXREZjEpXG5cblxuICBjb25zdCB3ID0gMTA1MFxuICBjb25zdCBoID0gMjAwXG4gIGNvbnN0IG1hcmdpbiA9IHtyaWdodDogMTAwLCBsZWZ0OiAxMDAsIGJvdHRvbTogMjB9XG4gIFxuICBjb25zdCBzdmcgPSBkMy5zZWxlY3QoXCIjdGJsXCIpLmFwcGVuZChcInN2Z1wiKVxuICAgIC5hdHRyKFwid2lkdGhcIiwgdykuYXR0cihcImhlaWdodFwiLCBoKVxuICAgIFxuXG4gIGNvbnN0IHggPSBkMy5zY2FsZUxpbmVhcigpXG4gICAgLmRvbWFpbihbMCw0XSlcbiAgICAucmFuZ2UoW21hcmdpbi5sZWZ0LCB3IC0gbWFyZ2luLnJpZ2h0XSlcbiAgY29uc3QgeSA9IGQzLnNjYWxlTGluZWFyKClcbiAgICAuZG9tYWluKFswLDFdKVxuICAgIC5yYW5nZShbaCAtIG1hcmdpbi5ib3R0b20sIDBdKVxuICBjb25zdCB4QXhpcyA9IGQzLmF4aXNCb3R0b20oeClcbiAgY29uc3QgbGluZSA9IGQzLmxpbmUoKVxuICAgIC54KGQgPT4geChkLnZhbHVlKSlcbiAgICAueShkID0+IHkoZC5kZW5zaXR5KSlcbiAgXG4gIGZ1bmN0aW9uIG1ha2VDdXJ2ZShkZjEsIGRmMikge1xuICAgIHZhciBhcnIgPSBbXVxuICAgIHZhciB2YWx1ZXMgPSBqU3RhdCgwLjAxLCA0LCAyMTApWzBdXG4gICAgZm9yICh2YXIgaSA9IDA7IGkgPCB2YWx1ZXMubGVuZ3RoOyBpKyspIHtcbiAgICAgIGFyci5wdXNoKHt2YWx1ZTogdmFsdWVzW2ldLFxuICAgICAgICAgICAgICAgIGRlbnNpdHk6IGpTdGF0LmNlbnRyYWxGLnBkZih2YWx1ZXNbaV0sIE51bWJlcihkZjEpLCBOdW1iZXIoZGYyKSl9KVxuICAgIH1cbiAgICByZXR1cm4gYXJyXG4gIH1cbiAgXG4gIHN2Zy5hcHBlbmQoXCJnXCIpLmF0dHIoXCJ0cmFuc2Zvcm1cIiwgYHRyYW5zbGF0ZSgwLCAke2ggLSBtYXJnaW4uYm90dG9tfSlgKVxuICAgIC5jYWxsKHhBeGlzKVxuICAgIFxuICBjb25zdCBjdXJ2ZSA9IHN2Zy5hcHBlbmQoXCJwYXRoXCIpXG4gICAgLmF0dHIoXCJkXCIsIGxpbmUobWFrZUN1cnZlKDEwLCAxMCkpKVxuICAgIC5zdHlsZShcImZpbGxcIiwgXCJub25lXCIpXG4gICAgLnN0eWxlKFwic3Ryb2tlXCIsIFwiYmxhY2tcIilcbiAgXG4gIGNvbnN0IGRmMUlucHV0ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2RmMS1pbnB1dCcpXG4gIGRmMUlucHV0Lm9uaW5wdXQgPSBmdW5jdGlvbigpIHtcbiAgICBkZjEgPSBkZjFJbnB1dC52YWx1ZVxuICAgIHVwZGF0ZSgpO1xuICB9XG4gIFxuICBjb25zdCBkZjJJbnB1dCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdkZjItaW5wdXQnKVxuICBkZjJJbnB1dC5vbmlucHV0ID0gZnVuY3Rpb24oKSB7XG4gICAgZGYyID0gZGYySW5wdXQudmFsdWVcbiAgICB1cGRhdGUoKTtcbiAgfVxuICBcbiAgZnVuY3Rpb24gdXBkYXRlKCkge1xuICAgIGQzLnNlbGVjdChcIiNkZjEtdmFsdWVcIikudGV4dChkZjEpXG4gICAgZDMuc2VsZWN0KFwiI2RmMi12YWx1ZVwiKS50ZXh0KGRmMilcbiAgICBjcml0aWNhbCA9IGpTdGF0LmNlbnRyYWxGLmludigwLjk1LCBOdW1iZXIoZGYxKSwgTnVtYmVyKGRmMikpXG4gICAgY3VydmUuYXR0cihcImRcIiwgbGluZShtYWtlQ3VydmUoTnVtYmVyKGRmMSksIE51bWJlcihkZjIpKSkpXG4gIH1cbiAgXG5cblxuICBcbn1cblxuIn1dfQ==
     </script>
@@ -1751,80 +1663,42 @@ Control</th>
     window._ojs.runtime.interpretFromScriptTags();
     </script>
     
-
     <script>
-
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
       // slide changes (different for each slide format).
-
       (function () {
-
         // dispatch for htmlwidgets
-
         function fireSlideEnter() {
-
           const event = window.document.createEvent("Event");
-
           event.initEvent("slideenter", true, true);
-
           window.document.dispatchEvent(event);
-
         }
-
-    
 
         function fireSlideChanged(previousSlide, currentSlide) {
-
           fireSlideEnter();
 
-    
-
           // dispatch for shiny
-
           if (window.jQuery) {
-
             if (previousSlide) {
-
               window.jQuery(previousSlide).trigger("hidden");
-
             }
-
             if (currentSlide) {
-
               window.jQuery(currentSlide).trigger("shown");
-
             }
-
           }
-
         }
-
-    
 
         // hookup for slidy
-
         if (window.w3c_slidy) {
-
           window.w3c_slidy.add_observer(function (slide_num) {
-
             // slide_num starts at position 1
-
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
           });
-
         }
 
-    
-
       })();
-
     </script>
-
-    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
