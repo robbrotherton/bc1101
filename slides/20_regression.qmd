@@ -465,7 +465,7 @@ $F = \dfrac{MS_{regression}}{MS_{residual}} = \dfrac{7.5}{2.17} = 3.46$
   - Reject or fail to reject $H_0$, no relationship in population
 - Step 4b: Effect size
   - $r^2$: Coefficient of determination
-  - Proportion of variance explaianed by the regression
+  - Proportion of variance explained by the regression
 
 ::: {.center-element}
 $r^2 = \dfrac{SS_{regression}}{SS_Y} = \dfrac{7.5}{14} = 0.54$
