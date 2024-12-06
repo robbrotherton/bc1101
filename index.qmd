@@ -1,27 +1,24 @@
 ---
 format:
   html:
-    title: '
-    PSYC BC1101 STATISTICS
-    <a class="invertable" href="bc1101-syllabus-sp24.pdf"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 600" style="height:0.75em" aria-labelledby="downloadIconTitle" role="img"><title id="downloadIconTitle">Download PDF version of syllabus</title><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM216 232V334.1l31-31c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-72 72c-9.4 9.4-24.6 9.4-33.9 0l-72-72c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l31 31V232c0-13.3 10.7-24 24-24s24 10.7 24 24z"/></svg></a>
-        '
+    title: PSYC BC1101 STATISTICS
   pdf:
     title: PSYC BC1101 STATISTICS
-    output-file: bc1101-syllabus-sp24.pdf
+    output-file: bc1101-syllabus-sp25.pdf
     
-subtitle: "Barnard College, Spring 2024"
+subtitle: "Barnard College, Spring 2025"
 ---
 
 
 Professor: Dr. Rob Brotherton (<rbrother@barnard.edu>)   
-Office Hours: Friday 10-11AM; 415M Milbank
+Office Hours: TBD
 
-Lecture time: T/Th 10:10-11:25AM  
-Lecture venue: 203 Diana
+Lecture time: Tu/Th 10:10-11:25AM  
+Lecture venue: TBD
 
-Section 001 recitation: Th 12:10-2PM, 222 Milbank Hall   
+Section 001 recitation: Wed 9:10-11:00AM, venue TBD   
 
-Section 002 recitation: Th 2:10-4:00PM, 222 Milbank Hall    
+Section 002 recitation: Wed 11:00AM-1:00PM, venue TBD    
 
 
 
@@ -46,17 +43,38 @@ The course is designed to fulfill these goals:
 ```{r}
 #| eval: false
 
-dates <- paste(seq.Date(from = as.Date("2024-01-16"), to = as.Date("2024-04-29"), by = "week"),
-      seq.Date(from = as.Date("2024-01-18"), to = as.Date("2024-04-29"), by = "week"), sep = "!") |>
+
+dates <- paste(seq.Date(from = as.Date("2025-01-21"), to = as.Date("2025-05-05"), by = "week"),
+               seq.Date(from = as.Date("2025-01-23"), to = as.Date("2025-05-05"), by = "week"), 
+               sep = "!") |>
   stringr::str_split(pattern = "!") |>
   unlist()
 
-cat(dates, sep = "\n")
+dates <- c(
+  seq.Date(from = as.Date("2025-01-21"), to = as.Date("2025-05-05"), by = "week"),
+  seq.Date(from = as.Date("2025-01-23"), to = as.Date("2025-05-05"), by = "week")
+) |> 
+  sort()
 
-schedule <- data.frame(date = dates,
-                       lecture = "")
+# cat(dates, sep = "\n")
 
-readr::write_csv(schedule, "schedule.csv")
+new_schedule <- readr::read_csv("schedule.csv")
+new_schedule$Date <- dates
+
+# if recitation is on a different day from lectures, need to add it in
+recitation_dates <- data.frame(
+  Date = seq.Date(from = as.Date("2025-01-22"), to = as.Date("2025-05-05"), by = "week"),
+  Topic = "-",
+  Recitation = "-",
+  Panopto = "-"
+  )
+
+new_schedule <- new_schedule |> 
+  dplyr::mutate(Recitation = "-") |> 
+  tibble::add_row(recitation_dates) |> 
+  dplyr::arrange(Date)
+
+readr::write_csv(new_schedule, "schedule.csv")
 
 ```
 
@@ -65,20 +83,26 @@ readr::write_csv(schedule, "schedule.csv")
 #| message: false
 
 schedule <- readr::read_csv("schedule.csv")
-kableExtra::kbl(schedule[c("Date", "Topic", "Recitation")], booktabs = TRUE) |> 
+
+shade_rows <- rep(1:3, 8) + rep(6 * c(0:7), each = 3)
+
+schedule |> 
+  dplyr::select(Date, Topic) |> 
+  kableExtra::kbl(
+    col.names = c("Date", "Lecture / Recitation Topic"),
+    booktabs = TRUE, longtable = TRUE) |> 
   kableExtra::column_spec(1, width = "5em") |> 
   kableExtra::column_spec(2, width = "20em") |> 
-  kableExtra::column_spec(3, width = "10em")
+  kableExtra::row_spec(shade_rows, background = "#eeeeee")
 
 ```
 
 
 ## Course format
 
-There are no required readings. Instead, you will be required to watch recorded lectures before attending the associated class session. 
 
 ### Video lectures
-The lecture component of the course will take the form of streamable Panopto lectures, accessible via Canvas. You must watch the video lecture before attending the associated class session. These video lectures will be around 15 to 25 minutes each. They will include ‘quizzes’ that appear during the video, requiring your response before you continue with the lecture. So even though the videos themselves are short, you should plan to spend an hour or more with each one including the time it takes you to answer the questions and complete the exercises included along the way. Panopto keeps a record of your responses, and your engagement will be required and graded (see [Grading](#grading)).
+There are no required readings. Instead, you will be required to watch recorded lectures before attending the associated class session. You must watch the video lecture before attending the associated class session. These video lectures will be around 15 to 25 minutes each. They will include ‘quizzes’ that appear during the video, requiring your response before you continue with the lecture. So even though the videos themselves are short, you should plan to spend an hour or more with each one including the time it takes you to answer the questions and complete the exercises included along the way. Panopto keeps a record of your responses, and your engagement will be required and graded (see [Grading](#grading)).
 
 ### Class time 
 Since you will have watched the recorded lecture in advance of class, class time will be devoted to activities, discussions, and your questions to help cement the understanding you will have begun to develop from the watching the lecture. Class activities are designed to build on the lecture you watched in advance; you will not be able to get the most out of the class without watching the associated lecture first. Given the nature of the activities and discussions I have planned, in-person classes will not be streamed or recorded.

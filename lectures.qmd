@@ -53,8 +53,13 @@ card <- function(file, date, image_class = "", panopto_link = "") {
 ```{r}
 #| message: false
 info <- readr::read_csv("schedule.csv")
-dates <- info$Date
-links <- info$Panopto
+recitation <- seq.Date(from = as.Date("2025-01-22"), to = as.Date("2025-05-05"), by = "week")
+
+info <- info |> 
+  dplyr::filter(stringr::str_detect(Topic, ":"))
+
+dates <- info |> dplyr::pull(Date)
+links <- info |> dplyr::pull(Panopto)
 ```
 
 <!-- # Part 1. Fundamentals -->
@@ -135,8 +140,8 @@ card("08_sampling", dates[8], "invertable",
 :::: {.box}
 ## 9. Hypothesis testing
 ```{r}
-card("09_hypothesis-testing", dates[11], "invertable",
-     panopto_link = links[11])
+card("09_hypothesis-testing", dates[9], "invertable",
+     panopto_link = links[9])
 ```
 ::::
 
@@ -144,16 +149,16 @@ card("09_hypothesis-testing", dates[11], "invertable",
 :::: {.box}
 ## 10. Hypothesis testing pt. 2
 ```{r}
-card("10_hypothesis-testing-pt-2", dates[12], "invertable-blue",
-     panopto_link = links[12])
+card("10_hypothesis-testing-pt-2", dates[10], "invertable-blue",
+     panopto_link = links[10])
 ```
 ::::
 
 :::: {.box}
 ## 11. The $t$ test
 ```{r}
-card("11_the-t-test", dates[13],
-     panopto_link = links[13])
+card("11_the-t-test", dates[11],
+     panopto_link = links[11])
 ```
 ::::
 
@@ -162,8 +167,8 @@ card("11_the-t-test", dates[13],
 :::: {.box}
 ## 12. The $t$ test part 2
 ```{r}
-card("12_the-t-test-pt-2", dates[14], "invertable-bw",
-     panopto_link = links[14])
+card("12_the-t-test-pt-2", dates[12], "invertable-bw",
+     panopto_link = links[12])
 ```
 ::::
 
@@ -171,8 +176,8 @@ card("12_the-t-test-pt-2", dates[14], "invertable-bw",
 :::: {.box}
 ## 13. Independent-samples $t$ test
 ```{r}
-card("13_independent-samples-t-test", dates[15],
-     panopto_link = links[15])
+card("13_independent-samples-t-test", dates[13],
+     panopto_link = links[13])
 ```
 ::::
 
@@ -180,8 +185,8 @@ card("13_independent-samples-t-test", dates[15],
 :::: {.box}
 ## 14. Related-samples $t$ test
 ```{r}
-card("14_related-samples-t-test", dates[16],
-     panopto_link = links[16])
+card("14_related-samples-t-test", dates[14],
+     panopto_link = links[14])
 ```
 ::::
 
@@ -189,8 +194,8 @@ card("14_related-samples-t-test", dates[16],
 :::: {.box}
 ## 15. ANOVA
 ```{r}
-card("15_ANOVA", dates[21],
-     panopto_link = links[21])
+card("15_ANOVA", dates[15],
+     panopto_link = links[15])
 ```
 ::::
 
@@ -198,8 +203,8 @@ card("15_ANOVA", dates[21],
 :::: {.box}
 ## 16. ANOVA pt. 2
 ```{r}
-card("16_ANOVA-pt-2", dates[22],
-     panopto_link = links[22])
+card("16_ANOVA-pt-2", dates[16],
+     panopto_link = links[16])
 ```
 ::::
 
@@ -207,8 +212,8 @@ card("16_ANOVA-pt-2", dates[22],
 :::: {.box}
 ## 17. Related-samples ANOVA
 ```{r}
-card("17_related-samples-ANOVA", dates[23],
-     panopto_link = links[23])
+card("17_related-samples-ANOVA", dates[17],
+     panopto_link = links[17])
 ```
 ::::
 
@@ -216,8 +221,8 @@ card("17_related-samples-ANOVA", dates[23],
 :::: {.box}
 ## 18. Factorial ANOVA
 ```{r}
-card("18_factorial-ANOVA", dates[24],
-     panopto_link = links[24])
+card("18_factorial-ANOVA", dates[18],
+     panopto_link = links[18])
 ```
 ::::
 
@@ -225,8 +230,8 @@ card("18_factorial-ANOVA", dates[24],
 :::: {.box}
 ## 19. Correlation
 ```{r}
-card("19_correlation", dates[25], image_class = "invertable",
-     panopto_link = links[25])
+card("19_correlation", dates[19], image_class = "invertable",
+     panopto_link = links[19])
 ```
 ::::
 
@@ -234,7 +239,7 @@ card("19_correlation", dates[25], image_class = "invertable",
 :::: {.box}
 ## 20. Regression
 ```{r}
-card("20_regression", dates[26], image_class = "invertable",
-     panopto_link = links[26])
+card("20_regression", dates[20], image_class = "invertable",
+     panopto_link = links[20])
 ```
 ::::
