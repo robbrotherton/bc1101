@@ -175,7 +175,7 @@ viewof df = html`<input type=range min=1 max=50 step=1 value=1 style="width: 50%
 
 
 ```{ojs}
-#| echo: false
+//| echo: false
 
 <!-- norm_arr -->
 
