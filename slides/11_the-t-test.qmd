@@ -549,13 +549,22 @@ gg_color_hue <- function(n) {
 n <- 100
 colors <- rep(gg_color_hue(10), length.out = n)
 
+l <- purrr::map2(seq_len(n), colors, ~ {
+  i <- .x - 1 # zero-based index to match your js logic
+  duration_val <- 300 + (1 - i/(n-1))*3000
+  delay_val <- sqrt(i * 20000)
 
-l <- purrr::map2(seq_len(n), colors,
-           ~list(id = .x, 
-                 color = .y,
-                 data = tibble::tibble(value = seq(-3,3,length.out = 210),
-                                                density = dt(value, .x)) |> 
-             purrr::transpose()))
+  list(
+    id = .x,
+    color = .y,
+    duration = duration_val,
+    delay = delay_val,
+    data = tibble::tibble(
+      value = seq(-3,3,length.out = 210),
+      density = dt(value, .x)
+    ) |> purrr::transpose()
+  )
+})
 
 ojs_define(test_data = l)
 
@@ -570,89 +579,173 @@ ojs_define(test_data = l)
 
 cover = {
 
-const w = 1050
-const h = 500
-const n = test_data.length
+const w = 1050;
+const h = 500;
+const duration = 2000; // animation duration per path
+const maxDelay = d3.max(test_data, d => d.delay);
 
+// d3 scales for mapping data to canvas space
 const tx = d3.scaleLinear()
-    .domain([-3, 3])
-    .range([0, w]);
+  .domain([-3, 3]) // x range of your t-distributions
+  .range([0, w]);
 
 const ty = d3.scaleLinear()
-    .domain([0, jStat.studentt.pdf(0, 101)])
-    .range([h, 0]);
+  .domain([0, 0.4]) // y range of t-distribution densities
+  .range([h, 0]);
 
-const tline = d3.line()
-    .x(function(d) { return tx(d.value); })
-    .y(function(d) { return ty(d.density); });
+// setup canvas
+const devicePixelRatio = window.devicePixelRatio || 1;
 
-
-var svg = d3.select("#cover-image")
-            .append("svg")
-            .attr("width", w)
-            .attr("height", h)
-            
-var container = svg.append("g")
-    .attr("class", ".container")
-
-var paths = container.selectAll("path")
-  .data(test_data)
-  .enter().append("g").attr("class", "t-path")
-
-var path = paths.append("path")
-  .attr("d", d => tline(d.data))
-  .style("stroke", d => d.color)
-  .style("fill", "none")
-  .each(function(d) { d.totalLength = this.getTotalLength(); })
-  .each(function(d, i) { d.duration = 300 + (1-i/(n-1))*(3000); })
-  <!-- .each(function(d, i) { d.delay = 200*Math.sqrt(i*8); }) -->
-  .each(function(d, i) { d.delay = Math.sqrt(i*20000); })
-  .attr("stroke-dasharray", function(d) { return d.totalLength + " " + d.totalLength; })
-  .attr("stroke-dashoffset", d => d.totalLength)
+const canvas = d3.select("#cover-image")
+  .append("canvas")
+  .attr("width", w * devicePixelRatio)
+  .attr("height", h * devicePixelRatio)
+  .style("width", `${w}px`) // ensures the CSS size stays the same
+  .style("height", `${h}px`)
+  .node();
   
-  function animIn() {
-    path
-    // .transition().duration(0).delay(0).attr("stroke-dashoffset", d => d.totalLength)
-    // // transition back on screen moving right
-    .transition()
-    .duration(1500)
-    .delay(d => d.delay)
-    .attr("stroke-dashoffset", 0)
-  };
-  
-  animIn();
+const ctx = canvas.getContext("2d");
 
-const sleep = (milliseconds) => {
-  return new Promise(resolve => setTimeout(resolve, milliseconds))
+// scale for high DPI
+ctx.scale(devicePixelRatio, devicePixelRatio);
+ctx.lineWidth = 1;
+ctx.lineJoin = "round"; // smooth joins
+ctx.lineCap = "round";  // smooth endpoints
+
+// utility: draw a line progressively
+function drawPartialPath(ctx, data, color, progress) {
+  ctx.beginPath();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 2;
+
+  // calculate the number of visible points
+  const totalPoints = Math.floor(progress * data.length);
+
+  // slice the data so the visible part shrinks **from the end**
+  const visibleData = data.slice(-totalPoints);
+
+  visibleData.forEach((point, i) => {
+    const x = tx(point.value);
+    const y = ty(point.density);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  });
+
+  ctx.stroke();
 }
 
-function animOut() {
-    path
-    // reset to on-screen
-    .transition().duration(0).delay(0).attr("stroke-dashoffset", 0)
-    // transtion off to the right
-    .transition()
-    .duration(1500)
-    .delay(d => d.delay)
-    .attr("stroke-dashoffset", d  => -d.totalLength)
-    // reset to off screen left
-    .transition().duration(0).delay(0).attr("stroke-dashoffset", d => d.totalLength)
-    // // transition back on screen moving right
-    .transition()
-    .duration(1500)
-    .delay(100)
-    .attr("stroke-dashoffset", 0)
-    .on("end", () => sleep(2500).then(animOut))
-};
+function animatePaths() {
+  const start = performance.now();
+  const delayPerLine = 200; 
+  const maxDelay = delayPerLine * test_data.length;
 
-  svg.on("click", animOut)
+  function step(timestamp) {
+    const elapsed = timestamp - start;
+    ctx.clearRect(0, 0, w, h);
 
+    test_data.forEach((d, i) => {
+      const lineStartTime = d.delay;
+      const lineElapsed = Math.max(0, elapsed - lineStartTime);
+      const progress = Math.min(lineElapsed / duration, 1);
 
+      if (progress > 0) {
+        // draw forward
+        drawPartialPathForward(ctx, d.data, d.color, progress);
+      }
+    });
 
+    if (elapsed < maxDelay + duration) requestAnimationFrame(step);
+  }
+
+  requestAnimationFrame(step);
+}
+
+function drawPartialPathForward(ctx, data, color, progress) {
+  ctx.beginPath();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 1;
+
+  const totalPoints = Math.floor(progress * data.length);
+  const visibleData = data.slice(0, totalPoints);
+
+  visibleData.forEach((point, i) => {
+    const x = tx(point.value);
+    const y = ty(point.density);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  });
+
+  ctx.stroke();
+}
+
+function drawPartialPathReverse(ctx, data, color, progress) {
+  ctx.beginPath();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 1;
+
+  // progress=1 means full line, progress=0 means none.
+  const startIndex = Math.floor((1 - progress) * data.length);
+  const visibleData = data.slice(startIndex);
+
+  visibleData.forEach((point, i) => {
+    const x = tx(point.value);
+    const y = ty(point.density);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  });
+
+  ctx.stroke();
+}
+
+function undrawPaths() {
+  return new Promise(resolve => {
+    const start = performance.now();
+    const maxLineDelay = d3.max(test_data, d => d.delay);
+
+    function step(timestamp) {
+      const elapsed = timestamp - start;
+      ctx.clearRect(0, 0, w, h);
+
+      test_data.forEach((d, i) => {
+        const lineStartTime = d.delay;
+        const lineElapsed = Math.max(0, elapsed - lineStartTime);
+        const progress = Math.min(lineElapsed / duration, 1);
+        const reverseProgress = 1 - progress;
+        if (reverseProgress > 0) {
+          drawPartialPathReverse(ctx, d.data, d.color, reverseProgress);
+        }
+      });
+
+      // now that line timings depend on d.delay, check if we’ve elapsed enough time
+      if (elapsed < maxLineDelay + duration) {
+        requestAnimationFrame(step);
+      } else {
+        resolve();
+      }
+    }
+
+    requestAnimationFrame(step);
+  });
+}
+
+// usage:
+canvas.addEventListener("click", () => {
+  undrawPaths().then(() => {
+    animatePaths();
+  });
+});
+
+animatePaths();
 }
 
 ```
 
+```{css}
+canvas {
+  image-rendering: auto; /* ensures smooth scaling */
+  display: block;       /* prevents blurry scaling due to inline rendering */
+}
+```
 
 ```{r ggplot-cover}
 #| eval: false
