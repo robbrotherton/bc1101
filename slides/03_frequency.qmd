@@ -32,18 +32,10 @@ format: revealjs
 
 ## E.g. opinion polling
 
-:::: {.columns}
-::: {.column width="50%"}
 - How often does something occur?
-    - E.g. [FiveThirtyEight](https://projects.fivethirtyeight.com/biden-approval-rating/) opinion polling
-:::
+    - E.g. [FiveThirtyEight](https://projects.fivethirtyeight.com/biden-approval-rating/) presidential popularity polling
 
-::: {.column width="50%" style="margin-top: -3em;"}
-![](media/538-intro.png){style="margin-bottom: 0;"}
-![](media/538-chart.png){style="margin-top: -15px; margin-bottom: 0;"}
-![](media/538-table.png){style="margin-top: -15px;"}
-:::
-::::
+![](media/538-chart-sp25.png){width=70%}
 
 
 ## Frequency distributions
