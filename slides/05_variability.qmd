@@ -441,7 +441,9 @@ sw_table <- sw |>
              format.args = list(big.mark = ",", scientific = FALSE),
              col.names = c("Movie",rep(c("<i>N</i>","<i>M</i>","<i>SD</i>"), 2))) |> 
   kableExtra::add_header_above(c("", "MetaCritic.com" = 3, "IMDb.com" = 3)) |> 
-  kableExtra::column_spec(1, width = "100%", extra_css = "font-size: 0.9em;")
+  kableExtra::column_spec(1, width = "100%", extra_css = "font-size: 0.9em;") |> 
+  kableExtra::column_spec(2:4, extra_css = "background: #b7b7dc4a;") |> 
+  kableExtra::column_spec(5:7, extra_css = "background: #f5f0bf69;")
 ```
 
 :::: {.r-stack}
