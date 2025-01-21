@@ -648,7 +648,7 @@
     "href": "slides/01_course-info.html#math-1",
     "title": "PSYC BC1101",
     "section": "Math",
-    "text": "Math\n\nSummation\n\nSymbol \\(\\Sigma\\) (Greek letter Sigma) means add up\nSummation is done after operations in parentheses, squaring, and multiplication or division, but before other addition or subtraction\nE.g… \\(X = [2, 4, 7]\\)\n\n\n\\[\\Sigma X = ? \\\\\n\\Sigma X + 1 = ? \\\\\n\\Sigma(X + 1) = ?\\]"
+    "text": "Math\n\nSummation\n\nSymbol \\(\\Sigma\\) (Greek letter Sigma) means add up\nSummation is done after operations in parentheses, squaring, and multiplication or division, but before other addition or subtraction\nE.g… \\(X = [2, 4, 7]\\)\n\n\n\n\\(\\Sigma X = ?\\)\n\\(\\Sigma X + 1 = ?\\)\n\\(\\Sigma(X + 1) = ?\\)"
   },
   {
     "objectID": "slides/01_course-info.html#math-2",

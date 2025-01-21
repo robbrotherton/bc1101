@@ -145,10 +145,13 @@ format: revealjs
   - Summation is done after operations in parentheses, squaring, and multiplication or division, but before other addition or subtraction
   - E.g… $X = [2, 4, 7]$
 
+::: {.center-element}
+$\Sigma X = ?$
 
-$$\Sigma X = ? \\
-\Sigma X + 1 = ? \\
-\Sigma(X + 1) = ?$$
+$\Sigma X + 1 = ?$
+
+$\Sigma(X + 1) = ?$
+:::
 
 ## Math
 
