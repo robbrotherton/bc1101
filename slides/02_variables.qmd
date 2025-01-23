@@ -23,14 +23,17 @@ format: revealjs
 - Where do statistics come from?
 
 
-## Producing a statistic
+## Measuring things
 
 - How many books are [__red__]{style="color: red;"}
-  - Gather data to determine what proportion of books are red
-  - Enter your best estimate and explain your process
-  - Suggested time limit: 5 minutes
 
 ![](media/red-book.svg)
+
+## Measuring things
+
+- How much grain is in a bushel?
+
+![](media/serfs.jpg)
 
 
 
@@ -112,7 +115,6 @@ ojs_define(bar_data)
 
 ::: {.column width="50%"}
 ```{ojs}
-#| loading: lazy
 
 bar_xScale = d3.scaleBand()
   .domain([1,2,3,4,5])
