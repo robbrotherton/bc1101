@@ -115,7 +115,7 @@ ojs_define(bar_data)
 
 ::: {.column width="50%"}
 ```{ojs}
-
+//| loading: lazy
 bar_xScale = d3.scaleBand()
   .domain([1,2,3,4,5])
   .range([m, w - m])
