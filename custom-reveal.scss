@@ -728,3 +728,10 @@ color: #ccc
   font-size: 1em;
   vertical-align: unset;
 }
+
+
+/* fix mathjax rendering issue in safari? */
+
+mjx-container mjx-c::before {
+    transform: translateZ(0);;
+}
