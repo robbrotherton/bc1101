@@ -39,7 +39,7 @@
     "href": "slides/04_central-tendency.html#mode-1",
     "title": "PSYC BC1101",
     "section": "Mode",
-    "text": "Mode\n\nThe score/category with the greatest frequency\n\nWhat occurs most often?\n\n\n\n\n\n\n\n\n\n\n\\(X\\)\n\\(f\\)\n\n\n\n\n5\n1\n\n\n4\n2\n\n\n3\n4\n\n\n2\n5\n\n\n1\n3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(X\\)\n\\(f\\)\n\n\n\n\n90-99\n7\n\n\n80-89\n4\n\n\n70-79\n5\n\n\n60-60\n3\n\n\n50-59\n0\n\n\n40-49\n1"
+    "text": "Mode\n\nThe score/category with the greatest frequency\n\nWhat occurs most often?\n\n\n\n\n\n\n\n\n\n\\(X\\)\n\\(f\\)\n\n\n\n\n5\n1\n\n\n4\n2\n\n\n3\n4\n\n\n2\n5\n\n\n1\n3\n\n\n\n\n\n\n\n\n\n\n\n\\(X\\)\n\\(f\\)\n\n\n\n\n90-99\n7\n\n\n80-89\n4\n\n\n70-79\n5\n\n\n60-60\n3\n\n\n50-59\n0\n\n\n40-49\n1"
   },
   {
     "objectID": "slides/04_central-tendency.html#mode-generic-examples",
@@ -165,7 +165,7 @@
     "href": "slides/17_related-samples-ANOVA.html#calculations-ss-and-df",
     "title": "PSYC BC1101",
     "section": "Calculations: \\(SS\\) and \\(df\\)",
-    "text": "Calculations: \\(SS\\) and \\(df\\)\n\n\n\n\\(SS_{total}\\)\n\\(SS_{btwn \\ T's}\\) \\(SS_{within}\\)\n\\(SS_{error}\\) \\(SS_{btwn \\ S's}\\)\n\n\\(df_{total}\\)\n\\(df_{btwn \\ T's}\\) \\(df_{within}\\)\n\\(df_{error}\\) \\(df_{btwn \\ S's}\\)\n\n\n\n\n\\(SS_{total} = \\Sigma X^2 - \\dfrac{G^2}{N}\\)\n\\(SS_{within} = \\Sigma SS_{within \\ each \\ treatment}\\)\n\\(SS_{between \\ treatments} = \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N}\\)\n\\(SS_{between \\ subjects} = \\Sigma \\dfrac{P^2}{k} - \\dfrac{G^2}{N}\\)\n\\(SS_{error} = SS_{within}-SS_{between \\ subjects}\\)\n\n\\(df_{total} = N-1\\)\n\\(df_{within} = N-k\\)\n\\(df_{between \\ treatments} = k-1\\)\n\\(df_{between \\ subjects} = n-1\\)\n\\(df_{error} = df_{within}-df_{between \\ subjects}\\)"
+    "text": "Calculations: \\(SS\\) and \\(df\\)\n\n\n\n\\(SS_{total}\\)\n\\(SS_{btwn \\ T's}\\) \\(SS_{within}\\)\n\\(SS_{error}\\) \\(SS_{btwn \\ S's}\\)\n\n\\(df_{total}\\)\n\\(df_{btwn \\ T's}\\) \\(df_{within}\\)\n\\(df_{error}\\) \\(df_{btwn \\ S's}\\)\n\n\n\n\\(SS_{total} = \\Sigma X^2 - \\dfrac{G^2}{N}\\)\n\\(SS_{within} = \\Sigma SS_{within \\ each \\ treatment}\\)\n\\(SS_{between \\ treatments} = \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N}\\)\n\\(SS_{between \\ subjects} = \\Sigma \\dfrac{P^2}{k} - \\dfrac{G^2}{N}\\)\n\\(SS_{error} = SS_{within}-SS_{between \\ subjects}\\)\n\n\\(df_{total} = N-1\\)\n\\(df_{within} = N-k\\)\n\\(df_{between \\ treatments} = k-1\\)\n\\(df_{between \\ subjects} = n-1\\)\n\\(df_{error} = df_{within}-df_{between \\ subjects}\\)"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#calculations-ms-and-f",
@@ -179,49 +179,49 @@
     "href": "slides/17_related-samples-ANOVA.html#summary-table",
     "title": "PSYC BC1101",
     "section": "Summary table",
-    "text": "Summary table\n\n\n\n\n\n\nSource\n\\(SS\\)\n\\(df\\)\n\\(MS\\)\n\\(F\\)\n\n\n\n\nBetween treatments\n\n\n\n\n\n\nWithin treatments\n\n\n\n\n\n\n   Between subjects\n\n\n\n\n\n\n   Error\n\n\n\n\n\n\nTotal"
+    "text": "Summary table\n\n\n\n\n\nSource\n\\(SS\\)\n\\(df\\)\n\\(MS\\)\n\\(F\\)\n\n\n\n\nBetween treatments\n\n\n\n\n\n\nWithin treatments\n\n\n\n\n\n\n   Between subjects\n\n\n\n\n\n\n   Error\n\n\n\n\n\n\nTotal"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#step-1.-state-hypotheses",
     "href": "slides/17_related-samples-ANOVA.html#step-1.-state-hypotheses",
     "title": "PSYC BC1101",
     "section": "Step 1. State hypotheses",
-    "text": "Step 1. State hypotheses\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n\nPerson\n🍌\nBanana\n🍬\nCandy\n😐\nControl\n\n\n\n\nA\n9\n3\n5\n\n\nB\n11\n5\n6\n\n\nC\n13\n4\n7\n\n\n\n\n\n\n\n\n\n\\(H_0: \\mu_1 = \\mu_2 = \\mu_3\\)\n\\(H_1\\) : At least one population mean differs from another"
+    "text": "Step 1. State hypotheses\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n\nPerson\n🍌\nBanana\n🍬\nCandy\n😐\nControl\n\n\n\n\nA\n9\n3\n5\n\n\nB\n11\n5\n6\n\n\nC\n13\n4\n7\n\n\n\n\n\n\n\\(H_0: \\mu_1 = \\mu_2 = \\mu_3\\)\n\\(H_1\\) : At least one population mean differs from another"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#step-2.-critical-region",
     "href": "slides/17_related-samples-ANOVA.html#step-2.-critical-region",
     "title": "PSYC BC1101",
     "section": "Step 2. Critical region",
-    "text": "Step 2. Critical region\n\nNumerator: \\(df_{between \\ treatments} = k-1\\)\nDenominator: \\(df_{error} = df_{within}-df_{between \\ S's} = (N-k)-(n-1)\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\alpha = .05\\)\n\n\n\\(df_{numerator}\\)\n\n\n\n\\(df_{denominator}\\)\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\n1\n161.45\n199.50\n215.71\n224.58\n230.16\n233.99\n236.77\n238.88\n240.54\n241.88\n\n\n2\n18.51\n19.00\n19.16\n19.25\n19.30\n19.33\n19.35\n19.37\n19.39\n19.40\n\n\n3\n10.13\n9.55\n9.28\n9.12\n9.01\n8.94\n8.89\n8.85\n8.81\n8.79\n\n\n4\n7.71\n6.94\n6.59\n6.39\n6.26\n6.16\n6.09\n6.04\n6.00\n5.96\n\n\n5\n6.61\n5.79\n5.41\n5.19\n5.05\n4.95\n4.88\n4.82\n4.77\n4.74\n\n\n6\n5.99\n5.14\n4.76\n4.53\n4.39\n4.28\n4.21\n4.15\n4.10\n4.06\n\n\n7\n5.59\n4.74\n4.35\n4.12\n3.97\n3.87\n3.79\n3.73\n3.68\n3.64\n\n\n8\n5.32\n4.46\n4.07\n3.84\n3.69\n3.58\n3.50\n3.44\n3.39\n3.35\n\n\n9\n5.12\n4.26\n3.86\n3.63\n3.48\n3.37\n3.29\n3.23\n3.18\n3.14\n\n\n10\n4.96\n4.10\n3.71\n3.48\n3.33\n3.22\n3.13\n3.07\n3.02\n2.98"
+    "text": "Step 2. Critical region\n\nNumerator: \\(df_{between \\ treatments} = k-1\\)\nDenominator: \\(df_{error} = df_{within}-df_{between \\ S's} = (N-k)-(n-1)\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\alpha = .05\\)\n\n\n\\(df_{numerator}\\)\n\n\n\n\\(df_{denominator}\\)\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\n1\n161.45\n199.50\n215.71\n224.58\n230.16\n233.99\n236.77\n238.88\n240.54\n241.88\n\n\n2\n18.51\n19.00\n19.16\n19.25\n19.30\n19.33\n19.35\n19.37\n19.39\n19.40\n\n\n3\n10.13\n9.55\n9.28\n9.12\n9.01\n8.94\n8.89\n8.85\n8.81\n8.79\n\n\n4\n7.71\n6.94\n6.59\n6.39\n6.26\n6.16\n6.09\n6.04\n6.00\n5.96\n\n\n5\n6.61\n5.79\n5.41\n5.19\n5.05\n4.95\n4.88\n4.82\n4.77\n4.74\n\n\n6\n5.99\n5.14\n4.76\n4.53\n4.39\n4.28\n4.21\n4.15\n4.10\n4.06\n\n\n7\n5.59\n4.74\n4.35\n4.12\n3.97\n3.87\n3.79\n3.73\n3.68\n3.64\n\n\n8\n5.32\n4.46\n4.07\n3.84\n3.69\n3.58\n3.50\n3.44\n3.39\n3.35\n\n\n9\n5.12\n4.26\n3.86\n3.63\n3.48\n3.37\n3.29\n3.23\n3.18\n3.14\n\n\n10\n4.96\n4.10\n3.71\n3.48\n3.33\n3.22\n3.13\n3.07\n3.02\n2.98"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#calculate-f-ratio",
     "href": "slides/17_related-samples-ANOVA.html#calculate-f-ratio",
     "title": "PSYC BC1101",
     "section": "3. Calculate \\(F\\)-ratio",
-    "text": "3. Calculate \\(F\\)-ratio\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n\n\nPerson\n🍌\nBanana\n🍬\nCandy\n😐\nControl\n\nP\n\n\n\n\nA\n9\n3\n5\n17\n\n\nB\n11\n5\n6\n22\n\n\nC\n13\n4\n7\n24\n\n\n\\(M\\)\n11\n4\n6\n\n\n\n\\(T\\)\n33\n12\n18\n\n\n\n\\(SS\\)\n8\n2\n2\n\n\n\n\n\n\n\n\n\n\n\\(n = 3\\)\n\\(k = 3\\)\n\\(N = 9\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)\n\n\n\n\\[\\begin{align}\ndf_{total} &= N-1 = 8 \\\\\ndf_{within} &= N-k  = 6 \\\\\ndf_{between \\ treatments} &= k-1  = 2 \\\\\ndf_{between \\ subjects} &= n-1  = 2\\\\\ndf_{error} &= df_{within}-df_{between \\ subjects}  = 4\n\\end{align}\\]"
+    "text": "3. Calculate \\(F\\)-ratio\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n\n\nPerson\n🍌\nBanana\n🍬\nCandy\n😐\nControl\n\nP\n\n\n\n\nA\n9\n3\n5\n17\n\n\nB\n11\n5\n6\n22\n\n\nC\n13\n4\n7\n24\n\n\n\\(M\\)\n11\n4\n6\n\n\n\n\\(T\\)\n33\n12\n18\n\n\n\n\\(SS\\)\n8\n2\n2\n\n\n\n\n\n\n\n\\(n = 3\\)\n\\(k = 3\\)\n\\(N = 9\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)\n\n\n\\[\\begin{align}\ndf_{total} &= N-1 = 8 \\\\\ndf_{within} &= N-k  = 6 \\\\\ndf_{between \\ treatments} &= k-1  = 2 \\\\\ndf_{between \\ subjects} &= n-1  = 2\\\\\ndf_{error} &= df_{within}-df_{between \\ subjects}  = 4\n\\end{align}\\]"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-1",
     "href": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-1",
     "title": "PSYC BC1101",
     "section": "3. Calculate \\(F\\)-ratio",
-    "text": "3. Calculate \\(F\\)-ratio\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n\n\nPerson\n🍌\nBanana\n🍬\nCandy\n😐\nControl\n\nP\n\n\n\n\nA\n9\n3\n5\n17\n\n\nB\n11\n5\n6\n22\n\n\nC\n13\n4\n7\n24\n\n\n\\(M\\)\n11\n4\n6\n\n\n\n\\(T\\)\n33\n12\n18\n\n\n\n\\(SS\\)\n8\n2\n2\n\n\n\n\n\n\n\n\n\n\n\\(n = 3\\)\n\\(k = 3\\)\n\\(N = 9\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)\n\n\n\n\n\n\\(SS_{total} = \\Sigma X^2 - \\dfrac{G^2}{N} = 90\\)\n\\(SS_{within} = \\Sigma SS_{within \\ each \\ treatment} = 12\\)\n\\(SS_{between \\ treatments} = \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N} = 78\\)\n\n\\(SS_{between \\ subjects} = \\Sigma \\dfrac{P^2}{k} - \\dfrac{G^2}{N} = 8.67\\)\n\\(SS_{error} = \\Sigma SS_{within}-SS_{between \\ subjects} = 3.33\\)"
+    "text": "3. Calculate \\(F\\)-ratio\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n\n\nPerson\n🍌\nBanana\n🍬\nCandy\n😐\nControl\n\nP\n\n\n\n\nA\n9\n3\n5\n17\n\n\nB\n11\n5\n6\n22\n\n\nC\n13\n4\n7\n24\n\n\n\\(M\\)\n11\n4\n6\n\n\n\n\\(T\\)\n33\n12\n18\n\n\n\n\\(SS\\)\n8\n2\n2\n\n\n\n\n\n\n\n\\(n = 3\\)\n\\(k = 3\\)\n\\(N = 9\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)\n\n\n\n\n\\(SS_{total} = \\Sigma X^2 - \\dfrac{G^2}{N} = 90\\)\n\\(SS_{within} = \\Sigma SS_{within \\ each \\ treatment} = 12\\)\n\\(SS_{between \\ treatments} = \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N} = 78\\)\n\n\\(SS_{between \\ subjects} = \\Sigma \\dfrac{P^2}{k} - \\dfrac{G^2}{N} = 8.67\\)\n\\(SS_{error} = \\Sigma SS_{within}-SS_{between \\ subjects} = 3.33\\)"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-2",
     "href": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-2",
     "title": "PSYC BC1101",
     "section": "3. Calculate \\(F\\)-ratio",
-    "text": "3. Calculate \\(F\\)-ratio\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n\n\nPerson\n🍌\nBanana\n🍬\nCandy\n😐\nControl\n\nP\n\n\n\n\nA\n9\n3\n5\n17\n\n\nB\n11\n5\n6\n22\n\n\nC\n13\n4\n7\n24\n\n\n\\(M\\)\n11\n4\n6\n\n\n\n\\(T\\)\n33\n12\n18\n\n\n\n\\(SS\\)\n8\n2\n2\n\n\n\n\n\n\n\n\n\n\n\\(n = 3\\)\n\\(k = 3\\)\n\\(N = 9\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)\n\n\n\n\\(MS_{between \\ treatments} = \\dfrac{SS_{between \\ treatments}}{df_{between \\ treatments}} = 39\\)\n\\(MS_{error} = \\dfrac{SS_{error}}{df_{error}} = 0.83\\)"
+    "text": "3. Calculate \\(F\\)-ratio\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n\n\nPerson\n🍌\nBanana\n🍬\nCandy\n😐\nControl\n\nP\n\n\n\n\nA\n9\n3\n5\n17\n\n\nB\n11\n5\n6\n22\n\n\nC\n13\n4\n7\n24\n\n\n\\(M\\)\n11\n4\n6\n\n\n\n\\(T\\)\n33\n12\n18\n\n\n\n\\(SS\\)\n8\n2\n2\n\n\n\n\n\n\n\n\\(n = 3\\)\n\\(k = 3\\)\n\\(N = 9\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)\n\n\n\\(MS_{between \\ treatments} = \\dfrac{SS_{between \\ treatments}}{df_{between \\ treatments}} = 39\\)\n\\(MS_{error} = \\dfrac{SS_{error}}{df_{error}} = 0.83\\)"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-3",
     "href": "slides/17_related-samples-ANOVA.html#calculate-f-ratio-3",
     "title": "PSYC BC1101",
     "section": "3. Calculate \\(F\\)-ratio",
-    "text": "3. Calculate \\(F\\)-ratio\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n\n\nPerson\n🍌\nBanana\n🍬\nCandy\n😐\nControl\n\nP\n\n\n\n\nA\n9\n3\n5\n17\n\n\nB\n11\n5\n6\n22\n\n\nC\n13\n4\n7\n24\n\n\n\\(M\\)\n11\n4\n6\n\n\n\n\\(T\\)\n33\n12\n18\n\n\n\n\\(SS\\)\n8\n2\n2\n\n\n\n\n\n\n\n\n\n\n\\(n = 3\\)\n\\(k = 3\\)\n\\(N = 9\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)\n\n\n\n\\(F = \\dfrac{MS_{between \\ treatments}}{MS_{error}} = 46.8\\)"
+    "text": "3. Calculate \\(F\\)-ratio\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n\n\nPerson\n🍌\nBanana\n🍬\nCandy\n😐\nControl\n\nP\n\n\n\n\nA\n9\n3\n5\n17\n\n\nB\n11\n5\n6\n22\n\n\nC\n13\n4\n7\n24\n\n\n\\(M\\)\n11\n4\n6\n\n\n\n\\(T\\)\n33\n12\n18\n\n\n\n\\(SS\\)\n8\n2\n2\n\n\n\n\n\n\n\n\\(n = 3\\)\n\\(k = 3\\)\n\\(N = 9\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)\n\n\n\\(F = \\dfrac{MS_{between \\ treatments}}{MS_{error}} = 46.8\\)"
   },
   {
     "objectID": "slides/17_related-samples-ANOVA.html#report-results",
@@ -277,21 +277,21 @@
     "href": "slides/11_the-t-test.html#t-table",
     "title": "PSYC BC1101",
     "section": "\\(t\\) table",
-    "text": "\\(t\\) table\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProportion\nin 1 tail\n\n\n\n0.1\n\n\n\n0.05\n\n\n\n0.025\n\n\n\n0.01\n\n\n\n0.005\n\n\n\nProportion\nin 2 tails\n0.2\n0.1\n0.05\n0.02\n0.01\n\n\n\n\n1\n3.078\n6.314\n12.706\n31.821\n63.657\n\n\n2\n1.886\n2.920\n4.303\n6.965\n9.925\n\n\n3\n1.638\n2.353\n3.182\n4.541\n5.841\n\n\n4\n1.533\n2.132\n2.776\n3.747\n4.604\n\n\n5\n1.476\n2.015\n2.571\n3.365\n4.032\n\n\n6\n1.440\n1.943\n2.447\n3.143\n3.707\n\n\n7\n1.415\n1.895\n2.365\n2.998\n3.499\n\n\n\\(df\\)       8\n1.397\n1.860\n2.306\n2.896\n3.355\n\n\n9\n1.383\n1.833\n2.262\n2.821\n3.250\n\n\n10\n1.372\n1.812\n2.228\n2.764\n3.169\n\n\n11\n1.363\n1.796\n2.201\n2.718\n3.106\n\n\n12\n1.356\n1.782\n2.179\n2.681\n3.055\n\n\n13\n1.350\n1.771\n2.160\n2.650\n3.012\n\n\n14\n1.345\n1.761\n2.145\n2.624\n2.977\n\n\n15\n1.341\n1.753\n2.131\n2.602\n2.947\n\n\n...\n...\n...\n...\n...\n..."
+    "text": "\\(t\\) table\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProportion\nin 1 tail\n\n\n\n0.1\n\n\n\n0.05\n\n\n\n0.025\n\n\n\n0.01\n\n\n\n0.005\n\n\n\nProportion\nin 2 tails\n0.2\n0.1\n0.05\n0.02\n0.01\n\n\n\n\n1\n3.078\n6.314\n12.706\n31.821\n63.657\n\n\n2\n1.886\n2.920\n4.303\n6.965\n9.925\n\n\n3\n1.638\n2.353\n3.182\n4.541\n5.841\n\n\n4\n1.533\n2.132\n2.776\n3.747\n4.604\n\n\n5\n1.476\n2.015\n2.571\n3.365\n4.032\n\n\n6\n1.440\n1.943\n2.447\n3.143\n3.707\n\n\n7\n1.415\n1.895\n2.365\n2.998\n3.499\n\n\n\\(df\\)       8\n1.397\n1.860\n2.306\n2.896\n3.355\n\n\n9\n1.383\n1.833\n2.262\n2.821\n3.250\n\n\n10\n1.372\n1.812\n2.228\n2.764\n3.169\n\n\n11\n1.363\n1.796\n2.201\n2.718\n3.106\n\n\n12\n1.356\n1.782\n2.179\n2.681\n3.055\n\n\n13\n1.350\n1.771\n2.160\n2.650\n3.012\n\n\n14\n1.345\n1.761\n2.145\n2.624\n2.977\n\n\n15\n1.341\n1.753\n2.131\n2.602\n2.947\n\n\n...\n...\n...\n...\n...\n..."
   },
   {
     "objectID": "slides/11_the-t-test.html#t-table-r",
     "href": "slides/11_the-t-test.html#t-table-r",
     "title": "PSYC BC1101",
     "section": "\\(t\\) table & R",
-    "text": "\\(t\\) table & R\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProportion\nin 1 tail\n\n\n\n0.1\n\n\n\n0.05\n\n\n\n0.025\n\n\n\n0.01\n\n\n\n0.005\n\n\n\nProportion\nin 2 tails\n0.2\n0.1\n0.05\n0.02\n0.01\n\n\n\n\n1\n3.078\n6.314\n12.706\n31.821\n63.657\n\n\n2\n1.886\n2.920\n4.303\n6.965\n9.925\n\n\n3\n1.638\n2.353\n3.182\n4.541\n5.841\n\n\n4\n1.533\n2.132\n2.776\n3.747\n4.604\n\n\n5\n1.476\n2.015\n2.571\n3.365\n4.032\n\n\n6\n1.440\n1.943\n2.447\n3.143\n3.707\n\n\n7\n1.415\n1.895\n2.365\n2.998\n3.499\n\n\n\\(df\\)       8\n1.397\n1.860\n2.306\n2.896\n3.355\n\n\n9\n1.383\n1.833\n2.262\n2.821\n3.250\n\n\n10\n1.372\n1.812\n2.228\n2.764\n3.169\n\n\n11\n1.363\n1.796\n2.201\n2.718\n3.106\n\n\n12\n1.356\n1.782\n2.179\n2.681\n3.055\n\n\n13\n1.350\n1.771\n2.160\n2.650\n3.012\n\n\n14\n1.345\n1.761\n2.145\n2.624\n2.977\n\n\n15\n1.341\n1.753\n2.131\n2.602\n2.947\n\n\n...\n...\n...\n...\n...\n...\n\n\n\n\n\n\n\n\n\n\nUsing R\npt() and qt() instead of pnorm() and qnorm()\n\n\nqnorm(.05)\n\n[1] -1.644854\n\nqt(.05)\n\nError in qt(0.05): argument \"df\" is missing, with no default\n\nqt(.05, df = 5)\n\n[1] -2.015048\n\nqt(.05, df = 10)\n\n[1] -1.812461"
+    "text": "\\(t\\) table & R\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProportion\nin 1 tail\n\n\n\n0.1\n\n\n\n0.05\n\n\n\n0.025\n\n\n\n0.01\n\n\n\n0.005\n\n\n\nProportion\nin 2 tails\n0.2\n0.1\n0.05\n0.02\n0.01\n\n\n\n\n1\n3.078\n6.314\n12.706\n31.821\n63.657\n\n\n2\n1.886\n2.920\n4.303\n6.965\n9.925\n\n\n3\n1.638\n2.353\n3.182\n4.541\n5.841\n\n\n4\n1.533\n2.132\n2.776\n3.747\n4.604\n\n\n5\n1.476\n2.015\n2.571\n3.365\n4.032\n\n\n6\n1.440\n1.943\n2.447\n3.143\n3.707\n\n\n7\n1.415\n1.895\n2.365\n2.998\n3.499\n\n\n\\(df\\)       8\n1.397\n1.860\n2.306\n2.896\n3.355\n\n\n9\n1.383\n1.833\n2.262\n2.821\n3.250\n\n\n10\n1.372\n1.812\n2.228\n2.764\n3.169\n\n\n11\n1.363\n1.796\n2.201\n2.718\n3.106\n\n\n12\n1.356\n1.782\n2.179\n2.681\n3.055\n\n\n13\n1.350\n1.771\n2.160\n2.650\n3.012\n\n\n14\n1.345\n1.761\n2.145\n2.624\n2.977\n\n\n15\n1.341\n1.753\n2.131\n2.602\n2.947\n\n\n...\n...\n...\n...\n...\n...\n\n\n\n\n\n\n\nUsing R\npt() and qt() instead of pnorm() and qnorm()\n\n\nqnorm(.05)\n\n[1] -1.644854\n\nqt(.05)\n\nError in qt(0.05): argument \"df\" is missing, with no default\n\nqt(.05, df = 5)\n\n[1] -2.015048\n\nqt(.05, df = 10)\n\n[1] -1.812461"
   },
   {
     "objectID": "slides/11_the-t-test.html#class-reaction-times",
     "href": "slides/11_the-t-test.html#class-reaction-times",
     "title": "PSYC BC1101",
     "section": "Class reaction times",
-    "text": "Class reaction times\n\n\n [1] 327.0 335.0 359.0 430.0 275.4 272.0 350.0 343.2 278.0 354.0 303.0 328.0\n[13] 371.0 312.0 346.0 359.0    NA 259.0 313.6 258.0 244.0 374.4    NA 338.0\n[25] 290.0\n\n\n\n\n\n\n\n\n\n\nRT\n\\(f\\)\n\n\n\n\n240-259\n3\n\n\n260-279\n3\n\n\n280-299\n1\n\n\n300-319\n3\n\n\n320-339\n4\n\n\n340-359\n6\n\n\n360-379\n2\n\n\n380-399\n0\n\n\n400-419\n0\n\n\n420-439\n1"
+    "text": "Class reaction times\n\n\n [1] 327.0 335.0 359.0 430.0 275.4 272.0 350.0 343.2 278.0 354.0 303.0 328.0\n[13] 371.0 312.0 346.0 359.0    NA 259.0 313.6 258.0 244.0 374.4    NA 338.0\n[25] 290.0\n\n\n\n\n\n\n\n\n\nRT\n\\(f\\)\n\n\n\n\n240-259\n3\n\n\n260-279\n3\n\n\n280-299\n1\n\n\n300-319\n3\n\n\n320-339\n4\n\n\n340-359\n6\n\n\n360-379\n2\n\n\n380-399\n0\n\n\n400-419\n0\n\n\n420-439\n1"
   },
   {
     "objectID": "slides/11_the-t-test.html#hypothesis-test",
@@ -312,7 +312,7 @@
     "href": "slides/11_the-t-test.html#decision-criterion",
     "title": "PSYC BC1101",
     "section": "2. Decision criterion",
-    "text": "2. Decision criterion\n\n\n\nSpecify \\(\\alpha\\), identify critical region(s)\nFor \\(t\\), depends on \\(df\\) and thus \\(n\\)\nFor single-sample \\(t\\)-test, \\(df = n – 1\\)\n\n\n\n\n\n\n\n\n\n\\(df\\)\n\\(\\alpha = .05\\)\n\n\n\n\n1\n12.706\n\n\n2\n4.303\n\n\n3\n3.182\n\n\n4\n2.776\n\n\n5\n2.571\n\n\n...\n...\n\n\n20\n2.086\n\n\n21\n2.080\n\n\n22\n2.074\n\n\n23\n2.069\n\n\n24\n2.064\n\n\n25\n2.060\n\n\n26\n2.056\n\n\n27\n2.052\n\n\n28\n2.048\n\n\n29\n2.045\n\n\n30\n2.042\n\n\n...\n..."
+    "text": "2. Decision criterion\n\n\n\nSpecify \\(\\alpha\\), identify critical region(s)\nFor \\(t\\), depends on \\(df\\) and thus \\(n\\)\nFor single-sample \\(t\\)-test, \\(df = n – 1\\)\n\n\n\n\n\n\n\n\n\\(df\\)\n\\(\\alpha = .05\\)\n\n\n\n\n1\n12.706\n\n\n2\n4.303\n\n\n3\n3.182\n\n\n4\n2.776\n\n\n5\n2.571\n\n\n...\n...\n\n\n20\n2.086\n\n\n21\n2.080\n\n\n22\n2.074\n\n\n23\n2.069\n\n\n24\n2.064\n\n\n25\n2.060\n\n\n26\n2.056\n\n\n27\n2.052\n\n\n28\n2.048\n\n\n29\n2.045\n\n\n30\n2.042\n\n\n...\n..."
   },
   {
     "objectID": "slides/11_the-t-test.html#calculate-statistic",
@@ -340,14 +340,14 @@
     "href": "slides/16_ANOVA-pt-2.html#ss-and-df",
     "title": "PSYC BC1101",
     "section": "\\(SS\\) and \\(df\\)",
-    "text": "\\(SS\\) and \\(df\\)\n\n\n\\(SS_{total} = \\Sigma X^2 - \\dfrac{G^2}{N}\\) \\(df_{total} = N-1\\)\n\\(SS_{within} = \\Sigma SS_{each \\ treamtent}\\) \\(df_{within} = N-k\\)\n\\(SS_{between} = \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N}\\) \\(df_{between} = k-1\\)\n\n\n\n\n\n\n\nSymbol\nMeaning\n\n\n\n\n\\(k\\)\nNumber of treatment conditions\n\n\n\\(n_1, n_2...\\)\nNumber of scores in each treatment\n\n\n\\(N\\)\nTotal number of scores\n\n\n\\(T_1, T_2...\\)\nSum of scores \\((\\Sigma X)\\) for each treatment\n\n\n\\(G\\)\nGrand total of all scores in the study"
+    "text": "\\(SS\\) and \\(df\\)\n\n\n\\(SS_{total} = \\Sigma X^2 - \\dfrac{G^2}{N}\\) \\(df_{total} = N-1\\)\n\\(SS_{within} = \\Sigma SS_{each \\ treamtent}\\) \\(df_{within} = N-k\\)\n\\(SS_{between} = \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N}\\) \\(df_{between} = k-1\\)\n\n\n\n\n\n\nSymbol\nMeaning\n\n\n\n\n\\(k\\)\nNumber of treatment conditions\n\n\n\\(n_1, n_2...\\)\nNumber of scores in each treatment\n\n\n\\(N\\)\nTotal number of scores\n\n\n\\(T_1, T_2...\\)\nSum of scores \\((\\Sigma X)\\) for each treatment\n\n\n\\(G\\)\nGrand total of all scores in the study"
   },
   {
     "objectID": "slides/16_ANOVA-pt-2.html#summary-table",
     "href": "slides/16_ANOVA-pt-2.html#summary-table",
     "title": "PSYC BC1101",
     "section": "Summary table",
-    "text": "Summary table\n\n\n\n\n\n\nSource\n\\(SS\\)\n\\(df\\)\n\\(MS\\)\n\\(F\\)\n\n\n\n\nBetween treatments\n\n\n\n\n\n\nWithin treatments\n\n\n\n\n\n\nTotal"
+    "text": "Summary table\n\n\n\n\n\nSource\n\\(SS\\)\n\\(df\\)\n\\(MS\\)\n\\(F\\)\n\n\n\n\nBetween treatments\n\n\n\n\n\n\nWithin treatments\n\n\n\n\n\n\nTotal"
   },
   {
     "objectID": "slides/16_ANOVA-pt-2.html#step-1.-state-hypotheses",
@@ -368,14 +368,14 @@
     "href": "slides/16_ANOVA-pt-2.html#f-table",
     "title": "PSYC BC1101",
     "section": "\\(F\\) table",
-    "text": "\\(F\\) table\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\alpha = .05\\)\n\n\n\\(df_{numerator}\\)\n\n\n\n\\(df_{denominator}\\)\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\n1\n161.45\n199.50\n215.71\n224.58\n230.16\n233.99\n236.77\n238.88\n240.54\n241.88\n\n\n2\n18.51\n19.00\n19.16\n19.25\n19.30\n19.33\n19.35\n19.37\n19.39\n19.40\n\n\n3\n10.13\n9.55\n9.28\n9.12\n9.01\n8.94\n8.89\n8.85\n8.81\n8.79\n\n\n4\n7.71\n6.94\n6.59\n6.39\n6.26\n6.16\n6.09\n6.04\n6.00\n5.96\n\n\n5\n6.61\n5.79\n5.41\n5.19\n5.05\n4.95\n4.88\n4.82\n4.77\n4.74\n\n\n6\n5.99\n5.14\n4.76\n4.53\n4.39\n4.28\n4.21\n4.15\n4.10\n4.06\n\n\n7\n5.59\n4.74\n4.35\n4.12\n3.97\n3.87\n3.79\n3.73\n3.68\n3.64\n\n\n8\n5.32\n4.46\n4.07\n3.84\n3.69\n3.58\n3.50\n3.44\n3.39\n3.35\n\n\n9\n5.12\n4.26\n3.86\n3.63\n3.48\n3.37\n3.29\n3.23\n3.18\n3.14\n\n\n10\n4.96\n4.10\n3.71\n3.48\n3.33\n3.22\n3.13\n3.07\n3.02\n2.98\n\n\n\n\n\n\n\n\n\n\njStat = require(\"../js/jstat.js\")\n\naov_table = {\n\n  var df1, df2, critical\n  \n  function getDf2() {\n    try {\n      df2 = d3.select(this).select(\"td\")._groups[0][0].innerHTML;\n    } catch {} finally {update();}\n  }\n  \n    function getDf1() {\n    try {\n      df1 = d3.select(this)._groups[0][0].cellIndex\n      if (df1 &lt; 1) {df1 = 1}\n    } catch {} finally {update();}\n  }\n  \n  d3.select(\"#tbl\").selectAll(\"tr\").on(\"click\", getDf2)\n  d3.select(\"#tbl\").selectAll(\"td\").on(\"click\", getDf1)\n\n\n  const w = 1050\n  const h = 200\n  const margin = {right: 100, left: 100, bottom: 20}\n  \n  const svg = d3.select(\"#tbl\").append(\"svg\")\n    .attr(\"width\", w).attr(\"height\", h)\n    \n\n  const x = d3.scaleLinear()\n    .domain([0,4])\n    .range([margin.left, w - margin.right])\n  const y = d3.scaleLinear()\n    .domain([0,1])\n    .range([h - margin.bottom, 0])\n  const xAxis = d3.axisBottom(x)\n  const line = d3.line()\n    .x(d =&gt; x(d.value))\n    .y(d =&gt; y(d.density))\n  \n  function makeCurve(df1, df2) {\n    var arr = []\n    var values = jStat(0.01, 4, 210)[0]\n    for (var i = 0; i &lt; values.length; i++) {\n      arr.push({value: values[i],\n                density: jStat.centralF.pdf(values[i], Number(df1), Number(df2))})\n    }\n    return arr\n  }\n  \n  svg.append(\"g\").attr(\"transform\", `translate(0, ${h - margin.bottom})`)\n    .call(xAxis)\n    \n  const curve = svg.append(\"path\")\n    .attr(\"d\", line(makeCurve(10, 10)))\n    .style(\"fill\", \"none\")\n    .style(\"stroke\", \"black\")\n  \n  const df1Input = document.getElementById('df1-input')\n  df1Input.oninput = function() {\n    df1 = df1Input.value\n    update();\n  }\n  \n  const df2Input = document.getElementById('df2-input')\n  df2Input.oninput = function() {\n    df2 = df2Input.value\n    update();\n  }\n  \n  function update() {\n    d3.select(\"#df1-value\").text(df1)\n    d3.select(\"#df2-value\").text(df2)\n    critical = jStat.centralF.inv(0.95, Number(df1), Number(df2))\n    curve.attr(\"d\", line(makeCurve(Number(df1), Number(df2))))\n  }\n  \n\n\n  \n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(df_{numerator} = \\)1\n\\(df_{denominator} = \\)1"
+    "text": "\\(F\\) table\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\alpha = .05\\)\n\n\n\\(df_{numerator}\\)\n\n\n\n\\(df_{denominator}\\)\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\n1\n161.45\n199.50\n215.71\n224.58\n230.16\n233.99\n236.77\n238.88\n240.54\n241.88\n\n\n2\n18.51\n19.00\n19.16\n19.25\n19.30\n19.33\n19.35\n19.37\n19.39\n19.40\n\n\n3\n10.13\n9.55\n9.28\n9.12\n9.01\n8.94\n8.89\n8.85\n8.81\n8.79\n\n\n4\n7.71\n6.94\n6.59\n6.39\n6.26\n6.16\n6.09\n6.04\n6.00\n5.96\n\n\n5\n6.61\n5.79\n5.41\n5.19\n5.05\n4.95\n4.88\n4.82\n4.77\n4.74\n\n\n6\n5.99\n5.14\n4.76\n4.53\n4.39\n4.28\n4.21\n4.15\n4.10\n4.06\n\n\n7\n5.59\n4.74\n4.35\n4.12\n3.97\n3.87\n3.79\n3.73\n3.68\n3.64\n\n\n8\n5.32\n4.46\n4.07\n3.84\n3.69\n3.58\n3.50\n3.44\n3.39\n3.35\n\n\n9\n5.12\n4.26\n3.86\n3.63\n3.48\n3.37\n3.29\n3.23\n3.18\n3.14\n\n\n10\n4.96\n4.10\n3.71\n3.48\n3.33\n3.22\n3.13\n3.07\n3.02\n2.98\n\n\n\n\n\n\n\njStat = require(\"../js/jstat.js\")\n\naov_table = {\n\n  var df1, df2, critical\n  \n  function getDf2() {\n    try {\n      df2 = d3.select(this).select(\"td\")._groups[0][0].innerHTML;\n    } catch {} finally {update();}\n  }\n  \n    function getDf1() {\n    try {\n      df1 = d3.select(this)._groups[0][0].cellIndex\n      if (df1 &lt; 1) {df1 = 1}\n    } catch {} finally {update();}\n  }\n  \n  d3.select(\"#tbl\").selectAll(\"tr\").on(\"click\", getDf2)\n  d3.select(\"#tbl\").selectAll(\"td\").on(\"click\", getDf1)\n\n\n  const w = 1050\n  const h = 200\n  const margin = {right: 100, left: 100, bottom: 20}\n  \n  const svg = d3.select(\"#tbl\").append(\"svg\")\n    .attr(\"width\", w).attr(\"height\", h)\n    \n\n  const x = d3.scaleLinear()\n    .domain([0,4])\n    .range([margin.left, w - margin.right])\n  const y = d3.scaleLinear()\n    .domain([0,1])\n    .range([h - margin.bottom, 0])\n  const xAxis = d3.axisBottom(x)\n  const line = d3.line()\n    .x(d =&gt; x(d.value))\n    .y(d =&gt; y(d.density))\n  \n  function makeCurve(df1, df2) {\n    var arr = []\n    var values = jStat(0.01, 4, 210)[0]\n    for (var i = 0; i &lt; values.length; i++) {\n      arr.push({value: values[i],\n                density: jStat.centralF.pdf(values[i], Number(df1), Number(df2))})\n    }\n    return arr\n  }\n  \n  svg.append(\"g\").attr(\"transform\", `translate(0, ${h - margin.bottom})`)\n    .call(xAxis)\n    \n  const curve = svg.append(\"path\")\n    .attr(\"d\", line(makeCurve(10, 10)))\n    .style(\"fill\", \"none\")\n    .style(\"stroke\", \"black\")\n  \n  const df1Input = document.getElementById('df1-input')\n  df1Input.oninput = function() {\n    df1 = df1Input.value\n    update();\n  }\n  \n  const df2Input = document.getElementById('df2-input')\n  df2Input.oninput = function() {\n    df2 = df2Input.value\n    update();\n  }\n  \n  function update() {\n    d3.select(\"#df1-value\").text(df1)\n    d3.select(\"#df2-value\").text(df2)\n    critical = jStat.centralF.inv(0.95, Number(df1), Number(df2))\n    curve.attr(\"d\", line(makeCurve(Number(df1), Number(df2))))\n  }\n  \n\n\n  \n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(df_{numerator} = \\)1\n\\(df_{denominator} = \\)1"
   },
   {
     "objectID": "slides/16_ANOVA-pt-2.html#step-3.-calculate-test-statistic",
     "href": "slides/16_ANOVA-pt-2.html#step-3.-calculate-test-statistic",
     "title": "PSYC BC1101",
     "section": "Step 3. Calculate test statistic",
-    "text": "Step 3. Calculate test statistic\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n😐\nControl\n\n\n\n\n9\n3\n5\n\n\n11\n5\n6\n\n\n13\n4\n7\n\n\n\n\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\\(M = 6\\)\n\n\n\n\n\n\n\n\n\n\\(N = 9\\)\n\\(n = 3\\)\n\\(k = 3\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)"
+    "text": "Step 3. Calculate test statistic\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n😐\nControl\n\n\n\n\n9\n3\n5\n\n\n11\n5\n6\n\n\n13\n4\n7\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\\(M = 6\\)\n\n\n\n\n\n\n\\(N = 9\\)\n\\(n = 3\\)\n\\(k = 3\\)\n\\(G = 63\\)\n\\(\\Sigma X^2 = 531\\)"
   },
   {
     "objectID": "slides/16_ANOVA-pt-2.html#step-3.-ss-and-dfs",
@@ -410,21 +410,21 @@
     "href": "slides/16_ANOVA-pt-2.html#tukeys-hsd",
     "title": "PSYC BC1101",
     "section": "Tukey’s \\(HSD\\)",
-    "text": "Tukey’s \\(HSD\\)\n\n\nTukey’s Honestly Significant Difference\n\nMinimum difference between pairs of treatment means so that \\(p &lt; \\alpha_{experimentwise}\\)\n\\(q\\) is the Studentized Range statistic\nDepends on \\(\\alpha\\), \\(k\\), and \\(df\\) for denominator\nFind \\(q\\) in table or R\n\n\n\n\n\n\\[\\begin{align}\nHSD &= q \\sqrt{\\dfrac{MS_{within}}{n}} \\\\\n    &= 4.34 \\sqrt{\\dfrac{2}{3}} \\\\\n    &= 3.54\n\\end{align}\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(df\\)\n\n\nNumber of Conditions\n\n\n\n\n2\n3\n4\n5\n6\n\n\n\n\n5\n3.64\n4.60\n5.22\n5.67\n6.03\n\n\n6\n3.46\n4.34\n4.90\n5.30\n5.63\n\n\n7\n3.34\n4.16\n4.68\n5.06\n5.36\n\n\n8\n3.26\n4.04\n4.53\n4.89\n5.17\n\n\n9\n3.20\n3.95\n4.41\n4.76\n5.02\n\n\n10\n3.15\n3.88\n4.33\n4.65\n4.91"
+    "text": "Tukey’s \\(HSD\\)\n\n\nTukey’s Honestly Significant Difference\n\nMinimum difference between pairs of treatment means so that \\(p &lt; \\alpha_{experimentwise}\\)\n\\(q\\) is the Studentized Range statistic\nDepends on \\(\\alpha\\), \\(k\\), and \\(df\\) for denominator\nFind \\(q\\) in table or R\n\n\n\n\n\n\\[\\begin{align}\nHSD &= q \\sqrt{\\dfrac{MS_{within}}{n}} \\\\\n    &= 4.34 \\sqrt{\\dfrac{2}{3}} \\\\\n    &= 3.54\n\\end{align}\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(df\\)\n\n\nNumber of Conditions\n\n\n\n\n2\n3\n4\n5\n6\n\n\n\n\n5\n3.64\n4.60\n5.22\n5.67\n6.03\n\n\n6\n3.46\n4.34\n4.90\n5.30\n5.63\n\n\n7\n3.34\n4.16\n4.68\n5.06\n5.36\n\n\n8\n3.26\n4.04\n4.53\n4.89\n5.17\n\n\n9\n3.20\n3.95\n4.41\n4.76\n5.02\n\n\n10\n3.15\n3.88\n4.33\n4.65\n4.91"
   },
   {
     "objectID": "slides/16_ANOVA-pt-2.html#tukeys-hsd-1",
     "href": "slides/16_ANOVA-pt-2.html#tukeys-hsd-1",
     "title": "PSYC BC1101",
     "section": "Tukey’s \\(HSD\\)",
-    "text": "Tukey’s \\(HSD\\)\n\n\nTukey’s Honestly Significant Difference\n\nMinimum difference between pairs of treatment means so that \\(p &lt; \\alpha_{experimentwise}\\)\n\\(q\\) is the Studentized Range statistic\nDepends on \\(\\alpha\\), \\(k\\), and \\(df\\) for denominator\nFind \\(q\\) in table or R\n\n\n\n\n\n\\[\\begin{align}\nHSD &= q \\sqrt{\\dfrac{MS_{within}}{n}} \\\\\n    &= 4.34 \\sqrt{\\dfrac{2}{3}} \\\\\n    &= 3.54\n\\end{align}\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n😐\nControl\n\n\n\n\n9\n3\n5\n\n\n11\n5\n6\n\n\n13\n4\n7\n\n\n\n\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\\(M = 6\\)"
+    "text": "Tukey’s \\(HSD\\)\n\n\nTukey’s Honestly Significant Difference\n\nMinimum difference between pairs of treatment means so that \\(p &lt; \\alpha_{experimentwise}\\)\n\\(q\\) is the Studentized Range statistic\nDepends on \\(\\alpha\\), \\(k\\), and \\(df\\) for denominator\nFind \\(q\\) in table or R\n\n\n\n\n\n\\[\\begin{align}\nHSD &= q \\sqrt{\\dfrac{MS_{within}}{n}} \\\\\n    &= 4.34 \\sqrt{\\dfrac{2}{3}} \\\\\n    &= 3.54\n\\end{align}\\]\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n😐\nControl\n\n\n\n\n9\n3\n5\n\n\n11\n5\n6\n\n\n13\n4\n7\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\\(M = 6\\)"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#single-sample-t-test-design",
     "href": "slides/13_independent-samples-t-test.html#single-sample-t-test-design",
     "title": "PSYC BC1101",
     "section": "Single-sample \\(t\\)-test design",
-    "text": "Single-sample \\(t\\)-test design\n\nCompare sample against expected population mean based on logic/theory/scale design\nE.g. give everyone $10 💵\n\n\n\n\n\n\nWhat is your current level of happiness?\n  \n    \n    1. A lot less than usual\n    \n    \n    2. A little less than usual\n    \n    \n    3. About average\n    \n    \n    4. A little more than usual\n    \n    \n    5. A lot more than usual\n  \n\n\n\n\n\\(\\mu = 3\\)\n\n\n\n\nimport {likert} from \"../ojs/utils.qmd\";"
+    "text": "Single-sample \\(t\\)-test design\n\nCompare sample against expected population mean based on logic/theory/scale design\nE.g. give everyone $10 💵\n\n\n\n\n\n\nWhat is your current level of happiness?\n  \n    \n    1. A lot less than usual\n    \n    \n    2. A little less than usual\n    \n    \n    3. About average\n    \n    \n    4. A little more than usual\n    \n    \n    5. A lot more than usual\n  \n\n\n\n\n\\(\\mu = 3\\)\n\n\n\nimport {likert} from \"../ojs/utils.qmd\";"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#single-sample-t-test-logic",
@@ -438,7 +438,7 @@
     "href": "slides/13_independent-samples-t-test.html#independent-samples-design",
     "title": "PSYC BC1101",
     "section": "Independent-samples design",
-    "text": "Independent-samples design\nWhat if… give everyone $10\n\n\nGroup A:\nSpend this on yourself 💵\n\n\n\nWhat is your current level of happiness?\n  \n    \n    1. A lot less than usual\n    \n    \n    2. A little less than usual\n    \n    \n    3. About average\n    \n    \n    4. A little more than usual\n    \n    \n    5. A lot more than usual\n  \n\n\n\n\nGroup B:\nSpend this on someone else 💵\n\n\n\nWhat is your current level of happiness?\n  \n    \n    1. A lot less than usual\n    \n    \n    2. A little less than usual\n    \n    \n    3. About average\n    \n    \n    4. A little more than usual\n    \n    \n    5. A lot more than usual\n  \n\n\n\n\n\n\nDunn, E. W., Aknin, L. B., & Norton, M. I. (2014). Prosocial spending and happiness: Using money to benefit others pays off. Current Directions in Psychological Science, 23(1), 41-47. https://doi.org/10.1177/0963721413512503"
+    "text": "Independent-samples design\nWhat if… give everyone $10\n\n\nGroup A:\nSpend this on yourself 💵\n\n\n\nWhat is your current level of happiness?\n  \n    \n    1. A lot less than usual\n    \n    \n    2. A little less than usual\n    \n    \n    3. About average\n    \n    \n    4. A little more than usual\n    \n    \n    5. A lot more than usual\n  \n\n\n\n\nGroup B:\nSpend this on someone else 💵\n\n\n\nWhat is your current level of happiness?\n  \n    \n    1. A lot less than usual\n    \n    \n    2. A little less than usual\n    \n    \n    3. About average\n    \n    \n    4. A little more than usual\n    \n    \n    5. A lot more than usual\n  \n\n\n\n\n\nDunn, E. W., Aknin, L. B., & Norton, M. I. (2014). Prosocial spending and happiness: Using money to benefit others pays off. Current Directions in Psychological Science, 23(1), 41-47. https://doi.org/10.1177/0963721413512503"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#independent-samples-t-test-logic",
@@ -452,7 +452,7 @@
     "href": "slides/13_independent-samples-t-test.html#equations",
     "title": "PSYC BC1101",
     "section": "Equations",
-    "text": "Equations\n\n\n\nDenominator: \\(s_{M_1-M_2}\\)\n\nEstimated standard error of the mean difference\n\n\n\n\\(s_{M_1-M_2} = \\sqrt{\\dfrac{s_p^2}{n_1}+\\dfrac{s_p^2}{n_2}}\\)\n\n\n\n\n\n\\(s_p^2\\): Pooled variance\n\nWeighted average of two sample variances\n\n\n\n\\(\\begin{align} s_p^2 = &\\dfrac{SS_1+SS_2}{df_1+df_2} \\\\ \\\\ \\text{or... } &\\dfrac{df_1*s_1^2 + df_2*s_2^2}{df_1+df_2} \\\\ \\text{because... } s^2 = &\\dfrac{SS}{df} \\text{ so... } SS = df*s^2 \\end{align}\\)"
+    "text": "Equations\n\n\n\nDenominator: \\(s_{M_1-M_2}\\)\n\nEstimated standard error of the mean difference\n\n\n\n\\(s_{M_1-M_2} = \\sqrt{\\dfrac{s_p^2}{n_1}+\\dfrac{s_p^2}{n_2}}\\)\n\n\n\n\n\\(s_p^2\\): Pooled variance\n\nWeighted average of two sample variances\n\n\n\n\\(\\begin{align} s_p^2 = &\\dfrac{SS_1+SS_2}{df_1+df_2} \\\\ \\\\ \\text{or... } &\\dfrac{df_1*s_1^2 + df_2*s_2^2}{df_1+df_2} \\\\ \\text{because... } s^2 = &\\dfrac{SS}{df} \\text{ so... } SS = df*s^2 \\end{align}\\)"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#calculating-independent-samples-t",
@@ -473,14 +473,14 @@
     "href": "slides/13_independent-samples-t-test.html#step-2-define-critical-region",
     "title": "PSYC BC1101",
     "section": "Step 2: Define critical region",
-    "text": "Step 2: Define critical region\n\n\n\nDepends on \\(\\alpha\\) and \\(df\\)\n\n\\[\n\\begin{align}\ndf &= df_1 + df_2 \\\\\n&= (n_1 – 1) + (n_2 – 1) \\\\\n&= N - 2\n\\end{align}\n\\] \n\n\n\n\n\n\n\n\n\n\n\n\nProportion\nin 1 tail\n\n\n\n0.025\n\n\n\nProportion\nin 2 tails\n0.05\n\n\n\n\n1\n12.706\n\n\n2\n4.303\n\n\n3\n3.182\n\n\n4\n2.776\n\n\n5\n2.571\n\n\n6\n2.447\n\n\n7\n2.365\n\n\n\\(df\\)       8\n2.306\n\n\n9\n2.262\n\n\n10\n2.228\n\n\n11\n2.201\n\n\n12\n2.179\n\n\n13\n2.160\n\n\n14\n2.145\n\n\n15\n2.131\n\n\n...\n..."
+    "text": "Step 2: Define critical region\n\n\n\nDepends on \\(\\alpha\\) and \\(df\\)\n\n\\[\n\\begin{align}\ndf &= df_1 + df_2 \\\\\n&= (n_1 – 1) + (n_2 – 1) \\\\\n&= N - 2\n\\end{align}\n\\] \n\n\n\n\n\n\n\n\n\n\n\nProportion\nin 1 tail\n\n\n\n0.025\n\n\n\nProportion\nin 2 tails\n0.05\n\n\n\n\n1\n12.706\n\n\n2\n4.303\n\n\n3\n3.182\n\n\n4\n2.776\n\n\n5\n2.571\n\n\n6\n2.447\n\n\n7\n2.365\n\n\n\\(df\\)       8\n2.306\n\n\n9\n2.262\n\n\n10\n2.228\n\n\n11\n2.201\n\n\n12\n2.179\n\n\n13\n2.160\n\n\n14\n2.145\n\n\n15\n2.131\n\n\n...\n..."
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#step-3-calculate-t-statistic",
     "href": "slides/13_independent-samples-t-test.html#step-3-calculate-t-statistic",
     "title": "PSYC BC1101",
     "section": "Step 3: Calculate \\(t\\) statistic",
-    "text": "Step 3: Calculate \\(t\\) statistic\n\n\nSpend $10 on self\n\n\n\n\n\n\n\\(X\\)\n\\(X-M\\)\n\\((X-M)^2\\)\n\n\n\n\n1\n-2\n4\n\n\n5\n2\n4\n\n\n2\n-1\n1\n\n\n4\n1\n1\n\n\n3\n0\n0\n\n\n\\(M = 3.00\\)\n\n\\(SS = 10.00\\)\n\n\n\n\n\\(s^2 = 2.50\\)\n\n\n\n\n\\(s = 1.58\\)\n\n\n\n\n\n\n\n\n\nSpend $10 on other\n\n\n\n\n\n\n\\(X\\)\n\\(X-M\\)\n\\((X-M)^2\\)\n\n\n\n\n5\n1\n1\n\n\n5\n1\n1\n\n\n2\n-2\n4\n\n\n5\n1\n1\n\n\n3\n-1\n1\n\n\n\\(M = 4.00\\)\n\n\\(SS = 8.00\\)\n\n\n\n\n\\(s^2 = 2.00\\)\n\n\n\n\n\\(s = 1.41\\)"
+    "text": "Step 3: Calculate \\(t\\) statistic\n\n\nSpend $10 on self\n\n\n\n\n\n\\(X\\)\n\\(X-M\\)\n\\((X-M)^2\\)\n\n\n\n\n1\n-2\n4\n\n\n5\n2\n4\n\n\n2\n-1\n1\n\n\n4\n1\n1\n\n\n3\n0\n0\n\n\n\\(M = 3.00\\)\n\n\\(SS = 10.00\\)\n\n\n\n\n\\(s^2 = 2.50\\)\n\n\n\n\n\\(s = 1.58\\)\n\n\n\n\n\n\nSpend $10 on other\n\n\n\n\n\n\\(X\\)\n\\(X-M\\)\n\\((X-M)^2\\)\n\n\n\n\n5\n1\n1\n\n\n5\n1\n1\n\n\n2\n-2\n4\n\n\n5\n1\n1\n\n\n3\n-1\n1\n\n\n\\(M = 4.00\\)\n\n\\(SS = 8.00\\)\n\n\n\n\n\\(s^2 = 2.00\\)\n\n\n\n\n\\(s = 1.41\\)"
   },
   {
     "objectID": "slides/13_independent-samples-t-test.html#step-3-calculate-t-statistic-1",
@@ -557,7 +557,7 @@
     "href": "slides/12_the-t-test-pt-2.html#r2",
     "title": "PSYC BC1101",
     "section": "\\(r^2\\)",
-    "text": "\\(r^2\\)\n\n\n\nCalculate sum of squared deviations from sample \\(M\\)\n\nVariability excluding treatment effect\n\\(SS_{without \\ treatment}\\)\n\nCalculate \\(SS\\) from \\(H_0\\) \\(\\mu\\)\n\nThis is total variability\n\\(SS_{total}\\)\n\nSubstract \\(SS_{without \\ treatment}\\) from \\(SS_{total}\\) to find \\(SS_{treatment}\\)\n\nVariability attributable to treatment effect\n\n\n\n\n\n\n\n\n\\[\\begin{align}\nr^2 = \\dfrac{SS_{treatment}}{SS_{total}} &= \\dfrac{SS_{total} - SS_{without \\ treatment}}{SS_{total}} \\\\\n&= \\dfrac{10-6}{10} = 0.4\n\\end{align}\\]"
+    "text": "\\(r^2\\)\n\n\n\nCalculate sum of squared deviations from sample \\(M\\)\n\nVariability excluding treatment effect\n\\(SS_{without \\ treatment}\\)\n\nCalculate \\(SS\\) from \\(H_0\\) \\(\\mu\\)\n\nThis is total variability\n\\(SS_{total}\\)\n\nSubstract \\(SS_{without \\ treatment}\\) from \\(SS_{total}\\) to find \\(SS_{treatment}\\)\n\nVariability attributable to treatment effect\n\n\n\n\n\n\n\n\\[\\begin{align}\nr^2 = \\dfrac{SS_{treatment}}{SS_{total}} &= \\dfrac{SS_{total} - SS_{without \\ treatment}}{SS_{total}} \\\\\n&= \\dfrac{10-6}{10} = 0.4\n\\end{align}\\]"
   },
   {
     "objectID": "slides/12_the-t-test-pt-2.html#r2-1",
@@ -704,7 +704,7 @@
     "href": "slides/07_probability.html#example-rolling-2-dice",
     "title": "PSYC BC1101",
     "section": "Example: rolling 2 dice",
-    "text": "Example: rolling 2 dice\n\n\n\n\n\\(p(2) = 1/36 = .03\\)\n\\(p(12) = 1/36 = .03\\)\n\\(p(7) = 6/36 = .17\\)\n\n\n\n\n\n\n\n\nRoll\n1\n2\n3\n4\n5\n6\n\n\n\n\n1\n2\n3\n4\n5\n6\n7\n\n\n2\n3\n4\n5\n6\n7\n8\n\n\n3\n4\n5\n6\n7\n8\n9\n\n\n4\n5\n6\n7\n8\n9\n10\n\n\n5\n6\n7\n8\n9\n10\n11\n\n\n6\n7\n8\n9\n10\n11\n12"
+    "text": "Example: rolling 2 dice\n\n\n\n\n\\(p(2) = 1/36 = .03\\)\n\\(p(12) = 1/36 = .03\\)\n\\(p(7) = 6/36 = .17\\)\n\n\n\n\n\n\nRoll\n1\n2\n3\n4\n5\n6\n\n\n\n\n1\n2\n3\n4\n5\n6\n7\n\n\n2\n3\n4\n5\n6\n7\n8\n\n\n3\n4\n5\n6\n7\n8\n9\n\n\n4\n5\n6\n7\n8\n9\n10\n\n\n5\n6\n7\n8\n9\n10\n11\n\n\n6\n7\n8\n9\n10\n11\n12"
   },
   {
     "objectID": "slides/07_probability.html#sampling-marbles",
@@ -746,14 +746,14 @@
     "href": "slides/07_probability.html#unit-normal-table",
     "title": "PSYC BC1101",
     "section": "Unit Normal Table",
-    "text": "Unit Normal Table\n\n\n\n\n\n\n\n\n\\(z\\)\nProportion in body\nProportion in tail\nProportion between \\(M\\) and \\(z\\)\n\n\n\n\n0.0\n0.5000\n0.5000\n0.0000\n\n\n0.1\n0.5398\n0.4602\n0.0398\n\n\n0.2\n0.5793\n0.4207\n0.0793\n\n\n0.3\n0.6179\n0.3821\n0.1179\n\n\n0.4\n0.6554\n0.3446\n0.1554\n\n\n0.5\n0.6915\n0.3085\n0.1915\n\n\n0.6\n0.7257\n0.2743\n0.2257\n\n\n0.7\n0.7580\n0.2420\n0.2580\n\n\n0.8\n0.7881\n0.2119\n0.2881\n\n\n0.9\n0.8159\n0.1841\n0.3159\n\n\n1.0\n0.8413\n0.1587\n0.3413\n\n\n1.1\n0.8643\n0.1357\n0.3643\n\n\n1.2\n0.8849\n0.1151\n0.3849\n\n\n1.3\n0.9032\n0.0968\n0.4032\n\n\n1.4\n0.9192\n0.0808\n0.4192\n\n\n1.5\n0.9332\n0.0668\n0.4332\n\n\n1.6\n0.9452\n0.0548\n0.4452\n\n\n1.7\n0.9554\n0.0446\n0.4554\n\n\n1.8\n0.9641\n0.0359\n0.4641\n\n\n1.9\n0.9713\n0.0287\n0.4713\n\n\n2.0\n0.9772\n0.0228\n0.4772"
+    "text": "Unit Normal Table\n\n\n\n\n\n\n\n\\(z\\)\nProportion in body\nProportion in tail\nProportion between \\(M\\) and \\(z\\)\n\n\n\n\n0.0\n0.5000\n0.5000\n0.0000\n\n\n0.1\n0.5398\n0.4602\n0.0398\n\n\n0.2\n0.5793\n0.4207\n0.0793\n\n\n0.3\n0.6179\n0.3821\n0.1179\n\n\n0.4\n0.6554\n0.3446\n0.1554\n\n\n0.5\n0.6915\n0.3085\n0.1915\n\n\n0.6\n0.7257\n0.2743\n0.2257\n\n\n0.7\n0.7580\n0.2420\n0.2580\n\n\n0.8\n0.7881\n0.2119\n0.2881\n\n\n0.9\n0.8159\n0.1841\n0.3159\n\n\n1.0\n0.8413\n0.1587\n0.3413\n\n\n1.1\n0.8643\n0.1357\n0.3643\n\n\n1.2\n0.8849\n0.1151\n0.3849\n\n\n1.3\n0.9032\n0.0968\n0.4032\n\n\n1.4\n0.9192\n0.0808\n0.4192\n\n\n1.5\n0.9332\n0.0668\n0.4332\n\n\n1.6\n0.9452\n0.0548\n0.4452\n\n\n1.7\n0.9554\n0.0446\n0.4554\n\n\n1.8\n0.9641\n0.0359\n0.4641\n\n\n1.9\n0.9713\n0.0287\n0.4713\n\n\n2.0\n0.9772\n0.0228\n0.4772"
   },
   {
     "objectID": "slides/07_probability.html#unit-normal-table-1",
     "href": "slides/07_probability.html#unit-normal-table-1",
     "title": "PSYC BC1101",
     "section": "Unit Normal Table",
-    "text": "Unit Normal Table\n\n\n\n\n\n\n\n\n\\(z\\)\nProportion in body\nProportion in tail\nProportion between \\(M\\) and \\(z\\)\n\n\n\n\n0.0\n0.5000\n0.5000\n0.0000\n\n\n0.1\n0.5398\n0.4602\n0.0398\n\n\n0.2\n0.5793\n0.4207\n0.0793\n\n\n0.3\n0.6179\n0.3821\n0.1179\n\n\n0.4\n0.6554\n0.3446\n0.1554\n\n\n0.5\n0.6915\n0.3085\n0.1915\n\n\n0.6\n0.7257\n0.2743\n0.2257\n\n\n0.7\n0.7580\n0.2420\n0.2580\n\n\n0.8\n0.7881\n0.2119\n0.2881\n\n\n0.9\n0.8159\n0.1841\n0.3159\n\n\n1.0\n0.8413\n0.1587\n0.3413\n\n\n1.1\n0.8643\n0.1357\n0.3643\n\n\n1.2\n0.8849\n0.1151\n0.3849\n\n\n1.3\n0.9032\n0.0968\n0.4032\n\n\n1.4\n0.9192\n0.0808\n0.4192\n\n\n1.5\n0.9332\n0.0668\n0.4332\n\n\n1.6\n0.9452\n0.0548\n0.4452\n\n\n1.7\n0.9554\n0.0446\n0.4554\n\n\n1.8\n0.9641\n0.0359\n0.4641\n\n\n1.9\n0.9713\n0.0287\n0.4713\n\n\n2.0\n0.9772\n0.0228\n0.4772"
+    "text": "Unit Normal Table\n\n\n\n\n\n\n\n\\(z\\)\nProportion in body\nProportion in tail\nProportion between \\(M\\) and \\(z\\)\n\n\n\n\n0.0\n0.5000\n0.5000\n0.0000\n\n\n0.1\n0.5398\n0.4602\n0.0398\n\n\n0.2\n0.5793\n0.4207\n0.0793\n\n\n0.3\n0.6179\n0.3821\n0.1179\n\n\n0.4\n0.6554\n0.3446\n0.1554\n\n\n0.5\n0.6915\n0.3085\n0.1915\n\n\n0.6\n0.7257\n0.2743\n0.2257\n\n\n0.7\n0.7580\n0.2420\n0.2580\n\n\n0.8\n0.7881\n0.2119\n0.2881\n\n\n0.9\n0.8159\n0.1841\n0.3159\n\n\n1.0\n0.8413\n0.1587\n0.3413\n\n\n1.1\n0.8643\n0.1357\n0.3643\n\n\n1.2\n0.8849\n0.1151\n0.3849\n\n\n1.3\n0.9032\n0.0968\n0.4032\n\n\n1.4\n0.9192\n0.0808\n0.4192\n\n\n1.5\n0.9332\n0.0668\n0.4332\n\n\n1.6\n0.9452\n0.0548\n0.4452\n\n\n1.7\n0.9554\n0.0446\n0.4554\n\n\n1.8\n0.9641\n0.0359\n0.4641\n\n\n1.9\n0.9713\n0.0287\n0.4713\n\n\n2.0\n0.9772\n0.0228\n0.4772"
   },
   {
     "objectID": "slides/07_probability.html#using-r",
@@ -788,7 +788,7 @@
     "href": "slides/20_regression.html#correlation-example",
     "title": "PSYC BC1101",
     "section": "Correlation example",
-    "text": "Correlation example\n\n\n\n\n\n\n\n\nParticipant\nSleep duration\nTest score\n\n\n\n\nA\n4\n5\n\n\nB\n5\n8\n\n\nC\n7\n8\n\n\nD\n8\n10\n\n\nE\n11\n9\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}} = \\dfrac{15}{\\sqrt{30*14}} = 0.73\\)"
+    "text": "Correlation example\n\n\n\n\n\n\n\nParticipant\nSleep duration\nTest score\n\n\n\n\nA\n4\n5\n\n\nB\n5\n8\n\n\nC\n7\n8\n\n\nD\n8\n10\n\n\nE\n11\n9\n\n\n\n\n\n\n\n\n\n\n\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}} = \\dfrac{15}{\\sqrt{30*14}} = 0.73\\)"
   },
   {
     "objectID": "slides/20_regression.html#regression-1",
@@ -809,7 +809,7 @@
     "href": "slides/20_regression.html#straight-line-equation",
     "title": "PSYC BC1101",
     "section": "Straight line equation",
-    "text": "Straight line equation\n\n\\(Y = bX + a\\)\n\n\\(X\\) and \\(Y\\) are variables\n\\(a\\) (the intercept) and \\(b\\) (the slope) are constants\n\n\n\n\n\n\n\n\n\n\nCelcius\nFahrenheit\n\n\n\n\n0\n32\n\n\n10\n50\n\n\n20\n68\n\n\n30\n86\n\n\n40\n104\n\n\n50\n122\n\n\n\n\n\n\n\n\n\n\\(Y = 1.8 X + 32\\)"
+    "text": "Straight line equation\n\n\\(Y = bX + a\\)\n\n\\(X\\) and \\(Y\\) are variables\n\\(a\\) (the intercept) and \\(b\\) (the slope) are constants\n\n\n\n\n\n\n\n\n\nCelcius\nFahrenheit\n\n\n\n\n0\n32\n\n\n10\n50\n\n\n20\n68\n\n\n30\n86\n\n\n40\n104\n\n\n50\n122\n\n\n\n\n\n\n\\(Y = 1.8 X + 32\\)"
   },
   {
     "objectID": "slides/20_regression.html#regression-3",
@@ -837,21 +837,21 @@
     "href": "slides/20_regression.html#ss_residual",
     "title": "PSYC BC1101",
     "section": "\\(SS_{residual}\\)",
-    "text": "\\(SS_{residual}\\)\n\n\n\n\n\n\n\n\nSleep\nTest score\n\\(\\hat{Y}\\)\n\\(Y - \\hat{Y}\\)\n\\((Y - \\hat{Y})^2\\)\n\n\n\n\n4\n5\n6.5\n-1.5\n2.25\n\n\n5\n8\n7.0\n1.0\n1.00\n\n\n7\n8\n8.0\n0.0\n0.00\n\n\n8\n10\n8.5\n1.5\n2.25\n\n\n11\n9\n10.0\n-1.0\n1.00\n\n\n\n\n\n\n\n\n\n\\[\\begin{align}\nSS_{residual} &= \\Sigma(Y - \\hat{Y})^2 \\\\\n&= \\Sigma(2.25, 1, 0, 2.25, 1) \\\\\n&= 6.5\n\\end{align}\\]"
+    "text": "\\(SS_{residual}\\)\n\n\n\n\n\n\n\nSleep\nTest score\n\\(\\hat{Y}\\)\n\\(Y - \\hat{Y}\\)\n\\((Y - \\hat{Y})^2\\)\n\n\n\n\n4\n5\n6.5\n-1.5\n2.25\n\n\n5\n8\n7.0\n1.0\n1.00\n\n\n7\n8\n8.0\n0.0\n0.00\n\n\n8\n10\n8.5\n1.5\n2.25\n\n\n11\n9\n10.0\n-1.0\n1.00\n\n\n\n\n\n\n\\[\\begin{align}\nSS_{residual} &= \\Sigma(Y - \\hat{Y})^2 \\\\\n&= \\Sigma(2.25, 1, 0, 2.25, 1) \\\\\n&= 6.5\n\\end{align}\\]"
   },
   {
     "objectID": "slides/20_regression.html#standard-error-of-the-estimate",
     "href": "slides/20_regression.html#standard-error-of-the-estimate",
     "title": "PSYC BC1101",
     "section": "Standard error of the estimate",
-    "text": "Standard error of the estimate\n\n\n\n\\(s_{error}\\)\n\nQuantifies precision of regression estimate\nAverage distance of points from the regression line\nRemember… \\(s = \\sqrt{\\dfrac{SS}{df}}\\)\n\n\n\n\n\n\n\n\\(s_{error} = \\sqrt{\\dfrac{SS_{residual}}{df}}=\\sqrt{\\dfrac{6.5}{5-2}} = 1.47\\)"
+    "text": "Standard error of the estimate\n\n\n\n\\(s_{error}\\)\n\nQuantifies precision of regression estimate\nAverage distance of points from the regression line\nRemember… \\(s = \\sqrt{\\dfrac{SS}{df}}\\)\n\n\n\n\n\n\n\\(s_{error} = \\sqrt{\\dfrac{SS_{residual}}{df}}=\\sqrt{\\dfrac{6.5}{5-2}} = 1.47\\)"
   },
   {
     "objectID": "slides/20_regression.html#analysis-of-regression",
     "href": "slides/20_regression.html#analysis-of-regression",
     "title": "PSYC BC1101",
     "section": "Analysis of regression",
-    "text": "Analysis of regression\n\nPartitioning variance (like ANOVA)\n\n\n\n\n\\(SS_{Y}\\)\n\n\n\\(SS_{regression}\\)\n\n\n\\(SS_{residual}\\)\n\n\n\n\\(df_{Y}\\)\n\n\n\\(df_{regression}\\)\n\n\n\\(df_{residual}\\)\n\n\n\n\n\n\\(SS_Y = \\Sigma(Y - M_Y)^2\\)\n\\(SS_{residual} = \\Sigma(Y - \\hat{Y})^2\\)\n\\(SS_{regression} = SS_Y - SS_{residual}\\)\n\n\\(df_Y = n - 1\\)\n\\(df_{residual} = n - 2\\)\n\\(df_{regression} = 1\\)"
+    "text": "Analysis of regression\n\nPartitioning variance (like ANOVA)\n\n\n\n\n\\(SS_{Y}\\)\n\n\n\\(SS_{regression}\\)\n\n\n\\(SS_{residual}\\)\n\n\n\n\\(df_{Y}\\)\n\n\n\\(df_{regression}\\)\n\n\n\\(df_{residual}\\)\n\n\n\n\n\\(SS_Y = \\Sigma(Y - M_Y)^2\\)\n\\(SS_{residual} = \\Sigma(Y - \\hat{Y})^2\\)\n\\(SS_{regression} = SS_Y - SS_{residual}\\)\n\n\\(df_Y = n - 1\\)\n\\(df_{residual} = n - 2\\)\n\\(df_{regression} = 1\\)"
   },
   {
     "objectID": "slides/20_regression.html#analysis-of-regression-1",
@@ -872,28 +872,28 @@
     "href": "slides/20_regression.html#step-2.-critical-region",
     "title": "PSYC BC1101",
     "section": "Step 2. Critical region",
-    "text": "Step 2. Critical region\n\nNumerator: \\(df_{regression} = 1\\)\nDenominator: \\(df_{residual} = n-2\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\alpha = .05\\)\n\n\n\\(df_{numerator}\\)\n\n\n\n\\(df_{denominator}\\)\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\n1\n161.45\n199.50\n215.71\n224.58\n230.16\n233.99\n236.77\n238.88\n240.54\n241.88\n\n\n2\n18.51\n19.00\n19.16\n19.25\n19.30\n19.33\n19.35\n19.37\n19.39\n19.40\n\n\n3\n10.13\n9.55\n9.28\n9.12\n9.01\n8.94\n8.89\n8.85\n8.81\n8.79\n\n\n4\n7.71\n6.94\n6.59\n6.39\n6.26\n6.16\n6.09\n6.04\n6.00\n5.96\n\n\n5\n6.61\n5.79\n5.41\n5.19\n5.05\n4.95\n4.88\n4.82\n4.77\n4.74\n\n\n6\n5.99\n5.14\n4.76\n4.53\n4.39\n4.28\n4.21\n4.15\n4.10\n4.06\n\n\n7\n5.59\n4.74\n4.35\n4.12\n3.97\n3.87\n3.79\n3.73\n3.68\n3.64\n\n\n8\n5.32\n4.46\n4.07\n3.84\n3.69\n3.58\n3.50\n3.44\n3.39\n3.35\n\n\n9\n5.12\n4.26\n3.86\n3.63\n3.48\n3.37\n3.29\n3.23\n3.18\n3.14\n\n\n10\n4.96\n4.10\n3.71\n3.48\n3.33\n3.22\n3.13\n3.07\n3.02\n2.98"
+    "text": "Step 2. Critical region\n\nNumerator: \\(df_{regression} = 1\\)\nDenominator: \\(df_{residual} = n-2\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\alpha = .05\\)\n\n\n\\(df_{numerator}\\)\n\n\n\n\\(df_{denominator}\\)\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\n1\n161.45\n199.50\n215.71\n224.58\n230.16\n233.99\n236.77\n238.88\n240.54\n241.88\n\n\n2\n18.51\n19.00\n19.16\n19.25\n19.30\n19.33\n19.35\n19.37\n19.39\n19.40\n\n\n3\n10.13\n9.55\n9.28\n9.12\n9.01\n8.94\n8.89\n8.85\n8.81\n8.79\n\n\n4\n7.71\n6.94\n6.59\n6.39\n6.26\n6.16\n6.09\n6.04\n6.00\n5.96\n\n\n5\n6.61\n5.79\n5.41\n5.19\n5.05\n4.95\n4.88\n4.82\n4.77\n4.74\n\n\n6\n5.99\n5.14\n4.76\n4.53\n4.39\n4.28\n4.21\n4.15\n4.10\n4.06\n\n\n7\n5.59\n4.74\n4.35\n4.12\n3.97\n3.87\n3.79\n3.73\n3.68\n3.64\n\n\n8\n5.32\n4.46\n4.07\n3.84\n3.69\n3.58\n3.50\n3.44\n3.39\n3.35\n\n\n9\n5.12\n4.26\n3.86\n3.63\n3.48\n3.37\n3.29\n3.23\n3.18\n3.14\n\n\n10\n4.96\n4.10\n3.71\n3.48\n3.33\n3.22\n3.13\n3.07\n3.02\n2.98"
   },
   {
     "objectID": "slides/20_regression.html#step-3.-calculate",
     "href": "slides/20_regression.html#step-3.-calculate",
     "title": "PSYC BC1101",
     "section": "Step 3. Calculate",
-    "text": "Step 3. Calculate\n\n\n\n\n\n\n\n\n\n\n\nParticipant\nAmount of sleep\n(\\(X\\))\nTest score\n(\\(Y\\))\n\n\n\n\nA\n4\n5\n\n\nB\n5\n8\n\n\nC\n7\n8\n\n\nD\n8\n10\n\n\nE\n11\n9\n\n\n\n\n\n\n\n\n\n\n\\(SS_{Y} = 14\\)\n\\(SS_{residual} = 6.5\\)\n\\(SS_{regression} = 7.5\\)\n\n\\(df_Y = 4\\)\n\\(df_{residual} = 3\\)\n\\(df_{regression} = 1\\)"
+    "text": "Step 3. Calculate\n\n\n\n\n\n\n\n\n\n\nParticipant\nAmount of sleep\n(\\(X\\))\nTest score\n(\\(Y\\))\n\n\n\n\nA\n4\n5\n\n\nB\n5\n8\n\n\nC\n7\n8\n\n\nD\n8\n10\n\n\nE\n11\n9\n\n\n\n\n\n\n\n\\(SS_{Y} = 14\\)\n\\(SS_{residual} = 6.5\\)\n\\(SS_{regression} = 7.5\\)\n\n\\(df_Y = 4\\)\n\\(df_{residual} = 3\\)\n\\(df_{regression} = 1\\)"
   },
   {
     "objectID": "slides/20_regression.html#step-3.-calculate-1",
     "href": "slides/20_regression.html#step-3.-calculate-1",
     "title": "PSYC BC1101",
     "section": "Step 3. Calculate",
-    "text": "Step 3. Calculate\n\n\n\n\n\n\n\n\n\n\n\nParticipant\nAmount of sleep\n(\\(X\\))\nTest score\n(\\(Y\\))\n\n\n\n\nA\n4\n5\n\n\nB\n5\n8\n\n\nC\n7\n8\n\n\nD\n8\n10\n\n\nE\n11\n9\n\n\n\n\n\n\n\n\n\n\\(MS_{regression} = \\dfrac{SS_{regression}}{df_{regression}} = \\dfrac{7.5}{1} = 7.5\\)\n\\(MS_{residual} = \\dfrac{SS_{residual}}{df_{residual}} = \\dfrac{6.5}{3} = 2.17\\)"
+    "text": "Step 3. Calculate\n\n\n\n\n\n\n\n\n\n\nParticipant\nAmount of sleep\n(\\(X\\))\nTest score\n(\\(Y\\))\n\n\n\n\nA\n4\n5\n\n\nB\n5\n8\n\n\nC\n7\n8\n\n\nD\n8\n10\n\n\nE\n11\n9\n\n\n\n\n\n\n\\(MS_{regression} = \\dfrac{SS_{regression}}{df_{regression}} = \\dfrac{7.5}{1} = 7.5\\)\n\\(MS_{residual} = \\dfrac{SS_{residual}}{df_{residual}} = \\dfrac{6.5}{3} = 2.17\\)"
   },
   {
     "objectID": "slides/20_regression.html#step-3.-calculate-2",
     "href": "slides/20_regression.html#step-3.-calculate-2",
     "title": "PSYC BC1101",
     "section": "Step 3. Calculate",
-    "text": "Step 3. Calculate\n\n\n\n\n\n\n\n\n\n\n\nParticipant\nAmount of sleep\n(\\(X\\))\nTest score\n(\\(Y\\))\n\n\n\n\nA\n4\n5\n\n\nB\n5\n8\n\n\nC\n7\n8\n\n\nD\n8\n10\n\n\nE\n11\n9\n\n\n\n\n\n\n\n\n\n\\(F = \\dfrac{MS_{regression}}{MS_{residual}} = \\dfrac{7.5}{2.17} = 3.46\\)"
+    "text": "Step 3. Calculate\n\n\n\n\n\n\n\n\n\n\nParticipant\nAmount of sleep\n(\\(X\\))\nTest score\n(\\(Y\\))\n\n\n\n\nA\n4\n5\n\n\nB\n5\n8\n\n\nC\n7\n8\n\n\nD\n8\n10\n\n\nE\n11\n9\n\n\n\n\n\n\n\\(F = \\dfrac{MS_{regression}}{MS_{residual}} = \\dfrac{7.5}{2.17} = 3.46\\)"
   },
   {
     "objectID": "slides/20_regression.html#step-4.-make-decision",
@@ -921,63 +921,63 @@
     "href": "slides/15_ANOVA.html#comparing-groups-t-statistic",
     "title": "PSYC BC1101",
     "section": "Comparing groups: \\(t\\) statistic",
-    "text": "Comparing groups: \\(t\\) statistic\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n\n\n\n\n9\n3\n\n\n11\n5\n\n\n13\n4\n\n\n\n\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\n\n\n\n\n\n\n\n\n\\(t = \\dfrac{ \\textrm{difference between groups}} {\\textrm{difference expected due to chance}}\\)\n\\[\\begin{align}\nt &= \\dfrac{(M_1-M_2)-(\\mu_1-\\mu_2)}{s_{(M_1-M_2)}} \\\\\n&= \\dfrac{11 - 4}{1.29} \\\\\n&= 5.42\n\\end{align}\\]"
+    "text": "Comparing groups: \\(t\\) statistic\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n\n\n\n\n9\n3\n\n\n11\n5\n\n\n13\n4\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\n\n\n\n\n\n\\(t = \\dfrac{ \\textrm{difference between groups}} {\\textrm{difference expected due to chance}}\\)\n\\[\\begin{align}\nt &= \\dfrac{(M_1-M_2)-(\\mu_1-\\mu_2)}{s_{(M_1-M_2)}} \\\\\n&= \\dfrac{11 - 4}{1.29} \\\\\n&= 5.42\n\\end{align}\\]"
   },
   {
     "objectID": "slides/15_ANOVA.html#comparing-groups-t-statistic-1",
     "href": "slides/15_ANOVA.html#comparing-groups-t-statistic-1",
     "title": "PSYC BC1101",
     "section": "Comparing groups: \\(t\\) statistic",
-    "text": "Comparing groups: \\(t\\) statistic\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n\n\n\n\n9\n3\n\n\n11\n5\n\n\n13\n4\n\n\n\n\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\n\n\n\n\n\n\n\n\\(t = 5.42\\)\n\n\n\\(t = \\dfrac{\\text{difference between groups}}{\\text{difference expected due to chance}}\\)\nis analogous to…\n\\(\\dfrac{treatment \\cdot chance}{chance}\\)"
+    "text": "Comparing groups: \\(t\\) statistic\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n\n\n\n\n9\n3\n\n\n11\n5\n\n\n13\n4\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\n\n\n\n\n\\(t = 5.42\\)\n\n\n\\(t = \\dfrac{\\text{difference between groups}}{\\text{difference expected due to chance}}\\)\nis analogous to…\n\\(\\dfrac{treatment \\cdot chance}{chance}\\)"
   },
   {
     "objectID": "slides/15_ANOVA.html#comparing-groups-variances",
     "href": "slides/15_ANOVA.html#comparing-groups-variances",
     "title": "PSYC BC1101",
     "section": "Comparing groups: Variances",
-    "text": "Comparing groups: Variances\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n\n\n\n\n9\n3\n\n\n11\n5\n\n\n13\n4\n\n\n\n\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\n\n\n\n\n\n\n\n\\(t = 5.42\\)\n\n\n\nTotal\nvariability in data\n\n\nVariability\nbetween groups\n\n\n\nChance\nTreatment effect\n\n\n\nVariability\nwithin groups\n\n\n\nChance\n\n\n\n\n\\(\\dfrac{\\text{variability between groups}}{\\text{variability within groups}}\\)\nis analogous to…\n\\(\\dfrac{treatment \\cdot chance}{chance}\\)"
+    "text": "Comparing groups: Variances\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n\n\n\n\n9\n3\n\n\n11\n5\n\n\n13\n4\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\n\n\n\n\n\\(t = 5.42\\)\n\n\n\nTotal\nvariability in data\n\n\nVariability\nbetween groups\n\n\n\nChance\nTreatment effect\n\n\n\nVariability\nwithin groups\n\n\n\nChance\n\n\n\n\n\\(\\dfrac{\\text{variability between groups}}{\\text{variability within groups}}\\)\nis analogous to…\n\\(\\dfrac{treatment \\cdot chance}{chance}\\)"
   },
   {
     "objectID": "slides/15_ANOVA.html#total-variance",
     "href": "slides/15_ANOVA.html#total-variance",
     "title": "PSYC BC1101",
     "section": "Total variance",
-    "text": "Total variance\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n\n\n\n\n9\n3\n\n\n11\n5\n\n\n13\n4\n\n\n\n\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\n\n\n\n\n\n\n\n\\(t = 5.42\\)\n\n\nTotal variance\n\n\\(SS_{total}\\)\nFind sum of squared deviations of all scores (ignoring different groups) from grand mean (mean of all scores)\n\\(df_{total} = N - 1\\)\n\n\n\\[\\begin{align}\n\\text{Variance}_{total} &= \\dfrac{SS_{total}}{df_{total}} \\\\\n&= \\dfrac{83.5}{5} \\\\\n&= 16.7\n\\end{align}\\]"
+    "text": "Total variance\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n\n\n\n\n9\n3\n\n\n11\n5\n\n\n13\n4\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\n\n\n\n\n\\(t = 5.42\\)\n\n\nTotal variance\n\n\\(SS_{total}\\)\nFind sum of squared deviations of all scores (ignoring different groups) from grand mean (mean of all scores)\n\\(df_{total} = N - 1\\)\n\n\n\\[\\begin{align}\n\\text{Variance}_{total} &= \\dfrac{SS_{total}}{df_{total}} \\\\\n&= \\dfrac{83.5}{5} \\\\\n&= 16.7\n\\end{align}\\]"
   },
   {
     "objectID": "slides/15_ANOVA.html#within-groups-variance",
     "href": "slides/15_ANOVA.html#within-groups-variance",
     "title": "PSYC BC1101",
     "section": "Within groups variance",
-    "text": "Within groups variance\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n\n\n\n\n9\n3\n\n\n11\n5\n\n\n13\n4\n\n\n\n\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\n\n\n\n\n\n\n\n\\(t = 5.42\\)\n\\(\\text{Variance}_{total} = 16.7\\)\n\n\nVariance within groups\n\n\\(SS_{within} = \\Sigma SS_{each \\ treatment}\\)\nFind \\(SS\\) for each individual group from respective group mean\nThen add \\(SS\\) values\n\\(df_{within} = \\Sigma df_{each \\ treatment}\\)\n\n\n\\[\\begin{align}\n\\text{Variance}_{within} &= \\dfrac{SS_{within}}{df_{within}} \\\\\n&= \\dfrac{8 + 2}{2 + 2} \\\\\n&= 2.5\n\\end{align}\\]"
+    "text": "Within groups variance\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n\n\n\n\n9\n3\n\n\n11\n5\n\n\n13\n4\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\n\n\n\n\n\\(t = 5.42\\)\n\\(\\text{Variance}_{total} = 16.7\\)\n\n\nVariance within groups\n\n\\(SS_{within} = \\Sigma SS_{each \\ treatment}\\)\nFind \\(SS\\) for each individual group from respective group mean\nThen add \\(SS\\) values\n\\(df_{within} = \\Sigma df_{each \\ treatment}\\)\n\n\n\\[\\begin{align}\n\\text{Variance}_{within} &= \\dfrac{SS_{within}}{df_{within}} \\\\\n&= \\dfrac{8 + 2}{2 + 2} \\\\\n&= 2.5\n\\end{align}\\]"
   },
   {
     "objectID": "slides/15_ANOVA.html#between-groups-variance",
     "href": "slides/15_ANOVA.html#between-groups-variance",
     "title": "PSYC BC1101",
     "section": "Between groups variance",
-    "text": "Between groups variance\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n\n\n\n\n9\n3\n\n\n11\n5\n\n\n13\n4\n\n\n\n\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\n\n\n\n\n\n\n\n\\(t = 5.42\\)\n\\(\\text{Variance}_{total} = 16.7\\)\n\\(\\text{Variance}_{within} = 2.5\\)\n\n\nTotal variability in data = Var between groups + Var within groups\nTherefore…\n\n\n\\(SS_{between} = SS_{total} – SS_{within}\\)\n\\(df_{between} = df_{total} – df_{within}\\)\n\\[\\begin{align}\n\\text{Variance}_{between} &= \\dfrac{SS_{between}}{df_{between}} \\\\\n&= \\dfrac{83.5 - 10}{5-4} \\\\\n&= 73.5\n\\end{align}\\]"
+    "text": "Between groups variance\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n\n\n\n\n9\n3\n\n\n11\n5\n\n\n13\n4\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\n\n\n\n\n\\(t = 5.42\\)\n\\(\\text{Variance}_{total} = 16.7\\)\n\\(\\text{Variance}_{within} = 2.5\\)\n\n\nTotal variability in data = Var between groups + Var within groups\nTherefore…\n\n\n\\(SS_{between} = SS_{total} – SS_{within}\\)\n\\(df_{between} = df_{total} – df_{within}\\)\n\\[\\begin{align}\n\\text{Variance}_{between} &= \\dfrac{SS_{between}}{df_{between}} \\\\\n&= \\dfrac{83.5 - 10}{5-4} \\\\\n&= 73.5\n\\end{align}\\]"
   },
   {
     "objectID": "slides/15_ANOVA.html#ratio-of-variances",
     "href": "slides/15_ANOVA.html#ratio-of-variances",
     "title": "PSYC BC1101",
     "section": "Ratio of variances",
-    "text": "Ratio of variances\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n\n\n\n\n9\n3\n\n\n11\n5\n\n\n13\n4\n\n\n\n\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\n\n\n\n\n\n\n\n\\(t = 5.42\\)\n\\(\\text{Variance}_{total} = 16.7\\)\n\\(\\text{Variance}_{within} = 2.5\\) \\(\\text{Variance}_{between} = 73.5\\)\n\n\n\nTotal\nvariability in data\n\n\nVariability\nbetween groups\n\n\n\nChance\nTreatment effect\n\n\n\nVariability\nwithin groups\n\n\n\nChance\n\n\n\n\\(\\dfrac{\\text{variance between groups}}{\\text{variance within groups}}\\)\n\\(\\dfrac{73.5}{2.5} = 29.4\\)"
+    "text": "Ratio of variances\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n\n\n\n\n9\n3\n\n\n11\n5\n\n\n13\n4\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\n\n\n\n\n\\(t = 5.42\\)\n\\(\\text{Variance}_{total} = 16.7\\)\n\\(\\text{Variance}_{within} = 2.5\\) \\(\\text{Variance}_{between} = 73.5\\)\n\n\n\nTotal\nvariability in data\n\n\nVariability\nbetween groups\n\n\n\nChance\nTreatment effect\n\n\n\nVariability\nwithin groups\n\n\n\nChance\n\n\n\n\\(\\dfrac{\\text{variance between groups}}{\\text{variance within groups}}\\)\n\\(\\dfrac{73.5}{2.5} = 29.4\\)"
   },
   {
     "objectID": "slides/15_ANOVA.html#the-f-ratio",
     "href": "slides/15_ANOVA.html#the-f-ratio",
     "title": "PSYC BC1101",
     "section": "The \\(F\\) ratio",
-    "text": "The \\(F\\) ratio\n\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n\n\n\n\n9\n3\n\n\n11\n5\n\n\n13\n4\n\n\n\n\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\n\n\n\n\n\n\n\n\\(t = 5.42\\)\n\\(F = 29.4\\)\n\n\n\nTotal\nvariability in data\n\n\nVariability\nbetween groups\n\n\n\nChance\nTreatment effect\n\n\n\nVariability\nwithin groups\n\n\n\nChance\n\n\n\n\n\\(\\dfrac{\\text{variance between groups}}{\\text{variance within groups}}\\)\nis analogous to…\n\\(\\dfrac{treatment \\cdot chance}{chance}\\)"
+    "text": "The \\(F\\) ratio\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n\n\n\n\n9\n3\n\n\n11\n5\n\n\n13\n4\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\n\n\n\n\n\\(t = 5.42\\)\n\\(F = 29.4\\)\n\n\n\nTotal\nvariability in data\n\n\nVariability\nbetween groups\n\n\n\nChance\nTreatment effect\n\n\n\nVariability\nwithin groups\n\n\n\nChance\n\n\n\n\n\\(\\dfrac{\\text{variance between groups}}{\\text{variance within groups}}\\)\nis analogous to…\n\\(\\dfrac{treatment \\cdot chance}{chance}\\)"
   },
   {
     "objectID": "slides/15_ANOVA.html#more-complicated-design",
     "href": "slides/15_ANOVA.html#more-complicated-design",
     "title": "PSYC BC1101",
     "section": "More complicated design",
-    "text": "More complicated design\n\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n😐\nControl\n\n\n\n\n9\n3\n5\n\n\n11\n5\n6\n\n\n13\n4\n7\n\n\n\n\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\\(M = 6\\)\n\n\n\n\n\n\n\n\n\nDifferences among 3 means\n\nDid banana improve scores? Candy bar harm scores? Both? Neither?"
+    "text": "More complicated design\n\n\n\n\n\n\n\n\n\n\n\nManipulation\n\n\n\n🍌\nBanana\n🍬\nCandy\n😐\nControl\n\n\n\n\n9\n3\n5\n\n\n11\n5\n6\n\n\n13\n4\n7\n\n\n\n\n\n\n\n\n\\(M = 11\\)\n\\(M = 4\\)\n\\(M = 6\\)\n\n\n\n\n\n\nDifferences among 3 means\n\nDid banana improve scores? Candy bar harm scores? Both? Neither?"
   },
   {
     "objectID": "slides/15_ANOVA.html#limitation-of-t-test",
@@ -998,28 +998,28 @@
     "href": "index.html",
     "title": "PSYC BC1101 STATISTICS",
     "section": "",
-    "text": "Professor: Dr. Rob Brotherton (rbrother@barnard.edu)\nOffice Hours: Wed 1-2PM, 415M Milbank\nLecture time: Tu/Th 10:10-11:25AM\nLecture venue: 328 Milbank Hall\nSection 001 recitation: Wed 9:10-11:00AM, 222 Milbank Hall\nSection 002 recitation: Wed 11:10AM-1:00PM, 222 Milbank Hall"
+    "text": "Professor: Dr. Rob Brotherton (rbrother@barnard.edu)\nOffice Hours: Monday, 9-10AM, 415M Milbank\nLecture time: Tu/Th 10:10-11:25AM\nLecture venue: TBC\nSection 001 recitation: Wed 10:10-12:00PM, TBC\nSection 002 recitation: Wed 12:10-2:00PM, TBC"
   },
   {
     "objectID": "index.html#course-overview",
     "href": "index.html#course-overview",
     "title": "PSYC BC1101 STATISTICS",
     "section": "Course Overview",
-    "text": "Course Overview\nThis course, required for the psychology major, provides an introduction to statistical methods commonly used in psychological research. Topics include measures of central tendency and variability, probability and sampling, confidence intervals and hypothesis testing, t-test and analysis of variance, correlation and regression. In addition to learning the conceptual and mathematical underpinnings of these techniques, you will learn to calculate and interpret statistics with reference to real-world contexts and research questions typical in psychological research. The course includes recitation meetings that provide instruction in the analysis of psychological data using the R statistical software package commonly used by behavioral science researchers.\nThe course is designed to fulfill these goals:\n\nUnderstand what statistics are, and why and when they are needed\nTranslate observations about the world into statistical statements and questions\nLearn how statistical methods are used to test psychological hypotheses\nUse statistical software (R) to describe, visualize, analyze, and report data"
+    "text": "Course Overview\nThis course, required for the psychology major, provides an introduction to statistical methods commonly used in psychological research. Topics include measures of central tendency and variability, probability and sampling, confidence intervals and hypothesis testing, t-test and analysis of variance, correlation and regression. In addition to learning the conceptual and mathematical underpinnings of these techniques, you will learn to calculate and interpret statistics with reference to real-world contexts and research questions typical in psychological research. The course includes recitation meetings that provide instruction in the analysis of psychological data using the R statistical coding language commonly used by behavioral science researchers.\nThe course is designed to fulfill these goals:\n\nUnderstand what statistics are, and why and when they are needed\nTranslate observations about the world into statistical statements and questions\nLearn how statistical methods are used to test psychological hypotheses\nUse statistical software (R) to describe, visualize, analyze, and report data"
   },
   {
     "objectID": "index.html#class-schedule",
     "href": "index.html#class-schedule",
     "title": "PSYC BC1101 STATISTICS",
     "section": "Class Schedule",
-    "text": "Class Schedule\n\n\n\n\n\n\nDate\nLecture / Recitation Topic\n\n\n\n\n1/21/25\n1: Course overview\n\n\n1/22/25\n(no recitation first week)\n\n\n1/23/25\n2: Variables & measurement\n\n\n1/28/25\n3: Frequency\n\n\n1/29/25\nProblem Set 1\n\n\n1/30/25\n4: Central tendency\n\n\n2/4/25\n5: Variability\n\n\n2/5/25\nProblem Set 2\n\n\n2/6/25\n6: z-scores\n\n\n2/11/25\n7: Probability\n\n\n2/12/25\nProblem Set 3\n\n\n2/13/25\n8: Sampling\n\n\n2/18/25\nReview\n\n\n2/19/25\n-\n\n\n2/20/25\nEXAM 1\n\n\n2/25/25\n9: Hypothesis testing\n\n\n2/26/25\nProblem Set 4\n\n\n2/27/25\n10: Hypothesis testing continued\n\n\n3/4/25\n11: the t-test\n\n\n3/5/25\nProblem Set 5\n\n\n3/6/25\n12: t-test continued\n\n\n3/11/25\n13: t-test: Independent samples\n\n\n3/12/25\nProblem Set 6\n\n\n3/13/25\n14: t-test: Related samples\n\n\n3/18/25\nSpring Break\n\n\n3/19/25\n-\n\n\n3/20/25\nSpring Break\n\n\n3/25/25\nReview\n\n\n3/26/25\n-\n\n\n3/27/25\nEXAM 2\n\n\n4/1/25\n15: ANOVA\n\n\n4/2/25\nProblem Set 7\n\n\n4/3/25\n16: ANOVA continued\n\n\n4/8/25\n17: ANOVA: Repeated measures\n\n\n4/9/25\nProblem Set 8\n\n\n4/10/25\n18: ANOVA: 2-factor ANOVA\n\n\n4/15/25\n19: Correlation\n\n\n4/16/25\nProblem Set 9\n\n\n4/17/25\n20: Regression\n\n\n4/22/25\nPutting it all together\n\n\n4/23/25\nProblem Set 10\n\n\n4/24/25\nPutting it all together\n\n\n4/29/25\nReview\n\n\n4/30/25\n-\n\n\n5/1/25\nEXAM 3"
+    "text": "Class Schedule\n\n\n\n\n\nDate\nLecture / Recitation Topic\n\n\n\n\n9/2/25\n1: Course overview\n\n\n9/3/25\n(no recitation first week)\n\n\n9/4/25\n2: Variables & measurement\n\n\n9/9/25\n3: Frequency\n\n\n9/10/25\nProblem Set 1\n\n\n9/11/25\n4: Central tendency\n\n\n9/16/25\n5: Variability\n\n\n9/17/25\nProblem Set 2\n\n\n9/18/25\n6: z-scores\n\n\n9/23/25\n7: Probability\n\n\n9/24/25\nProblem Set 3\n\n\n9/25/25\n8: Sampling\n\n\n9/30/25\nReview\n\n\n10/1/25\n-\n\n\n10/2/25\nEXAM 1\n\n\n10/7/25\n9: Hypothesis testing\n\n\n10/8/25\nProblem Set 4\n\n\n10/9/25\n10: Hypothesis testing continued\n\n\n10/14/25\n11: the t-test\n\n\n10/15/25\nProblem Set 5\n\n\n10/16/25\n12: t-test continued\n\n\n10/21/25\n13: t-test: Independent samples\n\n\n10/22/25\nProblem Set 6\n\n\n10/23/25\n14: t-test: Related samples\n\n\n10/28/25\nReview\n\n\n10/29/25\n-\n\n\n10/30/25\nEXAM 2\n\n\n11/4/25\n(no classes)\n\n\n11/5/25\nProblem Set 7\n\n\n11/6/25\n15: ANOVA\n\n\n11/11/25\n16: ANOVA continued\n\n\n11/12/25\nProblem Set 8\n\n\n11/13/25\n17: ANOVA: Repeated measures\n\n\n11/18/25\n18: ANOVA: 2-factor ANOVA\n\n\n11/19/25\nProblem Set 9\n\n\n11/20/25\n19: Correlation\n\n\n11/25/25\n20: Regression\n\n\n11/26/25\n(no classes)\n\n\n11/27/25\n(no classes)\n\n\n12/2/25\nPutting it all together\n\n\n12/3/25\nProblem Set 10\n\n\n12/4/25\nReview\n\n\nFINALS\nEXAM 3"
   },
   {
     "objectID": "index.html#course-format",
     "href": "index.html#course-format",
     "title": "PSYC BC1101 STATISTICS",
     "section": "Course format",
-    "text": "Course format\n\nVideo lectures\nThere are no required readings. Instead, you will be required to watch recorded lectures before attending the associated class session. You must watch the video lecture before attending the associated class session. These video lectures will be around 15 to 25 minutes each. They will include ‘quizzes’ that appear during the video, requiring your response before you continue with the lecture. So even though the videos themselves are short, you should plan to spend an hour or more with each one including the time it takes you to answer the questions and complete the exercises included along the way. Panopto keeps a record of your responses, and your engagement will be required and graded (see Grading).\n\n\nClass time\nSince you will have watched the recorded lecture in advance of class, class time will be devoted to activities, discussions, and your questions to help cement the understanding you will have begun to develop from the watching the lecture. Class activities are designed to build on the lecture you watched in advance; you will not be able to get the most out of the class without watching the associated lecture first. Given the nature of the activities and discussions I have planned, in-person classes will not be streamed or recorded.\n\n\nRecitation\nWhile the lecture component of the course covers the material conceptually, recitations will focus on practical application: performing statistical analyses using computer software, specifically R. Problem sets will be accessed via RStudio Cloud, a free, web-browser-based version of the RStudio software interface that facilitates coding and running analyses using the R coding language. Instructions and advice will be self-contained in the problem sets as comments and pre-written demonstration code, and additional help and guidance will be available during recitation sessions. You will complete the problem sets by writing and executing code to answer the problems. Problem sets will be due at the end of your recitation period. You should plan to begin the problem set in advance of recitation and come to recitation to receive assistance with any problems you run into or just to check you were doing things correctly and as effectively as possible.\n\n\nExams\nThere will be three multiple choice exams throughout the course (see class schedule). The exams will cover material from the lectures (not R). Each exam will cover approximately one-third of the course material. The lecture before each exam will be set aside for a review discussion. Also, on weeks with exams, there will be no recitation problem set due.\n\n\nExpected workload\nThe college usually expects each course credit to correspond to 3 hours of work in and/or outside of the classroom. Since this is a 4 credit course, that means a commitment of 12 hours per week. The in-person component consists of 2 lectures per week and one recitation, totaling 4.5 hours. Outside of class, you will watch recorded lectures (and complete associated quizzes/open-response questions) and work on problem sets before the associated classes, adding another ~5 hours. Revision for exams, participation via the class notes Google Doc, checking over graded problem sets, attendance of office hours, etc, will constitute the remainder of your time spent on this course."
+    "text": "Course format\n\nVideo lectures\nThere are no required readings. Instead, you will be required to watch recorded lectures before attending the associated class session. You must watch the video lecture before attending the associated class session. These video lectures will be around 15 to 25 minutes each. They will include ‘quizzes’ that appear during the video, requiring your response before you continue with the lecture. So even though the videos themselves are short, you should plan to spend an hour or more with each one including the time it takes you to answer the questions and complete the exercises included along the way. Panopto keeps a record of your responses, and your engagement will be required and graded (see Grading).\n\n\nClass time\nSince you will have watched the recorded lecture in advance of class, class time will be devoted to review, activities, discussions, and your questions to help cement the understanding you will have begun to develop from the watching the lecture. Class activities are designed to build on the lecture you watched in advance; you will not be able to get the most out of the class without watching the associated lecture first.\n\n\nRecitation\nWhile the lecture component of the course covers the material conceptually, recitations will focus on practical application: performing statistical analyses using computer software, specifically R. No prior experience with R is required. For a quick primer, see this page. Problem sets will be accessed via RStudio Cloud, a free, web-browser-based version of the RStudio software interface that facilitates coding and running analyses using the R coding language. Instructions and advice will be self-contained in the problem sets as comments and pre-written demonstration code, and additional help and guidance will be available during recitation sessions. You will complete the problem sets by writing and executing code to answer the problems. Problem sets will be due at the end of your recitation period. You should plan to begin the problem set in advance of recitation and come to recitation to receive assistance with any problems you run into or just to check you were doing things correctly and as effectively as possible.\n\n\nExams\nThere will be three multiple choice exams throughout the course (see class schedule). The exams will cover material from the lectures (not R). Each exam will cover approximately one-third of the course material. The lecture before each exam will be set aside for a review discussion. Also, on weeks with exams, there will be no recitation problem set due.\n\n\nExpected workload\nThe college usually expects each course credit to correspond to 3 hours of work in and/or outside of the classroom. Since this is a 4 credit course, that means a commitment of 12 hours per week. The in-person component consists of 2 lectures per week and one recitation, totaling 4.5 hours. Outside of class, you will watch recorded lectures (and complete associated quizzes/open-response questions) and work on problem sets before the associated classes, adding another ~5 hours. Revision for exams, participation via the class notes Google Doc, checking over graded problem sets, attendance of office hours, etc, will constitute the remainder of your time spent on this course."
   },
   {
     "objectID": "index.html#grading",
@@ -1180,14 +1180,14 @@
     "href": "slides/14_related-samples-t-test.html#equations-1",
     "title": "PSYC BC1101",
     "section": "Equations",
-    "text": "Equations\n\n\\(t = \\dfrac{\\text{sample statistic} - \\text{population parameter}}{\\text{estimated standard error}}\\)\n\n\n\n\nSingle sample:\n\n\\(t = \\dfrac{M-\\mu}{s_M}\\)\n\n\n\n\nIndependent samples:\n\n\\(t = \\dfrac{(M_1-M_2)-(\\mu_1-\\mu_2)}{s_{M_1-M_2}}\\)\n\n\n\n\nRelated samples:\n\n\\(t = \\dfrac{M_D-\\mu_D}{s_{M_D}}\\)"
+    "text": "Equations\n\n\\(t = \\dfrac{\\text{sample statistic} - \\text{population parameter}}{\\text{estimated standard error}}\\)\n\n\n\n\nSingle sample:\n\n\\(t = \\dfrac{M-\\mu}{s_M}\\)\n\n\n\nIndependent samples:\n\n\\(t = \\dfrac{(M_1-M_2)-(\\mu_1-\\mu_2)}{s_{M_1-M_2}}\\)\n\n\n\nRelated samples:\n\n\\(t = \\dfrac{M_D-\\mu_D}{s_{M_D}}\\)"
   },
   {
     "objectID": "slides/14_related-samples-t-test.html#calculating-related-samples-t",
     "href": "slides/14_related-samples-t-test.html#calculating-related-samples-t",
     "title": "PSYC BC1101",
     "section": "Calculating related-samples \\(t\\)",
-    "text": "Calculating related-samples \\(t\\)\n\n\\(df = n-1\\) (number of difference scores minus \\(1\\))\n\n\n\nDifference scores:\n\n\\(D = X_B - X_A\\)\n\n\n\n\nMean of difference scores:\n\n\\(M_D = \\dfrac{\\Sigma D}{n}\\)\n\n\n\n\nStandard error of difference scores:\n\n\\(S_{M_D} = \\dfrac{s_D}{\\sqrt{n}}\\)\n\n\n\n\n\\(t\\) statistic:\n\n\\(t = \\dfrac{M_D - \\mu_D}{s_{M_D}}\\)"
+    "text": "Calculating related-samples \\(t\\)\n\n\\(df = n-1\\) (number of difference scores minus \\(1\\))\n\n\n\nDifference scores:\n\n\\(D = X_B - X_A\\)\n\n\n\nMean of difference scores:\n\n\\(M_D = \\dfrac{\\Sigma D}{n}\\)\n\n\n\nStandard error of difference scores:\n\n\\(S_{M_D} = \\dfrac{s_D}{\\sqrt{n}}\\)\n\n\n\n\\(t\\) statistic:\n\n\\(t = \\dfrac{M_D - \\mu_D}{s_{M_D}}\\)"
   },
   {
     "objectID": "slides/14_related-samples-t-test.html#triplett",
@@ -1208,7 +1208,7 @@
     "href": "slides/14_related-samples-t-test.html#as-independent-samples",
     "title": "PSYC BC1101",
     "section": "As independent samples",
-    "text": "As independent samples\n\n\n\n\n\n\n\n\nAlone\n\\(X-M\\)\n\\((X-M)^2\\)\n\n\n\n\n54\n4.6\n21.16\n\n\n67\n17.6\n309.76\n\n\n38\n-11.4\n129.96\n\n\n46\n-3.4\n11.56\n\n\n42\n-7.4\n54.76\n\n\n\\(M = 49.40\\)\n\n\\(SS = 527.20\\)\n\n\n\n\n\\(s^2 = 131.80\\)\n\n\n\n\n\\(s = 11.48\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCompetition\n\\(X-M\\)\n\\((X-M)^2\\)\n\n\n\n\n43\n-0.2\n0.04\n\n\n57\n13.8\n190.44\n\n\n39\n-4.2\n17.64\n\n\n41\n-2.2\n4.84\n\n\n36\n-7.2\n51.84\n\n\n\\(M = 43.20\\)\n\n\\(SS = 264.80\\)\n\n\n\n\n\\(s^2 = 66.20\\)\n\n\n\n\n\\(s = 8.14\\)"
+    "text": "As independent samples\n\n\n\n\n\n\n\nAlone\n\\(X-M\\)\n\\((X-M)^2\\)\n\n\n\n\n54\n4.6\n21.16\n\n\n67\n17.6\n309.76\n\n\n38\n-11.4\n129.96\n\n\n46\n-3.4\n11.56\n\n\n42\n-7.4\n54.76\n\n\n\\(M = 49.40\\)\n\n\\(SS = 527.20\\)\n\n\n\n\n\\(s^2 = 131.80\\)\n\n\n\n\n\\(s = 11.48\\)\n\n\n\n\n\n\n\n\n\n\n\nCompetition\n\\(X-M\\)\n\\((X-M)^2\\)\n\n\n\n\n43\n-0.2\n0.04\n\n\n57\n13.8\n190.44\n\n\n39\n-4.2\n17.64\n\n\n41\n-2.2\n4.84\n\n\n36\n-7.2\n51.84\n\n\n\\(M = 43.20\\)\n\n\\(SS = 264.80\\)\n\n\n\n\n\\(s^2 = 66.20\\)\n\n\n\n\n\\(s = 8.14\\)"
   },
   {
     "objectID": "slides/14_related-samples-t-test.html#as-independent-samples-1",
@@ -1222,7 +1222,7 @@
     "href": "slides/14_related-samples-t-test.html#as-related-samples",
     "title": "PSYC BC1101",
     "section": "As related samples",
-    "text": "As related samples\n\n\n\n\n\n\nParticipant\nAlone\nComp\n\\(D\\)\n\\(D-M_D\\)\n\\((D-M_D)^2\\)\n\n\n\n\nViolet F.\n54\n43\n-11\n-4.8\n23.04\n\n\nAnna P.\n67\n57\n-10\n-3.8\n14.44\n\n\nWillie H.\n38\n39\n1\n7.2\n51.84\n\n\nBessie V.\n46\n41\n-5\n1.2\n1.44\n\n\nHoward C.\n42\n36\n-6\n0.2\n0.04\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(M_D = -6.2\\)\n\n\n\\(SS = 90.8\\)\n\\(s^2 = 22.7\\)\n\\(s = 4.76\\)"
+    "text": "As related samples\n\n\n\n\n\nParticipant\nAlone\nComp\n\\(D\\)\n\\(D-M_D\\)\n\\((D-M_D)^2\\)\n\n\n\n\nViolet F.\n54\n43\n-11\n-4.8\n23.04\n\n\nAnna P.\n67\n57\n-10\n-3.8\n14.44\n\n\nWillie H.\n38\n39\n1\n7.2\n51.84\n\n\nBessie V.\n46\n41\n-5\n1.2\n1.44\n\n\nHoward C.\n42\n36\n-6\n0.2\n0.04\n\n\n\n\n\n\n\n\n\n\n\\(M_D = -6.2\\)\n\n\n\\(SS = 90.8\\)\n\\(s^2 = 22.7\\)\n\\(s = 4.76\\)"
   },
   {
     "objectID": "slides/14_related-samples-t-test.html#as-related-samples-1",
@@ -1257,42 +1257,42 @@
     "href": "slides/18_factorial-ANOVA.html#logic-1",
     "title": "PSYC BC1101",
     "section": "Logic",
-    "text": "Logic\n\n\n\n\n\n\n\nFactor A\n\n\n\\(A_1\\)\n\\(A_2\\)\n\n\n\n\nFactor B\n\\(B_1\\)\n\\(A_1 B_1\\)\n\\(A_2 B_1\\)\n\n\n\\(B_2\\)\n\\(A_1 B_2\\)\n\\(A_2 B_2\\)"
+    "text": "Logic\n\n\n\n\n\n\nFactor A\n\n\n\\(A_1\\)\n\\(A_2\\)\n\n\n\n\nFactor B\n\\(B_1\\)\n\\(A_1 B_1\\)\n\\(A_2 B_1\\)\n\n\n\\(B_2\\)\n\\(A_1 B_2\\)\n\\(A_2 B_2\\)"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#logic-2",
     "href": "slides/18_factorial-ANOVA.html#logic-2",
     "title": "PSYC BC1101",
     "section": "Logic",
-    "text": "Logic\n\n\n\n\n\n\n\n\nFactor A\n\n\n\\(A_1\\)\n\\(A_2\\)\n\n\n\n\nFactor B\n\\(B_1\\)\n\\(A_1 B_1\\)\n\\(A_2 B_1\\)\n\n\n\\(B_2\\)\n\\(A_1 B_2\\)\n\\(A_2 B_2\\)\n\n\n\n\n\n\n\n\n\nThree hypotheses tested by three \\(F\\)-ratios\n\nMain effect of Factor \\(A\\)"
+    "text": "Logic\n\n\n\n\n\n\n\nFactor A\n\n\n\\(A_1\\)\n\\(A_2\\)\n\n\n\n\nFactor B\n\\(B_1\\)\n\\(A_1 B_1\\)\n\\(A_2 B_1\\)\n\n\n\\(B_2\\)\n\\(A_1 B_2\\)\n\\(A_2 B_2\\)\n\n\n\n\n\n\nThree hypotheses tested by three \\(F\\)-ratios\n\nMain effect of Factor \\(A\\)"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#logic-3",
     "href": "slides/18_factorial-ANOVA.html#logic-3",
     "title": "PSYC BC1101",
     "section": "Logic",
-    "text": "Logic\n\n\n\n\n\n\n\nFactor A\n\n\n\\(A_1\\)\n\\(A_2\\)\n\n\n\n\nFactor B\n\\(B_1\\)\n\\(A_1 B_1\\)\n\\(A_2 B_1\\)\n\n\n\\(B_2\\)\n\\(A_1 B_2\\)\n\\(A_2 B_2\\)\n\n\n\n\n\n\n\n\n\nThree hypotheses tested by three \\(F\\)-ratios\n\nMain effect of Factor \\(B\\)"
+    "text": "Logic\n\n\n\n\n\n\nFactor A\n\n\n\\(A_1\\)\n\\(A_2\\)\n\n\n\n\nFactor B\n\\(B_1\\)\n\\(A_1 B_1\\)\n\\(A_2 B_1\\)\n\n\n\\(B_2\\)\n\\(A_1 B_2\\)\n\\(A_2 B_2\\)\n\n\n\n\n\n\nThree hypotheses tested by three \\(F\\)-ratios\n\nMain effect of Factor \\(B\\)"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#logic-4",
     "href": "slides/18_factorial-ANOVA.html#logic-4",
     "title": "PSYC BC1101",
     "section": "Logic",
-    "text": "Logic\n\n\n\n\n\n\n\nFactor A\n\n\n\\(A_1\\)\n\\(A_2\\)\n\n\n\n\nFactor B\n\\(B_1\\)\n\\(A_1 B_1\\)\n\\(A_2 B_1\\)\n\n\n\\(B_2\\)\n\\(A_1 B_2\\)\n\\(A_2 B_2\\)\n\n\n\n\n\n\n\n\n\nThree hypotheses tested by three \\(F\\)-ratios\n\nInteraction between \\(A\\) and \\(B\\)"
+    "text": "Logic\n\n\n\n\n\n\nFactor A\n\n\n\\(A_1\\)\n\\(A_2\\)\n\n\n\n\nFactor B\n\\(B_1\\)\n\\(A_1 B_1\\)\n\\(A_2 B_1\\)\n\n\n\\(B_2\\)\n\\(A_1 B_2\\)\n\\(A_2 B_2\\)\n\n\n\n\n\n\nThree hypotheses tested by three \\(F\\)-ratios\n\nInteraction between \\(A\\) and \\(B\\)"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#logic-5",
     "href": "slides/18_factorial-ANOVA.html#logic-5",
     "title": "PSYC BC1101",
     "section": "Logic",
-    "text": "Logic\n\n\n\n\n\n\n\nFactor A\n\n\n\\(A_1\\)\n\\(A_2\\)\n\n\n\n\nFactor B\n\\(B_1\\)\n\\(A_1 B_1\\)\n\\(A_2 B_1\\)\n\n\n\\(B_2\\)\n\\(A_1 B_2\\)\n\\(A_2 B_2\\)\n\n\n\n\n\n\n\n\n\nThree hypotheses tested by three \\(F\\)-ratios\n\nEach tested with same basic \\(F\\)-ratio structure\n\n\n\n\\(F = \\dfrac{\\textrm{variance between treatments}}{\\textrm{variance expected with no treatment effect}}\\)"
+    "text": "Logic\n\n\n\n\n\n\nFactor A\n\n\n\\(A_1\\)\n\\(A_2\\)\n\n\n\n\nFactor B\n\\(B_1\\)\n\\(A_1 B_1\\)\n\\(A_2 B_1\\)\n\n\n\\(B_2\\)\n\\(A_1 B_2\\)\n\\(A_2 B_2\\)\n\n\n\n\n\n\nThree hypotheses tested by three \\(F\\)-ratios\n\nEach tested with same basic \\(F\\)-ratio structure\n\n\n\n\\(F = \\dfrac{\\textrm{variance between treatments}}{\\textrm{variance expected with no treatment effect}}\\)"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#example-data",
     "href": "slides/18_factorial-ANOVA.html#example-data",
     "title": "PSYC BC1101",
     "section": "Example data",
-    "text": "Example data\n\n\n\n\n\n\n\nSnack\n\n\nBanana\nCandy\n\n\n\n\nTest\nMath\n7, 9, 8, 9\n5, 3, 4, 4\n\n\nReaction time\n5, 4, 6, 5\n6, 6, 5, 5"
+    "text": "Example data\n\n\n\n\n\n\nSnack\n\n\nBanana\nCandy\n\n\n\n\nTest\nMath\n7, 9, 8, 9\n5, 3, 4, 4\n\n\nReaction time\n5, 4, 6, 5\n6, 6, 5, 5"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#partitioning-variance",
@@ -1306,63 +1306,63 @@
     "href": "slides/18_factorial-ANOVA.html#partitioning-variance-1",
     "title": "PSYC BC1101",
     "section": "Partitioning variance",
-    "text": "Partitioning variance\n\n\n\n\\(SS_{total}\\)\n\\(SS_{between}\\)  \\(SS_{within}\\)\n\n\n\\(SS_A\\) \\(SS_B\\) \\(SS_{A*B}\\)\n\n\n\\(df_{total}\\)\n\\(df_{between}\\)  \\(df_{within}\\)\n\n\\(df_A\\) \\(df_B\\) \\(df_{A*B}\\)\n\n\n\n\n\n\\(SS_{total} = \\Sigma X^2 - \\dfrac{G^2}{N}\\)\n\\(SS_{within} = \\Sigma SS_{within \\ each \\ treatment}\\)\n\\(SS_{between} = \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N}\\)\n\\(SS_{A} = \\Sigma \\dfrac{T^2_{col}}{n_{col}} - \\dfrac{G^2}{N}\\)\n\\(SS_{B} = \\Sigma \\dfrac{T^2_{row}}{n_{row}} - \\dfrac{G^2}{N}\\)\n\\(SS_{A*B} = SS_{between}-SS_{A}-SS_{B}\\)\n\n\\(df_{total} = N-1\\)\n\\(df_{within} = N-k\\)\n\\(df_{between} = k-1\\)\n\\(df_{A} = k_A-1\\)\n\\(df_{B} = k_B-1\\)\n\\(df_{A*B} = df_{between}-df_A-df_B\\)"
+    "text": "Partitioning variance\n\n\n\n\\(SS_{total}\\)\n\\(SS_{between}\\)  \\(SS_{within}\\)\n\n\n\\(SS_A\\) \\(SS_B\\) \\(SS_{A*B}\\)\n\n\n\\(df_{total}\\)\n\\(df_{between}\\)  \\(df_{within}\\)\n\n\\(df_A\\) \\(df_B\\) \\(df_{A*B}\\)\n\n\n\n\n\\(SS_{total} = \\Sigma X^2 - \\dfrac{G^2}{N}\\)\n\\(SS_{within} = \\Sigma SS_{within \\ each \\ treatment}\\)\n\\(SS_{between} = \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N}\\)\n\\(SS_{A} = \\Sigma \\dfrac{T^2_{col}}{n_{col}} - \\dfrac{G^2}{N}\\)\n\\(SS_{B} = \\Sigma \\dfrac{T^2_{row}}{n_{row}} - \\dfrac{G^2}{N}\\)\n\\(SS_{A*B} = SS_{between}-SS_{A}-SS_{B}\\)\n\n\\(df_{total} = N-1\\)\n\\(df_{within} = N-k\\)\n\\(df_{between} = k-1\\)\n\\(df_{A} = k_A-1\\)\n\\(df_{B} = k_B-1\\)\n\\(df_{A*B} = df_{between}-df_A-df_B\\)"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#summary-table",
     "href": "slides/18_factorial-ANOVA.html#summary-table",
     "title": "PSYC BC1101",
     "section": "Summary table",
-    "text": "Summary table\n\n\n\n\n\n\nSource\n\\(SS\\)\n\\(df\\)\n\\(MS\\)\n\\(F\\)\n\n\n\n\nBetween treatments\n\n\n\n\n\n\n   Factor A\n\n\n\n\n\n\n   Factor B\n\n\n\n\n\n\n   A * B interaction\n\n\n\n\n\n\nWithin treatments\n\n\n\n\n\n\nTotal"
+    "text": "Summary table\n\n\n\n\n\nSource\n\\(SS\\)\n\\(df\\)\n\\(MS\\)\n\\(F\\)\n\n\n\n\nBetween treatments\n\n\n\n\n\n\n   Factor A\n\n\n\n\n\n\n   Factor B\n\n\n\n\n\n\n   A * B interaction\n\n\n\n\n\n\nWithin treatments\n\n\n\n\n\n\nTotal"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-1.-hypotheses",
     "href": "slides/18_factorial-ANOVA.html#step-1.-hypotheses",
     "title": "PSYC BC1101",
     "section": "Step 1. Hypotheses",
-    "text": "Step 1. Hypotheses\n\n\n\n\n\n\n\nSnack\n\n\nBanana\nCandy\n\n\n\n\nTest\nMath\n7, 9, 8, 9\n5, 3, 4, 4\n\n\nReaction time\n5, 4, 6, 5\n6, 6, 5, 5\n\n\n\n\n\n\n\n\n\n\nMain effect of Snack Type\n\n\\(H_0\\): \\(\\mu_{banana} = \\mu_{candy}\\)\n\\(H_1\\): \\(\\mu_{banana} \\ne \\mu_{candy}\\)\n\nMain effect of Test Type\n\n\\(H_0\\): \\(\\mu_{math} = \\mu_{RT}\\)\n\\(H_1\\): \\(\\mu_{math} \\ne \\mu_{RT}\\)\n\nSnack * Test interaction\n\n\\(H_0\\): No interaction\n\\(H_1\\): There is an interaction"
+    "text": "Step 1. Hypotheses\n\n\n\n\n\n\nSnack\n\n\nBanana\nCandy\n\n\n\n\nTest\nMath\n7, 9, 8, 9\n5, 3, 4, 4\n\n\nReaction time\n5, 4, 6, 5\n6, 6, 5, 5\n\n\n\n\n\n\n\nMain effect of Snack Type\n\n\\(H_0\\): \\(\\mu_{banana} = \\mu_{candy}\\)\n\\(H_1\\): \\(\\mu_{banana} \\ne \\mu_{candy}\\)\n\nMain effect of Test Type\n\n\\(H_0\\): \\(\\mu_{math} = \\mu_{RT}\\)\n\\(H_1\\): \\(\\mu_{math} \\ne \\mu_{RT}\\)\n\nSnack * Test interaction\n\n\\(H_0\\): No interaction\n\\(H_1\\): There is an interaction"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-2.-critical-region",
     "href": "slides/18_factorial-ANOVA.html#step-2.-critical-region",
     "title": "PSYC BC1101",
     "section": "Step 2. Critical region",
-    "text": "Step 2. Critical region\n\nStep 2. Critical region\n\nNumerators: \\(\\begin{align} &df_{A} = k_A-1 = 1 \\\\ &df_{B} = k_B-1 = 1 \\\\ &df_{A*B} = k-1 - df_A - df_B = 1 \\end{align}\\)\nDenominator: \\(df_{within} = N-k  = 12\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\alpha = .05\\)\n\n\n\\(df_{numerator}\\)\n\n\n\n\\(df_{denominator}\\)\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\n5\n6.61\n5.79\n5.41\n5.19\n5.05\n4.95\n4.88\n4.82\n4.77\n4.74\n\n\n6\n5.99\n5.14\n4.76\n4.53\n4.39\n4.28\n4.21\n4.15\n4.10\n4.06\n\n\n7\n5.59\n4.74\n4.35\n4.12\n3.97\n3.87\n3.79\n3.73\n3.68\n3.64\n\n\n8\n5.32\n4.46\n4.07\n3.84\n3.69\n3.58\n3.50\n3.44\n3.39\n3.35\n\n\n9\n5.12\n4.26\n3.86\n3.63\n3.48\n3.37\n3.29\n3.23\n3.18\n3.14\n\n\n10\n4.96\n4.10\n3.71\n3.48\n3.33\n3.22\n3.13\n3.07\n3.02\n2.98\n\n\n11\n4.84\n3.98\n3.59\n3.36\n3.20\n3.10\n3.01\n2.95\n2.90\n2.85\n\n\n12\n4.75\n3.88\n3.49\n3.26\n3.11\n3.00\n2.91\n2.85\n2.80\n2.75\n\n\n13\n4.67\n3.81\n3.41\n3.18\n3.02\n2.92\n2.83\n2.77\n2.71\n2.67\n\n\n14\n4.60\n3.74\n3.34\n3.11\n2.96\n2.85\n2.76\n2.70\n2.65\n2.60\n\n\n15\n4.54\n3.68\n3.29\n3.06\n2.90\n2.79\n2.71\n2.64\n2.59\n2.54"
+    "text": "Step 2. Critical region\n\nStep 2. Critical region\n\nNumerators: \\(\\begin{align} &df_{A} = k_A-1 = 1 \\\\ &df_{B} = k_B-1 = 1 \\\\ &df_{A*B} = k-1 - df_A - df_B = 1 \\end{align}\\)\nDenominator: \\(df_{within} = N-k  = 12\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(\\alpha = .05\\)\n\n\n\\(df_{numerator}\\)\n\n\n\n\\(df_{denominator}\\)\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\n5\n6.61\n5.79\n5.41\n5.19\n5.05\n4.95\n4.88\n4.82\n4.77\n4.74\n\n\n6\n5.99\n5.14\n4.76\n4.53\n4.39\n4.28\n4.21\n4.15\n4.10\n4.06\n\n\n7\n5.59\n4.74\n4.35\n4.12\n3.97\n3.87\n3.79\n3.73\n3.68\n3.64\n\n\n8\n5.32\n4.46\n4.07\n3.84\n3.69\n3.58\n3.50\n3.44\n3.39\n3.35\n\n\n9\n5.12\n4.26\n3.86\n3.63\n3.48\n3.37\n3.29\n3.23\n3.18\n3.14\n\n\n10\n4.96\n4.10\n3.71\n3.48\n3.33\n3.22\n3.13\n3.07\n3.02\n2.98\n\n\n11\n4.84\n3.98\n3.59\n3.36\n3.20\n3.10\n3.01\n2.95\n2.90\n2.85\n\n\n12\n4.75\n3.88\n3.49\n3.26\n3.11\n3.00\n2.91\n2.85\n2.80\n2.75\n\n\n13\n4.67\n3.81\n3.41\n3.18\n3.02\n2.92\n2.83\n2.77\n2.71\n2.67\n\n\n14\n4.60\n3.74\n3.34\n3.11\n2.96\n2.85\n2.76\n2.70\n2.65\n2.60\n\n\n15\n4.54\n3.68\n3.29\n3.06\n2.90\n2.79\n2.71\n2.64\n2.59\n2.54"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-3.-calculations",
     "href": "slides/18_factorial-ANOVA.html#step-3.-calculations",
     "title": "PSYC BC1101",
     "section": "Step 3. Calculations",
-    "text": "Step 3. Calculations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSnack\n\n\nBanana\nCandy\n\n\n\n\nTest\nMath\n\\(T = 33\\)\n\\(SS = 2.75\\)\n\\(T = 16\\)\n\\(SS = 2\\)\n\n\nReaction time\n\\(T = 20\\)\n\\(SS = 2\\)\n\\(T = 22\\)\n\\(SS = 1\\)\n\n\n\n\n\n\n\n\n\n\\(T_{col}\\) \\(53\\) \\(38\\)\n\n\n\n\\(T_{row}\\)\n\\(49\\)\n\\(42\\)\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\n\\[\\begin{align}\ndf_{total} &= N-1 = 15 \\\\\ndf_{within} &= N-k  = 12 \\\\\ndf_{between} &= k-1  = 3\\\\\ndf_{A} &= k_A-1  = 1\\\\\ndf_{B} &= k_B-1  = 1\\\\\ndf_{A*B} &= df_{between} - df_A - df_B  = 1\\\\\n\\end{align}\\]"
+    "text": "Step 3. Calculations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSnack\n\n\nBanana\nCandy\n\n\n\n\nTest\nMath\n\\(T = 33\\)\n\\(SS = 2.75\\)\n\\(T = 16\\)\n\\(SS = 2\\)\n\n\nReaction time\n\\(T = 20\\)\n\\(SS = 2\\)\n\\(T = 22\\)\n\\(SS = 1\\)\n\n\n\n\n\n\n\\(T_{col}\\) \\(53\\) \\(38\\)\n\n\n\n\\(T_{row}\\)\n\\(49\\)\n\\(42\\)\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\\[\\begin{align}\ndf_{total} &= N-1 = 15 \\\\\ndf_{within} &= N-k  = 12 \\\\\ndf_{between} &= k-1  = 3\\\\\ndf_{A} &= k_A-1  = 1\\\\\ndf_{B} &= k_B-1  = 1\\\\\ndf_{A*B} &= df_{between} - df_A - df_B  = 1\\\\\n\\end{align}\\]"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-3.-calculations-1",
     "href": "slides/18_factorial-ANOVA.html#step-3.-calculations-1",
     "title": "PSYC BC1101",
     "section": "Step 3. Calculations",
-    "text": "Step 3. Calculations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSnack\n\n\nBanana\nCandy\n\n\n\n\nTest\nMath\n\\(T = 33\\)\n\\(SS = 2.75\\)\n\\(T = 16\\)\n\\(SS = 2\\)\n\n\nReaction time\n\\(T = 20\\)\n\\(SS = 2\\)\n\\(T = 22\\)\n\\(SS = 1\\)\n\n\n\n\n\n\n\n\n\n\\(T_{col}\\) \\(53\\) \\(38\\)\n\n\n\n\\(T_{row}\\)\n\\(49\\)\n\\(42\\)\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\n\\[\\begin{align}\nSS_{total} &= \\Sigma X^2 - \\dfrac{G^2}{N} = 47.44\\\\\nSS_{within} &= \\Sigma SS_{within \\ each \\ treatment} = 7.75\\\\\nSS_{between} &= \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N} = 39.69 \\\\\n\\end{align}\\]"
+    "text": "Step 3. Calculations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSnack\n\n\nBanana\nCandy\n\n\n\n\nTest\nMath\n\\(T = 33\\)\n\\(SS = 2.75\\)\n\\(T = 16\\)\n\\(SS = 2\\)\n\n\nReaction time\n\\(T = 20\\)\n\\(SS = 2\\)\n\\(T = 22\\)\n\\(SS = 1\\)\n\n\n\n\n\n\n\\(T_{col}\\) \\(53\\) \\(38\\)\n\n\n\n\\(T_{row}\\)\n\\(49\\)\n\\(42\\)\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\\[\\begin{align}\nSS_{total} &= \\Sigma X^2 - \\dfrac{G^2}{N} = 47.44\\\\\nSS_{within} &= \\Sigma SS_{within \\ each \\ treatment} = 7.75\\\\\nSS_{between} &= \\Sigma \\dfrac{T^2}{n} - \\dfrac{G^2}{N} = 39.69 \\\\\n\\end{align}\\]"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-3.-calculations-2",
     "href": "slides/18_factorial-ANOVA.html#step-3.-calculations-2",
     "title": "PSYC BC1101",
     "section": "Step 3. Calculations",
-    "text": "Step 3. Calculations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSnack\n\n\nBanana\nCandy\n\n\n\n\nTest\nMath\n\\(T = 33\\)\n\\(SS = 2.75\\)\n\\(T = 16\\)\n\\(SS = 2\\)\n\n\nReaction time\n\\(T = 20\\)\n\\(SS = 2\\)\n\\(T = 22\\)\n\\(SS = 1\\)\n\n\n\n\n\n\n\n\n\n\\(T_{col}\\) \\(53\\) \\(38\\)\n\n\n\n\\(T_{row}\\)\n\\(49\\)\n\\(42\\)\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\n\\[\\begin{align}\nSS_{A} &= \\Sigma \\dfrac{T^2_{col}}{n_{col}} - \\dfrac{G^2}{N} = 14.06\\\\\nSS_{B} &= \\Sigma \\dfrac{T^2_{row}}{n_{row}} - \\dfrac{G^2}{N} = 3.06\\\\\nSS_{A*B} &= \\Sigma SS_{between}-SS_A - SS_B = 22.56\n\\end{align}\\]"
+    "text": "Step 3. Calculations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSnack\n\n\nBanana\nCandy\n\n\n\n\nTest\nMath\n\\(T = 33\\)\n\\(SS = 2.75\\)\n\\(T = 16\\)\n\\(SS = 2\\)\n\n\nReaction time\n\\(T = 20\\)\n\\(SS = 2\\)\n\\(T = 22\\)\n\\(SS = 1\\)\n\n\n\n\n\n\n\\(T_{col}\\) \\(53\\) \\(38\\)\n\n\n\n\\(T_{row}\\)\n\\(49\\)\n\\(42\\)\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\\[\\begin{align}\nSS_{A} &= \\Sigma \\dfrac{T^2_{col}}{n_{col}} - \\dfrac{G^2}{N} = 14.06\\\\\nSS_{B} &= \\Sigma \\dfrac{T^2_{row}}{n_{row}} - \\dfrac{G^2}{N} = 3.06\\\\\nSS_{A*B} &= \\Sigma SS_{between}-SS_A - SS_B = 22.56\n\\end{align}\\]"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-3.-calculations-3",
     "href": "slides/18_factorial-ANOVA.html#step-3.-calculations-3",
     "title": "PSYC BC1101",
     "section": "Step 3. Calculations",
-    "text": "Step 3. Calculations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSnack\n\n\nBanana\nCandy\n\n\n\n\nTest\nMath\n\\(T = 33\\)\n\\(SS = 2.75\\)\n\\(T = 16\\)\n\\(SS = 2\\)\n\n\nReaction time\n\\(T = 20\\)\n\\(SS = 2\\)\n\\(T = 22\\)\n\\(SS = 1\\)\n\n\n\n\n\n\n\n\n\n\\(T_{col}\\) \\(53\\) \\(38\\)\n\n\n\n\\(T_{row}\\)\n\\(49\\)\n\\(42\\)\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\n\\(MS_{A} = \\dfrac{SS_{A}}{df_{A}} = 14.06 \\ \\ \\ \\ \\ \\ \\ \\ MS_{B} = \\dfrac{SS_{B}}{df_{B}} = 3.06\\)\n\\(MS_{A*B} = \\dfrac{SS_{A*B}}{df_{A*B}} = 22.56\\)\n\\(MS_{within} = \\dfrac{SS_{within}}{df_{within}} = 0.65\\)"
+    "text": "Step 3. Calculations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSnack\n\n\nBanana\nCandy\n\n\n\n\nTest\nMath\n\\(T = 33\\)\n\\(SS = 2.75\\)\n\\(T = 16\\)\n\\(SS = 2\\)\n\n\nReaction time\n\\(T = 20\\)\n\\(SS = 2\\)\n\\(T = 22\\)\n\\(SS = 1\\)\n\n\n\n\n\n\n\\(T_{col}\\) \\(53\\) \\(38\\)\n\n\n\n\\(T_{row}\\)\n\\(49\\)\n\\(42\\)\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\\(MS_{A} = \\dfrac{SS_{A}}{df_{A}} = 14.06 \\ \\ \\ \\ \\ \\ \\ \\ MS_{B} = \\dfrac{SS_{B}}{df_{B}} = 3.06\\)\n\\(MS_{A*B} = \\dfrac{SS_{A*B}}{df_{A*B}} = 22.56\\)\n\\(MS_{within} = \\dfrac{SS_{within}}{df_{within}} = 0.65\\)"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-3.-calculations-4",
     "href": "slides/18_factorial-ANOVA.html#step-3.-calculations-4",
     "title": "PSYC BC1101",
     "section": "Step 3. Calculations",
-    "text": "Step 3. Calculations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSnack\n\n\nBanana\nCandy\n\n\n\n\nTest\nMath\n\\(T = 33\\)\n\\(SS = 2.75\\)\n\\(T = 16\\)\n\\(SS = 2\\)\n\n\nReaction time\n\\(T = 20\\)\n\\(SS = 2\\)\n\\(T = 22\\)\n\\(SS = 1\\)\n\n\n\n\n\n\n\n\n\n\\(T_{col}\\) \\(53\\) \\(38\\)\n\n\n\n\\(T_{row}\\)\n\\(49\\)\n\\(42\\)\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\n\\(F_A = \\dfrac{MS_{A}}{MS_{within}} = 21.77\\)\n\\(F_B = \\dfrac{MS_{B}}{MS_{within}} = 4.74\\)\n\\(F_{A*B} = \\dfrac{MS_{A*B}}{MS_{within}} = 34.94\\)"
+    "text": "Step 3. Calculations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSnack\n\n\nBanana\nCandy\n\n\n\n\nTest\nMath\n\\(T = 33\\)\n\\(SS = 2.75\\)\n\\(T = 16\\)\n\\(SS = 2\\)\n\n\nReaction time\n\\(T = 20\\)\n\\(SS = 2\\)\n\\(T = 22\\)\n\\(SS = 1\\)\n\n\n\n\n\n\n\\(T_{col}\\) \\(53\\) \\(38\\)\n\n\n\n\\(T_{row}\\)\n\\(49\\)\n\\(42\\)\n\n\n\\(N = 16\\)\n\\(n = 4\\)\n\\(k = 4\\)\n\\(k_A = 2\\)\n\\(k_B = 2\\)\n\\(G = 91\\)\n\\(\\Sigma X^2 = 565\\)\n\n\n\\(F_A = \\dfrac{MS_{A}}{MS_{within}} = 21.77\\)\n\\(F_B = \\dfrac{MS_{B}}{MS_{within}} = 4.74\\)\n\\(F_{A*B} = \\dfrac{MS_{A*B}}{MS_{within}} = 34.94\\)"
   },
   {
     "objectID": "slides/18_factorial-ANOVA.html#step-4a.-decision",
@@ -1488,7 +1488,7 @@
     "href": "slides/08_sampling.html#example-height-distribution-2",
     "title": "PSYC BC1101",
     "section": "Example: height distribution",
-    "text": "Example: height distribution\n\n\n\n\nNow we can calculate variability of sample means\n\nSince we obtained every sample mean\nUse population SD formula\n\n\n\n\n\n\n\n\n\n\\(X\\)\n\\(X-M\\)\n\\((X-M)^2\\)\n\n\n\n\n60\n-3\n9\n\n\n61\n-2\n4\n\n\n62\n-1\n1\n\n\n63\n0\n0\n\n\n61\n-2\n4\n\n\n62\n-1\n1\n\n\n63\n0\n0\n\n\n64\n1\n1\n\n\n62\n-1\n1\n\n\n63\n0\n0\n\n\n64\n1\n1\n\n\n65\n2\n4\n\n\n63\n0\n0\n\n\n64\n1\n1\n\n\n65\n2\n4\n\n\n66\n3\n9\n\n\n\\(M = 63.00\\)\n\n\\(SS = 40.00\\)\n\n\n\n\n\\(\\sigma^2 = 2.50\\)\n\n\n\n\n\\(\\sigma = 1.58\\)"
+    "text": "Example: height distribution\n\n\n\n\nNow we can calculate variability of sample means\n\nSince we obtained every sample mean\nUse population SD formula\n\n\n\n\n\n\n\n\n\\(X\\)\n\\(X-M\\)\n\\((X-M)^2\\)\n\n\n\n\n60\n-3\n9\n\n\n61\n-2\n4\n\n\n62\n-1\n1\n\n\n63\n0\n0\n\n\n61\n-2\n4\n\n\n62\n-1\n1\n\n\n63\n0\n0\n\n\n64\n1\n1\n\n\n62\n-1\n1\n\n\n63\n0\n0\n\n\n64\n1\n1\n\n\n65\n2\n4\n\n\n63\n0\n0\n\n\n64\n1\n1\n\n\n65\n2\n4\n\n\n66\n3\n9\n\n\n\\(M = 63.00\\)\n\n\\(SS = 40.00\\)\n\n\n\n\n\\(\\sigma^2 = 2.50\\)\n\n\n\n\n\\(\\sigma = 1.58\\)"
   },
   {
     "objectID": "slides/08_sampling.html#central-limit-theorem-1",
@@ -1544,7 +1544,7 @@
     "href": "slides/08_sampling.html#variability-heights-sampling-dist",
     "title": "PSYC BC1101",
     "section": "Variability: heights sampling dist",
-    "text": "Variability: heights sampling dist\n\n\n\n\n\n\n\n\n\nSample\nX1\nX2\nM\n\n\n\n\n1\n60\n60\n60\n\n\n2\n62\n60\n61\n\n\n3\n64\n60\n62\n\n\n4\n66\n60\n63\n\n\n5\n60\n62\n61\n\n\n6\n62\n62\n62\n\n\n7\n64\n62\n63\n\n\n8\n66\n62\n64\n\n\n9\n60\n64\n62\n\n\n10\n62\n64\n63\n\n\n11\n64\n64\n64\n\n\n12\n66\n64\n65\n\n\n13\n60\n66\n63\n\n\n14\n62\n66\n64\n\n\n15\n64\n66\n65\n\n\n16\n66\n66\n66\n\n\n\n\n\n\n\n\n\nSampling distribution (\\(n = 2\\))\n\n\n\\(\\sigma_M = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{2.24}{\\sqrt{2}} = 1.58\\)"
+    "text": "Variability: heights sampling dist\n\n\n\n\n\n\n\n\nSample\nX1\nX2\nM\n\n\n\n\n1\n60\n60\n60\n\n\n2\n62\n60\n61\n\n\n3\n64\n60\n62\n\n\n4\n66\n60\n63\n\n\n5\n60\n62\n61\n\n\n6\n62\n62\n62\n\n\n7\n64\n62\n63\n\n\n8\n66\n62\n64\n\n\n9\n60\n64\n62\n\n\n10\n62\n64\n63\n\n\n11\n64\n64\n64\n\n\n12\n66\n64\n65\n\n\n13\n60\n66\n63\n\n\n14\n62\n66\n64\n\n\n15\n64\n66\n65\n\n\n16\n66\n66\n66\n\n\n\n\n\n\nSampling distribution (\\(n = 2\\))\n\n\n\\(\\sigma_M = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{2.24}{\\sqrt{2}} = 1.58\\)"
   },
   {
     "objectID": "slides/08_sampling.html#summary",
@@ -1554,11 +1554,18 @@
     "text": "Summary\n\nSummary\n\nDistribution of sample means for samples of size \\(n\\) will have…\n\na mean of \\(\\mu_M\\)\nstandard deviation \\(\\sigma_M = \\sigma / \\sqrt{n}\\)\nShape will be normal if population is normally distributed, or \\(n &gt; 30\\)"
   },
   {
-    "objectID": "slides/02_variables.html#producing-a-statistic",
-    "href": "slides/02_variables.html#producing-a-statistic",
+    "objectID": "slides/02_variables.html#measuring-things",
+    "href": "slides/02_variables.html#measuring-things",
     "title": "PSYC BC1101",
-    "section": "Producing a statistic",
-    "text": "Producing a statistic\n\nHow many books are red"
+    "section": "Measuring things",
+    "text": "Measuring things\n\nHow many books are red"
+  },
+  {
+    "objectID": "slides/02_variables.html#measuring-things-1",
+    "href": "slides/02_variables.html#measuring-things-1",
+    "title": "PSYC BC1101",
+    "section": "Measuring things",
+    "text": "Measuring things\n\nHow much grain is in a bushel?"
   },
   {
     "objectID": "slides/02_variables.html#making-statistics-1",
@@ -1586,14 +1593,14 @@
     "href": "slides/02_variables.html#types-of-variable",
     "title": "PSYC BC1101",
     "section": "Types of variable",
-    "text": "Types of variable\n\n\n\nDiscrete\n\nCount as whole numbers\nSeparate, indivisible categories\nNo values exist between neighboring categories\nE.g. number of children/cats/tvs; positive cases; hospital admissions\n\n\n\n\nContinuous\n\nCan be measured with decimals\nHas infinite number of possible values\nEvery interval is divisible into infinite number of parts\nE.g. height, time, temperature\n\n\n\n\n\n\n\nbar_xScale = d3.scaleBand()\n  .domain([1,2,3,4,5])\n  .range([m, w - m])\n\nbar_yScale = d3.scaleLinear()\n  .domain([0, 3])\n  .range([h - m, m])\n    \nbar_chart = {\n\n  const svg = d3.select(DOM.svg(w, h))\n    .attr(\"class\", \"invertable\")\n    .attr(\"lazy-load\", true)\n  \n  const axis_lines = svg.append(\"g\")\n    .attr(\"stroke\", \"black\")\n    .attr(\"fill\", \"none\")\n    \n  const bars = svg.append(\"g\")\n    .attr(\"fill\", \"black\")\n    .attr(\"stroke\", \"none\")\n  \n  bars.selectAll(\"rect\")\n    .data(bar_data)\n    .enter()\n      .append(\"rect\") \n      .attr(\"transform\", \"rotate(180)\")\n      .attr(\"transform-origin\", \"center center\")\n      .attr(\"x\", d =&gt; bar_xScale(d.value)+2.5)\n      .attr(\"y\", m)\n      .attr(\"width\", (w-2*m)/5-5)\n      .attr(\"height\", d =&gt; d.density*(h-m*2)/3)\n      \n\n  svg.on('click',function(){\n   bars.selectAll(\"rect\")\n    .attr(\"height\", 0)\n    .transition()\n    .duration(300)\n    .delay(function(d, i){return (6-i)*300})\n    .attr(\"height\", d =&gt; d.density*(h-m*2)/3);\n  })\n  \n\n  axis_lines.selectAll(\"line\")\n    .data(line_data)\n    .enter()\n      .append(\"line\")\n        .attr(\"x1\", d =&gt; d.x1)\n        .attr(\"x2\", d =&gt; d.x2)\n        .attr(\"y1\", d =&gt; d.y1)\n        .attr(\"y2\", d =&gt; d.y2)\n    \n  return svg.node();\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nxScale = d3.scaleLinear()\n  .domain([-3, 3])\n  .range([margins.left, w - m])\n\nyScale = d3.scaleLinear()\n  .domain([0, 0.4])\n  .range([h - m, m])\n  \nsmooth_curve = {\n  const svg_curve = d3.select(DOM.svg(w, h))\n    .attr(\"class\", \"invertable\");\n  \n  const axis_lines = svg_curve.append(\"g\")\n    .attr(\"stroke\", \"black\")\n    .attr(\"fill\", \"none\")\n  \n  var p = svg_curve.append(\"path\")\n    .datum(curve_data)\n    .attr(\"stroke\", \"black\")\n    .attr(\"stroke-width\", 2)\n    .attr(\"fill\", \"none\")\n    .attr(\"d\", line)\n    \n  var totalLength = p.node().getTotalLength();\n\n  svg_curve.on(\"click\", function(){\n    p.transition()\n      .duration(0)\n      .attr(\"stroke-dasharray\", totalLength + \" \" + totalLength)\n      .attr(\"stroke-dashoffset\", totalLength)\n      .transition()\n      .duration(2000)\n      .attr(\"stroke-dashoffset\", 0)})\n        \n  axis_lines.selectAll(\"line\")\n    .data(line_data)\n    .enter()\n      .append(\"line\")\n        .attr(\"x1\", d =&gt; d.x1)\n        .attr(\"x2\", d =&gt; d.x2)\n        .attr(\"y1\", d =&gt; d.y1)\n        .attr(\"y2\", d =&gt; d.y2)\n    \n  return svg_curve.node();\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nw = 400\nh = 200\n\nm = 20\nhalf_m = m * 0.5\n\nmargins = ({top: 20, right: 20, bottom: 20, left: 20})\n\nline_data = [\n    {x1: half_m, x2: w - half_m, y1: h - half_m, y2: h - half_m},\n    {x1: half_m, x2: half_m, y1: h - half_m, y2: half_m}\n  ]\n  \nline = d3.line()\n    .x(d =&gt; xScale(d.value))\n    .y(d =&gt; yScale(d.density))"
+    "text": "Types of variable\n\n\n\nDiscrete\n\nCount as whole numbers\nSeparate, indivisible categories\nNo values exist between neighboring categories\nE.g. number of children/cats/tvs; positive cases; hospital admissions\n\n\n\n\nContinuous\n\nCan be measured with decimals\nHas infinite number of possible values\nEvery interval is divisible into infinite number of parts\nE.g. height, time, temperature\n\n\n\n\n\n\nbar_xScale = d3.scaleBand()\n  .domain([1,2,3,4,5])\n  .range([m, w - m])\n\nbar_yScale = d3.scaleLinear()\n  .domain([0, 3])\n  .range([h - m, m])\n    \nbar_chart = {\n\n  const svg = d3.select(DOM.svg(w, h))\n    .attr(\"class\", \"invertable\")\n    .attr(\"lazy-load\", true)\n  \n  const axis_lines = svg.append(\"g\")\n    .attr(\"stroke\", \"black\")\n    .attr(\"fill\", \"none\")\n    \n  const bars = svg.append(\"g\")\n    .attr(\"fill\", \"black\")\n    .attr(\"stroke\", \"none\")\n  \n  bars.selectAll(\"rect\")\n    .data(bar_data)\n    .enter()\n      .append(\"rect\") \n      .attr(\"transform\", \"rotate(180)\")\n      .attr(\"transform-origin\", \"center center\")\n      .attr(\"x\", d =&gt; bar_xScale(d.value)+2.5)\n      .attr(\"y\", m)\n      .attr(\"width\", (w-2*m)/5-5)\n      .attr(\"height\", d =&gt; d.density*(h-m*2)/3)\n      \n\n  svg.on('click',function(){\n   bars.selectAll(\"rect\")\n    .attr(\"height\", 0)\n    .transition()\n    .duration(300)\n    .delay(function(d, i){return (6-i)*300})\n    .attr(\"height\", d =&gt; d.density*(h-m*2)/3);\n  })\n  \n\n  axis_lines.selectAll(\"line\")\n    .data(line_data)\n    .enter()\n      .append(\"line\")\n        .attr(\"x1\", d =&gt; d.x1)\n        .attr(\"x2\", d =&gt; d.x2)\n        .attr(\"y1\", d =&gt; d.y1)\n        .attr(\"y2\", d =&gt; d.y2)\n    \n  return svg.node();\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nxScale = d3.scaleLinear()\n  .domain([-3, 3])\n  .range([margins.left, w - m])\n\nyScale = d3.scaleLinear()\n  .domain([0, 0.4])\n  .range([h - m, m])\n  \nsmooth_curve = {\n  const svg_curve = d3.select(DOM.svg(w, h))\n    .attr(\"class\", \"invertable\");\n  \n  const axis_lines = svg_curve.append(\"g\")\n    .attr(\"stroke\", \"black\")\n    .attr(\"fill\", \"none\")\n  \n  var p = svg_curve.append(\"path\")\n    .datum(curve_data)\n    .attr(\"stroke\", \"black\")\n    .attr(\"stroke-width\", 2)\n    .attr(\"fill\", \"none\")\n    .attr(\"d\", line)\n    \n  var totalLength = p.node().getTotalLength();\n\n  svg_curve.on(\"click\", function(){\n    p.transition()\n      .duration(0)\n      .attr(\"stroke-dasharray\", totalLength + \" \" + totalLength)\n      .attr(\"stroke-dashoffset\", totalLength)\n      .transition()\n      .duration(2000)\n      .attr(\"stroke-dashoffset\", 0)})\n        \n  axis_lines.selectAll(\"line\")\n    .data(line_data)\n    .enter()\n      .append(\"line\")\n        .attr(\"x1\", d =&gt; d.x1)\n        .attr(\"x2\", d =&gt; d.x2)\n        .attr(\"y1\", d =&gt; d.y1)\n        .attr(\"y2\", d =&gt; d.y2)\n    \n  return svg_curve.node();\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nw = 400\nh = 200\n\nm = 20\nhalf_m = m * 0.5\n\nmargins = ({top: 20, right: 20, bottom: 20, left: 20})\n\nline_data = [\n    {x1: half_m, x2: w - half_m, y1: h - half_m, y2: h - half_m},\n    {x1: half_m, x2: half_m, y1: h - half_m, y2: half_m}\n  ]\n  \nline = d3.line()\n    .x(d =&gt; xScale(d.value))\n    .y(d =&gt; yScale(d.density))"
   },
   {
     "objectID": "slides/02_variables.html#scales-of-measurement",
     "href": "slides/02_variables.html#scales-of-measurement",
     "title": "PSYC BC1101",
     "section": "Scales of measurement",
-    "text": "Scales of measurement\n\n\n\n\n\n\n\n\n\n\n\nScale\nCharacteristics\nExamples\n\n\n\n\nNominal\nNamed categories\nNo quantitative distinctions\nGender\nEye color\nExperimental condition\n\n\nOrdinal\nOrdered categories\nIndicates direction, but not size of difference\nRank\nClothing sizes\nOlympic medals\n\n\nInterval\nOrdered categories\nEqual intervals between categories\nArbitrary or absent zero point\nTemperature (Celcius/Fahrenheit)\nGolf scores\n\n\nRatio\nOrdered categories\nEqual interval between categories\nAbsolute zero point\nTemperature (Kelvin)\nNumber of correct answers\nResponse time"
+    "text": "Scales of measurement\n\n\n\n\n\n\n\n\n\n\nScale\nCharacteristics\nExamples\n\n\n\n\nNominal\nNamed categories\nNo quantitative distinctions\nGender\nEye color\nExperimental condition\n\n\nOrdinal\nOrdered categories\nIndicates direction, but not size of difference\nRank\nClothing sizes\nOlympic medals\n\n\nInterval\nOrdered categories\nEqual intervals between categories\nArbitrary or absent zero point\nTemperature (Celcius/Fahrenheit)\nGolf scores\n\n\nRatio\nOrdered categories\nEqual interval between categories\nAbsolute zero point\nTemperature (Kelvin)\nNumber of correct answers\nResponse time"
   },
   {
     "objectID": "slides/02_variables.html#likert-scales",
@@ -1642,14 +1649,14 @@
     "href": "slides/03_frequency.html#simple-example",
     "title": "PSYC BC1101",
     "section": "Simple example",
-    "text": "Simple example\n\nFrom raw scores\n\n\n\n2 1 2 3 4 3 3 2 2 1 5 3 4 1 2\n\n\n\n\n\nTo this\n\n\n\n\n\n\n\n\n\\(X\\)\n\\(f\\)\n\n\n\n\n1\n3\n\n\n2\n5\n\n\n3\n4\n\n\n4\n2\n\n\n5\n1\n\n\n\n\n\n\n\n\n\n\n\nOr this"
+    "text": "Simple example\n\nFrom raw scores\n\n\n\n2 1 2 3 4 3 3 2 2 1 5 3 4 1 2\n\n\n\n\n\nTo this\n\n\n\n\n\n\n\n\\(X\\)\n\\(f\\)\n\n\n\n\n1\n3\n\n\n2\n5\n\n\n3\n4\n\n\n4\n2\n\n\n5\n1\n\n\n\n\n\n\n\n\nOr this"
   },
   {
     "objectID": "slides/03_frequency.html#frequency-tables-1",
     "href": "slides/03_frequency.html#frequency-tables-1",
     "title": "PSYC BC1101",
     "section": "Frequency tables",
-    "text": "Frequency tables\n\n\n\n\nMidterm scores: 41 43 44 45 48 50 51 51 52 52 52 53 53 53 54 54 55 55 55 55 55 56 56 56 56 56 57 57 57 57 58 58 58 59 59 59 59 59 59 59\n\n\n\nRegular frequency table not always appropriate\n\nLarge number of scores, low frequencies\n\n\n\n\nSolution: Grouped frequency tables\n\nEasier to understand\nBut lose information\n\n\n\n\n\n\n\n\n\n\n\\(X\\)\n\\(f\\)\n\n\n\n\n41\n1\n\n\n42\n0\n\n\n43\n1\n\n\n44\n1\n\n\n45\n1\n\n\n46\n0\n\n\n47\n0\n\n\n48\n1\n\n\n49\n0\n\n\n50\n1\n\n\n51\n2\n\n\n52\n3\n\n\n53\n3\n\n\n54\n2\n\n\n55\n5\n\n\n56\n5\n\n\n57\n4\n\n\n58\n3\n\n\n59\n7"
+    "text": "Frequency tables\n\n\n\n\nMidterm scores: 41 43 44 45 48 50 51 51 52 52 52 53 53 53 54 54 55 55 55 55 55 56 56 56 56 56 57 57 57 57 58 58 58 59 59 59 59 59 59 59\n\n\n\nRegular frequency table not always appropriate\n\nLarge number of scores, low frequencies\n\n\n\n\nSolution: Grouped frequency tables\n\nEasier to understand\nBut lose information\n\n\n\n\n\n\n\n\n\n\\(X\\)\n\\(f\\)\n\n\n\n\n41\n1\n\n\n42\n0\n\n\n43\n1\n\n\n44\n1\n\n\n45\n1\n\n\n46\n0\n\n\n47\n0\n\n\n48\n1\n\n\n49\n0\n\n\n50\n1\n\n\n51\n2\n\n\n52\n3\n\n\n53\n3\n\n\n54\n2\n\n\n55\n5\n\n\n56\n5\n\n\n57\n4\n\n\n58\n3\n\n\n59\n7"
   },
   {
     "objectID": "slides/03_frequency.html#grouped-frequency-table",
@@ -1663,7 +1670,7 @@
     "href": "slides/03_frequency.html#grouped-frequency-table-1",
     "title": "PSYC BC1101",
     "section": "Grouped frequency table",
-    "text": "Grouped frequency table\n\n\n\nGrouped frequency table\n\nBins all same width\nWidth is a simple number (2)\nBottom score is multiple of width (i.e, divisible by 2)\nProduces good number of bins\n\n\n\n\n\n\n\n\n\n\\(X\\)\n\\(f\\)\n\n\n\n\n40-41\n1\n\n\n42-43\n1\n\n\n44-45\n2\n\n\n46-47\n0\n\n\n48-49\n1\n\n\n50-51\n3\n\n\n52-53\n6\n\n\n54-55\n7\n\n\n56-57\n9\n\n\n58-59\n10"
+    "text": "Grouped frequency table\n\n\n\nGrouped frequency table\n\nBins all same width\nWidth is a simple number (2)\nBottom score is multiple of width (i.e, divisible by 2)\nProduces good number of bins\n\n\n\n\n\n\n\n\n\\(X\\)\n\\(f\\)\n\n\n\n\n40-41\n1\n\n\n42-43\n1\n\n\n44-45\n2\n\n\n46-47\n0\n\n\n48-49\n1\n\n\n50-51\n3\n\n\n52-53\n6\n\n\n54-55\n7\n\n\n56-57\n9\n\n\n58-59\n10"
   },
   {
     "objectID": "slides/03_frequency.html#frequency-graphs",
@@ -1691,7 +1698,7 @@
     "href": "slides/03_frequency.html#grouped-histogram",
     "title": "PSYC BC1101",
     "section": "Grouped histogram",
-    "text": "Grouped histogram\n\n\n\n\n\n\n\n\n\n\n\\(X\\)\n\\(f\\)\n\n\n\n\n40-41\n1\n\n\n42-43\n1\n\n\n44-45\n2\n\n\n46-47\n0\n\n\n48-49\n1\n\n\n50-51\n3\n\n\n52-53\n6\n\n\n54-55\n7\n\n\n56-57\n9\n\n\n58-59\n10"
+    "text": "Grouped histogram\n\n\n\n\n\n\n\n\n\n\\(X\\)\n\\(f\\)\n\n\n\n\n40-41\n1\n\n\n42-43\n1\n\n\n44-45\n2\n\n\n46-47\n0\n\n\n48-49\n1\n\n\n50-51\n3\n\n\n52-53\n6\n\n\n54-55\n7\n\n\n56-57\n9\n\n\n58-59\n10"
   },
   {
     "objectID": "slides/03_frequency.html#frequency-polygon",
@@ -1775,14 +1782,14 @@
     "href": "slides/05_variability.html#calculations",
     "title": "PSYC BC1101",
     "section": "Calculations",
-    "text": "Calculations\n\n\n\nFind the deviation for each score\n\n\n\\(X - \\mu\\)\n\n\n\n\n\nSquare deviations\n\n\n\\((X - \\mu)^2\\)\n\n\n\n\n\nSum the squared deviations\n\n\n\\(SS = \\Sigma(X - \\mu)^2\\)\n\n\n\n\n\nFind average of squared deviations\n\n\n\\(\\sigma^2 = \\dfrac{SS}N\\)\n\n\n\n\n\nTake square root of variance\n\n\n\\(\\sigma = \\sqrt{\\sigma^2} = \\sqrt{\\dfrac{SS}N}\\)"
+    "text": "Calculations\n\n\n\nFind the deviation for each score\n\n\n\\(X - \\mu\\)\n\n\n\n\nSquare deviations\n\n\n\\((X - \\mu)^2\\)\n\n\n\n\nSum the squared deviations\n\n\n\\(SS = \\Sigma(X - \\mu)^2\\)\n\n\n\n\nFind average of squared deviations\n\n\n\\(\\sigma^2 = \\dfrac{SS}N\\)\n\n\n\n\nTake square root of variance\n\n\n\\(\\sigma = \\sqrt{\\sigma^2} = \\sqrt{\\dfrac{SS}N}\\)"
   },
   {
     "objectID": "slides/05_variability.html#calculating-by-hand",
     "href": "slides/05_variability.html#calculating-by-hand",
     "title": "PSYC BC1101",
     "section": "Calculating by hand",
-    "text": "Calculating by hand\n\n\n\n\n\n\n\n\n\\(X\\)\n\\(X-M\\)\n\\((X-M)^2\\)\n\n\n\n\n0\n-5\n25\n\n\n4\n-1\n1\n\n\n5\n0\n0\n\n\n5\n0\n0\n\n\n6\n1\n1\n\n\n10\n5\n25\n\n\n\\(M = 5.00\\)\n\n\\(SS = 52.00\\)\n\n\n\n\n\\(\\sigma^2 = 8.67\\)\n\n\n\n\n\\(\\sigma = 2.94\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(X\\)\n\\(X-M\\)\n\\((X-M)^2\\)\n\n\n\n\n0\n-5\n25\n\n\n1\n-4\n16\n\n\n5\n0\n0\n\n\n5\n0\n0\n\n\n9\n4\n16\n\n\n10\n5\n25\n\n\n\\(M = 5.00\\)\n\n\\(SS = 82.00\\)\n\n\n\n\n\\(\\sigma^2 = 13.67\\)\n\n\n\n\n\\(\\sigma = 3.70\\)"
+    "text": "Calculating by hand\n\n\n\n\n\n\n\n\\(X\\)\n\\(X-M\\)\n\\((X-M)^2\\)\n\n\n\n\n0\n-5\n25\n\n\n4\n-1\n1\n\n\n5\n0\n0\n\n\n5\n0\n0\n\n\n6\n1\n1\n\n\n10\n5\n25\n\n\n\\(M = 5.00\\)\n\n\\(SS = 52.00\\)\n\n\n\n\n\\(\\sigma^2 = 8.67\\)\n\n\n\n\n\\(\\sigma = 2.94\\)\n\n\n\n\n\n\n\n\n\n\n\n\\(X\\)\n\\(X-M\\)\n\\((X-M)^2\\)\n\n\n\n\n0\n-5\n25\n\n\n1\n-4\n16\n\n\n5\n0\n0\n\n\n5\n0\n0\n\n\n9\n4\n16\n\n\n10\n5\n25\n\n\n\\(M = 5.00\\)\n\n\\(SS = 82.00\\)\n\n\n\n\n\\(\\sigma^2 = 13.67\\)\n\n\n\n\n\\(\\sigma = 3.70\\)"
   },
   {
     "objectID": "slides/05_variability.html#sum-of-squared-deviations",
@@ -1817,7 +1824,7 @@
     "href": "slides/05_variability.html#variability-equations-for-samples",
     "title": "PSYC BC1101",
     "section": "Variability equations for samples",
-    "text": "Variability equations for samples\n\n\n\nFind the deviation for each score\n\n\n\\(X - M\\)\n\n\n\n\n\nSquare deviations\n\n\n\\((X - M)^2\\)\n\n\n\n\n\nSum the squared deviations\n\n\n\\(SS = \\Sigma(X - M)^2\\)\n\n\n\n\n\nFind average of squared deviations\n\n\n\\(s^2 = \\dfrac{SS} {\\color{red}{n-1}}\\)\n\n\n\n\n\nTake square root of variance\n\n\n\\(SD = \\sqrt{s^2} = \\sqrt{\\dfrac{SS}{\\color{red}{n-1}}}\\)"
+    "text": "Variability equations for samples\n\n\n\nFind the deviation for each score\n\n\n\\(X - M\\)\n\n\n\n\nSquare deviations\n\n\n\\((X - M)^2\\)\n\n\n\n\nSum the squared deviations\n\n\n\\(SS = \\Sigma(X - M)^2\\)\n\n\n\n\nFind average of squared deviations\n\n\n\\(s^2 = \\dfrac{SS} {\\color{red}{n-1}}\\)\n\n\n\n\nTake square root of variance\n\n\n\\(SD = \\sqrt{s^2} = \\sqrt{\\dfrac{SS}{\\color{red}{n-1}}}\\)"
   },
   {
     "objectID": "slides/05_variability.html#degrees-of-freedom-1",
@@ -1852,7 +1859,7 @@
     "href": "slides/05_variability.html#star-wars-variability",
     "title": "PSYC BC1101",
     "section": "Star Wars variability",
-    "text": "Star Wars variability\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMetaCritic.com\n\n\nIMDb.com\n\n\n\nMovie\nN\nM\nSD\nN\nM\nSD\n\n\n\n\nStar Wars: Episode IV - A New Hope\n24\n90.1\n16.7\n1,302,317\n85.0\n16.4\n\n\nStar Wars: Episode V - The Empire Strikes Back\n25\n83.5\n20.8\n1,230,844\n85.9\n16.3\n\n\nStar Wars: Episode VI - Return of the Jedi\n24\n63.8\n25.2\n1,006,122\n82.6\n15.5\n\n\nStar Wars: Episode I - The Phantom Menace\n36\n56.4\n22.9\n769,435\n65.3\n20.3\n\n\nStar Wars: Episode II - Attack of the Clones\n39\n60.3\n22.0\n678,519\n66.3\n20.2\n\n\nStar Wars: Episode III - Revenge of the Sith\n40\n71.4\n19.7\n751,751\n76.1\n18.8\n\n\nStar Wars: Episode VII - The Force Awakens\n55\n80.8\n14.2\n898,767\n77.7\n19.6\n\n\nStar Wars: Episode VIII - The Last Jedi\n56\n84.1\n13.5\n602,045\n66.6\n24.5\n\n\nStar Wars: Episode IX - The Rise of Skywalker\n61\n57.2\n16.5\n418,656\n64.7\n23.4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMetaCritic.com\n\n\nIMDb.com\n\n\n\nMovie\nN\nM\nSD\nN\nM\nSD\n\n\n\n\nStar Wars: Episode IV - A New Hope\n24\n90.1\n16.7\n1,302,317\n85.0\n16.4\n\n\nStar Wars: Episode V - The Empire Strikes Back\n25\n83.5\n20.8\n1,230,844\n85.9\n16.3\n\n\nStar Wars: Episode VI - Return of the Jedi\n24\n63.8\n25.2\n1,006,122\n82.6\n15.5\n\n\nStar Wars: Episode I - The Phantom Menace\n36\n56.4\n22.9\n769,435\n65.3\n20.3\n\n\nStar Wars: Episode II - Attack of the Clones\n39\n60.3\n22.0\n678,519\n66.3\n20.2\n\n\nStar Wars: Episode III - Revenge of the Sith\n40\n71.4\n19.7\n751,751\n76.1\n18.8\n\n\nStar Wars: Episode VII - The Force Awakens\n55\n80.8\n14.2\n898,767\n77.7\n19.6\n\n\nStar Wars: Episode VIII - The Last Jedi\n56\n84.1\n13.5\n602,045\n66.6\n24.5\n\n\nStar Wars: Episode IX - The Rise of Skywalker\n61\n57.2\n16.5\n418,656\n64.7\n23.4"
+    "text": "Star Wars variability\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMetaCritic.com\n\n\nIMDb.com\n\n\n\nMovie\nN\nM\nSD\nN\nM\nSD\n\n\n\n\nStar Wars: Episode IV - A New Hope\n24\n90.1\n16.7\n1,302,317\n85.0\n16.4\n\n\nStar Wars: Episode V - The Empire Strikes Back\n25\n83.5\n20.8\n1,230,844\n85.9\n16.3\n\n\nStar Wars: Episode VI - Return of the Jedi\n24\n63.8\n25.2\n1,006,122\n82.6\n15.5\n\n\nStar Wars: Episode I - The Phantom Menace\n36\n56.4\n22.9\n769,435\n65.3\n20.3\n\n\nStar Wars: Episode II - Attack of the Clones\n39\n60.3\n22.0\n678,519\n66.3\n20.2\n\n\nStar Wars: Episode III - Revenge of the Sith\n40\n71.4\n19.7\n751,751\n76.1\n18.8\n\n\nStar Wars: Episode VII - The Force Awakens\n55\n80.8\n14.2\n898,767\n77.7\n19.6\n\n\nStar Wars: Episode VIII - The Last Jedi\n56\n84.1\n13.5\n602,045\n66.6\n24.5\n\n\nStar Wars: Episode IX - The Rise of Skywalker\n61\n57.2\n16.5\n418,656\n64.7\n23.4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMetaCritic.com\n\n\nIMDb.com\n\n\n\nMovie\nN\nM\nSD\nN\nM\nSD\n\n\n\n\nStar Wars: Episode IV - A New Hope\n24\n90.1\n16.7\n1,302,317\n85.0\n16.4\n\n\nStar Wars: Episode V - The Empire Strikes Back\n25\n83.5\n20.8\n1,230,844\n85.9\n16.3\n\n\nStar Wars: Episode VI - Return of the Jedi\n24\n63.8\n25.2\n1,006,122\n82.6\n15.5\n\n\nStar Wars: Episode I - The Phantom Menace\n36\n56.4\n22.9\n769,435\n65.3\n20.3\n\n\nStar Wars: Episode II - Attack of the Clones\n39\n60.3\n22.0\n678,519\n66.3\n20.2\n\n\nStar Wars: Episode III - Revenge of the Sith\n40\n71.4\n19.7\n751,751\n76.1\n18.8\n\n\nStar Wars: Episode VII - The Force Awakens\n55\n80.8\n14.2\n898,767\n77.7\n19.6\n\n\nStar Wars: Episode VIII - The Last Jedi\n56\n84.1\n13.5\n602,045\n66.6\n24.5\n\n\nStar Wars: Episode IX - The Rise of Skywalker\n61\n57.2\n16.5\n418,656\n64.7\n23.4"
   },
   {
     "objectID": "slides/19_correlation.html#limitations-of-correlation",
@@ -1866,7 +1873,7 @@
     "href": "slides/19_correlation.html#logic",
     "title": "PSYC BC1101",
     "section": "Logic",
-    "text": "Logic\n\n\n\n\n\n\n\n\nParticipant\nSleep\nScore\n\n\n\n\nA\n4\n5\n\n\nB\n5\n8\n\n\nC\n7\n8\n\n\nD\n8\n10\n\n\nE\n11\n9"
+    "text": "Logic\n\n\n\n\n\n\n\nParticipant\nSleep\nScore\n\n\n\n\nA\n4\n5\n\n\nB\n5\n8\n\n\nC\n7\n8\n\n\nD\n8\n10\n\n\nE\n11\n9"
   },
   {
     "objectID": "slides/19_correlation.html#pearsons-r",
@@ -1894,42 +1901,42 @@
     "href": "slides/19_correlation.html#step-2.-critical-region",
     "title": "PSYC BC1101",
     "section": "Step 2. Critical region",
-    "text": "Step 2. Critical region\n\n\n\nCritical value for \\(r\\) is a type of \\(t\\) statistic\n\n\\(df = n - 2\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProportion\nin 1 tail\n\n\n\n0.1\n\n\n\n0.05\n\n\n\n0.025\n\n\n\n0.01\n\n\n\n0.005\n\n\n\nProportion\nin 2 tails\n0.2\n0.1\n0.05\n0.02\n0.01\n\n\n\n\n1\n3.078\n6.314\n12.706\n31.821\n63.657\n\n\n2\n1.886\n2.920\n4.303\n6.965\n9.925\n\n\n3\n1.638\n2.353\n3.182\n4.541\n5.841\n\n\n4\n1.533\n2.132\n2.776\n3.747\n4.604\n\n\n5\n1.476\n2.015\n2.571\n3.365\n4.032\n\n\n6\n1.440\n1.943\n2.447\n3.143\n3.707\n\n\n7\n1.415\n1.895\n2.365\n2.998\n3.499\n\n\n\\(df\\)       8\n1.397\n1.860\n2.306\n2.896\n3.355\n\n\n9\n1.383\n1.833\n2.262\n2.821\n3.250\n\n\n10\n1.372\n1.812\n2.228\n2.764\n3.169\n\n\n11\n1.363\n1.796\n2.201\n2.718\n3.106\n\n\n12\n1.356\n1.782\n2.179\n2.681\n3.055\n\n\n13\n1.350\n1.771\n2.160\n2.650\n3.012\n\n\n14\n1.345\n1.761\n2.145\n2.624\n2.977\n\n\n15\n1.341\n1.753\n2.131\n2.602\n2.947\n\n\n...\n...\n...\n...\n...\n..."
+    "text": "Step 2. Critical region\n\n\n\nCritical value for \\(r\\) is a type of \\(t\\) statistic\n\n\\(df = n - 2\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProportion\nin 1 tail\n\n\n\n0.1\n\n\n\n0.05\n\n\n\n0.025\n\n\n\n0.01\n\n\n\n0.005\n\n\n\nProportion\nin 2 tails\n0.2\n0.1\n0.05\n0.02\n0.01\n\n\n\n\n1\n3.078\n6.314\n12.706\n31.821\n63.657\n\n\n2\n1.886\n2.920\n4.303\n6.965\n9.925\n\n\n3\n1.638\n2.353\n3.182\n4.541\n5.841\n\n\n4\n1.533\n2.132\n2.776\n3.747\n4.604\n\n\n5\n1.476\n2.015\n2.571\n3.365\n4.032\n\n\n6\n1.440\n1.943\n2.447\n3.143\n3.707\n\n\n7\n1.415\n1.895\n2.365\n2.998\n3.499\n\n\n\\(df\\)       8\n1.397\n1.860\n2.306\n2.896\n3.355\n\n\n9\n1.383\n1.833\n2.262\n2.821\n3.250\n\n\n10\n1.372\n1.812\n2.228\n2.764\n3.169\n\n\n11\n1.363\n1.796\n2.201\n2.718\n3.106\n\n\n12\n1.356\n1.782\n2.179\n2.681\n3.055\n\n\n13\n1.350\n1.771\n2.160\n2.650\n3.012\n\n\n14\n1.345\n1.761\n2.145\n2.624\n2.977\n\n\n15\n1.341\n1.753\n2.131\n2.602\n2.947\n\n\n...\n...\n...\n...\n...\n..."
   },
   {
     "objectID": "slides/19_correlation.html#step-3.-calculate-statistic",
     "href": "slides/19_correlation.html#step-3.-calculate-statistic",
     "title": "PSYC BC1101",
     "section": "Step 3. Calculate statistic",
-    "text": "Step 3. Calculate statistic\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}}\\)\n\n\n\n\nNumerator: Sum of Products, \\(SP\\)\n\nMultiply deviations by one another\n\n\nDefinitional formula\n\n\\(SP = \\Sigma(X - M_X)(Y - M_Y)\\)\n\n\n\nDenominator: Sum of Squares, \\(SS\\)\n\nMultiply deviations by themselves\n\n\nDefinitional formula\n\\[\\begin{align}\nSS &= \\Sigma(X - M_X)^2 \\\\\n   &= \\Sigma(X - M_X)(X - M_X)\n\\end{align}\\]\n\n\n\n\nComputational formula\n\n\\(SP = \\Sigma XY - \\dfrac{\\Sigma X \\Sigma Y}{n}\\)\n\n\nComputational formula\n\\[\\begin{align}\nSS &= \\Sigma X^2 - \\dfrac{(\\Sigma X)^2}{n}\\\\\n   &= \\Sigma X X - \\dfrac{(\\Sigma X)(\\Sigma X)}{n}\n\\end{align}\\]"
+    "text": "Step 3. Calculate statistic\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}}\\)\n\n\n\n\nNumerator: Sum of Products, \\(SP\\)\n\nMultiply deviations by one another\n\n\nDefinitional formula\n\n\\(SP = \\Sigma(X - M_X)(Y - M_Y)\\)\n\n\n\nDenominator: Sum of Squares, \\(SS\\)\n\nMultiply deviations by themselves\n\n\nDefinitional formula\n\\[\\begin{align}\nSS &= \\Sigma(X - M_X)^2 \\\\\n   &= \\Sigma(X - M_X)(X - M_X)\n\\end{align}\\]\n\n\n\nComputational formula\n\n\\(SP = \\Sigma XY - \\dfrac{\\Sigma X \\Sigma Y}{n}\\)\n\n\nComputational formula\n\\[\\begin{align}\nSS &= \\Sigma X^2 - \\dfrac{(\\Sigma X)^2}{n}\\\\\n   &= \\Sigma X X - \\dfrac{(\\Sigma X)(\\Sigma X)}{n}\n\\end{align}\\]"
   },
   {
     "objectID": "slides/19_correlation.html#calculating-r",
     "href": "slides/19_correlation.html#calculating-r",
     "title": "PSYC BC1101",
     "section": "Calculating \\(r\\)",
-    "text": "Calculating \\(r\\)\n\n\n\n\n\n\n\\(X\\)\n\\(X-M_X\\)\n\\((X-M_X)^2\\)\n\\(Y\\)\n\\(Y-M_Y\\)\n\\((Y-M_Y)^2\\)\n\\(P\\)\n\n\n\n\n4\n-3\n9\n5\n-3\n9\n9\n\n\n5\n-2\n4\n8\n0\n0\n0\n\n\n7\n0\n0\n8\n0\n0\n0\n\n\n8\n1\n1\n10\n2\n4\n2\n\n\n11\n4\n16\n9\n1\n1\n4\n\n\n\\(M_X = 7.00\\)\n\n\\(SS_X = 30.00\\)\n\\(M_Y = 8.00\\)\n\n\\(SS_Y = 14.00\\)\n\\(SP = 15.00\\)\n\n\n\n\n\\(s^2_X = 7.50\\)\n\n\n\\(s^2_Y = 3.50\\)\n\n\n\n\n\n\\(s_X = 2.74\\)\n\n\n\\(s_Y = 1.87\\)\n\n\n\n\n\n\n\n\n\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}}\\)"
+    "text": "Calculating \\(r\\)\n\n\n\n\n\n\\(X\\)\n\\(X-M_X\\)\n\\((X-M_X)^2\\)\n\\(Y\\)\n\\(Y-M_Y\\)\n\\((Y-M_Y)^2\\)\n\\(P\\)\n\n\n\n\n4\n-3\n9\n5\n-3\n9\n9\n\n\n5\n-2\n4\n8\n0\n0\n0\n\n\n7\n0\n0\n8\n0\n0\n0\n\n\n8\n1\n1\n10\n2\n4\n2\n\n\n11\n4\n16\n9\n1\n1\n4\n\n\n\\(M_X = 7.00\\)\n\n\\(SS_X = 30.00\\)\n\\(M_Y = 8.00\\)\n\n\\(SS_Y = 14.00\\)\n\\(SP = 15.00\\)\n\n\n\n\n\\(s^2_X = 7.50\\)\n\n\n\\(s^2_Y = 3.50\\)\n\n\n\n\n\n\\(s_X = 2.74\\)\n\n\n\\(s_Y = 1.87\\)\n\n\n\n\n\n\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}}\\)"
   },
   {
     "objectID": "slides/19_correlation.html#calculating-r-1",
     "href": "slides/19_correlation.html#calculating-r-1",
     "title": "PSYC BC1101",
     "section": "Calculating \\(r\\)",
-    "text": "Calculating \\(r\\)\n\n\n\n\n\n\n\\(X\\)\n\\(X-M_X\\)\n\\((X-M_X)^2\\)\n\\(Y\\)\n\\(Y-M_Y\\)\n\\((Y-M_Y)^2\\)\n\\(P\\)\n\n\n\n\n4\n-3\n9\n5\n-3\n9\n9\n\n\n5\n-2\n4\n8\n0\n0\n0\n\n\n7\n0\n0\n8\n0\n0\n0\n\n\n8\n1\n1\n10\n2\n4\n2\n\n\n11\n4\n16\n9\n1\n1\n4\n\n\n\\(M_X = 7.00\\)\n\n\\(SS_X = 30.00\\)\n\\(M_Y = 8.00\\)\n\n\\(SS_Y = 14.00\\)\n\\(SP = 15.00\\)\n\n\n\n\n\\(s^2_X = 7.50\\)\n\n\n\\(s^2_Y = 3.50\\)\n\n\n\n\n\n\\(s_X = 2.74\\)\n\n\n\\(s_Y = 1.87\\)\n\n\n\n\n\n\n\n\n\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}}\\)"
+    "text": "Calculating \\(r\\)\n\n\n\n\n\n\\(X\\)\n\\(X-M_X\\)\n\\((X-M_X)^2\\)\n\\(Y\\)\n\\(Y-M_Y\\)\n\\((Y-M_Y)^2\\)\n\\(P\\)\n\n\n\n\n4\n-3\n9\n5\n-3\n9\n9\n\n\n5\n-2\n4\n8\n0\n0\n0\n\n\n7\n0\n0\n8\n0\n0\n0\n\n\n8\n1\n1\n10\n2\n4\n2\n\n\n11\n4\n16\n9\n1\n1\n4\n\n\n\\(M_X = 7.00\\)\n\n\\(SS_X = 30.00\\)\n\\(M_Y = 8.00\\)\n\n\\(SS_Y = 14.00\\)\n\\(SP = 15.00\\)\n\n\n\n\n\\(s^2_X = 7.50\\)\n\n\n\\(s^2_Y = 3.50\\)\n\n\n\n\n\n\\(s_X = 2.74\\)\n\n\n\\(s_Y = 1.87\\)\n\n\n\n\n\n\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}}\\)"
   },
   {
     "objectID": "slides/19_correlation.html#calculating-r-2",
     "href": "slides/19_correlation.html#calculating-r-2",
     "title": "PSYC BC1101",
     "section": "Calculating \\(r\\)",
-    "text": "Calculating \\(r\\)\n\n\n\n\n\n\n\\(X\\)\n\\(X-M_X\\)\n\\((X-M_X)^2\\)\n\\(Y\\)\n\\(Y-M_Y\\)\n\\((Y-M_Y)^2\\)\n\\(P\\)\n\n\n\n\n4\n-3\n9\n5\n-3\n9\n9\n\n\n5\n-2\n4\n8\n0\n0\n0\n\n\n7\n0\n0\n8\n0\n0\n0\n\n\n8\n1\n1\n10\n2\n4\n2\n\n\n11\n4\n16\n9\n1\n1\n4\n\n\n\\(M_X = 7.00\\)\n\n\\(SS_X = 30.00\\)\n\\(M_Y = 8.00\\)\n\n\\(SS_Y = 14.00\\)\n\\(SP = 15.00\\)\n\n\n\n\n\\(s^2_X = 7.50\\)\n\n\n\\(s^2_Y = 3.50\\)\n\n\n\n\n\n\\(s_X = 2.74\\)\n\n\n\\(s_Y = 1.87\\)\n\n\n\n\n\n\n\n\n\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}} = \\dfrac{15}{\\sqrt{30*14}} = 0.73\\)"
+    "text": "Calculating \\(r\\)\n\n\n\n\n\n\\(X\\)\n\\(X-M_X\\)\n\\((X-M_X)^2\\)\n\\(Y\\)\n\\(Y-M_Y\\)\n\\((Y-M_Y)^2\\)\n\\(P\\)\n\n\n\n\n4\n-3\n9\n5\n-3\n9\n9\n\n\n5\n-2\n4\n8\n0\n0\n0\n\n\n7\n0\n0\n8\n0\n0\n0\n\n\n8\n1\n1\n10\n2\n4\n2\n\n\n11\n4\n16\n9\n1\n1\n4\n\n\n\\(M_X = 7.00\\)\n\n\\(SS_X = 30.00\\)\n\\(M_Y = 8.00\\)\n\n\\(SS_Y = 14.00\\)\n\\(SP = 15.00\\)\n\n\n\n\n\\(s^2_X = 7.50\\)\n\n\n\\(s^2_Y = 3.50\\)\n\n\n\n\n\n\\(s_X = 2.74\\)\n\n\n\\(s_Y = 1.87\\)\n\n\n\n\n\n\n\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}} = \\dfrac{15}{\\sqrt{30*14}} = 0.73\\)"
   },
   {
     "objectID": "slides/19_correlation.html#calculating-r-computation-approach",
     "href": "slides/19_correlation.html#calculating-r-computation-approach",
     "title": "PSYC BC1101",
     "section": "Calculating \\(r\\): computation approach",
-    "text": "Calculating \\(r\\): computation approach\n\n\n\n\n\n\n\\(X\\)\n\\(X^2\\)\n\\(Y\\)\n\\(Y^2\\)\n\\(XY\\)\n\n\n\n\n4\n16\n5\n25\n20\n\n\n5\n25\n8\n64\n40\n\n\n7\n49\n8\n64\n56\n\n\n8\n64\n10\n100\n80\n\n\n11\n121\n9\n81\n99\n\n\n\\(\\Sigma X = 35\\)\n\\(\\Sigma X^2 = 275\\)\n\\(\\Sigma Y = 40\\)\n\\(\\Sigma Y^2 = 334\\)\n\\(\\Sigma XY = 295\\)\n\n\n\n\n\n\n\n\n\n\\(SS_X = \\Sigma X^2 - \\dfrac{(\\Sigma X)^2}{n} = 275 - \\dfrac{35^2}{5} = 30\\)\n\\(SS_Y = \\Sigma Y^2 - \\dfrac{(\\Sigma Y)^2}{n} = 334 - \\dfrac{40^2}{5} = 14\\)\n\\(SP = \\Sigma XY - \\dfrac{\\Sigma X \\Sigma Y}{n} = 295 - \\dfrac{35 \\cdot 40}{5} = 15\\)\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}} = \\dfrac{15}{\\sqrt{30 \\cdot 14}} = 0.73\\)"
+    "text": "Calculating \\(r\\): computation approach\n\n\n\n\n\n\\(X\\)\n\\(X^2\\)\n\\(Y\\)\n\\(Y^2\\)\n\\(XY\\)\n\n\n\n\n4\n16\n5\n25\n20\n\n\n5\n25\n8\n64\n40\n\n\n7\n49\n8\n64\n56\n\n\n8\n64\n10\n100\n80\n\n\n11\n121\n9\n81\n99\n\n\n\\(\\Sigma X = 35\\)\n\\(\\Sigma X^2 = 275\\)\n\\(\\Sigma Y = 40\\)\n\\(\\Sigma Y^2 = 334\\)\n\\(\\Sigma XY = 295\\)\n\n\n\n\n\n\n\\(SS_X = \\Sigma X^2 - \\dfrac{(\\Sigma X)^2}{n} = 275 - \\dfrac{35^2}{5} = 30\\)\n\\(SS_Y = \\Sigma Y^2 - \\dfrac{(\\Sigma Y)^2}{n} = 334 - \\dfrac{40^2}{5} = 14\\)\n\\(SP = \\Sigma XY - \\dfrac{\\Sigma X \\Sigma Y}{n} = 295 - \\dfrac{35 \\cdot 40}{5} = 15\\)\n\\(r = \\dfrac{SP}{\\sqrt{SS_X SS_Y}} = \\dfrac{15}{\\sqrt{30 \\cdot 14}} = 0.73\\)"
   },
   {
     "objectID": "slides/19_correlation.html#step-4.-make-decision",
@@ -1950,7 +1957,7 @@
     "href": "slides/19_correlation.html#interpreting-effect-size",
     "title": "PSYC BC1101",
     "section": "Interpreting effect size",
-    "text": "Interpreting effect size\n\n\nCohen (1977)\n\n\n\n\n\n\n\\(d\\)\n\\(r\\)\nDescription\n\n\n\n\n0.3\n0.1\nSmall\n\n\n0.5\n0.3\nMedium\n\n\n0.8\n0.5\nLarge\n\n\n\n\n\n\n\n\n\nFunder & Ozer (2019)\n\n\n\n\n\n\n\\(d\\)\n\\(r\\)\nDescription\n\n\n\n\n0.10\n0.05\nVery small for the explanation of single events but potentially consequential in longer run\n\n\n0.20\n0.10\nStill small at the level of single events but potentially more ultimately consequential\n\n\n0.40\n0.20\nMedium effect of some explanatory and practical use even in the short run\n\n\n0.60\n0.30\nLarge effect that is potentially powerful in both the short and the long run\n\n\n0.80\n0.40\nA very large effect in the context of psychological research; likely to be a gross overestimate\n\n\n\n\n\n\n\n\n\n\n\nFunder, D. C., & Ozer, D. J. (2019). Evaluating Effect Size in Psychological Research: Sense and Nonsense. Advances in Methods and Practices in Psychological Science, 2(2), 156–168. https://doi.org/10.1177/2515245919847202"
+    "text": "Interpreting effect size\n\n\nCohen (1977)\n\n\n\n\n\n\\(d\\)\n\\(r\\)\nDescription\n\n\n\n\n0.3\n0.1\nSmall\n\n\n0.5\n0.3\nMedium\n\n\n0.8\n0.5\nLarge\n\n\n\n\n\n\nFunder & Ozer (2019)\n\n\n\n\n\n\\(d\\)\n\\(r\\)\nDescription\n\n\n\n\n0.10\n0.05\nVery small for the explanation of single events but potentially consequential in longer run\n\n\n0.20\n0.10\nStill small at the level of single events but potentially more ultimately consequential\n\n\n0.40\n0.20\nMedium effect of some explanatory and practical use even in the short run\n\n\n0.60\n0.30\nLarge effect that is potentially powerful in both the short and the long run\n\n\n0.80\n0.40\nA very large effect in the context of psychological research; likely to be a gross overestimate\n\n\n\n\n\n\n\nFunder, D. C., & Ozer, D. J. (2019). Evaluating Effect Size in Psychological Research: Sense and Nonsense. Advances in Methods and Practices in Psychological Science, 2(2), 156–168. https://doi.org/10.1177/2515245919847202"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#recap-1",
@@ -2034,7 +2041,7 @@
     "href": "slides/09_hypothesis-testing.html#state-hypotheses-1",
     "title": "PSYC BC1101",
     "section": "1. State hypotheses",
-    "text": "1. State hypotheses\n\n\n\nClaim: This pill makes you smarter\n\n\\(H_0\\): The pill doesn’t effect intelligence\n\\(H_1\\): The pill affects intelligence\n\n\n\n💊🧠\n\n\n\n\n\nClaim: Standing like superman makes you feel more confident\n\n\\(H_0\\): Posture does not affect confidence\n\\(H_1\\): Posture does affect confidence\n\n\n\n🦸‍♀ 😎️\n\n\n\n\n\nClaim: The more education people complete, the more they earn\n\n\\(H_0\\): Education is not associated with income\n\\(H_1\\): There is a relationship between education and income\n\n\n\n🎓🤑"
+    "text": "1. State hypotheses\n\n\n\nClaim: This pill makes you smarter\n\n\\(H_0\\): The pill doesn’t effect intelligence\n\\(H_1\\): The pill affects intelligence\n\n\n\n💊🧠\n\n\n\n\nClaim: Standing like superman makes you feel more confident\n\n\\(H_0\\): Posture does not affect confidence\n\\(H_1\\): Posture does affect confidence\n\n\n\n🦸‍♀ 😎️\n\n\n\n\nClaim: The more education people complete, the more they earn\n\n\\(H_0\\): Education is not associated with income\n\\(H_1\\): There is a relationship between education and income\n\n\n\n🎓🤑"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#decision-criterion",
@@ -2055,7 +2062,7 @@
     "href": "slides/09_hypothesis-testing.html#decision-criterion-2",
     "title": "PSYC BC1101",
     "section": "2. Decision criterion",
-    "text": "2. Decision criterion\n\n\n\nDirectional tests\n\nResearcher has a specific prediction about the direction of the treatment\nSpecifies (in advance) looking for increase or decrease\n\n\n\n\n\n\n\n\n\n\nNondirectional tests\n\nLooking for a difference in either direction"
+    "text": "2. Decision criterion\n\n\n\nDirectional tests\n\nResearcher has a specific prediction about the direction of the treatment\nSpecifies (in advance) looking for increase or decrease\n\n\n\n\n\n\n\n\n\nNondirectional tests\n\nLooking for a difference in either direction"
   },
   {
     "objectID": "slides/09_hypothesis-testing.html#data-collection",
@@ -2146,7 +2153,7 @@
     "href": "slides/06_z-scores.html#standardizing-scores",
     "title": "PSYC BC1101",
     "section": "Standardizing scores",
-    "text": "Standardizing scores\n\n\n\n\nOriginal\n\n\n\\(z\\)-scores\n\n\n2a. Set SD\n\n2b. Set \\(M\\)\n\n\n\n\ngeniustest\n\n\n\n\n\n\n\n\n\n\n\n\nmensa.lu"
+    "text": "Standardizing scores\n\n\n\n\nOriginal\n\n\n\\(z\\)-scores\n\n\n2a. Set SD\n\n2b. Set \\(M\\)\n\n\n\ngeniustest\n\n\n\n\n\n\n\n\n\n\n\nmensa.lu"
   },
   {
     "objectID": "slides/06_z-scores.html#z-scores-and-inferential-stats",
@@ -2174,7 +2181,7 @@
     "href": "slides/06_z-scores.html#cbt-for-ocd",
     "title": "PSYC BC1101",
     "section": "CBT for OCD",
-    "text": "CBT for OCD\n\nEfficacy of CBT for OCD1\n\nPre-treatment population \\(M = 30.25; SD = 14.89\\)\nSuppose a treated individual scores \\(X = 15.49\\)\n\n\n\n\n\n\n\\(\\begin{align} z & = \\dfrac{X - M}{s} \\\\\n& = \\dfrac{15.49 - 30.25}{14.89} \\\\\n& = -0.99 \\end{align}\\)\n\n\nAbramowitz et al. (2010)"
+    "text": "CBT for OCD\n\nEfficacy of CBT for OCD1\n\nPre-treatment population \\(M = 30.25; SD = 14.89\\)\nSuppose a treated individual scores \\(X = 15.49\\)\n\n\n\n\n\n\n\\(\\begin{align} z & = \\dfrac{X - M}{s} \\\\\n& = \\dfrac{15.49 - 30.25}{14.89} \\\\\n& = -0.99 \\end{align}\\)\n\nAbramowitz et al. (2010)"
   },
   {
     "objectID": "slides/10_hypothesis-testing-pt-2.html#type-1-error",
@@ -2202,7 +2209,7 @@
     "href": "slides/10_hypothesis-testing-pt-2.html#interpreting-cohens-d",
     "title": "PSYC BC1101",
     "section": "Interpreting Cohen’s \\(d\\)",
-    "text": "Interpreting Cohen’s \\(d\\)\n\n\n\nCohen’s rules of thumb\n\n\n\n\n\n\n\n\\(d\\)\nInterpretation\n\n\n\n\n0.2\nSmall\n\n\n0.5\nMedium\n\n\n0.8\nLarge"
+    "text": "Interpreting Cohen’s \\(d\\)\n\n\n\nCohen’s rules of thumb\n\n\n\n\n\n\n\\(d\\)\nInterpretation\n\n\n\n\n0.2\nSmall\n\n\n0.5\nMedium\n\n\n0.8\nLarge"
   },
   {
     "objectID": "slides/10_hypothesis-testing-pt-2.html#effect-size-sample-size",
@@ -2237,7 +2244,7 @@
     "href": "slides/10_hypothesis-testing-pt-2.html#power-sample-sizes",
     "title": "PSYC BC1101",
     "section": "Power & sample sizes",
-    "text": "Power & sample sizes\n\n\n\n\n\n\nGrouping variable\nDependent Variable\n\\(d\\)\nRequired \\(n\\)\n\n\n\n\nGender\nHeight\n1.85\n6\n\n\nLiberal / Conservative\nHow important is social equality?\n0.69\n34\n\n\nDo you like eggs? [yes / no]\nHow often do you eat egg salad?\n0.58\n48\n\n\nAre you a smoker? [yes / no]\nWhat is the likelihood of a smoker dying from a smoking-related illness?\n0.33\n144\n\n\nDo you prefer science or art?\nHow many planets can you name correctly?\n0.07\n3669\n\n\n\n\n\n\n\n\n\nSimmons, J. P., Nelson, L. D., & Simonsohn, U. (2013, January). Life after p-hacking. In Meeting of the society for personality and social psychology, New Orleans, LA (pp. 17-19). http://dx.doi.org/10.2139/ssrn.2205186"
+    "text": "Power & sample sizes\n\n\n\n\n\nGrouping variable\nDependent Variable\n\\(d\\)\nRequired \\(n\\)\n\n\n\n\nGender\nHeight\n1.85\n6\n\n\nLiberal / Conservative\nHow important is social equality?\n0.69\n34\n\n\nDo you like eggs? [yes / no]\nHow often do you eat egg salad?\n0.58\n48\n\n\nAre you a smoker? [yes / no]\nWhat is the likelihood of a smoker dying from a smoking-related illness?\n0.33\n144\n\n\nDo you prefer science or art?\nHow many planets can you name correctly?\n0.07\n3669\n\n\n\n\n\n\nSimmons, J. P., Nelson, L. D., & Simonsohn, U. (2013, January). Life after p-hacking. In Meeting of the society for personality and social psychology, New Orleans, LA (pp. 17-19). http://dx.doi.org/10.2139/ssrn.2205186"
   },
   {
     "objectID": "slides/10_hypothesis-testing-pt-2.html#low-power",
@@ -2251,160 +2258,146 @@
     "href": "lectures.html",
     "title": "Lectures",
     "section": "",
-    "text": "Jan 21\n\n\n\n  \n    \n\n    \n\n    \n      \nTextbook\nLectures\nRecitation\nExams\nOther stuff\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "Sep 02\n\n\n\n  \n    \n\n    \n\n    \n      \nTextbook\nLectures\nRecitation\nExams\nOther stuff\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "lectures.html#course-overview",
     "href": "lectures.html#course-overview",
     "title": "Lectures",
     "section": "",
-    "text": "Jan 21\n\n\n\n  \n    \n\n    \n\n    \n      \nTextbook\nLectures\nRecitation\nExams\nOther stuff\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "Sep 02\n\n\n\n  \n    \n\n    \n\n    \n      \nTextbook\nLectures\nRecitation\nExams\nOther stuff\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "lectures.html#variables",
     "href": "lectures.html#variables",
     "title": "Lectures",
     "section": "2. Variables",
-    "text": "2. Variables\n\n\nJan 23\n\n\n\n  \n    \n\n    \n\n    \n      \nStatistics: Why? How? What?\nMeasuring things\nPopulations & samples\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "2. Variables\n\n\nSep 04\n\n\n\n  \n    \n\n    \n\n    \n      \nStatistics: Why? How? What?\nMeasuring things\nPopulations & samples\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "lectures.html#frequency",
     "href": "lectures.html#frequency",
     "title": "Lectures",
     "section": "3. Frequency",
-    "text": "3. Frequency\n\n\nJan 28\n\n\n\n  \n    \n\n    \n\n    \n      \nFrequency\nFrequency tables\nFrequency graphs\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "3. Frequency\n\n\nSep 09\n\n\n\n  \n    \n\n    \n\n    \n      \nFrequency\nFrequency tables\nFrequency graphs\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "lectures.html#central-tendency",
     "href": "lectures.html#central-tendency",
     "title": "Lectures",
     "section": "4. Central Tendency",
-    "text": "4. Central Tendency\n\n\nJan 30\n\n\n\n  \n    \n\n    \n\n    \n      \nMode\nMedian\nMean\nDistributions\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "4. Central Tendency\n\n\nSep 11\n\n\n\n  \n    \n\n    \n\n    \n      \nMode\nMedian\nMean\nDistributions\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "lectures.html#variability",
     "href": "lectures.html#variability",
     "title": "Lectures",
     "section": "5. Variability",
-    "text": "5. Variability\n\n\nFeb 04\n\n\n\n  \n    \n\n    \n\n    \n      \nVariability\nRange\nSum of squares, variance, SD\nDegrees of freedom\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "5. Variability\n\n\nSep 16\n\n\n\n  \n    \n\n    \n\n    \n      \nVariability\nRange\nSum of squares, variance, SD\nDegrees of freedom\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "lectures.html#z-scores",
     "href": "lectures.html#z-scores",
     "title": "Lectures",
     "section": "6. \\(z\\)-Scores",
-    "text": "6. \\(z\\)-Scores\n\n\nFeb 06\n\n\n\n  \n    \n\n    \n\n    \n      \n\\(z\\)-scores\nStandardized distributions\n\\(z\\)-scores & making inferences\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "6. \\(z\\)-Scores\n\n\nSep 18\n\n\n\n  \n    \n\n    \n\n    \n      \n\\(z\\)-scores\nStandardized distributions\n\\(z\\)-scores & making inferences\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "lectures.html#probability",
     "href": "lectures.html#probability",
     "title": "Lectures",
     "section": "7. Probability",
-    "text": "7. Probability\n\n\nFeb 11\n\n\n\n  \n    \n\n    \n\n    \n      \nProbability basics\nSampling\nProbability and distributions\nProbability and \\(z\\)-scores\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "7. Probability\n\n\nSep 23\n\n\n\n  \n    \n\n    \n\n    \n      \nProbability basics\nSampling\nProbability and distributions\nProbability and \\(z\\)-scores\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "lectures.html#sampling",
     "href": "lectures.html#sampling",
     "title": "Lectures",
     "section": "8. Sampling",
-    "text": "8. Sampling\n\n\nFeb 13\n\n\n\n  \n    \n\n    \n\n    \n      \nSampling error\nDistribution of sample means\nCentral Limit Theorem\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "8. Sampling\n\n\nSep 25\n\n\n\n  \n    \n\n    \n\n    \n      \nSampling error\nDistribution of sample means\nCentral Limit Theorem\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "lectures.html#hypothesis-testing",
     "href": "lectures.html#hypothesis-testing",
     "title": "Lectures",
     "section": "9. Hypothesis testing",
-    "text": "9. Hypothesis testing\n\n\nFeb 25\n\n\n\n  \n    \n\n    \n\n    \n      \nRecap\nMaking inferences\nHypothesis testing\n\\(z\\)-test\nLearning check\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "9. Hypothesis testing\n\n\nOct 07\n\n\n\n  \n    \n\n    \n\n    \n      \nRecap\nMaking inferences\nHypothesis testing\n\\(z\\)-test\nLearning check\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "lectures.html#hypothesis-testing-pt.-2",
     "href": "lectures.html#hypothesis-testing-pt.-2",
     "title": "Lectures",
     "section": "10. Hypothesis testing pt. 2",
-    "text": "10. Hypothesis testing pt. 2\n\n\nFeb 27\n\n\n\n  \n    \n\n    \n\n    \n      \nInferential errors\nEffect size\nStatistical power\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "10. Hypothesis testing pt. 2\n\n\nOct 09\n\n\n\n  \n    \n\n    \n\n    \n      \nInferential errors\nEffect size\nStatistical power\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "lectures.html#the-t-test",
     "href": "lectures.html#the-t-test",
     "title": "Lectures",
     "section": "11. The \\(t\\) test",
-    "text": "11. The \\(t\\) test\n\n\nMar 04\n\n\n\n  \n    \n\n    \n\n    \n      \n\\(t\\) vs. \\(z\\)\nThe \\(t\\) distribution\nThe \\(t\\)-test\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "11. The \\(t\\) test\n\n\nOct 14\n\n\n\n  \n    \n\n    \n\n    \n      \n\\(t\\) vs. \\(z\\)\nThe \\(t\\) distribution\nThe \\(t\\)-test\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "lectures.html#the-t-test-part-2",
     "href": "lectures.html#the-t-test-part-2",
     "title": "Lectures",
     "section": "12. The \\(t\\) test part 2",
-    "text": "12. The \\(t\\) test part 2\n\n\nMar 06\n\n\n\n  \n    \n\n    \n\n    \n      \nResearch designs\nAssumptions\nEffect size\nConfidence intervals\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "12. The \\(t\\) test part 2\n\n\nOct 16\n\n\n\n  \n    \n\n    \n\n    \n      \nResearch designs\nAssumptions\nEffect size\nConfidence intervals\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "lectures.html#independent-samples-t-test",
     "href": "lectures.html#independent-samples-t-test",
     "title": "Lectures",
     "section": "13. Independent-samples \\(t\\) test",
-    "text": "13. Independent-samples \\(t\\) test\n\n\nMar 11\n\n\n\n  \n    \n\n    \n\n    \n      \nResearch design\nCalculation\nHypothesis test\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "13. Independent-samples \\(t\\) test\n\n\nOct 21\n\n\n\n  \n    \n\n    \n\n    \n      \nResearch design\nCalculation\nHypothesis test\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "lectures.html#related-samples-t-test",
     "href": "lectures.html#related-samples-t-test",
     "title": "Lectures",
     "section": "14. Related-samples \\(t\\) test",
-    "text": "14. Related-samples \\(t\\) test\n\n\nMar 13\n\n\n\n  \n    \n\n    \n\n    \n      \nResearch design\nEquations\nHypothesis test\nAssumptions\nConfidence interval\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "14. Related-samples \\(t\\) test\n\n\nOct 23\n\n\n\n  \n    \n\n    \n\n    \n      \nResearch design\nEquations\nHypothesis test\nAssumptions\nConfidence interval\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "lectures.html#anova",
     "href": "lectures.html#anova",
     "title": "Lectures",
     "section": "15. ANOVA",
-    "text": "15. ANOVA\n\n\nApr 01\n\n\n\n  \n    \n\n    \n\n    \n      \nIntro to ANOVA\nUses of ANOVA\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "15. ANOVA\n\n\nNov 06\n\n\n\n  \n    \n\n    \n\n    \n      \nIntro to ANOVA\nUses of ANOVA\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "lectures.html#anova-pt.-2",
     "href": "lectures.html#anova-pt.-2",
     "title": "Lectures",
     "section": "16. ANOVA pt. 2",
-    "text": "16. ANOVA pt. 2\n\n\nApr 03\n\n\n\n  \n    \n\n    \n\n    \n      \nANOVA terminology\nCalculating ANOVA\nHypothesis test\nPost-hoc tests\nAssumptions\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "16. ANOVA pt. 2\n\n\nNov 11\n\n\n\n  \n    \n\n    \n\n    \n      \nANOVA terminology\nCalculating ANOVA\nHypothesis test\nPost-hoc tests\nAssumptions\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "lectures.html#related-samples-anova",
     "href": "lectures.html#related-samples-anova",
     "title": "Lectures",
     "section": "17. Related-samples ANOVA",
-    "text": "17. Related-samples ANOVA\n\n\nApr 08\n\n\n\n  \n    \n\n    \n\n    \n      \nLogic\nCalculations\nPost-hoc tests\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "17. Related-samples ANOVA\n\n\nNov 13\n\n\n\n  \n    \n\n    \n\n    \n      \nLogic\nCalculations\nPost-hoc tests\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "lectures.html#factorial-anova",
     "href": "lectures.html#factorial-anova",
     "title": "Lectures",
     "section": "18. Factorial ANOVA",
-    "text": "18. Factorial ANOVA\n\n\nApr 10\n\n\n\n  \n    \n\n    \n\n    \n      \nLogic\nCalculations\nHypothesis test\nInterpretation\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "18. Factorial ANOVA\n\n\nNov 18\n\n\n\n  \n    \n\n    \n\n    \n      \nLogic\nCalculations\nHypothesis test\nInterpretation\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "lectures.html#correlation",
     "href": "lectures.html#correlation",
     "title": "Lectures",
     "section": "19. Correlation",
-    "text": "19. Correlation\n\n\nApr 15\n\n\n\n  \n    \n\n    \n\n    \n      \nCorrelational research designs\nCorrelation statistic\nHypothesis test\nCorrelation & effect size\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+    "text": "19. Correlation\n\n\nNov 20\n\n\n\n  \n    \n\n    \n\n    \n      \nCorrelational research designs\nCorrelation statistic\nHypothesis test\nCorrelation & effect size\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   },
   {
     "objectID": "lectures.html#regression",
     "href": "lectures.html#regression",
     "title": "Lectures",
     "section": "20. Regression",
-    "text": "20. Regression\n\n\nApr 17\n\n\n\n  \n    \n\n    \n\n    \n      \nPurpose\nEquations\nHypothesis test\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
-  },
-  {
-    "objectID": "slides/02_variables.html#measuring-things",
-    "href": "slides/02_variables.html#measuring-things",
-    "title": "PSYC BC1101",
-    "section": "Measuring things",
-    "text": "Measuring things\n\nHow many books are red"
-  },
-  {
-    "objectID": "slides/02_variables.html#measuring-things-1",
-    "href": "slides/02_variables.html#measuring-things-1",
-    "title": "PSYC BC1101",
-    "section": "Measuring things",
-    "text": "Measuring things\n\nHow much grain is in a bushel?"
+    "text": "20. Regression\n\n\nNov 25\n\n\n\n  \n    \n\n    \n\n    \n      \nPurpose\nEquations\nHypothesis test\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
   }
 ]
