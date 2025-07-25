@@ -4,28 +4,28 @@ format:
     title: PSYC BC1101 STATISTICS
   pdf:
     title: PSYC BC1101 STATISTICS
-    output-file: bc1101-syllabus-sp25.pdf
+    output-file: bc1101-syllabus-FA25.pdf
     
-subtitle: "Barnard College, Spring 2025"
+subtitle: "Barnard College, Fall 2025"
 ---
 
 
 Professor: Dr. Rob Brotherton (<rbrother@barnard.edu>)   
-Office Hours: Wed 1-2PM, 415M Milbank
+Office Hours: Monday, 9-10AM, 415M Milbank
 
 Lecture time: Tu/Th 10:10-11:25AM  
-Lecture venue: 328 Milbank Hall
+Lecture venue: TBC
 
-Section 001 recitation: Wed 9:10-11:00AM, 222 Milbank Hall   
+Section 001 recitation: Wed 10:10-12:00PM, TBC   
 
-Section 002 recitation: Wed 11:10AM-1:00PM, 222 Milbank Hall    
+Section 002 recitation: Wed 12:10-2:00PM, TBC   
 
 
 
 
 ## Course Overview
 
-This course, required for the psychology major, provides an introduction to statistical methods commonly used in psychological research. Topics include measures of central tendency and variability, probability and sampling, confidence intervals and hypothesis testing, t-test and analysis of variance, correlation and regression. In addition to learning the conceptual and mathematical underpinnings of these techniques, you will learn to calculate and interpret statistics with reference to real-world contexts and research questions typical in psychological research. The course includes recitation meetings that provide instruction in the analysis of psychological data using the R statistical software package commonly used by behavioral science researchers.
+This course, required for the psychology major, provides an introduction to statistical methods commonly used in psychological research. Topics include measures of central tendency and variability, probability and sampling, confidence intervals and hypothesis testing, t-test and analysis of variance, correlation and regression. In addition to learning the conceptual and mathematical underpinnings of these techniques, you will learn to calculate and interpret statistics with reference to real-world contexts and research questions typical in psychological research. The course includes recitation meetings that provide instruction in the analysis of psychological data using the R statistical coding language commonly used by behavioral science researchers.
 
 The course is designed to fulfill these goals:
 
@@ -43,27 +43,34 @@ The course is designed to fulfill these goals:
 ```{r}
 #| eval: false
 
+first_lecture <- as.Date("2025-09-02")
+second_lecture <- first_lecture + 2
+first_recitation <- first_lecture + 1
+last_day_of_classes <- as.Date("2025-12-08")
 
-dates <- paste(seq.Date(from = as.Date("2025-01-21"), to = as.Date("2025-05-05"), by = "week"),
-               seq.Date(from = as.Date("2025-01-23"), to = as.Date("2025-05-05"), by = "week"), 
+dates <- paste(seq.Date(from = first_lecture, to = last_day_of_classes, by = "week"),
+               seq.Date(from = as.Date("2025-09-03"), to = as.Date("2025-05-05"), by = "week"), 
+               seq.Date(from = as.Date("2025-09-04"), to = as.Date("2025-05-05"), by = "week"), 
                sep = "!") |>
   stringr::str_split(pattern = "!") |>
   unlist()
 
 dates <- c(
-  seq.Date(from = as.Date("2025-01-21"), to = as.Date("2025-05-05"), by = "week"),
-  seq.Date(from = as.Date("2025-01-23"), to = as.Date("2025-05-05"), by = "week")
+  seq.Date(from = first_lecture, to = last_day_of_classes, by = "week"),
+  seq.Date(from = first_recitation, to = last_day_of_classes, by = "week"),
+  seq.Date(from = second_lecture, to = last_day_of_classes, by = "week")
 ) |> 
   sort()
 
-# cat(dates, sep = "\n")
-
+cat(dates, sep = "\n")
+dates
 new_schedule <- readr::read_csv("schedule.csv")
 new_schedule$Date <- dates
-
+x <- as.data.frame(dates)
+writeClipboard(dates)
 # if recitation is on a different day from lectures, need to add it in
 recitation_dates <- data.frame(
-  Date = seq.Date(from = as.Date("2025-01-22"), to = as.Date("2025-05-05"), by = "week"),
+  Date = seq.Date(from = first_recitation, to = last_day_of_classes, by = "week"),
   Topic = "-",
   Recitation = "-",
   Panopto = "-"
@@ -85,6 +92,7 @@ readr::write_csv(new_schedule, "schedule.csv")
 schedule <- readr::read_csv("schedule.csv")
 
 shade_rows <- rep(1:3, 8) + rep(6 * c(0:7), each = 3)
+no_class_rows <- stringr::str_which(schedule$Topic, "\\(no")
 
 schedule |> 
   dplyr::select(Date, Topic) |> 
@@ -93,7 +101,8 @@ schedule |>
     booktabs = TRUE, longtable = TRUE) |> 
   kableExtra::column_spec(1, width = "5em") |> 
   kableExtra::column_spec(2, width = "20em") |> 
-  kableExtra::row_spec(shade_rows, background = "#eeeeee")
+  kableExtra::row_spec(no_class_rows, italic = TRUE, color = "#BBBBBB") |>
+  kableExtra::row_spec(shade_rows[shade_rows <= nrow(schedule)], background = "#eeeeee")
 
 ```
 
@@ -105,11 +114,11 @@ schedule |>
 There are no required readings. Instead, you will be required to watch recorded lectures before attending the associated class session. You must watch the video lecture before attending the associated class session. These video lectures will be around 15 to 25 minutes each. They will include ‘quizzes’ that appear during the video, requiring your response before you continue with the lecture. So even though the videos themselves are short, you should plan to spend an hour or more with each one including the time it takes you to answer the questions and complete the exercises included along the way. Panopto keeps a record of your responses, and your engagement will be required and graded (see [Grading](#grading)).
 
 ### Class time 
-Since you will have watched the recorded lecture in advance of class, class time will be devoted to activities, discussions, and your questions to help cement the understanding you will have begun to develop from the watching the lecture. Class activities are designed to build on the lecture you watched in advance; you will not be able to get the most out of the class without watching the associated lecture first. Given the nature of the activities and discussions I have planned, in-person classes will not be streamed or recorded.
+Since you will have watched the recorded lecture in advance of class, class time will be devoted to review, activities, discussions, and your questions to help cement the understanding you will have begun to develop from the watching the lecture. Class activities are designed to build on the lecture you watched in advance; you will not be able to get the most out of the class without watching the associated lecture first.
 
 ### Recitation
 
-While the lecture component of the course covers the material conceptually, recitations will focus on practical application: performing statistical analyses using computer software, specifically R. Problem sets will be accessed via RStudio Cloud, a free, web-browser-based version of the RStudio software interface that facilitates coding and running analyses using the R coding language. Instructions and advice will be self-contained in the problem sets as comments and pre-written demonstration code, and additional help and guidance will be available during recitation sessions. You will complete the problem sets by writing and executing code to answer the problems. Problem sets will be due at the end of your recitation period. You should plan to begin the problem set in advance of recitation and come to recitation to receive assistance with any problems you run into or just to check you were doing things correctly and as effectively as possible.
+While the lecture component of the course covers the material conceptually, recitations will focus on practical application: performing statistical analyses using computer software, specifically R. No prior experience with R is required. For a quick primer, see [this page](recitation.qmd). Problem sets will be accessed via RStudio Cloud, a free, web-browser-based version of the RStudio software interface that facilitates coding and running analyses using the R coding language. Instructions and advice will be self-contained in the problem sets as comments and pre-written demonstration code, and additional help and guidance will be available during recitation sessions. You will complete the problem sets by writing and executing code to answer the problems. Problem sets will be due at the end of your recitation period. You should plan to begin the problem set in advance of recitation and come to recitation to receive assistance with any problems you run into or just to check you were doing things correctly and as effectively as possible.
 
 ### Exams
 There will be three multiple choice exams throughout the course (see [class schedule](#class-schedule)). The exams will cover material from the lectures (not R). Each exam will cover approximately one-third of the course material. The lecture before each exam will be set aside for a review discussion. Also, on weeks with exams, there will be no recitation problem set due.
