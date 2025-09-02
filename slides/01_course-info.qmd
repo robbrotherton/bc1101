@@ -2,113 +2,98 @@
 format: revealjs
 ---
 
-
-# 1|COURSE OVERVIEW
+# 1\|COURSE OVERVIEW
 
 ::: {#cover-image}
 :::
 
-
 # Overview
 
-- [Textbook]
-- [Lectures]
-- [Recitation]
-- [Exams]
-- [Other stuff]
-
+-   [Textbook]
+-   [Lectures]
+-   [Recitation]
+-   [Exams]
+-   [Other stuff]
 
 # About me
 
-:::: {.columns}
+::::: columns
+::: {.column width="50%"}
+-   Dr. Rob Brotherton
 
-::: {.column width="40%"}
-- Dr. Rob Brotherton
+-   Northern Irish
 
-- Northern Irish
-
-- Research: Political psychology / conspiracy beliefs
+-   Research: Political psychology / conspiracy beliefs
 :::
 
-::: {.column width="60%"}
-
-<!-- placeholder -->
-
+::: {.column width="50%"}
+![](media/rob-halftone.svg){style="margin-top: -2em;" fig-align="center" width="80%"}
 :::
-
-::::
-
+:::::
 
 # Textbook
 
-
-:::: {.columns}
-
+::::: columns
 ::: {.column width="50%"}
-- Learning Statistics with R
-  - By Danielle Navarro
-  - Download as a .pdf for free
-  - [learningstatisticswithr.com](https://learningstatisticswithr.com)
-  - Helpful for seeing how things are done in R
-  - As well as explaining statistical concepts
+-   Learning Statistics with R
+    -   By Danielle Navarro
+    -   Download as a .pdf for free
+    -   [learningstatisticswithr.com](https://learningstatisticswithr.com)
+    -   Helpful for seeing how things are done in R
+    -   As well as explaining statistical concepts
 :::
 
 ::: {.column width="50%"}
-
 [![](media/navarro-flametree.png){style="margin-top: -2em;"}](https://art.djnavarro.net/)
-
 :::
-
-::::
-
+:::::
 
 # Lectures
 
 ## Panopto
 
-  - In-lecture quizzes
-  - Navigation
-  - Subtitles
-  - Also: Class notes Google Doc
+-   In-lecture quizzes
+-   Navigation
+-   Subtitles
+-   Also: Class notes Google Doc
 
 ## Topics
 
-- Basic issues:
-  - Terminology, variables & measurement
-- Descriptive statistics: 
-  - Frequency, central tendency, variability, z-scores
-- Inferential statistics:
-  - Probability, sampling; hypothesis testing
-  - $t$-tests; ANOVA; Correlation & regression
-- Logical progression
+-   Basic issues:
+    -   Terminology, variables & measurement
+-   Descriptive statistics:
+    -   Frequency, central tendency, variability, z-scores
+-   Inferential statistics:
+    -   Probability, sampling; hypothesis testing
+    -   $t$-tests; ANOVA; Correlation & regression
+-   Logical progression
 
 ## Exams
 
-- 3 multiple choice exams
-  - Multiple choice
-  - 60 minutes
-  - Only lecture material, not R
-  - Non-cumulative
-  - Except inasmuch as later concepts rely on ones introduced earlier
-- Some questions will involve sums, but only simple ones you can do on paper
-
+-   3 multiple choice exams
+    -   Multiple choice
+    -   60 minutes
+    -   Only lecture material, not R
+    -   Non-cumulative
+    -   Except inasmuch as later concepts rely on ones introduced earlier
+-   Some questions will involve sums, but only simple ones you can do on paper
 
 # Recitation
 
 ## R problem sets
 
-- Practical application of stats to data
-  - Using RStudio Cloud
-  - Show code; how you worked out answers
-  - Work on .qmd in RStudio Cloud
-  - Upload rendered .pdf to Canvas
+-   Practical application of stats to data
+    -   Using RStudio Cloud
+    -   Show code; how you worked out answers
+    -   Work on .qmd in RStudio Cloud
+    -   Upload rendered .pdf to Canvas
 
 ## Grading
 
-- Wrong answers ≠ lower grade
-  - 0, 1, or 2 points
-  - 0 = No submission, 1 = Incomplete, 2 = Valid attempt
-  - Deadline: End of recitation
+-   Wrong answers ≠ lower grade
+    -   0, 1, or 2 points
+    -   0 = No submission, 1 = Incomplete, 2 = Valid attempt
+    -   Deadline: End of recitation
 
 ```{r echo=T}
 # comment your R code to show thought process
@@ -117,35 +102,34 @@ format: revealjs
 2 + 2 
 ```
 
-
 # Final grades
 
-- 50% Exams
-- 30% Problem Sets
-- 20% Participation
-
+-   50% Exams
+-   30% Problem Sets
+-   20% Participation
 
 # Other stuff
 
 ## Math
 
-- Statistics requires basic math skills
+-   Statistics requires basic math skills
 
-- E.g. order of operations
-  1. Parentheses
-  2. Exponents (like squaring/square root)
-  3. Multiplication & division
-  4. Summation
-  5. Addition & subtraction
+-   E.g. order of operations
+
+    1.  Parentheses
+    2.  Exponents (like squaring/square root)
+    3.  Multiplication & division
+    4.  Summation
+    5.  Addition & subtraction
 
 ## Math
 
-- Summation
-  - Symbol $\Sigma$ (Greek letter Sigma) means add up
-  - Summation is done after operations in parentheses, squaring, and multiplication or division, but before other addition or subtraction
-  - E.g… $X = [2, 4, 7]$
+-   Summation
+    -   Symbol $\Sigma$ (Greek letter Sigma) means add up
+    -   Summation is done after operations in parentheses, squaring, and multiplication or division, but before other addition or subtraction
+    -   E.g… $X = [2, 4, 7]$
 
-::: {.center-element}
+::: center-element
 $\Sigma X = ?$
 
 $\Sigma X + 1 = ?$
@@ -155,48 +139,39 @@ $\Sigma(X + 1) = ?$
 
 ## Math
 
-- Algebra
-  - Rearranging equations
-  - E.g.
-
+-   Algebra
+    -   Rearranging equations
+    -   E.g.
 
 $$\begin{align}12 &= 7 + X \\ X &= ? \end{align}$$
 
-
 ## ![](media/Rlogo.svg){style="height: 1em; margin-left: 0.75em"} {#r .smaller data-menu-title="R"}
 
-:::: {.columns}
-
+::::: columns
 ::: {.column width="50%"}
-- Disadvantages
-  - A little tricky to begin with
-- Advantages
-  - Free
-  - Can do stuff other stats software can't
-  - Reproducible analyses
-  - Pretty graphs
-  - Feel like a super cool hacker
-  - Pirate jokes
-  - Good for your career
+-   Disadvantages
+    -   A little tricky to begin with
+-   Advantages
+    -   Free
+    -   Can do stuff other stats software can't
+    -   Reproducible analyses
+    -   Pretty graphs
+    -   Feel like a super cool hacker
+    -   Pirate jokes
+    -   Good for your career
 :::
 
 ::: {.column width="50%"}
-
 ![](media/r-jobs-2019.png)
-
 :::
-
-::::
-
-
+:::::
 
 ## Lastly
 
-- Check Canvas & email regularly
-- Let me know about problems
+-   Check Canvas & email regularly
+-   Let me know about problems
 
-
-::: {.content-hidden}
+::: content-hidden
 # Data and figures
 :::
 
