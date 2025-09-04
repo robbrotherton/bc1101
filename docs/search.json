@@ -1635,7 +1635,7 @@
     "href": "slides/03_frequency.html#e.g.-opinion-polling",
     "title": "PSYC BC1101",
     "section": "E.g. opinion polling",
-    "text": "E.g. opinion polling\n\nHow often does something occur?\n\nE.g. FiveThirtyEight presidential popularity polling"
+    "text": "E.g. opinion polling\n\nHow often does something occur?\n\nE.g. Political polling"
   },
   {
     "objectID": "slides/03_frequency.html#frequency-distributions",
@@ -1649,7 +1649,7 @@
     "href": "slides/03_frequency.html#simple-example",
     "title": "PSYC BC1101",
     "section": "Simple example",
-    "text": "Simple example\n\nFrom raw scores\n\n\n\n2 1 2 3 4 3 3 2 2 1 5 3 4 1 2\n\n\n\n\n\nTo this\n\n\n\n\n\n\n\n\\(X\\)\n\\(f\\)\n\n\n\n\n1\n3\n\n\n2\n5\n\n\n3\n4\n\n\n4\n2\n\n\n5\n1\n\n\n\n\n\n\n\n\n\n\nOr this"
+    "text": "Simple example\n\nFrom raw scores\n\n\n\n2 1 2 3 4 3 3 2 2 1 5 3 4 1 2\n\n\n\n\n\nTo this\n\n\n\n\n\n\n\n\\(X\\)\n\\(f\\)\n\n\n\n\n1\n3\n\n\n2\n5\n\n\n3\n4\n\n\n4\n2\n\n\n5\n1\n\n\n\n\n\n\n\n\nOr this"
   },
   {
     "objectID": "slides/03_frequency.html#frequency-tables-1",
@@ -2399,5 +2399,12 @@
     "title": "Lectures",
     "section": "20. Regression",
     "text": "20. Regression\n\n\nNov 25\n\n\n\n  \n    \n\n    \n\n    \n      \nPurpose\nEquations\nHypothesis test\nLearning checks\n\n    \n  \n\n  \nSlidesPanopto"
+  },
+  {
+    "objectID": "slides/03_frequency.html#how-often-does-something-occur",
+    "href": "slides/03_frequency.html#how-often-does-something-occur",
+    "title": "PSYC BC1101",
+    "section": "How often does something occur?",
+    "text": "How often does something occur?\n\nE.g. Political polling"
   }
 ]

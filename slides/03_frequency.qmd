@@ -30,12 +30,11 @@ format: revealjs
 
 # Frequency
 
-## E.g. opinion polling
+## How often does something occur?
 
-- How often does something occur?
-    - E.g. [FiveThirtyEight](https://projects.fivethirtyeight.com/biden-approval-rating/) presidential popularity polling
+  - E.g. [Political polling](https://www.natesilver.net/p/trump-approval-ratings-nate-silver-bulletin) 
 
-![](media/538-chart-sp25.png){width=70%}
+![](https://datawrapper.dwcdn.net/RFXsV/full.png){width=70%}
 
 
 ## Frequency distributions
