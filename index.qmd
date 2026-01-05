@@ -4,9 +4,9 @@ format:
     title: PSYC BC1101 STATISTICS
   pdf:
     title: PSYC BC1101 STATISTICS
-    output-file: bc1101-syllabus-FA25.pdf
+    output-file: bc1101-syllabus-SP26.pdf
     
-subtitle: "Barnard College, Fall 2025"
+subtitle: "Barnard College, Spring 2026"
 ---
 
 
@@ -14,13 +14,13 @@ Professor: Dr. Rob Brotherton (<rbrother@barnard.edu>)
 Office Hours: Wednesday, 9-10AM, 415M Milbank
 
 Lecture time: Tu/Th 10:10-11:25AM  
-Lecture venue: 328 Milbank Hall
+Lecture venue: LL002 MILSTEIN
 
 Section 001 recitation: Wed 10:10-12:00PM, 516 Milstein   
 
 Section 002 recitation: Wed 12:10-2:00PM, 222 Milbank Hall   
 
-
+Section 003 recitation: Wed 2:10-4:00PM, 111 Milstein     
 
 
 ## Course Overview
@@ -43,14 +43,14 @@ The course is designed to fulfill these goals:
 ```{r}
 #| eval: false
 
-first_lecture <- as.Date("2025-09-02")
+first_lecture <- as.Date("2026-01-20")
 second_lecture <- first_lecture + 2
 first_recitation <- first_lecture + 1
-last_day_of_classes <- as.Date("2025-12-08")
+last_day_of_classes <- as.Date("2026-05-04")
 
 dates <- paste(seq.Date(from = first_lecture, to = last_day_of_classes, by = "week"),
-               seq.Date(from = as.Date("2025-09-03"), to = as.Date("2025-05-05"), by = "week"), 
-               seq.Date(from = as.Date("2025-09-04"), to = as.Date("2025-05-05"), by = "week"), 
+               seq.Date(from = first_recitation, to = last_day_of_classes, by = "week"), 
+               seq.Date(from = second_lecture, to = last_day_of_classes, by = "week"), 
                sep = "!") |>
   stringr::str_split(pattern = "!") |>
   unlist()
@@ -68,6 +68,7 @@ new_schedule <- readr::read_csv("schedule.csv")
 new_schedule$Date <- dates
 x <- as.data.frame(dates)
 writeClipboard(dates)
+  
 # if recitation is on a different day from lectures, need to add it in
 recitation_dates <- data.frame(
   Date = seq.Date(from = first_recitation, to = last_day_of_classes, by = "week"),
@@ -98,11 +99,12 @@ schedule |>
   dplyr::select(Date, Topic) |> 
   kableExtra::kbl(
     col.names = c("Date", "Lecture / Recitation Topic"),
-    booktabs = TRUE, longtable = TRUE) |> 
+    booktabs = TRUE, longtable = TRUE) |>
+  kableExtra::kable_styling(bootstrap_options = "hover") |> 
   kableExtra::column_spec(1, width = "5em") |> 
   kableExtra::column_spec(2, width = "20em") |> 
-  kableExtra::row_spec(no_class_rows, italic = TRUE, color = "#BBBBBB") |>
-  kableExtra::row_spec(shade_rows[shade_rows <= nrow(schedule)], background = "#eeeeee")
+  kableExtra::row_spec(no_class_rows, italic = TRUE, color = "#BBBBBB")
+  # kableExtra::row_spec(shade_rows[shade_rows <= nrow(schedule)], background = "#eeeeee")
 
 ```
 
