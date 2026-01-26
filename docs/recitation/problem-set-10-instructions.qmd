@@ -1,0 +1,85 @@
+---
+title: Problem Set 10
+subtitle: Correlation and Regression
+
+format: html
+sidebar: recitation
+navbar: false
+execute: 
+  echo: true
+---
+
+# Part 1: Computing and graphing associations
+
+::: {.content-hidden when-format="pdf"}
+## Instructions
+
+### Correlation
+
+R has two basic functions for calculating correlations: `cor()`, and `cor.test()` . They each require two arguments, named `x` and `y`, referring to the two variables (i.e. columns of data) we want to compute the correlation between.
+
+```{r}
+# first read in the relevant data; for this example it's a spreadsheet with two
+# columns, named x and y
+df <- read.csv("data/10_example.csv")
+
+cor(df$x, df$y)
+
+cor.test(df$x, df$y)
+```
+
+As you will see, `cor()` simply returns the value of Pearson's $r$. `cor.test()` returns all the information you need to complete a significance test, i.e. the correlation coefficient, degrees of freedom, and $p$-value as well as some stuff you can ignore for our purposes, such as $t$ and a confidence interval.
+
+### Regression
+
+The `lm()` function computes a 'linear model', i.e. the kind of linear regression model that we have learned about in the lectures. Rather than accepting `x` and `y` arguments, the regression function requires a `formula`, just like you've used with `t.test()` and `aov()` in previous problem sets. The idea is the same here: we articulate a formula in the form `DV ~ IV`. In this context, the DV is the outcome variable, i.e. the one we want to predict. The IV is the predictor. And remember, I'm using `DV` and `IV` generically here: when you write your code you will replace them with the names of columns in your data.frame.
+
+There is a second step though. Since `lm()` doesn't give us all the information about the regression model that we usually need to report, we assign the model (the output of the `lm()` function) to a name (`model`, in my case), and then we feed that into the `summary()` function.
+
+```{r}
+model <- lm(y ~ x, data = df)
+
+summary(model)
+```
+
+### Visualizing correlation & regression
+
+To visualize bivariate correlations, you can use ggplot, specifying your x and y variables as aesthetics, and adding a `geom_point()` layer for the dots.
+
+```{r}
+library(ggplot2)
+
+ggplot(df, aes(x = x, y = y)) +
+  geom_point()
+```
+
+To make this a visualization of the regression model as well, we can simply add another layer to show the best fit line. This is computed by `geom_smooth`. We just need to tell it the `method` we want it to use to compute the line. For our purposes, `method = "lm"` meaning "linear model".
+
+```{r}
+ggplot(df, aes(x = x, y = y)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+:::
+
+# Part 2. The World Happiness Report.
+
+::: {.content-hidden when-format="pdf"}
+## Instructions
+
+For this question you will work with some real data from the [World Happiness Report](https://worldhappiness.report/).
+
+Look at the data after you read it into R to get an idea of what variables it contains. The column names generally give a clear indication of what the scores are, but some may be unclear or unfamiliar. There's a full explanation at [in the WHR appendix here.](https://happiness-report.s3.amazonaws.com/2024/Ch2+Appendix.pdf){.uri}
+
+You'll be using `cor()` and/or `cor.test()` to examine correlations. The only new thing to be aware of is that, if you try to correlate two variables and there is even a single missing data point (indicated by `NA`), you will get an answer of `NA`. To avoid this, you can specify `use = "pairwise.complete.obs` as an argument within either function. That will cause R to ignore cases where one data point is missing, and use however many have complete data for both variables.
+:::
+
+:::: {.content-hidden when-format="pdf"}
+::: {.callout-tip collapse="false"}
+## Or...
+
+Since you're coming to the end of this journey with R, and you're becoming an expert at doing so many things with it, I want to give you the chance to spread your wings and fly. If you want to put your skills to the test and push your limits, please ignore the following questions and just do something cool with the world happiness data. You might produce a visual ranking the happiness of every country, make a map showing happiness around the world (yes, R can do maps!), graph changes over time (`10_world_happiness_all_years.csv` has data for multiple years whereas `10_world_happiness_2023.csv` is just that one year), or something else that I haven't even thought of. Maybe chatGPT can help get you started with ideas and code. Prof B would love to help as well. This is your chance to shine!
+
+Or you can just ignore this and play it safe with the questions below. Your choice; no judgement 😊
+:::
+::::

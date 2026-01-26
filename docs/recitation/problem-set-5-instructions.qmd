@@ -1,0 +1,141 @@
+---
+title: Problem Set 5
+subtitle: Hypothesis testing
+
+format: html
+sidebar: recitation
+navbar: false
+execute: 
+  echo: true
+---
+
+# Part 1. Effect size and statistical power
+
+::: {.content-visible when-format="html"}
+## Instructions
+
+### Effect size
+
+Cohen's $d$ is simple to calculate: It is the mean difference divided by standard deviation.
+
+So if you have a population with mean 100 and standard deviation 15, and you administer a treatment which produces a sample mean of 106, Cohen's $d$ would be:
+
+```{r}
+(106 - 100) / 15
+```
+
+### Statistical power
+
+Suppose we're measuring reaction times in milliseconds. A sample $n = 40$ is selected from a normally-distributed population with $\mu = 75$ and $\sigma = 12$, and a treatment is administered to the sample. The treatment is expected to increase scores by an average of $4$ msec. We plan to use a two-tailed hypothesis test using $\alpha = .05$.
+
+Step 1: Calculate the standard error of the mean
+
+```{r}
+std_err <- 12/sqrt(40)
+```
+
+Step 2: multiply the critical $z$-scores by the standard error of the mean and add to the population mean to find the range of means that would produce a Type II error. We can put two values into the `qnorm()` function using the `c()` function. This way, we will get both of the means we're looking for using a single line of code.
+
+```{r}
+range <- 75 + qnorm(c(.025, .975)) * std_err 
+
+range
+```
+
+...which tells us that any mean between 71.28 and 78.72 would lead us to fail to reject the null hypothesis
+
+step 3: Calculate beta. Assuming that the treatment worked and thus the new mean is 79, determine what proportion of sample means fall within that range.
+
+One way would be to subtract the lower value from the higher value
+
+```{r}
+beta <- pnorm(78.72, mean = 79, sd = std_err) - pnorm(71.28, mean = 79, sd = std_err) 
+
+beta
+```
+
+A slightly easier way would be to use the `diff()` function. If you feed two numbers into the diff function, it will figure out the difference between them. You should get approximately the same answer. (Since the first method involved rounding the numbers along the way, there will be a slight difference.)
+
+```{r}
+areas <- pnorm(range, mean=79, sd=std_err) 
+
+beta <- diff(areas) 
+
+beta
+```
+
+Step 4: Power = 1 - beta
+
+```{r}
+1 - beta
+```
+
+With a 1-tailed test, you don't have to deal with the range between 2 means. You should just find the single critical mean, and figure out the probability of obtaining a mean less than that value.
+
+```{r}
+std_err <- 12/sqrt(40) 
+
+m_critical <- 75 + qnorm(.95) * std_err 
+
+beta <- pnorm(m_critical, mean=79, sd=std_err) 
+
+1 - beta
+```
+:::
+
+:::: {.content-hidden when-format="pdf"}
+::: {.callout-tip collapse="false"}
+## Bonus
+
+The package `pwr` can do power calculations for you. It's worth getting to grips with, but if you use it, do the calculations manually as well at least the first couple of times to make sure you're getting the right answers.
+
+```{r}
+library(pwr) 
+
+pwr.norm.test(d=(79-75)/12, # d is the (known or anticipated) effect size; (M - mu)/SD 
+              n=40, # n is the sample size 
+              sig.level = .05, # sig.level is alpha 
+              alternative = "two.sided") # this is the alternative hypothesis (greater, less, or two.sided)
+
+pwr.norm.test(d = (79-75)/12, n = 40, sig.level = .05, alternative = "greater") # one-tailed power
+```
+:::
+::::
+
+# Part 2. Hypothesis testing
+
+::: {.content-hidden when-format="pdf"}
+## Instructions
+
+As in the lecture, you can think about hypothesis testing as a series of steps to follow
+
+**Step 1: State your hypotheses.** R can't do this for you - you just have to think about the question and formulate your null ($H_0$) and alternative ($H_1$) hypotheses.
+
+**Step 2: Set decision criteria.** The questions below will tell you what alpha to use. Suppose we're using $\alpha = .05$, and a two-tailed test. For a $z$-test, find the critical values using `qnorm()`.
+
+For a one-tailed test, just put in the proportion you want to be your critical region:
+
+```{r}
+qnorm(.05) # If you expect a decrease
+qnorm(.95) # If you expect an increase
+qnorm(.05, lower.tail = FALSE) # Also works for an increase
+```
+
+For a two-tailed test we have two critical regions, each containing alpha divided by 2. We can feed both into `qnorm()` at the same time using `c()`, and it will give us two answers.
+
+```{r}
+qnorm(c(0.025, 0.975))
+```
+
+**Step 3: Calculate your test statistic.** Do this by plugging the appropriate values into the relevant equation. (For other tests, there may be R functions you can use, but there's no built-in function for a $z$-test)
+
+**Step 4: Decide.** Compare your calculated test statistic with the critical values to determine whether your sample is within the critical region(s), and thus whether to reject the null.
+:::
+
+:::: {.content-hidden when-format="pdf"}
+::: {.callout-tip collapse="false"}
+## Bonus
+
+There is no built-in function for doing $z$-tests using real data, because researchers don't need to do it very often. For a fun challenge you could try creating your own function.
+:::
+::::

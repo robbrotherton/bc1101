@@ -1,0 +1,94 @@
+---
+title: Problem Set 8
+subtitle: Independent and Repeated-Measures ANOVA
+
+format: html
+sidebar: recitation
+navbar: false
+execute: 
+  echo: true
+---
+
+# Part 1: ANOVA using R functions.
+
+::: {.content-hidden when-format="pdf"}
+## Instructions
+
+The `aov()` function can be used to perform ANOVA on data in a data.frame. The arguments supplied to `aov()` are `formula` and `data` (the name of the data.frame containing the relevant data). The formula specifies the DV and grouping variable, in the form `DV ~ IV`, meaning we want to compare scores on the DV broken into groups according to the IV.
+
+```{r}
+#| eval: false
+aov(formula = DV ~ IV, data = my_data)
+```
+
+For data from a within-subjects design, you need to include a participant error term in the formula. It will look something like this, where `participant` is the name of a column identifying each participant in your data (note the capital E in `Error`!)
+
+```{r}
+#| eval: false
+aov(formula = DV ~ IV + Error(participant/IV), data = my_data)
+```
+
+Since the `aov()` function requires a formula, it is important to have the data you are using in the correct format. For question 1, the data you are given is in what's called 'wide' format, meaning there are separate columns for each condition of the IV. For the `formula` argument to work, that data must be in 'long' format, meaning just one column for the IV and one for DV scores. Remember to switch the data from one format to the other using the `pivot_longer()` function from the `tidyr` package (like we have practiced in some previous problem sets).
+
+```{r}
+#| eval: false
+
+library(tidyr)
+
+data_long <- my_data |> 
+  pivot_longer(everything())
+
+```
+
+If there is a column identifying participants, as is typical for a within-subjects design, you **don't** want that to be pivoted; rather it should get duplicated as another column identifying which participant each score came from. Accordingly, rather than pivoting `everything()`, you can exclude the `id_column` (whatever it is named) using the syntax `-id_column`.
+
+```{r}
+#| eval: false
+data_long_within <- my_data |> 
+  pivot_longer(-id_column)
+```
+
+Make sure to look at your newly reshaped dataframes and understand how the format has been changed without altering the actual recorded data. Also, make note of the column names (or change them), which you will need to specify in following analyses.
+
+The output that `aov()` produces isn't very useful by itself. E.g. it doesn't give us an $F$ value or significance level. To get those, we need to use the `summary()` function in combination with `aov()`.
+
+```{r}
+#| eval: false
+model_between <- aov(formula = DV ~ IV, data = data_long)
+summary(model_between)
+```
+
+### Effect size
+
+For ANOVA, the most commonly-reported measure of effect size is eta-squared, $\eta^2$, or partial eta-squared, $\eta^2_p$. The `effectsize` package has an `eta_squared` function which accepts a model produced by `aov()` and returns that measure of effect size. It works for between- or within-participants models; for the latter you can specify `partial = TRUE` as an argument within the function.
+
+```{r}
+#| eval: false
+
+effectsize::eta_squared(model_between)
+effectsize::eta_squared(model_within, partial = TRUE)
+```
+
+### Post-hoc tests
+
+There is a function that makes performing a Tukey test easy: R's built-in `TukeyHSD()` function.
+
+```{r}
+#| eval: false
+TukeyHSD(model_between)
+```
+
+However, `TukeyHSD()` also only works with between-participants models; for a within-participants model you'll need to use the mathematical approach from the lectures, using $MS_{error}$ and $df_{error}$. You will find these values in the output of the `summary()` function.
+
+You'll also need the $q$ statistic, which you can find using `qtukey()`.  This works just like our old friends `qnorm()` and `qt()`--you specify a proportion (e.g. .05) and it tells you the corresponding $q$ statistic. Some other arguments are required as well though:
+
+```{r}
+q <- qtukey(p = 0.05, nmeans = 3, df = 10, lower.tail = FALSE)
+```
+
+…where `p` = alpha, `nmeans` = $k$, and `df` = $df_{within}$. The resulting $q$ value should be used in the calculation 
+
+$$q * \sqrt{\dfrac{MSwithin}{n}}$$
+
+This tells you the size of difference between means required to count as statistically significant.
+:::

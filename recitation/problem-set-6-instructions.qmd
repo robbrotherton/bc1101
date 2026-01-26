@@ -1,0 +1,162 @@
+---
+title: Problem Set 6
+subtitle: $t$-test & Confidence Intervals
+
+format: html
+sidebar: recitation
+navbar: false
+execute: 
+  echo: true
+---
+
+# Part 1. The $t$ statistic
+
+::: {.content-hidden when-format="pdf"}
+## Instructions
+
+The general hypothesis testing procedure for the $t$-test (and any kind of test) is the same as the procedure we used in the previous problem set for the $z$-test. The difference is that we're dealing with a different distribution and a different test statistic.
+
+Step 1: State your hypotheses
+
+Step 2: Set decision criteria. As usual, this depends on alpha and whether the test is 1- or 2-tailed. To find the critical regions of the $t$ distribution, we use the `qt()` function. It works just like `qnorm()`, but for the $t$ distribution instead of the normal distribution. The values for the $t$ distribution depend on the degrees of freedom for your test, so we must also specify the degrees of freedom as an argument within the function. E.g.,
+
+```{r}
+qt(c(.025, .975), df = 50)
+```
+
+Step 3: Calculate your test statistic. Do this by plugging the appropriate values into the $t$ equation
+
+Step 4: Decide. Compare your calculated test statistic with the critical values to determine whether your sample is within the critical region(s), and thus whether to reject the null.
+
+Unlike the $z$-test, however, R does have a built-in function for performing a $t$ test. When you're dealing with real data you can use this rather than following the step-by-step procedure and calculating things manually. For a single-sample $t$-test, the arguments you need to specify are `x` (your data) and `mu` (the population mean), and possibly `alternative`. This last argument allows you to specify the directionality of the alternative hypothesis (i.e. to conduct a one-tailed or two-tailed hypothesis).
+
+The `t.test()` function doesn't calculate effect size. For that, you can implement the relevant equation. Or alternatively, you could check out the `cohens_d()` function from the `effectsize` package...
+
+NOTE: You can see documentation for any function by typing a question mark followed by the name of the function (with no parentheses after the name) and running the code. Alternatively, you can click over to the Help tab of the pane in the bottom right and search for a function. The documentation isn't always that helpful, but it's worth taking a look when you're unsure about a function.
+
+```{r}
+#| eval: false
+?t.test
+
+?effectsize::cohens_d
+```
+:::
+
+# Part 2. Confidence intervals
+
+::: {.content-hidden when-format="pdf"}
+## Instructions
+
+The equation for a confidence interval is:
+
+$$
+\mu = M \pm t * s_M
+$$
+
+So this involves computing some critical $t$ values and multiplying by the estimated standard error.
+
+Suppose we're dealing with a sample, $n = 20$, $M = 100$, $SD = 10$ . We want to make a 95% confidence interval for that $M = 100$ point estimate.
+
+Step 1: Find the critical value.
+
+For 95% confidence, picture the distribution split into 95% in the middle and therefore 2.5% in each tail. Strictly speaking we should have *two* critical values, one for each tail. But since it's symmetrical, we can simplify by just using the upper tail's value for now.
+
+```{r}
+critical_score <- qt(.025, df = 19, lower.tail = FALSE)
+
+# or...
+critical_score <- qt(.975, df = 19)
+```
+
+Step 2: Find the (estimated) standard error
+
+```{r}
+std_error <- 10/sqrt(20)
+```
+
+Step 3: Multiply the standard error by critical value. This gives the margin of error; the distance from the center of the distribution (the point estimate) to the boundary of the confidence interval.
+
+```{r}
+margin_of_error <- critical_score * std_error
+```
+
+Step 4: Add and subtract the margin of error to the point estimate to describe the limits of the confidence interval.
+
+```{r}
+ci_upper_limit <- 100 + margin_of_error
+ci_lower_limit <- 100 - margin_of_error
+
+c(ci_lower_limit, ci_upper_limit)
+```
+
+This tells us that the lower boundary of our 95% confidence interval is 95.3 and the upper boundary is 104.7.
+
+Note that if the population standard deviation was known, i.e. we were dealing with the $z$ distribution instead of $t$, the process would be the same, we would just have to use `qnorm()` instead of `qt()` to find the critical score for the appropriate distribution.
+
+### Using actual data
+
+In the example above, I gave you the values of $n$, $M$, and $SD$. For actual data, i.e. a data.frame with a column of scores, the logic is all the same, you just need to compute those values from the scores in the ways we've practiced.
+
+```{r}
+
+df <- read.csv("data/6_confidence-interval.csv")
+
+n <- length(df$scores)
+mean <- mean(df$scores)
+sd <- sd(df$scores)
+
+critical_score <- qt(.975, df = n - 1) # step 1
+std_error <- sd / sqrt(n) # step 2
+margin_of_error <- critical_score * std_error # step 3
+
+# step 4:
+ci_upper_limit <- mean + margin_of_error
+ci_lower_limit <- mean - margin_of_error
+
+c(ci_lower_limit, ci_upper_limit)
+```
+
+### Make your own function
+
+A very useful thing to do would be to take the logic of computing a confidence interval and create your own function to do it. That way if you had to compute more than one confidence interval you can just use your function rather than having to copy and paste a bunch of lines of code and tweak each line.
+
+Step 1-3 can be reduced to a single line of code:
+
+```{r}
+qt(0.975, df = length(df$scores) - 1) * sd(df$scores) / sqrt(length(df$scores))
+```
+
+So we can just put line that inside a function, replacing the specific `df$scores` with a generic placeholder `x`, which stands in for whatever set of scores we will eventually feed into the function as its only argument.
+
+```{r}
+ci <- function(x) {
+  qt(0.975, df = length(x) - 1) * sd(x) / sqrt(length(x))
+}
+
+ci(df$scores)
+```
+
+Note that that function returns the *width* of the confidence interval--the margin of error. So you would still need to add & subtract it from the point estimate, per Step 4, to find the actual CI boundaries.
+
+### Visualizing confidence intervals
+
+The usefulness of creating a function like that is that you can quickly and easily create a summary of some data, including the point estimate (mean) and confidence interval width, and create a graph using these summary values. For a single confidence interval like this, there's not actually any data to map on to the x-axis, so I fudge a little there by telling ggplot `x = ""` for the x aesthetic.
+
+```{r}
+#| message: false
+
+library(dplyr)
+library(ggplot2)
+
+data_summary <- df |> 
+  summarize(mean = mean(scores),
+            ci_width = ci(scores),
+            ci_lower_limit = mean - ci_width,
+            ci_upper_limit = mean + ci_width)
+
+data_summary |> 
+  ggplot(aes(x = "", y = mean)) +
+  geom_errorbar(aes(ymax = ci_upper_limit, ymin = ci_lower_limit), width = 0.3) +
+  geom_point()
+```
+:::

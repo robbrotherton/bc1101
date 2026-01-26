@@ -1,0 +1,74 @@
+---
+title: Problem Set 7
+subtitle: Independent & Related-samples $t$-tests
+
+format: html
+sidebar: recitation
+navbar: false
+execute: 
+  echo: true
+---
+
+# Part 1. Computing $t$ statistics
+
+::: {.content-hidden when-format="pdf"}
+## Instructions
+
+### Independent samples
+
+When conducting a single-sample $t$-test using the `t.test()` function, you used the argument `x =` to specify a single column of a data.frame, and `mu =` to specify the known population mean against which the sample data was to be compared. To conduct an independent-samples $t$-test, you need to specify both `x` and `y`. These refer to your two samples, each contained in a separate column of a data.frame. By default, `mu = 0`, which reflects the null hypothesis of no difference between the group means. Since it's the default, you don't need to set it explicitly.
+
+You also need to use the argument `var.equal = TRUE` to tell R that we are assuming homogeneity of variances and we don't want to apply the correction discussed in the lecture. E.g. `t.test(x = sample1, y = sample2, var.equal = TRUE)`. By default, R assumes the assumption is not met (i.e., `var.equal = FALSE`). This is sensible, and if you run the function this way it's fine. You'll just get slightly different answers from someone who specifies `var.equal = TRUE`.
+
+Remember you can run a line of code that says `?t.test` to get help using the function.
+
+To find effect size (specifically Cohen's $d$), you can find the answer mathematically using the equations discussed in the lecture. Or you can use the `cohens_d()` function from the package `effectsize`.
+
+### Paired samples
+
+If your data is in the same structure we've seen in previous questions for independent-samples $t$-tests - i.e., a data.frame containing 2 columns for 2 samples of data - switching from an independent-samples $t$-test to a related-samples $t$-test is simple. The only difference is that we specify the argument `paired = TRUE`. That's all there is to it: we're just telling R that each row came from a single participant, rather than from different people (as with an independent-samples design). This is a good illustration of how the statistics that we can run on a set of data aren't an inherent feature of the data themselves, but depend on the conceptual nature of the data. R doesn't know about that, so it is our job to tell it how to treat the data.
+:::
+
+# Part 2. Loftus & Palmer analysis
+
+::: {.content-hidden when-format="pdf"}
+## Instructions
+
+### Using `t.test()` with long-format data
+
+Here you'll conduct and report a complete analysis of some more real(ish) data. (Actual raw data from Loftus and Palmer's (1974) study is not available, but I've simulated data with comparable characteristics.)
+
+To make it easier to describe and visualize the data, you'll turn the data from "wide" to "long" format (using `pivot_longer()` as we've done in past problem sets).
+
+When the data is in long format, the `t.test()` function works a little differently. Rather than specifying `x` and `y`, two columns in a data.frame as you did in Part 1, you specify `x` as a 'formula'. Generically, this formula is in the form `DV ~ IV`, meaning you want to use a $t$ test to look for differences on the dependent variable by groups of the independent variable. Of course, in practice those terms will be names of columns in a data.frame, so the function also requires a `data =` argument to specify the data.frame containing those columns.
+
+So suppose you have a long-format data.frame named `df_long` with two columns, one named `group` containing the categorical group each observation comes from and another named `score` containing the numeric scores on the dependent variable:
+
+```{r}
+library(tidyr)
+
+df_wide <- data.frame(group_a = c(3, 5, 2),
+                      group_b = c(4, 6, 4))
+
+df_long <- df_wide |> 
+  pivot_longer(everything(),
+               names_to = "group",
+               values_to = "score")
+
+t.test(score ~ group, data = df_long)
+```
+
+Note that `t.test(x = df_wide$group_a, y = df_wide$group_b)` would give exactly the same answer. However, this 'formula' approach with long-format data becomes extremely useful when analyzing data with more groups, as in ANOVA designs 😉
+
+Remember, the `t.test()` function doesn't include effect size, so that has to be computed separately. Luckily, the `effectsize::cohens_d()` function allows for the same kind of formula as`t.test()`:
+
+```{r}
+effectsize::cohens_d(score ~ group, data = df_long)
+```
+
+### Confidence intervals for independent-samples
+
+When you use the `t.test()` function, a confidence interval is included in its output. That confidence interval pertains to the *mean difference*, i.e. the margin of error around the difference between group means. I won't ask you to calculate it manually here, but if you're unsure what it quantifies it would be worth thinking about how it is computed and seeing if you can replicate it by implementing the relevant equation like you did last time for a single-sample design. (As a hint, it necessitates finding the pooled variance and estimated standard error of the mean difference.)
+
+However, as part of describing and visualizing the data I will ask you to compute two different confidence intervals: one for each group of scores (as you have done previously). Note that those confidence intervals quantify something different from the one produced by the `t.test()` function in this case: the margin of error associated with each individual group point estimate.
+:::

@@ -1,0 +1,132 @@
+---
+title: Problem Set 9
+subtitle: Factorial ANOVA
+
+format: html
+sidebar: recitation
+navbar: false
+execute: 
+  echo: true
+---
+
+::: {.content-hidden when-format="pdf"}
+## Instructions
+
+When analyzing data from a 2x2 factorial design, the steps are:
+
+1.  Produce descriptive statistics (marginal and cell means, SDs, CIs.
+
+2.  Make a graph showing those descriptives.
+
+3.  Compute the ANOVA model
+
+4.  If any element of the model is 'significant', compute effect size and run post-hoc tests.
+
+### Descriptive statistics
+
+There are several ways to get descriptive statistics for 2x2 ANOVA designs. One is to use the `summarize` function from the `dplyr` package, which you're hopefully feeling familiar with by now. The only difference here for a 2x2 design is that you have 2 grouping variables. Happily, we can specify them both by collecting them together (using `c()`) as the function's `.by` argument.
+
+```{r}
+#| eval: false
+library(dplyr)
+
+cell_means <- my_dataframe |> 
+  summarize(mean = mean(dv_column),
+            sd = sd(dv_column),
+            ci = ci(dv_column),
+            .by = c(iv_one_column, iv_two_column))
+```
+
+With both grouping variables we get all 4 'cell means'. To find the 'marginal means' for each IV, you would do the same thing but with just one grouping variable at a time.
+
+```{r}
+#| eval: false
+
+marginal_means_iv_one <- summarize(my_dataframe, 
+                                   mean = mean(dv_column),
+                                   sd = sd(dv_column),
+                                   ci = ci(dv_column),
+                                   .by = iv_one_column)
+
+marginal_means_iv_two <- summarize(my_dataframe, 
+                                   mean = mean(dv_column),
+                                   sd = sd(dv_column),
+                                   ci = ci(dv_column),
+                                   .by = iv_two_column)
+```
+
+Also notice that I'm using a `ci()` function to compute the 95% confidence interval. Remember, it's not built into R; it's one that I made back in Problem Set 6! You'll need to copy and paste that code into your problem set here *before* trying to use it.
+
+```{r}
+#| eval: false
+
+ci <- function(x) {
+  # code to compute CI goes here!
+}
+
+cell_means <- my_dataframe |> 
+  summarize(...,
+            ci = ci(dv_column),
+            ...)
+```
+
+### Graph
+
+A nice thing about getting summary statistics using `summarize()` is that it returns the summary data as a data.frame, so if you assigned that output to a name (as I did above!) you can make use of it, for example to visualize the summary statistics as a 2x2 plot.
+
+```{r}
+#| eval: false
+library(ggplot2)
+
+# bar graph
+cell_means |> 
+  ggplot(aes(x = iv_one_column, 
+             y = summary_variable, 
+             fill = iv_two_column)) +
+  geom_col(position = position_dodge()) +
+  geom_errorbar(aes(ymin = mean - ci, ymax = mean + ci), 
+                position = position_dodge(width = 0.9), width = 0.1)
+
+# line graph
+cell_means |> 
+  ggplot(aes(x = iv_one_column, 
+             y = summary_variable, 
+             color = iv_two_column, 
+             group = iv_two_column)) +
+  geom_point() +
+  geom_line() +
+  geom_errorbar(aes(ymin = mean - ci, ymax = mean + ci), width = 0.1)
+```
+
+Here as the aesthetics we assign one IV to the x-axis, the second IV as both color and group, and the DV is assigned to the y-axis.
+
+### Analysis
+
+To analyze a two-factor design, use `aov()` and `summary()` just like with a one-way design. The difference is that in the `formula` argument you will specify both your IVs, separated by an asterisk, meaning that you are interested in the effect of both variables and the interaction between them.
+
+```{r}
+#| eval: false
+model <- aov(formula = dv_column ~ iv_one_column * iv_two_column, 
+             data = my.data)
+summary(model)
+```
+
+### Effect size
+
+The `etaSquared()` function from the `lsr` package is the easiest way to obtain effect size for a 2x2 ANOVA.
+
+```{r}
+#| eval: false
+
+effectsize::eta_squared(model)
+```
+
+### Post-hoc tests
+
+Post-hoc tests work the same way for a two-factor design as a single-factor design. Just feed your `aov()` analysis into the `TukeyHSD()` function (as long as it's a between-participants design). The output shows you every possible comparison of conditions in the data, and states which are significantly different from one another.
+
+```{r}
+#| eval: false
+TukeyHSD(model)
+```
+:::

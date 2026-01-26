@@ -1,0 +1,199 @@
+---
+title: Problem Set 3
+subtitle: Describing data
+
+format: html
+sidebar: recitation
+navbar: false
+execute: 
+  echo: true
+---
+
+# Part 1: Computing descriptive statistics
+
+::: {.content-hidden when-format="pdf"}
+## Instructions
+
+### Central tendency
+
+Suppose we have a set of values: `1,2,3,3,4,5,10`
+
+There are several ways you could find the mean. One way would be to add the scores and divide by $N$, like you would on paper.
+
+```{r}
+(1 + 2 + 3 + 3 + 4 + 5 + 10) / 7
+```
+
+Of course, you don't want to have to type all those numbers and figure out N yourself (especially if you were dealing with a much larger set of numbers). Better to have the scores as a named object:
+
+```{r}
+scores <- c(1,2,3,3,4,5,10)
+```
+
+Now life is much easier. The same mathematical approach can be implemented with the `sum()` and `length()` functions.
+
+```{r}
+sum(scores)/length(scores) # this is equivalent to Sigma X divided by N
+```
+
+Even better, R has built-in functions to easily find the mean and median of a set of scores.
+
+```{r}
+mean(scores)
+
+median(scores)
+```
+
+You'd think there'd be one for finding the mode as well...
+
+```{r}
+mode(scores)
+```
+
+But that actually does something different.
+
+Since the mode is a common statistic, though, somebody already wrote a function to compute it. It's in a package called `modeest`. The package contains the function `mfv()`, for "most frequent value", which we can now use to get the mode. Remember, since it's an external package, we need to activate it with the `library()` function.
+
+```{r}
+library(modeest)
+mfv(scores)
+```
+
+Or equivalently, you can use the double-colon operator to refer to a `package::its_function()` without a separate `library()` call:
+
+```{r}
+modeest::mfv(scores)
+```
+
+### Variability
+
+There are functions to find the minimum and maximum value in a set of scores. The range is the difference between those:
+
+```{r}
+min(scores)
+max(scores)
+max(scores) - min(scores) # range
+```
+
+R has a built-in functions for sample SD.
+
+```{r}
+sd(scores)
+```
+
+There's also a `var()` function to compute the variance. Remember that standard deviation is the square-root of variance, so if we square the SD it should give the same answer as `var()`...
+
+```{r}
+var(scores)
+sd(scores)^2
+```
+
+Neato!
+
+Note that these functions return *sample* variance & SD. There are no built-in functions for *population* variance & SD so if you wanted to find them you would have to use the mathematical procedure outlined in the lecture.
+
+### Summarizing a data.frame column
+
+The above instructions show how mathematical operations and functions can be used to compute summary statistics for a set of numbers. Most often, however, the set of numbers we're dealing with is a column in a data.frame.
+
+```{r}
+df <- data.frame(scores = c(1,2,3,3,4,5,10))
+```
+
+You can use the same approaches as above, just remember the `$` notation to refer to a data.frame column:
+
+```{r}
+mean(df$scores)
+sd(df$scores)
+```
+
+However, `dplyr` has a powerful `summarize()` function that fits in nicely with the pipe operator.
+
+```{r}
+#| message: false
+
+library(dplyr)
+
+df |> 
+  summarize(mean = mean(scores),
+            median = median(scores),
+            mode = modeest::mfv(scores),
+            min = min(scores),
+            max = max(scores),
+            range = max - min,
+            sd = sd(scores))
+
+```
+
+In a single pipeline we produce all the summary statistics as a data.frame! Note that because I pipe `df` into the `summarize()` function, `scores` refers specifically to that column in the `df` data.frame object rather than the separate `scores` object I created previously. Note also that I defined the `min` and `max` summary columns, and I was able to refer to *those* new columns within the same single `mutate()` function to compute the `range`.
+:::
+
+# Part 2. Comparing groups
+
+::: {.content-hidden when-format="pdf"}
+### Describing and comparing groups of scores
+
+The `dplyr::summarize()` approach becomes especially useful when we want to compare groups of scores, such as scores from different experimental groups in a study. In addition to `dplyr` I'll use another related package called `tidyr` here to change the structure of some data, making it easier to summarize and visualize (using `ggplot2`).
+
+```{r}
+#| message: false
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+```
+
+Suppose we have a data.frame with four columns; a participant ID and scores from experimental condition A, condition B, and condition C.
+
+```{r}
+demo_wide <- read.csv("data/3_demo.csv")
+
+demo_wide
+```
+
+This is a very common data format. It's called "wide," because each variable gets its own column; the spreadsheet gets wider with each additional variable measured. However, an alternative data structure is "long"-formatted data. Rather than having multiple columns for each variable, there would be one column to identify the variable, and a second storing the value. Rather than getting wider, the spreadsheet gets longer, because each participant's responses take up multiple *rows* rather than multiple *columns*. Let's use `tidyr`'s `pivot_longer()` function to show what I mean.
+
+```{r}
+demo_long <- demo_wide |> 
+  pivot_longer(-participant, 
+               names_to = "condition",
+               values_to = "score")
+
+demo_long
+```
+
+Note that only the data columns should be pivoted, *not* the participant ID column; that's why the first argument `-participant`, excluded that column from the pivot operation. The result is that the new long-format data.frame has 27 rows in contrast to the original's 9. There are three columns: one for participant, with the value identifying each participant duplicated down the rows; a column named "condition" (thanks to the argument `names_to = "condition"`) containing the labels `condition_a`, `condition_b` and `condition_c`; and finally a column named `score` containing the recorded values associated with each participant and each condition.
+
+Why bother? Because now it is very easy to produce summary statistics for the whole dataset broken down into the different groups, using `summarize()`'s special `.by` argument to specify the grouping variable.
+
+```{r}
+demo_long |> 
+  summarize(mean = mean(score),
+            median = median(score),
+            mode = modeest::mfv(score),
+            sd = sd(score),
+            .by = condition)
+```
+
+It is also a breeze to make graphs showing the distribution of the data grouped by condition. In this case, the column identifying which condition a score came from becomes another "aesthetic" in the `aes()` function–`color`, meaning the color of the lines and points.
+
+```{r}
+demo_long |> 
+  ggplot(aes(x = score, color = condition)) +
+  geom_freqpoly(binwidth = 1) +
+  geom_point(stat = "count")
+```
+
+You can also take summarized data and pipe it straight into ggplot:
+
+```{r}
+demo_long |> 
+  summarize(mean = mean(score),
+            sd = sd(score),
+            .by = condition) |> 
+  ggplot(aes(x = condition, y = mean)) +
+  geom_col() +
+  geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 0.3)
+```
+
+Note that I used `geom_col()` rather than `geom_bar()`, and `geom_errorbar()` required a couple of extra aesthetics to determine the min and max y positions, as well as an argument determining the `width` of the tops and bottoms of the errorbars.
+:::
