@@ -36,7 +36,19 @@ website:
         href: _
   sidebar:
     id: recitation
-    contents: recitation
+    contents:
+      - section: Recitation
+        contents:
+          - recitation/problem-set-1-instructions.qmd
+          - recitation/problem-set-2-instructions.qmd
+          - recitation/problem-set-3-instructions.qmd
+          - recitation/problem-set-4-instructions.qmd
+          - recitation/problem-set-5-instructions.qmd
+          - recitation/problem-set-6-instructions.qmd
+          - recitation/problem-set-7-instructions.qmd
+          - recitation/problem-set-8-instructions.qmd
+          - recitation/problem-set-9-instructions.qmd
+          - recitation/problem-set-10-instructions.qmd
 
 
 link-external-newwindow: true
