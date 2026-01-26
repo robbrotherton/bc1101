@@ -5,6 +5,7 @@ project:
     - js/
     - slides/icons/
     - slides/media
+    - recitation_instructions/
 
 website:
   title: "PSYC BC1101"
