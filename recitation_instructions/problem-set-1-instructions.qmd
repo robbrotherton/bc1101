@@ -6,6 +6,14 @@ execute:
   echo: true
 ---
 
+```{=html}
+<style>
+  .navbar {
+    display: none;
+  }
+</style>
+```
+
 ## Welcome!
 
 Hello! Welcome to the first problem set - an introduction to posit.cloud, the RStudio interface, and the quarto document format. This document is a quarto `.qmd` created by Prof. Brotherton. It is full of instructions (like this!) and questions for you to complete.
