@@ -104,6 +104,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -217,10 +246,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#part-1-typing-short-text-answers" id="toc-part-1-typing-short-text-answers" class="nav-link" data-scroll-target="#part-1-typing-short-text-answers">Part 1: Typing short text answers</a></li>
   <li><a href="#part-2-doing-sums-and-coding-in-r" id="toc-part-2-doing-sums-and-coding-in-r" class="nav-link" data-scroll-target="#part-2-doing-sums-and-coding-in-r">Part 2: Doing sums and coding in R</a>
   <ul class="collapse">
-  <li><a href="#instructions" id="toc-instructions" class="nav-link" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#code-chunks" id="toc-code-chunks" class="nav-link" data-scroll-target="#code-chunks">Code chunks</a></li>
+  <li><a href="#using-r-like-a-calculator" id="toc-using-r-like-a-calculator" class="nav-link" data-scroll-target="#using-r-like-a-calculator">Using R like a calculator</a></li>
+  <li><a href="#assignment-and-functions" id="toc-assignment-and-functions" class="nav-link" data-scroll-target="#assignment-and-functions">Assignment and functions</a></li>
   </ul></li>
   <li><a href="#part-3-working-with-data" id="toc-part-3-working-with-data" class="nav-link" data-scroll-target="#part-3-working-with-data">Part 3: Working with data</a></li>
-  <li><a href="#instructions-1" id="toc-instructions-1" class="nav-link" data-scroll-target="#instructions-1">Instructions</a></li>
   <li><a href="#part-4.-submitting-via-canvas-and-some-final-tips" id="toc-part-4.-submitting-via-canvas-and-some-final-tips" class="nav-link" data-scroll-target="#part-4.-submitting-via-canvas-and-some-final-tips">Part 4. Submitting via Canvas (and some final tips)</a>
   <ul class="collapse">
   <li><a href="#how-to-submit-your-assignment" id="toc-how-to-submit-your-assignment" class="nav-link" data-scroll-target="#how-to-submit-your-assignment">How to submit your assignment</a></li>
@@ -253,43 +283,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="welcome" class="level2">
 <h2 class="anchored" data-anchor-id="welcome">Welcome!</h2>
-<p>Hello! Welcome to the first problem set - an introduction to posit.cloud, the RStudio interface, and the quarto document format. This document is a quarto <code>.qmd</code> created by Prof.&nbsp;Brotherton. It is full of instructions (like this!) and questions for you to complete.</p>
-<p>This project is set up as an “Assignment” which means that when you clicked into it, the system created your own copy for you to work on. Prof.&nbsp;B and your TA will also be able to see and access it to provide help. You will edit each <code>problem-set-#.qmd</code> document to add your solutions.</p>
-<p>As you’re working on a problem set, you’ll click “Render” to see how the final document looks with your own text, code, and output all woven together as a nicely-formatted pdf.</p>
-<p>Try rendering this document now. First, click on the settings cogwheel next to “Render” in the menu near the top of the editor and select “Preview in Viewer Pane”. Then click the “Render” button itself. You should then see the page open in the “viewer” pane on the right. Initially it’ll just have the questions I’ve pre-written (my instructions are hidden). As you add answers and code you can click “Render” again to see your work coming together.</p>
-<p>Read all the instructions carefully and answer the questions to the best of your ability.</p>
+<p>These instructions are designed to accompany the file <code>problem-set-1.qmd</code> which students in PSYC BC1101 can find in the posit.cloud course space.</p>
+<p>That <code>.qmd</code> file is a Quarto document with questions for you to answer. These instructions will help you figure out what you need to do to answer those questions. Read all the instructions carefully and answer the questions to the best of your ability.</p>
+<p>Eventually you will “Render” your edited <code>.qmd</code> into a nicely-formatted PDF, weaving together your own text, code, and output. That’s what you will upload to Canvas to complete the assignment.</p>
+<p>Try rendering your document now. First, click on the settings cogwheel next to “Render” in the menu near the top of the editor and select “Preview in Viewer Pane”. Then click the “Render” button itself. You should then see your PDF open in the “viewer” pane, replacing these instructions (run the first code chunk in your <code>.qmd</code> file to get the instructions back). Initially the PDF will just have the questions. As you add answers and code you can click “Render” again at any time to see your work coming together.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 <span class="screen-reader-only">Tip</span>Bonus: Personalize your PDF
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>Look for the file named <code>_quarto.yml</code> under the Files tab. It contains some instructions that the rendering system uses to make your finished PDF document. The last line is <code>author: ""</code>. Put your name inside the quotation marks, and every time you render a PDF it will have your name at the top.</p>
-</div>
 </div>
 </div>
 </section>
 <section id="part-1-typing-short-text-answers" class="level1">
 <h1>Part 1: Typing short text answers</h1>
+<p>The Quarto document supports regular text, as well as code and output. The first thing I want you to do is just practice typing some plain text and get used to the editor interface. For the first couple of question, delete the placeholder text and type your own answers on a new line. Notice how the visual editor allow you to change the text format–you can make text bold or italicized, you can have different heading levels, lists, and so on. You might not need all these tools right away, but it’s nice to know they’re there.</p>
 </section>
 <section id="part-2-doing-sums-and-coding-in-r" class="level1">
 <h1>Part 2: Doing sums and coding in R</h1>
-<section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<section id="code-chunks" class="level2">
+<h2 class="anchored" data-anchor-id="code-chunks">Code chunks</h2>
 <p>This is where we can start using R code to find answers to questions. Using the quarto document format, you include code “chunks” where you will write your code. The code will get executed when you Render the document (or you can execute it interactively to see output right away).</p>
 <p>The easiest way to insert a code chunk is to put your cursor on a new line and type a forward-slash on your keyboard (<code>/</code>).</p>
 <p>You should see a pop up showing all the stuff you can put into a document. The first option is an “R code chunk” which is what you need, so you can click it or just press return on the keyboard to insert the chunk. If you prefer, you can also click Insert &gt; Executable Cell &gt; R from the menu at the top of the editor.</p>
-<p>Here’s what a code chunk looks like:</p>
+<p>Here’s what a code chunk looks like in the editor:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>{r}</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu"># Code goes here! This is just a comment. Comments are preceded by the # symbol</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu"># Code goes here! This is just a comment. </span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu"># Comments are preceded by the # symbol</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Notice the <code>{r}</code> at the top: that means the chunk contains R code.</p>
 <p>You should thoroughly comment and/or annotate your problem sets with regular text like this, to explain to any reader (including your future self) what your code is doing. (You will forget!)</p>
-<p>For the following questions, you could easily do these sums by hand - and I recommend checking your answers that way. But it is important to learn how to do these kinds of things in R as well. Usually there’s more than one way to achieve something in R.</p>
+</section>
+<section id="using-r-like-a-calculator" class="level2">
+<h2 class="anchored" data-anchor-id="using-r-like-a-calculator">Using R like a calculator</h2>
+<p>For the questions in part 2, you could easily do the sums by hand–and I recommend checking your answers that way. But it is important to learn how to do these kinds of things in R as well. Usually there’s more than one way to achieve something in R.</p>
 <p>If you want to add up a set of scores, you can use R just like a calculator:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -297,7 +330,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 10</code></pre>
 </div>
 </div>
-<p>When you “Render”, the code will be executed and you’ll see the answer right after the code. You can also run the code yourself to see the answer right now. Put your cursor on the line of code and press Ctrl/Command + Enter on your keyboard. You’ll see the answer in the “Console” pane below. Note that you DON’T type <code>1 + 2 + 3 + 4 = 10</code>. In fact, that’ll confuse R and you’ll get an error. (Try it)</p>
+<p>When you “Render”, the code will be executed and you’ll see the answer right after the code, like in these instructions. You can also run the code yourself to see the answer right away. Put your cursor on the line of code and press Ctrl/Command + Enter on your keyboard to run the code. Note that you DON’T type <code>1 + 2 + 3 + 4 = 10</code>. In fact, that’ll confuse R and you’ll get an error. (Try it)</p>
+</section>
+<section id="assignment-and-functions" class="level2">
+<h2 class="anchored" data-anchor-id="assignment-and-functions">Assignment and functions</h2>
 <p>Rather than just typing the sum out like that, a better way is to assign the scores a name. The <code>&lt;-</code> arrow operator is used to assign names. The name can be anything you want except that it cannot include spaces and cannot start with a number.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -328,7 +364,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 100</code></pre>
 </div>
 </div>
-<p>Now you should be ready to answer the questions below by typing your own code.</p>
+<p>Now you should be ready to answer the questions by typing your own code.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -341,7 +377,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p>Notice how mathematical symbols are created in the question text below: Click on the symbols and you’ll see that, behind the scenes, equations are enclosed in dollar signs. Typing a backslash and “Sigma” produces the symbol for summation.</p>
+<p>Notice how mathematical symbols are created in the question text: Click on the symbols and you’ll see that, behind the scenes, equations are enclosed in dollar signs. E.g. typing $\Sigma X$ produces <span class="math inline">\(\Sigma X\)</span>.</p>
 <p>There may be times that you’ll want to type symbols or equations like these in your answers to questions, so it’s worth knowing how to do so.</p>
 </div>
 </div>
@@ -350,11 +386,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="part-3-working-with-data" class="level1">
 <h1>Part 3: Working with data</h1>
-</section>
-<section id="instructions-1" class="level1">
-<h1>Instructions</h1>
-<p>The last thing I want to introduce here is the idea of working with external data files. If a researcher were working with actual data, it would most often be in the form of a separate file, such as a .csv (for comma separated values). You can open a .csv in Excel and you should see a spreadsheet with columns and rows.</p>
-<p>To read a .csv file into R, we use the <code>read.csv()</code>function, specifying the path to the file within the parentheses. There’s a file in the “data” folder of this project named “1_example.csv”. We can read it into R like this:</p>
+<p>The last to introduce in this first problem set is the idea of working with external data files. If a researcher were working with actual data, it would most often be in the form of a separate file, such as a .csv (for comma separated values). You can open a .csv in Excel or Google Sheets and you should see a spreadsheet with columns and rows.</p>
+<p>To read a .csv file into R, we use the <code>read.csv()</code>function, specifying the path to the file within the parentheses. There’s a file in the “data” folder of the Problem Sets posit.cloud project named <code>1_example.csv</code>. We can read it into R like this:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="st">"data/1_example.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -365,7 +398,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 4 4</code></pre>
 </div>
 </div>
-<p>You should see a column of numbers in the console and/or on your knitted pdf. Notice, however, that although we can see the scores, they aren’t “saved” for us to work with in R. To do that, we need to assign the file a name, like so:</p>
+<p>That line of code produces a column of numbers in the console and/or on your rendered pdf. Notice, however, that although we can see the scores, they aren’t “saved” for us to work with in R. To do that, we need to assign the result to a name, like so:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/1_example.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -392,25 +425,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Part 4. Submitting via Canvas (and some final tips)</h1>
 <section id="how-to-submit-your-assignment" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-submit-your-assignment">How to submit your assignment</h2>
-<p>When you’re completely finished, and after clicking “Render” for the final time, you’ll download a pdf version of your finished problem set and submit that via Canvas. You’ll do this for each problem set.</p>
-<p>Look for the “Other Formats” &gt; “PDF” link on the rendered page. Clicking that should open the .pdf version of your problem set. Save it to your hard drive by clicking the download icon, go to the Assignment in Canvas, and upload your completed .pdf there.</p>
-<p>Make sure to carefully look over your pdf when you think you’re done. You want to make sure everything looks the way you expect it to (including showing all your code and comments). That’s what I or your TA will see and provide feedback on, so make sure it is what you intend for us to see.</p>
+<p>When you’re completely finished, and after clicking “Render” for the final time, you’ll download the pdf version of your finished problem set and submit that via Canvas. The pdf will open either in the Viewer Pane or a new tab, depending on whether you clicked “Preview in Viewer Pane” under the render settings cogwheel. Save it to your hard drive by clicking the download icon, go to the Assignment in Canvas, and upload your completed .pdf there. You’ll do this for each problem set.</p>
+<p>Make sure to carefully look over your pdf when you think you’re done. You want to make sure everything looks the way you expect it to (including showing all your code and comments). That’s what I and your TA will see and provide feedback on, so make sure it is what you intend for us to see.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 <span class="screen-reader-only">Tip</span>Congrats!
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>That’s it! Congrats on completing your first problem set.</p>
 <p>They get more difficult as the course goes on, and I gradually reduce the amount of guidance I give as you get to grips with the basics. R can be tricky - error messages are common, and not always helpful. The first thing to check is usually for any typing errors. R is always case-sensitive and you must type any names (e.g.&nbsp;of files, folders, column or variable names) exactly right. It is also important to know that when you Render, R ignores everything in your Global Environment pane and tries running all the code in your document from scratch. If it can’t find the right named object in the code it will throw up an error (even if you can see the object in your Global Environment). So make sure it is in your code. Also bear in mind that if you reuse names (e.g.&nbsp;calling two different sets of scores “scores” at different points), R will simply overwrite the object without warning you. This isn’t a problem if you’re aware of it and expecting it, but it can cause confusion if it wasn’t what you meant to do.</p>
-<p>If you’re ever getting an error message and don’t know what it means or what to do, copy and paste it into Google. Usually that’ll bring you to stackoverflow.com, where someone else had a similar issue and someone else knew the answer. I also encourage you to collaborate with others in the class (sharing ideas/thoughts/struggles is great, just don’t copy and paste one another’s code). And of course you can always get help from me and/or your TA. We can access your work directly through posit.cloud.</p>
-</div>
+<p>If you’re ever getting an error message and don’t know what it means or what to do, copy and paste it into Google. Yep, that’s what the pros do. I also encourage you to collaborate with others in the class (sharing ideas/thoughts/struggles is great, just don’t copy and paste one another’s code). And of course you can always get help from me and/or your TA. We can access your work directly through posit.cloud.</p>
 </div>
 </div>
 
