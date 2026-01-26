@@ -1,9 +1,9 @@
 ---
 title: Problem Set 1
 subtitle: Introduction to R
-format: 
-  html:
-    css: hide-navbar.css
+format: html
+navbar: false
+sidebar: recitation
 execute: 
   echo: true
 ---
@@ -42,10 +42,6 @@ The easiest way to insert a code chunk is to put your cursor on a new line and t
 You should see a pop up showing all the stuff you can put into a document. The first option is an "R code chunk" which is what you need, so you can click it or just press return on the keyboard to insert the chunk. If you prefer, you can also click Insert \> Executable Cell \> R from the menu at the top of the editor.
 
 Here's what a code chunk looks like:
-
-```{r}
-# Code goes here! This is just a comment. Comments are preceded by the # symbol
-```
 
 ``` markdown
 {r}
@@ -167,3 +163,4 @@ They get more difficult as the course goes on, and I gradually reduce the amount
 If you're ever getting an error message and don't know what it means or what to do, copy and paste it into Google. Usually that'll bring you to stackoverflow.com, where someone else had a similar issue and someone else knew the answer. I also encourage you to collaborate with others in the class (sharing ideas/thoughts/struggles is great, just don't copy and paste one another's code). And of course you can always get help from me and/or your TA. We can access your work directly through posit.cloud.
 :::
 ::::
+

@@ -1107,6 +1107,7 @@ $btn-code-copy-color-active: #4758AB !default;
 $code-copy-selector: "div.code-copy-outer-scaffold:hover > " !default;
 $code-white-space: pre !default;
 $tbl-cap-location: top !default;
+$sidebar-border: false !default;
 $sidebar-bg: if(variable-exists(body-bg), $body-bg, #fff) !default;
 // Default the theme name
 $theme-name: if(variable-exists(theme), $theme, "");

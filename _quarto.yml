@@ -5,7 +5,8 @@ project:
     - js/
     - slides/icons/
     - slides/media
-    - recitation_instructions/
+    - recitation-instructions/
+    - hide-navbar.css
 
 website:
   title: "PSYC BC1101"
@@ -34,6 +35,9 @@ website:
     right:
       - icon: moon
         href: _
+  sidebar:
+    id: recitation
+    contents: recitation-instructions
 
 
 link-external-newwindow: true
