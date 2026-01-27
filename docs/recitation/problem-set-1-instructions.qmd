@@ -9,19 +9,20 @@ execute:
   echo: true
 ---
 
+::: callout-note
 ## Welcome!
 
-These instructions are designed to accompany the file `problem-set-1.qmd` which students in PSYC BC1101 can find in the posit.cloud course space. 
+These instructions are designed to accompany the file `problem-set-1.qmd` which students in PSYC BC1101 can find in the posit.cloud course space.
 
 That `.qmd` file is a Quarto document with questions for you to answer. These instructions will help you figure out what you need to do to answer those questions. Read all the instructions carefully and answer the questions to the best of your ability.
 
 Eventually you will "Render" your edited `.qmd` into a nicely-formatted PDF, weaving together your own text, code, and output. That's what you will upload to Canvas to complete the assignment.
 
 Try rendering your document now. First, click on the settings cogwheel next to "Render" in the menu near the top of the editor and select "Preview in Viewer Pane". Then click the "Render" button itself. You should then see your PDF open in the "viewer" pane, replacing these instructions (run the first code chunk in your `.qmd` file to get the instructions back). Initially the PDF will just have the questions. As you add answers and code you can click "Render" again at any time to see your work coming together.
-
+:::
 
 :::: {.content-visible when-format="html"}
-::: {.callout-tip}
+::: callout-tip
 ## Bonus: Personalize your PDF
 
 Look for the file named `_quarto.yml` under the Files tab. It contains some instructions that the rendering system uses to make your finished PDF document. The last line is `author: ""`. Put your name inside the quotation marks, and every time you render a PDF it will have your name at the top.
@@ -35,7 +36,6 @@ The Quarto document supports regular text, as well as code and output. The first
 # Part 2: Doing sums and coding in R
 
 ::: {.content-visible when-format="html"}
-
 ## Code chunks
 
 This is where we can start using R code to find answers to questions. Using the quarto document format, you include code "chunks" where you will write your code. The code will get executed when you Render the document (or you can execute it interactively to see output right away).
@@ -114,7 +114,6 @@ There may be times that you'll want to type symbols or equations like these in y
 # Part 3: Working with data
 
 ::: {.content-visible when-format="html"}
-
 The last to introduce in this first problem set is the idea of working with external data files. If a researcher were working with actual data, it would most often be in the form of a separate file, such as a .csv (for comma separated values). You can open a .csv in Excel or Google Sheets and you should see a spreadsheet with columns and rows.
 
 To read a .csv file into R, we use the `read.csv()`function, specifying the path to the file within the parentheses. There's a file in the "data" folder of the Problem Sets posit.cloud project named `1_example.csv`. We can read it into R like this:
@@ -161,7 +160,7 @@ Make sure to carefully look over your pdf when you think you're done. You want t
 :::
 
 :::: {.content-visible when-format="html"}
-::: {.callout-tip}
+::: callout-tip
 ## Congrats!
 
 That's it! Congrats on completing your first problem set.
@@ -171,4 +170,3 @@ They get more difficult as the course goes on, and I gradually reduce the amount
 If you're ever getting an error message and don't know what it means or what to do, copy and paste it into Google. Yep, that's what the pros do. I also encourage you to collaborate with others in the class (sharing ideas/thoughts/struggles is great, just don't copy and paste one another's code). And of course you can always get help from me and/or your TA. We can access your work directly through posit.cloud.
 :::
 ::::
-

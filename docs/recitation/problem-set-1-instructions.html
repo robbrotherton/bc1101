@@ -242,8 +242,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome!</a></li>
-  <li><a href="#part-1-typing-short-text-answers" id="toc-part-1-typing-short-text-answers" class="nav-link" data-scroll-target="#part-1-typing-short-text-answers">Part 1: Typing short text answers</a></li>
+  <li><a href="#part-1-typing-short-text-answers" id="toc-part-1-typing-short-text-answers" class="nav-link active" data-scroll-target="#part-1-typing-short-text-answers">Part 1: Typing short text answers</a></li>
   <li><a href="#part-2-doing-sums-and-coding-in-r" id="toc-part-2-doing-sums-and-coding-in-r" class="nav-link" data-scroll-target="#part-2-doing-sums-and-coding-in-r">Part 2: Doing sums and coding in R</a>
   <ul class="collapse">
   <li><a href="#code-chunks" id="toc-code-chunks" class="nav-link" data-scroll-target="#code-chunks">Code chunks</a></li>
@@ -281,12 +280,22 @@ window.Quarto = {
 </header>
 
 
-<section id="welcome" class="level2">
-<h2 class="anchored" data-anchor-id="welcome">Welcome!</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Welcome!
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>These instructions are designed to accompany the file <code>problem-set-1.qmd</code> which students in PSYC BC1101 can find in the posit.cloud course space.</p>
 <p>That <code>.qmd</code> file is a Quarto document with questions for you to answer. These instructions will help you figure out what you need to do to answer those questions. Read all the instructions carefully and answer the questions to the best of your ability.</p>
 <p>Eventually you will “Render” your edited <code>.qmd</code> into a nicely-formatted PDF, weaving together your own text, code, and output. That’s what you will upload to Canvas to complete the assignment.</p>
 <p>Try rendering your document now. First, click on the settings cogwheel next to “Render” in the menu near the top of the editor and select “Preview in Viewer Pane”. Then click the “Render” button itself. You should then see your PDF open in the “viewer” pane, replacing these instructions (run the first code chunk in your <code>.qmd</code> file to get the instructions back). Initially the PDF will just have the questions. As you add answers and code you can click “Render” again at any time to see your work coming together.</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -300,7 +309,6 @@ window.Quarto = {
 <p>Look for the file named <code>_quarto.yml</code> under the Files tab. It contains some instructions that the rendering system uses to make your finished PDF document. The last line is <code>author: ""</code>. Put your name inside the quotation marks, and every time you render a PDF it will have your name at the top.</p>
 </div>
 </div>
-</section>
 <section id="part-1-typing-short-text-answers" class="level1">
 <h1>Part 1: Typing short text answers</h1>
 <p>The Quarto document supports regular text, as well as code and output. The first thing I want you to do is just practice typing some plain text and get used to the editor interface. For the first couple of question, delete the placeholder text and type your own answers on a new line. Notice how the visual editor allow you to change the text format–you can make text bold or italicized, you can have different heading levels, lists, and so on. You might not need all these tools right away, but it’s nice to know they’re there.</p>
@@ -366,7 +374,7 @@ window.Quarto = {
 </div>
 <p>Now you should be ready to answer the questions by typing your own code.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -375,7 +383,7 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>Notice how mathematical symbols are created in the question text: Click on the symbols and you’ll see that, behind the scenes, equations are enclosed in dollar signs. E.g. typing $\Sigma X$ produces <span class="math inline">\(\Sigma X\)</span>.</p>
 <p>There may be times that you’ll want to type symbols or equations like these in your answers to questions, so it’s worth knowing how to do so.</p>
