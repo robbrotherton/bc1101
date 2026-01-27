@@ -30,7 +30,7 @@ It might seem daunting if you've have no experience with coding, but the basic i
 
 RStudio is the interface we'll use to write and run R code and see its output. The basic interface has 4 panels, each with a few tabs:
 
-![](rstudio-interface-1.png)
+![](rstudio-interface-0.png)
 
 -   Top-left: Code editor / data viewer
     -   You will edit your problem set document here
@@ -44,11 +44,11 @@ RStudio is the interface we'll use to write and run R code and see its output. T
 -   Bottom-right: Files/folders, Plots, Viewer, help window
     -   You can navigate the file tree, and when you "Render" your document you will see how it looks as a fully-formatted web page.
 
-Once you start working on problem sets, my recommended workflow is to "Render" your document frequently with "Preview in Viewer Pane" selected. That will give you something like this:
+Once you start working on problem sets, the workflow is to open the relevant `.qmd` file from the Files page (e.g. `problem-set-1.qmd`, and begin by clicking the little green play button on the code chunk you'll see at the top of the document. That will give you something like this:
 
-![](rstudio-interface-2.png){fig-align="center"}
+![](rstudio-interface-3.png){fig-align="center"}
 
-You'll have the editable problem set `.qmd` open on the left, and an expanded preview of the rendered document on the right. That should make it easy to see questions and instructions on the right, and add your own code solutions and text on the left, re-rendering as you make changes to see your work reflected in the preview on the right.
+You'll have the editable problem set `.qmd` open on the left, and instructions in the Viewer pane on the right. That should make it easy to follow instructions and add your own code solutions and text on the left. When you are finished, the final step is to click "Render" at the top of the editor pane to produce a PDF version of your problem set which you can upload to Canvas. You can also render as you go to check your code is working and the PDF looks as you expect. To get the instructions back, but click play on that first code chunk again.
 
 ## Fundamentals of R
 
@@ -56,9 +56,9 @@ The problem sets include instructions and are designed to walk you through every
 
 ### Assignment
 
-R has a fancy assignment operator: `<-`.[^recitation-1] You assign things to a name by typing something like:
+R has a fancy assignment operator: `<-`.[^1] You assign things to a name by typing something like:
 
-[^recitation-1]: Most other coding languages tend to use a boring `=` for assignment. Sure it's nice not having to type an extra character, but there's a keyboard shortcut to quickly add an `<-` in RStudio: Option/Alt + `-`. And philosophically, the `<-` arrow conveys the inherent directionality of the assignment operation. The object is assigned to the name; the object and its name are not equal and so the `=` arguably gives a misleading impression of the two things being one and the same. (Also, to let you in on a secret, `=` also works for assignment in R.)
+[^1]: Most other coding languages tend to use a boring `=` for assignment. Sure it's nice not having to type an extra character, but there's a keyboard shortcut to quickly add an `<-` in RStudio: Option/Alt + `-`. And philosophically, the `<-` arrow conveys the inherent directionality of the assignment operation. The object is assigned to the name; the object and its name are not equal and so the `=` arguably gives a misleading impression of the two things being one and the same. (Also, to let you in on a secret, `=` also works for assignment in R.)
 
 ```{r}
 #| eval: false
@@ -114,9 +114,9 @@ Running the code will bring up the function's help documentation in RStudio's He
 
 ### Piping
 
-You can string together different operations in a pipeline using the pipe operator: `|>`.[^recitation-2] The result of each line of code gets "piped" into the function on the next line as its first argument. For example, below I take some data (named `my_data`) and perform a series of operations, first changing its shape using `pivot_longer()`, then creating summary statistics for the mean and standard deviation separately by a grouping-variable, then I pipe the summary statistics into `ggplot()` to create a graph with a `geom_col()` layer for the geometry.
+You can string together different operations in a pipeline using the pipe operator: `|>`.[^2] The result of each line of code gets "piped" into the function on the next line as its first argument. For example, below I take some data (named `my_data`) and perform a series of operations, first changing its shape using `pivot_longer()`, then creating summary statistics for the mean and standard deviation separately by a grouping-variable, then I pipe the summary statistics into `ggplot()` to create a graph with a `geom_col()` layer for the geometry.
 
-[^recitation-2]: If you're looking at R code from elsewhere (e.g. looking up help online) you may see a different pipe: `%>%`. The `|>` pipe, called the "native" pipe, was only included as a feature of base R relatively recently. Until then, the `%>%` pipe was provided by an external package (called `magrittr`. [Get it?](https://magrittr.tidyverse.org/logo.png)). In practice the pipes work similarly, so you can often just replace `%>%` with `|>` and it'll work fine, but it's worth being aware of.
+[^2]: If you're looking at R code from elsewhere (e.g. looking up help online) you may see a different pipe: `%>%`. The `|>` pipe, called the "native" pipe, was only included as a feature of base R relatively recently. Until then, the `%>%` pipe was provided by an external package (called `magrittr`. [Get it?](https://magrittr.tidyverse.org/logo.png)). In practice the pipes work similarly, so you can often just replace `%>%` with `|>` and it'll work fine, but it's worth being aware of.
 
 ```{r}
 #| include: false
