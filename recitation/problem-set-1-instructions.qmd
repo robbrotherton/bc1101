@@ -31,7 +31,7 @@ Look for the file named `_quarto.yml` under the Files tab. It contains some inst
 
 # Part 1: Typing short text answers
 
-The Quarto document supports regular text, as well as code and output. The first thing I want you to do is just practice typing some plain text and get used to the editor interface. For the first couple of question, delete the placeholder text and type your own answers on a new line. Notice how the visual editor allow you to change the text format--you can make text bold or italicized, you can have different heading levels, lists, and so on. You might not need all these tools right away, but it's nice to know they're there.
+The Quarto document supports regular text, as well as code and output. The first thing I want you to do is just practice typing some plain text and get used to the editor interface. For the first couple of questions, delete the placeholder text and type your own answers on a new line. Notice how the visual editor allows you to change the text format--you can make text bold or italicized, you can have different heading levels, lists, and so on. You might not need all these tools right away, but it's nice to know they're there.
 
 # Part 2: Doing sums and coding in R
 
@@ -114,7 +114,7 @@ There may be times that you'll want to type symbols or equations like these in y
 # Part 3: Working with data
 
 ::: {.content-visible when-format="html"}
-The last to introduce in this first problem set is the idea of working with external data files. If a researcher were working with actual data, it would most often be in the form of a separate file, such as a .csv (for comma separated values). You can open a .csv in Excel or Google Sheets and you should see a spreadsheet with columns and rows.
+The last concept to introduce in this first problem set is the idea of working with external data files. If a researcher were working with actual data, it would most often be in the form of a separate file, such as a .csv (for comma separated values). You can open a .csv in Excel or Google Sheets and you should see a spreadsheet with columns and rows.
 
 To read a .csv file into R, we use the `read.csv()`function, specifying the path to the file within the parentheses. There's a file in the "data" folder of the Problem Sets posit.cloud project named `1_example.csv`. We can read it into R like this:
 
@@ -151,10 +151,12 @@ This is equivalent to writing the formula =SUM(A1:A4) in an Excel spreadsheet to
 
 # Part 4. Submitting via Canvas (and some final tips)
 
-::: {.content-visible when-format="html"}
 ## How to submit your assignment
 
 When you're completely finished, and after clicking "Render" for the final time, you'll download the pdf version of your finished problem set and submit that via Canvas. The pdf will open either in the Viewer Pane or a new tab, depending on whether you clicked "Preview in Viewer Pane" under the render settings cogwheel. Save it to your hard drive by clicking the download icon, go to the Assignment in Canvas, and upload your completed .pdf there. You'll do this for each problem set.
+
+::: callout-important
+## Check your PDF
 
 Make sure to carefully look over your pdf when you think you're done. You want to make sure everything looks the way you expect it to (including showing all your code and comments). That's what I and your TA will see and provide feedback on, so make sure it is what you intend for us to see.
 :::
@@ -170,3 +172,4 @@ They get more difficult as the course goes on, and I gradually reduce the amount
 If you're ever getting an error message and don't know what it means or what to do, copy and paste it into Google. Yep, that's what the pros do. I also encourage you to collaborate with others in the class (sharing ideas/thoughts/struggles is great, just don't copy and paste one another's code). And of course you can always get help from me and/or your TA. We can access your work directly through posit.cloud.
 :::
 ::::
+
