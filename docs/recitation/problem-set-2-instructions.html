@@ -307,7 +307,7 @@ window.Quarto = {
 0.05 0.10 0.15 0.20 0.25 0.15 0.10 </code></pre>
 </div>
 </div>
-<p>That’s nice enough, but a more powerful way of doing this is to use the <code>dplyr</code> function <code>count()</code> as part of an analytic pipeline using the <code>|&gt;</code> pipe operator. (Remember the pipe operator takes the object on its left and ‘pipes’ it into the next function as its first argument. Many <code>dplyr</code> functions are designed to be used this way.)</p>
+<p>That’s nice enough, but a more powerful way of doing this is to use the <code>dplyr</code> function <code>count()</code>. <code>dplyr</code> is a package that is not built in to R; people developed it to make doing common tasks, like counting frequencies, simpler. This is part of the power and flexibility of R–the ability for anyone to add to it. All we need to do to use the <code>dplyr</code> package is install it (which I already did in your posit.cloud project) and the activate it using the <code>library()</code> function. Then we’ll use <code>dplyr</code>‘s <code>count()</code> function as part of an analytic pipeline using the <code>|&gt;</code> pipe operator. (Remember the pipe operator takes the object on its left and ’pipes’ it into the next function as its first argument. Many <code>dplyr</code> functions are designed to be used this way.)</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>

@@ -36,7 +36,7 @@ sum(frequencies)
 frequencies / sum(frequencies)
 ```
 
-That's nice enough, but a more powerful way of doing this is to use the `dplyr` function `count()` as part of an analytic pipeline using the `|>` pipe operator. (Remember the pipe operator takes the object on its left and 'pipes' it into the next function as its first argument. Many `dplyr` functions are designed to be used this way.)
+That's nice enough, but a more powerful way of doing this is to use the `dplyr` function `count()`. `dplyr` is a package that is not built in to R; people developed it to make doing common tasks, like counting frequencies, simpler. This is part of the power and flexibility of R--the ability for anyone to add to it. All we need to do to use the `dplyr` package is install it (which I already did in your posit.cloud project) and the activate it using the `library()` function. Then we'll use `dplyr`'s `count()` function as part of an analytic pipeline using the `|>` pipe operator. (Remember the pipe operator takes the object on its left and 'pipes' it into the next function as its first argument. Many `dplyr` functions are designed to be used this way.)
 
 ```{r}
 #| message: false
