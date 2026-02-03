@@ -11,8 +11,7 @@ execute:
 
 ## Part 1: Frequency tables
 
-::: {.content-hidden when-format="pdf"}
-## Instructions
+### Reading in data
 
 Say we have some data in a .csv file. The first step is to read it into R as a data.frame object, like you practiced in the first problem set.
 
@@ -20,7 +19,9 @@ Say we have some data in a .csv file. The first step is to read it into R as a d
 my_data <- read.csv("data/2_example.csv")
 ```
 
-Make sure to take a look at the resulting data.frame. Here it's a spreadsheet with just one column named "scores"–that's the set of numbers I want to compute frequencies for.
+Make sure to take a look at the resulting data.frame. Here it's a spreadsheet with just one column named "scores"--that's the set of numbers I want to compute frequencies for.
+
+### Using the built-in `table()` function
 
 There are many ways of getting producing a frequency table. There's a built-in `table()` function, which takes a vector of values and returns a "table" object with the individual scores on one line, and their frequencies on the line below.
 
@@ -29,14 +30,16 @@ frequencies <- table(my_data$scores)
 frequencies
 ```
 
-You can compute other things you might want to compute, like the total number of scores, $n$, and proportions.
+You can compute other things you might want to compute, like the total number of scores, $N$, and proportions.
 
 ```{r}
-sum(frequencies)
-frequencies / sum(frequencies)
+sum(frequencies) # add up frequencies to get N
+frequencies / sum(frequencies) # divide each frequency by N to get proportions
 ```
 
-That's nice enough, but a more powerful way of doing this is to use the `dplyr` function `count()`. `dplyr` is a package that is not built in to R; people developed it to make doing common tasks, like counting frequencies, simpler. This is part of the power and flexibility of R--the ability for anyone to add to it. All we need to do to use the `dplyr` package is install it (which I already did in your posit.cloud project) and the activate it using the `library()` function. Then we'll use `dplyr`'s `count()` function as part of an analytic pipeline using the `|>` pipe operator. (Remember the pipe operator takes the object on its left and 'pipes' it into the next function as its first argument. Many `dplyr` functions are designed to be used this way.)
+### Using `dplyr` and `count()`
+
+That's nice enough, but a more powerful way of doing this is to use the `dplyr` function `count()`. `dplyr` is a package that is not built in to R; people developed it to make doing common tasks, like counting frequencies, simpler. This is part of the power and flexibility of R--the ability for anyone to add to it. All we need to do to use the `dplyr` package is install it (which I already did in your posit.cloud project) and then activate it using the `library()` function. Then we'll use `dplyr`'s `count()` function as part of an analytic pipeline using the `|>` pipe operator. The pipe operator takes the object on its left and 'pipes' it into the next function as its first argument. Many `dplyr` functions are designed to be used this way.
 
 ```{r}
 #| message: false
@@ -74,11 +77,9 @@ my_data |>
 my_data |> 
   count(scores, name = "frequency") 
 ```
-:::
 
-:::: {.content-visible when-format="html"}
-::: {.callout-tip collapse="false"}
-## Formatting tables
+::: {.callout-tip}
+### Formatting tables
 
 You might find that your table looks unsightly in your Rendered document because the numbers have so many decimal places. Usually just one or two decimals is sufficient precision. Maybe you would like to have different column names as well.
 
@@ -87,33 +88,30 @@ Behind the scenes, data.frames are rendered using `knitr::kable()`, i.e. the `ka
 So instead of just typing the name of your data.frame and letting it show up with default settings and the original column names, you can explicitly feed it into the `knitr::kable()` function and include the additional arguments `digits` and `col.names`. You can even use fancy-looking mathematical symbols for the column names by enclosing it within dollar signs!
 
 ```{r}
-knitr::kable(frequency_table, 
-             digits = 1,
-             col.names = c("Score", 
-                           "$f$", 
-                           "$p$", 
-                           "%", 
-                           "cumulative %"))
+
+frequency_table |> 
+  knitr::kable(digits = 2,
+               col.names = c("Score", 
+                             "$f$", 
+                             "$p$", 
+                             "%", 
+                             "cumulative %"))
 ```
 :::
-::::
 
-# Part 2: Data visualization
+## Part 2: Data visualization
 
-::: {.content-hidden when-format="pdf"}
-## Instructions
+### The `ggplot` package
 
 As usual, there are many ways of producing data visualization in R, but the most widely used and flexible is probably the `ggplot2` package. The "gg" in "ggplot" refers to the "grammar of graphics". This package isn't built-in to R; someone else created it and made it freely available as an add-on. For packages like that, we have to tell R we want to use them using the `library()` function.
 
 ```{r}
-library(ggplot2)
+library(ggplot2) # activate the ggplot2 package
+
+my_data <- read.csv("data/2_example.csv") # read some data, if you didn't already
 ```
 
-For these instructions I use the same file, "2_example.csv" in the "data" folder as I did for the previous instructions. Since I already read the data in a previous code chunk, don't necessarily need to do it again; however, maybe in your answers to the previous part you also used the name `my_data`, which would overwrite *my* `my_data`! I'll read in the data again to be safe, but if you're being careful about the names you give things you don't need to. (but it doesn't hurt).
-
-```{r}
-my_data <- read.csv("data/2_example.csv")
-```
+### Bar graph
 
 The following two lines create a simple bar graph. ggplot works by layering, using the `+` symbol. The first line specifies the name of the data.frame and the 'aesthetics': we want the scores (which are in a column conveniently named `scores` in the data.frame) on the x-axis. Then we add `geom_bar()` as the geometry layer. `geom_bar` is designed to take a set of scores and calculate the frequencies, which become the height of the bars on the $y$-axis (which is why we don't need to explicitly specific a $y$ aesthetic in the `aes()` function.
 
@@ -123,6 +121,8 @@ ggplot(my_data, aes(x = scores)) +
 ```
 
 That's all there is to it: we now have a perfectly serviceable bar graph showing the frequency distribution.
+
+### Histogram
 
 If we instead wanted a histogram, there are a couple of ways to do it. Remember, the only visual difference between a bar graph and histogram is that a histogram has bars that are touching, while the bar graph has a bit of space between them. So we can repeat the previous code, but specify that the width of the bars should be 1.
 
@@ -147,17 +147,17 @@ ggplot(my_data, aes(x = scores)) +
 
 Now this is identical to the `geom_bar(width = 1)` version from before. Note that bar's width and the binwidth are different things, though. The width is literally the width of the bars; binwidth is the width of the intervals into which scores are grouped. The usefulness of `geom_histogram()`is that it allows for more flexibility with the binwidth, which can be useful for continuous scores and datasets which cover a width range of scores, for which we might want a grouped frequency histogram with a wider binwidth.
 
+### Frequency polygon
+
 Lastly, we make a frequency polygon in much the same way as a histogram, remembering to specify the appropriate binwidth.
 
 ```{r}
 ggplot(my_data, aes(x = scores)) + 
   geom_freqpoly(binwidth = 1)
 ```
-:::
 
-:::: {.content-hidden when-format="pdf"}
 ::: {.callout-tip collapse="false"}
-## Bonus: Making things look nice
+### Bonus: Making things look nice
 
 The default options for the look of the plot are still pretty ugly though. If you're so inclined, you can customize just about everything about the look and layout of a graph using ggplot. Some aspects are fairly straight forward, like changing the outline and fill of the bars within the `geom_histogram()` function. We add another layer, `labs()` to set the axis titles. Stating breaks within `scale_x_continuous()` determines the labels of the x axis. And then there are all the `theme()` elements we can change or remove.
 
@@ -176,5 +176,4 @@ I don't suggest you get into the weeds on this unless you find that kind of thin
 
 There's a learning curve to ggplot, but once you get to grips with it, it is an incredibly powerful and flexible way of visualizing data.
 :::
-::::
 
