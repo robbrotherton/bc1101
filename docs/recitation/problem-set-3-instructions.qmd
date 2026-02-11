@@ -49,17 +49,17 @@ mode(scores)
 
 But that actually does something different.
 
-Since the mode is a common statistic, though, somebody already wrote a function to compute it. It's in a package called `modeest`. The package contains the function `mfv()`, for "most frequent value", which we can now use to get the mode. Remember, since it's an external package, we need to activate it with the `library()` function.
+Since the mode is a common statistic, though, somebody already wrote a function to compute it. It's in a package called `modeest`. The package contains the function `mfv1()`, for "most frequent value", which we can now use to get the mode. Remember, since it's an external package, we need to activate it with the `library()` function.
 
 ```{r}
 library(modeest)
-mfv(scores)
+mfv1(scores)
 ```
 
 Or equivalently, you can use the double-colon operator to refer to a `package::its_function()` without a separate `library()` call:
 
 ```{r}
-modeest::mfv(scores)
+modeest::mfv1(scores)
 ```
 
 ### Variability
@@ -121,7 +121,7 @@ library(dplyr)
 df |> 
   summarize(mean = mean(scores),
             median = median(scores),
-            mode = modeest::mfv(scores),
+            mode = modeest::mfv1(scores),
             min = min(scores),
             max = max(scores),
             range = max - min,
@@ -175,20 +175,20 @@ Why bother? Because now it is very easy to produce summary statistics for the wh
 demo_long |> 
   summarize(mean = mean(score),
             median = median(score),
-            mode = modeest::mfv(score),
+            mode = modeest::mfv1(score),
             sd = sd(score),
             .by = condition)
 ```
 
 ### Visualizing grouped data
 
-It is also a breeze to make graphs showing the distribution of the data grouped by condition. In this case, the column identifying which condition a score came from becomes another "aesthetic" in the `aes()` function–`color`, meaning the color of the lines and points.
+It is also a breeze to make graphs showing the distribution of the data grouped by condition. In this case, the column identifying which condition a score came from becomes another "aesthetic" in the `aes()` function–`color`, meaning the color of the lines and points. Note that depending on the nature of your data (its range and distribution) you may need to change the `binwidth` of the `geom_freqpoly()`. If you are also drawing a layer of points, you will need to also specify `stat = "bin"` and provide the same `binwidth` for that layer.
 
 ```{r}
 demo_long |> 
   ggplot(aes(x = score, color = condition)) +
   geom_freqpoly(binwidth = 1) +
-  geom_point(stat = "count")
+  geom_point(stat = "bin", binwidth = 1)
 ```
 
 You can also take summarized data and pipe it straight into ggplot:
