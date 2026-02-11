@@ -9,14 +9,11 @@ execute:
   echo: true
 ---
 
-# Part 1: Computing descriptive statistics
-
-::: {.content-hidden when-format="pdf"}
-## Instructions
+## Part 1: Computing descriptive statistics
 
 ### Central tendency
 
-Suppose we have a set of values: `1,2,3,3,4,5,10`
+Suppose we have a set of values: `1, 2, 3, 3, 4, 5, 10`
 
 There are several ways you could find the mean. One way would be to add the scores and divide by $N$, like you would on paper.
 
@@ -24,16 +21,16 @@ There are several ways you could find the mean. One way would be to add the scor
 (1 + 2 + 3 + 3 + 4 + 5 + 10) / 7
 ```
 
-Of course, you don't want to have to type all those numbers and figure out N yourself (especially if you were dealing with a much larger set of numbers). Better to have the scores as a named object:
+Of course, you don't want to have to type all those numbers and figure out $N$ yourself (especially if you were dealing with a much larger set of numbers). Better to have the scores as a named object:
 
 ```{r}
-scores <- c(1,2,3,3,4,5,10)
+scores <- c(1, 2, 3, 3, 4, 5, 10)
 ```
 
 Now life is much easier. The same mathematical approach can be implemented with the `sum()` and `length()` functions.
 
 ```{r}
-sum(scores)/length(scores) # this is equivalent to Sigma X divided by N
+sum(scores) / length(scores) # this is equivalent to Sigma X divided by N
 ```
 
 Even better, R has built-in functions to easily find the mean and median of a set of scores.
@@ -75,6 +72,13 @@ max(scores)
 max(scores) - min(scores) # range
 ```
 
+There is a built-in `range()` function. It returns the actual lowest and highest values as a collection. To find the difference between them, you could nest the range inside the `diff()` function.
+
+```{r}
+range(scores)
+diff(range(scores))
+```
+
 R has a built-in functions for sample SD.
 
 ```{r}
@@ -97,7 +101,7 @@ Note that these functions return *sample* variance & SD. There are no built-in f
 The above instructions show how mathematical operations and functions can be used to compute summary statistics for a set of numbers. Most often, however, the set of numbers we're dealing with is a column in a data.frame.
 
 ```{r}
-df <- data.frame(scores = c(1,2,3,3,4,5,10))
+df <- data.frame(scores = c(1, 2, 3, 3, 4, 5, 10))
 ```
 
 You can use the same approaches as above, just remember the `$` notation to refer to a data.frame column:
@@ -126,12 +130,11 @@ df |>
 ```
 
 In a single pipeline we produce all the summary statistics as a data.frame! Note that because I pipe `df` into the `summarize()` function, `scores` refers specifically to that column in the `df` data.frame object rather than the separate `scores` object I created previously. Note also that I defined the `min` and `max` summary columns, and I was able to refer to *those* new columns within the same single `mutate()` function to compute the `range`.
-:::
+
 
 # Part 2. Comparing groups
 
-::: {.content-hidden when-format="pdf"}
-### Describing and comparing groups of scores
+### Reshaping data from wide to long format
 
 The `dplyr::summarize()` approach becomes especially useful when we want to compare groups of scores, such as scores from different experimental groups in a study. In addition to `dplyr` I'll use another related package called `tidyr` here to change the structure of some data, making it easier to summarize and visualize (using `ggplot2`).
 
@@ -141,6 +144,7 @@ library(dplyr)
 library(tidyr)
 library(ggplot2)
 ```
+
 
 Suppose we have a data.frame with four columns; a participant ID and scores from experimental condition A, condition B, and condition C.
 
@@ -163,6 +167,8 @@ demo_long
 
 Note that only the data columns should be pivoted, *not* the participant ID column; that's why the first argument `-participant`, excluded that column from the pivot operation. The result is that the new long-format data.frame has 27 rows in contrast to the original's 9. There are three columns: one for participant, with the value identifying each participant duplicated down the rows; a column named "condition" (thanks to the argument `names_to = "condition"`) containing the labels `condition_a`, `condition_b` and `condition_c`; and finally a column named `score` containing the recorded values associated with each participant and each condition.
 
+### Describing data `.by` group
+
 Why bother? Because now it is very easy to produce summary statistics for the whole dataset broken down into the different groups, using `summarize()`'s special `.by` argument to specify the grouping variable.
 
 ```{r}
@@ -173,6 +179,8 @@ demo_long |>
             sd = sd(score),
             .by = condition)
 ```
+
+### Visualizing grouped data
 
 It is also a breeze to make graphs showing the distribution of the data grouped by condition. In this case, the column identifying which condition a score came from becomes another "aesthetic" in the `aes()` function–`color`, meaning the color of the lines and points.
 
@@ -196,4 +204,4 @@ demo_long |>
 ```
 
 Note that I used `geom_col()` rather than `geom_bar()`, and `geom_errorbar()` required a couple of extra aesthetics to determine the min and max y positions, as well as an argument determining the `width` of the tops and bottoms of the errorbars.
-:::
+
