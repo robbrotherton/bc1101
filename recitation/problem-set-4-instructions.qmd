@@ -72,7 +72,7 @@ pnorm(-.25, lower.tail = F) - pnorm(.25, lower.tail = F)
 
 ## Finding $z$-scores for probabilities
 
-When you have a proportion (quantile) in mind and want to find the associated z-score, `qnorm()` is the appropriate function
+When you have a proportion in mind and want to find the associated $z$-score, `qnorm()` is the appropriate function.
 
 ```{r}
 qnorm(.05)

@@ -2897,7 +2897,7 @@
     "href": "recitation/problem-set-4-instructions.html#finding-z-scores-for-probabilities",
     "title": "Problem Set 4",
     "section": "Finding \\(z\\)-scores for probabilities",
-    "text": "Finding \\(z\\)-scores for probabilities\nWhen you have a proportion (quantile) in mind and want to find the associated z-score, qnorm() is the appropriate function\n\nqnorm(.05)\n\n[1] -1.644854\n\n\nThat tells us that the cutoff for the lowest 5% of the distribution corresponds to \\(z = -1.64\\). qnorm() also accepts the lower.tail argument\n\nqnorm(.05, lower.tail = FALSE) # Now we get a positive value\n\n[1] 1.644854\n\n\nThe line below gives the same answer. Do you understand why?\n\nqnorm(.95, lower.tail = TRUE)\n\n[1] 1.644854",
+    "text": "Finding \\(z\\)-scores for probabilities\nWhen you have a proportion in mind and want to find the associated \\(z\\)-score, qnorm() is the appropriate function.\n\nqnorm(.05)\n\n[1] -1.644854\n\n\nThat tells us that the cutoff for the lowest 5% of the distribution corresponds to \\(z = -1.64\\). qnorm() also accepts the lower.tail argument\n\nqnorm(.05, lower.tail = FALSE) # Now we get a positive value\n\n[1] 1.644854\n\n\nThe line below gives the same answer. Do you understand why?\n\nqnorm(.95, lower.tail = TRUE)\n\n[1] 1.644854",
     "crumbs": [
       "Syllabus",
       "Recitation",
