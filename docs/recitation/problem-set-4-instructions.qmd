@@ -9,8 +9,7 @@ execute:
   echo: true
 ---
 
-::: {.content-hidden when-format="pdf"}
-## Instructions
+## Finding probabilities for $z$-scores
 
 The old-fashioned way to find the probability (the proportion of the distribution) associated with particular $z$-scores would be to look the score up in a $z$-score table (Unit Normal Table). R can do this for us much more easily, but it's a good idea to check your first few answers against a table, e.g. <https://www.westga.edu/academics/research/vrc/assets/docs/UnitNormalTable.pdf>
 
@@ -20,12 +19,36 @@ If you have a $z$-score in mind and want to know the associated probability, use
 pnorm(2) 
 ```
 
-So .9772499, or \~98% of scores in a normal distribution are less than $z = 2$.
+So .9772499, or \~98% of scores in a normal distribution are less than $z = 2$. Here's what that looks like:
+
+```{r}
+#| echo: false
+library(ggplot2)
+plot_distribution <- function(lower_z = -4, upper_z = 4) {
+  ggplot() +
+  stat_function(fun = dnorm, 
+                geom = "density", 
+                xlim = c(lower_z, upper_z), # xlim goes up to 2
+                fill = "red", color = NA) +
+  stat_function(fun = dnorm, xlim = c(-4, 4)) +
+    theme(axis.line = element_line(), 
+          panel.background = element_blank())
+}
+
+plot_distribution(-4, 2)
+```
 
 To get the proportion to the right, we set the `lower.tail` argument to `FALSE` (i.e. we want the upper tail)
 
 ```{r}
-pnorm(2, lower.tail = FALSE) # .02275013, or ~2% of scores are greater than z = 2
+pnorm(2, lower.tail = FALSE)
+```
+
+That tells us that \~2% of scores are greater than $z = 2$. Here's what that looks like:
+
+```{r}
+#| echo: false
+plot_distribution(2)
 ```
 
 Think about how R's `lower.tail` distinction corresponds to the "body" vs. "tail" distinction. It's not always necessarily the same.
@@ -33,14 +56,21 @@ Think about how R's `lower.tail` distinction corresponds to the "body" vs. "tail
 To find the proportion of the normal distribution between two $z$-scores, one way would be to subtract p(lower score) from p(higher score)
 
 ```{r}
-pnorm(.25) - pnorm(-.25) # Just under .20, or 20% is between z = -.25 and z = .25
+pnorm(.25) - pnorm(-.25)
 ```
 
-Note that the slightly different code below gives the same answer. Do you understand why? Either solution is perfectly acceptable.
+```{r}
+#| echo: false
+plot_distribution(-.25, .25)
+```
+
+Just under .20, or 20% is between $z = -.25$ and $z = .25$. Note that the slightly different code below gives the same answer. Do you understand why? Either solution is perfectly acceptable.
 
 ```{r}
 pnorm(-.25, lower.tail = F) - pnorm(.25, lower.tail = F)
 ```
+
+## Finding $z$-scores for probabilities
 
 When you have a proportion (quantile) in mind and want to find the associated z-score, `qnorm()` is the appropriate function
 
@@ -60,24 +90,23 @@ The line below gives the same answer. Do you understand why?
 qnorm(.95, lower.tail = TRUE)
 ```
 
-The last thing you need to know for the questions below is that both `pnorm()` and `qnorm()` have optional arguments for the mean and SD of the distribution. That is, if we have raw scores, we don't have to convert to z-scores to use these functions, we can specify the appropriate values
+## Dealing with non-standardized distributions
+
+The last thing you need to know for the questions below is that both `pnorm()` and `qnorm()` have optional arguments for the mean and SD of the distribution. That is, if we have raw scores, we don't have to convert to $z$-scores to use these functions, we can just specify the appropriate values.
 
 ```{r}
 pnorm(130, mean = 100, sd = 15)
 ```
-:::
 
-:::: {.content-hidden when-format="pdf"}
 ::: {.callout-tip collapse="false"}
 ## Sketching distributions
 
-With the kinds of questions that follow, I find it massively useful to sketch a rough normal curve on a piece of paper and mark approximately where the $z$-scores would go, and shade in the corresponding probability region. My strong recommendation is that you do that on a piece of paper.
+Do you find the graphs in the instructions above helpful? With the kinds of questions in this problem set, I find it massively useful to sketch a rough normal curve on a piece of paper and mark approximately where the $z$-scores would go, and shade in the corresponding probability region. My strong recommendation is that you do that on a piece of paper.
 
-If are falling in love with R and `ggplot` in particular, however, you can draw distributions right here.
+If are falling in love with R and `ggplot` in particular, however, you can draw distributions right in your problem set using `ggplot`.
 
 ```{r}
-#| fig-width: 2
-#| fig-height: 1.5
+
 library(ggplot2)
 
 ggplot() +
@@ -93,8 +122,7 @@ The first `stat_function()` layer draws the red shaded region, and the second on
 Say you wanted to shade the region below $z = 2$. You could use:
 
 ```{r}
-#| fig-width: 2
-#| fig-height: 1.5
+
 ggplot() +
   stat_function(fun = dnorm, 
                 geom = "density", 
@@ -112,8 +140,7 @@ pnorm(2)
 Or say you want to see what the highest 20% of the distribution looks like.
 
 ```{r}
-#| fig-width: 2
-#| fig-height: 1.5
+
 ggplot() +
   stat_function(fun = dnorm, geom = "density", 
                 xlim = c(qnorm(0.2, lower.tail = FALSE), 4), 
@@ -124,8 +151,7 @@ ggplot() +
 Or a region of 40% in the middle of the distribution, separating 30% in each tail:
 
 ```{r}
-#| fig-width: 2
-#| fig-height: 1.5
+
 ggplot() +
   stat_function(fun = dnorm, geom = "density", 
                 xlim = c(qnorm(0.3), qnorm(0.3, lower.tail = FALSE)), 
@@ -136,21 +162,20 @@ ggplot() +
 You could even turn this into a convenient function...
 
 ```{r}
-#| fig-width: 2
-#| fig-height: 1.5
 
 plot_distribution <- function(lower_z = -4, upper_z = 4) {
+  
   ggplot() +
   stat_function(fun = dnorm, 
                 geom = "density", 
                 xlim = c(lower_z, upper_z), # xlim goes up to 2
                 fill = "red", color = NA) +
   stat_function(fun = dnorm, xlim = c(-4, 4))
+
 }
 
 plot_distribution(-2, 2)
 ```
 
-I'm not saying this will make your life easier: you still have to know your way around `pnorm()`, `qnorm()`, and the idea of chopping the distribution into different regions. But it can be satisfying to produce a visual reference corresponding to your numeric answer.
+I'm not saying this will make your life easier: you still have to know your way around `ggplot()`, `pnorm()`, `qnorm()`, and the idea of chopping the distribution into different regions. But it can be satisfying to produce a visual reference corresponding to your numeric answer.
 :::
-::::

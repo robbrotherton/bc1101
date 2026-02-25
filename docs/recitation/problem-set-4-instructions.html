@@ -242,7 +242,9 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#finding-probabilities-for-z-scores" id="toc-finding-probabilities-for-z-scores" class="nav-link active" data-scroll-target="#finding-probabilities-for-z-scores">Finding probabilities for <span class="math inline">\(z\)</span>-scores</a></li>
+  <li><a href="#finding-z-scores-for-probabilities" id="toc-finding-z-scores-for-probabilities" class="nav-link" data-scroll-target="#finding-z-scores-for-probabilities">Finding <span class="math inline">\(z\)</span>-scores for probabilities</a></li>
+  <li><a href="#dealing-with-non-standardized-distributions" id="toc-dealing-with-non-standardized-distributions" class="nav-link" data-scroll-target="#dealing-with-non-standardized-distributions">Dealing with non-standardized distributions</a></li>
   </ul>
 </nav>
     </div>
@@ -269,8 +271,8 @@ window.Quarto = {
 </header>
 
 
-<section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<section id="finding-probabilities-for-z-scores" class="level2">
+<h2 class="anchored" data-anchor-id="finding-probabilities-for-z-scores">Finding probabilities for <span class="math inline">\(z\)</span>-scores</h2>
 <p>The old-fashioned way to find the probability (the proportion of the distribution) associated with particular <span class="math inline">\(z\)</span>-scores would be to look the score up in a <span class="math inline">\(z\)</span>-score table (Unit Normal Table). R can do this for us much more easily, but it’s a good idea to check your first few answers against a table, e.g.&nbsp;<a href="https://www.westga.edu/academics/research/vrc/assets/docs/UnitNormalTable.pdf" class="uri">https://www.westga.edu/academics/research/vrc/assets/docs/UnitNormalTable.pdf</a></p>
 <p>If you have a <span class="math inline">\(z\)</span>-score in mind and want to know the associated probability, use the <code>pnorm()</code> function. By default, <code>pnorm()</code> assumes we want the proportion of the distribution to the left of the <span class="math inline">\(z\)</span>-score we specify.</p>
 <div class="cell">
@@ -279,29 +281,60 @@ window.Quarto = {
 <pre><code>[1] 0.9772499</code></pre>
 </div>
 </div>
-<p>So .9772499, or ~98% of scores in a normal distribution are less than <span class="math inline">\(z = 2\)</span>.</p>
+<p>So .9772499, or ~98% of scores in a normal distribution are less than <span class="math inline">\(z = 2\)</span>. Here’s what that looks like:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="problem-set-4-instructions_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>To get the proportion to the right, we set the <code>lower.tail</code> argument to <code>FALSE</code> (i.e.&nbsp;we want the upper tail)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">2</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>) <span class="co"># .02275013, or ~2% of scores are greater than z = 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">2</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.02275013</code></pre>
+</div>
+</div>
+<p>That tells us that ~2% of scores are greater than <span class="math inline">\(z = 2\)</span>. Here’s what that looks like:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="problem-set-4-instructions_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Think about how R’s <code>lower.tail</code> distinction corresponds to the “body” vs.&nbsp;“tail” distinction. It’s not always necessarily the same.</p>
 <p>To find the proportion of the normal distribution between two <span class="math inline">\(z\)</span>-scores, one way would be to subtract p(lower score) from p(higher score)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(.<span class="dv">25</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span>.<span class="dv">25</span>) <span class="co"># Just under .20, or 20% is between z = -.25 and z = .25</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(.<span class="dv">25</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span>.<span class="dv">25</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1974127</code></pre>
 </div>
 </div>
-<p>Note that the slightly different code below gives the same answer. Do you understand why? Either solution is perfectly acceptable.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="problem-set-4-instructions_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Just under .20, or 20% is between <span class="math inline">\(z = -.25\)</span> and <span class="math inline">\(z = .25\)</span>. Note that the slightly different code below gives the same answer. Do you understand why? Either solution is perfectly acceptable.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span>.<span class="dv">25</span>, <span class="at">lower.tail =</span> F) <span class="sc">-</span> <span class="fu">pnorm</span>(.<span class="dv">25</span>, <span class="at">lower.tail =</span> F)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1974127</code></pre>
 </div>
 </div>
+</section>
+<section id="finding-z-scores-for-probabilities" class="level2">
+<h2 class="anchored" data-anchor-id="finding-z-scores-for-probabilities">Finding <span class="math inline">\(z\)</span>-scores for probabilities</h2>
 <p>When you have a proportion (quantile) in mind and want to find the associated z-score, <code>qnorm()</code> is the appropriate function</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(.<span class="dv">05</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -323,7 +356,10 @@ window.Quarto = {
 <pre><code>[1] 1.644854</code></pre>
 </div>
 </div>
-<p>The last thing you need to know for the questions below is that both <code>pnorm()</code> and <code>qnorm()</code> have optional arguments for the mean and SD of the distribution. That is, if we have raw scores, we don’t have to convert to z-scores to use these functions, we can specify the appropriate values</p>
+</section>
+<section id="dealing-with-non-standardized-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="dealing-with-non-standardized-distributions">Dealing with non-standardized distributions</h2>
+<p>The last thing you need to know for the questions below is that both <code>pnorm()</code> and <code>qnorm()</code> have optional arguments for the mean and SD of the distribution. That is, if we have raw scores, we don’t have to convert to <span class="math inline">\(z\)</span>-scores to use these functions, we can just specify the appropriate values.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">130</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -342,8 +378,8 @@ window.Quarto = {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p>With the kinds of questions that follow, I find it massively useful to sketch a rough normal curve on a piece of paper and mark approximately where the <span class="math inline">\(z\)</span>-scores would go, and shade in the corresponding probability region. My strong recommendation is that you do that on a piece of paper.</p>
-<p>If are falling in love with R and <code>ggplot</code> in particular, however, you can draw distributions right here.</p>
+<p>Do you find the graphs in the instructions above helpful? With the kinds of questions in this problem set, I find it massively useful to sketch a rough normal curve on a piece of paper and mark approximately where the <span class="math inline">\(z\)</span>-scores would go, and shade in the corresponding probability region. My strong recommendation is that you do that on a piece of paper.</p>
+<p>If are falling in love with R and <code>ggplot</code> in particular, however, you can draw distributions right in your problem set using <code>ggplot</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -356,7 +392,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="problem-set-4-instructions_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="192"></p>
+<p><img src="problem-set-4-instructions_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -373,7 +409,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="problem-set-4-instructions_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="192"></p>
+<p><img src="problem-set-4-instructions_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -395,7 +431,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="problem-set-4-instructions_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="192"></p>
+<p><img src="problem-set-4-instructions_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -410,7 +446,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="problem-set-4-instructions_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="192"></p>
+<p><img src="problem-set-4-instructions_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -418,24 +454,26 @@ window.Quarto = {
 <p>You could even turn this into a convenient function…</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>plot_distribution <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">lower_z =</span> <span class="sc">-</span><span class="dv">4</span>, <span class="at">upper_z =</span> <span class="dv">4</span>) {</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, </span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">geom =</span> <span class="st">"density"</span>, </span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">xlim =</span> <span class="fu">c</span>(lower_z, upper_z), <span class="co"># xlim goes up to 2</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">"red"</span>, <span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>))</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">geom =</span> <span class="st">"density"</span>, </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">xlim =</span> <span class="fu">c</span>(lower_z, upper_z), <span class="co"># xlim goes up to 2</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">"red"</span>, <span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>))</span>
 <span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_distribution</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_distribution</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="problem-set-4-instructions_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="192"></p>
+<p><img src="problem-set-4-instructions_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>I’m not saying this will make your life easier: you still have to know your way around <code>pnorm()</code>, <code>qnorm()</code>, and the idea of chopping the distribution into different regions. But it can be satisfying to produce a visual reference corresponding to your numeric answer.</p>
+<p>I’m not saying this will make your life easier: you still have to know your way around <code>ggplot()</code>, <code>pnorm()</code>, <code>qnorm()</code>, and the idea of chopping the distribution into different regions. But it can be satisfying to produce a visual reference corresponding to your numeric answer.</p>
 </div>
 </div>
 </div>
