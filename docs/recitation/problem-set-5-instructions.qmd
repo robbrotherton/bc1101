@@ -9,10 +9,7 @@ execute:
   echo: true
 ---
 
-# Part 1. Effect size and statistical power
-
-::: {.content-visible when-format="html"}
-## Instructions
+## Part 1. Effect size and statistical power
 
 ### Effect size
 
@@ -44,7 +41,7 @@ range
 
 ...which tells us that any mean between 71.28 and 78.72 would lead us to fail to reject the null hypothesis
 
-step 3: Calculate beta. Assuming that the treatment worked and thus the new mean is 79, determine what proportion of sample means fall within that range.
+Step 3: Calculate beta. Assuming that the treatment worked and thus the new mean is 79, determine what proportion of sample means fall within that range.
 
 One way would be to subtract the lower value from the higher value
 
@@ -81,9 +78,7 @@ beta <- pnorm(m_critical, mean=79, sd=std_err)
 
 1 - beta
 ```
-:::
 
-:::: {.content-hidden when-format="pdf"}
 ::: {.callout-tip collapse="false"}
 ## Bonus
 
@@ -100,14 +95,10 @@ pwr.norm.test(d=(79-75)/12, # d is the (known or anticipated) effect size; (M - 
 pwr.norm.test(d = (79-75)/12, n = 40, sig.level = .05, alternative = "greater") # one-tailed power
 ```
 :::
-::::
 
-# Part 2. Hypothesis testing
+## Part 2. Hypothesis testing
 
-::: {.content-hidden when-format="pdf"}
-## Instructions
-
-As in the lecture, you can think about hypothesis testing as a series of steps to follow
+As in the lecture, you can think about hypothesis testing as a series of steps to follow.
 
 **Step 1: State your hypotheses.** R can't do this for you - you just have to think about the question and formulate your null ($H_0$) and alternative ($H_1$) hypotheses.
 
@@ -129,13 +120,18 @@ qnorm(c(0.025, 0.975))
 
 **Step 3: Calculate your test statistic.** Do this by plugging the appropriate values into the relevant equation. (For other tests, there may be R functions you can use, but there's no built-in function for a $z$-test)
 
-**Step 4: Decide.** Compare your calculated test statistic with the critical values to determine whether your sample is within the critical region(s), and thus whether to reject the null.
-:::
+$$z = \dfrac{M - \mu_M}{\sigma_M}$$
 
-:::: {.content-hidden when-format="pdf"}
+**Step 4: Decide.** Compare your calculated test statistic with the critical values to determine whether your sample is within the critical region(s), and thus whether to reject the null.
+
 ::: {.callout-tip collapse="false"}
 ## Bonus
 
 There is no built-in function for doing $z$-tests using real data, because researchers don't need to do it very often. For a fun challenge you could try creating your own function.
+
+```{r}
+z.test <- function(x, mu, sigma) {
+  # code to compute z goes here!
+}
+```
 :::
-::::

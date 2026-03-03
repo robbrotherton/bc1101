@@ -244,16 +244,10 @@ window.Quarto = {
   <ul>
   <li><a href="#part-1.-effect-size-and-statistical-power" id="toc-part-1.-effect-size-and-statistical-power" class="nav-link active" data-scroll-target="#part-1.-effect-size-and-statistical-power">Part 1. Effect size and statistical power</a>
   <ul class="collapse">
-  <li><a href="#instructions" id="toc-instructions" class="nav-link" data-scroll-target="#instructions">Instructions</a>
-  <ul class="collapse">
   <li><a href="#effect-size" id="toc-effect-size" class="nav-link" data-scroll-target="#effect-size">Effect size</a></li>
   <li><a href="#statistical-power" id="toc-statistical-power" class="nav-link" data-scroll-target="#statistical-power">Statistical power</a></li>
   </ul></li>
-  </ul></li>
-  <li><a href="#part-2.-hypothesis-testing" id="toc-part-2.-hypothesis-testing" class="nav-link" data-scroll-target="#part-2.-hypothesis-testing">Part 2. Hypothesis testing</a>
-  <ul class="collapse">
-  <li><a href="#instructions-1" id="toc-instructions-1" class="nav-link" data-scroll-target="#instructions-1">Instructions</a></li>
-  </ul></li>
+  <li><a href="#part-2.-hypothesis-testing" id="toc-part-2.-hypothesis-testing" class="nav-link" data-scroll-target="#part-2.-hypothesis-testing">Part 2. Hypothesis testing</a></li>
   </ul>
 </nav>
     </div>
@@ -280,10 +274,8 @@ window.Quarto = {
 </header>
 
 
-<section id="part-1.-effect-size-and-statistical-power" class="level1">
-<h1>Part 1. Effect size and statistical power</h1>
-<section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<section id="part-1.-effect-size-and-statistical-power" class="level2">
+<h2 class="anchored" data-anchor-id="part-1.-effect-size-and-statistical-power">Part 1. Effect size and statistical power</h2>
 <section id="effect-size" class="level3">
 <h3 class="anchored" data-anchor-id="effect-size">Effect size</h3>
 <p>Cohen’s <span class="math inline">\(d\)</span> is simple to calculate: It is the mean difference divided by standard deviation.</p>
@@ -312,7 +304,7 @@ window.Quarto = {
 </div>
 </div>
 <p>…which tells us that any mean between 71.28 and 78.72 would lead us to fail to reject the null hypothesis</p>
-<p>step 3: Calculate beta. Assuming that the treatment worked and thus the new mean is 79, determine what proportion of sample means fall within that range.</p>
+<p>Step 3: Calculate beta. Assuming that the treatment worked and thus the new mean is 79, determine what proportion of sample means fall within that range.</p>
 <p>One way would be to subtract the lower value from the higher value</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="fl">78.72</span>, <span class="at">mean =</span> <span class="dv">79</span>, <span class="at">sd =</span> std_err) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fl">71.28</span>, <span class="at">mean =</span> <span class="dv">79</span>, <span class="at">sd =</span> std_err) </span>
@@ -400,12 +392,9 @@ window.Quarto = {
 </div>
 </section>
 </section>
-</section>
-<section id="part-2.-hypothesis-testing" class="level1">
-<h1>Part 2. Hypothesis testing</h1>
-<section id="instructions-1" class="level2">
-<h2 class="anchored" data-anchor-id="instructions-1">Instructions</h2>
-<p>As in the lecture, you can think about hypothesis testing as a series of steps to follow</p>
+<section id="part-2.-hypothesis-testing" class="level2">
+<h2 class="anchored" data-anchor-id="part-2.-hypothesis-testing">Part 2. Hypothesis testing</h2>
+<p>As in the lecture, you can think about hypothesis testing as a series of steps to follow.</p>
 <p><strong>Step 1: State your hypotheses.</strong> R can’t do this for you - you just have to think about the question and formulate your null (<span class="math inline">\(H_0\)</span>) and alternative (<span class="math inline">\(H_1\)</span>) hypotheses.</p>
 <p><strong>Step 2: Set decision criteria.</strong> The questions below will tell you what alpha to use. Suppose we’re using <span class="math inline">\(\alpha = .05\)</span>, and a two-tailed test. For a <span class="math inline">\(z\)</span>-test, find the critical values using <code>qnorm()</code>.</p>
 <p>For a one-tailed test, just put in the proportion you want to be your critical region:</p>
@@ -431,6 +420,7 @@ window.Quarto = {
 </div>
 </div>
 <p><strong>Step 3: Calculate your test statistic.</strong> Do this by plugging the appropriate values into the relevant equation. (For other tests, there may be R functions you can use, but there’s no built-in function for a <span class="math inline">\(z\)</span>-test)</p>
+<p><span class="math display">\[z = \dfrac{M - \mu_M}{\sigma_M}\]</span></p>
 <p><strong>Step 4: Decide.</strong> Compare your calculated test statistic with the critical values to determine whether your sample is within the critical region(s), and thus whether to reject the null.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
@@ -445,12 +435,16 @@ window.Quarto = {
 <div id="callout-2" class="callout-2-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>There is no built-in function for doing <span class="math inline">\(z\)</span>-tests using real data, because researchers don’t need to do it very often. For a fun challenge you could try creating your own function.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>z.test <span class="ot">&lt;-</span> <span class="cf">function</span>(x, mu, sigma) {</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># code to compute z goes here!</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </div>
 </div>
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
