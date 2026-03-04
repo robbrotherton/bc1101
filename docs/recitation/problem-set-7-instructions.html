@@ -244,19 +244,13 @@ window.Quarto = {
   <ul>
   <li><a href="#part-1.-computing-t-statistics" id="toc-part-1.-computing-t-statistics" class="nav-link active" data-scroll-target="#part-1.-computing-t-statistics">Part 1. Computing <span class="math inline">\(t\)</span> statistics</a>
   <ul class="collapse">
-  <li><a href="#instructions" id="toc-instructions" class="nav-link" data-scroll-target="#instructions">Instructions</a>
-  <ul class="collapse">
   <li><a href="#independent-samples" id="toc-independent-samples" class="nav-link" data-scroll-target="#independent-samples">Independent samples</a></li>
   <li><a href="#paired-samples" id="toc-paired-samples" class="nav-link" data-scroll-target="#paired-samples">Paired samples</a></li>
   </ul></li>
-  </ul></li>
   <li><a href="#part-2.-loftus-palmer-analysis" id="toc-part-2.-loftus-palmer-analysis" class="nav-link" data-scroll-target="#part-2.-loftus-palmer-analysis">Part 2. Loftus &amp; Palmer analysis</a>
-  <ul class="collapse">
-  <li><a href="#instructions-1" id="toc-instructions-1" class="nav-link" data-scroll-target="#instructions-1">Instructions</a>
   <ul class="collapse">
   <li><a href="#using-t.test-with-long-format-data" id="toc-using-t.test-with-long-format-data" class="nav-link" data-scroll-target="#using-t.test-with-long-format-data">Using <code>t.test()</code> with long-format data</a></li>
   <li><a href="#confidence-intervals-for-independent-samples" id="toc-confidence-intervals-for-independent-samples" class="nav-link" data-scroll-target="#confidence-intervals-for-independent-samples">Confidence intervals for independent-samples</a></li>
-  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -284,10 +278,8 @@ window.Quarto = {
 </header>
 
 
-<section id="part-1.-computing-t-statistics" class="level1">
-<h1>Part 1. Computing <span class="math inline">\(t\)</span> statistics</h1>
-<section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<section id="part-1.-computing-t-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="part-1.-computing-t-statistics">Part 1. Computing <span class="math inline">\(t\)</span> statistics</h2>
 <section id="independent-samples" class="level3">
 <h3 class="anchored" data-anchor-id="independent-samples">Independent samples</h3>
 <p>When conducting a single-sample <span class="math inline">\(t\)</span>-test using the <code>t.test()</code> function, you used the argument <code>x =</code> to specify a single column of a data.frame, and <code>mu =</code> to specify the known population mean against which the sample data was to be compared. To conduct an independent-samples <span class="math inline">\(t\)</span>-test, you need to specify both <code>x</code> and <code>y</code>. These refer to your two samples, each contained in a separate column of a data.frame. By default, <code>mu = 0</code>, which reflects the null hypothesis of no difference between the group means. Since it’s the default, you don’t need to set it explicitly.</p>
@@ -300,16 +292,13 @@ window.Quarto = {
 <p>If your data is in the same structure we’ve seen in previous questions for independent-samples <span class="math inline">\(t\)</span>-tests - i.e., a data.frame containing 2 columns for 2 samples of data - switching from an independent-samples <span class="math inline">\(t\)</span>-test to a related-samples <span class="math inline">\(t\)</span>-test is simple. The only difference is that we specify the argument <code>paired = TRUE</code>. That’s all there is to it: we’re just telling R that each row came from a single participant, rather than from different people (as with an independent-samples design). This is a good illustration of how the statistics that we can run on a set of data aren’t an inherent feature of the data themselves, but depend on the conceptual nature of the data. R doesn’t know about that, so it is our job to tell it how to treat the data.</p>
 </section>
 </section>
-</section>
-<section id="part-2.-loftus-palmer-analysis" class="level1">
-<h1>Part 2. Loftus &amp; Palmer analysis</h1>
-<section id="instructions-1" class="level2">
-<h2 class="anchored" data-anchor-id="instructions-1">Instructions</h2>
+<section id="part-2.-loftus-palmer-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="part-2.-loftus-palmer-analysis">Part 2. Loftus &amp; Palmer analysis</h2>
 <section id="using-t.test-with-long-format-data" class="level3">
 <h3 class="anchored" data-anchor-id="using-t.test-with-long-format-data">Using <code>t.test()</code> with long-format data</h3>
 <p>Here you’ll conduct and report a complete analysis of some more real(ish) data. (Actual raw data from Loftus and Palmer’s (1974) study is not available, but I’ve simulated data with comparable characteristics.)</p>
 <p>To make it easier to describe and visualize the data, you’ll turn the data from “wide” to “long” format (using <code>pivot_longer()</code> as we’ve done in past problem sets).</p>
-<p>When the data is in long format, the <code>t.test()</code> function works a little differently. Rather than specifying <code>x</code> and <code>y</code>, two columns in a data.frame as you did in Part 1, you specify <code>x</code> as a ‘formula’. Generically, this formula is in the form <code>DV ~ IV</code>, meaning you want to use a <span class="math inline">\(t\)</span> test to look for differences on the dependent variable by groups of the independent variable. Of course, in practice those terms will be names of columns in a data.frame, so the function also requires a <code>data =</code> argument to specify the data.frame containing those columns.</p>
+<p>When the data is in long format, the <code>t.test()</code> function works a little differently. Rather than specifying <code>x</code> and <code>y</code>, two columns in a data.frame as you did in Part 1, you specify a ‘formula’. Generically, this formula is in the form <code>DV ~ IV</code>, meaning you want to use a <span class="math inline">\(t\)</span>-test to look for differences on the dependent variable by groups of the independent variable. Of course, in practice those terms will be names of columns in a data.frame, so the function also requires a <code>data =</code> argument to specify the data.frame containing those columns.</p>
 <p>So suppose you have a long-format data.frame named <code>df_long</code> with two columns, one named <code>group</code> containing the categorical group each observation comes from and another named <code>score</code> containing the numeric scores on the dependent variable:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
@@ -357,10 +346,9 @@ mean in group group_a mean in group group_b
 <section id="confidence-intervals-for-independent-samples" class="level3">
 <h3 class="anchored" data-anchor-id="confidence-intervals-for-independent-samples">Confidence intervals for independent-samples</h3>
 <p>When you use the <code>t.test()</code> function, a confidence interval is included in its output. That confidence interval pertains to the <em>mean difference</em>, i.e.&nbsp;the margin of error around the difference between group means. I won’t ask you to calculate it manually here, but if you’re unsure what it quantifies it would be worth thinking about how it is computed and seeing if you can replicate it by implementing the relevant equation like you did last time for a single-sample design. (As a hint, it necessitates finding the pooled variance and estimated standard error of the mean difference.)</p>
-<p>However, as part of describing and visualizing the data I will ask you to compute two different confidence intervals: one for each group of scores (as you have done previously). Note that those confidence intervals quantify something different from the one produced by the <code>t.test()</code> function in this case: the margin of error associated with each individual group point estimate.</p>
+<p>However, as part of describing and visualizing the data I will ask you to compute two different confidence intervals: one for each group of scores as you have done previously. (Hint: remember <code>summarize()</code> with its <code>.by</code> argument applied to long-format data.) Note that those individual group confidence intervals quantify something different from the one produced by the <code>t.test()</code> function in this case: the margin of error associated with each individual sample’s point estimate.</p>
 
 
-</section>
 </section>
 </section>
 
