@@ -242,18 +242,12 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#part-1.-the-t-statistic" id="toc-part-1.-the-t-statistic" class="nav-link active" data-scroll-target="#part-1.-the-t-statistic">Part 1. The <span class="math inline">\(t\)</span> statistic</a>
-  <ul class="collapse">
-  <li><a href="#instructions" id="toc-instructions" class="nav-link" data-scroll-target="#instructions">Instructions</a></li>
-  </ul></li>
+  <li><a href="#part-1.-the-t-statistic" id="toc-part-1.-the-t-statistic" class="nav-link active" data-scroll-target="#part-1.-the-t-statistic">Part 1. The <span class="math inline">\(t\)</span> statistic</a></li>
   <li><a href="#part-2.-confidence-intervals" id="toc-part-2.-confidence-intervals" class="nav-link" data-scroll-target="#part-2.-confidence-intervals">Part 2. Confidence intervals</a>
-  <ul class="collapse">
-  <li><a href="#instructions-1" id="toc-instructions-1" class="nav-link" data-scroll-target="#instructions-1">Instructions</a>
   <ul class="collapse">
   <li><a href="#using-actual-data" id="toc-using-actual-data" class="nav-link" data-scroll-target="#using-actual-data">Using actual data</a></li>
   <li><a href="#make-your-own-function" id="toc-make-your-own-function" class="nav-link" data-scroll-target="#make-your-own-function">Make your own function</a></li>
   <li><a href="#visualizing-confidence-intervals" id="toc-visualizing-confidence-intervals" class="nav-link" data-scroll-target="#visualizing-confidence-intervals">Visualizing confidence intervals</a></li>
-  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -264,7 +258,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../recitation/problem-set-1-instructions.html">Recitation</a></li><li class="breadcrumb-item"><a href="../recitation/problem-set-6-instructions.html">Problem Set 6</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Problem Set 6</h1>
-<p class="subtitle lead"><span class="math inline">\(t\)</span>-test &amp; Confidence Intervals</p>
+<p class="subtitle lead">The <span class="math inline">\(t\)</span>-test &amp; Confidence Intervals</p>
 </div>
 
 
@@ -281,10 +275,8 @@ window.Quarto = {
 </header>
 
 
-<section id="part-1.-the-t-statistic" class="level1">
-<h1>Part 1. The <span class="math inline">\(t\)</span> statistic</h1>
-<section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<section id="part-1.-the-t-statistic" class="level2">
+<h2 class="anchored" data-anchor-id="part-1.-the-t-statistic">Part 1. The <span class="math inline">\(t\)</span> statistic</h2>
 <p>The general hypothesis testing procedure for the <span class="math inline">\(t\)</span>-test (and any kind of test) is the same as the procedure we used in the previous problem set for the <span class="math inline">\(z\)</span>-test. The difference is that we’re dealing with a different distribution and a different test statistic.</p>
 <p>Step 1: State your hypotheses</p>
 <p>Step 2: Set decision criteria. As usual, this depends on alpha and whether the test is 1- or 2-tailed. To find the critical regions of the <span class="math inline">\(t\)</span> distribution, we use the <code>qt()</code> function. It works just like <code>qnorm()</code>, but for the <span class="math inline">\(t\)</span> distribution instead of the normal distribution. The values for the <span class="math inline">\(t\)</span> distribution depend on the degrees of freedom for your test, so we must also specify the degrees of freedom as an argument within the function. E.g.,</p>
@@ -294,9 +286,10 @@ window.Quarto = {
 <pre><code>[1] -2.008559  2.008559</code></pre>
 </div>
 </div>
-<p>Step 3: Calculate your test statistic. Do this by plugging the appropriate values into the <span class="math inline">\(t\)</span> equation</p>
+<p>Step 3: Calculate your test statistic. Do this by adapting the <span class="math inline">\(t\)</span> equation into R code and plugging the appropriate values.</p>
+<p><span class="math display">\[t = \dfrac{M - \mu_M}{s_M}\]</span></p>
 <p>Step 4: Decide. Compare your calculated test statistic with the critical values to determine whether your sample is within the critical region(s), and thus whether to reject the null.</p>
-<p>Unlike the <span class="math inline">\(z\)</span>-test, however, R does have a built-in function for performing a <span class="math inline">\(t\)</span> test. When you’re dealing with real data you can use this rather than following the step-by-step procedure and calculating things manually. For a single-sample <span class="math inline">\(t\)</span>-test, the arguments you need to specify are <code>x</code> (your data) and <code>mu</code> (the population mean), and possibly <code>alternative</code>. This last argument allows you to specify the directionality of the alternative hypothesis (i.e.&nbsp;to conduct a one-tailed or two-tailed hypothesis).</p>
+<p>Unlike the <span class="math inline">\(z\)</span>-test, however, R does have a built-in function for performing a <span class="math inline">\(t\)</span> test: <code>t.test()</code>. When you’re dealing with real data you can use this rather than following the step-by-step procedure and calculating things manually. For a single-sample <span class="math inline">\(t\)</span>-test, the arguments you need to specify are <code>x</code> (your data) and <code>mu</code> (the population mean), and possibly <code>alternative</code>. This last argument allows you to specify the directionality of the alternative hypothesis (i.e.&nbsp;to conduct a one-tailed or two-tailed hypothesis).</p>
 <p>The <code>t.test()</code> function doesn’t calculate effect size. For that, you can implement the relevant equation. Or alternatively, you could check out the <code>cohens_d()</code> function from the <code>effectsize</code> package…</p>
 <p>NOTE: You can see documentation for any function by typing a question mark followed by the name of the function (with no parentheses after the name) and running the code. Alternatively, you can click over to the Help tab of the pane in the bottom right and search for a function. The documentation isn’t always that helpful, but it’s worth taking a look when you’re unsure about a function.</p>
 <div class="cell">
@@ -305,16 +298,13 @@ window.Quarto = {
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>?effectsize<span class="sc">::</span>cohens_d</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="part-2.-confidence-intervals" class="level1">
-<h1>Part 2. Confidence intervals</h1>
-<section id="instructions-1" class="level2">
-<h2 class="anchored" data-anchor-id="instructions-1">Instructions</h2>
+<section id="part-2.-confidence-intervals" class="level2">
+<h2 class="anchored" data-anchor-id="part-2.-confidence-intervals">Part 2. Confidence intervals</h2>
 <p>The equation for a confidence interval is:</p>
 <p><span class="math display">\[
 \mu = M \pm t * s_M
 \]</span></p>
-<p>So this involves computing some critical <span class="math inline">\(t\)</span> values and multiplying by the estimated standard error.</p>
+<p>So this involves computing some critical <span class="math inline">\(t\)</span> values and multiplying by the estimated standard error, and adding and subtracting that product from the mean.</p>
 <p>Suppose we’re dealing with a sample, <span class="math inline">\(n = 20\)</span>, <span class="math inline">\(M = 100\)</span>, <span class="math inline">\(SD = 10\)</span> . We want to make a 95% confidence interval for that <span class="math inline">\(M = 100\)</span> point estimate.</p>
 <p>Step 1: Find the critical value.</p>
 <p>For 95% confidence, picture the distribution split into 95% in the middle and therefore 2.5% in each tail. Strictly speaking we should have <em>two</em> critical values, one for each tail. But since it’s symmetrical, we can simplify by just using the upper tail’s value for now.</p>
@@ -418,7 +408,6 @@ window.Quarto = {
 </div>
 
 
-</section>
 </section>
 </section>
 

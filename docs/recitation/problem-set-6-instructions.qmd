@@ -1,6 +1,6 @@
 ---
 title: Problem Set 6
-subtitle: $t$-test & Confidence Intervals
+subtitle: The $t$-test & Confidence Intervals
 
 format: html
 sidebar: recitation
@@ -9,10 +9,8 @@ execute:
   echo: true
 ---
 
-# Part 1. The $t$ statistic
+## Part 1. The $t$ statistic
 
-::: {.content-hidden when-format="pdf"}
-## Instructions
 
 The general hypothesis testing procedure for the $t$-test (and any kind of test) is the same as the procedure we used in the previous problem set for the $z$-test. The difference is that we're dealing with a different distribution and a different test statistic.
 
@@ -24,11 +22,13 @@ Step 2: Set decision criteria. As usual, this depends on alpha and whether the t
 qt(c(.025, .975), df = 50)
 ```
 
-Step 3: Calculate your test statistic. Do this by plugging the appropriate values into the $t$ equation
+Step 3: Calculate your test statistic. Do this by adapting the $t$ equation into R code and plugging the appropriate values.
+
+$$t = \dfrac{M - \mu_M}{s_M}$$
 
 Step 4: Decide. Compare your calculated test statistic with the critical values to determine whether your sample is within the critical region(s), and thus whether to reject the null.
 
-Unlike the $z$-test, however, R does have a built-in function for performing a $t$ test. When you're dealing with real data you can use this rather than following the step-by-step procedure and calculating things manually. For a single-sample $t$-test, the arguments you need to specify are `x` (your data) and `mu` (the population mean), and possibly `alternative`. This last argument allows you to specify the directionality of the alternative hypothesis (i.e. to conduct a one-tailed or two-tailed hypothesis).
+Unlike the $z$-test, however, R does have a built-in function for performing a $t$ test: `t.test()`. When you're dealing with real data you can use this rather than following the step-by-step procedure and calculating things manually. For a single-sample $t$-test, the arguments you need to specify are `x` (your data) and `mu` (the population mean), and possibly `alternative`. This last argument allows you to specify the directionality of the alternative hypothesis (i.e. to conduct a one-tailed or two-tailed hypothesis).
 
 The `t.test()` function doesn't calculate effect size. For that, you can implement the relevant equation. Or alternatively, you could check out the `cohens_d()` function from the `effectsize` package...
 
@@ -40,12 +40,8 @@ NOTE: You can see documentation for any function by typing a question mark follo
 
 ?effectsize::cohens_d
 ```
-:::
 
-# Part 2. Confidence intervals
-
-::: {.content-hidden when-format="pdf"}
-## Instructions
+## Part 2. Confidence intervals
 
 The equation for a confidence interval is:
 
@@ -53,7 +49,7 @@ $$
 \mu = M \pm t * s_M
 $$
 
-So this involves computing some critical $t$ values and multiplying by the estimated standard error.
+So this involves computing some critical $t$ values and multiplying by the estimated standard error, and adding and subtracting that product from the mean.
 
 Suppose we're dealing with a sample, $n = 20$, $M = 100$, $SD = 10$ . We want to make a 95% confidence interval for that $M = 100$ point estimate.
 
@@ -159,4 +155,3 @@ data_summary |>
   geom_errorbar(aes(ymax = ci_upper_limit, ymin = ci_lower_limit), width = 0.3) +
   geom_point()
 ```
-:::
