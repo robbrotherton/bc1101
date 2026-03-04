@@ -244,17 +244,11 @@ window.Quarto = {
   <ul>
   <li><a href="#part-1-computing-and-graphing-associations" id="toc-part-1-computing-and-graphing-associations" class="nav-link active" data-scroll-target="#part-1-computing-and-graphing-associations">Part 1: Computing and graphing associations</a>
   <ul class="collapse">
-  <li><a href="#instructions" id="toc-instructions" class="nav-link" data-scroll-target="#instructions">Instructions</a>
-  <ul class="collapse">
   <li><a href="#correlation" id="toc-correlation" class="nav-link" data-scroll-target="#correlation">Correlation</a></li>
   <li><a href="#regression" id="toc-regression" class="nav-link" data-scroll-target="#regression">Regression</a></li>
   <li><a href="#visualizing-correlation-regression" id="toc-visualizing-correlation-regression" class="nav-link" data-scroll-target="#visualizing-correlation-regression">Visualizing correlation &amp; regression</a></li>
   </ul></li>
-  </ul></li>
-  <li><a href="#part-2.-the-world-happiness-report." id="toc-part-2.-the-world-happiness-report." class="nav-link" data-scroll-target="#part-2.-the-world-happiness-report.">Part 2. The World Happiness Report.</a>
-  <ul class="collapse">
-  <li><a href="#instructions-1" id="toc-instructions-1" class="nav-link" data-scroll-target="#instructions-1">Instructions</a></li>
-  </ul></li>
+  <li><a href="#part-2.-the-world-happiness-report." id="toc-part-2.-the-world-happiness-report." class="nav-link" data-scroll-target="#part-2.-the-world-happiness-report.">Part 2. The World Happiness Report.</a></li>
   </ul>
 </nav>
     </div>
@@ -281,10 +275,8 @@ window.Quarto = {
 </header>
 
 
-<section id="part-1-computing-and-graphing-associations" class="level1">
-<h1>Part 1: Computing and graphing associations</h1>
-<section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<section id="part-1-computing-and-graphing-associations" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-computing-and-graphing-associations">Part 1: Computing and graphing associations</h2>
 <section id="correlation" class="level3">
 <h3 class="anchored" data-anchor-id="correlation">Correlation</h3>
 <p>R has two basic functions for calculating correlations: <code>cor()</code>, and <code>cor.test()</code> . They each require two arguments, named <code>x</code> and <code>y</code>, referring to the two variables (i.e.&nbsp;columns of data) we want to compute the correlation between.</p>
@@ -378,11 +370,8 @@ F-statistic: 0.07123 on 1 and 8 DF,  p-value: 0.7963</code></pre>
 </div>
 </section>
 </section>
-</section>
 <section id="part-2.-the-world-happiness-report." class="level1">
 <h1>Part 2. The World Happiness Report.</h1>
-<section id="instructions-1" class="level2">
-<h2 class="anchored" data-anchor-id="instructions-1">Instructions</h2>
 <p>For this question you will work with some real data from the <a href="https://worldhappiness.report/">World Happiness Report</a>.</p>
 <p>Look at the data after you read it into R to get an idea of what variables it contains. The column names generally give a clear indication of what the scores are, but some may be unclear or unfamiliar. There’s a full explanation at <a href="https://happiness-report.s3.amazonaws.com/2024/Ch2+Appendix.pdf" class="uri">in the WHR appendix here.</a></p>
 <p>You’ll be using <code>cor()</code> and/or <code>cor.test()</code> to examine correlations. The only new thing to be aware of is that, if you try to correlate two variables and there is even a single missing data point (indicated by <code>NA</code>), you will get an answer of <code>NA</code>. To avoid this, you can specify <code>use = "pairwise.complete.obs</code> as an argument within either function. That will cause R to ignore cases where one data point is missing, and use however many have complete data for both variables.</p>
@@ -399,13 +388,12 @@ F-statistic: 0.07123 on 1 and 8 DF,  p-value: 0.7963</code></pre>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>Since you’re coming to the end of this journey with R, and you’re becoming an expert at doing so many things with it, I want to give you the chance to spread your wings and fly. If you want to put your skills to the test and push your limits, please ignore the following questions and just do something cool with the world happiness data. You might produce a visual ranking the happiness of every country, make a map showing happiness around the world (yes, R can do maps!), graph changes over time (<code>10_world_happiness_all_years.csv</code> has data for multiple years whereas <code>10_world_happiness_2023.csv</code> is just that one year), or something else that I haven’t even thought of. Maybe chatGPT can help get you started with ideas and code. Prof B would love to help as well. This is your chance to shine!</p>
-<p>Or you can just ignore this and play it safe with the questions below. Your choice; no judgement 😊</p>
+<p>Or you can just ignore this and play it safe with the regular problem set questions. Your choice; no judgement 😊</p>
 </div>
 </div>
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

@@ -9,10 +9,7 @@ execute:
   echo: true
 ---
 
-# Part 1: Computing and graphing associations
-
-::: {.content-hidden when-format="pdf"}
-## Instructions
+## Part 1: Computing and graphing associations
 
 ### Correlation
 
@@ -60,26 +57,22 @@ ggplot(df, aes(x = x, y = y)) +
   geom_point() +
   geom_smooth(method = "lm")
 ```
-:::
+
 
 # Part 2. The World Happiness Report.
-
-::: {.content-hidden when-format="pdf"}
-## Instructions
 
 For this question you will work with some real data from the [World Happiness Report](https://worldhappiness.report/).
 
 Look at the data after you read it into R to get an idea of what variables it contains. The column names generally give a clear indication of what the scores are, but some may be unclear or unfamiliar. There's a full explanation at [in the WHR appendix here.](https://happiness-report.s3.amazonaws.com/2024/Ch2+Appendix.pdf){.uri}
 
 You'll be using `cor()` and/or `cor.test()` to examine correlations. The only new thing to be aware of is that, if you try to correlate two variables and there is even a single missing data point (indicated by `NA`), you will get an answer of `NA`. To avoid this, you can specify `use = "pairwise.complete.obs` as an argument within either function. That will cause R to ignore cases where one data point is missing, and use however many have complete data for both variables.
-:::
 
-:::: {.content-hidden when-format="pdf"}
+
 ::: {.callout-tip collapse="false"}
 ## Or...
 
 Since you're coming to the end of this journey with R, and you're becoming an expert at doing so many things with it, I want to give you the chance to spread your wings and fly. If you want to put your skills to the test and push your limits, please ignore the following questions and just do something cool with the world happiness data. You might produce a visual ranking the happiness of every country, make a map showing happiness around the world (yes, R can do maps!), graph changes over time (`10_world_happiness_all_years.csv` has data for multiple years whereas `10_world_happiness_2023.csv` is just that one year), or something else that I haven't even thought of. Maybe chatGPT can help get you started with ideas and code. Prof B would love to help as well. This is your chance to shine!
 
-Or you can just ignore this and play it safe with the questions below. Your choice; no judgement 😊
+Or you can just ignore this and play it safe with the regular problem set questions. Your choice; no judgement 😊
 :::
-::::
+
