@@ -9,8 +9,6 @@ execute:
   echo: true
 ---
 
-::: {.content-hidden when-format="pdf"}
-## Instructions
 
 When analyzing data from a 2x2 factorial design, the steps are:
 
@@ -129,4 +127,4 @@ Post-hoc tests work the same way for a two-factor design as a single-factor desi
 #| eval: false
 TukeyHSD(model)
 ```
-:::
+
