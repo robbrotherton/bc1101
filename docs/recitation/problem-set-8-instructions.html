@@ -244,12 +244,10 @@ window.Quarto = {
   <ul>
   <li><a href="#part-1-anova-using-r-functions." id="toc-part-1-anova-using-r-functions." class="nav-link active" data-scroll-target="#part-1-anova-using-r-functions.">Part 1: ANOVA using R functions.</a>
   <ul class="collapse">
-  <li><a href="#instructions" id="toc-instructions" class="nav-link" data-scroll-target="#instructions">Instructions</a>
-  <ul class="collapse">
   <li><a href="#effect-size" id="toc-effect-size" class="nav-link" data-scroll-target="#effect-size">Effect size</a></li>
   <li><a href="#post-hoc-tests" id="toc-post-hoc-tests" class="nav-link" data-scroll-target="#post-hoc-tests">Post-hoc tests</a></li>
   </ul></li>
-  </ul></li>
+  <li><a href="#part-2-loftus-palmer-replication." id="toc-part-2-loftus-palmer-replication." class="nav-link" data-scroll-target="#part-2-loftus-palmer-replication.">Part 2: Loftus &amp; Palmer replication.</a></li>
   </ul>
 </nav>
     </div>
@@ -276,10 +274,8 @@ window.Quarto = {
 </header>
 
 
-<section id="part-1-anova-using-r-functions." class="level1">
-<h1>Part 1: ANOVA using R functions.</h1>
-<section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<section id="part-1-anova-using-r-functions." class="level2">
+<h2 class="anchored" data-anchor-id="part-1-anova-using-r-functions.">Part 1: ANOVA using R functions.</h2>
 <p>The <code>aov()</code> function can be used to perform ANOVA on data in a data.frame. The arguments supplied to <code>aov()</code> are <code>formula</code> and <code>data</code> (the name of the data.frame containing the relevant data). The formula specifies the DV and grouping variable, in the form <code>DV ~ IV</code>, meaning we want to compare scores on the DV broken into groups according to the IV.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(<span class="at">formula =</span> DV <span class="sc">~</span> IV, <span class="at">data =</span> my_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -325,13 +321,16 @@ window.Quarto = {
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>q <span class="ot">&lt;-</span> <span class="fu">qtukey</span>(<span class="at">p =</span> <span class="fl">0.05</span>, <span class="at">nmeans =</span> <span class="dv">3</span>, <span class="at">df =</span> <span class="dv">10</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>…where <code>p</code> = alpha, <code>nmeans</code> = <span class="math inline">\(k\)</span>, and <code>df</code> = <span class="math inline">\(df_{within}\)</span>. The resulting <span class="math inline">\(q\)</span> value should be used in the calculation&nbsp;</p>
+<p>…where <code>p</code> = alpha, <code>nmeans</code> = <span class="math inline">\(k\)</span>, and <code>df</code> = <span class="math inline">\(df_{within}\)</span>. The resulting <span class="math inline">\(q\)</span> value should be used in the calculation.</p>
 <p><span class="math display">\[q * \sqrt{\dfrac{MSwithin}{n}}\]</span></p>
 <p>This tells you the size of difference between means required to count as statistically significant.</p>
-
-
 </section>
 </section>
+<section id="part-2-loftus-palmer-replication." class="level2">
+<h2 class="anchored" data-anchor-id="part-2-loftus-palmer-replication.">Part 2: Loftus &amp; Palmer replication.</h2>
+<p>In the previous problem set you analyzed and visualized data from a two-group study design. In this part, you’ll do the same thing for data that has three groups. The nice thing about the <code>dplyr::summarize()</code> approach to computing summary statistics is that it doesn’t matter how many groups you have; the code should work almost identically. Supplying the grouping variable via <code>summarize()</code>’s <code>.by</code> argument does all the work. So if you’re feeling stuck, make sure to revisit your own previous work.</p>
+
+
 </section>
 
 </main> <!-- /main -->

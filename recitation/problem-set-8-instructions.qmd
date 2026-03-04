@@ -9,10 +9,7 @@ execute:
   echo: true
 ---
 
-# Part 1: ANOVA using R functions.
-
-::: {.content-hidden when-format="pdf"}
-## Instructions
+## Part 1: ANOVA using R functions.
 
 The `aov()` function can be used to perform ANOVA on data in a data.frame. The arguments supplied to `aov()` are `formula` and `data` (the name of the data.frame containing the relevant data). The formula specifies the DV and grouping variable, in the form `DV ~ IV`, meaning we want to compare scores on the DV broken into groups according to the IV.
 
@@ -86,9 +83,13 @@ You'll also need the $q$ statistic, which you can find using `qtukey()`.  This 
 q <- qtukey(p = 0.05, nmeans = 3, df = 10, lower.tail = FALSE)
 ```
 
-…where `p` = alpha, `nmeans` = $k$, and `df` = $df_{within}$. The resulting $q$ value should be used in the calculation 
+…where `p` = alpha, `nmeans` = $k$, and `df` = $df_{within}$. The resulting $q$ value should be used in the calculation.
 
 $$q * \sqrt{\dfrac{MSwithin}{n}}$$
 
 This tells you the size of difference between means required to count as statistically significant.
-:::
+
+
+## Part 2: Loftus & Palmer replication.
+
+In the previous problem set you analyzed and visualized data from a two-group study design. In this part, you'll do the same thing for data that has three groups. The nice thing about the `dplyr::summarize()` approach to computing summary statistics is that it doesn't matter how many groups you have; the code should work almost identically. Supplying the grouping variable via `summarize()`'s `.by` argument does all the work. So if you're feeling stuck, make sure to revisit your own previous work.
