@@ -253,7 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <section id="descriptive-statistics" class="level3">
 <h3 class="anchored" data-anchor-id="descriptive-statistics">Descriptive statistics</h3>
-<p>There are several ways to get descriptive statistics for 2x2 ANOVA designs. One is to use the <code>summarize</code> function from the <code>dplyr</code> package, which you’re hopefully feeling familiar with by now. The only difference here for a 2x2 design is that you have 2 grouping variables. Happily, we can specify them both by collecting them together (using <code>c()</code>) as the function’s <code>.by</code> argument.</p>
+<p>There are several ways to get descriptive statistics for 2x2 ANOVA designs. One is to use the <code>summarize</code> function from the <code>dplyr</code> package, which you’re hopefully feeling familiar with by now. The only difference here for a 2x2 design is that you have 2 grouping variables. Happily, we can specify them both by collecting them together (using <code>c()</code>) with the function’s <code>.by</code> argument.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -327,7 +327,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="effect-size" class="level3">
 <h3 class="anchored" data-anchor-id="effect-size">Effect size</h3>
-<p>The <code>etaSquared()</code> function from the <code>lsr</code> package is the easiest way to obtain effect size for a 2x2 ANOVA.</p>
+<p>The <code>eta_squared()</code> function from the <code>effectsize</code> package is the easiest way to obtain effect size for a 2x2 ANOVA.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">eta_squared</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>

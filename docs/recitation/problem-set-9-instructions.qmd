@@ -22,7 +22,7 @@ When analyzing data from a 2x2 factorial design, the steps are:
 
 ### Descriptive statistics
 
-There are several ways to get descriptive statistics for 2x2 ANOVA designs. One is to use the `summarize` function from the `dplyr` package, which you're hopefully feeling familiar with by now. The only difference here for a 2x2 design is that you have 2 grouping variables. Happily, we can specify them both by collecting them together (using `c()`) as the function's `.by` argument.
+There are several ways to get descriptive statistics for 2x2 ANOVA designs. One is to use the `summarize` function from the `dplyr` package, which you're hopefully feeling familiar with by now. The only difference here for a 2x2 design is that you have 2 grouping variables. Happily, we can specify them both by collecting them together (using `c()`) with the function's `.by` argument.
 
 ```{r}
 #| eval: false
@@ -111,7 +111,7 @@ summary(model)
 
 ### Effect size
 
-The `etaSquared()` function from the `lsr` package is the easiest way to obtain effect size for a 2x2 ANOVA.
+The `eta_squared()` function from the `effectsize` package is the easiest way to obtain effect size for a 2x2 ANOVA.
 
 ```{r}
 #| eval: false
