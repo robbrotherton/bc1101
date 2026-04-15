@@ -75,7 +75,7 @@ There is a function that makes performing a Tukey test easy: R's built-in `Tukey
 TukeyHSD(model_between)
 ```
 
-However, `TukeyHSD()` also only works with between-participants models; for a within-participants model you'll need to use the mathematical approach from the lectures, using $MS_{error}$ and $df_{error}$. You will find these values in the output of the `summary()` function.
+However, `TukeyHSD()` also only works with between-participants models; for a within-participants model you'll need to use the mathematical approach from the lectures, using $MS_{error}$ and $df_{error}$ from the denominator of the related-samples $F$-ratio. You will find these values in the output of the `summary()` function.
 
 You'll also need the $q$ statistic, which you can find using `qtukey()`.  This works just like our old friends `qnorm()` and `qt()`--you specify a proportion (e.g. .05) and it tells you the corresponding $q$ statistic. Some other arguments are required as well though:
 
@@ -83,9 +83,9 @@ You'll also need the $q$ statistic, which you can find using `qtukey()`.  This 
 q <- qtukey(p = 0.05, nmeans = 3, df = 10, lower.tail = FALSE)
 ```
 
-…where `p` = alpha, `nmeans` = $k$, and `df` = $df_{within}$. The resulting $q$ value should be used in the calculation.
+…where `p` = alpha, `nmeans` = $k$, and `df` = $df_{denominator}$. The resulting $q$ value should be used in the calculation.
 
-$$q * \sqrt{\dfrac{MSwithin}{n}}$$
+$$q * \sqrt{\dfrac{MS_{denominator}}{n}}$$
 
 This tells you the size of difference between means required to count as statistically significant.
 

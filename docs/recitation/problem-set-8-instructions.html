@@ -316,13 +316,13 @@ window.Quarto = {
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(model_between)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>However, <code>TukeyHSD()</code> also only works with between-participants models; for a within-participants model you’ll need to use the mathematical approach from the lectures, using <span class="math inline">\(MS_{error}\)</span> and <span class="math inline">\(df_{error}\)</span>. You will find these values in the output of the <code>summary()</code> function.</p>
+<p>However, <code>TukeyHSD()</code> also only works with between-participants models; for a within-participants model you’ll need to use the mathematical approach from the lectures, using <span class="math inline">\(MS_{error}\)</span> and <span class="math inline">\(df_{error}\)</span> from the denominator of the related-samples <span class="math inline">\(F\)</span>-ratio. You will find these values in the output of the <code>summary()</code> function.</p>
 <p>You’ll also need the <span class="math inline">\(q\)</span> statistic, which you can find using <code>qtukey()</code>. &nbsp;This works just like our old friends <code>qnorm()</code> and <code>qt()</code>–you specify a proportion (e.g.&nbsp;.05) and it tells you the corresponding <span class="math inline">\(q\)</span> statistic. Some other arguments are required as well though:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>q <span class="ot">&lt;-</span> <span class="fu">qtukey</span>(<span class="at">p =</span> <span class="fl">0.05</span>, <span class="at">nmeans =</span> <span class="dv">3</span>, <span class="at">df =</span> <span class="dv">10</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>…where <code>p</code> = alpha, <code>nmeans</code> = <span class="math inline">\(k\)</span>, and <code>df</code> = <span class="math inline">\(df_{within}\)</span>. The resulting <span class="math inline">\(q\)</span> value should be used in the calculation.</p>
-<p><span class="math display">\[q * \sqrt{\dfrac{MSwithin}{n}}\]</span></p>
+<p>…where <code>p</code> = alpha, <code>nmeans</code> = <span class="math inline">\(k\)</span>, and <code>df</code> = <span class="math inline">\(df_{denominator}\)</span>. The resulting <span class="math inline">\(q\)</span> value should be used in the calculation.</p>
+<p><span class="math display">\[q * \sqrt{\dfrac{MS_{denominator}}{n}}\]</span></p>
 <p>This tells you the size of difference between means required to count as statistically significant.</p>
 </section>
 </section>
